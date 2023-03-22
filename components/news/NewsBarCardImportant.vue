@@ -38,5 +38,10 @@ export default {
 </script>
 
 <style scoped>
-
+.uk-card-title {
+  text-transform: uppercase;
+}
+.card_text {
+  text-transform: uppercase;
+}
 </style>

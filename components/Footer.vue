@@ -316,7 +316,7 @@
             <nuxt-link to="/yachts/schedule/" class="uk-hidden@s">
               Купить билеты
             </nuxt-link>
-            <nuxt-link to="/rules#thiefs" class="uk-hidden@s">
+            <nuxt-link to="/news/388/" class="uk-hidden@s">
               Осторожно мошенники
             </nuxt-link>
           </li>
@@ -330,7 +330,7 @@
             <nuxt-link to="/contacts/">
               Контакты
             </nuxt-link>
-            <nuxt-link to="/rules/" class="uk-hidden@s">
+            <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace class="uk-hidden@s">
               Безопасность
             </nuxt-link>
             <nuxt-link to="/refund/" class="uk-hidden@s">
@@ -341,7 +341,7 @@
             <nuxt-link to="/yachts/schedule/">
               Купить билеты
             </nuxt-link>
-            <nuxt-link to="/rules#thiefs">
+            <nuxt-link to="/news/388/">
               Осторожно мошенники
             </nuxt-link>
             <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace>
