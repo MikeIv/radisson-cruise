@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32.5" height="32.5" viewBox="0 0 32.5 32.5">
+  <g id="svg-schedule-1" transform="translate(-19 -19)">
+    <path id="Контур_1124" data-name="Контур 1124" d="M48.145,42.339V35H45v8.911a1.572,1.572,0,0,0,1.573,1.573h7.339V42.339Z" transform="translate(-12.371 -7.613)" fill="#fff"/>
+    <circle id="Эллипс_58" data-name="Эллипс 58" cx="1.25" cy="1.25" r="1.25" transform="translate(46.5 26.5)" fill="#fff"/>
+    <circle id="Эллипс_59" data-name="Эллипс 59" cx="1.25" cy="1.25" r="1.25" transform="translate(41.5 21.5)" fill="#fff"/>
+    <path id="Контур_1125" data-name="Контур 1125" d="M48.355,35.25a13.1,13.1,0,1,1-13.1-13.1h1.573V19H35.25A16.25,16.25,0,1,0,51.5,35.25V33.677H48.355Z" transform="translate(0 0)" fill="#fff"/>
+  </g>
+</svg>

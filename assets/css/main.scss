@@ -1,0 +1,6280 @@
+@font-face {
+  font-family: 'cowor';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/coworking.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'cowor';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/coworking.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-medium.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-regular.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-semibold.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-thin.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'montserrat';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('~assets/fonts/montserrat-thin.woff2') format('woff2');
+}
+
+html {
+  font-family: montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  -webkit-text-size-adjust: 100%;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+
+body {
+  background: #e7f0f7;
+}
+
+.uk-container {
+  max-width: 1660px;
+}
+
+/*.container {
+  max-width: 1660px;
+  width: 100%;
+  margin:0 auto;
+  padding:0 40px;
+}*/
+
+.uk-svg:not(.uk-preserve) [stroke*='#']:not(.uk-preserve){
+  stroke: rgb(161, 194, 229);
+}
+
+.play-video-btn_back img {
+  width: 100px;
+  height: 100px;
+}
+.main_header {
+  padding-top: 50px;
+  padding-bottom: 114px;
+}
+/*.accordion_default__txt {
+  text-align: left;
+}*/
+.main-news_decor1 {
+  top: 10%;
+}
+@media screen and (max-width: 1650px) {
+  .main_header {
+    padding-top: 35px;
+    padding-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .main_header {
+    padding-bottom: 0px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .main_header {
+    padding-bottom: 70px;
+  }
+}
+@media screen and (max-width: 639px) {
+  .main_header {
+    padding-top: 0;
+  }
+}
+
+/*
+
+.headline_p1 {
+  font-size: 66px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1.2;
+  padding-bottom: 90px;
+}
+.uk-button {
+  padding: 0 10px;
+  background: #00c1f3;
+  box-sizing: border-box;
+  border-radius: 0;
+  line-height: normal;
+  height: 50px;
+  z-index: 99;
+  font-size: 12px;
+  font-family: mont,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  font-weight: 700;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-transform: uppercase;
+  border: 1px solid #00c1f3;
+  min-width: 180px;
+  transition: .2s;
+}
+
+.uk-button-default:focus, .uk-button-default:hover {
+  background: #1d2240;
+  color: #fff;
+  border-color: #1d2240;
+}
+*/
+
+.old-site {
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  color: #232323
+}
+
+.old-site .uk-text-center {
+  height: 55px;
+  font-size: 14px
+}
+
+.old-site a {
+  font-weight: 600
+}
+
+.cookie-close {
+  width: 34px;
+  opacity: 1;
+  display: flex;
+  z-index: 2;
+  align-items: center;
+  top: 50%;
+  color: #fff;
+  right: 11px;
+  transform: translateY(-50%);
+  justify-content: center;
+  height: 34px;
+  background: #00c1f3
+}
+
+.cookie-close svg {
+  width: 19px;
+  height: 19px
+}
+
+.cookie-close:hover {
+  color: #fff
+}
+
+.header-link-shedule svg {
+  margin-right: 15px;
+  height: 15px;
+  width: 56px;
+}
+
+.header__top_item3 {
+  width: 548px;
+  justify-content: space-between;
+}
+
+.header-compass {
+  position: absolute;
+  right: 70px;
+  bottom: 114px
+}
+
+.header-compass>div:nth-child(2) {
+  width: 40px;
+  height: 1px;
+  position: absolute;
+  right: -70px;
+  top: 68px;
+  background: #707070
+}
+
+.header-compass>div:nth-child(3) {
+  width: 1px;
+  height: 88px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 168px;
+  background: #707070;
+}
+
+.header-compass svg {
+  width: 142px;
+  height: 142px;
+  -webkit-animation: 5s linear infinite header-compass-svg;
+  animation: 5s linear infinite header-compass-svg;
+}
+
+@-webkit-keyframes header-compass-svg {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+@keyframes header-compass-svg {
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.header__p1 {
+  font-size: 118px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #00c1f3;
+  font-weight: 700;
+  font-family: montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+}
+.header__p2 {
+  font-size: 118px;
+  margin-top: 10px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  font-family: montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+}
+.header__p3 {
+  font-weight: 500;
+  font-size: 63px;
+  margin-top: 40px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mailing__block {
+  flex-direction: column;
+}
+.mailing__form {
+  position: relative;
+  margin-top: 40px;
+  fill: #fff;
+  width: 100%;
+}
+.mailing__form .uk-input,  .mailing__form .uk-input::placeholder{
+  color: #fff;
+  font-weight: 400;
+  border-color: #fff;
+  font-size: 16px;
+  height: 60px;
+  border-width: 2px;
+}
+
+@media screen and (max-width: 639px) {
+  .mailing__form .uk-input,  .mailing__form .uk-input::placeholder {
+    height: 60px;
+    font-size: 12px;
+  }
+}
+.main-header-index {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offcanvas_main {
+  flex: 1;
+  display: flex;
+  padding-top: 60px;
+  justify-content: center;
+  flex-direction: column;
+}
+.footer_nav {
+  margin: 20px 0 30px;
+}
+.offcanvas_main__grid > div:nth-child(2) > *:last-child, .offcanvas_main__grid > div:nth-child(4) > *:last-child {
+  margin-top: 30px;
+}
+.offcanvas_main__grid .txt18 + .txt18 {
+  margin-top: 35px;
+}
+.uk-offcanvas-close {
+  padding: 0;
+}
+.cabin__header__info__buy {
+  padding: 0;
+  padding-top: 18px;
+  background: none;
+}
+.cabin__header__info__buy .uk-button+.uk-button {
+  margin-top: 18px;
+}
+.cabin__header__info__buy .uk-button-secondary {
+  border-color: #00c1f3;
+  color: #00c1f3;
+  fill: #00c1f3;
+  border-width: 2px;
+}
+.cabin__header__info__buy .uk-button-secondary:hover {
+  color: #fff;
+  fill: #fff;
+}
+.cabin__header__info__buy .uk-button-secondary:hover svg{
+  color: #fff;
+  fill: #fff;
+}
+.cabin__img {
+  width: calc(100% - 495px);
+}
+.cabin__parts {
+  background: #fff;
+  padding: 0;
+}
+.button_shedule svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 19px;
+  min-width: 18px;
+}
+.cabin__parts .yacht__information_capacity {
+  padding-right: 0;
+}
+.yacht__information_capacity>div svg {
+  margin-right: 15px;
+}
+.yacht__information_capacity-item6 svg {
+  width: 22px;
+  height: 22px;
+}
+.yacht__information_capacity-item4 svg {
+  width: 25px;
+  height: 25px;
+}
+.yacht__information_capacity-item5 svg {
+  width: 26px;
+  height: 26px;
+}
+.cabin__parts__charact {
+  margin-top: 40px;
+}
+.cabin__parts__charact ul {
+  list-style: circle;
+  padding: 0;
+  margin: 0;
+}
+.cabin__parts__charact ul>li {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.cabin__header__info {
+  padding: 55px 68px 63px;
+  min-height: 740px;
+}
+
+.footer__bottom_arr {
+  margin-left: auto;
+}
+
+.about-capitans__section .yacht__slider {
+  height: 575px;
+  color: #fff;
+  /*margin-top: -287px;
+  width: 107.5%;*/
+  overflow: hidden;
+  margin-top: 0;
+}
+.gallery_card__caption::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: block;
+  background: linear-gradient(rgba(0,0,0,.7) 0,rgba(84,84,84,0) 100%);
+}
+
+.header-link-shedule {
+  display: flex;
+}
+
+.about-partner__card {
+  img {
+    max-height: 100%;
+  }
+}
+.card-news__small:hover .uk-card-title {
+  color: #00c1f3;
+}
+.card-news_big:hover .uk-card-title {
+  color: #00c1f3;
+}
+.card-news__small:hover {
+  background: none;
+}
+
+.input-group {
+  justify-content: space-around;
+}
+.offcanvas_main__head {
+  display: none;
+}
+.font-29 {
+  font-size: 29px;
+}
+.header-ticket svg {
+  margin-left: 10px;
+}
+/*.tab_nav {
+  z-index: 1005;
+}*/
+
+
+@media screen and (max-width:1700px) {
+  .slider_width150 {
+    width: 120%
+  }
+  .header__middle_right {
+    position: absolute;
+    right: 0;
+    top: 45px
+  }
+  .header__middle_right svg {
+    width: 384px
+  }
+  .header-compass>div:nth-child(2) {
+    width: 9px;
+    right: -29px
+  }
+  .tenancy-advantages__slider .slider_width150 {
+    width: calc(100% + 41px)
+  }
+  .buy-ticket-info__item1 {
+    min-width: 860px;
+    padding: 67px 93px
+  }
+  .buy-ticket-info__success {
+    margin-left: 30px;
+    padding: 40px 20px
+  }
+  .buy-ticket-info__success__main {
+    margin-top: 29px;
+    padding-top: 24px
+  }
+}
+
+
+@media screen and (max-width:1650px) {
+  .buy-sertificat__wrap {
+    padding: 0 40px 80px
+  }
+  .buy-ticket-important {
+    padding: 83px 40px 63px
+  }
+  .buy-ticket-shedule__headlines>div:nth-child(7) {
+    width: 17.4%
+  }
+  .uk-table td:nth-child(7) {
+    width: 17.8%
+  }
+  .uk-table td:nth-child(4) {
+    width: 9.1%
+  }
+  .uk-table td:nth-child(5) {
+    width: 8.7%
+  }
+  .buy-ticket-shedule__headlines>div:nth-child(4) {
+    width: 9.2%
+  }
+  .buy-ticket-shedule__headlines>div:nth-child(5) {
+    width: 8.6%
+  }
+  .buy-ticket-info__more__grid>div {
+    padding-left: 33px
+  }
+  .buy-ticket-info__more__grid {
+    margin-left: -33px;
+    margin-top: 32px
+  }
+  .buy-ticket-info__more__item__txt {
+    margin: 21px 0
+  }
+  .buy-ticket-info__more__item .txt18 {
+    max-width: 200px
+  }
+  .buy-ticket-info__more__item svg {
+    right: 21px;
+    top: 45px
+  }
+  .buy-ticket-info__more__item {
+    padding: 38px 29px 48px
+  }
+  .buy-ticket-info__is-not-coming svg {
+    right: 21px;
+    bottom: 57px
+  }
+  .buy-ticket-info__is-not-coming {
+    padding: 58px 40px 60px
+  }
+  .buy-ticket-info__item1 {
+    padding-left: 110px
+  }
+  .buy-ticket-more-information__call svg {
+    right: 19px;
+    top: 19px
+  }
+  .buy-ticket-more-information__call {
+    padding: 63px 30px 49px
+  }
+  .buy-ticket-more-information__cards {
+    padding: 63px 47px
+  }
+  .buy-ticket-form {
+    padding: 0 40px 80px
+  }
+  .contact-info__svg {
+    width: 195.19px;
+    height: 256.42px;
+    right: 68px;
+    bottom: 104px
+  }
+  .contact-info.contact-info_sales {
+    padding: 118px 40px 114px
+  }
+  .contact-info__payment__img {
+    width: 52%
+  }
+  .contact-info__payment__block {
+    width: 48%
+  }
+  .contact-info {
+    padding: 90px 40px 124px
+  }
+  .contact-info .headline_32 {
+    font-size: 28px
+  }
+  .menu-cafe__item .uk-button {
+    margin-top: 29px
+  }
+  .menu-cafe__item_txt {
+    margin-top: 16px
+  }
+  .menu-cafe__item {
+    padding: 54px 40px 33px;
+    min-height: 250px
+  }
+  .news-item__grid {
+    margin-left: -62px
+  }
+  .news-item__grid>div {
+    padding-left: 62px
+  }
+  .news-item__container {
+    padding: 10px 48px 90px
+  }
+  .headline_line {
+    margin-top: 35px
+  }
+  .tenancy__about__info {
+    padding: 127px 40px 114px
+  }
+  .tenancy__about__info>svg {
+    top: 77px;
+    right: 20px
+  }
+  header {
+    padding-top: 35px;
+    padding-bottom: 80px
+  }
+  .buy-ticket__item {
+    width: 21%
+  }
+  .buy-ticket__item_switch {
+    width: 502px
+  }
+  .flight__info {
+    padding: 119px 70px;
+    min-height: 620px
+  }
+  .flight__info__icon {
+    right: 15px
+  }
+}
+
+@media screen and (max-width:1600px) {
+  .promo-additionally {
+    padding: 148px 0 96px
+  }
+  .promo-about-cruises {
+    gap: 40px
+  }
+  .promo-decor-imgs_2 .promo-decor-img2 {
+    width: 40%
+  }
+  .promo-about-main {
+    -ms-grid-columns: 50% 1fr;
+    grid-template-columns: 50% 1fr;
+    align-items: flex-start;
+    gap: 40px 40px
+  }
+  .promo-decor-imgs_1 {
+    width: 45%
+  }
+  .promo-decor-imgs_1 .promo-decor-img2 {
+    right: 77%;
+    width: 40%
+  }
+  .buy-ticket-info__item1 {
+    padding-left: 93px
+  }
+  .slider_width150 {
+    width: 116%
+  }
+}
+
+@media screen and (max-width:1550px) {
+  .header__p1,
+  .header__p2 {
+    font-size: 98px
+  }
+  .header__p3 {
+    font-size: 52px
+  }
+  .buy-sertificat-head__back {
+    width: 50%
+  }
+  .buy-sertificat__head {
+    padding-right: 50%
+  }
+  .buy-ticket {
+    margin-top: 102px;
+    margin-left: -40px;
+    margin-right: -40px
+  }
+  .header__top_logo svg {
+    width: 174px;
+    height: 75px
+  }
+  .header__top_item3 a:first-child {
+    margin-right: 17px
+  }
+  .header__top_item2 {
+    flex-direction: column;
+    border: none
+  }
+  .header__top_item2>div:nth-child(1) {
+    border-right: none
+  }
+  .header__top_item2>div:nth-child(2) {
+    border: none;
+    padding: 9.5px 0 0;
+    font-size: 11px
+  }
+  header {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width:1500px) {
+  .not_found-block-left .headline_p1 {
+    white-space: nowrap
+  }
+  .not_found_img-container {
+    width: 40%
+  }
+  .tenancy-seating__grid {
+    margin-top: 16px;
+    margin-left: -40px
+  }
+  .tenancy-seating__grid>div {
+    padding-left: 40px
+  }
+  .tenancy-seating__item {
+    padding: 53px 10px
+  }
+}
+
+@media screen and (max-width:1480px) {
+  .slider_width150 {
+    width: 111%
+  }
+}
+
+@media screen and (max-width:1450px) {
+  .promo-information__grid {
+    -ms-grid-columns: 1fr 462px;
+    grid-template-columns: 1fr 462px
+  }
+  .header__top_item3 {
+    width: 388px
+  }
+  .header-link-shedule {
+    flex-direction: column;
+    font-size: 14px;
+    align-items: flex-start
+  }
+  .header-link-shedule img {
+    margin: 0 0 13px
+  }
+  .buy-ticket-info__headline {
+    margin-top: 20px
+  }
+  .buy-ticket-form__basket__summ>div:nth-child(1) {
+    margin-right: 7px
+  }
+  .buy-ticket-info__item1__logo {
+    right: 71px
+  }
+  .buy-ticket-info__item1__icon2 {
+    right: 68px
+  }
+  .buy-ticket-info__success__head svg {
+    width: 47px;
+    height: 47px;
+    top: 8px
+  }
+  .buy-ticket-info__item1 {
+    margin-top: -14px
+  }
+  .buy-ticket-form__basket__item__name {
+    min-width: auto;
+    padding-right: 4.5px
+  }
+  .buy-ticket-form__basket__main {
+    padding: 0 20px 46px
+  }
+  .buy-ticket-form__basket {
+    width: 300px
+  }
+  .buy-ticket-form__info {
+    padding-right: 60px
+  }
+  .buy-ticket-form__grid {
+    margin-top: 40px
+  }
+  .uk-modal-full__block {
+    margin-top: 74px
+  }
+  .uk-modal-full__block__bottom {
+    padding: 55px 35px
+  }
+  .uk-modal-full__info {
+    padding: 35px
+  }
+  .uk-modal-full .uk-modal-dialog {
+    padding: 106px 78px 96px 0
+  }
+  .about__nav .uk-container {
+    padding: 0
+  }
+  .uk-modal-full.modal-calculation .uk-modal-dialog {
+    padding: 104px 78px 132px 0
+  }
+}
+
+@media screen and (max-width:1400px) {
+  .promo-about-cruises {
+    padding-left: 40px
+  }
+  .trams__cost .headline_32 {
+    font-size: 25px
+  }
+  .trams__cost__main_1 {
+    min-height: 175px
+  }
+  .cabin__img {
+    width: calc(100% - 380px)
+  }
+  .main-news.padding_top {
+    padding-top: 80px
+  }
+  .awards__card3 img {
+    margin-top: 26px
+  }
+  .awards__card4 img {
+    margin-top: 53px
+  }
+  .awards__card5 img {
+    margin-top: 45px;
+    margin-right: 0
+  }
+  .awards__card6 img {
+    margin-top: 6px;
+    margin-right: 41px
+  }
+  .awards__card7 .awards__card_img img {
+    margin-top: 89px;
+    transform: scale(.82) translateX(25px)
+  }
+  .offcanvas_bottom .footer__bottom {
+    padding-top: 32px
+  }
+  .offcanvas_main__head {
+    padding-bottom: 40px;
+    margin-bottom: 50px
+  }
+  .offcanvas_menu {
+    padding-top: 110px;
+    padding-bottom: 32px
+  }
+  .buy-ticket-shedule__container .buy-ticket .button_ticket,
+  .buy-ticket-shedule__container .buy-ticket__item {
+    width: 20%
+  }
+  .buy-ticket__item_5 {
+    display: none
+  }
+  .modal-calculation__slide5__svg {
+    right: 30px
+  }
+  .modal-calculation__middle {
+    padding: 40px 30px
+  }
+  .modal-calculation__bottom {
+    padding: 37px 30px 49px
+  }
+  .uk-modal-full.modal-calculation .instagram_decor1 {
+    right: 1%
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__block {
+    margin-top: 76px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .instagram_decor1 {
+    right: 2%
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__block__bottom {
+    padding: 30px 40px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__info {
+    padding: 60px 40px 52px
+  }
+  .uk-modal-full__block__top {
+    padding: 40px 30px
+  }
+  .uk-modal-full__block .yacht__slider {
+    height: auto
+  }
+  .uk-modal-full__block .yacht__slider_navigation {
+    transform: translateX(-50%);
+    left: 50%
+  }
+  .trams__cost {
+    min-height: 800px;
+    padding: 148px 40px
+  }
+  .trams__route__num {
+    right: 27px
+  }
+  .trams__route__info {
+    padding: 117px 60px
+  }
+  .trams-gallery {
+    padding: 84px 0 100px
+  }
+  .trams-gallery .yacht__slider_navigation {
+    transform: translateX(-50%);
+    left: 49%
+  }
+  .trams-gallery .yacht__slider li {
+    width: 67.2%
+  }
+  .trams-colors__item__img {
+    margin-right: 19px
+  }
+  .trams-colors__item {
+    padding: 30px
+  }
+  .trams-advantage__item__svg {
+    right: 28px;
+    bottom: 27px
+  }
+  .trams-advantages__items {
+    margin-left: -26px
+  }
+  .trams-advantages__items>div {
+    padding-left: 26px
+  }
+  .trams-advantage__item {
+    padding: 30px
+  }
+  .trams__header .heading .headline_p1 {
+    font-size: 56px
+  }
+  .trams__header .heading .uk-button {
+    margin-top: 80px
+  }
+  .trams__header .heading {
+    padding: 98px 0 180px
+  }
+  .accordion_default .uk-accordion-content {
+    padding-left: 70px
+  }
+  .accordion_default__num {
+    width: 70px;
+    min-width: 70px
+  }
+  .cabin__header__info__parameter {
+    font-size: 12px;
+    margin-top: 38px
+  }
+  .cabin__header__info__parameter p {
+    margin: 0 0 12px
+  }
+  .cabin__header__info__parameter *+p {
+    margin-top: 12px
+  }
+  .cabin__header__info .yacht__capitan {
+    min-width: 0;
+    width: auto;
+    padding: 0 30px 30px
+  }
+  .cabin__header__info__buy {
+    padding: 18px 0 0
+  }
+  .cabin__badge {
+    top: 36px
+  }
+  .cabin__header__info {
+    width: 380px;
+    min-height: 582px;
+    padding: 44px 40px
+  }
+  .cabin__header__info .yacht__capitan_name {
+    margin-top: 7px
+  }
+  .cabin__header__info .yacht__capitan_experience {
+    margin-top: 15px
+  }
+  .cabin__header__info .yacht__capitan_job {
+    margin-top: 14px
+  }
+  .cabin__header__info .yacht__capitan_img {
+    width: 180px;
+    height: 180px;
+    margin-left: auto;
+    margin-right: auto
+  }
+  .rules-about2__item {
+    padding: 66px 50px;
+    position: relative
+  }
+  .rules-security-video__section {
+    padding: 111px 0
+  }
+  .rules-security-video__tab__name2 {
+    margin-top: 4px
+  }
+  .rules-security-video__tabs>*>a {
+    padding: 22px 20px 14px;
+    min-height: 100px
+  }
+  .rules-ship__site__item__txt {
+    margin-top: 20px
+  }
+  .rules-ship__site {
+    padding: 60px 64px 39px
+  }
+  .rules-ship__site__items>div {
+    width: 100%
+  }
+  .rules-ship__site__items {
+    margin-top: 0
+  }
+  .rules-ship__site__item {
+    border-top: 1px solid #a1c2e5;
+    border-left: none;
+    padding: 39px 0 40px
+  }
+  .rules-ship__site__item:nth-child(1) {
+    border-top: none
+  }
+  .rules-ship__grid2>div {
+    width: 100%;
+    margin-top: 50px
+  }
+  .rules-security__section {
+    padding: 76px 0 183px
+  }
+  .rules-security__block__icon {
+    right: 58px
+  }
+  .rules-security__img {
+    width: 49%
+  }
+  .rules-security__block {
+    max-width: 895px
+  }
+  .rules-performance__grid {
+    margin-left: -40px
+  }
+  .rules-performance__grid>div {
+    padding-left: 40px
+  }
+  .rules-performance__icon {
+    right: 50px
+  }
+  .rules-about__item2 .rules-about__item__icon {
+    right: 51px;
+    bottom: 69px
+  }
+  .rules-about__item__icon {
+    right: 48px;
+    bottom: 56px
+  }
+  .rules-about__grid {
+    margin-left: -40px
+  }
+  .rules-about__grid>div {
+    padding-left: 40px
+  }
+  .padding_bottom {
+    padding-bottom: 50px
+  }
+  .rules-about__item {
+    padding: 66px 50px
+  }
+  .more_container {
+    margin-top: 105px
+  }
+  .about-documents__items {
+    margin-top: 70px
+  }
+  .about-document {
+    padding: 85px 31px
+  }
+  .button_download {
+    width: 208px
+  }
+  .about-job__info__call br {
+    display: none
+  }
+  .accordion_vacantion {
+    margin-top: 97px
+  }
+  .about-job__info {
+    width: auto
+  }
+  .about-job__info__headline .uk-button-default {
+    display: inline-flex
+  }
+  .about-job__info__bottom {
+    display: none
+  }
+  .about-job__grid>div:nth-child(1) {
+    width: 100%
+  }
+  .about-capitans__grid {
+    margin-top: 80px
+  }
+  .about-capitans__block .yacht__capitan_img {
+    width: 220px;
+    margin-top: -60px;
+    height: 220px
+  }
+  .about-capitans__block .yacht__capitan {
+    padding: 0 32px 52px
+  }
+  .about-capitans__section .yacht__slider li {
+    width: 67%
+  }
+  .about-main__block .button_ticket {
+    margin-top: 40px
+  }
+  .about-main__block__svg {
+    right: 0
+  }
+  .about-main__block {
+    padding: 100px 40px 115px;
+    margin-left: -40px;
+    max-width: 640px
+  }
+  .news-item__content .uk-slider-items {
+    height: 500px
+  }
+  .news-item__shorts {
+    margin-left: -30px
+  }
+  .news-item__shorts>div {
+    padding-left: 30px
+  }
+  .news-item__h1 {
+    font-size: 44px
+  }
+  .news-last .card-news__small {
+    margin-top: 37px
+  }
+  .news-item__ticket {
+    width: 300px
+  }
+  .link_archive__container {
+    padding-top: 37px;
+    margin-top: 43px
+  }
+  .news-last {
+    width: 300px;
+    padding: 55px 20px 45px
+  }
+  .news-item__ticket .button_ticket {
+    width: 220px
+  }
+  .card-news__small .uk-card-default_media {
+    margin-right: 22px
+  }
+  .button_switcher-second {
+    min-width: 190px
+  }
+  .card-news_big .uk-card-body {
+    padding: 65px 20px 52px
+  }
+  .card_text {
+    font-size: 14px
+  }
+  .card-news_big .card-news_decor {
+    height: 90%
+  }
+  .card-news__small {
+    padding: 0
+  }
+  .card-news_big {
+    min-height: 358px
+  }
+  .news__grid {
+    grid-column-gap: 30px;
+    grid-row-gap: 30px
+  }
+  .news__grid>div:nth-child(1) {
+    grid-area: auto
+  }
+  .tenancy-managment__grid {
+    flex-wrap: nowrap
+  }
+  .tenancy-managment__info {
+    width: auto
+  }
+  .tenancy-managment__headline {
+    width: 617px;
+    min-width: 617px
+  }
+  .tenancy-advantages__item__info {
+    padding: 149px 70px
+  }
+  .tenancy-advantages .awards_decor1 {
+    right: -600px
+  }
+  .tenancy-advantages__slider .slider_numbers {
+    left: auto;
+    right: 10%
+  }
+  .tenancy-advantages__slider .uk-position-center-right-out {
+    left: 98%
+  }
+  .tenancy-advantages__slider .uk-slider-items {
+    margin-left: -50px
+  }
+  .tenancy-advantages__slider .uk-slider-items>li {
+    width: 92%;
+    padding-left: 50px
+  }
+  .tab_nav {
+    margin-top: 38px
+  }
+  .tenancy__header .headline_22 {
+    font-size: 18px;
+    margin: 40px auto 36px
+  }
+  .tenancy__header .headline_p1 {
+    font-size: 56px
+  }
+  .tenancy__header .heading {
+    padding: 30px 0
+  }
+  .uk-breadcrumb {
+    padding: 20px 0 30px !important
+  }
+  .mailing__left svg {
+    width: 32px;
+    height: 24px;
+    min-width: 32px;
+    margin-right: 30px
+  }
+  .mailing__left .headline_p1 {
+    font-size: 34px
+  }
+  .awards__card3 .awards__card_img-circle {
+    right: 18px
+  }
+  .awards__card_name {
+    margin-top: 52px
+  }
+  .awards__card_date {
+    font-size: 26px;
+    max-width: 100px
+  }
+  .awards__card_img-txt {
+    font-size: 9px;
+    right: 99px
+  }
+  .awards__card_img img {
+    transform: scale(.82)
+  }
+  .awards__card_img-circle {
+    width: 151px;
+    height: 151px
+  }
+  .awards__card_img {
+    right: 28px
+  }
+  .awards__card {
+    padding: 92px 35px 65px
+  }
+  .instagram .headline .headline_p1 {
+    font-size: 56px
+  }
+  .instagram__slider_nav {
+    width: 25%;
+    height: 320px
+  }
+  .instagram__slider .swiper-wrapper {
+    height: 640px
+  }
+  .yacht__capitan {
+    padding: 0 40px 52px
+  }
+  .yacht__slider_navigation {
+    left: auto;
+    transform: none;
+    right: 122px
+  }
+  .yacht__slider li {
+    width: 652px
+  }
+  .uk-subnav.uk-subnav-pill>*>:first-child {
+    font-size: 14px
+  }
+  .yacht__information_bottom {
+    margin-left: -40px;
+    width: calc(100% + 80px)
+  }
+  .yacht__information_p1 {
+    margin-top: 25px
+  }
+  .yacht__information_capacity {
+    font-size: 14px
+  }
+  .scheme .headline {
+    left: -127px;
+    z-index: 1
+  }
+  .scheme_decor1,
+  .scheme_decor2 {
+    display: none
+  }
+  .main-news {
+    padding-bottom: 75px
+  }
+  .main-news__items>.card-news:nth-child(3),
+  .main-news__items>.card-news:nth-child(4) {
+    display: none
+  }
+  .uk-subnav>*>:first-child {
+    font-size: 52px
+  }
+  .uk-subnav {
+    margin-left: -40px
+  }
+  .uk-subnav>* {
+    padding-left: 40px
+  }
+  .padding_top {
+    padding-top: 50px
+  }
+  .main-news__items .uk-card {
+    width: 100%
+  }
+  .main-news__important {
+    width: 60%
+  }
+  .main-news__items {
+    width: 40%
+  }
+}
+
+@media screen and (max-width:1380px) {
+  .buy-ticket-info__item1 {
+    min-width: 775px;
+    margin-top: -34px
+  }
+  .buy-ticket-info__success {
+    width: 30%
+  }
+}
+
+@media screen and (max-width:1350px) {
+  .buy-ticket-info__item1__icon {
+    display: none
+  }
+  .buy-ticket-info__item1__icon3 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  .buy-ticket-info__item1 {
+    margin-top: 1px
+  }
+}
+
+@media screen and (max-width:1310px) {
+  .promo-information__grid {
+    -ms-grid-columns: 1fr 362px;
+    grid-template-columns: 1fr 362px
+  }
+  .menu-cafe__item2 {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-area: 1/3/2/5
+  }
+  .menu-cafe__item3 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 2/1/3/2
+  }
+  .menu-cafe__item4 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: 2/2/3/3
+  }
+  .menu-cafe__item5 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 1;
+    grid-area: 2/3/3/4
+  }
+  .menu-cafe__item6 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 1;
+    grid-area: 2/4/3/5
+  }
+  .menu-cafe__item7 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 3/1/4/2
+  }
+  .menu-cafe__item8 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: 3/2/4/3
+  }
+  .menu-cafe__item9 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    grid-area: 3/3/4/5
+  }
+  .menu-cafe__item2 .menu-cafe__item_txt {
+    max-width: none
+  }
+  .headline_26 {
+    font-size: 24px
+  }
+}
+
+@media screen and (max-width:1290px) {
+  .trams-shutdown__item span {
+    border-bottom: none;
+    text-decoration: underline;
+    -webkit-text-decoration-style: dotted;
+    text-decoration-style: dotted
+  }
+}
+
+@media screen and (max-width:1250px) {
+  .buy-ticket-info__item1 {
+    min-width: 722px;
+    margin-top: -14px
+  }
+}
+
+@media screen and (max-width:1199px) {
+  .promo-information__grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr
+  }
+  .promo-information__grid .img_cover {
+    position: relative
+  }
+  .promo-additionally__cards {
+    gap: 20px 20px;
+    margin-top: 50px
+  }
+  .promo-decor-imgs_3 .buy-ticket-info__item1__icon2 {
+    display: block
+  }
+  .buy-ticket-shedule_trams__overflow .uk-table {
+    font-size: 12px
+  }
+  .trams__cost .headline_32 {
+    font-size: 30px
+  }
+  .trams__cost__main_1 {
+    min-height: auto
+  }
+  .news-shedule .buy-ticket-shedule_responsive__item {
+    background: #e7f0f7
+  }
+  .yacht-information__value {
+    top: 194px
+  }
+  .buy-ticket-shedule__container_trams {
+    padding-bottom: 76px
+  }
+  .buy-ticket-shedule_trams__table-wrap {
+    margin-top: 20px
+  }
+  .buy-ticket-shedule_trams__headlines,
+  .buy-ticket-shedule_trams__table-wrap {
+    width: 1163px
+  }
+  .buy-ticket-shedule__container_trams button.button_ticket {
+    margin-top: 0
+  }
+  .buy-sertificat-card__bottom .uk-button,
+  .buy-ticket-form__basket__item__name_sert {
+    width: auto
+  }
+  .buy-sertificat-card__main {
+    padding: 38px 20px 40.5px
+  }
+  .buy-sertificat-card__bottom {
+    padding: 24px 20px
+  }
+  .buy-sertificat__grid {
+    margin-left: -30px
+  }
+  .buy-sertificat__grid>div {
+    padding-left: 30px;
+    margin-top: 30px
+  }
+  .buy-ticket-important__grid {
+    display: block
+  }
+  .buy-ticket-important__info {
+    width: auto;
+    padding-right: 0
+  }
+  .buy-ticket-important__warning {
+    width: auto
+  }
+  .yacht__information {
+    min-height: 0
+  }
+  .buy-ticket-shedule__header .heading {
+    padding-bottom: 136px;
+    padding-top: 37px
+  }
+  .buy-ticket-shedule__container .buy-ticket {
+    margin-top: -70px
+  }
+  .buy-ticket-shedule__container .buy-ticket__item {
+    width: 50%
+  }
+  .buy-ticket-shedule__container .buy-ticket .button_ticket {
+    width: 1000%
+  }
+  .buy-ticket-shedule__container {
+    padding-bottom: 76px
+  }
+  .buy-ticket-shedule__time__num {
+    width: 86px;
+    min-width: 86px
+  }
+  .buy-ticket-shedule__time {
+    margin-top: 13px
+  }
+  .buy-ticket-shedule__category span {
+    width: 97px;
+    min-width: 97px
+  }
+  .buy-ticket-shedule__category {
+    margin-top: 21px
+  }
+  .buy-ticket-info__is-not-coming svg {
+    right: 33px;
+    bottom: 50px;
+    width: 140px;
+    height: 110px
+  }
+  .buy-ticket-info__more__grid>div:nth-child(1) {
+    width: auto
+  }
+  .buy-ticket-info__more__grid>div:nth-child(2) {
+    width: auto;
+    margin-top: 25px
+  }
+  .buy-ticket-info__more__grid {
+    display: block
+  }
+  .buy-ticket-info__success {
+    width: 100%;
+    margin: 45px 0 0
+  }
+  .buy-ticket-info__line>div:first-child {
+    min-width: 125px;
+    width: 125px
+  }
+  .buy-ticket-info__headline .headline_p1 {
+    font-size: 56px;
+    margin-top: -11px
+  }
+  .buy-ticket-info__item1__icon2,
+  .buy-ticket-info__item1__logo {
+    display: none
+  }
+  .buy-ticket-info__grid {
+    display: block
+  }
+  .buy-ticket-info__item1 {
+    width: 100%;
+    min-width: 0;
+    padding: 14% 102px
+  }
+  .buy-ticket-more-information__cards {
+    padding: 60px 40px
+  }
+  .buy-ticket-more-information {
+    display: block;
+    margin-top: 30px
+  }
+  .buy-ticket-more-information__call {
+    width: 100%;
+    border-left: none;
+    padding: 50px 40px;
+    border-top: 1px solid rgba(161, 194, 229, .3)
+  }
+  .buy-ticket-form__info .headline_p1 {
+    font-size: 56px
+  }
+  .buy-ticket-form__basket__item__passengers {
+    width: 100%
+  }
+  .buy-ticket-form__basket {
+    width: auto;
+    margin-top: 70px
+  }
+  .buy-ticket-form__info {
+    padding-right: 0
+  }
+  .buy-ticket-form__grid {
+    display: block
+  }
+  .buy-ticket-trams__header .heading .buy-ticket {
+    flex-wrap: nowrap
+  }
+  .buy-ticket-trams__header .heading .headline_p1 {
+    font-size: 44px
+  }
+  .buy-ticket-trams__header .heading .button_ticket {
+    margin-top: 0
+  }
+  .buy-ticket-trams__header .heading {
+    padding: 120px 0 233px
+  }
+  .buy-ticket-yacht__header .headline_p1 {
+    font-size: 44px
+  }
+  .buy-ticket-yacht__header .heading {
+    padding: 120px 0 233px
+  }
+  .trams__cost {
+    min-height: 0;
+    padding: 90px 40px 85px
+  }
+  .trams__route__info {
+    padding: 117px 40px
+  }
+  .trams__headline {
+    padding: 131px 0
+  }
+  .trams-colors__item {
+    padding: 25px 10px;
+    flex-direction: column
+  }
+  .trams-colors__item__name {
+    font-size: 14px
+  }
+  .trams-colors__item__img {
+    margin-right: 0;
+    margin-bottom: 25px
+  }
+  .trams-shutdown__bottom {
+    margin: 50px 0 0
+  }
+  .trams-shutdown__decor2 {
+    display: block;
+    top: 251px
+  }
+  .trams-shutdown__item {
+    margin-bottom: 38px
+  }
+  .trams-shutdown__items {
+    flex-wrap: wrap;
+    justify-content: flex-start
+  }
+  .category-cabin__navigation .button_switcher-second {
+    width: 20%;
+    min-width: 0;
+    padding: 0 10px
+  }
+  .rules-about2__item {
+    padding: 75px 50px;
+    min-height: 421px
+  }
+  .rules-security__block {
+    padding: 111px 40px 125px
+  }
+  .rules-security__img {
+    width: 100%;
+    height: 566px;
+    top: auto;
+    bottom: 0
+  }
+  .rules-security__section {
+    padding: 0 0 326px
+  }
+  .rules-about__grid>div {
+    margin-top: 67px
+  }
+  .rules-about__grid>div:nth-child(1) {
+    margin-top: 0
+  }
+  .contact-info_sales__img {
+    height: 524px
+  }
+  .contact-info {
+    padding: 50px 40px
+  }
+  .contact__grid__info {
+    order: 1
+  }
+  .contact__grid__map {
+    order: 2
+  }
+  .guide_map {
+    height: 845px
+  }
+  .yacht__capitan_experience_new {
+    padding-top: 46px
+  }
+  .about-capitans__section {
+    padding-bottom: 0
+  }
+  .about-capitans__grid {
+    margin-left: -33px;
+    margin-top: 60px
+  }
+  .about-capitans__grid>div {
+    width: 50%;
+    margin-top: 90px;
+    padding-left: 33px
+  }
+  .about-capitans__section .yacht__slider li {
+    width: 84%
+  }
+  .about-advantages__headline .headline_32 {
+    margin-top: 25px
+  }
+  .about-advantages__headline .button_ticket {
+    margin-top: 45px
+  }
+  .about-capitans__section .yacht__slider {
+    margin-left: -40px;
+    height: 435px;
+    width: auto;
+    margin-right: -40px;
+    margin-top: 0
+  }
+  .about-advantages {
+    padding: 104px 0 142px
+  }
+  .about-advantages__info {
+    width: auto;
+    margin-top: 131px;
+    max-width: 650px
+  }
+  .about-advantages__headline {
+    width: auto;
+    max-width: none
+  }
+  .about__nav .uk-container {
+    max-width: 795px
+  }
+  .about__nav .tab_nav .uk-tab>* {
+    padding: 0 15px
+  }
+  .about-main__block {
+    padding: 57px 40px 63px;
+    margin-left: -40px;
+    margin-right: -40px;
+    max-width: none;
+    -webkit-backdrop-filter: none;
+    background: #fff;
+    backdrop-filter: none
+  }
+  .about-main__section {
+    padding: 0 0 6px
+  }
+  .about-main__images,
+  .about-main__images .img_cover {
+    position: relative
+  }
+  .about-main__logo {
+    right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .back-container {
+    padding-top: 68px;
+    margin-top: 50px
+  }
+  .video_container .playpause {
+    height: calc(100% - 50px);
+    top: 50px
+  }
+  .video_container {
+    margin-top: 46px;
+    border-top: 1px solid #a1c2e5;
+    padding-top: 50px
+  }
+  .news-item__content .yacht__slider_navigation {
+    width: 250px;
+    padding: 24px 25px 24px 18px
+  }
+  .news-item__content .yacht__slider {
+    height: auto
+  }
+  .news-item__content .uk-slider-items {
+    height: 427px
+  }
+  .badge_sail {
+    padding: 7px 19px 7px 15px
+  }
+  .news-item__h1 {
+    font-size: 36px
+  }
+  .news-item__grid {
+    margin-top: 0
+  }
+  .news-item__container {
+    padding: 10px 40px 80px
+  }
+  .news-item__section {
+    padding-bottom: 70px
+  }
+  .news-item__ticket+.news-last {
+    margin-top: 34px
+  }
+  .news-last__slider {
+    margin-top: 47px
+  }
+  .news-last .card-news__small {
+    margin-top: 0
+  }
+  .news-last {
+    background: #fff;
+    width: 100%;
+    margin-top: 34px;
+    border: none;
+    padding: 66px 39px 47px
+  }
+  .news-item__ticket .button_ticket {
+    width: calc(100% - 76px)
+  }
+  .news-item__ticket {
+    width: 100%;
+    margin-top: 32px
+  }
+  .news__navigatiom__tabs,
+  .news__navigatiom__tabs a {
+    flex: auto
+  }
+  .news__navigatiom__date {
+    width: 287px
+  }
+  .select-styled:after {
+    right: 15px
+  }
+  .input_archive .select-styled {
+    padding-right: 20px
+  }
+  .button_switcher-second {
+    min-width: 80px;
+    padding: 0
+  }
+  .card-news_big {
+    min-height: 480px
+  }
+  .news__grid {
+    -ms-grid-columns: (1fr)[1];
+    grid-template-columns: repeat(1, 1fr)
+  }
+  .tenancy-restaurant__headline__icon {
+    top: 80px
+  }
+  .tenancy-restaurant__headline {
+    padding: 118px 0 124px
+  }
+  .tenancy-restaurant__images {
+    position: relative;
+    width: 100%;
+    height: 674px
+  }
+  .tenancy-managment__headline .headline_56 {
+    margin: 38px 0 70px
+  }
+  .tenancy-managment__headline__icon {
+    top: -20px;
+    right: -20px
+  }
+  .tenancy-managment {
+    padding: 71px 0 80px
+  }
+  .tenancy-managment__grid {
+    flex-wrap: wrap
+  }
+  .tenancy-managment__info {
+    width: 100%
+  }
+  .tenancy-managment__info .headline_line {
+    display: none
+  }
+  .tenancy-managment__headline {
+    width: 100%;
+    min-width: 0
+  }
+  .footer__right {
+    width: 100%;
+    padding: 67px 40px 28px
+  }
+  .partner-one {
+    top: auto;
+    bottom: -100px;
+    transform: translateX(-50%)
+  }
+  .partners-section {
+    padding: 360px 0 70px
+  }
+  .instagram__headline_icon {
+    width: 120px;
+    height: 120px;
+    top: 20%
+  }
+  .instagram__slider {
+    margin-top: 61px
+  }
+  .instagram {
+    padding-top: 125px
+  }
+  .instagram .headline .headline_p1:nth-child(3) {
+    margin-left: 0
+  }
+  .switcher-yacht {
+    margin-top: 23px
+  }
+  .yacht__information_capacity {
+    margin-left: -40px
+  }
+  .yacht__information {
+    padding-right: 0
+  }
+  .yacht__informations_switcher {
+    margin-top: 47px
+  }
+  .yacht__information_capacity>div {
+    margin-top: 25px;
+    padding-left: 40px
+  }
+  .yacht__information_btns {
+    margin-top: 23px
+  }
+  .yacht__information_btns button {
+    width: 33.333%
+  }
+  .active-toggle_choose1 {
+    position: relative;
+    z-index: 2
+  }
+  #yacht-headline {
+    margin-bottom: 56px
+  }
+  .scheme__scroll {
+    display: flex
+  }
+  .scheme__map {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none !important;
+    scrollbar-width: none;
+    margin-left: -40px;
+    margin-right: -40px;
+    white-space: normal
+  }
+  .scheme__map::-webkit-scrollbar {
+    width: 0;
+    display: none
+  }
+  .scheme__map_path-container {
+    width: 1186px;
+    max-width: none
+  }
+  .scheme__block {
+    margin-top: 55px
+  }
+  .scheme .headline {
+    position: static;
+    text-align: left;
+    transform: none
+  }
+  .scheme .headline .headline_p1 {
+    line-height: 1
+  }
+  .scheme__bottom {
+    flex-wrap: wrap
+  }
+  .scheme__bottom .button_ticket {
+    width: 100%;
+    height: 85px
+  }
+  .scheme__bottom_item {
+    padding-right: 25px;
+    width: 50%;
+    box-sizing: border-box
+  }
+  .select-styled {
+    border: none
+  }
+  header {
+    padding-bottom: 0;
+  }
+  .font-29 {
+    font-size: 24px
+  }
+  .buy-ticket .button_ticket {
+    width: 100%;
+    margin-top: 20px
+  }
+  .buy-ticket__item {
+    width: 50%;
+    border-top: 1px solid #cdcdcd;
+    border-left: 1px solid #cdcdcd
+  }
+  .buy-ticket__item:nth-child(1),
+  .buy-ticket__item:nth-child(2) {
+    border-top: none
+  }
+  .buy-ticket__item:nth-child(1),
+  .buy-ticket__item:nth-child(3) {
+    border-left: none
+  }
+  .buy-ticket__item_switch {
+    width: 100%
+  }
+  .buy-ticket {
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-top: 39px;
+    margin-right: 0
+  }
+  .header__top_logo svg {
+    width: 148px;
+    height: 63px
+  }
+  .header__middle_right {
+    top: 100px
+  }
+  .header__middle_right svg {
+    width: 324px
+  }
+  .header__p1,
+  .header__p2 {
+    font-size: 8.5vw
+  }
+  .header__p3 {
+    font-size: 4.5vw;
+    margin-top: 15px
+  }
+  .header-tickets-grid {
+    margin-top: 10px;
+    margin-left: -59px
+  }
+  .header-tickets-grid>div {
+    padding-left: 59px
+  }
+}
+
+@media screen and (max-width:1080px) {
+  .menu-cafe {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr)
+  }
+  .menu-cafe__item {
+    grid-area: auto
+  }
+  .menu-cafe__item1 {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: 1/1/2/3
+  }
+  .menu-cafe__item2 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: 3/1/4/3
+  }
+  .menu-cafe__item9 {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-area: 6/1/7/3
+  }
+}
+
+@media screen and (max-width:959px) {
+  .promo-information__info {
+    padding: 73px 30px 50px
+  }
+  .promo-information {
+    padding: 90px 0
+  }
+  .promo-additionally__cards {
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr
+  }
+  .promo-about-cruises {
+    padding-left: 30px;
+    padding-right: 30px;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr
+  }
+  .promo-decor-imgs_3 .promo-decor-img2 {
+    position: absolute;
+    left: -188px;
+    bottom: -507px;
+    width: 240px
+  }
+  .promo-decor-imgs_3 {
+    position: absolute;
+    right: 0;
+    top: -118px;
+    width: 33%
+  }
+  .promo-decor-imgs_3 .buy-ticket-info__item1__icon2>svg:nth-child(2) {
+    width: 84px;
+    height: 88px
+  }
+  .promo-decor-imgs_3 .buy-ticket-info__item1__icon2 {
+    width: 147.99px;
+    left: -67px;
+    top: -76px;
+    height: 167.04px
+  }
+  .promo-decor-imgs_2 .promo-decor-img2 {
+    display: none
+  }
+  .promo-about {
+    padding-top: 0
+  }
+  .promo-about-main .headline_p1 {
+    margin-top: 0
+  }
+  .promo-about-main__info {
+    padding-left: 30px;
+    padding-right: 30px
+  }
+  .promo-about-main {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    gap: 90px 40px;
+    padding-right: 0
+  }
+  .promo-header .heading {
+    padding-bottom: 323px;
+    padding-top: 60px
+  }
+  .promo-decor-imgs_1 {
+    width: 100%;
+    display: flex;
+    height: 250px;
+    flex-direction: row-reverse
+  }
+  .promo-decor-imgs_1>.promo-decor-img1,
+  .promo-decor-imgs_1>.promo-decor-img2 {
+    width: 50%;
+    right: auto;
+    bottom: auto;
+    position: relative
+  }
+  .promo-decor-imgs_1>.promo-decor-img1>div,
+  .promo-decor-imgs_1>.promo-decor-img2>div {
+    height: 100%;
+    width: 100%
+  }
+  .promo-decor-imgs_1 img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100%;
+    width: 100%
+  }
+  .header__top_item3 {
+    width: 360px
+  }
+  .main-news.padding_top {
+    padding-top: 30px
+  }
+  .category-cabin-grid .cabin__header__info__parameter {
+    width: auto;
+    margin: 0;
+    padding: 0
+  }
+  .category-cabin-grid .cabin__img {
+    position: absolute;
+    height: 100%
+  }
+  .yacht__information_capacity,
+  .yacht__information_text {
+    padding-right: 0
+  }
+  .yacht-information__value {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-bottom: 40px
+  }
+  .yacht__information_bottom {
+    min-height: 0
+  }
+  .buy-ticket-shedule__container_trams .buy-ticket__item {
+    width: 40%
+  }
+  .buy-ticket-shedule__container_trams .buy-ticket__item_switch-trams {
+    width: 100%
+  }
+  .buy-ticket-shedule__container_trams button.button_ticket {
+    margin-top: 20px;
+    width: 100%
+  }
+  .buy-sertificat__headline_22 {
+    margin-top: 60px
+  }
+  .buy-sertificat__head {
+    padding-right: 30%;
+    padding-top: 0
+  }
+  .buy-sertificat__head .headline_p1 {
+    font-size: 51px
+  }
+  .buy-ticket-trams__header .heading .button_ticket,
+  .buy-ticket-trams__header .heading .buy-ticket__item {
+    width: 100%
+  }
+  .buy-ticket-trams__header .buy-ticket__item_switch-trams {
+    border-top: 1px solid #cdcdcd
+  }
+  .buy-ticket-trams__header .heading .buy-ticket {
+    flex-wrap: wrap
+  }
+  .about-capitans__block {
+    padding-top: 90px
+  }
+  .default-slider .uk-slider-container {
+    padding: 100px 0
+  }
+  .tenancy-advantages__item__info {
+    min-height: 0
+  }
+  .offcanvas_menu {
+    padding-left: 30px;
+    padding-right: 30px
+  }
+  .footer__bottom_item2__link {
+    margin-top: 22px;
+    display: block
+  }
+  .buy-ticket-info__item1__icon3 {
+    display: none
+  }
+  .buy-ticket-info__item1__icon4 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  .uk-modal-full__block .modal-calculation__middle .headline_line {
+    display: block
+  }
+  .modal-calculation__slide5__p1 {
+    max-width: 427px
+  }
+  .modal-calculation__slide5__svg {
+    right: 25px;
+    width: 228px;
+    height: 228px;
+    top: 136px
+  }
+  #calculation__slide4-submit {
+    width: 100%
+  }
+  .modal-calculation__data__grid>div:nth-child(1) {
+    width: 50%
+  }
+  .modal-calculation__data__grid>div:nth-child(2) {
+    width: 50%
+  }
+  .modal-calculation__slide4__bottom {
+    display: flex;
+    margin-left: -29px
+  }
+  .modal-calculation__slide4__bottom>* {
+    padding-left: 29px;
+    margin-top: 32px;
+    width: 50%
+  }
+  .modal-calculation__slide-time__top .txt18 {
+    margin-right: 26px
+  }
+  .modal-calculation__middle_months .litepicker .container__months .month-item {
+    width: 48%
+  }
+  .modal-calculation__middle__types {
+    margin-left: -19px
+  }
+  .uk-modal-full.modal-calculation .uk-modal-dialog {
+    padding: 104px 0 132px
+  }
+  .modal-calculation__label {
+    padding-left: 40px
+  }
+  .modal-calculation__label::before {
+    left: 15px
+  }
+  .modal-calculation__middle__types>div {
+    padding-left: 19px;
+    margin-top: 19px
+  }
+  .uk-modal-full__block .yacht__slider li {
+    width: 100%
+  }
+  .modal-tenancy__info {
+    margin-top: 39px
+  }
+  .uk-modal-full__block .headline_line {
+    display: none
+  }
+  .uk-modal-full .uk-modal-dialog {
+    padding: 106px 0 76px
+  }
+  .uk-modal-close-full {
+    transform: none;
+    right: 20px;
+    top: 20px;
+    width: 55px;
+    height: 55px
+  }
+  .modal_decor {
+    display: none
+  }
+  .trams__cost {
+    padding: 90px 30px 85px
+  }
+  .trams__route {
+    flex-direction: column
+  }
+  .trams__route__info {
+    padding: 78px 30px 84px;
+    order: 2;
+    min-height: 0;
+    width: 100%
+  }
+  .trams__route__img {
+    width: 100%;
+    order: 1
+  }
+  .trams__route__img img {
+    position: relative
+  }
+  .trams-gallery .yacht__slider li {
+    width: 90.2%
+  }
+  .trams-gallery .yacht__slider {
+    height: 575px;
+    margin-top: 90px;
+    width: calc(100% + 60px);
+    margin-left: -30px
+  }
+  .trams-colors__items {
+    margin-top: 80px
+  }
+  .trams-colors {
+    padding: 111px 0 159px
+  }
+  .trams-advantages {
+    padding: 116px 0 99px
+  }
+  .trams-advantages__items {
+    margin-top: 50px
+  }
+  .trams-advantages__items>div {
+    margin-top: 31px
+  }
+  .trams-shutdown__bottom {
+    margin: 20px 0 0
+  }
+  .trams-shutdown {
+    padding: 66px 0 71px;
+    color: #fff
+  }
+  .trams-shutdown__items {
+    max-width: 506px;
+    margin-top: 55px
+  }
+  .trams-shutdown__decor2 {
+    top: 273px
+  }
+  .trams-shutdown__item {
+    width: 142px
+  }
+  .trams__about .tenancy__about__info>svg {
+    top: 300px;
+    width: 339px;
+    height: 339px;
+    right: 20px
+  }
+  .trams__header .heading .uk-button {
+    margin-top: 60px
+  }
+  .trams__header .heading .headline_p1 {
+    font-size: 44px
+  }
+  .accordion_default__bottom {
+    margin-top: 40px
+  }
+  .cabin__parts .yacht__slider {
+    height: 400px
+  }
+  .accordion_default__num {
+    width: 45px;
+    min-width: 45px
+  }
+  .accordion_default .uk-accordion-content {
+    padding-left: 0
+  }
+  .cabin__header__info .yacht__capitan_name {
+    margin-top: 7px;
+    font-size: 18px
+  }
+  .cabin__header__info .yacht__capitan_job {
+    margin-top: 0
+  }
+  .cabin__header__info .yacht__capitan_img {
+    width: 120px;
+    height: 120px;
+    margin-left: -47px;
+    margin-top: 0;
+    margin-right: 24px;
+    min-width: 120px
+  }
+  .cabin__header__info__parameter {
+    padding-left: 50px;
+    width: 50%;
+    margin-top: 0
+  }
+  .cabin__header__info .yacht__capitan {
+    padding: 30px;
+    width: 100%
+  }
+  .cabin__header__info__buy {
+    display: none
+  }
+  .cabin__header__info {
+    width: auto;
+    min-height: 0;
+    padding: 17px 20px;
+    align-items: center;
+    flex-direction: row
+  }
+  .cabin__badge {
+    width: 245px;
+    height: 60px;
+    font-size: 18px
+  }
+  .cabin__img {
+    position: relative;
+    height: auto;
+    width: auto
+  }
+  .cabin__img .img_cover {
+    position: relative
+  }
+  .headline_52 {
+    font-size: 44px
+  }
+  .rules-security-video__container .play-video-btn_back svg {
+    width: 100px;
+    height: 100px
+  }
+  .rules-security-video__grid {
+    margin-top: 67px
+  }
+  .rules-security-video__section {
+    padding: 80px 0 98px
+  }
+  .rules-security-video__tab__name2 {
+    font-size: 10px !important
+  }
+  .rules-security-video__tabs>* {
+    flex: none;
+    width: 31%
+  }
+  .rules-security-video__tabs>*>a {
+    min-height: 90px;
+    font-size: 12px;
+    border-left: 1px solid #a1c2e5;
+    border-top: none
+  }
+  .rules-security-video__tabs {
+    width: auto !important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none !important;
+    scrollbar-width: none;
+    white-space: normal
+  }
+  .rules-security-video__tabs::-webkit-scrollbar {
+    width: 0;
+    display: none
+  }
+  .rules-ship__decor1 {
+    height: 44%
+  }
+  .rules-ship__site {
+    padding: 60px 39px 39px;
+    margin-top: 50px
+  }
+  .rules-ship__item__img {
+    padding: 92px 54px
+  }
+  .rules-ship__section {
+    padding: 64px 0 68px
+  }
+  .rules-ship__item__txt {
+    margin: 0
+  }
+  .rules-ship__grid>div {
+    width: 100%;
+    margin-top: 50px
+  }
+  .rules-performance__decor1 {
+    height: calc(100% - 339px)
+  }
+  .rules-performance__icon {
+    right: -40px
+  }
+  .rules-performance__grid>div:nth-child(2) {
+    margin-top: 0
+  }
+  .rules-performance__grid>div:nth-child(2) .rules-performance__item {
+    border: none
+  }
+  .contact-info.contact-info_sales {
+    padding: 118px 30px 114px
+  }
+  .guide_pop {
+    margin: 50px 30px
+  }
+  .contact-info {
+    padding: 50px 30px
+  }
+  .about-partner__card {
+    padding: 40px;
+    min-height: 210px
+  }
+  .accordion_vacantion {
+    margin-top: 47px
+  }
+  .accordion_vacantion__info__grid {
+    display: block
+  }
+  .accordion_vacantion__info__grid>div {
+    width: auto;
+    margin-top: 40px
+  }
+  .accordion_vacantion__info__grid>div:nth-child(1) {
+    margin-top: 0
+  }
+  .accordion_vacantion .uk-accordion-content {
+    padding: 47px 30px
+  }
+  .accordion_vacantion .uk-accordion-title::before {
+    right: 28px
+  }
+  .accordion_vacantion__title__arr {
+    width: 110px;
+    min-width: 110px
+  }
+  .accordion_vacantion__title__icon {
+    position: absolute;
+    left: 30px;
+    top: 48px
+  }
+  .accordion_vacantion__name {
+    width: 100%;
+    margin-right: 0
+  }
+  .accordion_vacantion__category {
+    width: 100%;
+    padding: 0;
+    margin-top: 8px;
+    border: none
+  }
+  .accordion_vacantion__title__info {
+    padding: 40px 30px 40px 90px;
+    flex-wrap: wrap;
+    flex-direction: column
+  }
+  .about-job__info__mail {
+    margin-top: 24px
+  }
+  .about-capitans__section .yacht__slider {
+    margin-left: -30px;
+    margin-right: -30px
+  }
+  .about__history .flight__info {
+    min-height: 500px
+  }
+  .about__nav .tab_nav {
+    padding: 0
+  }
+  .category-cabin__top {
+    padding-bottom: 40px
+  }
+  .news__section {
+    padding-bottom: 80px
+  }
+  .pagination {
+    padding-top: 69px
+  }
+  .card-news__small {
+    padding: 0
+  }
+  .accordion_equipment {
+    margin-top: 77px
+  }
+  .tenancy-seating {
+    padding: 105px 0 71px
+  }
+  .tenancy-seating__grid>div {
+    margin-top: 37px
+  }
+  .tenancy-advantages .awards_decor1 {
+    display: none
+  }
+  .tenancy-advantages {
+    padding: 86px 0 100px
+  }
+  .tenancy-advantages__slider .slider_width150 {
+    width: calc(100% + 30px)
+  }
+  .tenancy-advantages__item__img {
+    max-width: 462px
+  }
+  .tenancy-advantages__item__info {
+    width: 60%;
+    padding: 137px 50px
+  }
+  .tenancy-advantages__slider .uk-position-center-right-out {
+    left: 97%
+  }
+  .tenancy__about__img img {
+    position: relative
+  }
+  .tenancy__about__info {
+    padding: 160px 30px 180px
+  }
+  .tab_nav {
+    margin-top: 170px
+  }
+  .tenancy__header .heading {
+    padding: 85px 0
+  }
+  .tenancy__header .headline_p1 {
+    font-size: 44px
+  }
+  .headline_p1 {
+    font-size: 56px
+  }
+  .flight>div {
+    width: 100%
+  }
+  .flight .trams__route__img {
+    order: 1
+  }
+  .flight .trams__route__img img {
+    position: relative
+  }
+  .flight__info .headline_22 {
+    margin-top: 44px
+  }
+  .flight__txt {
+    margin-top: 35px
+  }
+  .flight__info {
+    min-height: 0;
+    padding: 88px 30px;
+    order: 2
+  }
+  .not_found-block-left {
+    padding-top: 22px;
+    padding-bottom: 80px
+  }
+  .cursor,
+  .not_found_img-container {
+    display: none
+  }
+  .footer__right {
+    padding: 67px 30px 28px
+  }
+  .mailing {
+    padding: 90px 0
+  }
+  .mailing__form {
+    width: auto;
+    margin-top: 25px
+  }
+  .footer__nav {
+    margin-top: 40px
+  }
+  .mailing__left .headline_p1 {
+    font-size: 34px
+  }
+  .mailing__block {
+    display: block
+  }
+  .uk-position-center-left-out {
+    right: 96.5%
+  }
+  .uk-position-center-right-out {
+    left: 96.5%
+  }
+  .awards__slider .uk-slider-items>* {
+    padding-left: 30px
+  }
+  .awards__slider .uk-slider-items {
+    margin-left: -30px
+  }
+  .gallery_item_plus {
+    font-size: 89px
+  }
+  .instagram_decor1 {
+    width: 1100px;
+    top: -223px;
+    height: 1102px;
+    right: -104px
+  }
+  .instagram .headline .headline_p1 {
+    font-size: 5.7vw
+  }
+  .instagram__slider_nav-line:nth-child(1) {
+    margin: 0 30px 0 0
+  }
+  .instagram__slider_nav-line:nth-child(3) {
+    margin: 0 0 0 30px
+  }
+  .instagram__slider .swiper-wrapper {
+    height: 512px
+  }
+  .instagram__slider_nav {
+    width: 33.3333333%;
+    height: 256px
+  }
+  .yacht__slider_navigation {
+    right: 23px
+  }
+  .yacht__information_bottom {
+    margin-left: -30px;
+    margin-right: -30px;
+    width: calc(100% + 60px);
+    display: block
+  }
+  .yacht__slider {
+    height: 435px
+  }
+  .yacht__capitan {
+    width: 100%;
+    display: flex;
+    padding: 40px 30px
+  }
+  .yacht__capitan_img {
+    margin-top: 0;
+    width: 200px;
+    height: 200px;
+    margin-right: 32px;
+    min-width: 200px
+  }
+  .scheme__map {
+    margin-right: -30px
+  }
+  .main-news__items .uk-card {
+    height: 230px;
+    width: calc(50% - 15px)
+  }
+  .card-news .uk-card-body {
+    padding: 37px 30px
+  }
+  .more_container {
+    margin-top: 70px
+  }
+  .main-news_container .uk-card {
+    margin-top: 53px
+  }
+  .card__important .card_text {
+    max-width: none
+  }
+  .main-news__important,
+  .main-news__items {
+    width: 100%
+  }
+  .main-news__headline {
+    margin-top: 25px
+  }
+  .main-news__headline .uk-subnav {
+    margin-bottom: 40px
+  }
+}
+
+@media screen and (max-width:780px) {
+  .buy-ticket-info__item1 {
+    padding: 68px 76px
+  }
+}
+
+@media screen and (max-width:700px) {
+  .buy-ticket-info__item1__icon4 {
+    display: none
+  }
+  .buy-ticket-info__item1 {
+    padding: 0
+  }
+}
+
+@media screen and (max-width:639px) {
+  .promo-information__image {
+    height: 100%
+  }
+  .promo-information__image img {
+    min-height: 270px
+  }
+  .promo-additionally__card:hover {
+    color: #000;
+    background: #fff
+  }
+  .promo-additionally__card:hover .promo-additionally-card__svg {
+    fill: #00c1f3
+  }
+  .promo-disclaimer {
+    font-size: 12px;
+    padding: 30px 0
+  }
+  .promo-information__block_2 {
+    padding-top: 30px;
+    margin-top: 35px
+  }
+  .promo-information__bottom {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding-top: 38px;
+    margin-top: 30px
+  }
+  .promo-information__bottom .button_ticket {
+    width: 100%
+  }
+  .promo-information__call,
+  .promo-information__mail {
+    font-size: 17px
+  }
+  .promo-information__block_2 .trams__cost__info svg {
+    width: 45.79px;
+    height: 45.79px;
+    margin-right: 11px;
+    min-width: 45.79px
+  }
+  .promo-information__block_2 .trams__cost__info {
+    margin-top: 20px;
+    align-items: flex-start
+  }
+  .promo-information__duration {
+    margin-top: 25px
+  }
+  .promo-information__duration .headline_p1 {
+    font-size: 42px;
+    margin-top: 10px
+  }
+  .promo-information__txt_2 {
+    font-size: 14px
+  }
+  .promo-information__info {
+    padding: 40px 20px 45px
+  }
+  .promo-information {
+    padding: 35px 0
+  }
+  .promo-additionally .headline_32 {
+    font-size: 24px
+  }
+  .promo-additionally-card__circle {
+    width: 75px;
+    height: 75px
+  }
+  .promo-additionally-card__decor {
+    right: 10px;
+    top: 10px
+  }
+  .promo-additionally-card__svg {
+    transform: scale(.6);
+    top: 0
+  }
+  .promo-additionally__card {
+    padding: 30px 100px 23px 18px
+  }
+  .promo-additionally-card__txt {
+    margin-top: 20px
+  }
+  .promo-additionally {
+    padding: 74px 0 45px
+  }
+  .promo-additionally__cards {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    gap: 13px;
+    margin-top: 27px
+  }
+  .promo-decor-imgs_3 .promo-decor-img2 {
+    position: absolute;
+    left: auto;
+    bottom: -566px;
+    width: 155px;
+    right: -15px
+  }
+  .promo-about-cruises .uk-button {
+    margin-top: 0
+  }
+  .promo-about {
+    padding-bottom: 43px
+  }
+  .promo-about-cruises .headline_p1 {
+    font-size: 26px
+  }
+  .promo-about-cruises .txt18 {
+    margin-top: 23px
+  }
+  .promo-decor-imgs_3 .buy-ticket-info__item1__icon2 {
+    width: 147.99px;
+    left: 59%;
+    top: -107px;
+    height: 167.04px;
+    transform: scale(.8)
+  }
+  .promo-about-cruises {
+    margin-top: 90px;
+    padding-left: 15px;
+    padding-right: 15px
+  }
+  .promo-decor-imgs_3 {
+    position: relative;
+    order: 1;
+    top: auto;
+    width: 100%
+  }
+  .promo-decor-imgs_3 .promo-decor-img1 {
+    margin-left: -15px;
+    margin-right: -15px;
+    height: 190px
+  }
+  .promo-decor-imgs_3 .promo-decor-img1>div {
+    height: 100%
+  }
+  .promo-decor-imgs_3 .promo-decor-img1 img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0
+  }
+  .promo-about-cruises__info {
+    max-width: 350px;
+    order: 2
+  }
+  .promo-about-main__info {
+    padding: 0 15px
+  }
+  .promo-about-main .uk-button {
+    margin-top: 5px
+  }
+  .promo-about-main {
+    gap: 40px 0
+  }
+  .promo-about-main .txt18 {
+    font-size: 17px
+  }
+  .promo-about-main .headline_p1 {
+    font-size: 26px
+  }
+  .promo-header__p3::before {
+    left: -5px;
+    bottom: 6px;
+    width: 102%;
+    height: 18px
+  }
+  .promo-header__bottom {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 20px
+  }
+  .promo-header__p3 {
+    font-size: 47px;
+    margin-top: 5px
+  }
+  .promo-header .headline_p2 {
+    font-size: 14px;
+    margin-top: 10px
+  }
+  .promo-header .heading .headline_p1 {
+    font-size: 18px
+  }
+  .promo-header .heading {
+    padding-bottom: 151px;
+    padding-top: 25px
+  }
+  .promo-decor-imgs_1 {
+    height: 122px
+  }
+  .buy-ticket-shedule_trams2__overflow2 .uk-table td:last-child,
+  .buy-ticket-shedule_trams__overflow .uk-table td:last-child {
+    padding-right: 10px
+  }
+  .buy-ticket-shedule_trams2__overflow .uk-table td:nth-child(1),
+  .buy-ticket-shedule_trams__overflow .uk-table td:nth-child(1) {
+    padding-left: 10px
+  }
+  .buy-ticket-shedule_trams2__overflow tr:nth-child(2),
+  .buy-ticket-shedule_trams__overflow tr:nth-child(2) {
+    font-size: 8px
+  }
+  .buy-ticket-shedule_trams2__overflow .uk-table td,
+  .buy-ticket-shedule_trams__overflow .uk-table td {
+    padding: 5px 2px
+  }
+  .buy-ticket-shedule_trams2__overflow tr:nth-child(1),
+  .buy-ticket-shedule_trams__overflow tr:nth-child(1) {
+    font-size: 8px
+  }
+  .buy-ticket-shedule_trams2__overflow tr:nth-child(1) td,
+  .buy-ticket-shedule_trams__overflow tr:nth-child(1) td {
+    padding-top: 5px;
+    padding-bottom: 5px
+  }
+  .buy-ticket-shedule_trams2__overflow,
+  .buy-ticket-shedule_trams__overflow {
+    margin-top: 20px
+  }
+  .buy-ticket-shedule_trams2__overflow .uk-table,
+  .buy-ticket-shedule_trams__overflow .uk-table {
+    font-size: 10px
+  }
+  .buy-ticket-shedule_trams2__overflow .uk-table th,
+  .buy-ticket-shedule_trams__overflow .uk-table th {
+    padding: 6.5px 10px;
+    font-size: 12px
+  }
+  .trams__cost .headline_32 {
+    font-size: 18px
+  }
+  .offcanvas_main__head {
+    display: block
+  }
+  .buy-ticket-form__basket__scroll {
+    height: 128px;
+    top: -128px
+  }
+  *+.news-shedule-container {
+    margin-top: 50px
+  }
+  *+.news-shedule {
+    margin-top: 25px
+  }
+  .headline_44 {
+    font-size: 18px
+  }
+  .uk-button.news-item__content__btn-media {
+    position: absolute;
+    left: 15px;
+    height: 57px;
+    bottom: 0
+  }
+  .header__middle_left {
+    padding-bottom: 10px
+  }
+  .header-ticket svg {
+    display: none
+  }
+  .header-ticket .uk-flex {
+    margin-top: 6px
+  }
+  .header-ticket:hover {
+    color: #fff
+  }
+  .header-ticket .txt16 {
+    display: none;
+    width: 142px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00c1f3
+  }
+  .main-news.padding_top {
+    padding-top: 10px
+  }
+  .font-29 {
+    font-size: 20px
+  }
+  .header-tickets-grid {
+    margin-top: 0
+  }
+  .header__p1,
+  .header__p2 {
+    font-size: 12.5vw
+  }
+  .header-link-shedule {
+    font-size: 12px;
+    background: #00c1f3;
+    justify-content: center;
+    line-height: 1.2;
+    box-sizing: border-box;
+    padding: 5px;
+    height: 40px;
+    align-items: center;
+    flex-direction: row
+  }
+  .header-link-shedule span {
+    max-width: 90px;
+    display: block
+  }
+  .header-link-shedule img {
+    margin: 0 14px 0 0
+  }
+  .pagination {
+    margin-top: 50px
+  }
+  .category-cabin-section {
+    padding: 50px 0;
+    min-height: 0
+  }
+  .cabin__parts {
+    padding: 0
+  }
+  .cabin__header .uk-button.button_shedule {
+    width: 214px;
+    bottom: -20px
+  }
+  .yacht-information__value {
+    padding: 20px;
+    width: 100%;
+    max-width: 370px
+  }
+  .yacht-information__value .button_ticket {
+    height: 50px;
+    width: 100%
+  }
+  .yacht-information__value .uk-button.button_menu-cafe {
+    width: 100%
+  }
+  .content-menu-item {
+    margin-top: 25px
+  }
+  .content-menu__dotted {
+    margin: 0 5px
+  }
+  .content-menu__p2>div:last-child {
+    width: 50px
+  }
+  .content-menu-list {
+    padding-top: 30px;
+    margin-top: 31px
+  }
+  .content-menu__p1 {
+    font-size: 14px
+  }
+  .content-menu__p3 {
+    font-size: 10px;
+    margin-top: 5px
+  }
+  .content-menu__p2 {
+    font-size: 11px;
+    margin-top: 10px
+  }
+  .headline_36 {
+    font-size: 26px
+  }
+  .flight__info .flight-info__btns {
+    margin-top: 21px
+  }
+  .flight__info .flight-info__btns .uk-button {
+    margin-top: 10px
+  }
+  .flight__info .flight-info__btns .uk-button:nth-child(1) {
+    margin-right: 10px
+  }
+  .uk-button.uk-button-more {
+    width: 180px;
+    height: 50px
+  }
+  .scheme_item1 .scheme__item_txt {
+    max-width: 100px;
+    white-space: pre-wrap;
+    left: -84px;
+    top: -3px;
+    text-align: left
+  }
+  .scheme-switch {
+    height: 55px;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .scheme-switch .switch-name {
+    font-size: 9px
+  }
+  .buy-ticket-shedule_trams__overflow {
+    margin-right: -15px
+  }
+  .buy-ticket-shedule__container_trams {
+    padding-bottom: 40px
+  }
+  .buy-ticket-shedule_trams__headlines {
+    margin-top: 20px
+  }
+  .buy-ticket-shedule__container_trams button.button_ticket {
+    margin-top: 0
+  }
+  .buy-ticket-shedule__container_trams .buy-ticket__item,
+  .buy-ticket-shedule__container_trams .buy-ticket__item_switch-trams {
+    width: 100%
+  }
+  .buy-ticket-shedule__container_trams .buy-ticket {
+    margin-top: 15px
+  }
+  .buy-ticket-form__passengers__item__info_sert {
+    margin-left: 0;
+    font-size: 12px;
+    margin-top: 15px
+  }
+  .buy-ticket-form__sert-item__list>li {
+    padding-left: 15px
+  }
+  #toggle-animation-multiple {
+    margin-top: 20px
+  }
+  .buy-ticket-form__sert-item__list,
+  .buy-ticket-form__sert-item__more-link,
+  .buy-ticket-form__sert-item__p1 {
+    font-size: 10px
+  }
+  .buy-ticket-form__sert-item {
+    padding-top: 20px;
+    margin-top: 20px
+  }
+  .buy-sertificat-card__p1,
+  .buy-sertificat-card__p2 {
+    font-size: 12px
+  }
+  .buy-sertificat-card__badge {
+    right: 10px
+  }
+  .buy-sertificat-card__img {
+    height: 200px
+  }
+  .buy-sertificat__headline_22 {
+    margin-top: 40px
+  }
+  .buy-sertificat-head__p2 {
+    margin-top: 25px;
+    font-size: 12px
+  }
+  .buy-sertificat__head {
+    padding-right: 0;
+    padding-bottom: 30px
+  }
+  .buy-sertificat-head__back {
+    display: none
+  }
+  .buy-sertificat-header {
+    padding: 0 0 10px
+  }
+  .buy-sertificat__wrap {
+    padding: 30px 15px 43px;
+    margin-top: 0;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .buy-sertificat__head .headline_p1 {
+    font-size: 26px
+  }
+  .buy-ticket-important__bottom {
+    padding-top: 30px;
+    margin-top: 30px
+  }
+  .list-number {
+    margin: 20px 0
+  }
+  .list-number li {
+    padding-left: 35px
+  }
+  .buy-ticket-important__info .headline_p4 {
+    margin-bottom: 20px
+  }
+  .buy-ticket-important {
+    margin-top: 25px;
+    padding: 40px 20px 20px
+  }
+  .buy-ticket-important-warning__p1,
+  .buy-ticket-important-warning__p2 {
+    font-size: 10px;
+    margin-top: 20px
+  }
+  .buy-ticket-important-warning__icon {
+    width: 44.45px;
+    height: 33.7px;
+    right: 14px;
+    top: 27px
+  }
+  .buy-ticket-important-warning__sites>div {
+    width: 186px
+  }
+  .buy-ticket-important {
+    font-size: 12px
+  }
+  .buy-ticket-important__warning {
+    padding: 30px 20px
+  }
+  .buy-ticket-form-hall__gallery {
+    margin-left: -10px;
+    margin-top: 0
+  }
+  .buy-ticket-form-hall__gallery>div {
+    margin-top: 10px;
+    padding-left: 10px
+  }
+  .buy-ticket-form-hall__gallery .gallery_card {
+    height: 51px;
+    width: 77px
+  }
+  .default-slider .uk-slider-items {
+    margin-left: -20px
+  }
+  .default-slider .uk-slider-items>li {
+    padding-left: 20px
+  }
+  .default-slider .uk-slider-container {
+    padding: 40px 0
+  }
+  .switch-round {
+    margin: 0 10px
+  }
+  .switch-name {
+    font-size: 10px
+  }
+  .awards__card3 img {
+    margin-top: 24px
+  }
+  .plus-minus-input .input-group-button button {
+    height: 40px
+  }
+  .pass-quantity__drop .buy-ticket__politic label+label {
+    margin-top: 13px
+  }
+  .pass-quantity__drop .form_politic .uk-checkbox {
+    margin-right: 12px
+  }
+  .pass-quantity__drop .form_politic label {
+    font-size: 10px
+  }
+  .awards__card7 .awards__card_img img {
+    margin-top: 60px;
+    transform: scale(.5) translateX(104px)
+  }
+  .awards__card6 img {
+    margin-top: 23px;
+    margin-right: 37px
+  }
+  .awards__card5 .awards__card_img img {
+    margin-top: 32px;
+    transform: scale(.5) translateX(72px)
+  }
+  .uk-offcanvas-bar {
+    background: url(../img/inners/back_menu.png) 16% center/cover no-repeat, #1d2240
+  }
+  .footer__bottom_item2__link {
+    margin-top: 11px
+  }
+  .offcanvas_main {
+    margin-bottom: 36px;
+    padding-top: 0;
+    justify-content: flex-start
+  }
+  .offcanvas_main__grid__item1__buy__tickets {
+    margin-top: 25px
+  }
+  .footer_nav li {
+    margin-top: 7px
+  }
+  .offcanvas_main__grid .txt18+.txt18 {
+    margin-top: 20px
+  }
+  .footer_nav {
+    font-size: 10px;
+    margin: 15px 0 25px
+  }
+  .offcanvas_main__grid .txt18 {
+    font-size: 10px
+  }
+  .offcanvas_main__head {
+    padding-bottom: 25px;
+    margin-bottom: 28px
+  }
+  .offcanvas_main__head.headline_p1 {
+    font-size: 26px
+  }
+  .offcanvas_menu {
+    padding: 140px 15px 43px
+  }
+  .litepicker .container__months {
+    padding: 6px
+  }
+  .modal-news-filter__body .buy-ticket__item {
+    border: none !important;
+    margin-bottom: 19px
+  }
+  .buy-ticket .buy-ticket__item:nth-child(1) .select-styled {
+    font-size: 12px
+  }
+  .buy-ticket-shedule__header .heading {
+    padding-bottom: 30px;
+    padding-top: 15px
+  }
+  .buy-ticket-shedule__container {
+    padding-bottom: 40px;
+    padding-top: 15px
+  }
+  .buy-ticket-shedule_responsive__head {
+    padding: 9px 15px
+  }
+  .buy-ticket-shedule_responsive {
+    margin: 20px -15px 0
+  }
+  .buy-ticket-shedule_responsive__cost {
+    margin-top: 10px
+  }
+  .buy-ticket-shedule_responsive__item .uk-button {
+    height: 35px;
+    padding: 0
+  }
+  .buy-ticket-shedule__time__num {
+    display: block;
+    margin-top: 5px
+  }
+  .buy-ticket-shedule__category span {
+    width: 89px;
+    min-width: 89px
+  }
+  .buy-ticket-shedule_responsive__item {
+    font-size: 11px
+  }
+  .buy-ticket-shedule__category {
+    margin-top: 15px
+  }
+  .buy-ticket-shedule_responsive__moorage__name2 {
+    margin-top: 0;
+    font-size: 12px
+  }
+  .buy-ticket-shedule_responsive__item>div {
+    width: 50%;
+    padding: 19px 15px
+  }
+  .buy-ticket-shedule_responsive__item>div:nth-child(1) {
+    padding-right: 5px
+  }
+  .buy-ticket-shedule_responsive__item>div:nth-child(3) {
+    padding-left: 5px
+  }
+  .buy-ticket-info__more__item__txt {
+    margin: 27px 0 21px
+  }
+  .buy-ticket-info__more__item {
+    font-size: 12px;
+    padding: 15px 20px
+  }
+  .buy-ticket-info__more__item svg {
+    right: 31px;
+    top: 32px;
+    width: 42px;
+    height: 46px
+  }
+  .buy-ticket-info__is-not-coming svg {
+    right: 18px;
+    bottom: 27px;
+    width: 101px;
+    height: 79px
+  }
+  .buy-ticket-info__is-not-coming__text1 {
+    margin: 20px 0
+  }
+  .buy-ticket-info__is-not-coming {
+    padding: 30px 19px 33px;
+    font-size: 12px
+  }
+  .buy-ticket-info__success__main {
+    margin-top: 26px;
+    font-size: 12px
+  }
+  .buy-ticket-info__success__head svg {
+    top: -2px
+  }
+  .buy-ticket-info__success__head .headline_22 {
+    font-size: 16px
+  }
+  .buy-ticket-info__success {
+    margin: 40px 0 0;
+    padding: 36px 20px 20px
+  }
+  .buy-ticket-info__grid {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 26px;
+    padding: 25px 15px 0
+  }
+  .buy-ticket-info__item1 {
+    margin: 0 -15px;
+    padding: 0 15px 10px;
+    width: auto;
+    border-bottom: 1px solid rgba(161, 194, 229, .3)
+  }
+  .buy-ticket-info__line>div:first-child {
+    min-width: 100px;
+    width: 100px
+  }
+  .buy-ticket-info__line {
+    font-size: 12px;
+    padding: 16px 0
+  }
+  .buy-ticket-info__headline {
+    margin-top: 0
+  }
+  .buy-ticket-info__headline .headline_p1 {
+    font-size: 26px;
+    margin-top: -6px;
+    max-width: 100px
+  }
+  .buy-ticket-info__headline .button_download {
+    width: 148px;
+    height: 50px
+  }
+  .buy-ticket-info__headline .button_download svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 15px
+  }
+  .buy-ticket-form__date .buy-ticket-shedule__time__txt {
+    transform: none
+  }
+  .buy-ticket-shedule__time__txt {
+    line-height: 1;
+    font-size: 8px;
+    height: auto;
+    min-height: 23px;
+    padding: 3px 10px;
+    border-radius: 50px
+  }
+  .buy-ticket-more-information__call svg {
+    width: 42px;
+    height: 46px
+  }
+  .buy-ticket-more-information__call__p2 {
+    margin-top: 25px
+  }
+  .buy-ticket-more-information__call {
+    padding: 40px 20px;
+    font-size: 12px
+  }
+  .buy-ticket-more-information__cards {
+    padding: 50px 20px 28px
+  }
+  .buy-ticket-more-information__cards img {
+    margin-top: 30px
+  }
+  .buy-ticket-form__basket__item .button_ticket {
+    margin-top: 29px;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    padding: 0 30px;
+    font-size: 11px
+  }
+  .buy-ticket-form__basket__item .button_ticket svg {
+    width: 27px;
+    height: 13px
+  }
+  .buy-ticket-form__basket__item.buy-ticket-form__basket__item__last {
+    margin-top: 27px
+  }
+  .buy-ticket-form__basket__sail {
+    margin-top: 9px
+  }
+  .buy-ticket-form__basket__summ>div:nth-child(3) {
+    font-size: 12px
+  }
+  .buy-ticket-form__basket__summ>div:nth-child(1) {
+    margin-right: 12px
+  }
+  .buy-ticket-form__basket__summ {
+    font-size: 16px;
+    margin-top: 20px
+  }
+  .buy-ticket-form__basket__item__passenger>div:nth-child(1) {
+    min-width: 100px;
+    width: 100px
+  }
+  .buy-ticket-form__basket__item,
+  .buy-ticket-form__basket__item__info,
+  .buy-ticket-form__basket__item__name {
+    margin-top: 17px
+  }
+  .buy-ticket-form__basket__main {
+    font-size: 12px;
+    padding: 0 20px 33px
+  }
+  .buy-ticket-form__basket__head svg {
+    width: 31px;
+    height: 22px
+  }
+  .buy-ticket-form__basket__head {
+    padding: 24px 20px
+  }
+  .buy-ticket-form__basket {
+    margin-top: 40px
+  }
+  .buy-ticket-form__footer__item {
+    width: 100%;
+    margin-top: 30px
+  }
+  .buy-ticket-form__footer__item .button_ticket {
+    width: calc(63% - 20px);
+    height: 50px;
+    padding: 0
+  }
+  .buy-ticket-form__footer__item .buy-ticket__input {
+    width: 37%;
+    font-size: 12px;
+    margin-right: 20px
+  }
+  .buy-ticket-form__footer__item .buy-ticket__input::-moz-placeholder {
+    font-size: 12px
+  }
+  .buy-ticket-form__footer__item .buy-ticket__input:-ms-input-placeholder {
+    font-size: 12px
+  }
+  .buy-ticket-form__footer__item .buy-ticket__input::placeholder {
+    font-size: 12px
+  }
+  .buy-ticket-form__footer {
+    padding-top: 23px;
+    margin-top: 20px
+  }
+  .buy-ticket-form__total {
+    font-size: 16px
+  }
+  .buy-ticket-form__agreement .form_politic label {
+    align-items: flex-start;
+    font-size: 12px
+  }
+  .buy-ticket-form__agreement {
+    padding-top: 20px;
+    margin-top: 20px
+  }
+  .buy-ticket-form__data__grid {
+    margin-left: -30px;
+    margin-top: 0
+  }
+  .buy-ticket-form__data__grid>div {
+    padding-left: 30px;
+    margin-top: 18px
+  }
+  .buy-ticket-form__data {
+    padding-top: 18px;
+    margin-top: 20px
+  }
+  .buy-ticket-form__passengers__item__summ {
+    font-size: 12px;
+    margin-top: 5px
+  }
+  .buy-ticket-form__passengers__item__name {
+    font-size: 14px
+  }
+  .buy-ticket-form__passengers__item__first {
+    margin-right: auto
+  }
+  .buy-ticket-form__passengers__head {
+    font-size: 14px;
+    margin: 0 0 13px
+  }
+  .buy-ticket-form__passengers .buy-ticket-form__passengers__item {
+    margin-top: 0
+  }
+  .buy-ticket-form__passengers .plus-minus-input .input-group-button button {
+    height: 50px
+  }
+  .buy-ticket-form__passengers .input-group {
+    margin-top: 12px;
+    height: 50px
+  }
+  .buy-ticket-form__passengers__item__info {
+    margin-right: 0
+  }
+  .buy-ticket-form__passengers__item {
+    display: block
+  }
+  .buy-ticket-form__headline__icon {
+    display: none
+  }
+  .buy-ticket-form__passengers {
+    padding-top: 19px;
+    margin-top: 19px
+  }
+  .buy-ticket-form__hall {
+    padding-top: 17px;
+    font-size: 11px;
+    margin-top: 30px
+  }
+  .buy-ticket-form__headline .buy-ticket-form__headline__item1 {
+    align-items: flex-start
+  }
+  .buy-ticket-form__date {
+    margin-top: 5px;
+    padding-left: 0
+  }
+  .buy-ticket-form__headline__item1 .headline_32 {
+    font-size: 14px
+  }
+  .buy-ticket-form__headline {
+    padding-top: 25px;
+    margin-top: 30px
+  }
+  .buy-ticket-form__container {
+    padding-bottom: 40px
+  }
+  .buy-ticket-form__grid,
+  .buy-ticket-form__info {
+    margin-top: 0
+  }
+  .buy-ticket-form {
+    padding: 30px 15px 43px;
+    margin-top: 0;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .buy-ticket-form__header {
+    padding: 0 0 10px
+  }
+  .buy-ticket-form__info .headline_p1 {
+    font-size: 26px
+  }
+  .modal-calculation__slide5 .uk-modal-close {
+    width: 150px;
+    margin-top: 30px;
+    height: 50px
+  }
+  .modal-calculation__slide5 .headline_32 {
+    margin-top: 0
+  }
+  .modal-calculation__middle .headline_line {
+    width: 130px
+  }
+  .modal-calculation__slide5__p1 {
+    max-width: 248px
+  }
+  .modal-calculation__slide5 .modal-calculation__middle {
+    min-height: 350px
+  }
+  .modal-calculation__slide5__svg {
+    right: 25px;
+    width: 97px;
+    height: 97px;
+    top: 216px
+  }
+  #calculation__slide4-submit {
+    height: 50px
+  }
+  .uk-input.buy-ticket__input {
+    padding: 0 15px;
+    height: 50px
+  }
+  .modal-calculation__data__grid {
+    margin-top: 3px
+  }
+  .modal-calculation__data__grid>div:nth-child(1) {
+    width: 100%
+  }
+  .modal-calculation__data__grid>div:nth-child(2) {
+    width: 100%
+  }
+  .modal-calculation__slide4__bottom {
+    flex-wrap: wrap
+  }
+  .modal-calculation__slide4__bottom>* {
+    width: 100%
+  }
+  .modal-calculation__range__numbers>div:nth-child(7) {
+    left: 68.5%
+  }
+  .modal-calculation__range__numbers>div:nth-child(5) {
+    left: 46.8%
+  }
+  .modal-calculation__range__numbers div::before {
+    bottom: 21px
+  }
+  .modal-calculation__range__numbers {
+    font-size: 12px;
+    top: 60px
+  }
+  .modal-calculation__range {
+    height: 84px;
+    margin-top: 42px
+  }
+  .uk-range::-webkit-slider-thumb {
+    margin-top: -15.5px;
+    height: 35px;
+    width: 35px;
+    border: 10px solid #00c1f3
+  }
+  .uk-range::-moz-range-thumb {
+    margin-top: -15.5px;
+    height: 35px;
+    width: 35px;
+    border: 10px solid #00c1f3
+  }
+  .uk-range::-ms-thumb {
+    margin-top: -15.5px;
+    height: 35px;
+    width: 35px;
+    border: 10px solid #00c1f3
+  }
+  .modal-calculation__range__numbers>div:nth-of-type(2n) {
+    display: none
+  }
+  .modal-calculation__guests .uk-form-controls .buy-ticket__input {
+    width: 100%;
+    padding-left: 16px;
+    height: 50px
+  }
+  .modal-calculation__guests .uk-form-controls {
+    margin-top: 18px
+  }
+  .modal-calculation__guests__name {
+    margin-right: 0;
+    font-size: 14px
+  }
+  .modal-calculation__guests {
+    display: block
+  }
+  .modal-calculation__middle {
+    min-height: 0;
+    padding: 30px 20px
+  }
+  .litepicker .container__months .month-item-weekdays-row>div {
+    width: auto
+  }
+  .modal-calculation__middle_months .litepicker .container__months .month-item {
+    width: 100%
+  }
+  .modal-calculation__slide-time__top .buy-ticket__input {
+    box-sizing: border-box;
+    width: 80px
+  }
+  .modal-calculation__slide-time__top .card_time {
+    font-size: 13px;
+    text-transform: none;
+    margin-right: 27px
+  }
+  .modal-calculation__slide-time__top .txt18 {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 15px
+  }
+  .modal-calculation__middle__types {
+    width: calc(100% + 19px);
+    margin-top: -10px
+  }
+  .modal-calculation__progress__head span:nth-child(2) {
+    padding-left: 6px
+  }
+  .modal-calculation__progress__head {
+    font-size: 12px
+  }
+  .modal-calculation__bottom {
+    padding: 30px 20px;
+    min-height: 102px;
+    align-items: center
+  }
+  .modal-calculation__arrows {
+    min-width: 148px;
+    width: 148px;
+    margin-left: 10px
+  }
+  .modal-calculation__arr_next {
+    width: 95px;
+    font-size: 11px
+  }
+  #modal-calculation__progressbar {
+    display: none
+  }
+  .modal-calculation__middle__types>div {
+    margin-top: 10px
+  }
+  .uk-modal-full__block__top.modal-calculation__slide-time__top {
+    border-bottom: 2px solid #e2e2e2;
+    padding: 15px 20px;
+    min-height: 70px
+  }
+  .uk-modal-full.modal-calculation .uk-modal-full__block {
+    margin-top: 22px
+  }
+  .uk-modal-full.modal-calculation .uk-modal-dialog {
+    padding: 59px 0 42px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .instagram_decor1,
+  .uk-modal-full.modal-calculation .instagram_decor1 {
+    right: 0;
+    width: 257px;
+    height: 258px;
+    top: 20px
+  }
+  .link_close {
+    font-size: 12px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__block__bottom {
+    padding: 30px 16px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__info {
+    padding: 0 16px 35px
+  }
+  .uk-modal-full__block__top {
+    padding: 30px 16px;
+    border-bottom: none
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-full__block {
+    margin-top: 41px
+  }
+  .uk-modal-full.buy-ticket-shedule-info .uk-modal-dialog {
+    padding-top: 64px;
+    padding-bottom: 49px
+  }
+  .modal-full_container .headline_p1 {
+    font-size: 22px
+  }
+  .uk-modal-full__block__bottom {
+    padding: 30px 16px
+  }
+  .uk-modal-full__block__bottom .uk-button.button_calcalutor {
+    width: 100%
+  }
+  .modal-tenancy__info {
+    margin-top: 30px;
+    font-size: 12px
+  }
+  .uk-modal-full__block .uk-slider-items {
+    height: 175px
+  }
+  .uk-modal-full__block .yacht__slider {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-bottom: 35px
+  }
+  .uk-modal-full__info {
+    padding: 0 16px 44px
+  }
+  .uk-modal-full__block {
+    margin-top: 41px
+  }
+  .uk-modal-full .uk-modal-dialog {
+    padding: 64px 0 43px
+  }
+  .buy-ticket-trams__header .heading .buy-ticket {
+    margin: 37px auto 0;
+    flex-wrap: wrap
+  }
+  .buy-ticket-trams__header .heading {
+    padding: 45px 0 80px
+  }
+  .buy-ticket-trams__header .heading .headline_p1 {
+    font-size: 26px
+  }
+  .buy-ticket-trams__header .heading .button_ticket {
+    width: 100%;
+    margin-top: 10px
+  }
+  .buy-ticket-trams__header .heading .buy-ticket__item {
+    width: 100%
+  }
+  .buy-ticket-yacht__header .heading {
+    padding: 60px 0 121px
+  }
+  .buy-ticket-yacht__header .buy-ticket__item {
+    width: 100%
+  }
+  .buy-ticket-yacht__header .buy-ticket .button_ticket {
+    width: 100%;
+    margin-top: 10px
+  }
+  .buy-ticket-yacht__header .buy-ticket {
+    flex-wrap: wrap;
+    margin-top: 30px
+  }
+  .trams__cost_one-off__bottom__items .trams__cost__item__type {
+    padding-top: 5px;
+    padding-bottom: 0
+  }
+  .trams__cost_one-off__bottom__items {
+    margin-left: -14px;
+    flex-wrap: wrap
+  }
+  .trams__cost_one-off__bottom__items>div {
+    padding-left: 14px
+  }
+  .trams__cost_one-off__bottom {
+    font-size: 12px
+  }
+  .trams__cost_one-off__bottom img {
+    min-width: 55px;
+    width: 55px;
+    margin-right: 14px
+  }
+  .trams__cost .button_ticket {
+    width: 200px;
+    height: 50px
+  }
+  .trams__cost__item__type>div:nth-child(1) {
+    width: 72px;
+    min-width: 72px
+  }
+  .trams__cost__items {
+    margin-left: -30px
+  }
+  .trams__cost__svg {
+    width: 76px;
+    top: 54%;
+    height: 76px;
+    right: 0
+  }
+  .trams__cost__item {
+    margin-top: -10px;
+    padding-left: 0;
+    margin-left: -20px
+  }
+  .trams__cost__item>div {
+    margin-top: 10px;
+    padding-left: 20px
+  }
+  .trams__cost__item__type {
+    font-size: 12px
+  }
+  .trams__cost__item__p1 {
+    font-size: 14px;
+    margin-bottom: 0
+  }
+  .trams__cost__p1 {
+    font-size: 14px
+  }
+  .trams__cost__main {
+    margin: 27px 0 0;
+    padding: 27px 0 0
+  }
+  .trams__cost {
+    padding: 50px 15px 57px
+  }
+  .trams__route__num {
+    font-size: 80px;
+    top: 42px;
+    right: 15px
+  }
+  .trams__route__txt {
+    margin-top: 18px;
+    font-size: 12px
+  }
+  .trams__route__info .headline_line {
+    width: 130px
+  }
+  .trams__route__info .headline_22 {
+    margin-top: 27px
+  }
+  .trams__route__info {
+    padding: 50px 15px 34px
+  }
+  .trams__headline {
+    padding: 25px 0 30px
+  }
+  .trams-gallery .yacht__slider {
+    margin-top: 40px;
+    height: 280px;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-bottom: 25px
+  }
+  .trams-gallery {
+    padding: 31px 0 50px
+  }
+  .trams-colors__item__img img {
+    width: 27.36px
+  }
+  .trams-colors__item__name {
+    font-size: 12px
+  }
+  .trams-colors__item {
+    min-height: 105px;
+    padding: 17px 5px
+  }
+  .trams-colors__item__img {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    margin-bottom: 11px
+  }
+  .trams-colors__items {
+    margin-top: 50px
+  }
+  .trams-colors {
+    padding: 43px 0 72px
+  }
+  .trams-advantage__item_8 .trams-advantage__item__svg {
+    width: 46.4px;
+    height: 43.14px;
+    right: 32px;
+    bottom: 25px
+  }
+  .trams-advantage__item_7 .trams-advantage__item__svg {
+    width: 47.4px;
+    height: 51.14px;
+    right: 31px;
+    bottom: 24px
+  }
+  .trams-advantage__item_6 .trams-advantage__item__svg {
+    width: 52.4px;
+    height: 51.14px;
+    right: 29px;
+    bottom: 18px
+  }
+  .trams-advantage__item_5 .trams-advantage__item__svg {
+    width: 56.4px;
+    height: 39.14px;
+    right: 27px;
+    bottom: 24px
+  }
+  .trams-advantage__item_4 .trams-advantage__item__svg {
+    width: 39.4px;
+    height: 41.14px;
+    right: 35px;
+    bottom: 29px
+  }
+  .trams-advantage__item_3 .trams-advantage__item__svg {
+    width: 39.4px;
+    height: 39.14px;
+    right: 35px;
+    bottom: 27px
+  }
+  .trams-advantage__item_2 .trams-advantage__item__svg {
+    width: 51.4px;
+    height: 31.14px;
+    right: 29px;
+    bottom: 27px
+  }
+  .trams-advantage__item__svg {
+    right: 32px;
+    bottom: 22px;
+    width: 45px;
+    height: 45px
+  }
+  .trams-advantage__item {
+    min-height: 100px;
+    padding: 10px 30px
+  }
+  .trams-advantages__items {
+    margin-top: 25px
+  }
+  .trams-advantages__items>div {
+    margin-top: 10px
+  }
+  .trams-advantages {
+    padding: 64px 0 50px
+  }
+  .trams-shutdown__bottom {
+    margin: 10px 0 0
+  }
+  .trams-shutdown .headline_32 {
+    font-size: 16px
+  }
+  .trams-shutdown__bottom .uk-button {
+    width: 195px;
+    height: 50px
+  }
+  .trams-shutdown__item {
+    width: 84px
+  }
+  .trams-shutdown__decor {
+    top: 25px
+  }
+  .trams-shutdown__decor2 {
+    top: 158px
+  }
+  .trams-shutdown__items {
+    margin-top: 50px;
+    justify-content: center;
+    max-width: 327px
+  }
+  .trams-shutdown__arr {
+    margin-top: 14px
+  }
+  .trams-shutdown__item span {
+    margin-top: 13px;
+    font-size: 11px
+  }
+  .trams-shutdown__item svg {
+    width: 50px;
+    height: 50px
+  }
+  .trams-shutdown {
+    padding: 70px 0 66px
+  }
+  .trams__about .tenancy__about__info>svg {
+    top: 108px;
+    width: 189px;
+    height: 189px;
+    right: 20px
+  }
+  .trams__about .tenancy__about__info .uk-button {
+    padding: 0;
+    margin-top: 40px;
+    height: 50px;
+    width: 205px
+  }
+  .trams__header .heading .uk-button {
+    margin-top: 40px;
+    width: 200px;
+    height: 50px;
+    padding: 0 25px
+  }
+  .trams__header .heading .headline_p1 {
+    font-size: 26px
+  }
+  .trams__header .heading {
+    padding: 30px 0 95px
+  }
+  .cabin__parts .yacht__slider li {
+    width: 100%
+  }
+  .cabin__parts .yacht__slider .yacht__slider_navigation {
+    left: auto;
+    right: 10px
+  }
+  .cabin__parts .yacht__slider {
+    height: 200px;
+    margin-top: 35px;
+    padding-bottom: 0
+  }
+  .accordion_default>li {
+    padding: 33px 0
+  }
+  .accordion_default__txt b,
+  .accordion_default__txt strong {
+    font-size: 12px
+  }
+  .accordion_default__bottom .uk-button {
+    width: 200px;
+    height: 50px;
+    padding: 0 24px
+  }
+  .accordion_default__bottom {
+    margin-top: 25px;
+    padding-top: 30.5px
+  }
+  .accordion_default__bottom .button_ticket svg {
+    width: 22px;
+    height: 13px
+  }
+  .accordion_default__bottom>img {
+    display: none
+  }
+  .yacht__information_capacity>div {
+    margin-top: 20px
+  }
+  .accordion_default__txt {
+    font-size: 14px
+  }
+  .accordion_default .uk-accordion-content {
+    margin-top: 33px
+  }
+  .accordion_default .uk-accordion-title::before {
+    top: -4px
+  }
+  .accordion_default__num {
+    width: 35px;
+    min-width: 35px;
+    font-size: 16px
+  }
+  .accordion_default__name {
+    font-size: 16px
+  }
+  .cabin__header__info__parameter {
+    padding-left: 0;
+    width: auto;
+    margin-top: 20.9px
+  }
+  .cabin__header__info .yacht__capitan_experience {
+    margin-top: 12px
+  }
+  .cabin__header__info .yacht__capitan_name {
+    margin-top: 3px;
+    font-size: 16px
+  }
+  .cabin__header__info .yacht__capitan_img {
+    width: 100px;
+    height: 100px;
+    margin-left: -35px;
+    margin-top: 0;
+    margin-right: 17px;
+    min-width: 100px
+  }
+  .cabin__header__info .yacht__capitan {
+    padding: 25px;
+    width: auto
+  }
+  .cabin__header__info {
+    display: block;
+    padding: 20px 15px
+  }
+  .cabin__badge {
+    width: 139px;
+    height: 35px;
+    top: 23px;
+    font-size: 10px
+  }
+  .category-cabin__headline {
+    padding: 20px 0 25px
+  }
+  .headline_52 {
+    font-size: 24px
+  }
+  .category-cabin-page .heading {
+    padding-bottom: 20px
+  }
+  .category-cabin__top {
+    margin-top: 0;
+    padding-top: 20px;
+    padding-bottom: 20px
+  }
+  .uk-open>.uk-accordion-title::before {
+    background-size: 10px
+  }
+  .padding_bottom {
+    padding-bottom: 30px
+  }
+  .rules-about2__item.rules-about2__item2 {
+    padding-top: 95px
+  }
+  .rules-about2__item2__icon {
+    position: absolute;
+    right: 25px;
+    bottom: 65px;
+    width: 45px;
+    height: 55px
+  }
+  .rules-about2__item1__icon {
+    right: 29px;
+    bottom: 19px;
+    width: 49px;
+    height: 53px
+  }
+  .rules-about2__item ul>li::before {
+    top: 9px
+  }
+  .rules-about2__item1 {
+    font-size: 12px
+  }
+  .rules-about2__item__txt {
+    margin-top: 24px;
+    font-size: 12px
+  }
+  .rules-about2__item .headline_22 {
+    min-height: 0
+  }
+  .rules-about2__item {
+    padding: 47px 31px;
+    min-height: 411px
+  }
+  .rules-security-video__tabs>* {
+    width: auto;
+    border-top: 1px solid #a1c2e5;
+    padding: 13px 20px !important
+  }
+  .rules-security-video__tabs {
+    display: none;
+    position: relative !important;
+    padding: 0 !important
+  }
+  .rules-security-video__container .play-video-btn_back svg {
+    width: 70px;
+    height: 70px
+  }
+  .rules-security-video__grid {
+    margin-top: 30.5px
+  }
+  .rules-security-video__section {
+    padding: 52px 0 60px
+  }
+  .rules-ship__site__item {
+    padding: 30px 0
+  }
+  .rules-ship__site__item__txt {
+    margin-top: 17px;
+    font-size: 12px
+  }
+  .rules-ship__site__item__num {
+    width: 35px;
+    min-width: 35px;
+    margin-right: 19px;
+    height: 35px
+  }
+  .rules-ship__site {
+    padding: 49px 30px 19px;
+    margin-top: 30px
+  }
+  .rules-ship__grid2>div {
+    margin-top: 29px
+  }
+  .rules-ship__item__img {
+    padding: 50px 28px;
+    min-height: 0
+  }
+  .rules-ship__item__txt ul li::before {
+    width: 19px;
+    height: 19px
+  }
+  .rules-ship__item__txt ul li {
+    padding-left: 35px;
+    margin-top: 21px
+  }
+  .rules-ship__item__txt ul {
+    font-size: 12px
+  }
+  *+.rules-ship__item__p1 {
+    margin-top: 23px
+  }
+  .rules-ship__grid>div {
+    margin-top: 25px
+  }
+  .rules-ship__item__p2 {
+    font-size: 12px;
+    margin-top: 18px
+  }
+  .rules-ship__section {
+    padding: 37px 0 59px
+  }
+  .rules-security__block__icon {
+    width: 139px;
+    height: 144px;
+    right: 16px;
+    top: auto;
+    transform: none;
+    bottom: 32px
+  }
+  .rules-security__block .headline_line {
+    margin-top: 20px
+  }
+  .rules-security__txt {
+    font-size: 12px;
+    margin-top: 21px
+  }
+  .rules-security__block {
+    padding: 42px 28px 59px;
+    margin-top: 40px
+  }
+  .rules-security__img {
+    height: 290px
+  }
+  .rules-security__section {
+    padding: 0 0 167px
+  }
+  .rules-performance__decor1 {
+    height: calc(100% - 132px)
+  }
+  .rules-performance__item__txt {
+    font-size: 12px;
+    margin-top: 30px;
+    margin-bottom: 15px
+  }
+  .rules-performance__item {
+    padding-top: 38px
+  }
+  .rules-performance__grid>div {
+    margin-top: 35px
+  }
+  .rules-performance__section {
+    padding: 43px 0 39px
+  }
+  .rules-performance__icon {
+    width: 214.5px;
+    right: 15px;
+    height: 214.5px;
+    top: 20px
+  }
+  .rules-about__grid>div {
+    margin-top: 20px
+  }
+  .rules-about__item2 .rules-about__item__icon {
+    right: 32px;
+    bottom: 58px;
+    width: 56px;
+    height: 59px
+  }
+  .rules-about__item__icon {
+    right: 36px;
+    bottom: 57px;
+    width: 58px;
+    height: 58px
+  }
+  .rules-about__item .button_download {
+    margin-top: 25px;
+    width: 165px;
+    height: 50px
+  }
+  .rules-about__item .headline_22 {
+    margin-top: 29px
+  }
+  .rules-about__item {
+    padding: 55px 28px
+  }
+  .guide_content1_info {
+    font-size: 12px
+  }
+  .contact-info__svg {
+    width: 118px;
+    height: 154px;
+    right: 8px;
+    bottom: 51px
+  }
+  .contact-info_sales__img {
+    height: 250px
+  }
+  .contact-info.contact-info_sales .button_calcalutor {
+    margin-top: 30px;
+    width: 200px
+  }
+  .contact-info.contact-info_sales {
+    padding: 36px 15px 49px
+  }
+  .contact-info__ramp.contact-info__ramp2 svg {
+    margin-right: 19px
+  }
+  .guide_map {
+    height: 500px
+  }
+  .guide_tab:nth-child(3) svg {
+    width: 15.74px;
+    height: 17px;
+    margin-bottom: 8px
+  }
+  .guide_tab:nth-child(2) svg {
+    width: 17.59px;
+    height: 14px;
+    margin-bottom: 10px
+  }
+  .guide_tab:nth-child(1) svg {
+    width: 21.36px;
+    height: 22px;
+    margin-bottom: 7px
+  }
+  .guide_tab {
+    height: 69px;
+    font-size: 11px;
+    padding: 5px 0 12px
+  }
+  .guide_pop {
+    margin: 36px 15px;
+    max-width: 290px
+  }
+  .contact-info__payment__images {
+    margin-top: 20px
+  }
+  .contact-info__payment__txt {
+    margin-top: 8px
+  }
+  .contact-info__payment__img {
+    width: 100%;
+    height: 205px
+  }
+  .contact-info__payment__block {
+    width: 100%;
+    padding: 25px 30px 27px
+  }
+  .contact-info__payment {
+    display: block;
+    margin-top: 35px
+  }
+  .trams__route__metro span {
+    padding-top: 4px
+  }
+  .trams__route__metro {
+    font-size: 12px
+  }
+  .contact-info__ramp {
+    margin-top: 30px
+  }
+  .contact-info__ramp svg {
+    margin-right: 22px
+  }
+  .contact-info__item {
+    display: block;
+    margin-top: 25px
+  }
+  .buy-ticket-form__headline__item1 svg {
+    width: 30px;
+    min-width: 30px;
+    margin-right: 17px;
+    height: 30px
+  }
+  .buy-ticket-form__headline__item1 {
+    align-items: center
+  }
+  .contact-info {
+    padding: 37px 15px 32px;
+    font-size: 12px
+  }
+  .contact-info .headline_32 {
+    font-size: 16px
+  }
+  .about-partners__slider .uk-slider-items {
+    margin-left: -30px
+  }
+  .about-partners__slider .uk-slider-items>li {
+    padding-left: 30px
+  }
+  .about-partner__card {
+    padding: 30px;
+    min-height: 145px;
+    height: 145px
+  }
+  .about-partners__slider {
+    margin-top: 47px
+  }
+  .about-partners__slider .uk-position-center-right-out {
+    left: 93.5%
+  }
+  .about-partners__slider .uk-position-center-left-out {
+    right: 93.5%
+  }
+  .about-partners__section {
+    padding: 62px 0 91px
+  }
+  .about-partners__section .headline_56 {
+    font-size: 28px
+  }
+  .about-document__down {
+    margin-top: 18px
+  }
+  .about-document__size {
+    margin-top: 12px;
+    font-size: 12px
+  }
+  .about-document__icon {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    margin-right: 21px
+  }
+  .about-document__name {
+    font-size: 14px
+  }
+  .about-document {
+    padding: 40px 20px;
+    min-height: 0
+  }
+  .about-documents__section {
+    padding: 60px 0
+  }
+  .about-documents__items {
+    margin-top: 50px
+  }
+  .accordion_vacantion__back {
+    font-size: 12px
+  }
+  .accordion_vacantion__bottom .uk-button {
+    width: 160px;
+    height: 50px
+  }
+  .accordion_vacantion__bottom {
+    padding-top: 30px;
+    margin-top: 28px
+  }
+  .accordion_vacantion__info__border {
+    padding-top: 30px;
+    margin-top: 30px
+  }
+  .accordion_vacantion .uk-accordion-content ul>li {
+    margin-top: 10px
+  }
+  .accordion_vacantion .uk-accordion-content ul {
+    font-size: 12px
+  }
+  .accordion_vacantion .uk-accordion-content {
+    padding: 25px 15px
+  }
+  .accordion_vacantion .uk-open>.uk-accordion-title::before {
+    background-size: 10px
+  }
+  .accordion_vacantion .uk-accordion-title::before {
+    right: 23px
+  }
+  .accordion_vacantion__title__arr {
+    width: 80px;
+    min-width: 80px
+  }
+  .accordion_vacantion__category {
+    font-size: 12px;
+    margin-top: 4px
+  }
+  .accordion_vacantion__name {
+    font-size: 14px
+  }
+  .accordion_vacantion__title__info {
+    padding: 20px 15px;
+    min-height: 80px
+  }
+  .accordion_vacantion__title__icon {
+    display: none
+  }
+  .accordion_vacantion.uk-accordion>:nth-child(n+2) {
+    margin-top: -2px
+  }
+  .accordion_vacantion {
+    margin: 47px -17px 0
+  }
+  .about-job__info__call {
+    margin-top: 35px
+  }
+  .about-job__info__call br {
+    display: block
+  }
+  .about-job__info__mail {
+    margin-top: 25px;
+    font-size: 14px
+  }
+  .about-job__info__call a {
+    font-size: 14px
+  }
+  .about-job__info__p1 {
+    font-size: 14px;
+    margin-top: 29px
+  }
+  .about-job__info__headline {
+    display: block
+  }
+  .about-job__info__headline .uk-button-default {
+    margin-top: 38px;
+    height: 50px;
+    width: 100%
+  }
+  .about-job__section {
+    padding: 52px 0 62px
+  }
+  .play-video-btn_back svg {
+    width: 70px;
+    height: 70px
+  }
+  .about-capitans__grid {
+    margin-top: 10px
+  }
+  .yacht__capitan_experience_new svg {
+    margin-right: 19px
+  }
+  .about-capitans__block .yacht__capitan_job {
+    margin-top: 0;
+    order: 1
+  }
+  .about-capitans__block .yacht__capitan_name {
+    order: 2;
+    margin-top: 4px
+  }
+  .yacht__capitan_experience_new {
+    border: none;
+    padding: 0;
+    order: 3;
+    font-size: 10px;
+    margin-top: 18px
+  }
+  .yacht__capitan__ship {
+    display: none
+  }
+  .about-capitans__block .yacht__capitan_info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0
+  }
+  .about-capitans__block .yacht__capitan_img {
+    width: 100px;
+    margin-top: 0;
+    height: 100px;
+    margin-right: 20px;
+    min-width: 100px;
+    margin-left: 0
+  }
+  .about-capitans__block .yacht__capitan {
+    padding: 45px 20px 37px;
+    flex-direction: row
+  }
+  .about-capitans__grid>div {
+    width: 100%;
+    margin-top: 30px
+  }
+  .about-capitans__block {
+    padding-top: 40px
+  }
+  .about-capitans__section {
+    padding-bottom: 0
+  }
+  .about-capitans__section .yacht__slider {
+    margin-left: -15px;
+    height: 215px;
+    margin-right: -15px
+  }
+  .about-advantages__info {
+    margin-top: 23px
+  }
+  .about-advantages__info__item {
+    font-size: 12px;
+    margin-top: 27px
+  }
+  .about-advantages__info__item1 .about-advantages__info__item__svg,
+  .about-advantages__info__item3 .about-advantages__info__item__svg {
+    padding-left: 0
+  }
+  .about-advantages__info__item__svg {
+    width: 60px;
+    min-width: 60px
+  }
+  .about-advantages__info__item__svg svg {
+    width: 45px;
+    height: 45px
+  }
+  .advantages__info__decor {
+    display: none
+  }
+  .about-advantages__headline .button_ticket {
+    margin-top: 35px;
+    height: 50px;
+    width: 200px
+  }
+  .about-advantages__headline .txt18 {
+    margin: 10px 0 0
+  }
+  .txt18 {
+    font-size: 14px
+  }
+  .about-advantages__headline .headline_32 {
+    margin-top: 32px
+  }
+  .headline_32 {
+    font-size: 18px
+  }
+  .about-advantages {
+    padding: 48px 0 79px
+  }
+  .about__history .flight__info__icon {
+    width: 150px;
+    height: 150px
+  }
+  .about__history .flight__info {
+    min-height: 300px
+  }
+  .tab_nav .uk-tab>:last-child::after {
+    display: block
+  }
+  .about__nav .tab_nav .uk-tab>* {
+    padding: 0 12px
+  }
+  .about__nav .tab_nav {
+    margin: 0
+  }
+  .about__nav .tab_nav .uk-tab>*>a {
+    font-size: 12px
+  }
+  .about-main__block__svg {
+    width: 271px;
+    height: 271px;
+    right: 36px
+  }
+  .about-main__block .button_ticket {
+    width: 200px;
+    height: 50px
+  }
+  .about-main__block .headline_22 {
+    font-size: 16px
+  }
+  .about-main__p1 {
+    margin-top: 27px;
+    font-size: 12px
+  }
+  .about-main__block {
+    padding: 40px 40px 43px
+  }
+  .about-main__logo {
+    width: 175.28px;
+    height: 75.2px
+  }
+  .uk-button.button_menu-cafe {
+    width: 210px;
+    height: 50px
+  }
+  .menu-cafe__item_txt {
+    font-size: 12px;
+    margin-top: 20px
+  }
+  .menu-cafe__item {
+    padding: 55px 15px;
+    min-height: 290px;
+    justify-content: center;
+    grid-area: auto
+  }
+  .menu-cafe {
+    -ms-grid-columns: (1fr)[1];
+    grid-template-columns: repeat(1, 1fr)
+  }
+  .news-last__slider .uk-slider-items {
+    margin-left: -15px
+  }
+  .news-last__slider .uk-slider-items>li {
+    width: 90%;
+    padding-left: 15px
+  }
+  .link_archive__container {
+    padding-top: 37px;
+    margin: 37px -15px 0
+  }
+  .link_archive {
+    font-size: 10px
+  }
+  .news-last__slider {
+    margin: 35px -15px 0;
+    padding: 0 15px
+  }
+  .news-last {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 46px 15px;
+    width: auto
+  }
+  .news-last .headline_22 {
+    font-size: 18px
+  }
+  .news-last .card-news__small .card_text {
+    margin-top: 12px
+  }
+  .news-item__ticket .button_ticket {
+    height: 50px
+  }
+  .news-item__ticket {
+    padding: 25px 0
+  }
+  .link_back {
+    font-size: 12px
+  }
+  .back-container {
+    padding-top: 50px;
+    margin-top: 31px
+  }
+  .video_container .playpause {
+    height: calc(100% - 30px);
+    top: 30px
+  }
+  .video_container {
+    margin-top: 30px;
+    padding-top: 30px
+  }
+  .video_container .play-video-btn_back svg {
+    width: 70px;
+    height: 70px
+  }
+  .news-item__text {
+    margin: 44px 0 30px;
+    font-size: 12px
+  }
+  .news-item__content .headline_line {
+    width: 100px
+  }
+  .news-item__content .yacht__slider_navigation {
+    width: 176px;
+    padding: 11px 16px 11px 22px
+  }
+  .news-item__content .uk-slider-items {
+    height: 250px
+  }
+  .news-item__content .yacht__slider {
+    height: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 30px
+  }
+  .type-yacht-short svg {
+    width: 21px;
+    height: 15px
+  }
+  .type-yacht-short {
+    font-size: 8px
+  }
+  .type-yacht-short svg+span {
+    margin-left: 9px
+  }
+  .news-item__shorts {
+    margin-left: -25px;
+    margin-top: 7px
+  }
+  .news-item__shorts>div {
+    padding-left: 25px
+  }
+  .sail-info .uk-badge {
+    padding: 6px 14px
+  }
+  .sail-info .uk-badge+span {
+    margin-left: 14px
+  }
+  .news-item__content .card_time,
+  .sail-info {
+    font-size: 8px
+  }
+  .news-item__h1 {
+    font-size: 18px
+  }
+  .news-item__container {
+    padding: 40px 15px 58px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 0
+  }
+  .news-item__header {
+    padding: 0 0 20px
+  }
+  .news-item__section {
+    padding-bottom: 0
+  }
+  .uk-pagination>*>* {
+    width: 35px;
+    height: 35px;
+    font-size: 11px;
+    line-height: 35px
+  }
+  .uk-pagination .icon {
+    width: 16px;
+    height: 6px
+  }
+  .uk-pagination>.pagination_back>*,
+  .uk-pagination>.pagination_next>* {
+    width: 35px;
+    height: 35px
+  }
+  .pagination {
+    padding-top: 50px
+  }
+  .card-news__small .card_text {
+    font-size: 12px;
+    margin-top: 19px
+  }
+  .card-news__small .uk-card-title {
+    font-size: 14px
+  }
+  .card-news__small .uk-card-default_media {
+    margin-right: 0;
+    margin-bottom: 28px;
+    min-width: 0;
+    width: 100%;
+    height: 213px;
+    min-height: 213px
+  }
+  .card-news__small {
+    flex-direction: column;
+    padding: 0 15px
+  }
+  .news__grid {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 22px;
+    border: none;
+    grid-column-gap: 0;
+    grid-row-gap: 30px
+  }
+  .news__grid>div {
+    border-right: none
+  }
+  .card-news_big {
+    min-height: 320px
+  }
+  .news__section {
+    padding-bottom: 50px;
+    padding-top: 20px
+  }
+  .accordion_equipment {
+    margin-top: 47px
+  }
+  .accordion_equipment>li {
+    padding: 30px 0
+  }
+  .accordion_equipment .uk-accordion-content {
+    margin-top: 30px;
+    font-size: 12px
+  }
+  .accordion_equipment .uk-open>.uk-accordion-title::before {
+    background-size: 10px
+  }
+  .uk-accordion-title::before {
+    width: 30px;
+    height: 30px;
+    background-size: 10px
+  }
+  .accordion_equipment .accordion_default__name {
+    font-size: 14px
+  }
+  .tenancy-equipment__headline__p2 {
+    margin-top: 35px
+  }
+  .tenancy-equipment {
+    padding: 62px 0 79px
+  }
+  .tenancy-restaurant__images {
+    height: 329px
+  }
+  .tenancy-restaurant__headline__p2 {
+    margin-top: 30px;
+    line-height: 1.8;
+    margin-bottom: 30px
+  }
+  .tenancy-restaurant__headline .headline_56 {
+    margin-top: 30px
+  }
+  .tenancy-restaurant__headline__icon {
+    top: 68px;
+    width: 272.18px;
+    height: 281.69px;
+    right: -85px
+  }
+  .tenancy-restaurant__headline {
+    padding: 100px 0 50px
+  }
+  .tenancy-managment__headline__icon {
+    top: -20px;
+    width: 194px;
+    height: 194px;
+    right: -45px
+  }
+  .tenancy-managment__list__item svg {
+    width: 19px;
+    height: 19px;
+    min-width: 19px;
+    margin-right: 20px
+  }
+  .tenancy-managment__list__item {
+    font-size: 12px
+  }
+  .tenancy-managment__list {
+    margin-top: 36px
+  }
+  .tenancy-managment__info .headline_22 {
+    margin-top: 37px
+  }
+  .tenancy-managment {
+    padding: 65px 0 70px
+  }
+  .tenancy-managment__headline .headline_56 {
+    margin: 24px 0 39px
+  }
+  .tenancy-event__item .headline_26 {
+    min-height: 0
+  }
+  .tenancy-event__item .uk-button {
+    height: 50px;
+    margin-top: 32px;
+    width: 180px
+  }
+  .headline_26 {
+    font-size: 20px
+  }
+  .tenancy-event__item {
+    padding: 85px 15px
+  }
+  .tenancy-seating__bottom {
+    margin-top: 35px
+  }
+  .tenancy-seating__type_third svg {
+    width: 36.76px;
+    height: 38.39px
+  }
+  .tenancy-seating__type_fourth svg {
+    width: 36.28px;
+    height: 35.7px
+  }
+  .tenancy-seating__type_forties svg {
+    width: 28.58px;
+    height: 31.18px
+  }
+  .tenancy-seating__type_second svg {
+    width: 34.39px;
+    height: 40.43px
+  }
+  .tenancy-seating__type_one svg {
+    width: 32px;
+    height: 36px
+  }
+  .tenancy-seating__type__info {
+    margin-top: 10px;
+    font-size: 12px
+  }
+  .tenancy-seating__type__icon {
+    height: 40px;
+    justify-content: flex-start
+  }
+  .tenancy-seating__types {
+    flex-wrap: wrap
+  }
+  .tenancy-seating__type {
+    padding: 0;
+    width: 33.33%;
+    margin-top: 25px
+  }
+  .tenancy-seating__names {
+    margin-top: 11.8px
+  }
+  .tenancy-seating__item {
+    padding: 37px 30px;
+    text-align: left
+  }
+  .tenancy-seating__item .headline_22 {
+    font-size: 16px
+  }
+  .tenancy-seating__grid>div {
+    margin-top: 30px
+  }
+  .tenancy-seating {
+    padding: 60px 0 56px
+  }
+  .tenancy-advantages__slider .slider_numbers {
+    top: 286px;
+    right: 46px
+  }
+  .tenancy-advantages__item {
+    padding: 0
+  }
+  .tenancy-advantages__slider .slider_amount,
+  .tenancy-advantages__slider .slider_num_bread,
+  .tenancy-advantages__slider .slider_number {
+    font-size: 31px
+  }
+  .tenancy-advantages__item__p1 {
+    margin-top: 18px
+  }
+  .tenancy-advantages__item__info .headline_line {
+    margin-top: 19px
+  }
+  .tenancy-advantages__slider .uk-position-center-right-out {
+    left: 90%
+  }
+  .tenancy-advantages__slider .uk-slider-items {
+    margin-left: -15px
+  }
+  .tenancy-advantages__slider .uk-slider-items>li {
+    width: calc(100% - 15px);
+    padding-left: 15px
+  }
+  .tenancy-advantages__slider .slider_width150 {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px
+  }
+  .tenancy-advantages__item__img {
+    position: relative;
+    height: 276px;
+    max-width: none
+  }
+  .tenancy-advantages__item__info {
+    width: 100%;
+    padding: 51px 30px 60px
+  }
+  .headline_56 {
+    font-size: 26px
+  }
+  .tenancy-advantages__slider {
+    margin-top: 40px;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .tenancy-advantages {
+    padding: 62px 0 50px
+  }
+  .tenancy__about__info>svg {
+    width: 134.67px;
+    height: 139.57px;
+    top: 95px;
+    right: 15px
+  }
+  .tenancy__about_important {
+    margin-top: 30px
+  }
+  .tenancy__about_important svg {
+    width: 57px;
+    height: 61px;
+    min-width: 57px;
+    margin-right: 17px
+  }
+  .tenancy__about_txt {
+    margin-top: 25px
+  }
+  .headline_line {
+    margin-top: 25px;
+    width: 130px
+  }
+  .tenancy__about {
+    margin-top: 2px
+  }
+  .tenancy__about__info {
+    padding: 52px 15px 72px
+  }
+  .tab_nav .uk-tab>*>a {
+    padding: 28px 0
+  }
+  .tab_nav {
+    margin-top: 77px;
+    padding: 0 5px;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .uk-button.button_calcalutor {
+    width: 220px;
+    height: 50px
+  }
+  .tenancy__header .headline_22 {
+    font-size: 14px;
+    margin: 16px auto 27px
+  }
+  .tenancy__header .heading {
+    padding: 20px 0 0
+  }
+  .heading {
+    padding-bottom: 35px;
+    padding-top: 5px
+  }
+  .heading .headline_p1 {
+    font-size: 26px
+  }
+  .flight .instagram_decor1,
+  .uk-breadcrumb {
+    display: none
+  }
+  .flight__info .button_ticket {
+    margin-top: 35px;
+    height: 50px;
+    width: 180px;
+    justify-content: space-between;
+    padding: 0 25px
+  }
+  .flight__info__icon {
+    width: 200px;
+    height: 200px;
+    right: 10px
+  }
+  .flight__info .headline_line {
+    width: 104px;
+    height: 2px
+  }
+  .flight__info .headline_22 {
+    margin-top: 25px
+  }
+  .flight__txt {
+    margin-top: 15px;
+    font-size: 12px
+  }
+  .headline_22 {
+    font-size: 14px
+  }
+  .flight__info {
+    padding: 40px 15px
+  }
+  .not_found-block-left .headline_p1 {
+    font-size: 8vw
+  }
+  .footer__bottom_item2 {
+    width: 100%;
+    margin-top: 12px
+  }
+  .footer__bottom_item1 {
+    width: 100%
+  }
+  .footer__bottom {
+    position: relative;
+    flex-wrap: wrap;
+    padding-top: 27px;
+    font-size: 10px
+  }
+  .footer__bottom_item3 {
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: 26px
+  }
+  .footer__information_item3-mail {
+    font-size: 10px;
+    margin-top: 0
+  }
+  .footer__information_item3 .header_call svg {
+    margin-right: 12px
+  }
+  .header_call svg {
+    width: 13px;
+    height: 13px
+  }
+  .footer__information_item3 .header_call {
+    font-size: 14px
+  }
+  .footer__information_item3 {
+    width: 100%;
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap
+  }
+  .footer__information_item2-txt {
+    font-size: 10px
+  }
+  .footer__information_item2 {
+    width: 100%
+  }
+  .footer__information {
+    padding: 27px 0;
+    display: block
+  }
+  .footer__nav {
+    font-size: 11px;
+    padding: 10px 0 30px;
+    margin: 10px 0 0
+  }
+  .footer__nav_item1,
+  .footer__nav_item2,
+  .footer__nav_item3 {
+    width: 50%
+  }
+  .footer__form_btn .uk-button {
+    height: 50px
+  }
+  .form_politic label {
+    font-size: 10px
+  }
+  .form_politic .uk-checkbox {
+    margin-right: 16px
+  }
+  .footer__form_btn {
+    margin-top: 15px
+  }
+  .footer__form_captcha {
+    margin-top: 18px
+  }
+  .footer__form_polit {
+    margin-top: 36px
+  }
+  .footer__form {
+    margin-top: 0
+  }
+  .footer_p1 {
+    margin-top: 26px
+  }
+  .headline_p2 {
+    font-size: 18px
+  }
+  .footer__right {
+    width: 100%;
+    padding: 45px 15px 20px
+  }
+  .mailing__btn svg {
+    width: 21px;
+    height: 15px
+  }
+  .mailing__form .uk-input {
+    height: 60px;
+    font-size: 12px
+  }
+  .mailing__form .uk-input::-moz-placeholder {
+    font-size: 12px
+  }
+  .mailing__form .uk-input:-ms-input-placeholder {
+    font-size: 12px
+  }
+  .mailing__form .uk-input::placeholder {
+    font-size: 12px
+  }
+  .mailing__form {
+    margin-left: 0;
+    margin-top: 10px
+  }
+  .mailing__left svg {
+    width: 27px;
+    height: 20px;
+    min-width: 27px;
+    margin-right: 19px
+  }
+  .mailing__left .headline_p1 {
+    font-size: 18px;
+    margin-top: -5px
+  }
+  .mailing {
+    padding: 50px 0
+  }
+  .partner-one img {
+    width: 355px;
+    min-width: 355px
+  }
+  .partner__link {
+    width: 100px;
+    height: 100px
+  }
+  .partners__slider .swiper-slide {
+    width: 100px
+  }
+  .partners-section {
+    padding: 280px 0 50px
+  }
+  .awards__card_img {
+    top: 0
+  }
+  .awards__slider {
+    margin-top: 50px;
+    margin-left: -15px;
+    margin-right: -15px
+  }
+  .awards__slider .uk-slider-container {
+    padding: 0
+  }
+  .uk-position-center-left-out {
+    right: 90.5%
+  }
+  .uk-position-center-right-out {
+    left: 90.5%
+  }
+  .awards__slider .uk-slider-items>* {
+    padding-left: 20px;
+    width: 87%
+  }
+  .awards__slider .uk-slider-items {
+    margin-left: -20px
+  }
+  .awards__card_txt {
+    margin-top: 20px;
+    font-size: 12px
+  }
+  .awards__card_name {
+    font-size: 16px
+  }
+  .awards__card_date {
+    font-size: 20px;
+    max-width: 65px
+  }
+  .awards__card_img-txt {
+    font-size: 5px;
+    right: 57px;
+    top: 78px
+  }
+  .awards__card_img img {
+    transform: scale(.5) translate(54px, -57px)
+  }
+  .awards__card_img-circle {
+    width: 92px;
+    height: 92px
+  }
+  .awards__card {
+    padding: 80px 30px 60px
+  }
+  .awards__card:hover .awards__card_img-circle {
+    background: #e7f0f7
+  }
+  .awards__card:hover,
+  .awards__card:hover .awards__card_name {
+    color: #000
+  }
+  .awards__card:hover .awards__card_back {
+    opacity: 0;
+    height: 100%
+  }
+  .awards {
+    padding: 57px 0 61px
+  }
+  .instagram__slider_nav-line:nth-child(1) {
+    margin: 0 40px 0 60px
+  }
+  .instagram__slider_nav-line:nth-child(3) {
+    margin: 0 60px 0 40px
+  }
+  .instagram__slider_nav-link {
+    font-size: 12px
+  }
+  .instagram__slider_nav .slider_arrows {
+    margin: 18px 0
+  }
+  .instagram__slider_nav-p1 {
+    font-size: 18px
+  }
+  .instagram__slider .swiper-wrapper .swiper-slide {
+    height: 100%
+  }
+  .instagram__slider_nav {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    z-index: 2
+  }
+  .instagram__slider .swiper-wrapper {
+    height: 125px
+  }
+  .instagram_decor1 {
+    top: -353px;
+    right: -203px;
+    max-width: none;
+    width: 510px
+  }
+  .instagram__slider {
+    margin-top: 27px
+  }
+  .instagram {
+    padding-top: 36px
+  }
+  .instagram .headline .headline_p1 {
+    line-height: 1.5
+  }
+  .instagram__headline_icon {
+    width: 55px;
+    height: 55px;
+    top: 20%
+  }
+  .slider_num_bread {
+    padding: 0 0 0 5px
+  }
+  .slider_arrows svg {
+    width: 10px;
+    height: 4.85px
+  }
+  .slider_arrows a {
+    width: 35px;
+    height: 35px
+  }
+  .yacht__slider_navigation {
+    right: 28px;
+    padding: 9px 16px 9px 25px;
+    align-items: flex-start;
+    width: 176px
+  }
+  .slider_amount,
+  .slider_num_bread {
+    font-size: 13px
+  }
+  .slider_number {
+    margin-top: -2px;
+    font-size: 22px
+  }
+  .yacht__slider li {
+    width: 85%
+  }
+  .yacht__slider {
+    height: 213px
+  }
+  .yacht__capitan {
+    min-width: 0;
+    padding: 50px 15px
+  }
+  .yacht__information_bottom {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: calc(100% + 30px)
+  }
+  .yacht__capitan_experience {
+    margin-top: 11px;
+    font-size: 9px;
+    padding: 4.7px 14px
+  }
+  .yacht__capitan_name {
+    font-size: 16px;
+    margin-top: 8px
+  }
+  .yacht__capitan_job {
+    margin-top: 0;
+    font-size: 10px
+  }
+  .yacht__capitan_img {
+    width: 100px;
+    height: 100px;
+    margin-right: 28px;
+    min-width: 100px
+  }
+  .yacht__information_bottom {
+    margin-top: 46.5px
+  }
+  .yacht__information_capacity>.yacht__information_capacity-item3 svg {
+    margin-right: 12px
+  }
+  .yacht__information_capacity-item3 svg {
+    width: 22.4px;
+    height: 12.4px;
+    margin-right: 13px
+  }
+  .yacht__information_capacity-item2 svg {
+    width: 15.7px;
+    margin-left: 2px;
+    height: 19px
+  }
+  .yacht__information_capacity-item1 svg {
+    width: 11px;
+    margin-left: 5px;
+    height: 13.2px
+  }
+  .yacht__information_capacity {
+    font-size: 12px
+  }
+  .yacht__informations_switcher {
+    margin-top: 23px
+  }
+  .switcher-yacht {
+    margin-top: 10px
+  }
+  .yacht__information_btns {
+    margin-top: 20px
+  }
+  ul.uk-nav-sub img {
+    height: 12px
+  }
+  ul.uk-nav-sub a {
+    padding: 10px 17px;
+    font-size: 11px
+  }
+  .toggle_choose-link img {
+    height: 12px
+  }
+  .uk-nav-parent-icon>.uk-parent>a::after {
+    width: 40px;
+    height: 40px;
+    right: -43px
+  }
+  .toggle_choose-link {
+    font-size: 11px;
+    width: calc(100% - 43px);
+    height: 40px;
+    padding: 0 45px 0 17px !important
+  }
+  #yacht-headline {
+    margin-bottom: 35px;
+    font-size: 28px
+  }
+  .yacht {
+    padding: 60px 0 0;
+    min-height: auto
+  }
+  .scheme__bottom .button_ticket {
+    font-size: 14px
+  }
+  .scheme__bottom .button_ticket svg {
+    width: 31px;
+    margin-left: 24px;
+    height: 18px
+  }
+  .scheme__bottom_info {
+    font-size: 11px
+  }
+  .scheme__bottom_head {
+    font-size: 14px
+  }
+  .scheme__bottom_item {
+    width: 100%;
+    padding: 23px 22px 23px 28px
+  }
+  .scheme_item17 .scheme__item_txt {
+    left: 27px;
+    top: -2px
+  }
+  .scheme_item16 .scheme__item_txt {
+    left: 0;
+    top: -44px
+  }
+  .scheme_item15 .scheme__item_txt {
+    left: 29px;
+    top: -17px
+  }
+  .scheme_item14 .scheme__item_txt {
+    left: -9px;
+    top: -19px
+  }
+  .scheme_item13 .scheme__item_txt {
+    left: 27px
+  }
+  .scheme_item11 .scheme__item_txt {
+    top: 27px
+  }
+  .scheme_item12 .scheme__item_txt {
+    left: -62px
+  }
+  .scheme_item10 .scheme__item_txt {
+    left: 27px
+  }
+  .scheme_item9 .scheme__item_txt {
+    left: 28px
+  }
+  .scheme_item8 .scheme__item_txt {
+    left: 27px
+  }
+  .scheme_item7 .scheme__item_txt {
+    left: -47px;
+    top: 37px
+  }
+  .scheme_item6 .scheme__item_txt {
+    top: -26px
+  }
+  .scheme_item5 .scheme__item_txt {
+    left: 25px
+  }
+  .scheme_item4 .scheme__item_txt {
+    left: -59px
+  }
+  .scheme_item3 .scheme__item_txt {
+    left: 28px;
+    top: 2px
+  }
+  .scheme_item2 .scheme__item_txt {
+    left: 25px;
+    top: -3px
+  }
+  .scheme__map {
+    margin-left: -170px;
+    margin-right: -15px
+  }
+  .scheme__item_first-container {
+    font-size: 9px
+  }
+  .scheme__item_first {
+    width: 42.8px;
+    height: 42.8px;
+    border-width: 7px
+  }
+  .scheme__item_circle {
+    width: 18.16px;
+    height: 18.16px;
+    border-width: 5px
+  }
+  .scheme__item-container {
+    font-size: 9px
+  }
+  .scheme__map_path-container {
+    width: 926px
+  }
+  .scheme__block {
+    margin-top: 70px
+  }
+  .scheme__scroll {
+    right: auto;
+    top: 150px;
+    left: 15px
+  }
+  .scheme__scroll br {
+    display: none
+  }
+  .scheme__scroll svg {
+    width: 13px;
+    margin-right: 15px;
+    height: 19px
+  }
+  .scheme {
+    padding: 61px 0 74px
+  }
+  .main-news {
+    padding-bottom: 56px
+  }
+  .more_container>div {
+    width: 52%
+  }
+  .more_container {
+    margin-top: 50px
+  }
+  .more_container>div:nth-child(1) {
+    margin-right: 30px
+  }
+  .more_container>div:nth-child(3) {
+    margin-left: 30px
+  }
+  .btn_more {
+    font-size: 10px;
+    padding: 16px 0
+  }
+  .card-news .uk-card-body {
+    padding: 37px 20px
+  }
+  .card-news .uk-card-title {
+    font-size: 12px
+  }
+  .main-news_container {
+    margin-top: 10px
+  }
+  .main-news_container .uk-card {
+    margin-top: 28px
+  }
+  .main-news__items .uk-card {
+    width: 100%;
+    height: 213px
+  }
+  .link_more svg {
+    margin-left: 10px
+  }
+  .link_more {
+    font-size: 12px
+  }
+  .card_text {
+    font-size: 12px;
+    margin-top: 21.7px;
+    margin-bottom: 24.7px
+  }
+  .uk-card-title {
+    font-size: 16px;
+    margin-top: 17px
+  }
+  .uk-card-body {
+    padding: 21.5px 0 0
+  }
+  .card__important .uk-card-body {
+    margin-top: -35px
+  }
+  .card__important .uk-badge {
+    left: 10px;
+    top: 6px
+  }
+  .uk-badge {
+    font-size: 9px;
+    padding: 6px 11px
+  }
+  .uk-card-default_media {
+    min-height: 213px;
+    height: 213px;
+    width: 100%
+  }
+  .main-news__headline .description {
+    margin-right: auto
+  }
+  .main-news__headline .uk-subnav {
+    width: 100%;
+    margin-bottom: 35px
+  }
+  .description {
+    font-size: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    line-height: 1.6;
+    padding-left: 18px
+  }
+  .uk-subnav {
+    margin-left: -23px
+  }
+  .uk-subnav>* {
+    padding-left: 23px
+  }
+  .uk-subnav>*>:first-child {
+    font-size: 7.2vw
+  }
+  .padding_top {
+    padding-top: 30px
+  }
+  .pass-quantity__item_name {
+    font-size: 12px
+  }
+  .language svg {
+    margin-left: 15px
+  }
+  .language_drop {
+    width: 100%
+  }
+  .buy-ticket .button_ticket {
+    height: 48px;
+    font-size: 12px;
+    margin-top: 8px
+  }
+  .select-options li:last-child {
+    padding-bottom: 9px
+  }
+  .pass-quantity {
+    padding: 20px
+  }
+  .select-options {
+    margin-top: 8px
+  }
+  .buy-ticket__item1_arr {
+    right: 15px
+  }
+  .buy-ticket__item:nth-child(2) {
+    border-top: 1px solid #cdcdcd;
+    border-left: none
+  }
+  .buy-ticket__item {
+    width: 100%;
+    height: 50px
+  }
+  .buy-ticket__item .icon {
+    left: 19px
+  }
+  .buy-ticket__item_icon1 {
+    width: 14px;
+    height: 16px
+  }
+  .buy-ticket__item .buy-ticket__item_icon2 {
+    width: 17px;
+    left: 17px;
+    height: 17px
+  }
+  .buy-ticket__item .buy-ticket__item_icon3 {
+    width: 21px;
+    left: 16px;
+    height: 16px
+  }
+  .buy-ticket__item .buy-ticket__item_icon4 {
+    width: 18.43px;
+    left: 16px;
+    height: 15.7px
+  }
+  .buy-ticket {
+    margin-top: 10px
+  }
+  .header__middle_right {
+    top: 42px
+  }
+  .header__p3 {
+    font-size: 23px
+  }
+  .header__p2 {
+    margin-top: 7px
+  }
+  .header__middle_right svg {
+    width: 154px
+  }
+  .header__top_item3 a:first-child {
+    width: 50%;
+    margin-right: 7px
+  }
+  .header__top_item3 {
+    margin-top: 5px;
+    width: auto
+  }
+  .header__top_item3 a:last-child {
+    width: 50%
+  }
+  .language-container {
+    width: 50%
+  }
+  .language {
+    height: 40px;
+    width: 100%
+  }
+  .header_top_menu {
+    height: 40px;
+    width: 50%
+  }
+  .header__top_item3-container {
+    order: 3;
+    width: 100%
+  }
+  .header__top_item4-container {
+    width: 50%;
+    order: 2
+  }
+  .header__top_item1-container {
+    width: 50%;
+    order: 1
+  }
+  .button_schedule svg {
+    width: 10px;
+    height: 10px
+  }
+  .button_ticket svg {
+    width: 17px;
+    height: 10.47px
+  }
+  .header_top_back {
+    padding: 10px 0
+  }
+  .header_top_back>div>div {
+    flex-wrap: wrap
+  }
+  .header_top_back .uk-button {
+    font-size: 9px
+  }
+  /*header {
+    padding: 5px 0 59px
+  }*/
+  .header__top_logo svg {
+    width: 113px;
+    height: 48px
+  }
+  .headline_p1 {
+    font-size: 32px
+  }
+  .header-middle img {
+    max-width: 790px;
+    top: 43%
+  }
+  .g-recaptcha {
+    transform: scale(.82);
+    transform-origin: 0
+  }
+  .uk-modal .uk-close {
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    top: 12px
+  }
+  .uk-modal .uk-close svg {
+    width: 14px;
+    height: 14px
+  }
+  html {
+    font-size: 12px
+  }
+  .uk-form-label {
+    font-size: 12px;
+    margin-bottom: 10px
+  }
+  .uk-modal-title {
+    font-size: 20px
+  }
+  .uk-modal-header {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px 26px
+  }
+  .uk-button {
+    font-size: 10px;
+    width: 135px;
+    min-width: 100px;
+    height: 40px
+  }
+  .uk-input,
+  .uk-offcanvas-bar .uk-input,
+  .uk-offcanvas-bar .uk-textarea,
+  .uk-select,
+  .uk-textarea {
+    font-size: 12px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0
+  }
+  .uk-input,
+  .uk-select:not([multiple]):not([size]) {
+    height: 40px
+  }
+  .form_placeholder {
+    font-size: 10px;
+    top: 10px
+  }
+  .uk-textarea {
+    padding-top: 25px
+  }
+  .uk-input::-moz-placeholder,
+  .uk-offcanvas-bar .uk-input::-moz-placeholder,
+  .uk-offcanvas-bar .uk-textarea::-moz-placeholder,
+  .uk-textarea::-moz-placeholder {
+    font-size: 12px
+  }
+  .uk-input:-ms-input-placeholder,
+  .uk-offcanvas-bar .uk-input:-ms-input-placeholder,
+  .uk-offcanvas-bar .uk-textarea:-ms-input-placeholder,
+  .uk-textarea:-ms-input-placeholder {
+    font-size: 12px
+  }
+  .uk-input::placeholder,
+  .uk-offcanvas-bar .uk-input::placeholder,
+  .uk-offcanvas-bar .uk-textarea::placeholder,
+  .uk-textarea::placeholder {
+    font-size: 12px
+  }
+  .uk-modal-body,
+  .uk-modal-footer {
+    padding: 35px 20px 20px;
+    font-size: 10px
+  }
+  .uk-modal-body p,
+  .uk-modal-footer p {
+    margin-bottom: 10px
+  }
+  .uk-modal-body *+p,
+  .uk-modal-footer *+p {
+    margin-top: 10px
+  }
+  .modal_form {
+    margin-top: 15px
+  }
+  .uk-modal-body .login-container:last-child {
+    padding-bottom: 0
+  }
+  .txt12 {
+    font-size: 10px
+  }
+  .select-styled {
+    height: 35px;
+    padding-right: 30px;
+    padding-left: 56px;
+    font-size: 12px
+  }
+  .select-styled::after {
+    right: 15px
+  }
+  .select-options li {
+    font-size: 10px;
+    padding: 5px 9px
+  }
+  .margin_top {
+    margin-top: 40px
+  }
+}
+
+@media screen and (max-width:374px) {
+  .trams-shutdown__item {
+    width: 24%
+  }
+}
+
+@media screen and (max-width:362px) {
+  .main-news__headline .uk-button {
+    width: 120px;
+    padding: 0
+  }
+}

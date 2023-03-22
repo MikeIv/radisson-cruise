@@ -1,0 +1,28 @@
+@mixin color-grad {
+  background: #0BC3F3;
+  background: linear-gradient(180deg, #0BC3F3 20%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@mixin background-color {
+  background: #000;
+  border: 1px solid $color1;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin white-space {
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none!important;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    display:none;
+  }
+}

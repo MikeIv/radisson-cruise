@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="trams-shutdown__item-a" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00c1f3"></stop>
+      <stop offset="1" stop-color="#fff"></stop>
+    </linearGradient>
+    <linearGradient id="trams-shutdown__item-b" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"></stop>
+      <stop offset="1" stop-color="#fff"></stop>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-354 -2151)">
+    <circle cx="50" cy="50" r="50" transform="translate(354 2151)" fill="url(#trams-shutdown__item-a)"></circle>
+    <circle cx="27.5" cy="27.5" r="27.5" transform="rotate(-14.98 8483.442 -317.54)" fill="url(#trams-shutdown__item-b)"></circle>
+  </g>
+  <path d="M51.072 57.266l.007-.01a7.2 7.2 0 005.35-4.208l-2.121-.59 3.608-2.159 2.083 3.74-2.1-.584-.033.129a7.817 7.817 0 01-.354 1.021 10.313 10.313 0 01-1.22 2.172 7.51 7.51 0 01-6.291 3.221h-.007a7.509 7.509 0 01-6.291-3.221 10.272 10.272 0 01-1.22-2.172 7.818 7.818 0 01-.354-1.021l-.033-.129-2.1.584 2.082-3.74 3.608 2.159-2.121.59a7.208 7.208 0 005.351 4.208v-8.034h-2.687v-1.858h2.689v-2.248a3.158 3.158 0 01-1.973-2.957 3.05 3.05 0 116.1 0 3.158 3.158 0 01-1.972 2.957v2.248h2.689v1.858h-2.689v8.044zM49.996 43.46a1.3 1.3 0 10-1.255-1.3 1.278 1.278 0 001.255 1.3z"></path>
+</svg>

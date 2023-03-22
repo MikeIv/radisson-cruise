@@ -1,0 +1,35 @@
+<svg id="Сгруппировать_8" data-name="Сгруппировать 8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95.337" height="86.4" viewBox="0 0 95.337 86.4">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Прямоугольник_443" data-name="Прямоугольник 443" width="95.337" height="86.4" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Прямоугольник_442" data-name="Прямоугольник 442" width="95.338" height="86.4" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Прямоугольник_439" data-name="Прямоугольник 439" width="20.509" height="20.509" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Сгруппировать_7" data-name="Сгруппировать 7" clip-path="url(#clip-path)">
+    <g id="Сгруппировать_6" data-name="Сгруппировать 6" transform="translate(0 0)">
+      <g id="Сгруппировать_5" data-name="Сгруппировать 5" clip-path="url(#clip-path-2)">
+        <path id="Контур_1" data-name="Контур 1" d="M79.977,1063.693c0,1.155-17.9,2.091-39.988,2.091S0,1064.848,0,1063.693s17.9-2.091,39.988-2.091,39.988.936,39.988,2.091" transform="translate(0 -979.384)" fill="#efefef"/>
+        <path id="Контур_2" data-name="Контур 2" d="M79.977,206.054v41.579a7.719,7.719,0,0,1-7.718,7.72H7.718A7.719,7.719,0,0,1,0,247.633V206.054a7.719,7.719,0,0,1,7.718-7.72H72.259a7.719,7.719,0,0,1,7.718,7.72" transform="translate(0 -182.974)" fill="#ffbb10"/>
+        <rect id="Прямоугольник_436" data-name="Прямоугольник 436" width="79.977" height="14.588" transform="translate(0 25.958)" fill="#1e1e1e"/>
+        <rect id="Прямоугольник_437" data-name="Прямоугольник 437" width="24.7" height="4.117" transform="translate(10.483 49.219)" fill="#fff"/>
+        <rect id="Прямоугольник_438" data-name="Прямоугольник 438" width="24.7" height="4.117" transform="translate(10.483 59.897)" fill="#fff"/>
+        <path id="Контур_3" data-name="Контур 3" d="M662.674,666.716h10.78a3.845,3.845,0,0,0,3.845-3.845v-4.1a3.845,3.845,0,0,0-3.845-3.845h-10.78a3.845,3.845,0,0,0-3.845,3.845v4.1a3.845,3.845,0,0,0,3.845,3.845" transform="translate(-607.805 -604.205)" fill="#fff"/>
+        <g id="Сгруппировать_4" data-name="Сгруппировать 4" transform="translate(59.468 15.36)" opacity="0.1">
+          <g id="Сгруппировать_3" data-name="Сгруппировать 3">
+            <g id="Сгруппировать_2" data-name="Сгруппировать 2" clip-path="url(#clip-path-3)">
+              <path id="Контур_4" data-name="Контур 4" d="M788.356,206.054v12.789a20.533,20.533,0,0,1-20.509-20.509h12.791a7.719,7.719,0,0,1,7.718,7.72" transform="translate(-767.847 -198.334)"/>
+            </g>
+          </g>
+        </g>
+        <path id="Контур_5" data-name="Контур 5" d="M865.059,15.365A15.36,15.36,0,1,1,849.7,0a15.36,15.36,0,0,1,15.36,15.36" transform="translate(-769.721 -0.005)" fill="#ff1d1d"/>
+        <rect id="Прямоугольник_440" data-name="Прямоугольник 440" width="4.117" height="15.258" transform="translate(73.127 11.421) rotate(-45)" fill="#fff"/>
+        <rect id="Прямоугольник_441" data-name="Прямоугольник 441" width="15.258" height="4.117" transform="translate(73.127 19.3) rotate(-45)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

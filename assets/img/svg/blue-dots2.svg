@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.286 49.71" id="svg-calc">
+  <g fill="#00c1f3">
+    <g transform="translate(24.186)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M22.098 8.849h20.188v6.547H22.098z"></path>
+    <g transform="translate(2.089)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M0 8.849h20.188v6.547H0z"></path>
+    <g transform="translate(24.186 17.157)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M22.098 26.006h20.188v6.547H22.098z"></path>
+    <g transform="translate(2.089 17.157)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M0 26.006h20.188v6.547H0z"></path>
+    <g transform="translate(24.186 34.314)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M22.098 43.163h20.188v6.547H22.098z"></path>
+    <g transform="translate(2.089 34.314)">
+      <circle cx="3.544" cy="3.544" transform="translate(8.923)" r="3.544"></circle>
+      <circle cx="3.544" cy="3.544" r="3.544"></circle>
+    </g>
+    <path d="M0 43.163h20.188v6.547H0z"></path>
+  </g>
+</svg>

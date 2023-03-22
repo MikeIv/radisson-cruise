@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.707 45.263" id="svg-calc-yacht2">
+  <g transform="translate(7.356)" fill="#00c1f3">
+    <circle cx="3.544" cy="3.544" transform="translate(18.416)" r="3.544"></circle>
+    <circle cx="3.544" cy="3.544" transform="translate(9.208)" r="3.544"></circle>
+    <circle cx="3.544" cy="3.544" r="3.544"></circle>
+  </g>
+  <circle cx="3.544" cy="3.544" transform="translate(0 18.941)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(0 28.558)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(0 38.175)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(10.416 18.941)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(10.416 28.558)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(10.416 38.175)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(20.833 18.941)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(20.833 28.558)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(20.833 38.175)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(31.249 18.941)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(31.249 28.558)" fill="#00c1f3" r="3.544"></circle>
+  <circle cx="3.544" cy="3.544" transform="translate(31.249 38.175)" fill="#00c1f3" r="3.544"></circle>
+  <path fill="#00c1f3" d="M0 10.092h39.707v6.547H0z"></path>
+</svg>

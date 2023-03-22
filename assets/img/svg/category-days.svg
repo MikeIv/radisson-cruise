@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 65" id="svg-ticktet-my-2-blue">
+  <g transform="translate(-995 -822)">
+    <circle cx="32.5" cy="32.5" r="32.5" transform="translate(1001 822)" fill="#05C2F3" ></circle>
+    <circle cx="14.5" cy="14.5" r="14.5" transform="translate(1019 840)" fill="#05C2F3"></circle>
+    <g transform="translate(37.694 145.112)">
+      <text transform="translate(958.306 717.888)" font-size="41" font-family="montserrat" font-weight="700">
+      <tspan x="0" y="0">365</tspan>
+    </text><text transform="translate(967.306 735.888)" font-size="19" font-family="montserrat" font-weight="700">
+      <tspan x="0" y="0">дней</tspan>
+    </text></g>
+  </g>
+</svg>
+
