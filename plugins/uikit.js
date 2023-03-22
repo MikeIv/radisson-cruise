@@ -207,11 +207,11 @@ img.src = "preload.png"; // (*)
 
 
 if(document.querySelector('.modal-calculation')) {
-  if (window.innerWidth <= 959) {
+  /*if (window.innerWidth <= 959) {
     document.querySelector('.modal-calculation__slide .form_politic').innerHTML = `<div class='modal-calculation__slide4__bottom'></div>`
     document.querySelector('#calculation__slide4-submit').innerHTML = "<div class='calculation__slide4-submit__cont'></div>"
-    /*document.querySelector('.calculation__slide4-submit__cont').appendTo('.modal-calculation__slide4__bottom');*/
-  }
+    /!*document.querySelector('.calculation__slide4-submit__cont').appendTo('.modal-calculation__slide4__bottom');*!/
+  }*/
 
 
 
