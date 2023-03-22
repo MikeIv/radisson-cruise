@@ -16,10 +16,11 @@
       </div>
       <nuxt-link class="uk-button uk-button-default button_news-all" to="/news/">
         <span>Все новости</span>
+        <svg-icon name="arrow2" class="icon"/>
       </nuxt-link>
     </div>
     <div v-if="!isNewsLoaded">
-      <h3>У нас пока нет для вас новостей</h3>
+      <h3>Материалов по запросу не найдено</h3>
     </div>
     <ul class="main-news_container uk-switcher" v-if="isNewsLoaded">
       <li uk-scrollspy="target: > div > .uk-card; cls: uk-animation-slide-bottom-medium; delay: 500" class="uk-active">
@@ -28,7 +29,7 @@
                                 :fileName="cardMain.banner"
                                 :date="cardMain.date"
                                 :title="cardMain.name"
-                                :description="cardMain.qname"
+                                :description="cardMain.anons"
           />
         </div>
         <div class="main-news__items uk-flex uk-flex-nowrap uk-grid-match">
@@ -104,6 +105,14 @@
         </div>-->
       </li>
       <li uk-scrollspy="target: > div > .uk-card; cls: uk-animation-slide-bottom-medium; delay: 500" class="">
+        <div class="main-news__important">
+          <NewsBarCardImportant :link="cardMain.uri"
+                                :fileName="cardMain.banner"
+                                :date="cardMain.date"
+                                :title="cardMain.name"
+                                :description="cardMain.anons"
+          />
+        </div>
         <div class="main-news__items uk-flex uk-flex-nowrap uk-grid-match">
               <NewsBarCard v-for="(card,index) in cardSmall"
                            :key="'inx' + index"
