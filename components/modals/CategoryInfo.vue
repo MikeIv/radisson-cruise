@@ -12,9 +12,9 @@
       <div class="uk-container modal-full_container uk-position-relative">
         <div class="headline_p2" v-if="category">{{category.name}}</div>
         <div class="uk-modal-full__block">
-          <div class="uk-modal-full__block__top">
+<!--          <div class="uk-modal-full__block__top">
             <span class=" t_semibold txt18">Рыбный ресторан на борту белоснежной яхты</span>
-          </div>
+          </div>-->
           <div class="uk-modal-full__info">
             <div v-if="category" class="uk-position-relative yacht__slider" tabindex="-1" uk-slider >
               <ul class="uk-slider-items uk-flex"  uk-lightbox >

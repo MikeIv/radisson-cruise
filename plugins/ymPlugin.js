@@ -11,6 +11,4 @@ const settings = {
   version: '2.1'
 }
 
-console.log("hello world")
-
 Vue.use(YmapPlugin, settings);
