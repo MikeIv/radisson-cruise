@@ -774,9 +774,10 @@
       </div>
     </section>-->
     <div class="uk-position-relative about__video_container" id="video">
-      <video  src="~assets/video/video.mp4" muted class="video" poster="about10.png">
+<!--      <video src="~assets/video/video.mp4" muted class="video">
         <source src="~assets/video/video.mp4" type="video/mp4">
-      </video>
+      </video>-->
+      <video ref="video" src="~assets/video/about_page.mp4" uk-video="autoplay: inview" playsinline class="video" poster="/about10.png"></video>
       <div class="playpause">
         <div class="play-video-btn_back">
           <img src="~assets/img/svg/play-btn.svg" alt="" class="" id="svg-new-play" uk-svg>
@@ -1257,23 +1258,50 @@ export default {
   },
   fetchOnServer: false,
   fetchKey: 'site-sidebar',
-
-
-  mounted() {
-    let videoContainer = document.querySelectorAll('#video');
+  updated() {
+    let videoContainer = document.querySelector('#video');
     let element = document.querySelector('.yacht__slider')
-    videoContainer.forEach(video => {
-      video.addEventListener('click', function (e) {
-        if(video.querySelector('.video').paused){
-          video.querySelector('.playpause').style.display = 'none'
-          video.querySelector('.video').play()
-        } else {
-          video.querySelector('.playpause').style.display = 'flex'
-          video.querySelector('.video').pause()
-        }
-      })
-    })
+    let video = videoContainer.querySelector('.video');
+  },
+  mounted() {
+    let videoContainer = document.querySelector('#video');
+    let element = document.querySelector('.yacht__slider')
+    let video = videoContainer.querySelector('.video');
+    let playPromise = video.play();
 
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {
+        // Automatic playback started!
+        // Show playing UI.
+      })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+    }
+    video.addEventListener('click', function (e) {
+      if (video.paused) {
+        console.log('play')
+        videoContainer.querySelector('.playpause').style.display = 'none'
+        this.$refs.video.play();
+      } else {
+        videoContainer.querySelector('.playpause').style.display = 'flex'
+        console.log('paused')
+        let playPromise = this.$refs.video.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+            this.$refs.video.pause();
+          })
+              .catch(error => {
+                // Auto-play was prevented
+                // Show paused UI.
+              });
+        }
+      }
+    })
     UIkit.util.on(element, 'itemshown', function(e) {
       element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
     });

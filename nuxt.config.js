@@ -45,7 +45,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/uikit', ssr: false },
-    { src: '~/plugins/ymPlugin.js', mode: 'client' },
+    { src: '~/plugins/ymPlugin.js', mode: 'client', ssr: true },
     { src: '~/plugins/litepicker.js', mode: 'client', ssr: false },
     { src: '~/plugins/routesTimeCalc.js', mode: 'server', ssr: true },
   ],
