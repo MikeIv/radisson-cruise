@@ -641,7 +641,7 @@
         return button;
       },
       consoleLog() {
-        console.log('hello world');
+        //console.log('hello world');
       },
       async onMapMounted() {
         //const loadYmap = await loadYmap(this.settings);
@@ -712,7 +712,7 @@
               loc1 = result.geoObjects.get(0).properties.get('metaDataProperty')
                 .GeocoderMetaData.text;
             });
-          console.log('geo location =', loc1);
+          //console.log('geo location =', loc1);
           // Зададим состояние панели для построения машрутов.
           control.routePanel.state.set({
             // Тип маршрутизации.
@@ -1050,7 +1050,7 @@
               // Выведем результат геокодирования.
               loc1 = result.geoObjects.get(0).properties.get('metaDataProperty')
                 .GeocoderMetaData.text;
-              console.log('geo location =', loc1);
+              //console.log('geo location =', loc1);
             });
 
           // Зададим состояние панели для построения машрутов.
@@ -1296,8 +1296,8 @@
             },
           });
 
-          console.log(map1);
-          console.log(ymaps);
+/*           console.log(map1);
+          console.log(ymaps); */
 
           map1.behaviors.disable('scrollZoom');
         }
@@ -1615,9 +1615,9 @@
             "<div class='map-controls'><span class='crow'></span><div id='zoom-in2' class='btn'><span class='icon-plus'>+</span></div><div id='zoom-out2' class='btn'><span class='icon-minus'>-</span></div></div>",
             {
               build: function () {
-                console.log('ymaps CreateClass Map', ymaps);
+/*                 console.log('ymaps CreateClass Map', ymaps);
                 console.log('map1 CreateClass Map', map1);
-                console.log('THIS CreateClass Map', this);
+                console.log('THIS CreateClass Map', this); */
                 ZoomLayout2.superclass.build.call(this);
                 this.zoomInCallback = ymaps.util.bind(this.zoomIn, this);
                 this.zoomOutCallback = ymaps.util.bind(this.zoomOut, this);

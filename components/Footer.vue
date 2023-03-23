@@ -752,7 +752,7 @@ export default {
         })
 
         const data = await response.data
-        console.log(data)
+        //console.log(data)
         UIkit.modal('#success').show();
         this.onError = null
       } catch(e) {

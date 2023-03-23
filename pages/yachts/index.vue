@@ -322,8 +322,8 @@ export default {
       this.$refs.yachts.classList.add('hide');
     },
     checkedFilter(emitFilterPrameters){
-      console.log("PARENT CHECKED Yachts Index emitParam = ", emitFilterPrameters)
-      console.log("REFS = ", this.$refs)
+      //console.log("PARENT CHECKED Yachts Index emitParam = ", emitFilterPrameters)
+      //console.log("REFS = ", this.$refs)
       this.currentSelectedCategory = emitFilterPrameters.activeTab;
       switch (this.currentSelectedCategory) {
         case 0:
@@ -332,7 +332,7 @@ export default {
           break;
         case 1:
         this.hideAllFilters();
-        console.log("REFS Class List = ", this.$refs.yachts.classList)
+        //"REFS Class List = ", this.$refs.yachts.classList)
         this.$refs.yachts.classList.remove('hide');
           break;
         case 2:
@@ -351,7 +351,7 @@ export default {
     },
   },
   beforeDestroy() {
-    console.log("DESTROY Yachts Index =", this.$refs.filterModal);
+    //console.log("DESTROY Yachts Index =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
     
   },
@@ -373,12 +373,12 @@ export default {
 
     if (this.yachtsFetch) {
       this.$children.forEach(child => {
-        console.log(child)
+        //console.log(child)
       })
     }
     this.$nextTick(() => {
       this.$children.forEach(child => {
-        console.log(child.$el.id)
+        //console.log(child.$el.id)
         if (this.$route.hash === `#${child.$el.id}`) {
           child.$el.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         }

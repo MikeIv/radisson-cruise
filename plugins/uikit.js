@@ -253,7 +253,7 @@ if(document.querySelector('.modal-calculation')) {
   document.querySelector('.modal-calculation__arr_next').addEventListener('click',function (e) {
     if(e.currentTarget.classList.contains('active')) {
       let last = Array.from(document.querySelectorAll('.modal-calculation__slide')).pop();
-      console.log('yes')
+      //console.log('yes')
       if (!last.classList.contains('current')) {
         move(true)
       }

@@ -300,8 +300,8 @@ export default {
   },
   methods: {
     clickSelect(item) {
-      console.log("clickSelect");
-      console.log("clickSelect",item );
+      //console.log("clickSelect");
+      //console.log("clickSelect",item );
       switch (item) {
         case 'days':
         this.closeFields();
@@ -348,8 +348,8 @@ export default {
       this.closeModal();
     },
     selectMonth(item) {
-      console.log("selectMonth",item);
-      console.log("this.$refs.dropMonth = ",this.$refs.dropMonth);
+      //console.log("selectMonth",item);
+      //console.log("this.$refs.dropMonth = ",this.$refs.dropMonth);
       if(item === 0){
         this.selectedMonth = null;
       }else{
@@ -359,8 +359,8 @@ export default {
       UIkit.dropdown(this.$refs.dropMonth).hide(false);
     },
     selectYear(item) {
-      console.log("selectYear",item);
-      console.log("this.$refs.dropYear = ",this.$refs.dropYear);
+      //console.log("selectYear",item);
+      //console.log("this.$refs.dropYear = ",this.$refs.dropYear);
       if(item === "Все года"){
         this.selectedYear = null;
       }else{
@@ -432,7 +432,7 @@ export default {
       //this.isModalShow = true;
     },
     closeModal() {
-      console.log('closeModal');
+      //console.log('closeModal');
       //this.isModalShow = false;
       UIkit.modal('#modal-filter').hide();
     },
@@ -484,15 +484,15 @@ export default {
         setup: (picker) => {
           picker.on('show', (el) => {
             picker.ui.style.left = '0px';
-            console.log("Show Element = ",  picker.ui.style)
+            //console.log("Show Element = ",  picker.ui.style)
 
           });
           picker.on('selected', async (date1, date2) => {
 
             picker.getDate()
-            console.log("GET DATE FROM Picker = ",picker.getDate())
+/*             console.log("GET DATE FROM Picker = ",picker.getDate())
             console.log("select Date 1= ", date1.dateInstance);
-            console.log("select Date 2= ", date2.dateInstance);
+            console.log("select Date 2= ", date2.dateInstance); */
             function addDays(date, days) {
               let result = new Date(date);
               result.setDate(result.getDate() + days);
@@ -503,9 +503,9 @@ export default {
             let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
             this.datesFilter.dateFirst = dateFirst;
             this.datesFilter.dateEnd = dateEnd;
-            console.log("this.datesFilter = ", this.datesFilter)
+/*             console.log("this.datesFilter = ", this.datesFilter)
             console.log("dateFirst = ", dateFirst)
-            console.log("dateEnd = ", dateEnd)
+            console.log("dateEnd = ", dateEnd) */
             //this.selectDate(date1, date2);
             //this.arrayToFilter = []
             /* let dayRoutes = await axios.get(

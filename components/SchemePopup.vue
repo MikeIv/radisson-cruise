@@ -34,9 +34,9 @@ export default {
   methods: {
     hideOutside(e) {
       if(e.target != document.querySelector('.test')) {
-        console.log('true')
+        //console.log('true')
       } else {
-        console.log('false')
+        //console.log('false')
       }
     }
   },

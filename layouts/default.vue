@@ -53,11 +53,11 @@
     watch: {
     $route(to, from) {
       this.$store.commit('changeNavState', false)
-      console.log('showNav = ', this.showNav)
+/*       console.log('showNav = ', this.showNav)
       console.log('showNav = ', this.$store.state.showNav)
       console.log('REFS = ', this.$refs)
       console.log('route change to', to)
-      console.log('route change from', from)
+      console.log('route change from', from) */
     },
   },
     /*head() {

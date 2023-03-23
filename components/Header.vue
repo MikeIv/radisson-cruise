@@ -264,7 +264,7 @@
     },
     methods: {
       closeNav() {
-      console.log('close Nav')
+      //console.log('close Nav')
       this.$store.commit('changeNavState', false)
     },
       activateCalc() {

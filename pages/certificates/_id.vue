@@ -321,12 +321,12 @@ export default {
     onAccept (e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
-      console.log('accept', maskRef.value);
+      //console.log('accept', maskRef.value);
     },
     onComplete (e) {
       const maskRef = e.detail;
       this.phone = maskRef.unmaskedValue
-      console.log('complete', maskRef.unmaskedValue);
+      //console.log('complete', maskRef.unmaskedValue);
     },
     removeSeat() {
       if (this.seats > 1) {
@@ -363,7 +363,7 @@ export default {
         })
 
         const data = await response.data
-        console.log(data)
+        //console.log(data)
         payUrl = data.formUrl
         this.onError = null
         if (payUrl !== undefined) {

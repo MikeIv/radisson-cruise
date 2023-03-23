@@ -339,13 +339,13 @@ export default {
         default:
           break;
       }
-      console.log("currentStep = ", this.currentStep);
+      //"currentStep = ", this.currentStep);
       //return (this.currentStep / (this.steps - 1)) * 100;
     },
   },
   methods: {
     validateName() {
-      console.log(" Name Change = ", this.formData.name)
+      //console.log(" Name Change = ", this.formData.name)
       if (this.nameRegex.test(this.formData.name) && this.formData.name.length > 0) {
         return true;
       } else {
@@ -354,7 +354,7 @@ export default {
     },
 
     validatePhone() {
-      console.log(" Phone Change = ", this.formData.phone)
+      //console.log(" Phone Change = ", this.formData.phone)
       let inputValue = this.formData.phone;
       // Remove all non-numeric characters from the input
       //inputValue = inputValue.replace(/\D/g, '');
@@ -381,7 +381,7 @@ export default {
       document.querySelector('.test').focus() */
     },
     resetCalculation(){
-      console.log('resetCalculetion');
+      //console.log('resetCalculetion');
       this.currentStep = 0;
       this.formData = {
         name: "",
@@ -398,7 +398,7 @@ export default {
       UIkit.modal('#modal-calculation').show();
     },
     closeModal() {
-      console.log('closeModal');
+      //console.log('closeModal');
       this.currentStep = 0;
       this.formData = {
         name: "",
@@ -410,11 +410,11 @@ export default {
       };
       this.isPersonalInfoCheck = false;
       this.lpickObjick.clearSelection();
-      console.log("this.lpickObjick  = ",this.lpickObjick )
+      //console.log("this.lpickObjick  = ",this.lpickObjick )
       UIkit.modal('#modal-calculation').hide();
     },
     selectType(id) {
-      console.log('selectType', id);
+      //console.log('selectType', id);
       this.formData.type = id;
       this.listType.forEach((item) => {
         if (item.id === id) {
@@ -423,10 +423,10 @@ export default {
       });
     },
     changeDate() {
-      console.log('changeDate', this.pikdate);
+      //console.log('changeDate', this.pikdate);
     },
     clickNext() {
-      console.log('clickNext');
+      //console.log('clickNext');
       if(this.currentStep === 3) {
         this.submitFormRent();
         return;
@@ -445,7 +445,7 @@ export default {
       }
     },
     submitFormRent() {
-      console.log('submit Form');
+      //console.log('submit Form');
       if(this.formData.name === ""){
         UIkit.notification({message: 'Укажите ваше имя', status: 'danger', pos: 'top-center', timeout: 1500})
         return;
@@ -467,7 +467,7 @@ export default {
           body: JSON.stringify(this.formData),
         });
         const data = await response.json();
-        console.log('data', data);
+        //console.log('data', data);
         if (data.status === 'success') {
           this.closeModal();
           UIkit.notification({message: 'Ваша заявка принята', status: 'success', pos: 'top-center', timeout: 1500})
@@ -483,7 +483,7 @@ export default {
       }
     },
     clickPrev() {
-      console.log('clickPrev');
+      //console.log('clickPrev');
       this.currentStep--;
       this.isNextDisable = false;
       if (this.currentStep < 1) {
@@ -509,18 +509,18 @@ export default {
       minDate: new Date(Date.now() - 86400000),
       setup: (picker) => {
         picker.on('selected', (date) => {
-          console.log("select Date = ", date.dateInstance);
+          //console.log("select Date = ", date.dateInstance);
           this.formData.date = date.dateInstance;
-          console.log('LitePicker = ', this.lpickObjick);
+          //console.log('LitePicker = ', this.lpickObjick);
           // checkedCalculationDates();
         });
       },
     });
     // console.log('LitePicker = ', this.lpickObjick);
-    console.log('refs = ', this.$refs);
-    console.log('UIKit modal  = ', UIkit.options);
+    //console.log('refs = ', this.$refs);
+    //console.log('UIKit modal  = ', UIkit.options);
     UIkit.util.on(this.$refs.modalcalc, 'beforehide', (e) => {
-      console.log('beforehide');
+      //console.log('beforehide');
     });
 
     if (window.innerWidth <= 959) {
