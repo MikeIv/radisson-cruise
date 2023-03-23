@@ -395,7 +395,7 @@ export default {
   async fetch() {
     let menus = await axios.get(
       `${this.$config.baseURL}menus`);
-    console.log(menus.data)
+    //console.log(menus.data)
     this.menuFetch = menus.data
   },
   fetchOnServer: false,

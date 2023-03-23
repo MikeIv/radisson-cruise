@@ -1080,9 +1080,9 @@ export default {
         
         if(e.target.tagName == 'BUTTON'){
          const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley   
-        console.log('activeRoute = ',activeRoute);
+/*         console.log('activeRoute = ',activeRoute);
         console.log('Click on BUTTON TARGET= ', e.target);
-        console.log('Click on BUTTON = ', e.target.tagName);
+        console.log('Click on BUTTON = ', e.target.tagName); */
         this.clearActive();
         for (const customClass in activeRoute) {
             if (Object.hasOwnProperty.call(activeRoute, customClass)) {
@@ -1090,7 +1090,7 @@ export default {
                 
                 if(elPathPoint.customClass === e.target.id.split('-')[1]){
                     elPathPoint.isActive = true;
-                    console.log('Element = ', elPathPoint)
+                    //console.log('Element = ', elPathPoint)
                 }
             }
         }
@@ -1099,7 +1099,7 @@ export default {
         }
         else{
             this.clearActive();
-            console.log('Click on Map = ', e.target);
+            //console.log('Click on Map = ', e.target);
         }
 
     },
@@ -1123,11 +1123,11 @@ export default {
 
     hideOutside() {
       document.querySelector('.test').addEventListener('click', function (e){
-        console.log(e.target)
+        //console.log(e.target)
         if(e.target !== document.querySelector('.test')) {
-          console.log('true')
+          //console.log('true')
         } else {
-          console.log('false')
+          //console.log('false')
         }
       })
     }

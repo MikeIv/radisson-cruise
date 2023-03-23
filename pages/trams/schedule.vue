@@ -1262,7 +1262,7 @@ export default {
       `${this.$config.baseURL}walkschedule`,
     )
     this.tableInfos = (trolleyRoutes.data)
-    console.log(this.tableInfos)
+    //console.log(this.tableInfos)
   },
   fetchOnServer: false,
   fetchKey: 'site-sidebar',

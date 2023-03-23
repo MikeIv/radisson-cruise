@@ -907,12 +907,12 @@ export default {
     isActive (val) {
       if (val) {
         
-          console.log('home-right')
+          //console.log('home-right')
           this.homeTransition = 'home-right'
         
       } else {
         
-          console.log('home-left')
+          //console.log('home-left')
           this.homeTransition = 'home-left'
         
       

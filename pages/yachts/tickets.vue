@@ -407,14 +407,14 @@ export default {
   methods: {
     interactSits(param) {
       if (param == '-') {
-        console.log('minus')
+        //console.log('minus')
         if (this.chosenSits == 1){
           return this.chosenSits = 1
         } else {
           return this.chosenSits--
         }
       } else {
-        console.log('plus')
+        //console.log('plus')
         return this.chosenSits++
       }
     },

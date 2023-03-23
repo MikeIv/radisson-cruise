@@ -592,7 +592,7 @@ export default {
       })
     },
     checkedFilter(emitFilterPrameters){
-      console.log("PARENT CHECKED emitParam = ", emitFilterPrameters)
+      //console.log("PARENT CHECKED emitParam = ", emitFilterPrameters)
       this.currentSelectedCategory = emitFilterPrameters.activeTab;
       this.currentYear = emitFilterPrameters.activeYear;
       this.currentMonth = emitFilterPrameters.activeMonth;
@@ -687,7 +687,7 @@ export default {
 
 
     async fetchNews(page = 1, grp, month = null,year = null) {
-      console.log("fetchNews params  = " ,page , ' || ', grp, ' || ', month, ' || ', year);
+      //console.log("fetchNews params  = " ,page , ' || ', grp, ' || ', month, ' || ', year);
 
       if(page > this.paginationPages) {
         page = this.paginationPages
@@ -739,12 +739,12 @@ export default {
         news = await axios.get(
           `${this.$config.baseURL}news?page=${page}`);
       } */
-      console.log("page = " ,page);
-      console.log("urlNewsQuery = " ,urlNewsQuery);
+      //console.log("page = " ,page);
+      //console.log("urlNewsQuery = " ,urlNewsQuery);
       news = await axios.get(urlNewsQuery);
 
 
-      console.log(news.data)
+      //console.log(news.data)
       this.currentNews = news.data.news
       this.currentPage = news.data.page
       this.paginationPages = news.data.pages
@@ -769,7 +769,7 @@ export default {
     checkMain() {
       this.cardInfo.forEach(item => {
         if(item.main === true) {
-          console.log(item.main)
+          //console.log(item.main)
           return 'uk-card transition card-news_big'
         } else {
           return 'uk-card transition card-news__small'
@@ -823,7 +823,7 @@ export default {
     }
   },
   beforeDestroy() {
-    console.log("DESTROY Yachts Index =", this.$refs.filterModal);
+    //console.log("DESTROY Yachts Index =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
     
   },
@@ -858,12 +858,12 @@ export default {
       this.currentGrp = 'all'
       urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}`;
     }
- console.log('urlNewsQuery = ', urlNewsQuery)
- console.log('this.currentPage = ', this.currentPage)
+ //console.log('urlNewsQuery = ', urlNewsQuery)
+ //console.log('this.currentPage = ', this.currentPage)
     let news = await axios.get(urlNewsQuery);
 /*     let news = await axios.get(
       `${this.$config.baseURL}news?page=${this.currentPage}`); */
-    console.log(news.data)
+    //console.log(news.data)
     this.currentNews = news.data.news
     this.currentPage = news.data.page
     this.paginationPages = news.data.pages

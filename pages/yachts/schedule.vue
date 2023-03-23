@@ -476,8 +476,8 @@ export default {
   },
   methods: {
     checkedFilter(emitFilterPrameters){
-      console.log("PARENT CHECKED ARRIVAL emitArrival = ", emitFilterPrameters)
-      console.log("PARENT CHECKED ARRIVAL = ", this.checkedArrival)
+/*       console.log("PARENT CHECKED ARRIVAL emitArrival = ", emitFilterPrameters)
+      console.log("PARENT CHECKED ARRIVAL = ", this.checkedArrival) */
       this.checkedCategories = emitFilterPrameters.categories;
       this.checkedArrival = emitFilterPrameters.arrival;
       this.chosenSits = emitFilterPrameters.tikets.adult;
@@ -491,11 +491,11 @@ export default {
     },
 
     openFilter() {
-      console.log("REFS = ",this.$refs)
+      //console.log("REFS = ",this.$refs)
       this.$refs.filterModal.openModal()
     },
     filterRoutes() {
-      console.log("FILTER ROUTES = ", this.checkedArrival, this.checkedCategories)
+      //console.log("FILTER ROUTES = ", this.checkedArrival, this.checkedCategories)
       this.showRoutes = []
       if (this.checkedCategories.length > 0) {
         if(this.showRoutes.length === 0) {
@@ -590,21 +590,21 @@ export default {
         && this.choisenTime === null
         && this.chosenSits === 1
       ) {
-        console.log('Empty filter')
+        //console.log('Empty filter')
         this.showRoutes = Array.from(this.arrayToFilter)
       }
-      console.log("filterRoutes showRoutes = ",this.showRoutes);
+      //console.log("filterRoutes showRoutes = ",this.showRoutes);
     },
 
     checkLog() {
       let today = new Date().toISOString().split('T')[0];
       let nextMonday = new Date((new Date().setDate(new Date().getDate()+7))).toISOString().split('T')[0];
-      console.log(today)
-      console.log(nextMonday)
+      //console.log(today)
+      //console.log(nextMonday)
     },
     selectDate(date1, date2) {
 
-      console.log(
+     /*  console.log(
         `Select Day1 = `,
         date1.dateInstance.getFullYear(),
         '-',
@@ -618,7 +618,7 @@ export default {
         date2.dateInstance.getMonth() + 1,
         '-',
         date2.dateInstance.getDate(),
-      );
+      ); */
     },
     openSelect(e) {
       document.querySelector('.testW').style.display = 'block'
@@ -655,14 +655,14 @@ export default {
     },
     interactSitsChild(param) {
       if (param == '-') {
-        console.log('minus')
+        //console.log('minus')
         if (this.yachtSitsChild == 0){
           return this.yachtSitsChild = 0
         } else {
           return this.yachtSitsChild--
         }
       } else {
-        console.log('plus')
+        //console.log('plus')
         return this.yachtSitsChild++
       }
     },
@@ -673,7 +673,7 @@ export default {
     async setDate(date) {
       let dayRoutes = await axios.get(
           `${this.$config.baseURL}routes?date=${date}&end=${date}`);
-      console.log(dayRoutes.data.routes)
+      //console.log(dayRoutes.data.routes)
       this.testFetch = dayRoutes.data.routes;
       Object.entries(this.testFetch).forEach(item => {
         this.arrayToFilter.push({
@@ -682,13 +682,13 @@ export default {
         })
       })
       this.showRoutes = this.arrayToFilter
-      console.log("setDate showRoutes = ",this.showRoutes);
+      //console.log("setDate showRoutes = ",this.showRoutes);
     },
     async setFilterDates(date1, date2) {
       this.arrayToFilter = [];
       let dayRoutes = await axios.get(
           `${this.$config.baseURL}routes?date=${date1}&end=${date2}`);
-      console.log("AXIOS dayRoutes = ",dayRoutes.data.routes)
+      //console.log("AXIOS dayRoutes = ",dayRoutes.data.routes)
       this.testFetch = await dayRoutes.data.routes;
       Object.entries(this.testFetch).forEach(item => {
         this.arrayToFilter.push({
@@ -774,7 +774,7 @@ export default {
     let week = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
     let dayRoutes = await axios.get(
       `${this.$config.baseURL}routes?date=${now}&end=${week}`);
-    console.log(dayRoutes.data.routes)
+    //console.log(dayRoutes.data.routes)
     this.testFetch = dayRoutes.data.routes;
     let setCategories = new Set()
     Object.entries(this.testFetch).forEach(item => {
@@ -783,7 +783,7 @@ export default {
       })
     })
     this.setCategories = setCategories
-    console.log(setCategories)
+    //console.log(setCategories)
     Object.entries(this.testFetch).forEach(item => {
       this.arrayToFilter.push({
         date: item[0],
@@ -791,7 +791,7 @@ export default {
       })
     })
     this.showRoutes = this.arrayToFilter
-    console.log("fetch() showRoutes = ",this.showRoutes);
+    //console.log("fetch() showRoutes = ",this.showRoutes);
   },
   fetchOnServer: false,
   fetchKey: 'yacht-schedule',
@@ -819,7 +819,7 @@ export default {
           picker.on('selected', async (date1, date2) => {
 
             picker.getDate()
-            console.log(picker.gotoDate())
+            //console.log(picker.gotoDate())
 
             function addDays(date, days) {
               let result = new Date(date);
@@ -834,7 +834,7 @@ export default {
             this.arrayToFilter = []
             let dayRoutes = await axios.get(
                 `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}`);
-            console.log(dayRoutes.data.routes)
+            //console.log(dayRoutes.data.routes)
             this.testFetch = dayRoutes.data.routes;
             Object.entries(this.testFetch).forEach(item => {
               this.arrayToFilter.push({
@@ -843,7 +843,7 @@ export default {
               })
             })
             this.showRoutes = this.arrayToFilter
-            console.log("picker selected showRoutes = ",this.showRoutes);
+            //console.log("picker selected showRoutes = ",this.showRoutes);
           });
         },
       });
@@ -932,7 +932,7 @@ export default {
     //console.log('LitePicker = ', this.lpickObjick);
   },
   beforeDestroy() {
-    console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
+    //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
     
   },

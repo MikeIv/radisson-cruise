@@ -148,13 +148,13 @@ export default {
       this.$emit('onToggle')
     },
     getCoords(event){
-      console.log(event)
+      //console.log(event)
     }
   },
   updated() {
     this.$nextTick(() => {
       let modal = this.$refs.modal;
-      console.log(modal)
+      //console.log(modal)
     })
   },
   beforeDestroy() {
