@@ -386,7 +386,7 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      console.log('max', this.maxSum)
+      //console.log('max', this.maxSum)
 
       if(this.adultNewVal < 0 ) {
         this.adultCount = 0
@@ -400,7 +400,7 @@ export default {
 
       let currentMax = this.maxSits - this.childCount
 
-      console.log('current', currentMax)
+      //console.log('current', currentMax)
 
       if (this.maxSum < 0 && this.childCount != 0) {
         this.adultCount = currentMax
@@ -431,7 +431,7 @@ export default {
       this.childNewVal = +newVal
       this.childOldVal = +oldVal
 
-      console.log('max', this.maxSum)
+      //console.log('max', this.maxSum)
 
       if(this.childNewVal < 0 ) {
         this.childCount = 0
@@ -439,7 +439,7 @@ export default {
 
       let currentMax = this.maxSits - this.adultCount
 
-      console.log('current', currentMax)
+      //console.log('current', currentMax)
 
       if (this.maxSum < 0 && this.adultCount != 0) {
         this.childCount = currentMax
@@ -497,23 +497,23 @@ export default {
     onAccept (e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
-      console.log('accept', maskRef.value);
+      //console.log('accept', maskRef.value);
     },
     onComplete (e) {
       const maskRef = e.detail;
       this.phone = maskRef.unmaskedValue
-      console.log('complete', maskRef.unmaskedValue);
+      //console.log('complete', maskRef.unmaskedValue);
     },
 
     onAcceptID (e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
-      console.log('accept', maskRef.value);
+      //console.log('accept', maskRef.value);
     },
     onCompleteID (e) {
       const maskRef = e.detail;
       this.ticketID = maskRef.unmaskedValue
-      console.log('complete', maskRef.unmaskedValue);
+      //console.log('complete', maskRef.unmaskedValue);
     },
 
     timeCalc() {
@@ -641,7 +641,7 @@ export default {
         })
 
         const data = await response.data
-        console.log(data)
+        //console.log(data)
         this.response = true
         this.onError = null
       } catch(e) {
@@ -660,13 +660,13 @@ export default {
             email: this.email
           }).then(function (response) {
         if(response.data.error) {
-          console.log(response.data.error)
+          //console.log(response.data.error)
           return onError = response.data.error
         } else {
-          console.log(response.data);
+          //console.log(response.data);
         }
       }).catch(function (error) {
-        console.log(error);
+        //console.log(error);
       });
     },
 
@@ -687,20 +687,20 @@ export default {
             }*/
           },
       ).then(function (response) {
-        console.log('yes')
-        console.log(response);
+/*         console.log('yes')
+        console.log(response); */
         if (response.data.error) {
           promoMsg = response.data.error
-          console.log(promoMsg)
+          //console.log(promoMsg)
           return promoMsg
         } else {
           promoMsg = `Промокод применен`
           promoStatus = true
-          console.log(promoMsg)
+          //console.log(promoMsg)
           totalSumWithSale = response.data.amount
         }
       }).catch(function (error) {
-        console.log(error);
+        //console.log(error);
       });
       this.promoMsg = promoMsg
       this.promoStatus = promoStatus
@@ -715,13 +715,13 @@ export default {
         const data = await axios.get(
             `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}`
         )
-        console.log(data)
+        //console.log(data)
 
         if(data.data.routes.length === 0) {
           window.location = '/200'
         }
       } catch(error) {
-        console.log(error)
+        //console.log(error)
       }
     }
   },

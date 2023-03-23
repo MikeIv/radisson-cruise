@@ -414,7 +414,7 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      console.log('max', this.maxSum)
+      //console.log('max', this.maxSum)
 
       if(this.adultNewVal < 0 ) {
         this.adultCount = 0
@@ -428,7 +428,7 @@ export default {
 
       let currentMax = this.maxSits - this.childCount
 
-      console.log('current', currentMax)
+      //console.log('current', currentMax)
 
       if (this.maxSum < 0 && this.childCount != 0) {
         this.adultCount = currentMax
@@ -459,7 +459,7 @@ export default {
       this.childNewVal = +newVal
       this.childOldVal = +oldVal
 
-      console.log('max', this.maxSum)
+      //console.log('max', this.maxSum)
 
       if(this.childNewVal < 0 ) {
         this.childCount = 0
@@ -467,7 +467,7 @@ export default {
 
       let currentMax = this.maxSits - this.adultCount
 
-      console.log('current', currentMax)
+      //console.log('current', currentMax)
 
       if (this.maxSum < 0 && this.adultCount != 0) {
         this.childCount = currentMax
@@ -522,12 +522,12 @@ export default {
     onAccept (e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
-      console.log('accept', maskRef.value);
+      //console.log('accept', maskRef.value);
     },
     onComplete (e) {
       const maskRef = e.detail;
       this.phone = maskRef.unmaskedValue
-      console.log('complete', maskRef.unmaskedValue);
+      //console.log('complete', maskRef.unmaskedValue);
     },
 
     timeCalc() {
@@ -628,11 +628,11 @@ export default {
           },
         })
         if(response.data.error) {
-          console.log(response.data.error)
+          //console.log(response.data.error)
           onError = response.data.error
           return this.onError = response.data.error
         } else {
-          console.log(response.data.formUrl);
+          //console.log(response.data.formUrl);
         }
         payUrl = response.data.formUrl
         this.payUrl = payUrl
@@ -640,9 +640,9 @@ export default {
           window.location = payUrl
         }
       } catch (error) {
-        console.log(error)
+/*         console.log(error)
         console.log(error.data)
-        console.log(error.response.data)
+        console.log(error.response.data) */
         onError = error.response.data.error
       }
       this.onError = onError
@@ -666,16 +666,16 @@ export default {
           }*/
         },
       ).then(function (response) {
-        console.log('yes')
-        console.log(response);
+/*         console.log('yes')
+        console.log(response); */
         if (response.data.error) {
           promoMsg = response.data.error
-          console.log(promoMsg)
+          //console.log(promoMsg)
           return promoMsg
         } else {
           promoMsg = `Промокод применен`
           promoStatus = true
-          console.log(promoMsg)
+          //console.log(promoMsg)
           totalSumWithSale = response.data.amount
         }
       }).catch(function (error) {
@@ -694,7 +694,7 @@ export default {
         const data = await axios.get(
           `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}`
         )
-        console.log(data)
+        //console.log(data)
 
         if(data.data.routes.length === 0) {
           window.location = '/200'
@@ -709,14 +709,14 @@ export default {
     this.currentRoute()
   },
   mounted() {
-    console.log(this.$route.params)
+    //console.log(this.$route.params)
   },
   middleware: [
     function({ redirect, route }) {
       if(Object.keys(route.query).length == 0) {
         redirect('/yachts/schedule')
       } else {
-        console.log('test')
+        //console.log('test')
       }
       /*return redirect('/yachts/schedule');*/
     },

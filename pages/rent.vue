@@ -1086,11 +1086,11 @@ export default {
       this.selectedEvent = title
     },
     openModal() {
-      console.log('openModal');
+      //console.log('openModal');
       UIkit.modal('#modal-calculation').show();
     },
     closeModal() {
-      console.log('closeModal');
+      //console.log('closeModal');
       //UIkit.modal('#modal-calculation').hide();
     },
   },

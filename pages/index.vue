@@ -673,8 +673,8 @@
           }, */
       });
       this.$nextTick(function () {
-        console.log('Mounted Next Tick => ', this.$data);
-        console.log('Mounted Next Tick  swiperFotoUser => ', swiperFotoUser);
+/*         console.log('Mounted Next Tick => ', this.$data);
+        console.log('Mounted Next Tick  swiperFotoUser => ', swiperFotoUser); */
       });
     },
 
@@ -682,7 +682,7 @@
       let blocks = await axios.get(
         `${this.$config.baseURL}salons`);
       this.categoriesFetch = blocks.data
-      console.log(blocks.data)
+      //console.log(blocks.data)
     }
   };
 </script>
