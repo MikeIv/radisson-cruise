@@ -21,6 +21,25 @@ build frontend image:
     - docker
     - $CI_JOB_STAGE
 
+build dev image:
+  stage: push
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - docker build --pull -t ${CI_REGISTRY_IMAGE}/nuxt:dev .
+    - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker push ${CI_REGISTRY_IMAGE}/nuxt:dev
+  only:
+    refs:
+      - dev
+  tags:
+    - docker
+    - $CI_JOB_STAGE
+
 deploy frontend service:
   stage: deploy
   script:
@@ -32,6 +51,20 @@ deploy frontend service:
   only:
     refs:
       - main
+  tags:
+    - shell
+    - $CI_JOB_STAGE
+
+deploy dev service:
+  stage: deploy
+  script:
+    - pwd
+    - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker pull ${CI_REGISTRY_IMAGE}/nuxt:dev
+    - docker service update -q --force korabliki_dev_nuxt
+  only:
+    refs:
+      - dev
   tags:
     - shell
     - $CI_JOB_STAGE
