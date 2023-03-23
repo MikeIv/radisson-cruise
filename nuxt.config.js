@@ -1,8 +1,7 @@
 import { resolve } from 'path'
 
 export default {
-  /*loading: '~/components/LoaderCruise.vue',*/
-  debug: true,
+  debug: false,
   server: {
     host: '0'
   },
@@ -104,12 +103,12 @@ export default {
   i18n: {
     /* module options */
     locales: [
-      {
+      /*{
         code: 'en',
         iso: 'en-US',
         name: 'RU',
         file: 'en-US.js',
-      },
+      },*/
       {
         code: 'ru',
         iso: 'ru-RU',
