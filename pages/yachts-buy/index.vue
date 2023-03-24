@@ -337,7 +337,7 @@
               </div>
               <img data-src="~assets/img/inners/buy_visa.png" alt="" class="uk-visible@s"
                    src="~assets/img/inners/buy_visa.png">
-              <img data-src="~assets/img/inners/buy_visa_small.png" alt="" class="uk-hidden@s">
+              <img data-src="~assets/img/inners/buy_visa_small.png" src="~assets/img/inners/buy_visa_small.png" alt="" class="uk-hidden@s">
             </div>
             <div class="buy-ticket-more-information__call">
               <svg-icon class="icon" name="blue-info"/>
