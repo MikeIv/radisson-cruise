@@ -38,6 +38,7 @@ export default {
     '@/node_modules/uikit/dist/css/uikit',
     '@/node_modules/ress',
     '@/assets/css/general',
+    '@/assets/css/menu_styles',
     '@/assets/css/main'
   ],
 
