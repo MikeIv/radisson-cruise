@@ -314,19 +314,19 @@
             </ul>
             <div class="input_rules uk-hidden@s">
               <div class="select">
-                <div class="select-styled">
+                <div @click="showVideos = !showVideos" class="select-styled">
                   <div class="rules-security-video__tab" aria-expanded="false">
                     <div class="rules-security-video__tab__name1">
-                      <b>Яхты </b>
+                      <b>{{ selectedVideo.name }}</b>
                     </div>
                     <div class="rules-security-video__tab__name2">
-                      «Фердинанд», «Капелла», «Селебрити»,  «Скарлет», «Бон Вояж»
+                      {{ selectedVideo.yachts }}
                     </div>
                   </div>
                 </div>
-                <ul class="select-options rules-security-video__tabs uk-tab" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                  <li v-for="video in yVideos" class="uk-active">
-                    <div class="rules-security-video__tab" aria-expanded="true">
+                <ul v-show="showVideos" class="select-options rules-security-video__tabs uk-tab" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+                  <li @click="showVideos = !showVideos; selectVideo(video)" ref="video" v-for="video in yVideos" class="uk-active">
+                    <div class="rules-security-video__tab" aria-expanded="false">
                       <div class="rules-security-video__tab__name1">
                         <b>{{ video.name }}</b>
                       </div>
@@ -648,6 +648,16 @@ export default {
       ],
       securityBlocks: [],
       yVideos: [],
+      showVideos: false,
+      selectedVideo: {
+        name: 'Яхты',
+        yachts: '«Фердинанд», «Капелла», «Бон Вояж», «Селебрити », «Скарлет»'
+      }
+    }
+  },
+  methods: {
+    selectVideo(video) {
+     this.selectedVideo = video
     }
   },
   mounted() {

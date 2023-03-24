@@ -4443,7 +4443,8 @@ body {
     padding: 13px 20px !important
   }
   .rules-security-video__tabs {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: relative !important;
     padding: 0 !important
   }
@@ -6130,6 +6131,9 @@ body {
   }
   .header_top_back {
     padding: 10px 0
+  }
+  .component_header .header_top_back {
+    padding: 30px 0
   }
   .header_top_back>div>div {
     flex-wrap: wrap

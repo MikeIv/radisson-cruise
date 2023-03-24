@@ -103,7 +103,7 @@
               <div class="buy-ticket-form__agreement">
                 <div class="form_politic buy-ticket__politic">
                   <label>
-                    <input v-model="agreed" class="uk-checkbox" type="checkbox" name="check-personal">
+                    <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal">
                     <span class="">
                     Я принимаю условия приобритения билетов и даю согласие на обработку <a href="" target="_blank">персональных данных</a>
                   </span>
@@ -245,7 +245,7 @@
                       Скидка по промо-коду 20%
                     </div>-->
                   </div>
-                  <div @click.prevent="payCert" class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last">
+                  <div @click.prevent="payCert" class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last" :class="{'disabled-link': !isAgree}">
                     <a class="uk-button uk-button-default button_ticket" href="">
                       <span>ПЕРЕЙТИ К ОПЛАТЕ</span>
                       <svg-icon class="icon" name="ticket"/>
@@ -312,6 +312,7 @@ export default {
         mask: '{+7}(000)-000-00-00',
         lazy: true,
       },
+      isAgree: false,
     };
   },
   mounted() {
@@ -387,5 +388,9 @@ export default {
 </script>
 
 <style scoped>
-
+.disabled-link {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="buy-ticket-shedule-info" class="uk-modal-full buy-ticket-shedule-info uk-modal" uk-modal>
-    <div class="uk-modal-dialog">
+    <div v-if="category" class="uk-modal-dialog">
 
       <div class="modal_decor"></div>
       <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -10,7 +10,7 @@
       <svg-icon class="instagram_decor1" name="decor4"/>
 
       <div class="uk-container modal-full_container uk-position-relative">
-        <div class="headline_p2" v-if="category">{{category.name}}</div>
+        <div class="headline_p2">{{category.name}}</div>
         <div class="uk-modal-full__block">
 <!--          <div class="uk-modal-full__block__top">
             <span class=" t_semibold txt18">Рыбный ресторан на борту белоснежной яхты</span>
@@ -62,7 +62,6 @@ export default {
   props: {
     id: {
       type: Number,
-      default: 1,
     }
   },
   data() {
@@ -74,6 +73,10 @@ export default {
     async getCategory() {
       const response = await axios.get(`${this.$config.baseURL}salons?id=${this.id}`);
       this.category = response.data[0];
+      const responseData = await axios.get(`${this.$config.baseURL}routes?journey=${this.id}`);
+      if(!responseData.data.routes) return;
+      let date = Object.keys(responseData.data.routes)[0]
+      this.category = responseData.data.routes[date][0].classData;
     }
   },
   async mounted() {
