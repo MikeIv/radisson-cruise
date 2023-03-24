@@ -777,7 +777,7 @@
 <!--      <video src="~assets/video/video.mp4" muted class="video">
         <source src="~assets/video/video.mp4" type="video/mp4">
       </video>-->
-      <video ref="video" src="~assets/video/about_page.mp4" uk-video="autoplay: inview" playsinline class="video" poster="/about10.png"></video>
+      <video ref="video" src="~assets/video/about_page.mp4" uk-video="autoplay: inview" playsinline muted class="video" poster="/about10.png"></video>
       <div class="playpause">
         <div class="play-video-btn_back">
           <img src="~assets/img/svg/play-btn.svg" alt="" class="" id="svg-new-play" uk-svg>
