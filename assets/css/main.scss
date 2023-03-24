@@ -503,6 +503,44 @@ body {
 .header-ticket svg {
   margin-left: 10px;
 }
+.header__top_item4 {
+  justify-content: flex-end;
+}
+.uk-offcanvas-page .header_top_back.uk-sticky-fixed {
+  background: 0 0;
+}
+.tickets-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 55px;
+}
+.tickets-icons_ship > div, .tickets-icons_bustram > div {
+  font: 18px/21px "Stem Regular";
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+}
+.tickets-icons_ship > div:nth-child(2), .tickets-icons_bustram > div:nth-child(2) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 1;
+  padding: 0 15px;
+}
+.tickets-icons_ship > div:nth-child(2) {
+  background: linear-gradient(to right, #A75E9F, #DF5F67);
+}
+.tickets-icons_ship > div:first-child, .tickets-icons_ship > div:last-child, .tickets-icons_bustram > div:first-child, .tickets-icons_bustram > div:last-child {
+  width: 7px;
+  flex-shrink: 0;
+}
+.tickets-icons_ship > div:first-child {
+  background: url('assets/img/ticket-rose-left.png') top left repeat-y;
+}
+.tickets-icons_ship > div:last-child {
+  background: url('assets/img/ticket-rose-right.png') top right repeat-y;
+}
 /*.tab_nav {
   z-index: 1005;
 }*/

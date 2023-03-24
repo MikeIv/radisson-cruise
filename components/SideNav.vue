@@ -652,7 +652,7 @@
         </div>-->
         <div class="offcanvas_main">
           <div class="headline_p1 offcanvas_main__head">
-            МЕНЮ
+
           </div>
           <div class="uk-flex-between uk-grid-small uk-child-width-1-2 offcanvas_main__grid uk-hidden@m uk-grid" uk-grid="">
             <div class="uk-first-column">
@@ -899,7 +899,7 @@ export default {
   name: "SideNav",
   components: {SocialBlock},
   computed: {
-        isActive () {
+    isActive () {
       return this.$store.state.showNav
     },
   },
@@ -923,7 +923,8 @@ export default {
     closeNav() {
       console.log('yes')
       this.$store.commit('changeNavState', false)
-     // document.querySelector('#offcanvas-nav').style.display = 'none'
+      document.body.style.overflow = 'auto'
+      document.body.classList.remove('uk-offcanvas-page')
     },
   },
   transition: {
