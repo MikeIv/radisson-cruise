@@ -15,7 +15,7 @@
     </Header>
     <section class="about-main__section uk-cover-container">
       <div class="about-main__images">
-        <img data-src="~images/inners2/about2.webp" class="img_cover" alt="" src="~images/inners2/about2.webp">
+        <img data-src="~images/inners2/about2.jpg" class="img_cover" alt="" src="~images/inners2/about2.jpg">
         <!-- <svg class="about-main__logo uk-hidden@l">
           <use xlink:href="#logo"></use>
         </svg> -->

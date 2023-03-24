@@ -32,7 +32,7 @@
               <div class="header__p2">
                 <div class="tpl-block-82"><div class="tpl-block-list tpl-component-netcat-base-text" id="nc-block-28228c1d3ba73f41a212fdad11cad992"><div class="tpl-block-list-objects tpl-block-82-list" data-object-count="1">
                   <article class="tpl-text-default">
-                    по Москве-<br class="uk-hidden@s">
+                    по Москве<br class="uk-hidden@s">
                     реке</article>
 
                 </div></div></div>

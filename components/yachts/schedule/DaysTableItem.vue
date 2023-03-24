@@ -6,7 +6,7 @@
     <td>
       <div class="buy-ticket-shedule__category">
         <span>{{ category }}</span>
-        <button type="button" @click="getCategory(classId)" uk-toggle="target:#buy-ticket-shedule-info;">
+        <button type="button" @click="getCategory(journey)" uk-toggle="target:#buy-ticket-shedule-info;">
           <svg-icon name="svg-info3" class="icon"/>
         </button>
       </div>
@@ -74,8 +74,8 @@ export default {
     }
   },
   methods: {
-    getCategory(id) {
-      this.$emit('get-category', id)
+    getCategory(journey) {
+      this.$emit('get-category', journey)
     },
   },
 

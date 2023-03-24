@@ -330,7 +330,7 @@
                       «{{dayData.placeName}}»
                     </div>
                   </div>
-                  <div @click="getCategory(dayData.classId)" class="buy-ticket-shedule__category">
+                  <div @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
                     <span>{{dayData.journeySubType}}</span>
                     <svg-icon
                       name="svg-info3"
@@ -465,13 +465,14 @@ export default {
       testFetch: [],
       arrayToFilter: [],
       totalSpots: 0,
-      modalId: null,
+      modalId: 1,
       startDate: '',
       endDate: '',
       modalFilterShow: false,
       buttonsRoutes: [],
       timeCalc,
-      setCategories: null
+      setCategories: null,
+      showed: false,
     };
   },
   methods: {
@@ -487,7 +488,8 @@ export default {
       //this.filterRoutes();
     },
     getCategory(id) {
-      this.modalId = id
+      this.modalId = id;
+      this.showed = true;
     },
 
     openFilter() {
