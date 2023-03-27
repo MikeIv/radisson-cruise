@@ -367,7 +367,7 @@ import route from "../../components/trolley/Route.vue";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
-  name: "index",
+  name: "yachts-buy",
   components: {
     Breadcrumbs,
     Header,
