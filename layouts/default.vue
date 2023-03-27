@@ -12,7 +12,7 @@
     </div>-->
 
     <SideNav ref="slideNav"/>
-    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule'] }" />
+    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy'] }" />
     <!--    <Kiev />-->
     <!--    <SubscribeNews />-->
     <Footer />
