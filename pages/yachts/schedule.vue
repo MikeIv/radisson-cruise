@@ -722,8 +722,6 @@ export default {
 
             let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
             let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
-
-            this.selectDate(date1, date2);
             this.arrayToFilter = []
             let dayRoutes = await axios.get(
                 `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}`);
