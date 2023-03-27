@@ -373,7 +373,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import FilterMobile from "@/components/modals/Filter";
 import axios from "axios";
 export default {
-  name: "index",
+  name: "news",
   components: {Breadcrumbs, Header, NewsCard, FilterMobile},
   data() {
     return {

@@ -679,34 +679,6 @@
         console.log('Mounted Next Tick  swiperFotoUser => ', swiperFotoUser); */
       });
     },
-
-    async fetch() {
-      let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article`;
-      let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action`;
-
-      let news, actions;
-      try{
-        news = await axios.get(urlNewsQuery);
-      } catch(error) {
-        console.log("ERROR AXIOS NEWS = ",error)
-      }
-      try{
-        actions = await axios.get(urlActionsQuery);
-      } catch(error) {
-        console.log(" ERROR AXIOS ACTIONS = ",error)
-      }
-      if(news.data.news !== undefined && news.data.news.length > 0) {
-        this.currentNews = news.data.news;
-        this.cardMain = news.data.news[0]
-        this.cardSmall = news.data.news.slice(1, 5)
-        this.isNewsLoaded = true;
-      }
-      if(actions.data.news !== undefined && actions.data.news.length > 0) {
-        this.currentActions = actions.data.news;
-      }
-    },
-    fetchOnServer: true,
-    fetchKey: 'newsHome',
   };
 </script>
 
