@@ -1,6 +1,6 @@
 <template>
   <div id="buy-ticket-shedule-info" class="uk-modal-full buy-ticket-shedule-info uk-modal" uk-modal>
-    <div v-if="category" class="uk-modal-dialog">
+    <div v-if="info" class="uk-modal-dialog">
 
       <div class="modal_decor"></div>
       <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
@@ -10,15 +10,15 @@
       <svg-icon class="instagram_decor1" name="decor4"/>
 
       <div class="uk-container modal-full_container uk-position-relative">
-        <div class="headline_p2">{{category.name}}</div>
+        <div class="headline_p2">{{info.name}}</div>
         <div class="uk-modal-full__block">
 <!--          <div class="uk-modal-full__block__top">
             <span class=" t_semibold txt18">Рыбный ресторан на борту белоснежной яхты</span>
           </div>-->
           <div class="uk-modal-full__info">
-            <div v-if="category" class="uk-position-relative yacht__slider" tabindex="-1" uk-slider >
+            <div v-if="info" class="uk-position-relative yacht__slider" tabindex="-1" uk-slider >
               <ul class="uk-slider-items uk-flex"  uk-lightbox >
-                <li v-for="img in category.slides">
+                <li v-for="img in info.slides">
                   <a href="" class="gallery_card uk-position-relative">
                     <img :src="$config.baseSiteURL + img" :data-src="$config.baseSiteURL + img" alt="" class="img_cover">
                   </a>
@@ -28,7 +28,7 @@
                 <div class="slider_numbers">
                   <div class="slider_number">01</div>
                   <div class="slider_num_bread">/</div>
-                  <div class="slider_amount">{{ category.slides?.length }}</div>
+                  <div class="slider_amount">{{ info.slides?.length }}</div>
                 </div>
                 <div class="slider_arrows">
                   <a class="" href="#" uk-slider-item="previous">
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="headline_line"></div>
-            <div class="modal-tenancy__info" v-if="category" v-html="category.content"></div>
+            <div class="modal-tenancy__info" v-if="info" v-html="info.content"></div>
           </div >
           <div class="uk-modal-full__block__bottom">
             <a class="uk-modal-close link_close">ЗАКРЫТЬ ОКНО</a>
@@ -60,8 +60,8 @@ import axios from "axios";
 export default {
   name: "CategoryInfo",
   props: {
-    id: {
-      type: Number,
+    info: {
+      type: Object,
     }
   },
   data() {
@@ -69,18 +69,7 @@ export default {
       category: {},
     };
   },
-  methods: {
-    async getCategory() {
-      const response = await axios.get(`${this.$config.baseURL}salons?id=${this.id}`);
-      this.category = response.data[0];
-      const responseData = await axios.get(`${this.$config.baseURL}routes?journey=${this.id}`);
-      if(!responseData.data.routes) return;
-      let date = Object.keys(responseData.data.routes)[0]
-      this.category = responseData.data.routes[date][0].classData;
-    }
-  },
   async mounted() {
-    await this.getCategory();
     const yachtSlider = document.querySelectorAll('.yacht__slider');
     yachtSlider.forEach(element => {
       //Счетчик слайда яхт
@@ -89,20 +78,6 @@ export default {
         element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
       });
     });
-  },
-  watch: {
-    async id() {
-      await this.getCategory();
-      const yachtSlider = document.querySelectorAll('.yacht__slider');
-      yachtSlider.forEach(element => {
-        //Счетчик слайда яхт
-        UIkit.util.on(element, 'itemshown', function(e) {
-          // $('#yacht__slider1 .slider_number').text(e.detail[0].index + 1);
-          element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
-        });
-      });
-    },
-    immidiate: true,
   },
 }
 </script>
