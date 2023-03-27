@@ -285,7 +285,6 @@
                     <svg-icon
                       name="svg-info3"
                       class="icon"
-                      uk-toggle="target:#buy-ticket-shedule-info;"
                     />
                   </div>
                   <span class="buy-ticket-shedule__time__num uk-hidden@s">
@@ -361,7 +360,7 @@
         </div>-->
       </div>
     </section>
-    <CategoryInfo :id="modalId"/>
+    <CategoryInfo :info="categoryInfo"/>
     <FilterMobile
         :is-shedule-filter="true"
         :arrival-places="arrivalPlaces"
@@ -415,6 +414,7 @@ export default {
       timeCalc,
       setCategories: null,
       showed: false,
+      categoryInfo: null,
     };
   },
   methods: {
@@ -429,9 +429,16 @@ export default {
       this.setFilterDates(this.startDate,this.endDate);
       //this.filterRoutes();
     },
-    getCategory(id) {
-      this.modalId = id;
-      this.showed = true;
+    async getCategory(id) {
+      try {
+        const responseData = await axios.get(`${this.$config.baseURL}routes?journey=${id}`);
+        if(!responseData.data.routes) return;
+        let date = Object.keys(responseData.data.routes)[0]
+        this.categoryInfo = responseData.data.routes[date][0].classData;
+        UIkit.modal('#buy-ticket-shedule-info').show();
+      } catch (e) {
+
+      }
     },
 
     openFilter() {
