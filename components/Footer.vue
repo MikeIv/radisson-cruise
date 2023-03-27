@@ -317,7 +317,7 @@
               Купить билеты
             </nuxt-link>
             <nuxt-link to="/news/388/" class="uk-hidden@s">
-              Осторожно мошенники
+              Осторожно, мошенники
             </nuxt-link>
           </li>
           <li class="footer__nav_item2">
@@ -342,7 +342,7 @@
               Купить билеты
             </nuxt-link>
             <nuxt-link to="/news/388/">
-              Осторожно мошенники
+              Осторожно, мошенники
             </nuxt-link>
             <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace>
               Безопасность

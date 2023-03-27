@@ -541,9 +541,9 @@ body {
 .tickets-icons_ship > div:last-child {
   background: url('assets/img/ticket-rose-right.png') top right repeat-y;
 }
-/*.tab_nav {
-  z-index: 1005;
-}*/
+.uk-offcanvas-page {
+  overflow: hidden;
+}
 
 
 @media screen and (max-width:1700px) {

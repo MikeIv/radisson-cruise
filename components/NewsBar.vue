@@ -292,8 +292,6 @@ export default {
     let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article`;
     let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action`;
 
-/*       console.log('urlNewsQuery = ', urlNewsQuery)
-      console.log('this.currentPage = ', this.currentPage) */
     let news, actions;
     try{
      news = await axios.get(urlNewsQuery);
@@ -305,10 +303,6 @@ export default {
     } catch(error) {
         console.log(" ERROR AXIOS ACTIONS = ",error)
       }
-    /*     let news = await axios.get(
-          `${this.$config.baseURL}news?page=${this.currentPage}`); */
-/*     console.log("NEWS", news.data)
-    console.log("ACTIONS",actions.data) */
     if(news.data.news !== undefined && news.data.news.length > 0) {
       this.currentNews = news.data.news;
       this.cardMain = news.data.news[0]
@@ -318,9 +312,6 @@ export default {
     if(actions.data.news !== undefined && actions.data.news.length > 0) {
       this.currentActions = actions.data.news; 
     }
-    
-    
-    //this.cardMain = news.data.news
   },
   fetchOnServer: false,
   fetchKey: 'newsHome',

@@ -1113,7 +1113,7 @@ export default {
     this.rentBlocks = rentBlocks.data.rents;
     this.classBlocks = rentBlocks.data.classes;
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'rent',
 }
 </script>

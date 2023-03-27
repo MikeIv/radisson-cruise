@@ -678,12 +678,11 @@
       });
     },
 
-    async fetch() {
+    /*async fetch() {
       let blocks = await axios.get(
         `${this.$config.baseURL}salons`);
       this.categoriesFetch = blocks.data
-      //console.log(blocks.data)
-    }
+    }*/
   };
 </script>
 

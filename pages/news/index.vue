@@ -858,17 +858,12 @@ export default {
       this.currentGrp = 'all'
       urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}`;
     }
- //console.log('urlNewsQuery = ', urlNewsQuery)
- //console.log('this.currentPage = ', this.currentPage)
     let news = await axios.get(urlNewsQuery);
-/*     let news = await axios.get(
-      `${this.$config.baseURL}news?page=${this.currentPage}`); */
-    //console.log(news.data)
     this.currentNews = news.data.news
     this.currentPage = news.data.page
     this.paginationPages = news.data.pages
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'news',
 }
 </script>

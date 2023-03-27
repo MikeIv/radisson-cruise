@@ -457,7 +457,7 @@ export default {
         `${this.$config.baseURL}blocks?page=themes`);
     this.flightBlocks = blocks.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'theatrical',
 }
 </script>

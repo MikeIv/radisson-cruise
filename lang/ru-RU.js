@@ -94,7 +94,7 @@ export default async (context, locale) => {
           main: 'Основной зал',
           royal: 'Ройал класс',
           first: 'Первый класс',
-          erwin: 'Erwin.река',
+          erwin: 'ERWIN.Река',
         }
       },
       menu: {
