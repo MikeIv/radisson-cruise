@@ -457,6 +457,8 @@ export default {
       }
 
     },
+
+    '$route.query': '$fetch',
   },
 
   computed: {

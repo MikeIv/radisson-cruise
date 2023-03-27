@@ -69,6 +69,16 @@ export default {
       category: {},
     };
   },
+  updated() {
+    const yachtSlider = document.querySelectorAll('.yacht__slider');
+    yachtSlider.forEach(element => {
+      //Счетчик слайда яхт
+      UIkit.util.on(element, 'itemshown', function(e) {
+        // $('#yacht__slider1 .slider_number').text(e.detail[0].index + 1);
+        element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
+      });
+    });
+  },
   async mounted() {
     const yachtSlider = document.querySelectorAll('.yacht__slider');
     yachtSlider.forEach(element => {
