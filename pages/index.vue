@@ -2,7 +2,7 @@
   <div>
     <Header class="main_header main-header-index">
       <img src="~images/main/back1.webp" data-src="~images/main/back1.webp" class="img_cover" alt="">
-      <video src="~/assets/video/video.mp4" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
+      <video src="~/assets/video/video-main.mp4" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
       <div class="uk-overlay-default uk-position-cover video-overlay"></div>
       <div class="uk-overlay-default uk-position-cover header__overlay-default"></div>
       <div class="uk-position-relative header-container">
@@ -314,7 +314,7 @@
       </div>
     </Header>
     <div class="wrapper">
-      <NewsBar />
+      <NewsBar :news="currentNews" :actions="currentActions" />
       <Scheme />
       <!--      <RewardSlider class="reward-slider" />-->
     </div>
@@ -639,7 +639,9 @@
           },
         ],
 
-        categoriesFetch: []
+        categoriesFetch: [],
+        currentNews: [],
+        currentActions: []
       };
     },
     methods: {
@@ -678,11 +680,33 @@
       });
     },
 
-    /*async fetch() {
-      let blocks = await axios.get(
-        `${this.$config.baseURL}salons`);
-      this.categoriesFetch = blocks.data
-    }*/
+    async fetch() {
+      let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article`;
+      let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action`;
+
+      let news, actions;
+      try{
+        news = await axios.get(urlNewsQuery);
+      } catch(error) {
+        console.log("ERROR AXIOS NEWS = ",error)
+      }
+      try{
+        actions = await axios.get(urlActionsQuery);
+      } catch(error) {
+        console.log(" ERROR AXIOS ACTIONS = ",error)
+      }
+      if(news.data.news !== undefined && news.data.news.length > 0) {
+        this.currentNews = news.data.news;
+        this.cardMain = news.data.news[0]
+        this.cardSmall = news.data.news.slice(1, 5)
+        this.isNewsLoaded = true;
+      }
+      if(actions.data.news !== undefined && actions.data.news.length > 0) {
+        this.currentActions = actions.data.news;
+      }
+    },
+    fetchOnServer: true,
+    fetchKey: 'newsHome',
   };
 </script>
 

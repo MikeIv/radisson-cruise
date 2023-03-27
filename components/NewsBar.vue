@@ -142,6 +142,10 @@ import axios from "axios";
 export default {
   name: "NewsBar",
   components: {NewsBarCard, NewsBarCardImportant},
+  props: {
+    news: Array,
+    actions: Array
+  },
   data() {
     let days = [
       'Воскресенье',
@@ -254,7 +258,7 @@ export default {
     else{
       if(this.currentActions.length > 0){
         this.isNewsLoaded = true;
-      this.cardMain = this.currentActions[0]
+        this.cardMain = this.currentActions[0]
         this.cardSmall = this.currentActions.slice(1, 5) 
       }
       else{
@@ -265,6 +269,15 @@ export default {
   },
   mounted() {
     this.totalComments = this.reviews.length
+    if(this.news !== undefined && this.news.length > 0) {
+      this.currentNews = this.news;
+      this.cardMain = this.news[0]
+      this.cardSmall = this.news.slice(1, 5)
+      this.isNewsLoaded = true;
+    }
+    if(this.actions !== undefined && this.actions.length > 0) {
+      this.currentActions = this.actions;
+    }
   },
 
   computed: {
@@ -288,33 +301,7 @@ export default {
       }).format()
     }, 1000)
   },
-  async fetch() {
-    let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article`;
-    let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action`;
 
-    let news, actions;
-    try{
-     news = await axios.get(urlNewsQuery);
-    } catch(error) {
-        console.log("ERROR AXIOS NEWS = ",error)
-      }
-    try{
-     actions = await axios.get(urlActionsQuery);
-    } catch(error) {
-        console.log(" ERROR AXIOS ACTIONS = ",error)
-      }
-    if(news.data.news !== undefined && news.data.news.length > 0) {
-      this.currentNews = news.data.news;
-      this.cardMain = news.data.news[0]
-      this.cardSmall = news.data.news.slice(1, 5) 
-      this.isNewsLoaded = true;
-    }
-    if(actions.data.news !== undefined && actions.data.news.length > 0) {
-      this.currentActions = actions.data.news; 
-    }
-  },
-  fetchOnServer: false,
-  fetchKey: 'newsHome',
 }
 </script>
 
