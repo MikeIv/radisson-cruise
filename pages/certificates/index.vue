@@ -387,7 +387,7 @@ export default {
       `${this.$config.baseURL}certificates`);
     this.cardsFetch = blocks.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'certificates',
 }
 </script>
