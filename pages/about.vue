@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :about-page="true">
+    <Header about-page>
       <img src="~images/inners2/about1.webp" data-src="~images/inners2/about1.webp" class="img_cover" alt="">
       <div class="uk-container uk-position-relative">
         <div class="heading_white">
@@ -1254,10 +1254,9 @@ export default {
     this.vacanciesData = vacanciesData.data;
     this.documents.documentsList = documentsData.data;
     this.photosSlide = photosData.data.result
-    /*this.documents.documentsCurrentItems = documentsData.data.length;*/
   },
-  fetchOnServer: false,
-  fetchKey: 'site-sidebar',
+  fetchOnServer: true,
+  fetchKey: 'about-page',
   updated() {
     let videoContainer = document.querySelector('#video');
     let element = document.querySelector('.yacht__slider')

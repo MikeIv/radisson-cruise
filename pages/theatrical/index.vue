@@ -237,7 +237,7 @@ export default {
         `${this.$config.baseURL}blocks?page=theatre`);
     this.theatricalBlocks = blocks.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'theatrical',
 
 }

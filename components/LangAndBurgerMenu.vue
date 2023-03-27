@@ -68,10 +68,8 @@
         switchMenu() {
           this.$store.commit('changeNavState', !this.isActive)
           if(this.isActive) {
-            document.body.style.overflow = 'hidden'
             document.body.classList.add('uk-offcanvas-page')
           } else {
-            document.body.style.overflow = 'auto'
             document.body.classList.remove('uk-offcanvas-page')
           }
         },

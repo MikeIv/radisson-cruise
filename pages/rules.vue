@@ -697,7 +697,7 @@ export default {
     this.yVideos = videoBlock.data
 
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'rules',
 }
 </script>

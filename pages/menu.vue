@@ -292,11 +292,11 @@
                    :fileNameSmall="card.fileNameSmall"
                    :description="card.description"
                    :customClass="card.customClass"/>-->
-        <p v-if="$fetchState.pending">
+<!--        <p v-if="$fetchState.pending">
           Loading....
         </p>
-        <p v-else-if="$fetchState.error">Error while fetching info</p>
-        <MenuCard v-else v-for='(card, index) in menuFetch'
+        <p v-else-if="$fetchState.error">Error while fetching info</p>-->
+        <MenuCard v-for='(card, index) in menuFetch'
                   :key="'crd' + index"
                   :title="card.name"
                   :fileName="card.image"
@@ -398,7 +398,7 @@ export default {
     //console.log(menus.data)
     this.menuFetch = menus.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'menu',
 }
 </script>

@@ -743,7 +743,7 @@
                 </li>
                 <li>
                   <nuxt-link class="" to="/theatrical/" @click.native="closeNav">
-                    Театральные рейсы
+                    Театральные круизы
                   </nuxt-link>
                 </li>
                 <li>
@@ -923,7 +923,6 @@ export default {
     closeNav() {
       console.log('yes')
       this.$store.commit('changeNavState', false)
-      document.body.style.overflow = 'auto'
       document.body.classList.remove('uk-offcanvas-page')
     },
   },

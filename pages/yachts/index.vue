@@ -385,7 +385,7 @@ export default {
       })
     }, 100)
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'yachts',
 };
 </script>

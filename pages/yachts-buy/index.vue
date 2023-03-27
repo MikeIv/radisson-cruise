@@ -414,21 +414,11 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      //console.log('max', this.maxSum)
-
       if(this.adultNewVal < 0 ) {
         this.adultCount = 0
       }
 
-/*      if (this.maxSum < 0) {
-        return this.adultCount = this.maxSum
-      } else if (this.maxSum <= 0 && this.childCount != 0) {
-        return this.adultCount
-      }*/
-
       let currentMax = this.maxSits - this.childCount
-
-      //console.log('current', currentMax)
 
       if (this.maxSum < 0 && this.childCount != 0) {
         this.adultCount = currentMax
@@ -439,19 +429,6 @@ export default {
       } else if (this.maxSum >= 0) {
         return this.adultCount
       }
-
-      /*if(this.adultOldVal >= this.maxSits) {
-        this.maxSits = this.adultNewVal
-      } else {
-        this.maxSits += this.adultOldVal
-      }
-*/
-      /*if(this.adultNewVal >= this.maxSits) {
-        this.adultCount = this.maxSits
-        this.maxSits = 0
-      } else {
-        this.maxSits -= this.adultNewVal
-      }*/
     },
 
 
@@ -479,18 +456,6 @@ export default {
         return this.childCount
       }
 
-/*      if(this.childOldVal >= this.maxSits) {
-        this.maxSits = this.childNewVal
-      } else {
-        this.maxSits += this.childOldVal
-      }
-
-      if(this.childNewVal >= this.maxSits) {
-        this.childCount = this.maxSits
-        this.maxSits = 0
-      } else {
-        this.maxSits -= this.childNewVal
-      }*/
     },
   },
 
@@ -705,9 +670,6 @@ export default {
     }
   },
 
-  beforeMount() {
-    this.currentRoute()
-  },
   mounted() {
     //console.log(this.$route.params)
   },
@@ -730,7 +692,7 @@ export default {
     this.childPrice = this.routeData.childPrice
     this.adultPrice = this.routeData.adultPrice
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'yacht-ticket',
 }
 </script>

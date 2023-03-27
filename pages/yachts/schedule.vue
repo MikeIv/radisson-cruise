@@ -219,15 +219,6 @@
             <svg-icon name="looking_glass" class="icon" />
           </button>
         </form>
-
-<!--         <a
-          href="#modal-buy-ticket-filter"
-          class="uk-button btn-news-filter uk-hidden@s"
-          uk-toggle=""
-        >
-          <span> ОТКРЫТЬ ФИЛЬТР </span>
-          <svg-icon name="svg-flight4" class="icon" />
-        </a> -->
         <button
           class="uk-button btn-news-filter uk-hidden@s"
           
@@ -238,38 +229,6 @@
         </button>
 
         <div class="buy-ticket-shedule-days uk-hidden@s">
-<!--          <a href="" class="buy-ticket-shedule-day active">
-            <span>4</span>
-            <span>чт</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day">
-            <span>5</span>
-            <span>пт</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day buy-ticket-shedule-day__red">
-            <span>6</span>
-            <span>сб</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day buy-ticket-shedule-day__red">
-            <span>7</span>
-            <span>вс</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day">
-            <span>8</span>
-            <span>пн</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day">
-            <span>9</span>
-            <span>вт</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day">
-            <span>10</span>
-            <span>ср</span>
-          </a>
-          <a href="" class="buy-ticket-shedule-day">
-            <span>11</span>
-            <span>чт</span>
-          </a>-->
           <button class="buy-ticket-shedule-day"
                   :class="{'buy-ticket-shedule-day__red': isWeekend(new Date(buttonRoutes.date))}"
                   v-for="buttonRoutes in buttonsRoutes"
@@ -280,20 +239,11 @@
           </button>
         </div>
 
-<!--        <div class="col">
-          <span>Отмеченные Причалы: {{ checkedArrival }}</span>
-
-          <span>Отмеченные Категории: {{ checkedCategories }}</span>
-        </div>-->
-
-
-
-        <p v-if="$fetchState.pending">
+<!--        <p v-if="$fetchState.pending">
           Loading....
         </p>
-        <p v-else-if="$fetchState.error">Error while fetching info</p>
+        <p v-else-if="$fetchState.error">Error while fetching info</p>-->
         <DaysTable
-          v-else
           v-for="(dayRoute, index) in showRoutes"
           :key="'tbl' + index"
           :aboutDays="dayRoute.routes"
@@ -339,7 +289,7 @@
                     />
                   </div>
                   <span class="buy-ticket-shedule__time__num uk-hidden@s">
-                  {{ timeCalc(dayData.depatureTime, dayData.arrivalTime) }}
+                  {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                 </span>
                 </div>
                 <div class="uk-visible@s">
@@ -349,7 +299,7 @@
                     </div>
                     <div class="buy-ticket-shedule__time">
                     <span class="buy-ticket-shedule__time__num">
-                      {{ timeCalc(dayData.depatureTime, dayData.arrivalTime) }}
+                      {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                     </span>
                       <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
                       Дневной
@@ -412,14 +362,6 @@
       </div>
     </section>
     <CategoryInfo :id="modalId"/>
-<!--     <ScheduleFilter
-        :arrival-places="arrivalPlaces"
-        :routes-categories="routesCategories"
-        :checked-arrival="checkedArrival"
-        :checked-categories.sync="checkedCategories"
-        ref="filterModal"
-        @checked-arrival="checkedFilter"
-    /> -->
     <FilterMobile
         :is-shedule-filter="true"
         :arrival-places="arrivalPlaces"
@@ -448,7 +390,7 @@ import UIkit from "uikit";
 export default {
   scrollToTop: true,
   name: 'schedule',
-  components: {ScheduleFilter, Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile, },
+  components: { Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile },
   data() {
     return {
       showRoutes: [],
@@ -597,31 +539,6 @@ export default {
       }
       //console.log("filterRoutes showRoutes = ",this.showRoutes);
     },
-
-    checkLog() {
-      let today = new Date().toISOString().split('T')[0];
-      let nextMonday = new Date((new Date().setDate(new Date().getDate()+7))).toISOString().split('T')[0];
-      //console.log(today)
-      //console.log(nextMonday)
-    },
-    selectDate(date1, date2) {
-
-     /*  console.log(
-        `Select Day1 = `,
-        date1.dateInstance.getFullYear(),
-        '-',
-        date1.dateInstance.getMonth() + 1,
-        '-',
-        date1.dateInstance.getDate(),
-
-        `Select Day2 = `,
-        date2.dateInstance.getFullYear(),
-        '-',
-        date2.dateInstance.getMonth() + 1,
-        '-',
-        date2.dateInstance.getDate(),
-      ); */
-    },
     openSelect(e) {
       document.querySelector('.testW').style.display = 'block'
       document.querySelector('.test').focus()
@@ -726,41 +643,11 @@ export default {
     checkForLateRoutes(departureTime) {
       return this.isDepartureTimeApproaching(departureTime);
     },
-
-    /*getRouteNameId(name) {
-      switch (name) {
-        case 'Основной зал':
-          return 1;
-        case 'Ройал класс':
-          return 2;
-        case 'Первый класс':
-          return 3;
-        case 'Erwin. Река':
-          return 4;
-      }
-    }*/
-
+    timeCalcDate(depatureTime, arrivalTime) {
+      return timeCalc(depatureTime, arrivalTime)
+    }
   },
   computed:{
-    /*filteredArray() {
-      let arr = []
-      /!*Object.entries(this.testFetch).forEach((item) => {
-        item[1].filter(val => this.checkedArrival.includes(val.placeName))
-        console.log(item[1].filter(val => this.checkedArrival.includes(val.placeName)))
-        if(arr.length === 0) {
-          arr.push({
-            date: item[0],
-            routes: item[1].filter(val => this.checkedArrival.includes(val.placeName))
-          })
-        }
-      })
-      return (arr)*!/
-      this.arrayToFilter.forEach(day => {
-        day.routes.filter(val => this.checkedArrival.includes(val.placeName))
-        console.log(day.routes.filter(val => this.checkedArrival.includes(val.placeName)))
-      })
-    },*/
-
     choiseTime() {
       if (this.choisenTime === null) {
         return 'Время посадки'
@@ -795,7 +682,7 @@ export default {
     this.showRoutes = this.arrayToFilter
     //console.log("fetch() showRoutes = ",this.showRoutes);
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'yacht-schedule',
 
   mounted() {
@@ -808,10 +695,7 @@ export default {
       numberOfColumns: 2,
       minDate: new Date().setDate(new Date().getDate() - 0),
       maxDate: new Date().setDate(new Date().getDate() + 60),
-      tooltipText: {
-        one: 'flight',
-        other: 'flights',
-      },
+      showTooltip: false
     }
    // console.log("Elements = ",elements);
     this.litePickers = new Litepicker({
@@ -849,89 +733,6 @@ export default {
           });
         },
       });
-/*     elements.forEach((el) => {
-      this.litePickers = new Litepicker({
-        ...options,
-        element: el,
-        setup: (picker) => {
-          picker.on('selected', async (date1, date2) => {
-
-            picker.getDate()
-            console.log(picker.gotoDate())
-
-            function addDays(date, days) {
-              let result = new Date(date);
-              result.setDate(result.getDate() + days);
-              return result;
-            }
-
-            let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
-            let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
-
-            this.selectDate(date1, date2);
-            this.arrayToFilter = []
-            let dayRoutes = await axios.get(
-                `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}`);
-            console.log(dayRoutes.data.routes)
-            this.testFetch = dayRoutes.data.routes;
-            Object.entries(this.testFetch).forEach(item => {
-              this.arrayToFilter.push({
-                date: item[0],
-                routes: item[1],
-              })
-            })
-            this.showRoutes = this.arrayToFilter
-          });
-        },
-      });
-
-    }); */
-    /*this.lpickObjick = new Litepicker({
-      lang: 'ru-RU',
-      element: document.querySelectorAll('.litepicker'),
-      singleMode: false,
-      numberOfMonths: 2,
-      numberOfColumns: 2,
-      minDate: new Date().setDate(new Date().getDate() - 0),
-      maxDate: new Date().setDate(new Date().getDate() + 60),
-      tooltipText: {
-        one: 'flight',
-        other: 'flights',
-      },
-      setup: (picker) => {
-        picker.on('selected', async (date1, date2) => {
-
-          picker.getDate()
-          console.log(picker.gotoDate())
-
-          function addDays(date, days) {
-            let result = new Date(date);
-            result.setDate(result.getDate() + days);
-            return result;
-          }
-
-          let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
-          let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
-
-          this.selectDate(date1, date2);
-          this.arrayToFilter = []
-          let dayRoutes = await axios.get(
-            `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}`);
-          console.log(dayRoutes.data.routes)
-          this.testFetch = dayRoutes.data.routes;
-          Object.entries(this.testFetch).forEach(item => {
-            this.arrayToFilter.push({
-              date: item[0],
-              routes: item[1],
-            })
-          })
-          this.showRoutes = this.arrayToFilter
-/!*          console.log(date1.dateInstance.toISOString().substring(0, 10))
-          console.log(date2.dateInstance.toISOString().substring(0, 10))*!/
-        });
-      },
-    });*/
-    //console.log('LitePicker = ', this.lpickObjick);
   },
   beforeDestroy() {
     //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);

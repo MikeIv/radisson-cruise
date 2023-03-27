@@ -21,8 +21,8 @@
               <button>{{$t('pages.categories.tabs.all')}}</button>
             </li>
             <li class="uk-button button_switcher-second" v-for="(tab,index) in categoriesFetch"
-                :key="'tab1' + index" :uk-filter-control="`[data-color='${$t(tab.name)}']`">
-              <button>{{ $t(tab.name) }}</button>
+                :key="'tab1' + index" :uk-filter-control="`[data-color='${tab.name}']`">
+              <button>{{ tab.name }}</button>
             </li>
           </ul>
 
@@ -212,7 +212,7 @@ export default {
         `${this.$config.baseURL}salons`);
     this.categoriesFetch = blocks.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'categories',
 }
 </script>
