@@ -857,7 +857,7 @@
           <div class="footer__bottom ">
             <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
               <div class="footer__bottom_item1 uk-width-1-4@m uk-width-auto@s uk-width-1-1 uk-first-column">
-                <div>© 2021, Флотилия «Рэдиссон Ройал, Москва»</div>
+                <div> © 2023, Флотилия “Рэдиссон Ройал”</div>
                 <nuxt-link to="/politic/" class="transition footer__bottom_item2__link uk-hidden@m uk-offcanvas-close"  @click.native="closeNav">
                   Политика конфеденциальности
                 </nuxt-link>
