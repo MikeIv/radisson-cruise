@@ -48,6 +48,7 @@ deploy frontend service:
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt
     - docker service update -q --force korabliki_nuxt
     - docker rmi -f --no-prune $(docker images -q -f dangling=true ${CI_REGISTRY_IMAGE}/nuxt)
+    - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
   only:
     refs:
       - main
