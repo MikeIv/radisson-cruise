@@ -383,7 +383,7 @@ import CategoryInfo from "../../components/modals/CategoryInfo";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import ScheduleFilter from "../../components/modals/ScheduleFilter.vue";
 import FilterMobile from "@/components/modals/Filter.vue";
-import { timeCalc } from "../../plugins/routesTimeCalc";
+import { timeCalc } from "@/plugins/routesTimeCalc";
 import UIkit from "uikit";
 
 export default {
