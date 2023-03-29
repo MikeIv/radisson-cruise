@@ -335,6 +335,11 @@
   import axios from "axios";
   export default {
     name: 'index',
+    head() {
+      return {
+        title: 'Флотилия Radisson Royal Moscow - круизы и прогулки на теплоходе  по Москве-реке ,  официальный сайт',
+      }
+    },
     components: {
       BuyTicketBtn,
       SalonCategoryIndex,

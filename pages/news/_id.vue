@@ -67,6 +67,11 @@ export default {
       }
     }*/
   },
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  ${this.name}`,
+    }
+  },
 
   async fetch() {
 

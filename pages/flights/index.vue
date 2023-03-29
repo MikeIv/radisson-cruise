@@ -367,6 +367,11 @@ import axios from "axios";
 export default {
   name: "index",
   components: {Breadcrumbs, CruiseItem, Header, Scheme},
+  head() {
+    return {
+      title: 'Флотилия Radisson Royal Moscow -  прогулки и экскурсии на теплоходе  по Москва реке',
+    }
+  },
   data() {
     return {
       thematicInfo:[

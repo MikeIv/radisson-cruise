@@ -319,8 +319,10 @@ import axios from "axios";
 export default {
   name: "Menu",
   components: {Breadcrumbs, MenuCard, Header},
-  props: {
-    title: String,
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow - меню ресторанов Рэдиссон Флотилии`,
+    }
   },
   data() {
     return {

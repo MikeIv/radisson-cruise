@@ -305,6 +305,11 @@ const querystring = require('querystring');
 export default {
   scrollToTop: true,
   name: "refund",
+  head() {
+    return {
+      title: 'Флотилия Radisson Royal Moscow - возврат билетов на теплоходы Рэдиссон Флотилии',
+    }
+  },
   components: {
     Breadcrumbs,
     Header,

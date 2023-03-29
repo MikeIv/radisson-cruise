@@ -72,8 +72,10 @@ import CategoryCabinFilter from "../components/modals/CategoryCabinFilter";
 export default {
   name: "Categories",
   components: {CategoryCabinFilter, Breadcrumbs, Header, SalonCategory,FilterMobile},
-  props: {
-
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  классы ресторанов Рэдиссон Флотилии: Эрвин, Первый класс, Ройал, Основной зал`,
+    }
   },
   data() {
     return {

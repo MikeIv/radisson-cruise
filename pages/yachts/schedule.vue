@@ -390,6 +390,11 @@ export default {
   scrollToTop: true,
   name: 'schedule',
   components: { Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile },
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow - расписание теплоходов Рэдиссон Флотилии`,
+    }
+  },
   data() {
     return {
       showRoutes: [],

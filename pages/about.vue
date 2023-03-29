@@ -905,6 +905,11 @@ import axios from "axios";
 import Breadcrumbs from "../components/Breadcrumbs";
 export default {
   name: "About",
+  head() {
+    return {
+      title: 'Флотилия Radisson Royal Moscow - капитаны яхт, награды флотилии, вакансии',
+    }
+  },
   components: {
     Breadcrumbs,
     VacancyItem,

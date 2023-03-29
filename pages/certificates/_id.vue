@@ -297,6 +297,11 @@ export default {
   directives: {
     imask: IMaskDirective
   },
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow - купить сертификат Рэдиссон Флотилии`,
+    }
+  },
   data() {
     return {
       certData: {},

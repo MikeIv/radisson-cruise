@@ -190,6 +190,11 @@ import axios from "axios";
 export default {
   name: "Theatrical",
   components: {Breadcrumbs, CruiseItem, Header},
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  Театральные круизы на теплоходе  по Москва реке`,
+    }
+  },
   data() {
     return {
       theatricalInfo:[

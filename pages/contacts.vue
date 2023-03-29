@@ -47,7 +47,7 @@
                 <div
                   class="trams__route__metro__badge trams__route__metro__badge_blue"
                 >
-
+                  M
                 </div>
                 <span> Киевская (Кольцевая и Филевская линии) </span>
               </div>
@@ -566,6 +566,11 @@
   export default {
     name: 'Contacts',
     components: {ModalCalculation, Breadcrumbs, Header, Default, yandexMap, ymapMarker },
+    head() {
+      return {
+        title: `Флотилия Radisson Royal Moscow - контакты Рэдиссон Флотилии`,
+      }
+    },
     data() {
       return {
         objMap1: null,

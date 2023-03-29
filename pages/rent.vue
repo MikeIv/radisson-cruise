@@ -850,6 +850,11 @@ import Breadcrumbs from "../components/Breadcrumbs";
 export default {
   name: "Rent",
   components: {Breadcrumbs, ModalTenancy, ModalCalculation, SitsTableItem, EquipmentItem, Event, RentSliderItem, Header},
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow - аренда теплохода, заказать яхту Рэдиссон Флотилии`,
+    }
+  },
   data(){
     return {
      selectedEvent: {},

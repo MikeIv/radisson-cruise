@@ -107,6 +107,11 @@ import CategoryCabinFilter from "../../components/modals/CategoryCabinFilter";
 export default {
   name: 'index',
   components: {CategoryCabinFilter, Breadcrumbs, Cabin, Header,FilterMobile},
+  head() {
+    return {
+      title: 'Флотилия Radisson Royal Moscow - речные теплоходы Рэдиссон Москва',
+    }
+  },
   data() {
     return{
       yachts: {

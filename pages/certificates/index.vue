@@ -359,6 +359,11 @@ import axios from "axios";
 export default {
   name: "index",
   components: {CertificateCard, Header},
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  Подарочные сертификаты`,
+    }
+  },
   data() {
     return{
       cards:[

@@ -475,6 +475,11 @@ import axios from "axios";
 export default {
   name: "Rules",
   components: {Breadcrumbs, SecurityCard, VideoItem, VideoNavItem, YachtType, Yachts, TechnicalItem, RulesItem, Header},
+  head() {
+    return {
+      title: 'Флотилия Radisson Royal Moscow - Правила и условия на яхтах Флотилии',
+    }
+  },
   data() {
     return {
       videoTabs: {

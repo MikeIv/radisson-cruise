@@ -327,6 +327,12 @@ import { timeCalc } from "../../plugins/routesTimeCalc";
 export default {
   name: "Theatrical-item",
   components: {Breadcrumbs, NewsItem, Header},
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  Театральные круизы на теплоходе ${this.currentNew.name}`,
+    }
+  },
+
   data() {
     return {
       page: this.$route.params.page,

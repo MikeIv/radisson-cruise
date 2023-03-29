@@ -294,6 +294,12 @@ export default {
       politic: null,
     }
   },
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  Политика конфеденциальности`,
+    }
+  },
+
   async fetch() {
     try {
       const politicData = await axios.get(

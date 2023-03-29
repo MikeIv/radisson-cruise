@@ -374,6 +374,11 @@ import FilterMobile from "@/components/modals/Filter";
 import axios from "axios";
 export default {
   name: "news",
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow - ${this.title} Рэдиссон Флотилии`,
+    }
+  },
   components: {Breadcrumbs, Header, NewsCard, FilterMobile},
   data() {
     return {
@@ -576,6 +581,7 @@ export default {
       page: 1,
       perPage: 7,
       pages: [],
+      title: 'Новости и акции'
     }
   },
   methods: {
@@ -838,6 +844,23 @@ export default {
     },
     '$route.query.grp'() {
       this.fetchNews(this.$route.query.page, this.$route.query.grp)
+      switch (this.$route.query.grp) {
+        case 'all':
+          this.title = 'Новости и акции'
+          break;
+        case 'article':
+          this.title = 'Новости'
+          break;
+        case 'action':
+          this.title = 'Акции'
+          break;
+        case 'event':
+          this.title = 'События'
+          break;
+        default:
+          this.title = 'Новости и акции'
+          break;
+      }
     },
     deep: true
   },
