@@ -46,8 +46,8 @@ deploy frontend service:
     - pwd
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt
-    - docker service update -q --force korabliki_nuxt
     - docker rmi -f --no-prune $(docker images -q -f dangling=true ${CI_REGISTRY_IMAGE}/nuxt)
+    - docker service update -q --force korabliki_nuxt
     - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
   only:
     refs:
