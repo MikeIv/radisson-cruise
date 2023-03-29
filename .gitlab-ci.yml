@@ -67,3 +67,4 @@ deploy dev service:
   tags:
     - shell
     - $CI_JOB_STAGE
+
