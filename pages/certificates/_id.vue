@@ -318,6 +318,10 @@ export default {
   mounted() {
 
   },
+  validate({ params }) {
+    // Must be a number
+    return /^\d+$/.test(params.id)
+  },
   methods: {
     onAccept (e) {
       const maskRef = e.detail;

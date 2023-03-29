@@ -65,19 +65,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/i18n', '@nuxtjs/axios', '@nuxtjs/redirect-module', '@nuxtjs/proxy', '@nuxtjs/composition-api/module'],
   redirect: [
-    /*{
-      from: '^[\\w\\.\\/]*(?<!\\/)(\\?.*\\=.*)*$',
-      to: (from, req) => {
-        const matches = req.url.match(/^.*(\?.*)$/)
-        if (matches.length > 0) {
-          return matches[0].replace(matches[1], '') + '/' + matches[1]
-        }
-        return matches[0]
-      },
-      statusCode: 301
-    }*/
     {
-      from: '^(\\/[^\\?]*[^\\/])(\\?.*)?$',
+      from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
       to: '$1/$2',
       statusCode: 301
     }

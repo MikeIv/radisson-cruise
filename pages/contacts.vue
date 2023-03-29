@@ -47,9 +47,9 @@
                 <div
                   class="trams__route__metro__badge trams__route__metro__badge_blue"
                 >
-                  M
+
                 </div>
-                <span> Киевска (Кольцевая и Филевская линии) </span>
+                <span> Киевская (Кольцевая и Филевская линии) </span>
               </div>
             </div>
             <div class="contact-info__item">
