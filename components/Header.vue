@@ -158,7 +158,7 @@
                 <span> {{ $t('header.buttons.shedulerTram') }}</span>
                 <img data-src="~assets/img/main/btn-tram.png" alt="" src="~assets/img/main/btn-tram.png">
               </nuxt-link>-->
-              <nuxt-link class="header-link-shedule transition" :to="localePath('/yachts/schedule')"  @click.native="closeNav">
+              <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('header.buttons.shedulerYachts') }}</span>
               </nuxt-link>

@@ -864,7 +864,7 @@
               </div>
               <div class="footer__bottom_item2  uk-width-1-4 uk-visible@m">
                 <nuxt-link to="/politic/" class=""  @click.native="closeNav">
-                  Политика конфеденциальности
+                  Политика конфиденциальности
                 </nuxt-link>
               </div>
               <div class="footer__bottom_item4  uk-width-auto@s">

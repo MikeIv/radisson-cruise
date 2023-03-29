@@ -20,7 +20,7 @@
       <div class="headline_22">
         {{ price }} ₽
       </div>
-      <nuxt-link class="uk-button uk-button-default" :to="`/certificates/${id}`">
+      <nuxt-link class="uk-button uk-button-default" :to="`/certificates/${id}/`">
         Купить сертификат
       </nuxt-link>
     </div>

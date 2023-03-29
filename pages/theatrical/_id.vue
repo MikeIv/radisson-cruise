@@ -379,6 +379,11 @@ export default {
     return /^\d+$/.test(params.id)
   },
 
+  activated() {
+    console.log('About has been activated')
+    this.$fetch();
+  },
+
   async fetch() {
     try {
       const news = await axios.get(
