@@ -754,6 +754,7 @@ export default {
         const data = await response.data
         //console.log(data)
         UIkit.modal('#success').show();
+        this.newsEmail = null
         this.onError = null
       } catch(e) {
         onError = e.response.data.error
