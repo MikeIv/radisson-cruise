@@ -63,7 +63,21 @@ export default {
     middleware: ["preloader"],
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/i18n', '@nuxtjs/axios', '@nuxtjs/redirect-module', '@nuxtjs/proxy', '@nuxtjs/composition-api/module'],
+  modules: [
+      '@nuxtjs/i18n',
+      '@nuxtjs/axios',
+      '@nuxtjs/redirect-module',
+      '@nuxtjs/proxy',
+      '@nuxtjs/composition-api/module',
+      '@nuxtjs/yandex-metrika'
+  ],
+  yandexMetrika: {
+    id: '22731748',
+    webvisor: true,
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true
+  },
   redirect: [
     {
       from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
