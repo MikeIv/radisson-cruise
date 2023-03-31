@@ -265,7 +265,8 @@
     methods: {
       closeNav() {
       //console.log('close Nav')
-      this.$store.commit('changeNavState', false)
+        this.$store.commit('changeNavState', false)
+        document.body.classList.remove('uk-offcanvas-page')
     },
       activateCalc() {
         this.$emit('active-calc')

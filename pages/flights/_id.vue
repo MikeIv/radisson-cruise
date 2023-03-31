@@ -29,7 +29,10 @@
                 <ul class="uk-slider-items uk-flex" uk-lightbox="">
                   <li v-for="img in currentNew.slides" tabindex="-1" class="uk-active">
                     <a href="" class="gallery_card uk-position-relative">
-                      <img  :data-src="$config.baseSiteURL + img" alt="" class="img_cover" :src="$config.baseSiteURL + img">
+                      <img :data-src="`${$config.imageURL}?size=915&format=webp&src=${$config.baseSiteURL}` + img"
+                           alt=""
+                           class="img_cover"
+                           :src="`${$config.imageURL}?size=915&format=webp&src=${$config.baseSiteURL}` + img">
                     </a>
                   </li>
                 </ul>
@@ -243,7 +246,9 @@
                   <li v-for="recentNew in recentNews">
                     <nuxt-link class="uk-card card-news__small transition" :to="recentNew.uri">
                       <div class="uk-cover-container uk-card-default_media">
-                        <img :data-src="`${$config.baseSiteURL}`+recentNew.banner" alt="" class="img_cover" :src="`${$config.baseSiteURL}`+recentNew.banner">
+                        <img :data-src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+recentNew.banner"
+                             alt="" class="img_cover"
+                             :src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+recentNew.banner">
                       </div>
                       <div class="uk-card-body">
                         <div class="card_time">

@@ -18,7 +18,7 @@
         {{ imgText }}
       </div>
       <div class="awards_card-container">
-        <img alt="" :src="$config.baseSiteURL + fileName">
+        <img alt="" :src="`${$config.imageURL}?size=200&format=webp&src=${$config.baseSiteURL}` + fileName">
       </div>
 <!--      <img :data-src="require(`@/assets/img/${fileName}`)" alt="" :src="require(`@/assets/img/${fileName}`)">-->
     </div>

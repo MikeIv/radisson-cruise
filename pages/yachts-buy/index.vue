@@ -70,8 +70,8 @@
                   <div v-if="routeData.classData?.slides && routeData.classData?.slides.length > 0" class="buy-ticket-form-hall__gallery" uk-lightbox="">
                     <div v-for="img in routeData.classData.slides">
                       <a :href="$config.baseSiteURL + img" class="gallery_card uk-position-relative ">
-                        <img :data-src="$config.baseSiteURL + img" alt="" class="img_cover"
-                             :src="$config.baseSiteURL + img">
+                        <img :data-src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img" alt="" class="img_cover"
+                             :src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img">
                         <div class="gallery_card__plus ">+</div>
                       </a>
                     </div>
@@ -235,7 +235,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        {{ routeData.className }}
+                        {{ routeData.journeySubType }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
 
@@ -368,6 +368,11 @@ const querystring = require('querystring');
 export default {
   scrollToTop: true,
   name: "yachts-buy",
+  head() {
+    return {
+      title: `Флотилия Radisson Royal Moscow -  Купить билет Рэдиссон Флотилии`,
+    }
+  },
   components: {
     Breadcrumbs,
     Header,

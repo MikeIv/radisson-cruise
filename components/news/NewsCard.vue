@@ -2,9 +2,20 @@
   <nuxt-link :class="checkMain" :to="uri">
   <!--:to="`/news/${id}-${formattedName}`"-->
   
-    <img v-if="main == 1" :data-src="`${$config.baseSiteURL}${fileName}`" class="img_cover" :src="`${$config.baseSiteURL}${fileName}`" data-alt="Image"/>
+    <img v-if="main == 1"
+         :data-src="`${$config.imageURL}?size=830&format=webp&src=${$config.baseSiteURL}${fileName}`"
+         class="img_cover"
+         :src="`${$config.imageURL}?size=830&format=webp&src=${$config.baseSiteURL}${fileName}`"
+         data-alt="Image"
+         alt="news-important-img"
+    />
     <div v-else class="uk-cover-container uk-card-default_media">
-      <img :data-src="`${$config.baseSiteURL}${fileName}`" class="img_cover" :src="`${$config.baseSiteURL}${fileName}`" data-alt="Image"/>
+      <img :data-src="`${$config.imageURL}?size=270&format=webp&src=${$config.baseSiteURL}${fileName}`"
+           class="img_cover"
+           :src="`${$config.imageURL}?size=270&format=webp&src=${$config.baseSiteURL}${fileName}`"
+           data-alt="Image"
+           alt="news-small-img"
+      />
       <div v-if="badge" class="uk-badge badge_sail">
         {{badgeText}}
       </div>

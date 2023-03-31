@@ -7,7 +7,11 @@
 
           <a :href="$config.baseSiteURL + fileName"  class="gallery_card uk-position-relative">
             <!--    style="visibility: hidden for link if needed -->
-            <img :data-src="$config.baseSiteURL + fileName" class="img_cover" :src="$config.baseSiteURL + fileName" data-alt="Image"/>
+            <img :data-src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + fileName"
+                 class="img_cover"
+                 :src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + fileName"
+                 alt="cruise-img"
+                 data-alt="Image"/>
           </a>
         </li>
       </ul>

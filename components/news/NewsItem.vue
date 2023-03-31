@@ -51,7 +51,10 @@
               <ul class="uk-slider-items uk-flex" uk-lightbox="">
                 <li v-for="(slide, index) in slides" :key="'slrd' + index" tabindex="-1" class="uk-active">
                   <a :href="`${$config.baseSiteURL}${slide}`" class="gallery_card uk-position-relative">
-                    <img :data-src="`${$config.baseSiteURL}${slide}`" class="img_cover" :src="`${$config.baseSiteURL}${slide}`" data-alt="Image"/>
+                    <img :data-src="`${$config.imageURL}?size=915&format=webp&src=${$config.baseSiteURL}${slide}`"
+                         class="img_cover"
+                         :src="`${$config.imageURL}?size=915&format=webp&src=${$config.baseSiteURL}${slide}`"
+                         data-alt="Image"/>
                   </a>
                 </li>
               </ul>
@@ -115,7 +118,10 @@
                 <li v-for="recentNew in recentNews">
                   <nuxt-link class="uk-card card-news__small transition" :to="recentNew.uri">
                     <div class="uk-cover-container uk-card-default_media">
-                      <img :data-src="`${$config.baseSiteURL}/`+recentNew.banner" alt="" class="img_cover" :src="`${$config.baseSiteURL}/`+recentNew.banner">
+                      <img :data-src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+recentNew.banner"
+                           alt=""
+                           class="img_cover"
+                           :src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+recentNew.banner">
                     </div>
                     <div class="uk-card-body">
                       <div class="card_time">
@@ -195,7 +201,10 @@
               <li v-for="news in recentNews" tabindex="-1" class="uk-active">
                 <nuxt-link class="uk-card card-news__small transition" :to="news.uri">
                   <div class="uk-cover-container uk-card-default_media">
-                    <img :data-src="`${$config.baseSiteURL}/`+news.banner" alt="" class="img_cover" :src="`${$config.baseSiteURL}/`+news.banner">
+                    <img :data-src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+news.banner"
+                         alt=""
+                         class="img_cover"
+                         :src="`${$config.imageURL}?size=300&format=webp&src=${$config.baseSiteURL}`+news.banner">
                   </div>
                   <div class="uk-card-body">
                     <div class="card_time">

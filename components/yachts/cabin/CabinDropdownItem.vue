@@ -123,7 +123,10 @@
 <!--            <PhotoCard :fileName="slide"/>-->
             <a :href="$config.baseSiteURL + slide"  class="gallery_card uk-position-relative">
               <!--    style="visibility: hidden for link if needed -->
-              <img :data-src="$config.baseSiteURL + slide" class="img_cover" :src="$config.baseSiteURL + slide" data-alt="Image"/>
+              <img
+                  :data-src="`${$config.imageURL}?size=800&format=webp&src=${$config.baseSiteURL}` + slide"
+                  class="img_cover"
+                  :src="`${$config.imageURL}?size=800&format=webp&src=${$config.baseSiteURL}` + slide" data-alt="Image"/>
             </a>
           </li>
         </ul>

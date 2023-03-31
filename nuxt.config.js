@@ -79,12 +79,14 @@ export default {
   },
   publicRuntimeConfig: {
     baseURL: process.env.API_BASE_URL,
-    baseSiteURL: process.env.BASE_URL
+    baseSiteURL: process.env.BASE_URL,
+    imageURL: process.env.IMAGE_URL
   },
 
   privateRuntimeConfig: {
     baseURL: process.env.API_BASE_URL,
-    baseSiteURL: process.env.BASE_URL
+    baseSiteURL: process.env.BASE_URL,
+    imageURL: process.env.IMAGE_URL
   },
 /*  proxy: {
     '/rewards/': { target: 'https://new.radisson-cruise.ru', pathRewrite: {'^/api/': ''} }

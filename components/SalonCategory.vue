@@ -12,7 +12,10 @@
         <ul class="uk-slider-items uk-flex" uk-lightbox="" uk-scrollspy="target: > li > a; cls: uk-animation-slide-bottom-medium; delay: 500">
           <li v-for="image in images" tabindex="-1" class="uk-active">
             <a :href="`${$config.baseSiteURL}${image}`" :data-caption="title" class="gallery_card uk-position-relative uk-scrollspy-inview uk-animation-slide-bottom-medium" style="">
-              <img uk-img="" :data-src="`${$config.baseSiteURL}${image}`" class="img_cover" :src="`${$config.baseSiteURL}${image}`">
+              <img uk-img=""
+                   :data-src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${image}`"
+                   class="img_cover"
+                   :src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${image}`">
               <div class="gallery_card__caption">
                 <span>{{ title }}</span>
               </div>
