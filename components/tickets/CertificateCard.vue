@@ -1,7 +1,7 @@
 <template>
   <div class="buy-sertificat__card">
     <div class="uk-cover-container buy-sertificat-card__img">
-      <img :data-src="`${$config.baseSiteURL}` + fileName" :src="`${$config.baseSiteURL}` + fileName" class="img_cover" alt="">
+      <img :data-src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName" :src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName" class="img_cover" alt="">
       <div class="buy-sertificat-card__badge">
         <img data-src="~assets/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png">
       </div>

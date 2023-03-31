@@ -6,7 +6,10 @@
     </nuxt-link>-->
     <div class="cabin__img uk-cover-container">
 <!--      <img alt="" class="img_cover" :src="require(`~/assets/img/${fileName}`)" :data-src="require(`~/assets/img/${fileName}`)">-->
-      <img alt="" class="img_cover" :src="$config.baseSiteURL + fileName" :data-src="$config.baseSiteURL + fileName">
+      <img alt=""
+           class="img_cover"
+           :src="`${$config.imageURL}?size=1600&format=webp&src=${$config.baseSiteURL}` + fileName"
+           :data-src="`${$config.imageURL}?size=1600&format=webp&src=${$config.baseSiteURL}` + fileName">
       <div class="cabin__badge">
         {{ name }}
       </div>
@@ -14,7 +17,10 @@
     <div class="cabin__header__info">
       <div class="yacht__capitan">
         <div class="yacht__capitan_img uk-cover-container">
-          <img class="img_cover" alt="" :src="$config.baseSiteURL + capImg" :data-src="$config.baseSiteURL + capImg">
+          <img class="img_cover"
+               alt=""
+               :src="`${$config.imageURL}?size=245&format=webp&src=${$config.baseSiteURL}` + capImg"
+               :data-src="`${$config.imageURL}?size=245&format=webp&src=${$config.baseSiteURL}` + capImg">
         </div>
         <div class="yacht__capitan_info">
           <div class="yacht__capitan_job">

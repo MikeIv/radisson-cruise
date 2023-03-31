@@ -1,7 +1,10 @@
 <template>
   <div class="yacht__capitan">
     <div class="yacht__capitan_img uk-cover-container">
-      <img :data-src="$config.baseSiteURL+personaImg" alt="" class="img_cover" :src="$config.baseSiteURL+personaImg">
+      <img :data-src="`${$config.imageURL}?size=275&format=webp&src=${$config.baseSiteURL}`+personaImg"
+           alt=""
+           class="img_cover"
+           :src="`${$config.imageURL}?size=275&format=webp&src=${$config.baseSiteURL}`+personaImg">
     </div>
     <div class="yacht__capitan_info">
       <nuxt-link :to="{ path: '/yachts', hash:`${yachtName}`}" replace class="transition yacht__capitan__ship">

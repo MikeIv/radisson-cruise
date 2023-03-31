@@ -198,8 +198,6 @@
         <div class="headline_56">
           Преимущества
         </div>
-        <p v-if="$fetchState.pending">Loading....</p>
-        <p v-else-if="$fetchState.error">Error while fetching info</p>
         <div uk-slider="" class="tenancy-advantages__slider uk-slider">
           <div class="uk-position-relative">
             <div class="uk-slider-container slider_width150">
@@ -555,150 +553,6 @@
       </div>
     </section>
     <div id="events" class="uk-flex uk-flex-wrap uk-grid-match" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 400">
-<!--      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent7.png" class="img_cover" alt="" src="~assets/img/inners/rent7.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Банкет </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="#modal-tenancy" uk-toggle="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent8.png" class="img_cover" alt="" src="~assets/img/inners/rent8.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Фуршеты </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent9.png" class="img_cover" alt="" src="~assets/img/inners/rent9.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Дни рождения  </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent10.png" class="img_cover" alt="" src="~assets/img/inners/rent10.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Детские праздникИ </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent11.png" class="img_cover" alt="" src="~assets/img/inners/rent11.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Романтический ужин  </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent12.png" class="img_cover" alt="" src="~assets/img/inners/rent12.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Свадьба</b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent13.png" class="img_cover" alt="" src="~assets/img/inners/rent13.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Встреча<br>
-                одноклассников </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent-1.png" class="img_cover" alt="" src="~assets/img/inners/rent-1.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Корпоративы  </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-3@m uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent14.png" class="img_cover" alt="" src="~assets/img/inners/rent14.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Конференции </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent15.png" class="img_cover" alt="" src="~assets/img/inners/rent15.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Бизнес семинары  </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="uk-width-1-2@s uk-scrollspy-inview uk-animation-fade">
-        <div class="tenancy-event__item uk-cover-container">
-          <img  data-src="~assets/img/inners/rent16.png" class="img_cover" alt="" src="~assets/img/inners/rent16.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              <b>Новый год  </b>
-            </div>
-            <a class="uk-button uk-button-primary" href="">
-              <span>ПОДРОБНЕЕ</span>
-            </a>
-          </div>
-        </div>
-      </div>-->
       <Event v-for="(event, index) in rentBlocks" :key="'evnt' + index"
              :title="event.name"
              :fileName="event.image"
@@ -810,27 +664,6 @@
         </div>
       </div>
     </section>
-    <!--    <section class="uk-cover-container tenancy-equipment">
-      <img  data-src="/img/inners/rent22.png" alt="" class="img_cover" src="~assets/img/inners/rent22.png">
-      <div class="uk-container uk-position-relative">
-        <div class="headline uk-text-center">
-          <div class="headline_56">
-            Оборудование
-          </div>
-          <div class="tenancy-equipment__headline__p2">
-            У нас есть необходимое профессиональное и качественное оборудование для вашего мероприятия,
-            которое поможет сделать ваше мероприятие ярким и громким!
-          </div>
-        </div>
-
-        <ul uk-accordion="multiple: false" class="accordion_equipment uk-accordion">
-          <EquipmentItem v-for="(equipment, index) in equipmentInfo" :key="'eqp' + index"
-                         :name="equipment.name" :textInfo="equipment.textInfo"
-          />
-        </ul>
-      </div>
-    </section>-->
-
     <ModalTenancy :event="selectedEvent"/>
     <ModalCalculation/>
   </div>
