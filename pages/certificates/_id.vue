@@ -360,7 +360,7 @@ export default {
             email: this.email,
             phone: this.phone,
             seats: this.seats,
-            agree: this.agreed
+            agree: this.isAgree
           })*/
           data: {
             tarif: this.tarif,
@@ -368,7 +368,7 @@ export default {
             email: this.email,
             phone: this.phone,
             seats: this.seats,
-            agree: this.agreed
+            agree: this.isAgree
           },
         })
 
