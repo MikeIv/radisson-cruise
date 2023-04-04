@@ -40,6 +40,7 @@
 <script>
   import SideNav from "./SideNav";
  // import HeaderInner from "./HeaderInner";
+  import UIkit from "uikit";
   export default {
     name: 'Header',
     props:{
@@ -69,6 +70,7 @@
           this.$store.commit('changeNavState', !this.isActive)
           if(this.isActive) {
             document.body.classList.add('uk-offcanvas-page')
+            //UIkit.alert('.old-site').close();
           } else {
             document.body.classList.remove('uk-offcanvas-page')
           }
