@@ -162,6 +162,9 @@ body {
   .main_header {
     padding-top: 30px;
   }
+  header {
+    padding: 5px 0 59px !important;
+  }
 }
 
 /*
@@ -3178,6 +3181,10 @@ body {
   }
   .header-ticket:hover {
     color: #fff
+  }
+
+  header {
+    padding: 5px 0 59px;
   }
   .header-ticket .txt16 {
     display: none;
