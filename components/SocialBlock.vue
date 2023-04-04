@@ -1,6 +1,6 @@
 <template>
   <div class="social_links">
-    <SocialItem v-for="(social, key) in socials" :link="social" :svgURL="key"/>
+    <SocialItem v-for="(social, key, index) in socials" :key="'scl' + index" :link="social" :svgURL="key"/>
   </div>
 </template>
 

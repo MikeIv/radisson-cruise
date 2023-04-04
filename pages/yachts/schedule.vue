@@ -287,7 +287,7 @@
                       class="icon"
                     />
                   </div>
-                  <span class="buy-ticket-shedule__time__num uk-hidden@s">
+                  <span v-if="timeCalc" class="buy-ticket-shedule__time__num uk-hidden@s">
                   {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                 </span>
                 </div>
@@ -297,7 +297,7 @@
                       Время
                     </div>
                     <div class="buy-ticket-shedule__time">
-                    <span class="buy-ticket-shedule__time__num">
+                    <span v-if="timeCalc" class="buy-ticket-shedule__time__num">
                       {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                     </span>
                       <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
