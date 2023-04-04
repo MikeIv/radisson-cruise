@@ -1,18 +1,30 @@
 <template>
   <div class="social_links">
-<!--    <SocialItem :svgURL="'facebook'"/>-->
-    <SocialItem link="https://vk.com/radissoncruise" svgURL="vkontakte"/>
-<!--    <SocialItem :svgURL="'inst_soc'"/>-->
-    <SocialItem link="https://www.youtube.com/channel/UColsxBwcNl1WwVq6wbYyUcw/featured" svgURL="you"/>
-    <SocialItem link="https://t.me/radisson_cruise" svgURL="teleg"/>
+    <SocialItem v-for="(social, key) in socials" :link="social" :svgURL="key"/>
   </div>
 </template>
 
 <script>
 import SocialItem from "./SocialItem";
+import axios from "axios";
 export default {
   name: "SocialBlock",
   components: {SocialItem},
+  data() {
+    return {
+      socials: []
+    };
+  },
+  async fetch() {
+    try {
+      const socialData = await axios.get(`${this.$config.baseURL}textelements?code[]=vk&code[]=telegram&code[]=youtube`);
+      this.socials = socialData.data.result;
+    } catch(e) {
+
+    }
+  },
+  fetchOnServer: true,
+  fetchKey: 'social-block',
 }
 </script>
 
