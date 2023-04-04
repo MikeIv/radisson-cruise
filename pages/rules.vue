@@ -28,10 +28,10 @@
       </div>
       <svg-icon class="rules-performance__icon" name="wheel"/>
       <div class="uk-container uk-position-relative">
-        <div class="headline_56">
+        <h2 class="headline_56">
           ТЕХНИЧЕСКИЕ<br>
           ХАРАКТЕРИСТИКИ
-        </div>
+        </h2>
         <div class="uk-flex uk-flex-wrap uk-child-width-1-2@m rules-performance__grid uk-grid-match">
 <!--          <div>
             <div class="rules-performance__item">
@@ -94,9 +94,9 @@
         <img  data-src="~assets/img/inners2/rules5.png" class="img_cover" alt="" src="~assets/img/inners2/rules5.png">
       </div>
       <div class="uk-container uk-position-relative">
-        <div class="headline_56">
+        <h2 class="headline_56">
           Безопасность
-        </div>
+        </h2>
         <div class="rules-security__block uk-position-relative">
           <svg-icon class="rules-security__block__icon" name="safe-ring"/>
           <div class="uk-position-relative">
@@ -251,9 +251,9 @@
       <img  data-src="~assets/img/inners2/rules8.png" alt="" class="img_cover" src="~assets/img/inners2/rules8.png">
 
       <div class="uk-container uk-position-relative">
-        <div class="headline_56">
+        <h2 class="headline_56">
           ролик о безопасности
-        </div>
+        </h2>
         <div class="rules-security-video__grid uk-flex uk-flex-wrap uk-grid-match ">
           <div class="uk-width-auto@m">
             <ul class="rules-security-video__tabs uk-visible@s uk-tab" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
@@ -412,41 +412,6 @@
     <section class="padding_top padding_bottom rules-about2__section">
       <div class="uk-container">
         <div class="uk-flex uk-flex-wrap uk-child-width-1-2@l uk-grid-match rules-about2__grid">
-<!--          <div>
-            <div class="rules-about2__item rules-about2__item1">
-              <svg-icon class="rules-about2__item1__icon" name="blue-info"/>
-              <div class="uk-position-relative">
-                <div class="headline_22 t_semibold">
-                  Дополнительные меры<br>
-                  по обеспечению безопасности:
-                </div>
-                <ul>
-                  <li>
-                    Перед каждым рейсом на плазмах транслируется видеоролик с субтитрами
-                    и звуковым сопровождением о применении средств безопасности на борту яхт.
-                  </li>
-                  <li>Персонал проходит инструктаж перед каждым рейсом.</li>
-                  <li>Команда своевременно посещает курсы повышения квалификации.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="rules-about2__item rules-about2__item2">
-              <svg-icon class="rules-about2__item1__icon" name="blue-protect"/>
-              <div class="uk-position-relative">
-                <div class="headline_22 t_semibold">
-                  Помните, что Ваша безопасность находится,
-                  прежде всего, в Ваших собственных руках.
-                </div>
-                <div class="rules-about2__item__txt">
-                  На протяжении маршрута пассажиры обязаны соблюдать правила безопасности
-                  и выполнять все распоряжения экипажа яхты – это одно из важнейших условий
-                  безопасности для Вас и других пассажиров.
-                </div>
-              </div>
-            </div>
-          </div>-->
           <div class="margin-bot10" v-for="(card, index) in securityBlocks" :key="'scrty' + index">
             <SecurityCard :card-title="card.name"
                           :card-type="card.type"

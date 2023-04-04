@@ -41,9 +41,9 @@
         <li data-type="yacht" ref="yachts">
           <div class="category-cabin__headline">
             <div class="uk-container">
-              <div class="headline_52">
+              <h2 class="headline_52">
                 яхты
-              </div>
+              </h2>
             </div>
           </div>
           <Cabin v-for="(cabin, index) in yachtsFetch[0]?.yachts"
@@ -65,9 +65,9 @@
         <li data-type="superyacht" ref="superyachts">
           <div class="category-cabin__headline">
             <div class="uk-container">
-              <div class="headline_52">
+              <h2 class="headline_52">
                 СУПЕР-яхты
-              </div>
+              </h2>
             </div>
           </div>
           <Cabin v-for="(cabin, index) in yachtsFetch[1]?.yachts"

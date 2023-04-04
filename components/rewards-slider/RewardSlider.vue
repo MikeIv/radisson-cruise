@@ -6,9 +6,9 @@
     </div>
     <div class="uk-container uk-position-relative">
       <div class="headline uk-text-center">
-        <div class="headline_p1">
+        <h2 class="headline_p1">
           НАГРАДЫ
-        </div>
+        </h2>
       </div>
       <p v-if="$fetchState.pending">Loading....</p>
       <div v-else uk-slider="" class="awards__slider uk-slider">
