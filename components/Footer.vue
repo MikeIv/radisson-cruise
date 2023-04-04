@@ -360,29 +360,15 @@
           </div>
           <div class="footer__information_item2">
             <div class="footer__information_item2-txt">Мы в соц.сетях</div>
-            <!--          <div class="social_links ">
-                        <a href="" target="_blank">
-                          <img src="~assets/img/svg/facebook.svg" alt="" class="" uk-svg>
-                        </a>
-                        <a href="" target="_blank">
-                          <img src="~assets/img/svg/vkontakte.svg" alt="" class="" uk-svg>
-                        </a>
-                        <a href="" target="_blank">
-                          <img src="~assets/img/svg/inst_soc.svg" alt="" class="" uk-svg>
-                        </a>
-                        <a href="" target="_blank">
-                          <img src="~assets/img/svg/you.svg" alt="" class="" uk-svg>
-                        </a>
-                      </div>-->
             <SocialBlock/>
           </div>
           <div class="footer__information_item3">
-            <a class="header_call " href="tel:+7 (495) 228-55-55">
+            <a class="header_call " :href="`tel:${footerSocial.tel}`">
               <img src="~assets/img/svg/call.svg" alt="" class="" uk-svg>
-              <span>+7 (495) 228-55-55 </span>
+              <span>{{ footerSocial.tel }}</span>
             </a>
-            <a class="footer__information_item3-mail" href="mailto: info@radisson-cruise.ru">
-              info@radisson-cruise.ru
+            <a class="footer__information_item3-mail" :href="`mailto: ${footerSocial.email}`">
+              {{ footerSocial.email }}
             </a>
           </div>
         </div>
@@ -779,7 +765,18 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.checkToTop);
-  }
+  },
+  async fetch() {
+    try {
+      const infoData = await axios.get(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
+      this.footerSocial.tel = infoData.data.result.phone;
+      this.footerSocial.email = infoData.data.result.email;
+    } catch(e) {
+
+    }
+  },
+  fetchOnServer: false,
+  fetchKey: 'utils-info',
 };
 </script>
 
