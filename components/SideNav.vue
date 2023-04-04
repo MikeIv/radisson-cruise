@@ -921,7 +921,6 @@ export default {
   },
   methods: {
     closeNav() {
-      console.log('yes')
       this.$store.commit('changeNavState', false)
       document.body.classList.remove('uk-offcanvas-page')
     },
