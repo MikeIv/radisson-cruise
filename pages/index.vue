@@ -22,21 +22,11 @@
           </div>-->
           <div class="header__middle">
             <div class="header__middle_left">
-              <div class="header__p1">
-                <div class="tpl-block-81"><div class="tpl-block-list tpl-component-netcat-base-text" id="nc-block-bcd052201a4657ab8014547349d5c01e"><div class="tpl-block-list-objects tpl-block-81-list" data-object-count="1">
-                  <article class="tpl-text-default">
-                    ПРОГУЛКИ</article>
-
-                </div></div></div>
-              </div>
-              <div class="header__p2">
-                <div class="tpl-block-82"><div class="tpl-block-list tpl-component-netcat-base-text" id="nc-block-28228c1d3ba73f41a212fdad11cad992"><div class="tpl-block-list-objects tpl-block-82-list" data-object-count="1">
-                  <article class="tpl-text-default">
-                    по Москве<br class="uk-hidden@s">
-                    реке</article>
-
-                </div></div></div>
-              </div>
+              <h1>
+                <span class="header__p1">ПРОГУЛКИ</span>
+                <br>
+                <span class="header__p2">по Москве-<br class="uk-hidden@s">реке</span>
+              </h1>
               <div class="header__p3">
                 <div class="tpl-block-83"><div class="tpl-block-list tpl-component-netcat-base-text" id="nc-block-82e0847e2fb8d5cdaf7a21daeda89c99"><div class="tpl-block-list-objects tpl-block-83-list" data-object-count="1">
                   <article class="tpl-text-default">

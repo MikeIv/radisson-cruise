@@ -337,9 +337,7 @@
         </div>
 
         <div class="about-capitans__block" id="cap">
-          <div class="headline_56 uk-text-center">
-            Капитаны яхт
-          </div>
+          <h2 class="headline_56 uk-text-center">Капитаны яхт</h2>
 <!--          <div class="about-capitans__grid uk-hidden">
             <div>
               <div class="yacht__capitan">
@@ -609,14 +607,6 @@
           </div>
 
           <div class="about-capitans__grid uk-hidden">
-<!--            <div v-for="capitan in chiefs">
-              <PersonalCard
-                       :personaImg="capitan.capImg"
-                       :yachtName="capitan.yachtName"
-                       :personaName="capitan.capName"
-                       :position="capitan.position"
-                       :experience="capitan.experience"/>
-            </div>-->
             <div v-for="capitan in testCaps">
               <PersonalCard
                 :personaImg="capitan.image"
@@ -716,9 +706,9 @@
           <div class="uk-width-auto">
             <div class="about-job__info">
               <div class="uk-flex uk-flex-between uk-flex-bottom about-job__info__headline">
-                <div class="headline_56">
+                <h2 class="headline_56">
                   вакансии
-                </div>
+                </h2>
 <!--                <a class="uk-button uk-button-default " href="">
                   <span>АНКЕТА СОИСКАТЕЛЯ</span>
                 </a>-->
@@ -754,9 +744,9 @@
       <img  class="img_cover" data-src="~assets/img/inners2/about11.png" alt="" src="~assets/img/inners2/about11.png">
       <div class="uk-container uk-position-relative">
         <div class="headline uk-flex uk-flex-between uk-flex-middle">
-          <div class="headline_56">
+          <h2 class="headline_56">
             документы
-          </div>
+          </h2>
           <a class="uk-button uk-button-default button_download uk-visible@m" href="">
             <svg-icon class="icon" name="download"/>
             <span>СКАЧАТЬ ВСЕ</span>
@@ -785,9 +775,9 @@
       <div class="about-capitans__decor1"></div>
       <div class="uk-container uk-position-relative">
         <div class="headline uk-text-center">
-          <div class="headline_56">
+          <h2 class="headline_56">
             ПАРТНЕРЫ
-          </div>
+          </h2>
         </div>
         <div uk-slider="" class="about-partners__slider uk-slider">
           <div class="uk-position-relative">

@@ -2,9 +2,9 @@
   <div>
     <div class="category-cabin__headline">
       <div class="uk-container">
-        <div class="headline_52">
+        <h2 class="headline_52">
           {{title}}
-        </div>
+        </h2>
       </div>
     </div>
     <div class="about-capitans__section">

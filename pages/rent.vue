@@ -195,9 +195,9 @@
     <section id="tenancy-advantages" class="tenancy-advantages uk-cover-container">
       <svg-icon class="awards_decor1" name="decor4"/>
       <div class="uk-container uk-position-relative">
-        <div class="headline_56">
+        <h2 class="headline_56">
           Преимущества
-        </div>
+        </h2>
         <div uk-slider="" class="tenancy-advantages__slider uk-slider">
           <div class="uk-position-relative">
             <div class="uk-slider-container slider_width150">
@@ -379,9 +379,9 @@
     <section id="tenancy-seating" class="uk-cover-container tenancy-seating">
       <img  data-src="~assets/img/inners/rent5.png" alt="" class="img_cover" src="~assets/img/inners/rent5.png">
       <div class="uk-container uk-position-relative">
-        <div class="headline_56">
+        <h2 class="headline_56">
           Таблица рассадки
-        </div>
+        </h2>
         <div class="tenancy-seating__grid uk-flex uk-flex-wrap uk-child-width-1-2@m uk-grid-match">
 <!--          <div>
             <div class="tenancy-seating__item">
@@ -569,11 +569,11 @@
               <div class="tenancy-managment__headline__p1">
                 ПРЕДОСТАВЛЯЕМЫЕ УСУГИ
               </div>
-              <div class="headline_56">
+              <h2 class="headline_56">
                 Организация<br>
                 и оформления<br>
                 мероприятия
-              </div>
+              </h2>
               <button type="button" class="uk-button uk-button-default button_calcalutor" @click="openModal">
                 <svg-icon class="icon" name="calculator"/>
                 <span>сделать расчет</span>
@@ -634,10 +634,10 @@
             <div class="tenancy-restaurant__headline__p1">
               ПРЕДОСТАВЛЯЕМЫЕ УСУГИ
             </div>
-            <div class="headline_56">
+            <h2 class="headline_56">
               Ресторанный<br>
               сервис
-            </div>
+            </h2>
             <div class="tenancy-restaurant__headline__p2">
               Гастрономическое удовольствие от кулинарных виртуозов Флотилии
               «Рэдиссон Ройал» во главе с шеф – поварами.
