@@ -47,7 +47,7 @@ export default {
     { src: '~/plugins/uikit', ssr: false },
     { src: '~/plugins/ymPlugin.js', mode: 'client', ssr: true },
     { src: '~/plugins/litepicker.js', mode: 'client', ssr: false },
-    { src: '~/plugins/routesTimeCalc.js', mode: 'server', ssr: true },
+    { src: '~/plugins/routesTimeCalc.js', ssr: true },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -280,6 +280,13 @@
                         {{ phone }}
                       </div>
                     </div>
+                    <div v-if="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item">
+                      <div class="buy-ticket-form__basket__item__name">
+                        Информация
+                      </div>
+                      <div v-html="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
+                      </div>
+                    </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__summ">
                         <div>
@@ -699,7 +706,7 @@ export default {
     this.childPrice = this.routeData.childPrice
     this.adultPrice = this.routeData.adultPrice
   },
-  fetchOnServer: true,
+  fetchOnServer: false,
   fetchKey: 'yacht-ticket',
 }
 </script>
