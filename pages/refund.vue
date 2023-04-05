@@ -281,7 +281,7 @@
             </div>
             <div v-if="foundedError" class="notification__text--wrapper">
               <div class="notification__text">
-                Извините, билет не найден. Просим Вас обратиться к нашим специалистам по телефону 8 495 228 5555 или по электронной почте info@radisson-cruise.ru
+                {{ onError }}.<br> Просим Вас обратиться к нашим специалистам по телефону 8 495 228 5555 или по электронной почте info@radisson-cruise.ru
               </div>
             </div>
             <div v-if="response" class="notification__text--wrapper">
