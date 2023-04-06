@@ -19,10 +19,17 @@ body {
 div {
   box-sizing: border-box;
 }
+ul, ol {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
 a {
   color: inherit;
-  font-weight: 400;
-  text-decoration: none;
+  //font-weight: 400;
+  //text-decoration: none;
   transition: .2s;
   &:hover {
     color: $color2;
