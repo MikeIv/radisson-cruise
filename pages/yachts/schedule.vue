@@ -287,9 +287,9 @@
                       class="icon"
                     />
                   </div>
-                  <span v-if="timeCalc" class="buy-ticket-shedule__time__num uk-hidden@s">
-                  {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
-                </span>
+                  <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
+                    {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
+                  </span>
                 </div>
                 <div class="uk-visible@s">
                   <div class="buy-ticket-shedule_responsive__time">
@@ -297,7 +297,7 @@
                       Время
                     </div>
                     <div class="buy-ticket-shedule__time">
-                    <span v-if="timeCalc" class="buy-ticket-shedule__time__num">
+                    <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num">
                       {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                     </span>
                       <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
@@ -655,8 +655,16 @@ export default {
     checkForLateRoutes(departureTime) {
       return this.isDepartureTimeApproaching(departureTime);
     },
-    timeCalcDate(depatureTime, arrivalTime) {
-      return timeCalc(depatureTime, arrivalTime)
+    timeCalcDate(dptrTime, arvTime) {
+      if(dptrTime === null || arvTime === null) return;
+      let depatureTime = new Date(dptrTime);
+      let arrivalTime = new Date(arvTime);
+      let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
+      let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
+      let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
+      let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
+      if(isNaN(hourDepature) || isNaN(minDepature) || isNaN(hourArrival) || isNaN(minArrival)) return;
+      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
     }
   },
   computed:{
