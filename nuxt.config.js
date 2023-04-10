@@ -84,6 +84,11 @@ export default {
       to: '$1/$2',
       statusCode: 301
     }
+
+    /*{ from: '^/bezopasnost/(.*)$', to: '/rules', statusCode: 301 },
+    { from: '^/nasi-preimusestva/(.*)$', to: '/rent/', statusCode: 301 },
+    { from: '^/tickets/raspisanie/', to: '/yachts/schedule/', statusCode: 301 },
+    { from: '^/action/(.*)$', to: '/news/?grp=action', statusCode: 301 },*/
   ],
   axios: {
     proxy: false,
