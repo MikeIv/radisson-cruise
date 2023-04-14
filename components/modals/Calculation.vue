@@ -459,7 +459,7 @@ export default {
         return;
       }
       const fetchCalculation = async () => {
-        const response = await fetch(`${this.$config.baseURL}sendform`, {
+        const response = await fetch(`${this.$config.baseURL}feedback`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
