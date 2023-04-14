@@ -697,4 +697,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
 }
+.buy-ticket__item_5 {
+  display: block;
+}
 </style>
