@@ -459,7 +459,7 @@ export default {
         return;
       }
       const fetchCalculation = async () => {
-        const response = await fetch(`${this.$config.baseURL}api/v1/sendform`, {
+        const response = await fetch(`${this.$config.baseURL}sendform`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -510,7 +510,11 @@ export default {
       setup: (picker) => {
         picker.on('selected', (date) => {
           //console.log("select Date = ", date.dateInstance);
-          this.formData.date = date.dateInstance;
+          this.formData.date = date.dateInstance.toLocaleDateString('ru-RU', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+          });
           //console.log('LitePicker = ', this.lpickObjick);
           // checkedCalculationDates();
         });
