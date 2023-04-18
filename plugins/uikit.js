@@ -250,13 +250,13 @@ if(document.querySelector('.modal-calculation')) {
   } */
 
 
-  document.querySelector('.modal-calculation__arr_next').addEventListener('click',function (e) {
+/*   document.querySelector('.modal-calculation__arr_next').addEventListener('click',function (e) {
     if(e.currentTarget.classList.contains('active')) {
       let last = Array.from(document.querySelectorAll('.modal-calculation__slide')).pop();
       //console.log('yes')
       if (!last.classList.contains('current')) {
         move(true)
-      }
+      } */
       /*    if (!document.querySelector('.modal-calculation__slide').last().hasClass('current')) move(true);
           if($('.modal-calculation__slide.current').index() == 1) {
             checkedCalculationDates();
@@ -269,13 +269,13 @@ if(document.querySelector('.modal-calculation')) {
             checkedCalculationNameAndCall();
           }*/
 
-    }
-  });
+/*     }
+  }); */
 
-  document.querySelector('.modal-calculation__arr_prev').addEventListener('click',function () {
+/*   document.querySelector('.modal-calculation__arr_prev').addEventListener('click',function () {
     if (!document.querySelector('.modal-calculation__slider').firstElementChild.classList.contains('current')) {
       move(false)
-    }
+    } */
 /*    if($('.modal-calculation__slide.current').index() != 3) {
       document.getElementById('calculation__slide4-submit').disabled = true;
       $('.modal-calculation__arr_next').removeClass('modal-calculation__arr_next-fin');
@@ -283,15 +283,14 @@ if(document.querySelector('.modal-calculation')) {
     if($('.modal-calculation__slide.current').index() == 2) {
       $('.modal-calculation__arr_next').addClass('active');
     }*/
-  });
+ // });
 
 
 //отслеживаем измениние инпута range для расчетов
-  document.getElementById("modal-calculation__range-input__in").addEventListener("input", function(e) {
+/*   document.getElementById("modal-calculation__range-input__in").addEventListener("input", function(e) {
     var rng = document.getElementById('modal-calculation__range-input'); //rng - это ползунок
     var i1= document.getElementById('modal-calculation__range-input__in'); // i1 - input
     e.currentTarget.value = e.currentTarget.value.replace(/\D/, '')
-    /*$(this).val($(this).val().replace (/\D/, ''));*/
 
     if(i1.value >= 400) {
       i1.value = 400;
@@ -315,15 +314,15 @@ if(document.querySelector('.modal-calculation')) {
     var rng=document.getElementById('modal-calculation__range-input'); //rng - это ползунок
     var i1=document.getElementById('modal-calculation__range-input__in'); // i1 - input
     i1.value=rng.value;
-  }, false);
+  }, false); */
 
 
 //проверка на выбор radio в расчете стоимости мероприятия
-  document.querySelectorAll('.modal-calculation__middle__types .modal-calculation__label').forEach(item => {
+/*   document.querySelectorAll('.modal-calculation__middle__types .modal-calculation__label').forEach(item => {
     item.addEventListener('click', () => {
       document.querySelector('.modal-calculation__arr_next').classList.add('active');
     })
-  });
+  }); */
 
 
 //прячем финальный футер у расчетов

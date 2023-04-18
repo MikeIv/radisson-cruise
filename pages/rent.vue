@@ -665,7 +665,8 @@
       </div>
     </section>
     <ModalTenancy :event="selectedEvent"/>
-    <ModalCalculation/>
+    <!-- <ModalCalculation/> -->
+    <ModalCalculationSimple/>
   </div>
 </template>
 
@@ -677,12 +678,13 @@ import EquipmentItem from "../components/rent/EquipmentItem";
 import UIkit from "uikit";
 import axios from "axios";
 import SitsTableItem from "../components/rent/SitsTableItem";
-import ModalCalculation from "../components/modals/Calculation";
+//import ModalCalculation from "../components/modals/Calculation";
+import ModalCalculationSimple from "../components/modals/CalculationSimple";
 import ModalTenancy from "../components/modals/Tenancy";
 import Breadcrumbs from "../components/Breadcrumbs";
 export default {
   name: "Rent",
-  components: {Breadcrumbs, ModalTenancy, ModalCalculation, SitsTableItem, EquipmentItem, Event, RentSliderItem, Header},
+  components: {Breadcrumbs, ModalTenancy, ModalCalculationSimple, SitsTableItem, EquipmentItem, Event, RentSliderItem, Header},
   head() {
     return {
       title: `Флотилия Radisson Royal Moscow - аренда теплохода, заказать яхту Рэдиссон Флотилии`,

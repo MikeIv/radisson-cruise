@@ -552,7 +552,7 @@
         </div>
       </div>
     </div>
-    <ModalCalculation/>
+    <ModalCalculationSimple/>
   </div>
 </template>
 
@@ -562,10 +562,11 @@
   import Default from '../layouts/default';
   import UIkit from 'uikit';
   import Breadcrumbs from "../components/Breadcrumbs";
-  import ModalCalculation from "../components/modals/Calculation";
+  //import ModalCalculation from "../components/modals/Calculation";
+  import ModalCalculationSimple from "../components/modals/CalculationSimple";
   export default {
     name: 'Contacts',
-    components: {ModalCalculation, Breadcrumbs, Header, Default, yandexMap, ymapMarker },
+    components: {ModalCalculationSimple, Breadcrumbs, Header, Default, yandexMap, ymapMarker },
     head() {
       return {
         title: `Флотилия Radisson Royal Moscow - контакты Рэдиссон Флотилии`,
