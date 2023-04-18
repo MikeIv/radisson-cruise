@@ -425,7 +425,7 @@ export default {
       childNewVal: null,
       childOldVal: null,
       maskTel: {
-        mask: '{+7}(900)-000-00-00',
+        mask: '{+7}(000)-000-00-00',
         lazy: true,
       },
       routeData: [],
@@ -599,12 +599,24 @@ export default {
       const maskRef = e.detail;
       this.value = maskRef.value;
       this.rowPhone = maskRef.value;
+/*       if(maskRef.value.length < 17 && maskRef.value[3]!=='9'){
+        this.errors.phone.isError = true
+        this.errors.phone.msg = 'Введите номер телефона в формате +7 (9XX) XXX-XX-XX'
+      } */
+      //console.log("onAccept length -> ",maskRef.value.length);
     },
     onComplete (e) {
       
       const maskRef = e.detail;
-      this.form.phone = maskRef.value;
-      //console.log("onComplete",this.form.phone);
+      this.form.phone = this.rowPhone;
+      if(maskRef.value[3]!=='9'){
+        this.errors.phone.isError = true
+        this.errors.phone.msg = 'Введите номер телефона в формате \n +7 (9XX) XXX-XX-XX'
+      }
+/*       console.log("onComplete maskRef -> ",maskRef);
+      console.log("onComplete 9 -> ",maskRef.value[3]);
+      console.log("onComplete length -> ",maskRef.value.length);
+      console.log("onComplete",this.form.phone); */
     },
 
     validateAdult() {
@@ -670,10 +682,11 @@ export default {
       let payUrl
       let onError
 
-      this.form.seatsAdult = this.adultCount
-      this.form.seatsChild = this.childCount
-      this.form.phone = this.form.phone.replace(/[^+\d]/g, '');
-
+      this.form.seatsAdult = this.adultCount;
+      this.form.seatsChild = this.childCount;
+      //console.log("Send Phone -> ",this.rowPhone.replace(/[^+\d]/g, ''));
+      this.form.phone = this.rowPhone.replace(/[^+\d]/g, '');
+      
       try {
         const response = await axios({
           method: 'POST',
