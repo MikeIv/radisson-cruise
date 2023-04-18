@@ -331,7 +331,7 @@ export default {
       }
     },
     submitFormRent() {
-      console.log('try submit Form');
+      //console.log('try submit Form');
       if(this.formData.name === ""){
         UIkit.notification({message: 'Укажите ваше имя', status: 'danger', pos: 'top-center', timeout: 1500})
         return;
