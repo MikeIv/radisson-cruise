@@ -1,11 +1,11 @@
 FROM node:14.21.2-alpine
 
-ENV APP_ROOT=/app
-ENV API_BASE_URL=https://korabliki.nuu.ru/api/v1/
+ARG API_BASE_URL
+ENV API_BASE_URL=$API_BASE_URL
 
 WORKDIR ${APP_ROOT}
 
-ADD . ${APP_ROOT}
+ADD . /app
 RUN npm install
 RUN npm run build
 
