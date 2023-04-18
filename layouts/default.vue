@@ -15,7 +15,9 @@
     <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'Theatrical-item'] }" />
     <!--    <Kiev />-->
     <!--    <SubscribeNews />-->
-    <Footer />
+    <keep-alive>
+      <Footer/>
+    </keep-alive>
   </div>
 </template>
 

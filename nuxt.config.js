@@ -1,5 +1,6 @@
 import { resolve } from 'path'
-
+const fs = require('fs')
+import axios from 'axios'
 export default {
   debug: false,
   server: {
@@ -78,18 +79,70 @@ export default {
     trackLinks:true,
     accurateTrackBounce:true
   },
-  redirect: [
+  /*redirect: [
     {
       from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
       to: '$1/$2',
       statusCode: 301
     }
 
-    /*{ from: '^/bezopasnost/(.*)$', to: '/rules', statusCode: 301 },
+    /!*{ from: '^/bezopasnost/(.*)$', to: '/rules', statusCode: 301 },
     { from: '^/nasi-preimusestva/(.*)$', to: '/rent/', statusCode: 301 },
     { from: '^/tickets/raspisanie/', to: '/yachts/schedule/', statusCode: 301 },
-    { from: '^/action/(.*)$', to: '/news/?grp=action', statusCode: 301 },*/
-  ],
+    { from: '^/action/(.*)$', to: '/news/?grp=action', statusCode: 301 },*!/
+  ],*/
+  redirect: async () => {
+    const list = [];
+    const redirects = await axios.get(`${process.env.API_BASE_URL}redirects`) // It'll wait!
+    const formatedRedirects = redirects.data.map((redirect) => {
+      if (redirect.source.includes('/action/?id')) {
+        console.log('redirect.source', redirect.source)
+        return {
+          from: '^/action/\\?id=(\\d+)$',
+          to: '/news/$1',
+          statusCode: 301,
+        }
+      } else if (redirect.source === '/action/'){
+        return {
+          from: '^/action/$',
+          to: '/news/?grp=action',
+          statusCode: 301,
+        }
+      } else {
+        return {
+          from: '^' + redirect.source,
+          to: redirect.target,
+          statusCode: 301,
+        }
+      }
+    })
+    list.push(...formatedRedirects)
+    list.push(
+        {
+          from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
+          to: '$1/$2',
+          statusCode: 301
+        }
+    )
+    return list
+  },
+  /*build: {
+    publicPath: 'store', // changed '_nuxt' way to 'store'
+  },
+  serverMiddleware: [
+    { path: '/server-middleware', handler: '~/server-middleware/errorhandler.js' }
+  ],*/
+ /* redirect: {
+    rules: [
+      {
+        from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
+        to: '$1/$2',
+        statusCode: 301
+      }
+    ],
+    onDecode: (req, res, next) => decodeURI(req.url),
+    onDecodeError: (error, req, res, next) => next(error)
+  },*/
   axios: {
     proxy: false,
     https: true,
@@ -132,8 +185,6 @@ export default {
     langDir: 'lang/',
     defaultLocale: 'ru',
   },
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
 
   loaders: {
     vue: {
