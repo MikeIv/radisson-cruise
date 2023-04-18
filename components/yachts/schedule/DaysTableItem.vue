@@ -35,7 +35,7 @@
     </td>
     <td v-else>
       <nuxt-link class="uk-button uk-button-default button_ticket transition" :class="{'disabled-link': checkForLateRoutes}"
-                 :to="'/yachts-buy?day='+ day + '&journey=' + journey"
+                 :to="'/yachts-buy/?journey='+journey"
       >
 <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
         <span>Купить билет</span>

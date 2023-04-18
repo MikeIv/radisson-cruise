@@ -4860,6 +4860,7 @@ body {
   margin-top: 35px;
   display: flex;
   flex-wrap: wrap;
+  row-gap: 30px;
   .input-group{
     border-radius: 4px;
     background: #fff;
@@ -4876,7 +4877,7 @@ body {
     width: 55px;
   }
   .buy-ticket-form__passengers__item {
-    margin-top: 23px;
+    //margin-top: 23px;
   }
 }
 .buy-ticket-form__passengers__head {
@@ -4901,9 +4902,9 @@ body {
 }
 
 .buy-ticket-form__data {
-  padding-top: 38px;
-  border-top: 1px solid rgba(161, 194, 229, 0.3);
-  margin-top: 37px;
+  /*padding-top: 38px;
+  border-top: 1px solid rgba(161, 194, 229, 0.3);*/
+  //margin-top: 37px;
 }
 
 .buy-ticket__input{
@@ -4927,7 +4928,7 @@ body {
 .buy-ticket-form__data__grid {
   margin-left: -34px;
   max-width: 730px;
-  margin-top: -10px;
+  //margin-top: -10px;
   > div {
     padding-left: 34px;
     margin-top: 33px;
@@ -4935,9 +4936,9 @@ body {
 }
 
 .buy-ticket-form__agreement {
-  padding-top: 40px;
-  border-top: 1px solid rgba(161, 194, 229, 0.3);
-  margin-top: 40px;
+  /*padding-top: 40px;
+  border-top: 1px solid rgba(161, 194, 229, 0.3);*/
+  margin-top: 30px;
 }
 .buy-ticket__politic {
   .uk-checkbox {
@@ -4964,8 +4965,8 @@ body {
 .buy-ticket-form__footer {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 40px;
-  border-top: 1px solid rgba(161, 194, 229, 0.3);
+  /*padding-top: 40px;
+  border-top: 1px solid rgba(161, 194, 229, 0.3);*/
   margin-top: 40px;
   align-items: center;
   justify-content: space-between;

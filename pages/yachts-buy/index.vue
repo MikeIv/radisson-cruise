@@ -14,12 +14,17 @@
           </div>
         </div>
       </Header>
-      <section class="buy-ticket-form__container">
+      <section v-if="routeData.hasGone">
+        <div class="uk-container uk-text-center uk-padding-large">
+          этот рейс уже отправился, на него уже нельзя оформить билет
+        </div>
+      </section>
+      <section v-else class="buy-ticket-form__container">
         <div class="uk-container">
           <div class="buy-ticket-form">
             <Breadcrumbs/>
             <div class="buy-ticket-form__grid">
-              <form class="buy-ticket-form__info" id="payData" :action="payUrl">
+              <form ref="form" class="buy-ticket-form__info" id="payData" @submit.prevent="payTicket">
                 <div class="headline_p1">
                   Купить билет
                 </div>
@@ -36,7 +41,7 @@
                           Время и дата:
                         </div>
                         <div>
-                          <b>{{ dayFormat }}, {{ timeCalc() }}</b>
+                          <b>{{ journeyDate }}, {{ timeCalc }}</b>
                         </div>
                         <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                             Дневной
@@ -52,7 +57,7 @@
                       Время и дата:
                     </div>
                     <div>
-                      <b>{{ dayFormat }}, {{ timeCalc() }}</b>
+                      <b>{{ journeyDate }}, {{ timeCalc }}</b>
                     </div>
                     <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                          Дневной
@@ -62,26 +67,10 @@
                     </span>
                   </div>
                 </div>
-                <div class="buy-ticket-form__hall">
-                  <p>
-                    <b> {{ routeData.classData?.name }} </b>
-                  </p>
-                  <div v-html="routeData.classData?.content"></div>
-                  <div v-if="routeData.classData?.slides && routeData.classData?.slides.length > 0" class="buy-ticket-form-hall__gallery" uk-lightbox="">
-                    <div v-for="img in routeData.classData.slides">
-                      <a :href="$config.baseSiteURL + img" class="gallery_card uk-position-relative ">
-                        <img :data-src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img" alt="" class="img_cover"
-                             :src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img">
-                        <div class="gallery_card__plus ">+</div>
-                      </a>
-                    </div>
-
-                  </div>
-                </div>
                 <div class="buy-ticket-form__passengers">
-                  <p class="buy-ticket-form__passengers__head">
+<!--                  <p class="buy-ticket-form__passengers__head">
                     <b>Количество пассажиров</b>
-                  </p>
+                  </p>-->
                   <div class="buy-ticket-form__passengers__item buy-ticket-form__passengers__item__first">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
@@ -135,39 +124,56 @@
                   </div>
                 </div>
                 <div class="buy-ticket-form__data">
-                  <div class="buy-ticket-form__data__head">
+<!--                  <div class="buy-ticket-form__data__head">
                     <b>Данные</b>
                     <span class="text-error">{{onError}}</span>
-                  </div>
+                  </div>-->
                   <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
                     <div class="uk-width-1-1">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Ваше ФИО</label>
-                        <input class="uk-input buy-ticket__input" type="text"
-                               placeholder="Введите ФИО" required="required" name=""
-                               v-model="fullName">
+<!--                        <label class="uk-form-label">Ваше ФИО</label>-->
+                        <input class="uk-input buy-ticket__input"
+                               :class="{'uk-form-danger': errors.name.isError}"
+                               type="text"
+                               placeholder="Введите ФИО"
+                               required="required"
+                               name=""
+                               v-model="form.name"
+                        >
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ errors.name.msg }}</div>
                       </div>
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Контактный телефон</label>
-                        <input class="uk-input buy-ticket__input f_phone" type="tel"
-                               placeholder="+7 (" required="required" name=""
+<!--                        <label class="uk-form-label">Контактный телефон</label>-->
+                        <input class="uk-input buy-ticket__input f_phone"
+                               :class="{'uk-form-danger': errors.phone.isError}"
+                               type="tel"
+                               placeholder="+7 ("
+                               required="required"
+                               name=""
                                inputmode="text"
-                               :value="phone"
+                               v-model="form.phone"
                                v-imask="maskTel"
                                @accept="onAccept"
                                @complete="onComplete"
                         >
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.phone.isError">{{ errors.phone.msg }}</div>
                       </div>
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Ваш e-mail</label>
-                        <input class="uk-input buy-ticket__input" type="email"
-                               placeholder="Введите e-mail" required="required" name=""
-                               v-model="email"
+<!--                        <label class="uk-form-label">Ваш e-mail</label>-->
+                        <input class="uk-input buy-ticket__input"
+                               type="email"
+                               placeholder="Введите e-mail"
+                               required="required"
+                               name=""
+                               :class="{'uk-form-danger': errors.email.isErrorInput || errors.email.isErrorSubmit}"
+                               v-model="form.email"
                         >
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ errors.email.msgOnInput }}</div>
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ errors.email.msgOnSubmit }}</div>
                       </div>
                     </div>
                   </div>
@@ -175,11 +181,19 @@
                 <div class="buy-ticket-form__agreement">
                   <div class="form_politic buy-ticket__politic">
                     <label>
-                      <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal" required>
+                      <input
+                          v-model="form.agree"
+                          class="uk-checkbox"
+                          :class="{'uk-form-danger': errors.agree.isError}"
+                          type="checkbox"
+                          name="check-personal"
+                          required
+                      >
                       <span class="">
                         Я принимаю условия приобритения билетов и даю согласие на обработку <nuxt-link to="/politic/">персональных данных</nuxt-link>
                       </span>
                     </label>
+                    <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.agree.isError">{{ errors.agree.msg }}</span>
                     <!-- <label>
                       <input class="uk-checkbox" type="checkbox" name="check-info">
                       <span class="">
@@ -196,8 +210,9 @@
                     <span>
                       {{ totalSumCount }} ₽
                     </span>
+                    <span class="text-error">{{onError}}</span>
                   </div>
-                  <div class="buy-ticket-form__footer__item">
+                  <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
                     <input class="uk-input buy-ticket__input" type="text" placeholder="Промокод" name=""
                            v-model="promoCode">
                     <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
@@ -205,6 +220,22 @@
                       <svg-icon class="icon uk-visible@s" name="ticket"/>
                     </button>
                     <div>{{ promoMsg }}</div>
+                  </div>
+                </div>
+                <div class="buy-ticket-form__hall">
+                  <p>
+                    <b> {{ routeData.classData?.name }} </b>
+                  </p>
+                  <div v-html="routeData.classData?.content"></div>
+                  <div v-if="routeData.classData?.slides && routeData.classData?.slides.length > 0" class="buy-ticket-form-hall__gallery" uk-lightbox="">
+                    <div v-for="img in routeData.classData.slides">
+                      <a :href="$config.baseSiteURL + img" class="gallery_card uk-position-relative ">
+                        <img :data-src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img" alt="" class="img_cover"
+                             :src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img">
+                        <div class="gallery_card__plus ">+</div>
+                      </a>
+                    </div>
+
                   </div>
                 </div>
               </form>
@@ -230,7 +261,7 @@
                         Время и дата:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
-                        {{ dayFormat }}, {{ timeCalc() }}
+                        {{ journeyDate }}, {{ timeCalc }}
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
@@ -313,7 +344,7 @@
                           <svg-icon class="icon" name="ticket"/>
                         </a>
                       </button>-->
-                      <button type="button" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !isAgree}" @click="payTicket">
+                      <button type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid}">
                         <span>Перейти к оплате</span>
                         <svg-icon class="icon" name="ticket"/>
                       </button>
@@ -387,7 +418,6 @@ export default {
   directives: {
     imask: IMaskDirective
   },
-
   data() {
     return {
       adultNewVal: null,
@@ -395,7 +425,7 @@ export default {
       childNewVal: null,
       childOldVal: null,
       maskTel: {
-        mask: '{+7}(000)-000-00-00',
+        mask: '{+7}(900)-000-00-00',
         lazy: true,
       },
       routeData: [],
@@ -407,6 +437,7 @@ export default {
       childPrice: 0,
       adultPrice: 0,
       journey: this.$route.query.journey,
+      journeyDate: null,
       adultSum: 0,
       childSum: 0,
       promoCode: '',
@@ -416,8 +447,39 @@ export default {
       saleNumber: 0,
       payUrl: '',
       onError: '',
-      maxSits: 40,
       isAgree: false,
+      rowPhone: '',
+      form: {
+        journey: this.$route.query.journey,
+        name: '',
+        email: '',
+        phone: '',
+        promoCode: null,
+        seatsAdult: 0,
+        seatsChild: 0,
+        agree: false,
+      },
+      errors: {
+        name: {
+          isError: false,
+          msg: 'Введите имя'
+        },
+        phone: {
+          isError: false,
+          msg: 'Введите номер телефона'
+        },
+        email: {
+          isErrorInput: false,
+          isErrorSubmit: false,
+          msgOnInput: 'Введите e-mail',
+          msgOnSubmit: 'Введите корректный e-mail со знаком @'
+        },
+        agree: {
+          isError: false,
+          msg: 'Примите условия соглашения'
+        },
+      },
+      valid: false,
     }
   },
   watch: {
@@ -471,6 +533,26 @@ export default {
     },
 
     '$route.query': '$fetch',
+
+    'form.name': function (val) {
+      val.length > 0 ? this.errors.name.isError = false : this.errors.name.isError = true;
+    },
+    'form.phone': function (val) {
+      val.length > 0 ? this.errors.phone.isError = false : this.errors.phone.isError = true
+    },
+    'form.email': function (val) {
+      val.length > 0 ? this.errors.email.isErrorInput = false : this.errors.email.isErrorInput = true
+    },
+    'form.agree': function (val) {
+      val ? this.errors.agree.isError = false : this.errors.agree.isError = true
+    },
+
+    form: {
+      handler: function (val) {
+        this.valid = val.name.length > 0 && val.phone.length > 0 && val.email.length > 0 && val.agree
+      },
+      deep: true
+    }
   },
 
   computed: {
@@ -495,18 +577,9 @@ export default {
     maxSum() {
       return this.maxSits - (+this.adultCount + +this.childCount)
     },
-  },
 
-  methods: {
-    onAccept (e) {
-      const maskRef = e.detail;
-      this.value = maskRef.value;
-      //console.log('accept', maskRef.value);
-    },
-    onComplete (e) {
-      const maskRef = e.detail;
-      this.phone = maskRef.unmaskedValue
-      //console.log('complete', maskRef.unmaskedValue);
+    maxSits() {
+      return this.routeData.freeSeats > 40 ? 40 : this.routeData.freeSeats
     },
 
     timeCalc() {
@@ -517,6 +590,18 @@ export default {
       let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
       let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
       return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
+    },
+  },
+
+  methods: {
+    onAccept (e) {
+      const maskRef = e.detail;
+      this.value = maskRef.value;
+      this.rowPhone = maskRef.value;
+    },
+    onComplete (e) {
+      const maskRef = e.detail;
+      this.form.phone = maskRef.unmaskedValue
     },
 
     validateAdult() {
@@ -581,30 +666,17 @@ export default {
     async payTicket() {
       let payUrl
       let onError
+
+      this.form.seatsAdult = this.adultCount
+      this.form.seatsChild = this.childCount
+      this.form.phone = this.form.phone.replace(/[^+\d]/g, '');
+
       try {
         const response = await axios({
           method: 'POST',
           url: `${this.$config.baseURL}order`,
-          /*data: querystring.stringify({
-            journey: this.journey,
-            name: this.fullName,
-            email: this.email,
-            phone: this.phone,
-            promoCode: this.promoCode,
-            seatsAdult: this.adultCount,
-            seatsChild: this.childCount,
-            agree: this.isAgree,
-          })*/
-          data: {
-            journey: this.journey,
-            name: this.fullName,
-            email: this.email,
-            phone: this.phone,
-            promoCode: this.promoCode,
-            seatsAdult: this.adultCount,
-            seatsChild: this.childCount,
-            agree: this.isAgree,
-          },
+          /*data: querystring.stringify(this.form)*/
+          data: this.form
         })
         if(response.data.error) {
           //console.log(response.data.error)
@@ -690,7 +762,7 @@ export default {
   middleware: [
     function({ redirect, route }) {
       if(Object.keys(route.query).length == 0) {
-        redirect('/yachts/schedule')
+        redirect('/yachts/schedule/')
       } else {
         //console.log('test')
       }
@@ -699,14 +771,22 @@ export default {
   ],
 
   async fetch() {
-    let data = await axios.get(
-      `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}`
-    )
-    this.routeData = data.data.routes[this.$route.query.day][0]
-    this.childPrice = this.routeData.childPrice
-    this.adultPrice = this.routeData.adultPrice
+    try {
+      let data = await axios.get(
+          `${this.$config.baseURL}route?journey=${this.$route.query.journey}`
+      )
+      this.routeData = data.data.result
+      this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {
+        month: 'long',
+        day: 'numeric',
+      })
+      this.childPrice = this.routeData.childPrice
+      this.adultPrice = this.routeData.adultPrice
+    } catch(error) {
+      this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
+    }
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'yacht-ticket',
 }
 </script>
@@ -721,5 +801,9 @@ export default {
   opacity: 0.3;
   pointer-events: none;
   cursor: not-allowed;
+}
+.uk-form-danger, .uk-form-danger:focus {
+  border-color: #ff0000;
+  color: #ff0000;
 }
 </style>

@@ -323,7 +323,7 @@
                   <nuxt-link
                     class="uk-button uk-button-default button_ticket"
                     :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
-                    :to="`/yachts-buy/?day=${dayRoute.date}&journey=${dayData.journey}`"
+                    :to="`/yachts-buy/?journey=${dayData.journey}`"
                   >
                     <span>Купить билет</span>
                     <svg-icon class="icon" name="ticket" />
@@ -436,10 +436,9 @@ export default {
     },
     async getCategory(id) {
       try {
-        const responseData = await axios.get(`${this.$config.baseURL}routes?journey=${id}`);
-        if(!responseData.data.routes) return;
-        let date = Object.keys(responseData.data.routes)[0]
-        this.categoryInfo = responseData.data.routes[date][0].classData;
+        const responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}`);
+        if(!responseData.data.result) return;
+        this.categoryInfo = responseData.data.result.classData;
         UIkit.modal('#buy-ticket-shedule-info').show();
       } catch (e) {
 
