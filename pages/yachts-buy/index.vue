@@ -595,13 +595,16 @@ export default {
 
   methods: {
     onAccept (e) {
+      //console.log("onAccept ",e);
       const maskRef = e.detail;
       this.value = maskRef.value;
       this.rowPhone = maskRef.value;
     },
     onComplete (e) {
+      
       const maskRef = e.detail;
-      this.form.phone = maskRef.unmaskedValue
+      this.form.phone = maskRef.value;
+      //console.log("onComplete",this.form.phone);
     },
 
     validateAdult() {
