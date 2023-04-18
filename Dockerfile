@@ -3,7 +3,7 @@ FROM node:14.21.2-alpine
 ARG API_BASE_URL
 ENV API_BASE_URL=$API_BASE_URL
 
-WORKDIR ${APP_ROOT}
+WORKDIR /app
 
 ADD . /app
 RUN npm install
