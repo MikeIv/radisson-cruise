@@ -708,6 +708,7 @@ export default {
   ssr: false,
   data() {
     return {
+      emailRegex: /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i,
       maskTel: {
         mask: '{+7}(000)-000-00-00',
         lazy: true,
@@ -723,7 +724,9 @@ export default {
   },
   methods: {
     async subscribeEmail() {
+      console.log("Send email to subscribe");
       let onError
+      if(!this.validateEmail()) return;
       try {
         const response = await axios({
           url:`${this.$config.baseURL}subscribe`,
@@ -746,6 +749,15 @@ export default {
         onError = e.response.data.error
         console.log(onError)
         this.onError = onError
+      }
+    },
+    validateEmail() {
+      //console.log(" Name Change = ", this.formData.name)
+      if (this.emailRegex.test(this.newsEmail) && this.newsEmail.length > 0) {
+        return true;
+      } else {
+        UIkit.notification({message: 'Укажите верный e-mail', status: 'danger', pos: 'top-center', timeout: 1500})
+        return false;
       }
     },
     checkAgree(e) {
