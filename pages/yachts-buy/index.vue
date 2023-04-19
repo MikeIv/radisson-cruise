@@ -802,7 +802,7 @@ export default {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
   },
-  fetchOnServer: true,
+  fetchOnServer: false,
   fetchKey: 'yacht-ticket',
 }
 </script>
