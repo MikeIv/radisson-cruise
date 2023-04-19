@@ -162,10 +162,10 @@
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('header.buttons.shedulerYachts') }}</span>
               </nuxt-link>
-              <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
+<!--               <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
                 <svg-icon class="header__top_logo transition" name="tram-icon"/>
                 <span>{{ $t('header.buttons.shedulerTram') }}</span>
-              </nuxt-link>
+              </nuxt-link> -->
             </div>
           </div>
           <div class="header__top_item5-container uk-visible@l">
@@ -299,7 +299,10 @@
 </script>
 
 <style>
-@media screen and (max-width: 639px) {
+/* media screen mobile iphone 5 */
+
+
+@media screen and (max-width: 320px) {
   .header__top_logohome svg {
     width: 113px;
     height: 48px;
@@ -311,10 +314,10 @@
     height: 79px;
 }
 }
-.header__top_logohome svg {
+/* .header__top_logohome svg {
     width: 185px;
     height: 79px;
-}
+} */
 
 .testBtn {
   display: block;
