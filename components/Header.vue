@@ -130,7 +130,7 @@
       <div class="uk-container">
         <div class="uk-grid uk-flex-between uk-child-width-auto uk-flex-middle uk-grid-small uk-flex-nowrap" uk-grid="">
           <div class="header__top_item1-container uk-first-column">
-            <nuxt-link class="header__top_logo transition" :to="localePath('/')"  @click.native="closeNav">
+            <nuxt-link class=" header__top_logohome transition" :to="localePath('/')"  @click.native="closeNav">
 <!--              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg">-->
               <svg-icon class="header__top_logo transition" name="logo"/>
             </nuxt-link>
@@ -161,6 +161,10 @@
               <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('header.buttons.shedulerYachts') }}</span>
+              </nuxt-link>
+              <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
+                <svg-icon class="header__top_logo transition" name="tram-icon"/>
+                <span>{{ $t('header.buttons.shedulerTram') }}</span>
               </nuxt-link>
             </div>
           </div>
@@ -295,6 +299,23 @@
 </script>
 
 <style>
+@media screen and (max-width: 639px) {
+  .header__top_logohome svg {
+    width: 113px;
+    height: 48px;
+}
+}
+@media screen and (max-width: 1200px) {
+  .header__top_logohome svg {
+    width: 185px;
+    height: 79px;
+}
+}
+.header__top_logohome svg {
+    width: 185px;
+    height: 79px;
+}
+
 .testBtn {
   display: block;
   width: 500px;
