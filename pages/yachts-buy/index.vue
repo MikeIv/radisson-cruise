@@ -140,7 +140,7 @@
                                name=""
                                v-model="form.name"
                         >
-                        <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ errors.name.msg }}</div>
+                        
                       </div>
                     </div>
                     <div class="uk-width-1-2@s">
@@ -344,6 +344,12 @@
                           <svg-icon class="icon" name="ticket"/>
                         </a>
                       </button>-->
+                      
+                      <div class="error-block">
+                        <!-- <div class="uk-form-danger uk-margin-top" v-show="true"> Ошибка. Исправьте ошибку для продолжения покупки</div> -->
+                         <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ errors.name.msg }}</div>
+                      </div>
+                     
                       <button type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid}">
                         <span>Перейти к оплате</span>
                         <svg-icon class="icon" name="ticket"/>
@@ -821,5 +827,9 @@ export default {
 .uk-form-danger, .uk-form-danger:focus {
   border-color: #ff0000;
   color: #ff0000;
+}
+.error-block{
+  min-height: 55px;
+  width: 100%;
 }
 </style>
