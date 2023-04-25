@@ -210,7 +210,7 @@
                     <span>
                       {{ totalSumCount }} ₽
                     </span>
-                    <span class="text-error">{{onError}}</span>
+                    
                   </div>
                   <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
                     <input class="uk-input buy-ticket__input" type="text" placeholder="Промокод" name=""
@@ -348,6 +348,7 @@
                       <div class="error-block">
                         <!-- <div class="uk-form-danger uk-margin-top" v-show="true"> Ошибка. Исправьте ошибку для продолжения покупки</div> -->
                          <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ errors.name.msg }}</div>
+                         <span class="text-error">{{onError}}</span>
                       </div>
                      
                       <button type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid}">
