@@ -37,554 +37,7 @@
                         <div class="scheme__map">
                             <div class="scheme__map_path-container">
                                 <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
-<!--                                <div class="uk-inline scheme_item3">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">Мэрия Москвы</div>
-                                    </div>
 
-                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice' class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                  <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="uk-inline scheme_item2">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">Дом Правительства РФ</div>
-                                    </div>
-
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice' class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-
-                                </div>
-                                <div class="uk-inline scheme_item1">
-                                    <div v-if="activeRoute === 1" class="scheme__item_first-container">
-                                        <button type="button" class="scheme__item_first" aria-expanded="false">
-                                          <svg-icon name='ancor' class="icon"/>
-                                        </button>
-                                        <div>
-                                            <span>Причал</span>
-                                            <span>«Гостиница «Украина»</span>
-                                            <span>Начало маршрута</span>
-                                            <svg-icon name='flag' class="icon"/>
-                                        </div>
-                                    </div>
-
-                                    <div v-else-if="activeRoute === 2" class="scheme__item_first-container">
-                                      <button type="button" class="scheme__item_circle" aria-expanded="false">
-                                      </button>
-                                      <div class="scheme__item_txt">
-                                        Парк «Гостиница «Украина»
-                                      </div>
-                                    </div>
-
-                                    <div uk-dropdown="mode: click;pos: right-center; toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="uk-inline scheme_item4">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Киевский<br>
-                                            вокзал
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item5">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Новодевичий<br>
-                                            монастырь
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item6">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Стадион «Лужники»
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item7">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            МГУ им. М.В. Ломоносова
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item8">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Академия наук РФ
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item9">
-
-                                    <div v-if="activeRoute === 1" class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false">
-                                        </button>
-                                        <div class="scheme__item_txt">
-                                            Парк культуры и отдыха<br>
-                                            им. Горького
-                                        </div>
-                                    </div>
-
-
-                                    <div v-else-if="activeRoute === 2" class="scheme__item-container">
-                                      <button type="button" class="scheme__item_first" aria-expanded="false">
-                                        <svg-icon name='ancor' class="icon"/>
-                                      </button>
-                                      <div>
-                                        <span>Причал «Парк Горького»</span>
-                                        <span>Начало маршрута</span>
-                                        <svg-icon name='flag' class="icon"/>
-                                      </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item10">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Центральный<br>
-                                            Дом Художника
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item11">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Памятник Петру I
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item12">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Храм<br>
-                                            Христа<br>
-                                            Спасителя
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item13">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            «Дом на набережной»
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item14">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Кремль
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item15">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Собор<br>
-                                            Василия<br>
-                                            Блаженного
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item16">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Дом<br>
-                                            на Котельнической<br>
-                                            набережной
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img  data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>
-                                <div class="uk-inline scheme_item17">
-                                    <div class="scheme__item-container">
-                                        <button type="button" class="scheme__item_circle" aria-expanded="false"></button>
-                                        <div class="scheme__item_txt">
-                                            Новоспасский<br>
-                                            монастырь
-                                        </div>
-                                    </div>
-&lt;!&ndash;                                    <div uk-dropdown="mode: click;pos: right-center;toggle: !.uk-inline button;" class="scheme__drop uk-dropdown">
-                                        <div class="scheme__drop_grid">
-                                            <div class="scheme__drop_img uk-cover-container">
-                                                <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                            </div>
-                                            <div class="scheme__drop_info">
-                                                <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                                <div class="scheme__drop_headline">
-                                                    Новодевичий
-                                                    монастырь
-                                                </div>
-                                                <div class="scheme__drop_text">
-                                                    Включен в список всемирного
-                                                    наследия ЮНЕСКО.
-                                                </div>
-                                                <a class="link_more transition" href="">
-                                                    <span>Подробнее</span>
-                                                    <svg-icon name='right-arrow-blue' class="icon"/>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>&ndash;&gt;
-                                </div>-->
                                 <div class="scheme_item18">
                                     <svg-icon name='svg-return' class="icon"/>
                                     <span>
@@ -592,12 +45,12 @@
                                     </span>
                                 </div>
 
-                                <div v-if="activeRoute === 2" class="scheme_item19">
+<!--                                 <div v-if="activeRoute === 2" class="scheme_item19">
                                     <svg-icon name='svg-return' class="icon"/>
                                     <span>
-                                      Разворот
+                                      Разворот2
                                     </span>
-                                </div>
+                                </div> -->
 
                                 <SchemeCircle v-for="(circle, index) in schemeYacht"
                                               :idNum="'crcl-'+ circle.customClass"
@@ -610,6 +63,7 @@
                                               :img="circle.img"
                                               :activeRoute="activeRoute"
                                               :isActiveCircle="circle.isActive"
+                                              
                                               
                                 />
 <!--                                 <SchemeCircle v-for="(circle, index) in schemeYacht"
@@ -654,43 +108,50 @@
                             </div>
 
                         </div>
-                        <div class="scheme__bottom">
-                            <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
-                            <label class="scheme__bottom_item" for="scheme-moor1" @click="activeRoute = 1">
-                                <div class="scheme__bottom_item_left">
-                                    <div class="scheme__bottom_head">
-                                        Причал «Гостиница «Украина»
+                        <div class="scheme__bottom scheme__block__buttons">
+                            <div class="uk-width-1-1">
+                                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
+                                <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1" @click="activeRoute = 1">
+                                    <div class="scheme__bottom_item_left">
+                                        <div class="scheme__bottom_head">
+                                            Причал «Гостиница «Украина»
+                                        </div>
+                                        <div class="scheme__bottom_info">
+                                            <svg-icon name='metro' class="icon"/>
+                                            <span>
+                                            Киевская, набережная Тараса Шевченко.
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="scheme__bottom_info">
+                                    <svg-icon name='arrow3' class="icon"/>
+                                </label >                                
+                            </div>
+                            <div class="uk-width-1-1 ">
+                                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor2">
+                                <label class="width-100 height-100 scheme__bottom_item" for="scheme-moor2" @click="activeRoute = 2">
+                                    <div class="scheme__bottom_item_left">
+                                        <div class="scheme__bottom_head">
+                                            Причал «Парк Горького»
+                                        </div>
+                                        <div class="scheme__bottom_info">
                                         <svg-icon name='metro' class="icon"/>
                                         <span>
-                                           Киевская, набережная Тараса Шевченко.
+                                            Парк Культуры/Октябрьская, Пушкинская набережная.
                                         </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                            </label >
-                            <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor2">
-                            <label class="scheme__bottom_item" for="scheme-moor2" @click="activeRoute = 2">
-                                <div class="scheme__bottom_item_left">
-                                    <div class="scheme__bottom_head">
-                                        Причал «Парк Горького»
-                                    </div>
-                                    <div class="scheme__bottom_info">
-                                      <svg-icon name='metro' class="icon"/>
-                                      <span>
-                                        Парк Культуры/Октябрьская, Пушкинская набережная.
-                                      </span>
-                                    </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                            </label>
+                                    <svg-icon name='arrow3' class="icon"/>
+                                </label>                                
+                            </div>
+
+                            <div class="width-100 scheme__block__buttons">
+                                <nuxt-link to="/trams/schedule/" class="width-100 height-100 uk-button uk-button-default button_ticket" type="button">
+                                    <span>Расписание</span>
+                                    <svg-icon name='clock' class="icon"/>
+                                </nuxt-link>                                
+                            </div>
 
 
-                            <nuxt-link to="/yachts/schedule/" class="uk-button uk-button-default button_ticket" type="button">
-                                <span>Купить билет</span>
-                                <svg-icon name='ticket' class="icon"/>
-                            </nuxt-link>
                         </div>
                     </li>
 <!--                    <li  :class="{'active_map': isActive}">
@@ -772,11 +233,12 @@ import SchemeCircle from "./SchemeCircle";
 import SchemePopup from "./SchemePopup";
 export default {
   name: "Scheme",
+
   components: {SchemePopup, SchemeCircle},
   data(){
     return{
       isActive: false,
-      activeRoute: 1,
+      activeRoute: 2,
       activeRouteTram: 1,
       isActiveCircle: false,
       schemeYacht: [
@@ -1195,5 +657,13 @@ export default {
   padding: 0;
   color: #666;
 }
-
+.width-100 {
+  width: 100%;
+}
+.height-100 {
+  height: 100%;
+}
+.scheme__block__buttons{
+    height: 130px;
+}
 </style>

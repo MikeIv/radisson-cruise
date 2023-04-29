@@ -370,7 +370,7 @@
 import NewsCard from "../../components/news/NewsCard";
 import Header from "../../components/Header";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import FilterMobile from "@/components/modals/Filter";
+import FilterMobile from "../../components/modals/Filter";
 import axios from "axios";
 export default {
   name: "news",

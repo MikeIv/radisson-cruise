@@ -102,7 +102,7 @@ import Cabin from "../../components/yachts/cabin/Cabin";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import axios from "axios";
 import UIkit from "uikit";
-import FilterMobile from "@/components/modals/Filter";
+import FilterMobile from "../../components/modals/Filter";
 import CategoryCabinFilter from "../../components/modals/CategoryCabinFilter";
 export default {
   name: 'index',
