@@ -231,7 +231,7 @@
         <div class="heading_white">
           <Breadcrumbs/>
         </div>
-        <div class="heading">
+        <div class="heading uk-text-center">
           <h1 class="headline_p1">
             {{ $t('pages.schedule.trolley.title') }}
           </h1>
@@ -240,721 +240,138 @@
     </Header>
     <section class="buy-ticket-shedule__container_trams">
       <div class="uk-container">
-        <!--        <form class="buy-ticket " autocomplete="off">
-                  &lt;!&ndash; <div class="buy-ticket__item">
-                    <svg class="icon buy-ticket__item_icon3">
-                      <use xlink:href="#svg-prichal"></use>
-                    </svg>
-                    <button class="select-styled pass-btn" type="button">Выбрать причал</button>
-
-                    <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop">
-                      <div class="pass-quantity">
-                        <div class="form_politic buy-ticket__politic">
-                          <label>
-                            <input class="uk-checkbox" type="checkbox" name="category__moorage">
-                            <span class="">
-                              Гостиница «Украина»
-                            </span>
-                          </label>
-                          <label>
-                            <input class="uk-checkbox" type="checkbox" name="category__moorage">
-                            <span class="">
-                              Парк Горького
-                            </span>
-                          </label>
-                        </div>
+<!-- НЕ УДАЛЯТЬ ЭТОТ БЛОК -->
+<!--             <div class="buy-ticket sheduletram__switchblock uk-width-1-1 uk-flex uk-flex-center">
+              <div class="uk-width-1-1 uk-flex">
+              <div class="buy-ticket__item buy-ticket__item_switch-trams">
+                      <div class="switch-container">
+                        <div class="switch-name"  :class="{active: !selectRoute}">Маршрут 1</div>
+                        <label class="switch-round">
+                          <input type="checkbox" name="trams-select" v-model="selectRoute">
+                          <span class="switch-slider"></span>
+                        </label>
+                        <div class="switch-name " :class="{active: selectRoute}">Маршрут 2</div>
                       </div>
                     </div>
-                  </div> &ndash;&gt;
-                  <div class="buy-ticket__item buy-ticket__item_switch-trams">
-                    <div class="switch-container">
-                      <div class="switch-name" :class="{'active': isActive}">На 24 часа</div>
-                      <label class="switch-round">
-                        <input type="checkbox" @click="switchRoutes">
-                        <span class="switch-slider"></span>
-                      </label>
-                      <div class="switch-name" :class="{'active': !isActive}">На 48 часов</div>
-                    </div>
-                  </div>
-                  <button class="uk-button uk-button-default button_ticket" type="submit">
-                    <span>НАЙТИ РЕЙС</span>
-                    <svg-icon class="icon" name="looking_glass"/>
-                  </button>
-                </form>-->
-        <BuyTicketBtn class="buy-ticket " link="/tickets/trolley-buy"/>
-        <div class="uk-overflow-auto buy-ticket-shedule_trams__overflow">
-          <div class="buy-ticket-shedule_trams__headlines ">
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Гостиница «Украина»</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
+                    <button class="uk-button uk-button-default button_ticket"  @click.prevent="filterRoutes">
+                      <span>НАЙТИ РЕЙС</span>
+                      <svg-icon name="looking_glass" class="icon" />
+                    </button>                
               </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Киевский вокзал</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
-              </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Воробъевы горы</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
-              </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Парк Горького</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
-              </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Зарядье</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
-              </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline">
-              <div class="buy-ticket-shedule_trams__headline__p1">Парк горьгоко</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-                <div>Отправление</div>
-              </div>
-            </div>
-            <div class="buy-ticket-shedule_trams__headline_last-1">
-              <div class="buy-ticket-shedule_trams__headline__p1">Гостиница «Украина»</div>
-              <div class="buy-ticket-shedule_trams__headline__p2-items">
-                <div>Прибытие </div>
-              </div>
-            </div>
-          </div>
-          <div class="buy-ticket-shedule_trams__table-wrap">
-            <p v-if="$fetchState.pending">Loading....</p>
-            <p v-else-if="$fetchState.error">Error while fetching info</p>
-            <!--            <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
 
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
+            </div> -->
+<!-- НЕ УДАЛЯТЬ ЭТОТ БЛОК -->     
+<div class="uk-flex uk-flex-center">
+<div class="uk-flex uk-flex-between table-shedule head-table-time" :class="widthContentTable">
+<div class="text-time uk-flex uk-width-1-1" :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
+  <div class="head-date  uk-width-1-6@l uk-width-1-1@s ">
+    {{ dayNow }}
+  </div>
+  <div class="head-title  uk-width-4-6@l uk-width-1-1@s uk-text-center">
+    {{ tableInfos?.name }} (ПН-СР)
+  </div> 
+  
+</div>  
+</div>  
+</div>
 
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>
-                        <div class="buy-ticket-shedule_trams__table ">
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                —
-                              </div>
-                              <div>
-                                11:00
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 05
-                              </div>
-                              <div>
-                                11 : 15
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                11 : 35
-                              </div>
-                              <div>
-                                11 : 40
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 00
-                              </div>
-                              <div>
-                                12 : 10
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 25
-                              </div>
-                              <div>
-                                12 : 35
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item">
-                            <div>
-                              <div>
-                                12 : 50
-                              </div>
-                              <div>
-                                12 : 55
-                              </div>
-                            </div>
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last-1">
-                            <div>
-                              <div>
-                                13 : 45
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="buy-ticket-shedule_trams__table__item-last">
-                            <nuxt-link class="uk-button uk-button-default button_ticket" to="/tickets/trolley">
-                              <span>Купить билет</span>
-                              <svg-icon class="icon" name="ticket"/>
-                            </nuxt-link>
-                          </div>
-                        </div>-->
-            <!--            <TableItem v-for="(tableDay, index) in tableInfo" :key="'tbl' + index" :tableDay="tableDay"/>-->
-            <!--            <TableItem v-if="isActive" v-for="(tableDay, index) in tableInfos.route1" :key="'tblSmall' + index" :tableDay="tableDay.route"/>-->
-            <div  v-if="isActive" >
-              <TableItem v-for="(tableDay, index) in tableInfos.route1" :key="'tblSmall' + index" :tableDay="tableDay.route"/>
-            </div>
-            <div v-else-if="!isActive">
-              <TableItem v-for="(tableDay, index) in tableInfos.route4" :key="'tblLarge' + index" :tableDay="tableDay.route"/>
-            </div>
-            <!--            <TableItem v-else-if="!isActive" v-for="(tableDay, index) in tableInfos" :key="'hers' + index" :tableDay="tableDay"/>-->
-          </div>
+<div class="uk-flex uk-flex-center">
+  <div class="uk-flex uk-flex-center table-shedule" :class="widthContentTable">
+      <div class="uk-width-1-1  " v-for="(headItem, idxh1) in tableHeads" :key="'idh1-'+idxh1">
+        <div class="uk-width-1-1">
+        <div class="name-station-text uk-width-1-1 ">
+          {{ headItem?.name }}
         </div>
+        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+          <div class="inout-text">Приб. </div>
+          <div class="inout-text">Отпр.</div>
+        </div>
+        </div> 
+      </div>
+  </div>  
+</div>
+
+<div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
+  <div class="uk-flex uk-flex-center table-shedule table-row "  :class="widthContentTable" v-for="(rowItem, idxr1) in tableFlightsPart1" :key="'idr1-'+idxr1">
+      <div class="uk-width-1-1  " v-for="(rowItem, idxp1) in rowItem?.points" :key="'idp1-'+idxp1">
+        <div class="uk-width-1-1">
+
+        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+          <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
+          <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
+        </div>
+        </div> 
+      </div>
+  </div>  
+</div>
+
+<div class="uk-flex uk-flex-center">
+<div class="uk-flex uk-flex-between table-shedule head-table-time " :class="widthContentTable">
+<div class="text-time uk-flex uk-width-1-1 " :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
+  <div class="head-date uk-width-1-6@l uk-width-1-1@s">
+    {{ dayNow }}
+  </div>
+  <div class="head-title uk-width-4-6@l uk-width-1-1@s uk-text-center">
+    {{ tableInfos?.name }} (ЧТ-ВС)
+  </div> 
+  
+</div>  
+</div>  
+</div>
+
+<div class="uk-flex uk-flex-center">
+  <div class="uk-flex uk-flex-center table-shedule" :class="widthContentTable">
+      <div class="uk-width-1-1  " v-for="(headItem, idxh2) in tableHeads" :key="'idh2-'+idxh2">
+        <div class="uk-width-1-1">
+        <div class="name-station-text uk-width-1-1 ">
+          {{ headItem?.name }}
+        </div>
+        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+          <div class="inout-text">Приб. </div>
+          <div class="inout-text">Отпр.</div>
+        </div>
+        </div> 
+      </div>
+  </div>  
+</div>
+
+<div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
+  <div class="uk-flex uk-flex-center table-shedule table-row "  :class="widthContentTable" v-for="(rowItem, idxr2) in tableFlightsPart2" :key="'idr2-'+idxr2">
+      <div class="uk-width-1-1  " v-for="(rowItem, idxp2) in rowItem?.points" :key="'idp2-'+idxp2">
+        <div class="uk-width-1-1">
+
+        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+          <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
+          <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
+        </div>
+        </div> 
+      </div>
+  </div>  
+</div>
+
+
+
+<div class="uk-width-1-1 uk-flex uk-flex-center">
+  <div  :class="widthContentTable">
+          <div class="buy-ticket-shedule_trams-info__grid uk-flex uk-flex-wrap ">
+            <div>
+              <div class="buy-ticket-shedule_trams__info">
+                <span>Продолж. рейса:</span>
+                <span>50 мин</span>
+              </div>
+            </div>
+            <div>
+              <div class="buy-ticket-shedule_trams__info " :class="{'footer-info-stop-time': !isViewMobile}" >
+                <span>Стоянка на конечном причале:</span>
+                <span>10 мин.</span>
+              </div>
+            </div>
+          </div>  
+  </div>
+</div>
+
+
+
       </div>
     </section>
   </div>
@@ -971,297 +388,131 @@ export default {
   components: {BuyTicketBtn, Breadcrumbs, TableItem, Header},
   data() {
     return {
-      isActive: true,
+      isViewMobile: false,
+      isActive: false,
+      viewportHeight: null,
+      viewportWidth: null,
+      tableHeads:[],
       tableInfos: [],
-      tableInfo: [
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-        [
-          {
-            start: `-`,
-            end: '11:00'
-          },
-          {
-            start: `11:05`,
-            end: '11:15'
-          },
-          {
-            start: `11:35`,
-            end: '11:40'
-          },
-          {
-            start: `12:00`,
-            end: '12:10'
-          },
-          {
-            start: `12:25`,
-            end: '12:35'
-          },
-          {
-            start: `12:50`,
-            end: '12:55'
-          },
-          {
-            start: `13:45`,
-            end: ``
-          },
-        ],
-      ]
+      tablePoints: [],
+      tableFlights: [],
+      tableFlightsPart1: [],
+      tableFlightsPart2: [],
+      selectRoute: false,
+      widthContetntTable:{
+        width2item: 'width: 40%;',
+        width3item: 'width: 50%;',
+        width4item: 'width: 60%;',
+        width5item: 'width: 70%;',
+        width6item: 'width: 80%;',
+        width7item: 'width: 100%;',
+      }
+
     }
   },
+computed: {
+  dayNow() {
+    const formatedDayNow = new Date().toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    return formatedDayNow;
+  },
+  widthContentTable() {
+    switch (this.tableHeads.length) {
+      case 2:
+        if(this.isMobile && this.viewportWidth <640){
+          console.log("width7item");
+          return "width7item";
+        }
+        else{
+        console.log("width2item");
+        return "width2item";  
+        }
+      case 3:
+        if(this.isMobile && this.viewportWidth <640){
+          console.log("width7item");
+          return "width7item";
+        }
+        else{
+        console.log("width3item");
+        return "width3item";  
+        }
+      case 4:
+        if(this.isMobile && this.viewportWidth <640){
+          console.log("width7item");
+          return "width7item";
+        }
+        else{
+        console.log("width4item");
+        return "width4item";  
+        }
+      case 5:
+        if(this.isMobile && this.viewportWidth <640){
+          console.log("width7item");
+          return "width7item";
+        }
+        else{
+        console.log("width5item");
+        return "width5item";  
+        }
+      case 6:
+        if(this.isMobile && this.viewportWidth <640){
+          console.log("width7item");
+          return "width7item";
+        }
+        else{
+        console.log("width2item");
+        return "width2item";  
+        }
+      case 7:
+          console.log("width7item");
+          return "width7item";
+        
 
+    
+      default:
+      //console.log("default");
+       return "width7item";
+    }
+    
+  }
+},
   methods: {
+    filterRoutes(){
+      console.log("filterRoutes");
+      this.isActive = !this.selectRoute
+      
+    },
     checkLog() {
       console.log(this.mountains)
     },
     switchRoutes() {
       this.isActive = !this.isActive
     },
+    isMobile() {
+    const userAgent = navigator?.userAgent;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
   },
-
+mounted() {
+  this.isViewMobile = this.isMobile();
+  this.viewportHeight = window.innerHeight;
+  this.viewportWidth = window.innerWidth;
+  console.log("mounted height", this.viewportHeight);
+  console.log("mounted width", this.viewportWidth);
+},
   async fetch() {
     let trolleyRoutes = await axios.get(
-      `${this.$config.baseURL}walkschedule`,
+      `${this.$config.baseURL}tramschedule`,
     )
-    this.tableInfos = (trolleyRoutes.data)
+    console.log("trolleyRoutes = ",trolleyRoutes.data);
+    this.tableInfos = (trolleyRoutes.data.result['0'])
+    this.tableHeads = this.tableInfos.points;
+    this.tableFlights = this.tableInfos.flights;
+    this.tableFlightsPart1 = this.tableInfos.flights.filter((item) => item.weekdays === "1,2,3,4,5,6,7");
+    this.tableFlightsPart2 = this.tableInfos.flights.filter((item) => item.weekdays === "4,5,6,7");
     console.log(this.tableInfos)
   },
   fetchOnServer: false,
@@ -1335,10 +586,118 @@ table {
 }
 .table-section {
   margin: 100px 0 130px;
-}*/
+}
 
 .buy-ticket-shedule__container_trams .buy-ticket {
   max-width: 250px;
+}*/
+.buy-ticket-shedule__container_trams .buy-ticket {
+    margin-top: -36px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.name-station-text{
+  font-weight: 600;
+    color: #00c1f3;
+    text-transform: capitalize;
+    font-size: 12px;
+  text-align: center;
+  background-color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.inout-text{
+  font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  color: #000000;
+  text-align: center;
+  padding: 10px 4px;
+}
+.table-shedule{
+  background-color: #e7f0f7;
+  
+}
+.body-table{
+  margin-top: 0;
+}
+.head-table-time{
+  background-color: #3b4790;
+  color: #fff;
+    font-size: 14px;
+    padding: 10.5px 45px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+.buy-ticket-shedule_trams-info__grid{
+  margin-left: 0px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.buy-ticket-shedule_trams-info__grid span:nth-child(1) {
+    color: #00c1f3;
+}
+
+.footer-info-stop-time {
+    padding-left: 56px;
+}
+.table-row:nth-child(odd):hover {
+  background-color: #eff4f8;
+}
+.table-row:nth-child(odd) {
+    
+    background-color: #fff;
+}
+.table-row:nth-child(even):hover {
+  background-color: #eff4f8;
+}
+.table-row:nth-child(even) {
+    background-color: #e7f0f7;
+}
+.table-row .inout-text{
+    font-size: 14px;
+    font-weight: 400;
+    
+}
+.table-row {
+    cursor: default;
+    padding: 10px 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+.item-center{
+  align-items: center;
+}
+.column-width{
+  width: auto;
+  min-width: 200px;
+}
+.child-two-column{
+  padding: 0 30px;
+}
+.width2item {
+  width: 40%;
+}
+.width3item {
+  width: 50%;
+}
+.width4item {
+  width: 60%;
+}
+.width5item {
+  width: 70%;
+}
+.width6item {
+  width: 80%;
+}
+.width7item {
+  width: 100%;
+}
+@media (min-width:320px) {
+  .child-two-column{
+  padding: 0 5px;
+}
 }
 </style>
 

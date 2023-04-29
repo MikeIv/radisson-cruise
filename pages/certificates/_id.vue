@@ -286,7 +286,7 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
+import Header from "../../components/Header";
 import Breadcrumbs from "../../components/Breadcrumbs.vue";
 import axios from "axios";
 import {IMaskDirective} from "vue-imask";

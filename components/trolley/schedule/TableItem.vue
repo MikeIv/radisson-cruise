@@ -68,7 +68,13 @@
       </div>
 
     </div>-->
-    <TableItemTime v-for="(tableTime, index) in tableDay" :key="`tblTm` + index" :start="tableTime.arrival" :end="tableTime.departure"/>
+<!--     <div class="name-tram">
+      {{ nameTram }}
+    </div> -->
+    <TableItemTime v-for="(tableTime, index) in tableDay" 
+    :key="`tblTm` + index" 
+    :start="tableTime.arrival" 
+    :end="tableTime.departure"/>
 <!--    <div class="buy-ticket-shedule_trams__table__item-last">
       <BuyTicketBtn link="/tickets/trolley-buy"/>
     </div>-->
@@ -83,10 +89,16 @@ export default {
   components: {TableItemTime, BuyTicketBtn},
   props: {
     tableDay: Array,
+    nameTram: String,
   }
 }
 </script>
 
 <style scoped>
-
+.name-tram{
+  width: 340px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px;
+}
 </style>

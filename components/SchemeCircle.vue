@@ -1,5 +1,5 @@
 <template>
-  <div class='uk-inline' :class="['scheme_item' + customClass, {'uk-open' : isActiveCircle}, {'active' : activeClassToCircle}]">
+  <div class='uk-inline' :class="['scheme_item' + customClass, {'uk-open' : isActiveCircle},{'uk-open' : isModalShow}, {'active' : activeClassToCircle}]">
     <div v-if="port !== null && !isActive">
       <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
         <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click.prevent="toggleActive" :id="idNum"></button>
@@ -28,7 +28,7 @@
 
       <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
         <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click="toggleActive($event)" :id="idNum"></button>
-        <div class="scheme__item_txt" v-html="title"></div>
+        <!-- <div class="scheme__item_txt" v-html="title"></div> -->
       </div>
     </div>
 
@@ -110,6 +110,24 @@
         </div>
       </div>
     </div>
+
+<!--     <div v-if="isModalShow" ref="modalshow" class="scheme__drop test">
+      <div class="scheme__drop_grid">
+        <div class="scheme__drop_img uk-cover-container">
+          <img :data-src="require(`~/assets/img/scheme/${img}`)" alt="" :src="require(`~/assets/img/scheme/${img}`)" class="img_cover">
+        </div>
+        <div class="scheme__drop_info">
+          <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
+          <div class="scheme__drop_headline">
+            {{ location }}
+          </div>
+          <div class="scheme__drop_text">
+            {{ info }}
+          </div>
+
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -133,6 +151,7 @@ export default {
   },
   data() {
     return{
+      isModalShow: false,
       active: false,
     }
   },
@@ -145,7 +164,13 @@ export default {
   },
   methods: {
     toggleActive(event) {
-      this.$emit('onToggle')
+      console.log("toggleActive", event);
+      console.log("toggleActive props", this.$props);
+      console.log("toggleActive info = ", this.info);
+      console.log("toggleActive title = ", this.title);
+      //this.$emit('onToggle')
+      this.isModalShow = !this.isModalShow
+      this.$emit('on-toggle-route')
     },
     getCoords(event){
       //console.log(event)
@@ -159,6 +184,10 @@ export default {
   },
   beforeDestroy() {
 
+  }
+  ,
+  mounted(){
+    console.log("data mount =", this.$props);
   }
   /*  mounted() {
       let bubbles = document.querySelectorAll('.scheme__map_path-container .uk-inline')

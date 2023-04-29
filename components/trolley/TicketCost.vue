@@ -14,7 +14,9 @@
       </div>
 
     </div>
-    <BuyTicketBtn v-if="online" link="/tickets/trolley"/>
+    <div>Маршрут без остановок</div>
+    <div>Билеты продаются на борту</div>
+    <!-- <BuyTicketBtn v-if="online" link="/tickets/trolley"/> -->
   </div>
 </template>
 

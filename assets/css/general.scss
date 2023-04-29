@@ -2085,10 +2085,11 @@ header a:hover {
   transform: translateX(-50%);
   .scheme__item_txt {
     position: absolute;
-    left: -80px;
+    left: -85px;
     top: -8px;
     text-align: right;
-    white-space: nowrap;
+    width: 80px;
+    /* white-space: nowrap; */
   }
 }
 .scheme_item13 {
@@ -2127,7 +2128,7 @@ header a:hover {
     left: 34px;
     top: -24px;
     text-align: left;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 }
 .scheme_item16 {
@@ -2137,10 +2138,10 @@ header a:hover {
   transform: translateX(-50%);
   .scheme__item_txt {
     position: absolute;
-    left: 0px;
-    top: -65px;
+    left: 30px;
+    top: -25px;
     text-align: left;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 }
 .scheme_item17 {
@@ -2159,11 +2160,11 @@ header a:hover {
 
 .scheme_item18 {
   position: absolute;
-  left: 84%;
+  left: 79%;
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  top: 37%;
+  top: 24%;
   display: flex;
   align-items: center;
   transform: translateX(-50%);
@@ -4057,7 +4058,7 @@ body {
   margin-right: auto;
   position: relative;
   margin-top: 95px;
-  justify-content: space-between;
+  justify-content: center;
 }
 .trams-shutdown__item {
   width: 178px;
