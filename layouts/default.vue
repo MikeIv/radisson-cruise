@@ -2,8 +2,8 @@
   <div>
 <!--    <PreloaderMain  v-if="isLoading && $route.path === '/'" />
     <PreloaderYacht v-else-if="isLoading" />-->
-    <div class="old-site uk-cover-container" uk-alert="sel-close: .cookie-close;">
-      <a class="cookie-close uk-alert-close" id="cookie-close-2" uk-close></a>
+    <div class="old-site uk-cover-container" uk-alert="sel-close: .cookie-close;" v-show="!showNav">
+      <a class="cookie-close uk-alert-close" id="cookie-close-2" uk-close @click.prevent="closeOldSite"></a>
       <div class="uk-container uk-position-relative">
         <div class="uk-text-center uk-flex uk-flex-center uk-flex-middle">
           <a href="https://www.radisson-cruise.ru/?old=1" class="transition">Перейти на старый сайт</a>
@@ -52,14 +52,22 @@
       return this.$store.state.showNav
     },
   },
+  methods: {
+    closeOldSite() {
+      console.log('closeOldSite');
+      this.$store.commit('changeOldSiteState', false)
+    },
+  },
     watch: {
+      
     $route(to, from) {
       this.$store.commit('changeNavState', false)
-/*       console.log('showNav = ', this.showNav)
+      this.$store.commit('changeOldSiteState', true)
+      console.log('showNav = ', this.showNav)
       console.log('showNav = ', this.$store.state.showNav)
       console.log('REFS = ', this.$refs)
       console.log('route change to', to)
-      console.log('route change from', from) */
+      console.log('route change from', from)
     },
   },
     /*head() {
@@ -83,6 +91,7 @@
       };
     },*/
     mounted() {
+      console.log('mounted layout');
       this.isLoading = false;
       const yachtSlider = document.querySelectorAll('.yacht__slider');
       yachtSlider.forEach(element => {
