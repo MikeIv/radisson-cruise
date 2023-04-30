@@ -350,7 +350,7 @@
       </div>
     </div>
   </div>-->
-  <div id="offcanvas-nav" uk-offcanvas="overlay: true;" class="offcanvas offcanvas-menu uk-offcanvas display-block" :class="[{' uk-offcanvas-overlay uk-open display-block-on ':isActive},{' display-block-off':!isActive}]" v>
+  <div id="offcanvas-nav" uk-offcanvas="overlay: true;" class="offcanvas offcanvas-menu uk-offcanvas display-block" :class="[{' uk-offcanvas-overlay uk-open display-block-on ':isActive},{' display-block-off':!isActive}]" >
     <div class="uk-offcanvas-bar side-slide" :class="[{'slide-on ':isActive},{'slide-off uk-offcanvas-bar-animation uk-offcanvas-slide':!isActive}]">
       <div class="offcanvas_menu">
 
@@ -659,6 +659,9 @@
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
                 Яхты Флотилии
               </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
+                Речные трамвайчики
+              </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
                 Категории салонов
               </nuxt-link>
@@ -671,6 +674,8 @@
               <nuxt-link class="txt18 " to="/flights/" @click.native="closeNav">
                 Тематические рейсы
               </nuxt-link>
+
+
               <nuxt-link class="txt18 " to="/about/" @click.native="closeNav">
                 О компании
               </nuxt-link>
@@ -681,6 +686,9 @@
             <div>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 Расписание яхт
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
+                Расписание трамвайчиков
               </nuxt-link>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                  Меню ресторанов
