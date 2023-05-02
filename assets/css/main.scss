@@ -551,6 +551,21 @@ body {
 .uk-offcanvas-page {
   overflow: hidden;
 }
+.trams__cost__info {
+  display: flex;
+  align-items: flex-start;
+  line-height: 2;
+}
+
+.trams__cost__item>div {
+  padding-left: 45px;
+  margin-top: 20px;
+}
+
+.header-tickets-grid {
+  column-gap: 60px;
+  row-gap: 25px;
+}
 
 
 @media screen and (max-width:1700px) {
@@ -4268,11 +4283,15 @@ body {
     right: 32px;
     bottom: 22px;
     width: 45px;
-    height: 45px
+    height: 45px;
+    position: static;
+    flex: none;
   }
   .trams-advantage__item {
     min-height: 100px;
-    padding: 10px 30px
+    padding: 10px 30px;
+    column-gap: 30px;
+    justify-content: space-between;
   }
   .trams-advantages__items {
     margin-top: 25px

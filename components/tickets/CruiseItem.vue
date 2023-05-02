@@ -1,14 +1,16 @@
 <template>
   <div class="flight">
     <CruiseItemImg :fileNames="fileNames"/>
-    <CruiseItemInfo :linkThematic="link"
-                    :decor="decor"
-                    :svgName="svgName"
-                    :title="title"
-                    :text="text"
-                    :theatrical="theatrical"
-                    :linkBuy="linkBuy"
-                    :linkMore="linkMore"
+    <CruiseItemInfo
+        :linkThematic="link"
+        :decor="decor"
+        :svgName="svgName"
+        :title="title"
+        :text="text"
+        :theatrical="theatrical"
+        :link-buy="linkBuy"
+        :link-more="linkMore"
+        :link-free="linkFree"
     />
   </div>
 </template>
@@ -29,6 +31,7 @@ export default {
     link:String,
     linkMore: String,
     linkBuy: String,
+    linkFree: String,
   }
 }
 </script>

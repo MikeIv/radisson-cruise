@@ -19,17 +19,16 @@
         </div> 
       </div>
     </Header>
-    <div class="uk-flex uk-flex-center">
-    <div class="uk-flex uk-child-width-1-1@l uk-grid-match uk-flex-wrap">
-
-      <div class="trams_cost-wrapper" v-for="(ticket, index) in ticketsInfo" :key="'tkt' + index"
-      >
-        <TicketCost :online="ticket.online" :title="ticket.title" :subtitle="ticket.subtitle" :variants="ticket.variants"/>
-      </div>
+<!--    <div class="uk-flex uk-child-width-1-2@l uk-grid-match uk-flex-wrap">-->
+    <div class="">
+      <TicketCost
+          v-for="(ticket, index) in dataRoutes"
+          :key="'tkt' + index"
+          :route="ticket"
+      />
     </div>
-    </div>
 
-    <section class="tenancy__about trams__about uk-flex uk-flex-wrap uk-child-width-1-2@m">
+<!--    <section class="tenancy__about trams__about uk-flex uk-flex-wrap uk-child-width-1-2@m">
       <div class="tenancy__about__info uk-position-relative">
         <svg-icon class="icon" name="wheel"/>
         <div class="uk-position-relative">
@@ -51,13 +50,24 @@
       <div class="uk-cover-container tenancy__about__img">
         <img data-src="~assets/img/inners/tram2.png" alt="" class="img_cover" src="~assets/img/inners/tram2.png">
       </div>
-    </section>
+    </section>-->
+    <CruiseItem
+        v-for="(block,index) in tramBlocks" :key="'trmblock'+ index"
+        :fileNames="block.images"
+        :title="block.name"
+        :text="block.content"
+        :svgName="block.background"
+        :link-buy="block.linkbuy"
+        :link-more="block.linkmore"
+        :link-free="block.linkfree"
+    />
 
     <SchemeRouts 
-    :idTypeMap="3" 
-    :arrDataPoints="dataPiers"
-    
-    v-if="viewSections.scheme && dataPiers.length > 0"/>
+      :idTypeMap="3"
+      :arrDataPoints="dataPiers"
+
+      v-if="viewSections.scheme && dataPiers.length > 0"
+    />
 
     <div class="trams__headline">
       <div class="uk-container">
@@ -77,8 +87,7 @@
       <img  data-src="~assets/img/inners/tram3.png" alt="" class="img_cover" src="~assets/img/inners/tram3.png">
       <div class="uk-container uk-position-relative">
         <div class="headline_32 t_semibold">
-          Интервал движения судов по маршруту “Сердце столицы” - 20 минут без остановок <br class="uk-visible@m">
-          
+          {{ dataRoutes[0]?.upname }} <br class="uk-visible@m">
         </div>
         <div class="trams-shutdown__items">
           <div class="trams-shutdown__decor"></div>
@@ -144,129 +153,9 @@
           Цветовые вариации
         </div>
         <div class="trams-colors__items uk-flex-wrap uk-flex uk-child-width-1-5@s uk-child-width-1-2 uk-grid-match">
-          <div>
-            <div class="trams-colors__item trams-colors__item_1 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color1.png" alt="" src="~assets/img/inners2/adv_color1.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Подсолнух
-              </div>
-            </div>
+          <div v-for="variant in tramsVariants">
+            <ColorItem :name="variant.name" :color="variant.style"/>
           </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_2 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color2.png" alt="" src="~assets/img/inners2/adv_color2.png">
-
-              </div>
-              <div class="trams-colors__item__name">
-                Тюльпан
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_3 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color3.png" alt="" src="~assets/img/inners2/adv_color3.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Фуксия
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_4 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color4.png" alt="" src="~assets/img/inners2/adv_color4.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Астра
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_5 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color5.png" alt="" src="~assets/img/inners2/adv_color5.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Лаванда
-
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="trams-colors__item trams-colors__item_6 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color6.png" alt="" src="~assets/img/inners2/adv_color6.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Незабудка
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_7 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color7.png" alt="" src="~assets/img/inners2/adv_color7.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Василек
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_8 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color8.png" alt="" src="~assets/img/inners2/adv_color8.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Орхидея
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_9 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color9.png" alt="" src="~assets/img/inners2/adv_color9.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Роза
-
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="trams-colors__item trams-colors__item_10 uk-position-relative">
-              <div class="trams-colors__item__img">
-                <img  data-src="~assets/img/inners/trams-color1.png" alt="" src="~assets/img/inners/trams-color1.png">
-                <img  data-src="~assets/img/inners2/adv_color10.png" alt="" src="~assets/img/inners2/adv_color10.png">
-              </div>
-              <div class="trams-colors__item__name">
-                Гвоздика
-
-              </div>
-            </div>
-          </div>
-          <!--          <div>
-                      <ColorItem/>
-                    </div>-->
         </div>
       </div>
     </section>
@@ -363,7 +252,7 @@
                             <img  data-src="~assets/img/trams/DSC00261.jpg" alt="" class="img_cover">
                           </a>
                         </li>-->
-            <li tabindex="-1" v-for="(slide,index) in dataPhoto" :key="'sld' + index">
+            <li tabindex="-1" v-for="(slide,index) in tramsVariants" :key="'sld' + index">
               <PhotoCardTram :fileName="slide.image"/>
             </li>
           </ul>
@@ -371,7 +260,7 @@
             <div class="slider_numbers">
               <div class="slider_number">01</div>
               <div class="slider_num_bread">/</div>
-              <div class="slider_amount">17</div>
+              <div class="slider_amount">{{ tramsVariants?.length }}</div>
             </div>
             <div class="slider_arrows">
               <a class="" href="#" uk-slider-item="previous">
@@ -401,9 +290,21 @@ import PortItem from "../../components/trolley/PortItem";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import UIkit from "uikit";
 import axios from "axios";
+import CruiseItem from "@/components/tickets/CruiseItem.vue";
 export default {
   name: "index",
-  components: {Breadcrumbs, PortItem, PhotoCardTram, ColorItem, Route, TicketCost, Header, FeaturesItem,SchemeRouts},
+  components: {
+    CruiseItem,
+    Breadcrumbs,
+    PortItem,
+    PhotoCardTram,
+    ColorItem,
+    Route,
+    TicketCost,
+    Header,
+    FeaturesItem,
+    SchemeRouts
+  },
   data() {
     return {
       viewSections:{
@@ -416,7 +317,7 @@ export default {
       },
       dataRoutes: [],
       dataPiers: [],
-      dataPhoto: [],
+      tramsVariants: [],
       mountains: [
         {
           iconName: '',
@@ -772,26 +673,28 @@ export default {
         id:23
         },
         
-      ]
+      ],
+      tramBlocks: [],
     }
   },
   async fetch() {
+
+    let tramBlockData = await axios.get(
+        `${this.$config.baseURL}blocks?page=riverbus`);
+    this.tramBlocks = tramBlockData.data
+
     let features = await axios.get(
         `${this.$config.baseURL}advantages`);
-    //this.features = features.data
-    this.features = this.featuresLocal
+    this.features = features.data
+    /*this.features = this.featuresLocal*/
     let getDataRoutes = await axios.get(
         `${this.$config.baseURL}maproutes?type=trams`);
         
     this.dataRoutes = getDataRoutes.data.routes
     let piersData = getDataRoutes.data.piers;
-    console.log("this.dataRoutes ", this.dataRoutes[0]);
-    
     piersData = piersData.filter((item) => {
       return item.seq >= this.dataRoutes[0].seqmin && item.seq <= this.dataRoutes[0].seqmax && item.type == 'object';
-    }
-    );
-    
+    });
     const addStartPier = getDataRoutes.data.piers.find((item) => {
       return item.id == this.dataRoutes[0].seqmin;
     });
@@ -800,7 +703,6 @@ export default {
     });
     piersData.push(addStartPier);
     //piersData.push(addReturnPier);
-
 
     this.dataPiers = piersData;
 
@@ -822,15 +724,15 @@ export default {
     console.log("mapPiersData ", mapPiersData);
     console.log("piersData ", piersData);
     this.dataPiers = mapPiersData;
-    let getDataPhoto = await axios.get(
+    let tramsVariantsData = await axios.get(
         `${this.$config.baseURL}riverbus`);
         
-    this.dataPhoto = getDataPhoto.data.result;
+    this.tramsVariants = tramsVariantsData.data.result;
     //this.features = this.featuresLocal
   },
+  fetchOnServer: true,
+  fetchKey: 'trams-main',
   mounted() {
-    console.log("mounted dataRoutes ", this.dataRoutes);
-    console.log("mounted dataPiers ", this.dataPiers);
     const yachtSlider = document.querySelectorAll('.yacht__slider');
     yachtSlider.forEach(element => {
       //Счетчик слайда яхт
@@ -848,9 +750,11 @@ export default {
     border-left: 1px solid #a1c2e5;
     border-top: 1px solid #a1c2e5;
 }
+/*
 .trams__header {
   height: 100vh;
 }
+*/
 
 .trams_cost-wrapper:first-child .trams__cost{
   background: rgba(255, 255, 255, 0.5);

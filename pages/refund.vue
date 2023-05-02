@@ -83,7 +83,6 @@
                         >
                       </div>
                     </div>
-                    <span v-if="onError" class="text-error uk-margin">{{onError}}</span>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
                         <button @click.prevent="findTicket" type="submit" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket">
@@ -94,6 +93,7 @@
                   </div>
                 </div>
                 <div class="buy-ticket-form__agreement">
+                  <div v-if="onError" class="text-error uk-margin">{{onError}}</div>
                   <div class="form_politic buy-ticket__politic">
                     <label>
                       <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal" required>
