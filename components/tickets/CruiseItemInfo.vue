@@ -14,7 +14,7 @@
           <span>Подробнее</span>
         </a>
         <nuxt-link class="uk-button uk-button-default button_ticket transition" v-if="linkFree" :to="linkFree">
-          <span>Маршруты и причалы</span>
+          <span>{{ button }}</span>
         </nuxt-link>
       </div>
     </div>
@@ -37,6 +37,7 @@ export default {
     linkBuy: String,
     linkMore: String,
     linkFree: String,
+    button: String,
   }
 }
 </script>
