@@ -187,7 +187,7 @@ export default {
   }
   ,
   mounted(){
-    console.log("data mount =", this.$props);
+    /*console.log("data mount =", this.$props);*/
   }
   /*  mounted() {
       let bubbles = document.querySelectorAll('.scheme__map_path-container .uk-inline')

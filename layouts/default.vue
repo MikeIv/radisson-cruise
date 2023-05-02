@@ -54,7 +54,7 @@
   },
   methods: {
     closeOldSite() {
-      console.log('closeOldSite');
+      /*console.log('closeOldSite');*/
       this.$store.commit('changeOldSiteState', false)
     },
   },
@@ -63,11 +63,11 @@
     $route(to, from) {
       this.$store.commit('changeNavState', false)
       this.$store.commit('changeOldSiteState', true)
-      console.log('showNav = ', this.showNav)
+      /*console.log('showNav = ', this.showNav)
       console.log('showNav = ', this.$store.state.showNav)
       console.log('REFS = ', this.$refs)
       console.log('route change to', to)
-      console.log('route change from', from)
+      console.log('route change from', from)*/
     },
   },
     /*head() {
@@ -91,7 +91,7 @@
       };
     },*/
     mounted() {
-      console.log('mounted layout');
+      /*console.log('mounted layout');*/
       this.isLoading = false;
       const yachtSlider = document.querySelectorAll('.yacht__slider');
       yachtSlider.forEach(element => {

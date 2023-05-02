@@ -776,6 +776,9 @@ export default {
       } catch(error) {
         console.log(error)
       }
+    },
+    isValidDate(d) {
+      return d instanceof Date && !isNaN(d);
     }
   },
 
@@ -805,6 +808,9 @@ export default {
       })
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
+      this.isValidDate(new Date(this.routeData.depatureTime))
+          ? this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {month: 'long', day: 'numeric'})
+          : 'Неверная дата'
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }

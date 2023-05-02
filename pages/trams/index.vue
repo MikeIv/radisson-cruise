@@ -52,14 +52,14 @@
       </div>
     </section>-->
     <CruiseItem
-        v-for="(block,index) in tramBlocks" :key="'trmblock'+ index"
-        :fileNames="block.images"
-        :title="block.name"
-        :text="block.content"
-        :svgName="block.background"
-        :link-buy="block.linkbuy"
-        :link-more="block.linkmore"
-        :link-free="block.linkfree"
+        :fileNames="tramBlocks?.images"
+        :title="tramBlocks?.name"
+        :text="tramBlocks?.content"
+        :svgName="tramBlocks?.background"
+        :link-buy="tramBlocks?.linkbuy"
+        :link-more="tramBlocks?.linkmore"
+        :link-free="tramBlocks?.linkfree"
+        :button="tramBlocks?.button"
     />
 
     <SchemeRouts 
@@ -77,11 +77,21 @@
       </div>
     </div>
 
-    <Route v-for="(route, index) in routesInfo" :key="'rt' + index"
+<!--    <Route v-for="(route, index) in portBlocks" :key="'rt' + index"
            :counter="index + 1"
            :fileName="route.fileName" :portName="route.portName"
            :coordinates="route.coordinates" :metro="route.metro"
            :how-to-go="route.howToGo" :metroColor="route.metroColors"
+    />-->
+    <CruiseItem
+        v-for="(block,index) in portBlocks" :key="'prtBlock'+ index"
+        :fileNames="block?.images"
+        :title="block?.name"
+        :text="block?.content"
+        :svgName="block?.background"
+        :link-buy="block?.linkbuy"
+        :link-more="block?.linkmore"
+        :link-free="block?.linkfree"
     />
     <section class="uk-cover-container trams-shutdown" v-if="viewSections.route">
       <img  data-src="~assets/img/inners/tram3.png" alt="" class="img_cover" src="~assets/img/inners/tram3.png">
@@ -674,15 +684,15 @@ export default {
         },
         
       ],
-      tramBlocks: [],
+      tramBlocks: null,
+      portBlocks: [],
     }
   },
   async fetch() {
-
     let tramBlockData = await axios.get(
         `${this.$config.baseURL}blocks?page=riverbus`);
-    this.tramBlocks = tramBlockData.data
-
+    this.tramBlocks = tramBlockData.data.shift()
+    this.portBlocks = tramBlockData.data
     let features = await axios.get(
         `${this.$config.baseURL}advantages`);
     this.features = features.data
@@ -692,6 +702,8 @@ export default {
         
     this.dataRoutes = getDataRoutes.data.routes
     let piersData = getDataRoutes.data.piers;
+    console.log("this.dataRoutes ", this.dataRoutes[0]);
+    
     piersData = piersData.filter((item) => {
       return item.seq >= this.dataRoutes[0].seqmin && item.seq <= this.dataRoutes[0].seqmax && item.type == 'object';
     });
@@ -721,8 +733,6 @@ export default {
       }
     });
 
-    console.log("mapPiersData ", mapPiersData);
-    console.log("piersData ", piersData);
     this.dataPiers = mapPiersData;
     let tramsVariantsData = await axios.get(
         `${this.$config.baseURL}riverbus`);

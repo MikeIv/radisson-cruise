@@ -11,6 +11,7 @@
         :link-buy="linkBuy"
         :link-more="linkMore"
         :link-free="linkFree"
+        :button="button"
     />
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
     linkMore: String,
     linkBuy: String,
     linkFree: String,
+    button: String,
   }
 }
 </script>
