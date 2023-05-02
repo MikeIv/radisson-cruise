@@ -29,7 +29,7 @@
                 <div class="buy-ticket-form__data">
                   <div class="buy-ticket-form__data__head">
                     <b>Данные</b>
-                    <span v-if="onError" class="text-error">{{onError}}</span>
+<!--                    <span v-if="onError" class="text-error">{{onError}}</span>-->
                   </div>
                   <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
                     <div class="uk-width-1-1">
@@ -83,6 +83,7 @@
                         >
                       </div>
                     </div>
+                    <span v-if="onError" class="text-error uk-margin">{{onError}}</span>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
                         <button @click.prevent="findTicket" type="submit" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket">
