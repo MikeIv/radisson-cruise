@@ -13,6 +13,9 @@
         <a class="uk-button uk-button-more transition" :href="linkMore" v-if="linkMore">
           <span>Подробнее</span>
         </a>
+        <nuxt-link class="uk-button uk-button-default button_ticket transition" v-if="linkFree" :to="linkFree">
+          <span>Маршруты и причалы</span>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -33,6 +36,7 @@ export default {
     linkThematic: String,
     linkBuy: String,
     linkMore: String,
+    linkFree: String,
   }
 }
 </script>

@@ -4485,15 +4485,17 @@ body {
   flex-wrap: wrap;
 }
 .trams__cost__item {
-  padding-left: 43px;
-  max-width: 285px;
-  width: 50%;
-  margin-top: 40px;
+  padding-left: 0;
+  flex-wrap: wrap;
+  display: flex;
+  margin-top: -20px;
+  margin-left: -45px;
 }
 .trams__cost__item__p1 {
   color: $color1;
   margin-bottom: 25px;
   font-weight: 700;
+  width:100%;
 }
 .trams__cost {
   min-height: 800px;
@@ -4507,9 +4509,9 @@ body {
 }
 .trams__cost__main {
   border-top: 1px solid #a1c2e5;
-  border-bottom: 1px solid #a1c2e5;
-  padding: 47px 0 60px;
-  margin: 47px 0;
+  //border-bottom: 1px solid #a1c2e5;
+  padding: 45px 0 0;
+  margin: 45px 0 0;
   position: relative;
 }
 .trams__cost__p1 {
@@ -4517,27 +4519,15 @@ body {
 }
 .trams__cost__svg {
   position: absolute;
-  width: 152px;
-  height: 151px;
-  right: 0;
-  top: 50%;
+  width: 100.22px;
+  height: 100px;
+  right: 50px;
+  top: 69%;
   transform: translateY(-50%);
 }
 .trams__cost__item__type {
-  font-size: 14px;
-  display: flex;
-  padding: 10px 0;
-  border-bottom: 1px solid #a1c2e5;
-  > div:nth-child(1) {
-    width: 90px;
-    min-width: 90px;
-  }
-  > div:nth-child(2) {
-    font-weight: 700;
-  }
-  &:last-child {
-    border-bottom: none;
-  }
+  font-size: 16px;
+  padding: 0;
 }
 
 .trams__cost_first  {

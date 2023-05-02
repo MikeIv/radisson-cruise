@@ -22,18 +22,18 @@
             </div>
 
             <div class="scheme__block uk-scrollspy-inview uk-animation-fade" uk-scrollspy="cls: uk-animation-fade; delay: 500">
-                <div class="scheme-switch">
+<!--                <div class="scheme-switch">
                     <div class="switch-container">
                         <div class="switch-name" :class="{'active': !isActive}">Маршрут яхт</div>
-<!--                        <label class="switch-round">
+&lt;!&ndash;                        <label class="switch-round">
                             <input type="checkbox" @click="switchRoutes">
                             <span class="switch-slider"></span>
                         </label>
-                        <div class="switch-name" :class="{'active': isActive}">Маршрут трамвайчиков</div>-->
+                        <div class="switch-name" :class="{'active': isActive}">Маршрут трамвайчиков</div>&ndash;&gt;
                     </div>
-                </div>
+                </div>-->
                 <ul class="uk-switcher scheme-switcher">
-                    <li  :class="{'active_map': !isActive}">
+                    <li :class="{'active_map': !isActive}">
                         <div class="scheme__map">
                             <div class="scheme__map_path-container">
                                 <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
@@ -81,7 +81,7 @@
                         <div class="scheme__bottom scheme__block__buttons">
                           <div class="uk-width-1-1" v-for="(itemRoutButton, idxir) in dataRoutes" :key="'idxir-'+idxir">
                                 <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
-                                <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1" @click="activeRoute = idxir">
+                                <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1">
                                     <div class="scheme__bottom_item_left">
                                         <div class="scheme__bottom_head">
                                             {{ itemRoutButton.title }}
@@ -682,6 +682,11 @@ export default {
 }
 .height-100 {
   height: 100%;
+}
+@media screen and (max-width: 1199px) {
+  .height-100 {
+    height: 85px;
+  }
 }
 .scheme__block__buttons{
     height: 130px;

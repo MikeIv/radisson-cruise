@@ -261,117 +261,122 @@
 
             </div> -->
 <!-- НЕ УДАЛЯТЬ ЭТОТ БЛОК -->     
-<div class="uk-flex uk-flex-center">
-<div class="uk-flex uk-flex-between table-shedule head-table-time" :class="widthContentTable">
-<div class="text-time uk-flex uk-width-1-1" :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
-  <div class="head-date  uk-width-1-6@l uk-width-1-1@s ">
-    {{ dayNow }}
-  </div>
-  <div class="head-title  uk-width-4-6@l uk-width-1-1@s uk-text-center">
-    {{ tableInfos?.name }} (ПН-СР)
-  </div> 
-  
-</div>  
-</div>  
-</div>
-
-<div class="uk-flex uk-flex-center">
-  <div class="uk-flex uk-flex-center table-shedule" :class="widthContentTable">
-      <div class="uk-width-1-1  " v-for="(headItem, idxh1) in tableHeads" :key="'idh1-'+idxh1">
-        <div class="uk-width-1-1">
-        <div class="name-station-text uk-width-1-1 ">
-          {{ headItem?.name }}
-        </div>
-        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-          <div class="inout-text">Приб. </div>
-          <div class="inout-text">Отпр.</div>
-        </div>
-        </div> 
-      </div>
-  </div>  
-</div>
-
-<div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
-  <div class="uk-flex uk-flex-center table-shedule table-row "  :class="widthContentTable" v-for="(rowItem, idxr1) in tableFlightsPart1" :key="'idr1-'+idxr1">
-      <div class="uk-width-1-1  " v-for="(rowItem, idxp1) in rowItem?.points" :key="'idp1-'+idxp1">
-        <div class="uk-width-1-1">
-
-        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-          <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
-          <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
-        </div>
-        </div> 
-      </div>
-  </div>  
-</div>
-
-<div class="uk-flex uk-flex-center">
-<div class="uk-flex uk-flex-between table-shedule head-table-time " :class="widthContentTable">
-<div class="text-time uk-flex uk-width-1-1 " :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
-  <div class="head-date uk-width-1-6@l uk-width-1-1@s">
-    {{ dayNow }}
-  </div>
-  <div class="head-title uk-width-4-6@l uk-width-1-1@s uk-text-center">
-    {{ tableInfos?.name }} (ЧТ-ВС)
-  </div> 
-  
-</div>  
-</div>  
-</div>
-
-<div class="uk-flex uk-flex-center">
-  <div class="uk-flex uk-flex-center table-shedule" :class="widthContentTable">
-      <div class="uk-width-1-1  " v-for="(headItem, idxh2) in tableHeads" :key="'idh2-'+idxh2">
-        <div class="uk-width-1-1">
-        <div class="name-station-text uk-width-1-1 ">
-          {{ headItem?.name }}
-        </div>
-        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-          <div class="inout-text">Приб. </div>
-          <div class="inout-text">Отпр.</div>
-        </div>
-        </div> 
-      </div>
-  </div>  
-</div>
-
-<div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
-  <div class="uk-flex uk-flex-center table-shedule table-row "  :class="widthContentTable" v-for="(rowItem, idxr2) in tableFlightsPart2" :key="'idr2-'+idxr2">
-      <div class="uk-width-1-1  " v-for="(rowItem, idxp2) in rowItem?.points" :key="'idp2-'+idxp2">
-        <div class="uk-width-1-1">
-
-        <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-          <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
-          <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
-        </div>
-        </div> 
-      </div>
-  </div>  
-</div>
-
-
-
-<div class="uk-width-1-1 uk-flex uk-flex-center">
-  <div  :class="widthContentTable">
-          <div class="buy-ticket-shedule_trams-info__grid uk-flex uk-flex-wrap ">
-            <div>
-              <div class="buy-ticket-shedule_trams__info">
-                <span>Продолж. рейса:</span>
-                <span>50 мин</span>
+        <div class="uk-flex uk-flex-center">
+          <div class="uk-flex uk-flex-between table-shedule head-table-time" :class="widthContentTable">
+            <div class="text-time uk-flex uk-width-1-1" :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
+              <div class="head-date  uk-width-1-6@l uk-width-1-1@s ">
+                {{ dayNow }}
+              </div>
+              <div class="head-title  uk-width-4-6@l uk-width-1-1@s uk-text-center">
+                {{ tableInfos?.name }} (Понедельник-среда)
               </div>
             </div>
-            <div>
-              <div class="buy-ticket-shedule_trams__info " :class="{'footer-info-stop-time': !isViewMobile}" >
-                <span>Стоянка на конечном причале:</span>
-                <span>10 мин.</span>
+          </div>
+        </div>
+
+        <div class="uk-flex uk-flex-center uk-flex-column uk-margin-auto" :class="widthContentTable">
+          <div class="uk-flex uk-flex-center table-shedule">
+              <div class="uk-width-1-1" v-for="(headItem, idxh1) in tableHeads" :key="'idh1-'+idxh1">
+                <div class="uk-width-1-1">
+                  <div class="name-station-text uk-width-1-1 ">
+                    {{ headItem?.name }}
+                  </div>
+<!--                  <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+                    <div class="inout-text">Приб.</div>
+                    <div class="inout-text">Отпр.</div>
+                  </div>-->
+                </div>
+              </div>
+          </div>
+          <div  class="uk-flex uk-flex-between table-shedule">
+            <div v-for="(rowItem, idxr1) in tableFlightsPart1[0]?.points" class="uk-flex uk-flex-between uk-width-1-1">
+              <div class="inout-text" v-show="rowItem?.arrival!==null">Приб.</div>
+              <div class="inout-text" v-show="rowItem?.departure!==null">Отпр.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
+          <div class="uk-flex uk-flex-center table-shedule table-row " :class="widthContentTable" v-for="(rowItem, idxr1) in tableFlightsPart1" :key="'idr1-'+idxr1">
+              <div class="uk-width-1-1" v-for="(rowItem, idxp1) in rowItem?.points" :key="'idp1-'+idxp1">
+                <div class="uk-width-1-1">
+                  <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+                    <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
+                    <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="uk-flex uk-flex-center">
+          <div class="uk-flex uk-flex-between table-shedule head-table-time " :class="widthContentTable">
+            <div class="text-time uk-flex uk-width-1-1 " :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
+              <div class="head-date uk-width-1-6@l uk-width-1-1@s">
+                {{ dayNow }}
+              </div>
+              <div class="head-title uk-width-4-6@l uk-width-1-1@s uk-text-center">
+                {{ tableInfos?.name }} (Четверг-воскресенье)
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-flex uk-flex-center uk-flex-column uk-margin-auto" :class="widthContentTable">
+          <div class="uk-flex uk-flex-center table-shedule">
+              <div class="uk-width-1-1  " v-for="(headItem, idxh2) in tableHeads" :key="'idh2-'+idxh2">
+                <div class="uk-width-1-1">
+                  <div class="name-station-text uk-width-1-1 ">
+                    {{ headItem?.name }}
+                  </div>
+<!--                  <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+                    <div class="inout-text">Приб. </div>
+                    <div class="inout-text">Отпр.</div>
+                  </div>-->
+                </div>
+              </div>
+          </div>
+          <div  class="uk-flex uk-flex-between table-shedule">
+            <div v-for="(rowItem, idxr1) in tableFlightsPart1[0]?.points" class="uk-flex uk-flex-between uk-width-1-1">
+              <div class="inout-text" v-show="rowItem?.arrival !==null">Приб.</div>
+              <div class="inout-text" v-show="rowItem?.departure !==null">Отпр.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
+          <div class="uk-flex uk-flex-center table-shedule table-row "  :class="widthContentTable" v-for="(rowItem, idxr2) in tableFlightsPart2" :key="'idr2-'+idxr2">
+              <div class="uk-width-1-1  " v-for="(rowItem, idxp2) in rowItem?.points" :key="'idp2-'+idxp2">
+                <div class="uk-width-1-1">
+
+                <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
+                  <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }} </div>
+                  <div class="inout-text"  v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
+                </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="uk-width-1-1 uk-flex uk-flex-center">
+          <div  :class="widthContentTable">
+            <div class="buy-ticket-shedule_trams-info__grid uk-flex uk-flex-wrap ">
+              <div>
+                <div class="buy-ticket-shedule_trams__info">
+                  <span>Продолж. рейса:</span>
+                  <span>50 мин</span>
+                </div>
+              </div>
+              <div>
+                <div class="buy-ticket-shedule_trams__info " :class="{'footer-info-stop-time': !isViewMobile}" >
+                  <span>Стоянка на конечном причале:</span>
+                  <span>10 мин.</span>
+                </div>
               </div>
             </div>
-          </div>  
-  </div>
-</div>
-
-
-
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -516,7 +521,7 @@ mounted() {
     console.log(this.tableInfos)
   },
   fetchOnServer: false,
-  fetchKey: 'site-sidebar',
+  fetchKey: 'trams-schedule',
 }
 </script>
 
@@ -647,7 +652,7 @@ table {
   background-color: #eff4f8;
 }
 .table-row:nth-child(odd) {
-    
+
     background-color: #fff;
 }
 .table-row:nth-child(even):hover {
