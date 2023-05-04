@@ -65,6 +65,38 @@ body {
     line-height: 1.6;
     font-family: 'Montserrat', sans-serif;
 }
+
+.trams__route__metro__badge {
+    width: 23px;
+    min-width: 23px;
+    text-align: center;
+    height: 23px;
+    line-height: 23px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.trams__route__metro__badge_brown {
+    background: #835029;
+}
+.trams__route__metro__badge_blue {
+    background:  #6db5ea;
+}
+.trams__route__metro__badge_red {
+    background: #fb1301;
+}
+.trams__route__metro__badge_orange {
+    background: #ff7f1d;
+}
+.trams__route__metro__badge_purple {
+    background: #8e479b;
+}
+
 @media screen and (max-width: 639px) {
     .content-menu-item {
         margin-top: 25px;

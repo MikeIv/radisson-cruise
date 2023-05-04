@@ -41,7 +41,8 @@
                           Время и дата:
                         </div>
                         <div>
-                          <b>{{ journeyDate }}, {{ timeCalc }}</b>
+<!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
+                          <b>{{ routeData.showTime }}</b>
                         </div>
                         <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                             Дневной
@@ -57,7 +58,8 @@
                       Время и дата:
                     </div>
                     <div>
-                      <b>{{ journeyDate }}, {{ timeCalc }}</b>
+<!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
+                      <b>{{ routeData.showTime }}</b>
                     </div>
                     <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                          Дневной
@@ -261,7 +263,8 @@
                         Время и дата:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
-                        {{ journeyDate }}, {{ timeCalc }}
+<!--                        {{ journeyDate }}, {{ timeCalc }}-->
+                        {{ routeData.showTime }}
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
