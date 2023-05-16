@@ -3,9 +3,6 @@ const fs = require('fs')
 import axios from 'axios'
 export default {
   debug: false,
-  server: {
-    host: '0'
-  },
   alias: {
     'images': resolve(__dirname, './assets/img'),
     'style': resolve(__dirname, './assets/css'),

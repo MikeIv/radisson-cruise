@@ -10,7 +10,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.trams.title') }}
+            {{ seoData?.header }}
           </h1>
 <!--           <nuxt-link class="uk-button uk-button-default button_ticket  transition" to="/trams/schedule/">
             <span>Купить билет</span>
@@ -686,9 +686,31 @@ export default {
       ],
       tramBlocks: null,
       portBlocks: [],
+      seoData: {},
+    }
+  },
+  head() {
+    return {
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/trams/&lang=ru`);
+    this.seoData = seoDataResult.data.result
     let tramBlockData = await axios.get(
         `${this.$config.baseURL}blocks?page=riverbus`);
     this.tramBlocks = tramBlockData.data.shift()
