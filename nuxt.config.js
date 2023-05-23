@@ -98,7 +98,7 @@ export default {
       if (redirect.source.includes('/action/?id')) {
         return {
           from: '^/action/\\?id=(\\d+)$',
-          to: '/news/$1',
+          to: '/news/$1/',
           statusCode: 301,
         }
       } else if (redirect.source === '/action/'){
