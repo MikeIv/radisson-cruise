@@ -13,8 +13,8 @@ build frontend image:
   script:
     - |
       docker build \
-        --build-arg API_BASE_URL=http://new.radisson-cruise.ru/api/v1/ \
-        --add-host new.radisson-cruise.ru:192.168.253.227 \
+        --build-arg API_BASE_URL=http://www.radisson-cruise.ru/api/v1/ \
+        --add-host www.radisson-cruise.ru:192.168.253.227 \
         --pull -t ${CI_REGISTRY_IMAGE}/nuxt .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}/nuxt
