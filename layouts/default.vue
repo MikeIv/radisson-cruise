@@ -1,16 +1,5 @@
 <template>
   <div>
-<!--    <PreloaderMain  v-if="isLoading && $route.path === '/'" />
-    <PreloaderYacht v-else-if="isLoading" />-->
-    <div class="old-site uk-cover-container" uk-alert="sel-close: .cookie-close;" v-show="!showNav">
-      <a class="cookie-close uk-alert-close" id="cookie-close-2" uk-close @click.prevent="closeOldSite"></a>
-      <div class="uk-container uk-position-relative">
-        <div class="uk-text-center uk-flex uk-flex-center uk-flex-middle">
-          <a href="https://www.radisson-cruise.ru/?old=1" class="transition">Перейти на старый сайт</a>
-        </div>
-      </div>
-    </div>
-
     <SideNav ref="slideNav"/>
     <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'Theatrical-item'] }" />
     <!--    <Kiev />-->
