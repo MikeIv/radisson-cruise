@@ -101,15 +101,9 @@ export default {
           to: '/news/$1/',
           statusCode: 301,
         }
-      } else if (redirect.source.includes('?')){
-        return {
-          from: '^' + redirect.source + '\\?',
-          to: redirect.target + '?',
-          statusCode: 301,
-        }
       } else {
         return {
-          from: '^' + redirect.source + '$',
+          from: '^' + redirect.source.replace('?', '\\?') + '$',
           to: redirect.target,
           statusCode: 301,
         }
