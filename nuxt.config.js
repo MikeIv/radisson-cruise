@@ -111,7 +111,7 @@ export default {
       } */
       else {
         return {
-          from: '^' + redirect.source + '(\?|$)',
+          from: '^' + redirect.source + '(\\?|$)',
           to: redirect.target,
           statusCode: 301,
         }
