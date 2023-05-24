@@ -101,15 +101,13 @@ export default {
           to: '/news/$1/',
           statusCode: 301,
         }
-      }
-      /* else if (redirect.source === '/action/'){
+      } else if (redirect.source.includes('?')){
         return {
-          from: '^/action/$',
-          to: '/news/?grp=action',
+          from: '^' + redirect.source + '\\?',
+          to: redirect.target + '?',
           statusCode: 301,
         }
-      } */
-      else {
+      } else {
         return {
           from: '^' + redirect.source + '$',
           to: redirect.target,
