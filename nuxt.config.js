@@ -91,33 +91,34 @@ export default {
     { from: '^/tickets/raspisanie/', to: '/yachts/schedule/', statusCode: 301 },
     { from: '^/action/(.*)$', to: '/news/?grp=action', statusCode: 301 },*!/
   ],*/
-  redirect: async () => {
-    const list = [];
-    const redirects = await axios.get(`${process.env.API_BASE_URL}redirects`) // It'll wait!
-    const formatedRedirects = redirects.data.map((redirect) => {
-      // if (redirect.source.includes('/action/?id')) {
-      //   return {
-      //     from: '^/action/\\?id=(\\d+)$',
-      //     to: '/news/$1/',
-      //     statusCode: 301,
-      //   }
-      // } else {
-        return {
-          from: '^' + redirect.source.replace('?', '\\?') + '$',
-          to: redirect.target,
-          statusCode: 301,
-        }
-      // }
-    })
-    list.push(...formatedRedirects)
-    list.push(
-        {
-          from: '^(\\/[^\\?\\.]+[^\\/])(\\?.*)?$',
-          to: '$1/$2',
-          statusCode: 301
-        }
-    )
-    return list
+  redirect: {
+    rules: async () => {
+      const list = [];
+      const redirects = await axios.get(`${process.env.API_BASE_URL}redirects`) // It'll wait!
+      const formatedRedirects = redirects.data.map((redirect) => {
+          return {
+            from: '^' + redirect.source.replace('?', '\\?') + '$',
+            to: redirect.target,
+            statusCode: 301,
+          }
+      })
+      list.push(...formatedRedirects)
+      list.push(
+          {
+            from: '^(\\/[^\\?\\.]+[^\\/])(\\?.*)?$',
+            to: '$1/$2',
+            statusCode: 301
+          }
+      )
+      return list
+    },
+    onDecode: (req, res, next) => {
+      let urlParts = decodeURI(req.url).split('?');
+      let searchParams = new URLSearchParams(urlParts[1]);
+      Array.from(searchParams).filter(([key]) => key !== "id").forEach(([key,value]) => searchParams.delete(key));
+      urlParts[1] = searchParams.toString();
+      return urlParts[1] ? urlParts[0] + '?' + urlParts[1] : urlParts[0];
+    }
   },
   /*build: {
     publicPath: 'store', // changed '_nuxt' way to 'store'
