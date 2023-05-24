@@ -109,20 +109,20 @@ export default {
         }
       } else {
         return {
-          from: '^' + redirect.source + '$',
+          from: '^' + redirect.source + '(\?|$)',
           to: redirect.target,
           statusCode: 301,
         }
       }
     })
     list.push(...formatedRedirects)
-    list.push(
+    /* list.push(
         {
           from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
           to: '$1/$2',
           statusCode: 301
         }
-    )
+    ) */
     return list
   },
   /*build: {
