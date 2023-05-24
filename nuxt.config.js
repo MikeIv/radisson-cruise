@@ -115,7 +115,7 @@ export default {
     onDecode: (req, res, next) => {
       let urlParts = decodeURI(req.url).split('?');
       let searchParams = new URLSearchParams(urlParts[1]);
-      Array.from(searchParams).filter(([key]) => key !== "id").forEach(([key,value]) => searchParams.delete(key));
+      Array.from(searchParams).filter(([key]) => key !== "id").forEach(([key]) => searchParams.delete(key));
       urlParts[1] = searchParams.toString();
       return urlParts[1] ? urlParts[0] + '?' + urlParts[1] : urlParts[0];
     }
