@@ -110,13 +110,13 @@ export default {
       // }
     })
     list.push(...formatedRedirects)
-    /* list.push(
+    list.push(
         {
-          from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
+          from: '^(\\/[^\\?\\.]+[^\\/])(\\?.*)?$',
           to: '$1/$2',
           statusCode: 301
         }
-    ) */
+    )
     return list
   },
   /*build: {
