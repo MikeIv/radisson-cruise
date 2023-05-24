@@ -95,13 +95,13 @@ export default {
     const list = [];
     const redirects = await axios.get(`${process.env.API_BASE_URL}redirects`) // It'll wait!
     const formatedRedirects = redirects.data.map((redirect) => {
-      if (redirect.source.includes('/action/?id')) {
-        return {
-          from: '^/action/\\?id=(\\d+)$',
-          to: '/news/$1/',
-          statusCode: 301,
-        }
-      }
+      // if (redirect.source.includes('/action/?id')) {
+      //   return {
+      //     from: '^/action/\\?id=(\\d+)$',
+      //     to: '/news/$1/',
+      //     statusCode: 301,
+      //   }
+      // }
       /* else if (redirect.source === '/action/'){
         return {
           from: '^/action/$',
@@ -109,13 +109,13 @@ export default {
           statusCode: 301,
         }
       } */
-      else {
+      // else {
         return {
           from: '^' + redirect.source + '(\\?|$)',
           to: redirect.target,
           statusCode: 301,
         }
-      }
+      // }
     })
     list.push(...formatedRedirects)
     /* list.push(
