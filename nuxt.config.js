@@ -117,7 +117,11 @@ export default {
       let searchParams = new URLSearchParams(urlParts[1]);
       Array.from(searchParams).filter(([key]) => key !== "id").forEach(([key]) => searchParams.delete(key));
       urlParts[1] = searchParams.toString();
-      return urlParts[1] ? urlParts[0] + '?' + urlParts[1] : urlParts[0];
+      let resUrl = urlParts[1] ? urlParts[0] + '?' + urlParts[1] : urlParts[0];
+      if (resUrl != req.url) {
+        console.log("Rewriting: "+ req.url + " => " + resUrl);
+      }
+      return resUrl;
     }
   },
   /*build: {
