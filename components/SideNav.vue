@@ -705,6 +705,9 @@
               <nuxt-link class="txt18 " to="/contacts/" @click.native="closeNav">
                 Контакты
               </nuxt-link>
+              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+                Erwin.Река
+              </nuxt-link>
             </div>
           </div>
           <div class="uk-flex-between uk-grid-small uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 offcanvas_main__grid uk-visible@m uk-grid uk-grid-stack" uk-grid="">
@@ -726,6 +729,9 @@
               </nuxt-link>
               <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
                 Расписание трамвайчиков
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+                Erwin.Река
               </nuxt-link>
 
 

@@ -319,6 +319,9 @@
             <nuxt-link to="/news/388/" class="uk-hidden@s">
               Осторожно, мошенники
             </nuxt-link>
+            <nuxt-link to="/news/403/">
+              Erwin.Река
+            </nuxt-link>
           </li>
           <li class="footer__nav_item2">
             <nuxt-link to="/news/">
