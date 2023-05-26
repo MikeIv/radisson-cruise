@@ -195,7 +195,7 @@ export default {
     lazy: true,
     langDir: 'lang/',
     defaultLocale: 'ru',
-    baseUrl: process.env.BASE_URL.slice(0, process.env.BASE_URL.length - 1),
+    baseUrl: process.env.BASE_URL
   },
 
   loaders: {
