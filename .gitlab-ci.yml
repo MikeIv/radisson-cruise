@@ -69,12 +69,13 @@ deploy prod service:
     url: https://${LANG_RU}
   script:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
-    - docker pull ${CI_REGISTRY_IMAGE}/nuxt
-    - docker service update -q --force korabliki_nuxt
+    - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG}
+    - docker service update -q --force --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} korabliki_nuxt
     - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
   only:
-    refs:
-      - main
+    variables:
+      - $CI_COMMIT_TAG =~ /^v\d.*/
+  when: manual
   tags:
     - shell
     - $CI_JOB_STAGE
@@ -86,12 +87,12 @@ deploy dev service:
     url: http://${LANG_RU}
   script:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
-    - docker pull ${CI_REGISTRY_IMAGE}/nuxt:dev
-    - docker service update -q --force korabliki_dev_nuxt
+    - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME}
+    - docker service update -q --force --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_dev_nuxt
     - docker exec $(docker ps -q -f name=korabliki_dev_nginx) find /var/cache/nginx/cache -type f -delete
   only:
-    refs:
-      - dev
+    variables:
+      - $CI_COMMIT_REF_NAME =~ /^dev.*$/
   tags:
     - shell
     - $CI_JOB_STAGE
