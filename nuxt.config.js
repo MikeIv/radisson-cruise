@@ -29,7 +29,20 @@ export default {
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
-        ...i18nHead.link,
+        ...i18nHead.link.map(link => (
+            link.hreflang === undefined
+                ? {
+                  hid: link.hid,
+                  rel: link.rel,
+                  href: link.href.slice(-1) === '/' ? link.href : link.href + '/',
+                }
+                : {
+                  hid: link.hid,
+                  rel: link.rel,
+                  href: link.href.slice(-1) === '/' ? link.href : link.href + '/',
+                  hreflang: link.hreflang,
+                }
+        )),
       ],
     };
   },
@@ -182,6 +195,7 @@ export default {
     lazy: true,
     langDir: 'lang/',
     defaultLocale: 'ru',
+    baseUrl: process.env.BASE_URL.slice(0, process.env.BASE_URL.length - 1),
   },
 
   loaders: {
