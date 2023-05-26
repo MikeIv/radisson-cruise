@@ -14,6 +14,7 @@ build frontend image:
     - |
       docker build \
         --build-arg API_BASE_URL=http://www.radisson-cruise.ru/api/v1/ \
+        --build-arg BASE_URL=http://www.radisson-cruise.ru \
         --add-host www.radisson-cruise.ru:192.168.253.227 \
         --pull -t ${CI_REGISTRY_IMAGE}/nuxt .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
@@ -37,6 +38,7 @@ build dev image:
     - |
       docker build \
         --build-arg API_BASE_URL=http://korabliki.nuu.ru/api/v1/ \
+        --build-arg BASE_URL=http://korabliki.nuu.ru \
         --add-host korabliki.nuu.ru:192.168.253.227 \
         --pull -t ${CI_REGISTRY_IMAGE}/nuxt:dev .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
