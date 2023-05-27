@@ -22,7 +22,8 @@ build prod image:
         --build-arg LANG_RU=${LANG_RU} \
         --build-arg LANG_EN=${LANG_EN} \
         --build-arg LANG_CN=${LANG_CN} \
-        --pull -t ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} .
+        -t ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} \
+        -t ${CI_REGISTRY_IMAGE}/nuxt --pull .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG}
   only:
@@ -52,7 +53,7 @@ build dev image:
         --build-arg LANG_RU=${LANG_RU} \
         --build-arg LANG_EN=${LANG_EN} \
         --build-arg LANG_CN=${LANG_CN} \
-        --pull -t ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} .
+        -t ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} --pull .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME}
   only:
@@ -70,7 +71,7 @@ deploy prod service:
   script:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG}
-    - docker service update -q --force --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} korabliki_nuxt
+    - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} korabliki_nuxt
     - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
   only:
     variables:
@@ -88,7 +89,7 @@ deploy dev service:
   script:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME}
-    - docker service update -q --force --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_dev_nuxt
+    - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_dev_nuxt
     - docker exec $(docker ps -q -f name=korabliki_dev_nginx) find /var/cache/nginx/cache -type f -delete
   only:
     variables:
