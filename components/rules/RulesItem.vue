@@ -8,7 +8,7 @@
       </div>
       <a class="uk-button uk-button-default button_download" :href="document" target="_blank">
         <svg-icon class="icon" name="download"/>
-        <span>ПОСМОТРЕТЬ</span>
+        <span>{{ $t('buttons.show') }}</span>
       </a>
     </div>
   </div>

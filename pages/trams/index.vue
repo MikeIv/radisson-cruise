@@ -16,7 +16,7 @@
             <span>Купить билет</span>
             <svg-icon class="icon" name="ticket"/>
           </nuxt-link>-->
-        </div> 
+        </div>
       </div>
     </Header>
 <!--    <div class="uk-flex uk-child-width-1-2@l uk-grid-match uk-flex-wrap">-->
@@ -33,13 +33,13 @@
         <svg-icon class="icon" name="wheel"/>
         <div class="uk-position-relative">
           <div class="headline_22">
-            Уже пятый сезон речные «кабриолеты» Флотилии радуют жителей и гостей столицы, 
-            ведь с ними прогулки по Москве-реке и знакомство 
+            Уже пятый сезон речные «кабриолеты» Флотилии радуют жителей и гостей столицы,
+            ведь с ними прогулки по Москве-реке и знакомство
             с главными достопримечательностями города становится быстрым и небанальным.
           </div>
           <div class="headline_line"></div>
           <div class="tenancy__about_txt">
-            Речные трамвайчики Флотилии «Рэдиссон Ройал» развивают туристические возможности и потенциал города Москвы, 
+            Речные трамвайчики Флотилии «Рэдиссон Ройал» развивают туристические возможности и потенциал города Москвы,
             стараясь привлечь внимание жителей и гостей столицы к новому виду досуга и времяпрепровождению на Москве-реке.
           </div>
           <a class="uk-button uk-button-default" href="#scheme">
@@ -62,7 +62,7 @@
         :button="tramBlocks?.button"
     />
 
-    <SchemeRouts 
+    <SchemeRouts
       :idTypeMap="3"
       :arrDataPoints="dataPiers"
 
@@ -72,18 +72,18 @@
     <div class="trams__headline">
       <div class="uk-container">
         <div class="headline_56">
-          ПРИЧАЛ ОТПРАВЛЕНИЯ
+          {{ $t('tram_ports') }}
         </div>
       </div>
     </div>
 
-<!--    <Route v-for="(route, index) in portBlocks" :key="'rt' + index"
+    <Route v-for="(route, index) in portBlocks" :key="'rt' + index"
            :counter="index + 1"
-           :fileName="route.fileName" :portName="route.portName"
-           :coordinates="route.coordinates" :metro="route.metro"
-           :how-to-go="route.howToGo" :metroColor="route.metroColors"
-    />-->
-    <CruiseItem
+           :fileName="route.images[0]"
+           :portName="route.name"
+           :text="route.content"
+    />
+<!--    <CruiseItem
         v-for="(block,index) in portBlocks" :key="'prtBlock'+ index"
         :fileNames="block?.images"
         :title="block?.name"
@@ -92,8 +92,8 @@
         :link-buy="block?.linkbuy"
         :link-more="block?.linkmore"
         :link-free="block?.linkfree"
-    />
-    <section class="uk-cover-container trams-shutdown" v-if="viewSections.route">
+    />-->
+    <section class="uk-cover-container trams-shutdown">
       <img  data-src="~assets/img/inners/tram3.png" alt="" class="img_cover" src="~assets/img/inners/tram3.png">
       <div class="uk-container uk-position-relative">
         <div class="headline_32 t_semibold">
@@ -137,7 +137,7 @@
         <div class="trams-shutdown__bottom">
           <nuxt-link class="uk-button uk-button-default " to="/trams/schedule/">
 
-            <span>ПОДРОБНОЕ РАСПИСАНИЕ</span>
+            <span>{{ $t('schedule') }}</span>
           </nuxt-link>
 
         </div>
@@ -147,7 +147,7 @@
       <div class="trams-advantages__decor"></div>
       <div class="uk-container uk-position-relative">
         <div class="headline_56 uk-text-center">
-          Преимущества
+          {{ $t('features') }}
         </div>
         <div class="trams-advantages__items uk-flex-wrap uk-flex uk-child-width-1-4@m uk-child-width-1-2@s uk-grid-match">
           <div  v-for="(feature, index) in features" :key="'ftr' + index">
@@ -160,7 +160,7 @@
       <img  class="img_cover" data-src="~assets/img/inners/tram4.png" alt="" src="~assets/img/inners/tram4.png">
       <div class="uk-container uk-position-relative">
         <div class="headline_56 uk-text-center">
-          Цветовые вариации
+          {{ $t('color_variants') }}
         </div>
         <div class="trams-colors__items uk-flex-wrap uk-flex uk-child-width-1-5@s uk-child-width-1-2 uk-grid-match">
           <div v-for="variant in tramsVariants">
@@ -173,96 +173,11 @@
 
       <div class="uk-container uk-position-relative">
         <div class="headline_56 uk-text-center">
-          Фотогалерея
+          {{ $t('photo_gallery') }}
         </div>
-        <div class="uk-position-relative yacht__slider uk-slider uk-slider-container" tabindex="-1" uk-slider="">
+        <div class="uk-position-relative yacht__slider uk-slider uk-slider-container" uk-slider="">
           <ul class="uk-slider-items uk-flex" uk-lightbox>
-            <!--            <li tabindex="-1" class="uk-active">
-                          <a data-type="image" href="assets/img/trams/_DSC0064.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0064.jpg" alt="" class="img_cover" src="~assets/img/trams/_DSC0064.jpg" data-alt="Image">
-                          </a>
-                        </li>
-                        <li tabindex="-1" class="uk-active">
-                          <a href="assets/img/trams/_DSC0066.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0066.jpg" alt="" class="img_cover" src="~assets/img/trams/_DSC0066.jpg">
-                          </a>
-                        </li>
-                        <li tabindex="-1" class="">
-                          <a href="~assets/img/trams/_DSC0074(1).jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0074(1).jpg" alt="" class="img_cover" src="~assets/img/trams/_DSC0074(1).jpg">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0088.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0088.jpg" alt="" class="img_cover" src="~assets/img/trams/_DSC0088.jpg">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0130.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0130.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0146(1).jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0146(1).jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0204.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0204.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0247.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0247.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0264(1).jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0264(1).jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0276.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0276.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC0591.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC0591.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/_DSC4020_2.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/_DSC4020_2.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/DSC00177.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/DSC00177.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/DSC00181.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/DSC00181.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/DSC00187.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/DSC00187.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/DSC00194.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/DSC00194.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>
-                        <li tabindex="-1">
-                          <a href="~assets/img/trams/DSC00261.jpg" class="gallery_card uk-position-relative">
-                            <img  data-src="~assets/img/trams/DSC00261.jpg" alt="" class="img_cover">
-                          </a>
-                        </li>-->
-            <li tabindex="-1" v-for="(slide,index) in tramsVariants" :key="'sld' + index">
+            <li v-for="(slide,index) in tramsVariants" :key="'sld' + index">
               <PhotoCardTram :fileName="slide.image"/>
             </li>
           </ul>
@@ -286,7 +201,6 @@
     </section>
   </div>
 </template>
-
 <script>
 //import Scheme from "../../components/Scheme";
 import SchemeRouts from "../../components/SchemeRouts";
@@ -302,7 +216,7 @@ import UIkit from "uikit";
 import axios from "axios";
 import CruiseItem from "@/components/tickets/CruiseItem.vue";
 export default {
-  name: "index",
+  name: "trams-main",
   components: {
     CruiseItem,
     Breadcrumbs,
@@ -431,7 +345,6 @@ export default {
           coordinates: `55.751563, 37.625729`,
         }, */
       ],
-
       features: [],
       featuresLocal: [
       {
@@ -682,7 +595,7 @@ export default {
         classId:"18",
         id:23
         },
-        
+
       ],
       tramBlocks: null,
       portBlocks: [],
@@ -709,23 +622,23 @@ export default {
   },
   async fetch() {
     let seoDataResult = await axios.get(
-        `${this.$config.baseURL}pages?ref=/trams/&lang=ru`);
+        `${this.$config.baseURL}pages?ref=/trams/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
     let tramBlockData = await axios.get(
-        `${this.$config.baseURL}blocks?page=riverbus`);
+        `${this.$config.baseURL}blocks?page=riverbus&lang=${this.$i18n.locale}`);
     this.tramBlocks = tramBlockData.data.shift()
     this.portBlocks = tramBlockData.data
     let features = await axios.get(
-        `${this.$config.baseURL}advantages`);
+        `${this.$config.baseURL}advantages?lang=${this.$i18n.locale}`);
     this.features = features.data
     /*this.features = this.featuresLocal*/
     let getDataRoutes = await axios.get(
-        `${this.$config.baseURL}maproutes?type=trams`);
-        
+        `${this.$config.baseURL}maproutes?type=trams&lang=${this.$i18n.locale}`);
+
     this.dataRoutes = getDataRoutes.data.routes
     let piersData = getDataRoutes.data.piers;
     console.log("this.dataRoutes ", this.dataRoutes[0]);
-    
+
     piersData = piersData.filter((item) => {
       return item.seq >= this.dataRoutes[0].seqmin && item.seq <= this.dataRoutes[0].seqmax && item.type == 'object';
     });
@@ -757,8 +670,8 @@ export default {
 
     this.dataPiers = mapPiersData;
     let tramsVariantsData = await axios.get(
-        `${this.$config.baseURL}riverbus`);
-        
+        `${this.$config.baseURL}riverbus?lang=${this.$i18n.locale}`);
+
     this.tramsVariants = tramsVariantsData.data.result;
     //this.features = this.featuresLocal
   },
@@ -776,7 +689,11 @@ export default {
   }
 }
 </script>
-
+<style scoped>
+.flight:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+</style>
 <style>
 .trams-colors__items>div {
     border-left: 1px solid #a1c2e5;
@@ -791,16 +708,18 @@ export default {
 .trams_cost-wrapper:first-child .trams__cost{
   background: rgba(255, 255, 255, 0.5);
 }
-.trams__route:nth-child(even) {
+.trams__route:nth-child(odd) {
   flex-direction: row-reverse;
 }
 
 .trams-shutdown__item svg {
   fill:black;
 }
+
 @media screen and (max-width: 959px) {
-  .trams__route:nth-child(even) {
+  .trams__route:nth-child(odd) {
     flex-direction: column;
   }
 }
+
 </style>

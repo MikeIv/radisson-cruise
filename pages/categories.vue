@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.categories.title') }}
+            {{ seoData?.header || 'Категории салонов' }}
           </h1>
         </div>
       </div>
@@ -18,18 +18,18 @@
         <div class="uk-container">
           <ul class="uk-nav uk-flex category-cabin__navigation uk-visible@s">
             <li class="uk-button button_switcher-second" uk-filter-control="">
-              <button>{{$t('pages.categories.tabs.all')}}</button>
+              <button>{{ $t('all') }}</button>
             </li>
-            <li class="uk-button button_switcher-second" v-for="(tab,index) in categoriesFetch"
-                :key="'tab1' + index" :uk-filter-control="`[data-color='${tab.name}']`">
+            <li class="uk-button button_switcher-second"
+                v-for="(tab,index) in categoriesFetch"
+                :key="'tab1' + index" :uk-filter-control="`[data-color='${tab.name}']`"
+            >
               <button>{{ tab.name }}</button>
             </li>
           </ul>
 
           <a href="#modal-category-cabin-filter" class="uk-button btn-news-filter uk-hidden@s" uk-toggle="">
-            <span>
-              ОТКРЫТЬ ФИЛЬТР
-            </span>
+            <span>{{ $t('buttons.open_filter') }}</span>
             <svg-icon class="icon" name="svg-flight4"/>
           </a>
         </div>
@@ -74,7 +74,20 @@ export default {
   components: {CategoryCabinFilter, Breadcrumbs, Header, SalonCategory,FilterMobile},
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow -  классы ресторанов Рэдиссон Флотилии: Эрвин, Первый класс, Ройал, Основной зал`,
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -171,6 +184,7 @@ export default {
       ],
       categoriesFetch: [],
       currentSelectedCategory: 0,
+      seoData: {}
     }
   },
   watch: {
@@ -207,11 +221,13 @@ export default {
   beforeDestroy() {
     console.log("DESTROY Yachts Index =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
-    
   },
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/categories/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
     let blocks = await axios.get(
-        `${this.$config.baseURL}salons`);
+        `${this.$config.baseURL}salons?lang=${this.$i18n.locale}`);
     this.categoriesFetch = blocks.data
   },
   fetchOnServer: true,

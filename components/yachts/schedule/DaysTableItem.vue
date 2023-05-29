@@ -1,5 +1,5 @@
 <template>
-  <tr :class="{'disabled' : disabled}">
+  <tr :class="{'disabled' : checkForLateRoutes}" class="table_item-row">
     <td>
       «{{ startPoint }}»
     </td>
@@ -34,11 +34,13 @@
       <a href="" class="uk-button uk-button-default button_ticket">Билеты раскуплены</a>
     </td>
     <td v-else>
-      <nuxt-link class="uk-button uk-button-default button_ticket transition" :class="{'disabled-link': checkForLateRoutes}"
+      <nuxt-link class="uk-button uk-button-default button_ticket transition"
+                 :class="{'disabled-link': checkForLateRoutes}"
                  :to="'/yachts-buy/?journey='+journey"
+                 @click="ym(22731748,'reachGoal','kupit_bilet_23')"
       >
 <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
-        <span>Купить билет</span>
+        <span>{{ $t('buttons.buy_ticket') }}</span>
         <svg-icon class="icon" name="ticket"/>
       </nuxt-link>
     </td>
@@ -49,6 +51,7 @@
 
 import BuyTicketBtn from "../../BuyTicketBtn";
 import axios from "axios";
+import moment from "moment";
 export default {
   name: "DaysTableItem",
   components: {BuyTicketBtn},
@@ -57,8 +60,14 @@ export default {
     dayFormat: String,
     startPoint: String,
     category: String,
-    depatureTime: String,
-    arrivalTime: String,
+    depatureTime: {
+      type: String,
+      required: true
+    },
+    arrivalTime: {
+      type: String,
+      required: true
+    },
     adult: Number,
     child: Number,
     freeSpots: Number,
@@ -96,13 +105,16 @@ export default {
       return this.dayTime ? 'Дневной' : 'Вечерний'
     },
     timeCalc() {
-      let depatureTime = new Date(this.depatureTime);
+      /*let depatureTime = new Date(this.depatureTime);
       let arrivalTime = new Date(this.arrivalTime);
       let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
       let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
       let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
       let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
-      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
+      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`*/
+      let formattedDeparture = moment(this.depatureTime).format('HH:mm')
+      let formattedArrival = moment(this.arrivalTime).format('HH:mm')
+      return `${formattedDeparture} - ${formattedArrival}`
     },
 
     routeChange() {
@@ -158,6 +170,27 @@ export default {
   opacity: 0.3;
   pointer-events: none;
   cursor: not-allowed;
+}
+.table_item-row.disabled:hover td{
+  opacity: 0.1;
+}
+
+.table_item-row.disabled:hover {
+  position: relative;
+}
+
+
+.table_item-row.disabled::after {
+  content: 'посадка на рейс началась, вы можете купить билет на кассе';
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  font-weight: 600;
+  font-size: 20px;
+  display: none;
+}
+.table_item-row.disabled:hover::after {
+  display: block;
 }
 
 </style>

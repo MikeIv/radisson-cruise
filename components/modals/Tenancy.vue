@@ -45,7 +45,7 @@
           <div class="uk-modal-full__block__bottom">
             <a class="uk-button uk-button-default button_calcalutor" href="#modal-calculation" uk-toggle>
               <svg-icon name="calculator" class="icon"/>
-              <span>сделать расчет</span>
+              <span>{{ $t('buttons.rent_calc') }}</span>
             </a>
             <img data-src="~assets/img/inners/head-logo2@2x.png" alt="" class="uk-visible@s" src="~assets/img/inners/head-logo2@2x.png">
           </div>

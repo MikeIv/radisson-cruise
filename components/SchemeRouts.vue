@@ -14,10 +14,10 @@
         <div class="uk-container uk-position-relative">
             <div class="headline uk-scrollspy-inview uk-animation-fade" uk-scrollspy="cls: uk-animation-fade; delay: 300">
                 <div class="headline_p1">
-                    Схема
+                  {{ schemeTitle[0] }}
                 </div>
                 <div class="headline_p1">
-                    Маршрута
+                  {{ schemeTitle[1] }}
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                                 <div class="scheme_item18">
                                     <svg-icon name='svg-return' class="icon"/>
                                     <span>
-                                      Разворот
+                                     {{ $t('reversal') }}
                                     </span>
                                 </div>
 
@@ -89,7 +89,7 @@
                                         <div class="scheme__bottom_info">
                                             <svg-icon name='metro' class="icon"/>
                                             <span>
-                                            {{itemRoutButton.subtitle}}
+                                              {{ itemRoutButton.subtitle}}
                                             </span>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
 
                             <div class="width-100 ">
                                 <nuxt-link to="/trams/schedule/" class="width-100 height-100 uk-button uk-button-default button_ticket" type="button">
-                                    <span>Расписание</span>
+                                    <span>{{ $t('schedule') }}</span>
                                     <svg-icon name='clock' class="icon"/>
                                 </nuxt-link>                                
                             </div>
@@ -534,6 +534,9 @@ export default {
   computed: {
     selectInfoModal() {
       return this.arrDataPoints.find((item) => item.customClass === this.currInfo);
+    },
+    schemeTitle() {
+      return this.$t('route_scheme').split(' ')
     },
   },
   methods: {

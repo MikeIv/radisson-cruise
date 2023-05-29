@@ -290,11 +290,11 @@
           <div class="mailing__left">
             <img src="~assets/img/svg/mail.svg" alt="" uk-svg>
             <div class="headline_p1">
-              РАССЫЛКА НОВОСТЕЙ
+              {{ $t('footer.title') }}
             </div>
           </div>
           <form class="mailing__form" action="" id="mailing__form" autocomplete="off">
-            <input v-model="newsEmail" type="email" required="" name="f_mail" class="uk-input" placeholder="Адрес вашей электронной почты">
+            <input v-model="newsEmail" type="email" required="" name="f_mail" class="uk-input" :placeholder="$t('footer.placeholder')">
             <button @click.prevent="subscribeEmail" class="mailing__btn" type="submit">
 <!--              <svg-icon src="~assets/img/svg/arrow2.svg" alt="" uk-svg>-->
               <svg-icon name="arrow"/>
@@ -305,19 +305,22 @@
         <ul class="footer__nav uk-scrollspy-inview uk-animation-fade">
           <li class="footer__nav_item1">
             <nuxt-link to="/yachts/schedule/">
-              Расписание
+              {{ $t('schedule') }}
             </nuxt-link>
             <nuxt-link to="/rent/">
-              Аренда
+              {{ $t('nav.rent') }}
             </nuxt-link>
             <nuxt-link to="/menu/">
-              Меню ресторанов
+              {{ $t('nav.menu') }}
             </nuxt-link>
             <nuxt-link to="/yachts/schedule/" class="uk-hidden@s">
-              Купить билеты
+              {{ $t('nav.buy_tickets') }}
             </nuxt-link>
             <nuxt-link to="/news/388/" class="uk-hidden@s">
-              Осторожно, мошенники
+              {{ $t('thiefs') }}
+            </nuxt-link>
+            <nuxt-link to="/news/403/">
+              Erwin.Река
             </nuxt-link>
             <nuxt-link to="/news/403/">
               Erwin.Река
@@ -325,33 +328,33 @@
           </li>
           <li class="footer__nav_item2">
             <nuxt-link to="/news/">
-              Новости и акции
+              {{ $t('nav.news') }}
             </nuxt-link>
             <nuxt-link to="/about/">
-              О компании
+              {{ $t('nav.about') }}
             </nuxt-link>
             <nuxt-link to="/contacts/">
-              Контакты
+              {{ $t('nav.contacts') }}
             </nuxt-link>
             <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace class="uk-hidden@s">
-              Безопасность
+              {{ $t('security') }}
             </nuxt-link>
             <nuxt-link to="/refund/" class="uk-hidden@s">
-              Возврат билетов
+              {{ $t('refund') }}
             </nuxt-link>
           </li>
           <li class="footer__nav_item3 uk-visible@s">
             <nuxt-link to="/yachts/schedule/">
-              Купить билеты
+              {{ $t('nav.buy_tickets') }}
             </nuxt-link>
             <nuxt-link to="/news/388/">
-              Осторожно, мошенники
+              {{ $t('thiefs') }}
             </nuxt-link>
             <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace>
-              Безопасность
+              {{ $t('security') }}
             </nuxt-link>
             <nuxt-link to="/refund/">
-              Возврат билетов
+              {{ $t('refund') }}
             </nuxt-link>
           </li>
         </ul>
@@ -362,26 +365,26 @@
             </nuxt-link>
           </div>
           <div class="footer__information_item2">
-            <div class="footer__information_item2-txt">Мы в соц.сетях</div>
+            <div class="footer__information_item2-txt">{{ $t('footer.social') }}</div>
             <SocialBlock/>
           </div>
           <div class="footer__information_item3">
-            <a class="header_call " :href="`tel:${footerSocial.tel}`">
+            <a class="header_call " :href="`tel:${tel}`">
               <img src="~assets/img/svg/call.svg" alt="" class="" uk-svg>
-              <span>{{ footerSocial.tel }}</span>
+              <span>{{ tel }}</span>
             </a>
-            <a class="footer__information_item3-mail" :href="`mailto: ${footerSocial.email}`">
-              {{ footerSocial.email }}
+            <a class="footer__information_item3-mail" :href="`mailto: ${email}`">
+              {{ email }}
             </a>
           </div>
         </div>
         <div class="footer__bottom uk-scrollspy-inview uk-animation-fade">
           <div class="footer__bottom_item1">
-            © 2023, Флотилия “Рэдиссон Ройал”
+            © {{ new Date().getFullYear() }}, {{ $t('footer.credits') }}
           </div>
           <div class="footer__bottom_item2">
             <nuxt-link to="/politic" class="transition">
-              Политика конфеденциальности
+              {{ $t('footer.politic') }}
             </nuxt-link>
           </div>
           <div class="footer__bottom_item3">
@@ -393,232 +396,7 @@
         </div>
       </div>
     </footer>
-
-    <div id="success" class="uk-flex-top success uk-modal" uk-modal>
-      <div class="uk-modal-dialog uk-margin-auto-vertical">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="uk-modal-body uk-position-relative">
-          <h2 class="uk-modal-title">
-            Сообщение отправлено
-          </h2>
-          <p>
-            Спасибо! Актуальные акции и предложения будут направляться на указанный e-mail.
-          </p>
-          <div class="success_bottom">
-            <a class="uk-modal-close uk-button uk-button-default">Закрыть</a>
-            <svg class="icon">
-              <use xlink:href="#img-logo"></use>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="modal-call" class="uk-modal-full " uk-modal>
-      <div class="uk-modal-dialog">
-        <div class="modal_decor"></div>
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <div class="uk-container modal-full_container">
-          <h2 class="headline_64 text-upper">
-            <b>Обратная связь</b>
-          </h2>
-          <p class="txt18">
-            Заполните поля ниже и наши менеджеры свяжутся с вами в ближайшее время
-          </p>
-          <div class="modal_form">
-            <form class="zay_form uk-flex-between " id="zay_form" uk-grid>
-              <div class="uk-width-1-2@s modal_form_block-input">
-                <div class="uk-form-controls with-placeholder">
-                  <input class="uk-input" type="text" placeholder="Ваше ФИО" required>
-                  <span class="form_placeholder">Представтесь</span>
-                </div>
-              </div>
-              <div class="uk-width-1-2@s modal_form_block-input">
-                <div class="uk-form-controls with-placeholder">
-                  <input class="uk-input " type="text" placeholder="Укажите контакт" required>
-                  <span class="form_placeholder">Телефон или e-mail</span>
-                </div>
-              </div>
-              <div class="uk-width-1-1 modal_form_block-input">
-                <div class="uk-form-controls with-placeholder">
-                  <textarea class="uk-textarea" type="text" placeholder="Введите сообщение"></textarea>
-                  <span class="form_placeholder">Текст сообщения</span>
-                </div>
-              </div>
-              <div class="uk-width-auto@s">
-<!--                <script src="https://www.google.com/recaptcha/api.js"></script>-->
-                <div class="captcha modal-call_captcha">
-                  <b class="text-danger red recaptchaError2" id="recaptchaError2"></b>
-                  <div class="g-recaptcha"  data-sitekey="6LcfxsAZAAAAABWYUWwGXhgN0ipealBdXburfZ0z" data-theme="dark"></div>
-                </div>
-              </div>
-              <div class="uk-width-auto@s">
-                <div class="modal_form_bottom">
-                  <button type="submit" class="uk-button uk-button-default">
-                    <span>ОТПРАВИТЬ</span>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-<!--    <div id="modal-buy-ticket-filter" class="uk-modal-full " uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-        <div class="uk-container modal-full_container">
-          <div class="headline_56 text-upper">
-            Фильтр
-          </div>
-          <div class="modal-news-filter__body">
-            <form class="buy-ticket " autocomplete="off">
-              <div class="buy-ticket__item">
-                <svg-icon name="date" class="icon buy-ticket__item_icon1"/>
-                <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
-                <input class=" select-styled  litepicker" id="modal-buy-ticket-filter-datepicker" type="text" value="" placeholder="Выбрать дату">
-              </div>
-              <div class="buy-ticket__item">
-                <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
-                <button class="select-styled pass-btn" type="button">Выбрать причал</button>
-
-                <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop">
-                  <div class="pass-quantity">
-                    <div class="form_politic buy-ticket__politic">
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__moorage">
-                        <span class="">
-                          Гостиница «Украина»
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__moorage">
-                        <span class="">
-                          Парк Горького
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="buy-ticket__item">
-                <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
-                <button class="select-styled pass-btn" type="button">Категория салона</button>
-
-                <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop">
-                  <div class="pass-quantity">
-                    <div class="form_politic buy-ticket__politic">
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Основной зал
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Ройал класс
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Первый класс
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Erwin.Река
-                        </span>
-                      </label>
-                      &lt;!&ndash; <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Mercedes Benz
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Театарльный круиз
-                        </span>
-                      </label>
-                      <label>
-                        <input class="uk-checkbox" type="checkbox" name="category__salon">
-                        <span class="">
-                          Спецрейс
-                        </span>
-                      </label> &ndash;&gt;
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="buy-ticket__item">
-                <svg-icon name="passengers" class="icon buy-ticket__item_icon4"/>
-                <button class="select-styled pass-btn" type="button">Кол-во пассажиров</button>
-
-                <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop">
-                  <div class="pass-quantity">
-                    <div class="pass-quantity__item">
-                      <div class="pass-quantity__item_name">
-                        Взрослый
-                      </div>
-                      &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
-                      <div class="input-group plus-minus-input">
-                        <div class="input-group-button">
-                          <button type="button" class="button " data-quantity="minus" data-field="quantity">
-                            -
-                          </button>
-                        </div>
-                        <input class="input-group-field" type="number" name="quantity" value="1">
-                        <div class="input-group-button">
-                          <button type="button" class="button" data-quantity="plus" data-field="quantity">
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="pass-quantity__item">
-                      <div class="pass-quantity__item_name">
-                        Детский
-                      </div>
-                      &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
-                      <div class="input-group plus-minus-input">
-                        <div class="input-group-button">
-                          <button type="button" class="button " data-quantity="minus" data-field="quantity2">
-                            -
-                          </button>
-                        </div>
-                        <input class="input-group-field" type="number" name="quantity2" value="0">
-                        <div class="input-group-button">
-                          <button type="button" class="button " data-quantity="plus" data-field="quantity2">
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="buy-ticket__item buy-ticket__item_5">
-                <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
-                <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
-                <input class=" select-styled  datetimepicker" id="datetimepicker-time2" type="text" value="" placeholder="Время посадки">
-                <div class="datetimepicker-time2-container picker-container"></div>
-              </div>
-            </form>
-
-          </div>
-          <div class="modal-news-filter__footer">
-            <a class="uk-button uk-button-default button_ticket uk-modal-close" href="">
-              <span>НАЙТИ РЕЙС</span>
-              <svg-icon name="looking_glass" class="icon"/>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>-->
+    <SuccessSubscribe/>
     <div id="modal-news-filter" class="uk-modal-full " uk-modal>
       <div class="uk-modal-dialog">
 
@@ -702,9 +480,11 @@ import SocialBlock from "./SocialBlock";
 import axios from "axios";
 import UIkit from "uikit";
 import querystring from "querystring";
+import {mapGetters} from "vuex";
+import SuccessSubscribe from "./modals/SuccessSubscribe.vue";
 export default {
   name: 'Footer',
-  components: {SocialBlock},
+  components: {SuccessSubscribe, SocialBlock},
   directives: {
     imask: IMaskDirective
   },
@@ -717,17 +497,15 @@ export default {
         lazy: true,
       },
       topScroll: 0,
-      footerSocial: {
-        tel: '',
-        email: '',
-      },
       newsEmail: '',
       onError: null,
     }
   },
+  computed: {
+    ...mapGetters(['tel', 'email'])
+  },
   methods: {
     async subscribeEmail() {
-      console.log("Send email to subscribe");
       let onError
       if(!this.validateEmail()) return;
       try {
@@ -743,13 +521,13 @@ export default {
           },
         })
 
-        const data = await response.data
+        const data = await response.data.success
         //console.log(data)
         UIkit.modal('#success').show();
         this.newsEmail = null
         this.onError = null
       } catch(e) {
-        onError = e.response.data.error
+        onError = e.response.data?.error
         console.log(onError)
         this.onError = onError
       }
@@ -783,14 +561,15 @@ export default {
   },
   async fetch() {
     try {
-      const infoData = await axios.get(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
-      this.footerSocial.tel = infoData.data.result.phone;
-      this.footerSocial.email = infoData.data.result.email;
+      if (this.$store.getters.tel === null) {
+        const infoData = await axios.get(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
+        await this.$store.dispatch('setUtilInfo', { email: infoData.data.result.email, tel: infoData.data.result.phone });
+      }
     } catch(e) {
 
     }
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'utils-info',
 };
 </script>

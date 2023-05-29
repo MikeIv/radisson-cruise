@@ -15,13 +15,13 @@
       <svg-icon class="trams__cost__svg" name="back-tickets"/>
       <div class="trams__cost__item uk-position-relative">
         <div class="trams__cost__item__p1">
-          Стоимость билетов:
+          {{ $t('ticket_cost') }}:
         </div>
         <div class="trams__cost__item__type">
-          <b>{{ route.price_adult }}  ₽</b> (взрослый)
+          <b>{{ route.price_adult }}  ₽</b> ({{ $t('adult') }})
         </div>
         <div class="trams__cost__item__type">
-          <b>{{ route.price_child }} ₽</b> (детский)
+          <b>{{ route.price_child }} ₽</b> ({{ $t('children') }})
         </div>
       </div>
     </div>

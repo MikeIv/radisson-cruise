@@ -9,7 +9,7 @@
         </svg></button>
       <div class="uk-container modal-full_container">
         <div class="headline_56 text-upper">
-          Фильтр
+          {{ $t('filter') }}
         </div>
         <div class="modal-news-filter__body">
             <div class="buy-ticket__item" id="calendar">
@@ -105,7 +105,7 @@
         </svg></button>
       <div class="uk-container modal-full_container">
         <div class="headline_56 text-upper">
-          Фильтр
+          {{ $t('filter') }}
         </div>
         <div class="modal-news-filter__body" >
           <div class="news__navigatiom__date" v-show="isNewsFilter">
@@ -151,7 +151,7 @@
 
           <ul class="news__navigatiom__tabs uk-padding-remove">
             <li class="uk-button button_switcher-second active" ref="seltab-0"  @click="setFilterTabs(0)">
-              <button class="uk-text-uppercase " >{{$t('pages.categories.tabs.all')}}</button>
+              <button class="uk-text-uppercase " >{{$t('all')}}</button>
             </li>
             <li class="uk-button button_switcher-second" v-for="(tab,index) in categories"
                 :key="'tab1' + index"  @click="setFilterTabs(index+1)" :ref="'seltab-'+(index+1)"  >
@@ -482,6 +482,14 @@ export default {
         ...options,
         //element: el,
         setup: (picker) => {
+          picker.on('preselect', (date1, date2) => {
+            function addDays(date, days) {
+              let result = new Date(date);
+              result.setDate(result.getDate() + days);
+              return result;
+            }
+            this.datesFilter.dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0];
+          });
           picker.on('show', (el) => {
             picker.ui.style.left = '0px';
             //console.log("Show Element = ",  picker.ui.style)

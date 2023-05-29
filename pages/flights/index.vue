@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.thematic') }}
+            {{ seoData?.header }}
           </h1>
         </div>
       </div>
@@ -369,7 +369,20 @@ export default {
   components: {Breadcrumbs, CruiseItem, Header, Scheme},
   head() {
     return {
-      title: 'Флотилия Radisson Royal Moscow -  прогулки и экскурсии на теплоходе  по Москва реке',
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -455,11 +468,15 @@ export default {
         },
       ],
       flightBlocks: [],
+      seoData: {},
     }
   },
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/flights/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
     let blocks = await axios.get(
-        `${this.$config.baseURL}blocks?page=themes`);
+        `${this.$config.baseURL}blocks?page=themes&lang=${this.$i18n.locale}`);
     this.flightBlocks = blocks.data
   },
   fetchOnServer: true,

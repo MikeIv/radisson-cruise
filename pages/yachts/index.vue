@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.yachts.title') }}
+            {{ seoData?.header }}
           </h1>
         </div>
       </div>
@@ -17,21 +17,21 @@
       <div class="category-cabin__top">
         <div class="uk-container">
           <div class="uk-flex category-cabin__navigation uk-visible@s">
-            <a class="uk-button button_switcher-second" href="" uk-filter-control>ВСЕ</a>
+            <a class="uk-button button_switcher-second" href="" uk-filter-control>{{ $t('all') }}</a>
             <a class="uk-button button_switcher-second" href="" uk-filter-control="[data-type='yacht']">
               <img data-src="~assets/img/yachts/1_1.png" alt="" src="~assets/img/yachts/1_1.png">
-              <span>ЯХТЫ</span>
-            </a >
+              <span>{{ yachtsFetch[0]?.name }}</span>
+            </a>
             <a class="uk-button button_switcher-second" href="" uk-filter-control="[data-type='superyacht']">
               <img data-src="~assets/img/yachts/1_2.png" alt="" src="~assets/img/yachts/1_2.png">
-              <span>СУПЕР-ЯХТЫ</span>
+              <span>{{ yachtsFetch[1]?.name }}</span>
             </a>
           </div>
 
           <a href="#modal-category-cabin-filter" class="uk-button btn-news-filter uk-hidden@s" uk-toggle="">
-          <span>
-            ОТКРЫТЬ ФИЛЬТР
-          </span>
+            <span>
+              {{ $t('buttons.open_filter') }}
+            </span>
             <svg-icon name="svg-flight4" class="icon"/>
           </a>
         </div>
@@ -42,7 +42,7 @@
           <div class="category-cabin__headline">
             <div class="uk-container">
               <h2 class="headline_52">
-                яхты
+                {{ yachtsFetch[0]?.name }}
               </h2>
             </div>
           </div>
@@ -66,7 +66,7 @@
           <div class="category-cabin__headline">
             <div class="uk-container">
               <h2 class="headline_52">
-                СУПЕР-яхты
+                {{ yachtsFetch[1]?.name }}
               </h2>
             </div>
           </div>
@@ -87,7 +87,7 @@
         </li>
       </ul>
     </div>
-        <FilterMobile
+    <FilterMobile
         :is-tabs-filter="true"
         :categories="yachtsFetch"
         ref="filterModal"
@@ -104,16 +104,30 @@ import axios from "axios";
 import UIkit from "uikit";
 import FilterMobile from "../../components/modals/Filter";
 import CategoryCabinFilter from "../../components/modals/CategoryCabinFilter";
+
 export default {
   name: 'index',
-  components: {CategoryCabinFilter, Breadcrumbs, Cabin, Header,FilterMobile},
+  components: {CategoryCabinFilter, Breadcrumbs, Cabin, Header, FilterMobile},
   head() {
     return {
-      title: 'Флотилия Radisson Royal Moscow - речные теплоходы Рэдиссон Москва',
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
-    return{
+    return {
       yachts: {
         yachtsSuper: [
           {
@@ -124,8 +138,8 @@ export default {
             experience: 11,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -137,8 +151,8 @@ export default {
             experience: 12,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -150,8 +164,8 @@ export default {
             experience: 11,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -163,8 +177,8 @@ export default {
             experience: 8,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -176,8 +190,8 @@ export default {
             experience: 11,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -191,8 +205,8 @@ export default {
             experience: 12,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
             dropInfo: [
@@ -263,8 +277,8 @@ export default {
             experience: 11,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -276,8 +290,8 @@ export default {
             experience: 9,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -289,8 +303,8 @@ export default {
             experience: 12,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -302,8 +316,8 @@ export default {
             experience: 11,
             year: 2012,
             params: 'длина – 60,8 м.,\n' +
-              '          ширина – 12 м.,\n' +
-              '          водоизмещение – 618 тонн',
+                '          ширина – 12 м.,\n' +
+                '          водоизмещение – 618 тонн',
             speed: 10,
             engine: 'Volvo Penta',
           },
@@ -311,60 +325,61 @@ export default {
       },
       yachtsFetch: [],
       currentSelectedCategory: 0,
+      seoData: {}
     }
   },
   methods: {
-    showAllFilters(){
+    showAllFilters() {
       this.$refs.superyachts.classList.remove('hide');
       this.$refs.yachts.classList.remove('hide');
-/*       const allCategoriesBloks = document.querySelectorAll('.category-item');
-      allCategoriesBloks.forEach((item) => {
-        item.classList.remove('hide');
-      }) */
+      /*       const allCategoriesBloks = document.querySelectorAll('.category-item');
+            allCategoriesBloks.forEach((item) => {
+              item.classList.remove('hide');
+            }) */
     },
-    hideAllFilters(){
+    hideAllFilters() {
       this.$refs.superyachts.classList.add('hide');
       this.$refs.yachts.classList.add('hide');
     },
-    checkedFilter(emitFilterPrameters){
+    checkedFilter(emitFilterPrameters) {
       //console.log("PARENT CHECKED Yachts Index emitParam = ", emitFilterPrameters)
       //console.log("REFS = ", this.$refs)
       this.currentSelectedCategory = emitFilterPrameters.activeTab;
       switch (this.currentSelectedCategory) {
         case 0:
-        this.hideAllFilters();
-        this.showAllFilters();
+          this.hideAllFilters();
+          this.showAllFilters();
           break;
         case 1:
-        this.hideAllFilters();
-        //"REFS Class List = ", this.$refs.yachts.classList)
-        this.$refs.yachts.classList.remove('hide');
+          this.hideAllFilters();
+          //"REFS Class List = ", this.$refs.yachts.classList)
+          this.$refs.yachts.classList.remove('hide');
           break;
         case 2:
-        this.hideAllFilters();
-        this.$refs.superyachts.classList.remove('hide');
+          this.hideAllFilters();
+          this.$refs.superyachts.classList.remove('hide');
           break;
-      
+
         default:
-        this.hideAllFilters();
-        this.showAllFilters();
+          this.hideAllFilters();
+          this.showAllFilters();
           break;
       }
       //this.filterRoutes();
-      
-    
+
+
     },
   },
   beforeDestroy() {
     //console.log("DESTROY Yachts Index =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
-    
+
   },
   mounted() {
     const yachtSlider = document.querySelectorAll('.yacht__slider');
     yachtSlider.forEach(element => {
       //Счетчик слайда яхт
-      UIkit.util.on(element, 'itemshown', function(e) {
+      UIkit.util.on(element, 'itemshown', function (e) {
         // $('#yacht__slider1 .slider_number').text(e.detail[0].index + 1);
         element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
       });
@@ -372,8 +387,11 @@ export default {
   },
 
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/yachts/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
     let blocks = await axios.get(
-        `${this.$config.baseURL}yachts`);
+        `${this.$config.baseURL}yachts?lang=${this.$i18n.locale}`);
     this.yachtsFetch = await blocks.data;
 
     if (this.yachtsFetch) {
@@ -396,9 +414,10 @@ export default {
 </script>
 
 <style scoped>
-.hide{
+.hide {
   display: none;
 }
+
 .button_switcher-second {
   min-width: 210px;
   padding: 0 46px;
@@ -408,14 +427,16 @@ export default {
   color: #a1c2e5;
   margin-right: -1px;
 }
+
 .button_switcher-second.active,
-.button_switcher-second:hover{
+.button_switcher-second:hover {
   background: #00c1f3;
   color: #fff;
   border-color: #00c1f3;
 }
+
 ul {
-  list-style:none;
+  list-style: none;
   padding-left: 0;
   margin: 0;
 }

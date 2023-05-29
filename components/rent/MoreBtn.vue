@@ -1,6 +1,6 @@
 <template>
   <a @click="selectTitle(title)" class="uk-button uk-button-primary" href="#modal-tenancy" uk-toggle="">
-    <span>Подробнее</span>
+    <span>{{$t('buttons.more')}}</span>
   </a>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
   <div class="buy-sertificat__card">
     <div class="uk-cover-container buy-sertificat-card__img">
-      <img :data-src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName" :src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName" class="img_cover" alt="">
+      <img :data-src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName"
+           :src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName"
+           class="img_cover"
+           alt="">
       <div class="buy-sertificat-card__badge">
         <img data-src="~assets/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png">
       </div>
@@ -11,7 +14,7 @@
         {{ title }}
       </div>
       <div class="buy-sertificat-card__p1">
-        Что входит в стоимость?
+        {{ $t('cost_include') }}?
       </div>
       <div class="buy-sertificat-card__p2" v-html="description">
       </div>
@@ -21,7 +24,7 @@
         {{ price }} ₽
       </div>
       <nuxt-link class="uk-button uk-button-default" :to="`/certificates/${id}/`">
-        Купить сертификат
+        {{ $t('buttons.buy_certificates') }}
       </nuxt-link>
     </div>
   </div>

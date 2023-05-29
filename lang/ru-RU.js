@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default async (context, locale) => {
   /*return await Promise.resolve({
     footer: {
@@ -20,7 +22,7 @@ export default async (context, locale) => {
     welcome: 'Привет',
   });*/
 
-  return {
+  /*return {
     breadCrumb: {
       index: "Главная",
       yachts: 'Яхты',
@@ -157,5 +159,9 @@ export default async (context, locale) => {
       refund: 'Возврат билетов',
     },
     welcome: 'Привет',
-  };
+  };*/
+
+  return await axios.get(`${context.$config.baseURL}locale?lang=ru`).then((res) => {
+    return res.data.locale
+  });
 };

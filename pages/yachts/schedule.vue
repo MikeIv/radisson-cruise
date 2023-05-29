@@ -8,7 +8,7 @@
         </div>
         <div class="heading uk-text-center">
           <h1 class="headline_p1">
-            {{ $t('pages.schedule.yacht.title') }}
+            {{ seoData?.header }}
           </h1>
         </div>
       </div>
@@ -215,7 +215,7 @@
             class="uk-button uk-button-default button_ticket"
             type="submit" @click.prevent="filterRoutes"
           >
-            <span>НАЙТИ РЕЙС</span>
+            <span>{{ $t('buttons.find_route') }}</span>
             <svg-icon name="looking_glass" class="icon" />
           </button>
         </form>
@@ -224,7 +224,7 @@
           
           @click="openFilter"
         >
-          <span> ОТКРЫТЬ ФИЛЬТР </span>
+          <span> {{ $t('buttons.open_filter') }} </span>
           <svg-icon name="svg-flight4" class="icon" />
         </button>
 
@@ -288,7 +288,7 @@
                     />
                   </div>
                   <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
-                    {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
+                    {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime)  }}
                   </span>
                 </div>
                 <div class="uk-visible@s">
@@ -319,13 +319,15 @@
                     </div>
                   </div>
                 </div>
-                <div>
+                <div v-if="!checkForLateRoutes(dayData.depatureTime)">
+<!--                  v-if="checkForLateRoutes(dayData.depatureTime)"-->
                   <nuxt-link
                     class="uk-button uk-button-default button_ticket"
                     :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
                     :to="`/yachts-buy/?journey=${dayData.journey}`"
+                    @click="ym(22731748,'reachGoal','kupit_bilet_23')"
                   >
-                    <span>Купить билет</span>
+                    <span>{{ $t('buttons.buy_ticket') }}</span>
                     <svg-icon class="icon" name="ticket" />
                   </nuxt-link>
                   <div class="buy-ticket-shedule_responsive__free">
@@ -334,14 +336,17 @@
                   </div>
                   <div class="buy-ticket-shedule_responsive__cost uk-hidden@s">
                     <div>
-                      <span>Взрослый</span>
+                      <span>{{ $t('adult') }}</span>
                       <span>{{dayData.adultPrice}}</span>
                     </div>
                     <div>
-                      <span>Детский</span>
+                      <span>{{ $t('children') }}</span>
                       <span>{{dayData.childPrice}}</span>
                     </div>
                   </div>
+                </div>
+                <div v-else>
+                  посадка на рейс началась, вы можете купить билет на кассе
                 </div>
               </div>
             </div>
@@ -385,6 +390,7 @@ import ScheduleFilter from "../../components/modals/ScheduleFilter.vue";
 import FilterMobile from "../../components/modals/Filter.vue";
 import { timeCalc } from "@/plugins/routesTimeCalc";
 import UIkit from "uikit";
+import moment from "moment";
 
 export default {
   scrollToTop: true,
@@ -392,7 +398,20 @@ export default {
   components: { Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile },
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow - расписание теплоходов Рэдиссон Флотилии`,
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -416,10 +435,10 @@ export default {
       endDate: '',
       modalFilterShow: false,
       buttonsRoutes: [],
-      timeCalc,
       setCategories: null,
       showed: false,
       categoryInfo: null,
+      seoData: {},
     };
   },
   methods: {
@@ -436,7 +455,7 @@ export default {
     },
     async getCategory(id) {
       try {
-        const responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}`);
+        const responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=${this.$i18n.locale}`);
         if(!responseData.data.result) return;
         this.categoryInfo = responseData.data.result.classData;
         UIkit.modal('#buy-ticket-shedule-info').show();
@@ -602,7 +621,7 @@ export default {
 
     async setDate(date) {
       let dayRoutes = await axios.get(
-          `${this.$config.baseURL}routes?date=${date}&end=${date}`);
+          `${this.$config.baseURL}routes?date=${date}&end=${date}&lang=${this.$i18n.locale}`);
       //console.log(dayRoutes.data.routes)
       this.testFetch = dayRoutes.data.routes;
       Object.entries(this.testFetch).forEach(item => {
@@ -616,8 +635,12 @@ export default {
     },
     async setFilterDates(date1, date2) {
       this.arrayToFilter = [];
-      let dayRoutes = await axios.get(
-          `${this.$config.baseURL}routes?date=${date1}&end=${date2}`);
+      let dayRoutes
+      date2 !== null
+          ? dayRoutes = await axios.get(
+              `${this.$config.baseURL}routes?date=${date1}&end=${date2}&lang=${this.$i18n.locale}`)
+          : dayRoutes = await axios.get(
+          `${this.$config.baseURL}routes?date=${date1}&lang=${this.$i18n.locale}`);
       //console.log("AXIOS dayRoutes = ",dayRoutes.data.routes)
       this.testFetch = await dayRoutes.data.routes;
       Object.entries(this.testFetch).forEach(item => {
@@ -655,7 +678,7 @@ export default {
       return this.isDepartureTimeApproaching(departureTime);
     },
     timeCalcDate(dptrTime, arvTime) {
-      if(dptrTime === null || arvTime === null) return;
+      /*if(dptrTime === null || arvTime === null) return;
       let depatureTime = new Date(dptrTime);
       let arrivalTime = new Date(arvTime);
       let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
@@ -663,7 +686,11 @@ export default {
       let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
       let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
       if(isNaN(hourDepature) || isNaN(minDepature) || isNaN(hourArrival) || isNaN(minArrival)) return;
-      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
+      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`*/
+      if(dptrTime === null || arvTime === null) return;
+      let formattedDeparture = moment(dptrTime).format('HH:mm')
+      let formattedArrival = moment(arvTime).format('HH:mm')
+      return `${formattedDeparture} - ${formattedArrival}`
     }
   },
   computed:{
@@ -677,11 +704,14 @@ export default {
   },
 
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/yachts/schedule/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
     let today = new Date()
     let now = today.toISOString().split('T')[0]
     let week = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
     let dayRoutes = await axios.get(
-      `${this.$config.baseURL}routes?date=${now}&end=${week}`);
+      `${this.$config.baseURL}routes?date=${now}&end=${week}&lang=${this.$i18n.locale}`);
     //console.log(dayRoutes.data.routes)
     this.testFetch = dayRoutes.data.routes;
     let setCategories = new Set()
@@ -691,13 +721,15 @@ export default {
       })
     })
     this.setCategories = setCategories
+    let setArrival = new Set()
     //console.log(setCategories)
     Object.entries(this.testFetch).forEach(item => {
-      this.arrayToFilter.push({
+      setArrival.add({
         date: item[0],
         routes: item[1],
       })
     })
+    this.arrayToFilter = setArrival;
     this.showRoutes = this.arrayToFilter
     //console.log("fetch() showRoutes = ",this.showRoutes);
   },
@@ -705,6 +737,10 @@ export default {
   fetchKey: 'yacht-schedule',
 
   mounted() {
+    this.$fetch();
+    setInterval(() => {
+      this.$fetch(); // Fetch data every 15 minutes
+    }, 5 * 60 * 1000);
     const elements = document.querySelectorAll('.litepicker')
     const options = {
       lang: 'ru-RU',
@@ -719,7 +755,7 @@ export default {
    // console.log("Elements = ",elements);
     this.litePickers = new Litepicker({
         ...options,
-        
+
         setup: (picker) => {
           picker.on('selected', async (date1, date2) => {
 
@@ -735,8 +771,9 @@ export default {
             let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
             let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
             this.arrayToFilter = []
+
             let dayRoutes = await axios.get(
-                `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}`);
+                `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}&lang=${this.$i18n.locale}`);
             //console.log(dayRoutes.data.routes)
             this.testFetch = dayRoutes.data.routes;
             Object.entries(this.testFetch).forEach(item => {
@@ -808,6 +845,12 @@ export default {
   opacity: 0.3;
   pointer-events: none;
   cursor: not-allowed;
+}
+.disabled-link--icon {
+  width: 18px;
+  height: 18px;
+  cursor: help;
+  position: absolute;
 }
 
 </style>

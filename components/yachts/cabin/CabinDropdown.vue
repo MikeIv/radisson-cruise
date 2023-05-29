@@ -19,7 +19,7 @@
           <a class="uk-accordion-title" href="">
             <span class="accordion_default__num">0{{ decks.length + 1 }}.</span>
             <div class="accordion_default__name">
-              Характеристики Яхты
+              {{ $t('yacht_specs') }}
             </div>
           </a>
           <div class="uk-accordion-content" hidden="">
@@ -50,7 +50,7 @@
               </div>
             </div>
             <div class="cabin__parts__charact">
-              <b>Характеристики салона:</b>
+              <b>{{ $t('saloon_spec') }}:</b>
               <ul>
                 <li v-for="(item, index) of options" :key="'opt' + index">
                   <span>{{ item }}</span>

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default async (context, locale) => {
 /*  return await Promise.resolve({
     footer: {
@@ -18,7 +20,7 @@ export default async (context, locale) => {
   });*/
 
 
-  return {
+  /*return {
     breadCrumb: {
       index: "Home",
       yachts: 'Yachts',
@@ -53,7 +55,7 @@ export default async (context, locale) => {
         shedulerTram: 'Tram schedule',
       },
     },
-    pages: {
+    /!*pages: {
       schedule: {
         yacht:{
           title: 'Schedule Yacht',
@@ -161,7 +163,28 @@ export default async (context, locale) => {
       theatrical: 'Theatrical flights',
       thematic: 'Thematic flights',
       refund: 'Refund tickets',
-    },
+    },*!/
     welcome: 'Welcome',
-  };
+
+    pages: {
+      index: {
+        first: 'Home',
+        second: 'Нэйм раздела',
+        yachtsSchedule: 'Yachts schedule',
+        tramsSchedule: 'Trams schedule',
+        yachtsBuy: 'Buy ticket for yacht',
+        tramsBuy: 'Buy ticket for tram',
+        news: 'News and promotions',
+        allNews: 'All news',
+        actions: 'Actions',
+        showMore: 'Show more',
+      },
+      footer: {
+
+      }
+    }
+  };*/
+  return await axios.get(`${context.$config.baseURL}locale?lang=en`).then((res) => {
+    return res.data.locale
+  });
 };

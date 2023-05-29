@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.rules.title') }}
+            {{ seoData?.header || 'Правила и условия' }}
           </h1>
         </div>
       </div>
@@ -29,8 +29,7 @@
       <svg-icon class="rules-performance__icon" name="wheel"/>
       <div class="uk-container uk-position-relative">
         <h2 class="headline_56">
-          ТЕХНИЧЕСКИЕ<br>
-          ХАРАКТЕРИСТИКИ
+          {{ $t('tech_specs') }}
         </h2>
         <div class="uk-flex uk-flex-wrap uk-child-width-1-2@m rules-performance__grid uk-grid-match">
 <!--          <div>
@@ -95,7 +94,7 @@
       </div>
       <div class="uk-container uk-position-relative">
         <h2 class="headline_56">
-          Безопасность
+          {{ $t('security') }}
         </h2>
         <div class="rules-security__block uk-position-relative">
           <svg-icon class="rules-security__block__icon" name="safe-ring"/>
@@ -252,7 +251,7 @@
 
       <div class="uk-container uk-position-relative">
         <h2 class="headline_56">
-          ролик о безопасности
+          {{ $t('security_videos') }}
         </h2>
         <div class="rules-security-video__grid uk-flex uk-flex-wrap uk-grid-match ">
           <div class="uk-width-auto@m">
@@ -442,7 +441,20 @@ export default {
   components: {Breadcrumbs, SecurityCard, VideoItem, VideoNavItem, YachtType, Yachts, TechnicalItem, RulesItem, Header},
   head() {
     return {
-      title: 'Флотилия Radisson Royal Moscow - Правила и условия на яхтах Флотилии',
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -622,7 +634,8 @@ export default {
       selectedVideo: {
         name: 'Яхты',
         yachts: '«Фердинанд», «Капелла», «Бон Вояж», «Селебрити », «Скарлет»'
-      }
+      },
+      seoData: {},
     }
   },
   methods: {
@@ -659,9 +672,12 @@ export default {
     })
   },
   async fetch() {
-    let rulesBlocks = await axios.get(`${this.$config.baseURL}rules`)
-    let securityBlock = await axios.get(`${this.$config.baseURL}safetylist`)
-    let videoBlock = await axios.get(`${this.$config.baseURL}yvideos`)
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/rules/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
+    let rulesBlocks = await axios.get(`${this.$config.baseURL}rules?lang=${this.$i18n.locale}`)
+    let securityBlock = await axios.get(`${this.$config.baseURL}safetylist?lang=${this.$i18n.locale}`)
+    let videoBlock = await axios.get(`${this.$config.baseURL}yvideos?lang=${this.$i18n.locale}`)
     this.rulesBlocks = rulesBlocks.data
     this.securityBlocks = securityBlock.data
     this.yVideos = videoBlock.data

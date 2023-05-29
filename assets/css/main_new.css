@@ -20746,9 +20746,9 @@ footer {
     height: 9px
 }
 
-.uk-table .disabled {
+/*.uk-table .disabled {
     pointer-events: none
-}
+}*/
 
 .uk-table .disabled td {
     opacity: .36

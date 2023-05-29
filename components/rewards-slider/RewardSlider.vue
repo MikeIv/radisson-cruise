@@ -7,7 +7,7 @@
     <div class="uk-container uk-position-relative">
       <div class="headline uk-text-center">
         <h2 class="headline_p1">
-          НАГРАДЫ
+          {{ $t('rewards') }}
         </h2>
       </div>
       <p v-if="$fetchState.pending">Loading....</p>
@@ -103,7 +103,7 @@ export default {
     }
   },
   async fetch() {
-    let data = await axios.get(`${this.$config.baseURL}awards`)
+    let data = await axios.get(`${this.$config.baseURL}awards?lang=${this.$i18n.locale}`)
     this.testCards = data.data
     /*console.log(this.testCards)*/
   },

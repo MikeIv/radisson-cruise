@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.contacts.title') }}
+            {{ seoData?.header || 'Контакты' }}
           </h1>
         </div>
       </div>
@@ -88,7 +88,7 @@
               />
             </div>
             <div class="contact-info__payment__block">
-              <div class="txt18"><b>Способы оплаты:</b></div>
+              <div class="txt18"><b>{{ $t('payment_methods') }}:</b></div>
               <div class="contact-info__payment__txt">
                 {{ mapAboutInfo.hotelPort.paymentTypes }}
               </div>
@@ -162,7 +162,7 @@
                   uk-toggle="target: #guide_content3_m1;"
                 >
                   <svg-icon class="icon" name="arr_lang" />
-                  <span>Свернуть</span>
+                  <span>{{ $t('buttons.collapse') }}</span>
                 </div>
               </li>
               <li>
@@ -235,7 +235,7 @@
                   uk-toggle="target: #guide_content1_m1;"
                 >
                   <svg-icon class="icon" name="arr_lang" />
-                  <span>Свернуть</span>
+                  <span>{{ $t('buttons.collapse') }}</span>
                 </div>
               </li>
             </ul>
@@ -329,7 +329,7 @@
                   uk-toggle="target: #guide_content3_m2;"
                 >
                   <svg-icon class="icon" name="arr_lang" />
-                  <span>Свернуть</span>
+                  <span>{{ $t('buttons.collapse') }}</span>
                 </div>
               </li>
               <li>
@@ -389,7 +389,7 @@
                   uk-toggle="target: #guide_content1_m2;"
                 >
                   <svg-icon class="icon" name="arr_lang" />
-                  <span>Свернуть</span>
+                  <span>{{ $t('buttons.collapse') }}</span>
                 </div>
               </li>
             </ul>
@@ -470,7 +470,7 @@
               />
             </div>
             <div class="contact-info__payment__block">
-              <div class="txt18"><b>Способы оплаты:</b></div>
+              <div class="txt18"><b>{{ $t('payment_methods') }}:</b></div>
               <div class="contact-info__payment__txt">
                 {{ mapAboutInfo.parkPort.paymentTypes }}
               </div>
@@ -536,7 +536,7 @@
               uk-toggle=""
             >
               <svg-icon class="icon" name="calculator" />
-              <span>сделать расчет</span>
+              <span>{{ $t('buttons.rent_calc') }}</span>
             </a>
           </div>
         </div>
@@ -564,12 +564,26 @@
   import Breadcrumbs from "../components/Breadcrumbs";
   //import ModalCalculation from "../components/modals/Calculation";
   import ModalCalculationSimple from "../components/modals/CalculationSimple";
+  import axios from "axios";
   export default {
     name: 'Contacts',
     components: {ModalCalculationSimple, Breadcrumbs, Header, Default, yandexMap, ymapMarker },
     head() {
       return {
-        title: `Флотилия Radisson Royal Moscow - контакты Рэдиссон Флотилии`,
+        title: this.seoData?.title,
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.seoData?.description,
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.seoData?.keywords,
+          },
+        ]
       }
     },
     data() {
@@ -604,11 +618,12 @@
         zoom2: 15,
         settings: {
           apiKey: '7fd77c97-6046-4745-bc55-b9257feb1d49',
-          lang: 'ru_RU',
+          lang: this.$i18n.locale !== 'ru' ? 'en_US' : 'ru_RU',
           coordorder: 'latlong',
           enterprise: false,
           version: '2.1',
         },
+        seoData: {}
       };
     },
     methods: {
@@ -1930,6 +1945,11 @@
       /*       this.$refs.map1.myMap.destroy();*/
       //this.$refs.map1.myMap = null;
     },
+    async fetch() {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/contacts/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
+    }
   };
 </script>
 
