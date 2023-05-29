@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header class="news-item__header" fileName="inners2/IMG_4478.png" :linkName="$t('pages.tickets.flights.title')">
+    <Header class="news-item__header" fileName="inners2/IMG_4478.png">
       <img src="~images/inners2/IMG_4478.webp" data-src="~images/inners2/IMG_4478.webp" class="img_cover" alt="">
 
     </Header>
@@ -166,7 +166,7 @@
                 <div class="buy-ticket-form__basket__main">
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Причал:
+                      {{ $t('port') }}:
                     </div>
                     <div v-if="currentNewRoute.placeName" class="buy-ticket-form__basket__item__info">
                       {{ currentNewRoute.placeName }}
@@ -202,7 +202,7 @@
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__summ">
                       <div>
-                        Сумма:
+                        {{ $t('amount') }}:
                       </div>
                       <div v-if="currentNewRoute.adultPrice">
                         {{ currentNewRoute.adultPrice }}  ₽
@@ -225,7 +225,7 @@
                                :to="'/yachts-buy?day='+ currentDay + '&journey=' + currentNewRoute.journey"
                     >
                       <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
-                      <span>ПЕРЕЙТИ К ОПЛАТЕ</span>
+                      <span>{{ $t('goto_payment') }}</span>
                       <svg-icon class="icon" name="ticket"/>
                     </nuxt-link>
                   </div>
@@ -240,7 +240,7 @@
             <div v-else class="uk-width-auto uk-width-1-1 uk-visible@l">
               <div class="news-last">
                 <div class="headline_22 t_semibold">
-                  Последние новости
+                  {{ $t('recent_news') }}
                 </div>
                 <ul class="uk-padding-remove uk-margin-remove">
                   <li v-for="recentNew in recentNews">
@@ -311,7 +311,7 @@
                 </ul>
                 <div class="link_archive__container">
                   <nuxt-link to="/news" class="link_archive">
-                    Архив новостей
+                    {{ $t('archive_news') }}
                   </nuxt-link>
                 </div>
               </div>
@@ -399,9 +399,9 @@ export default {
   async fetch() {
     try {
       const news = await axios.get(
-          `${this.$config.baseURL}new?id=${this.$route.params.id}`)
+          `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
       const recentNews = await axios.get(
-          `${this.$config.baseURL}news?page=1`);
+          `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`);
       this.currentNew = news.data.result
       this.recentNews = recentNews.data.news.slice(0, 2)
       this.currentNewRoute = this.currentNew.route

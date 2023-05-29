@@ -566,10 +566,6 @@ body {
   column-gap: 60px;
   row-gap: 25px;
 }
-.flight:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
 
 @media screen and (max-width:1700px) {
   .slider_width150 {
@@ -6233,8 +6229,8 @@ body {
   }
   .uk-modal .uk-close {
     right: 15px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     top: 12px
   }

@@ -387,9 +387,9 @@ export default {
   async fetch() {
     try {
       const news = await axios.get(
-          `${this.$config.baseURL}new?id=${this.$route.params.id}`)
+          `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
       const recentNews = await axios.get(
-          `${this.$config.baseURL}news?page=1`);
+          `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`);
       this.currentNew = news.data.result
       this.recentNews = recentNews.data.news.slice(0, 2)
       this.currentNewRoute = this.currentNew.route

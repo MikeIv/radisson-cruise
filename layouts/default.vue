@@ -1,7 +1,7 @@
 <template>
   <div>
     <SideNav ref="slideNav"/>
-    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'Theatrical-item'] }" />
+    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'Theatrical-item', 'trams', 'trams-main'] }" />
     <!--    <Kiev />-->
     <!--    <SubscribeNews />-->
     <keep-alive>
@@ -48,7 +48,7 @@
     },
   },
     watch: {
-      
+
     $route(to, from) {
       this.$store.commit('changeNavState', false)
       this.$store.commit('changeOldSiteState', true)

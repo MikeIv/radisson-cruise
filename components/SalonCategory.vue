@@ -58,11 +58,11 @@
             <span>{{ price }}</span>
           </div>
           <nuxt-link class="uk-button uk-button-secondary button_ticket transition" to="/yachts/schedule/">
-            <span>Купить билет</span>
+            <span>{{ $t('buttons.buy_ticket') }}</span>
             <svg-icon name="ticket" class="icon"/>
           </nuxt-link>
           <nuxt-link class="uk-button uk-button-primary button_menu-cafe transition" to="/menu/">
-            <span>Посмотреть меню</span>
+            <span>{{ $t('buttons.show_menu') }}</span>
             <svg-icon name="menu" class="icon"/>
           </nuxt-link>
         </div>

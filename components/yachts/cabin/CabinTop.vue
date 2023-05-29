@@ -24,23 +24,23 @@
         </div>
         <div class="yacht__capitan_info">
           <div class="yacht__capitan_job">
-            Капитан судна
+            {{ $t('yacht_capitan') }}
           </div>
           <div class="yacht__capitan_name">
             {{ capName }}
           </div>
           <div class="yacht__capitan_experience">
-            Стаж работы: {{ experience }}
+            {{ $t('capitan_experience') }}: {{ experience }}
           </div>
         </div>
       </div>
       <div class="cabin__header__info__buy">
         <nuxt-link class="uk-button uk-button-default button_ticket" to="/yachts/schedule/">
-          <span>Купить билет</span>
+          <span>{{ $t('buttons.buy_ticket') }}</span>
           <svg-icon name="ticket" class="icon"/>
         </nuxt-link>
         <nuxt-link class="uk-button uk-button-secondary button_shedule transition" to="/yachts/schedule/">
-          <span>Расписание</span>
+          <span>{{ $t('schedule') }}</span>
           <svg-icon name="clock3" class="icon"/>
         </nuxt-link>
       </div>

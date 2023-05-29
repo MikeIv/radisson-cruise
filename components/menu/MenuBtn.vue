@@ -1,7 +1,7 @@
 <template>
   <a class="uk-button uk-button-secondary button_menu-cafe" :href="pdf">
     <svg-icon class="icon" name="menu"/>
-    <span>{{$t('pages.menu.button')}}</span>
+    <span>{{$t('buttons.show_menu')}}</span>
   </a>
 </template>
 

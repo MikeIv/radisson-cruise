@@ -83,7 +83,8 @@ export default {
       '@nuxtjs/redirect-module',
       '@nuxtjs/proxy',
       '@nuxtjs/composition-api/module',
-      '@nuxtjs/yandex-metrika'
+      '@nuxtjs/yandex-metrika',
+      '@nuxtjs/moment',
   ],
   yandexMetrika: {
     id: '22731748',
@@ -177,26 +178,54 @@ export default {
 
   i18n: {
     /* module options */
+    baseUrl: process.env.BASE_URL,
+    detectBrowserLanguage: false,
+    differentDomains: true,
+    langDir: 'lang/',
+    lazy: {
+      skipNuxtState: false
+    },
+    /*defaultLocale: 'ru',*/
     locales: [
-      /*{
+      {
         code: 'en',
         iso: 'en-US',
-        name: 'RU',
+        name: 'EN',
         file: 'en-US.js',
-      },*/
+        domain: process.env.LANG_EN,
+        active: process.env.LANG_EN !== ""
+      },
       {
         code: 'ru',
         iso: 'ru-RU',
-        name: 'EN',
+        name: 'RU',
         file: 'ru-RU.js',
+        domain: process.env.LANG_RU,
+        active: process.env.LANG_RU !== ""
+      },
+      {
+        code: 'cn',
+        iso: 'zh-CN',
+        name: 'CN',
+        file: 'zh-CN.js',
+        domain: process.env.LANG_CN,
+        active: process.env.LANG_CN !== ""
       },
     ],
-    detectBrowserLanguage: false,
-    lazy: true,
+    /*strategy: 'prefix_and_default',*/
+    /*vueI18n: {
+      fallbackLocale: {
+        'cn': 'en'
+      }
+    }*/
+    /*lazy: {
+      skipNuxtState: true
+    },*/
+    /*lazy: true,
     langDir: 'lang/',
-    defaultLocale: 'ru',
-    baseUrl: process.env.BASE_URL
+    defaultLocale: 'ru',*/
   },
+
 
   loaders: {
     vue: {

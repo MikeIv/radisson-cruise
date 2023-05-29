@@ -4,18 +4,18 @@
     <div class="main-news__headline uk-flex uk-flex-between uk-flex-middle uk-flex-wrap">
       <ul class="uk-subnav" uk-switcher="connect: .main-news_container; animation: uk-animation-fade;swiping:false;">
         <li class="uk-active" @click="selectNewsTab('news')">
-          <a href="#" aria-expanded="true">Новости</a>
+          <a href="#" aria-expanded="true">{{ $t('news') }}</a>
         </li>
         <li  @click="selectNewsTab('actions')">
-          <a href="#" aria-expanded="false">АКЦИИ</a>
+          <a href="#" aria-expanded="false">{{ $t('action') }}</a>
         </li>
       </ul>
       <div class="description">
-        Сегодня: <b>{{dayInWeek}},<br>
-        {{currentDate}} {{time}}</b>
+        {{ $t('today') }}: <b>{{ dayInWeek }},<br>
+        {{ currentDate }} {{ time }}</b>
       </div>
       <nuxt-link class="uk-button uk-button-default button_news-all" to="/news/">
-        <span>Все новости</span>
+        <span>{{ $t('all') }} {{ $t('news') }}</span>
         <svg-icon name="arrow2" class="icon"/>
       </nuxt-link>
     </div>
@@ -129,7 +129,7 @@
 <!--      <button class="btn_more transition" @click="commentsToShow += 1">
         <span>Показать еще</span>
       </button>-->
-      <nuxt-link class="btn_more transition" to="/news/"><span>Показать еще</span></nuxt-link>
+      <nuxt-link class="btn_more transition" to="/news/"><span>{{ $t('buttons.show_more') }}</span></nuxt-link>
       <div></div>
     </div>
   </section>
@@ -293,8 +293,8 @@ export default {
     }, 1000)
   },
   async fetch() {
-    let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article`;
-    let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action`;
+    let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article&lang=${this.$i18n.locale}`;
+    let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action&lang=${this.$i18n.locale}`;
 
     let news, actions;
     try{

@@ -1,244 +1,243 @@
 <template>
-    <section class="scheme uk-cover-container" id="scheme" @click="cickSheme">
-        <img data-src="~assets/img/main/back3.png" class="img_cover" alt="" src="~assets/img/main/back3.png">
-        <svg-icon class="scheme_decor1" name="decor2"/>
-<!--        <img src="~assets/img/svg/decor3.svg" alt="" class="scheme_decor2" uk-svg>-->
-        <svg-icon class="scheme_decor2" name="decor3"/>
-        <div class="scheme__scroll">
-            <svg-icon name="scroll"/>
-            <span>
+  <section class="scheme uk-cover-container" id="scheme" @click="clickScheme">
+    <img data-src="~assets/img/main/back3.png" class="img_cover" alt="" src="~assets/img/main/back3.png">
+    <svg-icon class="scheme_decor1" name="decor2"/>
+    <!--        <img src="~assets/img/svg/decor3.svg" alt="" class="scheme_decor2" uk-svg>-->
+    <svg-icon class="scheme_decor2" name="decor3"/>
+    <div class="scheme__scroll">
+      <svg-icon name="scroll"/>
+      <span>
               Используйте<br>
               прокрутку
             </span>
+    </div>
+    <div class="uk-container uk-position-relative">
+      <div class="headline uk-scrollspy-inview uk-animation-fade" uk-scrollspy="cls: uk-animation-fade; delay: 300">
+        <div class="headline_p1">
+          {{ schemeTitle[0] }}
         </div>
-        <div class="uk-container uk-position-relative">
-            <div class="headline uk-scrollspy-inview uk-animation-fade" uk-scrollspy="cls: uk-animation-fade; delay: 300">
-                <div class="headline_p1">
-                    Схема
+        <div class="headline_p1">
+          {{ schemeTitle[1] }}
+        </div>
+      </div>
+
+      <div class="scheme__block uk-scrollspy-inview uk-animation-fade"
+           uk-scrollspy="cls: uk-animation-fade; delay: 500">
+        <div class="scheme-switch">
+          <div class="switch-container">
+            <div class="switch-name" :class="{'active': !isActive}">{{ $t('yachts_route') }}</div>
+            <!--                        <label class="switch-round">
+                                        <input type="checkbox" @click="switchRoutes">
+                                        <span class="switch-slider"></span>
+                                    </label>
+                                    <div class="switch-name" :class="{'active': isActive}">Маршрут трамвайчиков</div>-->
+          </div>
+        </div>
+        <ul class="uk-switcher scheme-switcher">
+          <li :class="{'active_map': !isActive}">
+            <div class="scheme__map">
+              <div class="scheme__map_path-container">
+                <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
+
+                <div class="scheme_item18">
+                  <svg-icon name='svg-return' class="icon"/>
+                  <span>
+                                      {{ $t('reversal') }}
+                                    </span>
                 </div>
-                <div class="headline_p1">
-                    Маршрута
-                </div>
+
+                <!--                                 <div v-if="activeRoute === 2" class="scheme_item19">
+                                                    <svg-icon name='svg-return' class="icon"/>
+                                                    <span>
+                                                      Разворот2
+                                                    </span>
+                                                </div> -->
+
+                <SchemeCircle v-for="(circle, index) in schemeYacht"
+                              :idNum="'crcl-'+ circle.customClass"
+                              :key="'crcl'+ index"
+                              :custom-class="circle.customClass"
+                              :port="circle.port"
+                              :title="circle.title"
+                              :location="circle.location"
+                              :info="circle.info"
+                              :img="circle.img"
+                              :activeRoute="activeRoute"
+                              :isActiveCircle="circle.isActive"
+
+
+                />
+                <!--                                 <SchemeCircle v-for="(circle, index) in schemeYacht"
+                                                              :key="'crcl'+ index"
+                                                              :custom-class="circle.customClass"
+                                                              :port="circle.port"
+                                                              :title="circle.title"
+                                                              :location="circle.location"
+                                                              :info="circle.info"
+                                                              :activeRoute="activeRoute"
+                                                              :isActiveCircle="isActiveCircle === index"
+                                                              @onToggle="onToggle(index)"
+                                                /> -->
+
+                <!--                                <SchemeCircle v-for="(circleYacht, index) in schemeYacht" :key="'crly' + index"
+                                                              :title="circleYacht.title" :info="circleYacht.info"
+                                                              :custom-class="circleYacht.customClass" :location="circleYacht.location"
+                                                />-->
+                <!--                                <div class="scheme__drop test">
+                                                  <div class="scheme__drop_grid">
+                                                    <div class="scheme__drop_img uk-cover-container">
+                                                      <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
+                                                    </div>
+                                                    <div class="scheme__drop_info">
+                                                      <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
+                                                      <div class="scheme__drop_headline">
+                                                        Новодевичий
+                                                        монастырь
+                                                      </div>
+                                                      <div class="scheme__drop_text">
+                                                        Включен в список всемирного
+                                                        наследия ЮНЕСКО.
+                                                      </div>
+                                                      <a class="link_more transition" href="">
+                                                        <span>Подробнее</span>
+                                                        <svg-icon name='right-arrow-blue' class="icon"/>
+                                                      </a>
+                                                    </div>
+                                                  </div>
+                                                </div>-->
+                <!--                                <SchemePopup @click="hideOutside"/>-->
+              </div>
+
             </div>
-
-            <div class="scheme__block uk-scrollspy-inview uk-animation-fade" uk-scrollspy="cls: uk-animation-fade; delay: 500">
-                <div class="scheme-switch">
-                    <div class="switch-container">
-                        <div class="switch-name" :class="{'active': !isActive}">Маршрут яхт</div>
-<!--                        <label class="switch-round">
-                            <input type="checkbox" @click="switchRoutes">
-                            <span class="switch-slider"></span>
-                        </label>
-                        <div class="switch-name" :class="{'active': isActive}">Маршрут трамвайчиков</div>-->
+            <div class="scheme__bottom scheme__block__buttons">
+              <div class="uk-width-1-1">
+                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
+                <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1" @click="activeRoute = 1">
+                  <div class="scheme__bottom_item_left">
+                    <div class="scheme__bottom_head">
+                      Причал «Гостиница «Украина»
                     </div>
-                </div>
-                <ul class="uk-switcher scheme-switcher">
-                    <li  :class="{'active_map': !isActive}">
-                        <div class="scheme__map">
-                            <div class="scheme__map_path-container">
-                                <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
-
-                                <div class="scheme_item18">
-                                    <svg-icon name='svg-return' class="icon"/>
-                                    <span>
-                                      Разворот
-                                    </span>
-                                </div>
-
-<!--                                 <div v-if="activeRoute === 2" class="scheme_item19">
-                                    <svg-icon name='svg-return' class="icon"/>
-                                    <span>
-                                      Разворот2
-                                    </span>
-                                </div> -->
-
-                                <SchemeCircle v-for="(circle, index) in schemeYacht"
-                                              :idNum="'crcl-'+ circle.customClass"
-                                              :key="'crcl'+ index"
-                                              :custom-class="circle.customClass"
-                                              :port="circle.port"
-                                              :title="circle.title"
-                                              :location="circle.location"
-                                              :info="circle.info"
-                                              :img="circle.img"
-                                              :activeRoute="activeRoute"
-                                              :isActiveCircle="circle.isActive"
-                                              
-                                              
-                                />
-<!--                                 <SchemeCircle v-for="(circle, index) in schemeYacht"
-                                              :key="'crcl'+ index"
-                                              :custom-class="circle.customClass"
-                                              :port="circle.port"
-                                              :title="circle.title"
-                                              :location="circle.location"
-                                              :info="circle.info"
-                                              :activeRoute="activeRoute"
-                                              :isActiveCircle="isActiveCircle === index"
-                                              @onToggle="onToggle(index)"
-                                /> -->
-
-<!--                                <SchemeCircle v-for="(circleYacht, index) in schemeYacht" :key="'crly' + index"
-                                              :title="circleYacht.title" :info="circleYacht.info"
-                                              :custom-class="circleYacht.customClass" :location="circleYacht.location"
-                                />-->
-<!--                                <div class="scheme__drop test">
-                                  <div class="scheme__drop_grid">
-                                    <div class="scheme__drop_img uk-cover-container">
-                                      <img data-src="~assets/img/main/img4.png" class="img_cover" alt="" src="~assets/img/main/img4.png">
-                                    </div>
-                                    <div class="scheme__drop_info">
-                                      <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-                                      <div class="scheme__drop_headline">
-                                        Новодевичий
-                                        монастырь
-                                      </div>
-                                      <div class="scheme__drop_text">
-                                        Включен в список всемирного
-                                        наследия ЮНЕСКО.
-                                      </div>
-                                      <a class="link_more transition" href="">
-                                        <span>Подробнее</span>
-                                        <svg-icon name='right-arrow-blue' class="icon"/>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>-->
-<!--                                <SchemePopup @click="hideOutside"/>-->
-                            </div>
-
-                        </div>
-                        <div class="scheme__bottom scheme__block__buttons">
-                            <div class="uk-width-1-1">
-                                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
-                                <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1" @click="activeRoute = 1">
-                                    <div class="scheme__bottom_item_left">
-                                        <div class="scheme__bottom_head">
-                                            Причал «Гостиница «Украина»
-                                        </div>
-                                        <div class="scheme__bottom_info">
-                                            <svg-icon name='metro' class="icon"/>
-                                            <span>
-                                            Киевская, набережная Тараса Шевченко.
+                    <div class="scheme__bottom_info">
+                      <svg-icon name='metro' class="icon"/>
+                      <span>
+                                              Киевская, набережная Тараса Шевченко.
                                             </span>
-                                        </div>
-                                    </div>
-                                    <svg-icon name='arrow3' class="icon"/>
-                                </label >                                
-                            </div>
-                            <div class="uk-width-1-1 ">
-                                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor2">
-                                <label class="width-100 height-100 scheme__bottom_item" for="scheme-moor2" @click="activeRoute = 2">
-                                    <div class="scheme__bottom_item_left">
-                                        <div class="scheme__bottom_head">
-                                            Причал «Парк Горького»
-                                        </div>
-                                        <div class="scheme__bottom_info">
-                                        <svg-icon name='metro' class="icon"/>
-                                        <span>
+                    </div>
+                  </div>
+                  <svg-icon name='arrow3' class="icon"/>
+                </label>
+              </div>
+              <div class="uk-width-1-1 ">
+                <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor2">
+                <label class="width-100 height-100 scheme__bottom_item" for="scheme-moor2" @click="activeRoute = 2">
+                  <div class="scheme__bottom_item_left">
+                    <div class="scheme__bottom_head">
+                      Причал «Парк Горького»
+                    </div>
+                    <div class="scheme__bottom_info">
+                      <svg-icon name='metro' class="icon"/>
+                      <span>
                                             Парк Культуры/Октябрьская, Пушкинская набережная.
                                         </span>
-                                        </div>
-                                    </div>
-                                    <svg-icon name='arrow3' class="icon"/>
-                                </label>                                
-                            </div>
+                    </div>
+                  </div>
+                  <svg-icon name='arrow3' class="icon"/>
+                </label>
+              </div>
 
-                            <div class="width-100 scheme__block__buttons">
-                                <nuxt-link to="/trams/schedule/" class="width-100 height-100 uk-button uk-button-default button_ticket" type="button">
-                                    <span>Расписание</span>
-                                    <svg-icon name='clock' class="icon"/>
-                                </nuxt-link>                                
-                            </div>
-
-
-                        </div>
-                    </li>
-<!--                    <li  :class="{'active_map': isActive}">
-                        <div class="scheme__map">
-                            <div class="scheme__map_path-container">
-                                <img  data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
-                                <SchemeCircle v-for="(circle, index) in schemeTrolley"
-                                              :idNum="'crcl1-'+ circle.customClass"
-                                              :key="'crcl1'+ index"
-                                              :custom-class="circle.customClass"
-                                              :port="circle.port"
-                                              :title="circle.title"
-                                              :location="circle.location"
-                                              :info="circle.info"
-                                              :isActive="isActive"
-                                              :activeRoute="activeRouteTram"
-                                              :isActiveCircle="circle.isActive"
-
-                                />
-
-                                <div class="scheme_item18">
-                                    <svg-icon name='svg-return' class="icon"/>
-                                    <span>
-                                      Разворот
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="scheme__bottom">
-                            <input type="radio" name="scheme-moor2" value="Причал «Гостиница «Украина»" id="scheme-moor3" checked="">
-                            <label class="scheme__bottom_item" for="scheme-moor3" @click="activeRouteTram = 1">
-                                <div class="scheme__bottom_item_left">
-                                    <div class="scheme__bottom_head">
-                                        Маршрут 1
-                                    </div>
-                                    <div class="scheme__bottom_info">
-                                        <svg-icon name='svg-port' class="icon"/>
-                                        <span>
-                                          От причала «Гостиница «Украина»
-                                          продолжительность 2 часа 45 минут
-                                        </span>
-                                    </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                            </label>
-                            <input type="radio" name="scheme-moor2" value="Причал «Гостиница «Украина»" id="scheme-moor4">
-                            <label class="scheme__bottom_item" for="scheme-moor4" @click="activeRouteTram = 2">
-                                <div class="scheme__bottom_item_left">
-                                    <div class="scheme__bottom_head">
-                                        Маршрут 2
-                                    </div>
-                                    <div class="scheme__bottom_info">
-                                      <svg-icon name='svg-port' class="icon"/>
-                                        <span>
-                                          Круговой маршрут от причала «Парк
-                                          Горького»без остановок 50 минут
-                                        </span>
-                                    </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                            </label>
-
-                            <nuxt-link to="tickets/trolley" class="uk-button uk-button-default button_ticket" type="submit">
-                                <span>Купить билет</span>
-                                <svg-icon name='ticket' class="icon"/>
-                            </nuxt-link>
-                        </div>
-                    </li>-->
-                </ul>
-
+              <nuxt-link to="/trams/schedule/" class="width-100 uk-button uk-button-default button_ticket"
+                         type="button">
+                <span>{{ $t('schedule') }}</span>
+                <svg-icon name='clock' class="icon"/>
+              </nuxt-link>
             </div>
-        </div>
-    </section>
+          </li>
+          <!--                    <li  :class="{'active_map': isActive}">
+                                  <div class="scheme__map">
+                                      <div class="scheme__map_path-container">
+                                          <img  data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
+                                          <SchemeCircle v-for="(circle, index) in schemeTrolley"
+                                                        :idNum="'crcl1-'+ circle.customClass"
+                                                        :key="'crcl1'+ index"
+                                                        :custom-class="circle.customClass"
+                                                        :port="circle.port"
+                                                        :title="circle.title"
+                                                        :location="circle.location"
+                                                        :info="circle.info"
+                                                        :isActive="isActive"
+                                                        :activeRoute="activeRouteTram"
+                                                        :isActiveCircle="circle.isActive"
+
+                                          />
+
+                                          <div class="scheme_item18">
+                                              <svg-icon name='svg-return' class="icon"/>
+                                              <span>
+                                                Разворот
+                                              </span>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                                  <div class="scheme__bottom">
+                                      <input type="radio" name="scheme-moor2" value="Причал «Гостиница «Украина»" id="scheme-moor3" checked="">
+                                      <label class="scheme__bottom_item" for="scheme-moor3" @click="activeRouteTram = 1">
+                                          <div class="scheme__bottom_item_left">
+                                              <div class="scheme__bottom_head">
+                                                  Маршрут 1
+                                              </div>
+                                              <div class="scheme__bottom_info">
+                                                  <svg-icon name='svg-port' class="icon"/>
+                                                  <span>
+                                                    От причала «Гостиница «Украина»
+                                                    продолжительность 2 часа 45 минут
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <svg-icon name='arrow3' class="icon"/>
+                                      </label>
+                                      <input type="radio" name="scheme-moor2" value="Причал «Гостиница «Украина»" id="scheme-moor4">
+                                      <label class="scheme__bottom_item" for="scheme-moor4" @click="activeRouteTram = 2">
+                                          <div class="scheme__bottom_item_left">
+                                              <div class="scheme__bottom_head">
+                                                  Маршрут 2
+                                              </div>
+                                              <div class="scheme__bottom_info">
+                                                <svg-icon name='svg-port' class="icon"/>
+                                                  <span>
+                                                    Круговой маршрут от причала «Парк
+                                                    Горького»без остановок 50 минут
+                                                  </span>
+                                              </div>
+                                          </div>
+                                          <svg-icon name='arrow3' class="icon"/>
+                                      </label>
+
+                                      <nuxt-link to="tickets/trolley" class="uk-button uk-button-default button_ticket" type="submit">
+                                          <span>Купить билет</span>
+                                          <svg-icon name='ticket' class="icon"/>
+                                      </nuxt-link>
+                                  </div>
+                              </li>-->
+        </ul>
+
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 import SchemeCircle from "./SchemeCircle";
 import SchemePopup from "./SchemePopup";
+
 export default {
   name: "Scheme",
 
   components: {SchemePopup, SchemeCircle},
-  data(){
-    return{
+  data() {
+    return {
       isActive: false,
-      activeRoute: 2,
+      activeRoute: 1,
       activeRouteTram: 1,
       isActiveCircle: false,
       schemeYacht: [
@@ -528,41 +527,40 @@ export default {
     }
   },
   methods: {
-    clearActive()  {
-        const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley
-        for (const customClass in activeRoute) {
-            if (Object.hasOwnProperty.call(activeRoute, customClass)) {
-                const elPathPoint = activeRoute[customClass];
-                    elPathPoint.isActive = false;
+    clearActive() {
+      const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley
+      for (const customClass in activeRoute) {
+        if (Object.hasOwnProperty.call(activeRoute, customClass)) {
+          const elPathPoint = activeRoute[customClass];
+          elPathPoint.isActive = false;
 
-            }
-        }        
+        }
+      }
     },
-    cickSheme(e){
-        
-        if(e.target.tagName == 'BUTTON'){
-         const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley   
-/*         console.log('activeRoute = ',activeRoute);
-        console.log('Click on BUTTON TARGET= ', e.target);
-        console.log('Click on BUTTON = ', e.target.tagName); */
+    clickScheme(e) {
+      console.log(e.target.tagName)
+      if (e.target.tagName === 'BUTTON' || e.target.tagName === 'svg' || e.target.tagName === 'use') {
+        const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley
+        /*         console.log('activeRoute = ',activeRoute);
+                console.log('Click on BUTTON TARGET= ', e.target);
+                console.log('Click on BUTTON = ', e.target.tagName); */
         this.clearActive();
         for (const customClass in activeRoute) {
-            if (Object.hasOwnProperty.call(activeRoute, customClass)) {
-                const elPathPoint = activeRoute[customClass];
-                
-                if(elPathPoint.customClass === e.target.id.split('-')[1]){
-                    elPathPoint.isActive = true;
-                    //console.log('Element = ', elPathPoint)
-                }
+          if (Object.hasOwnProperty.call(activeRoute, customClass)) {
+            const elPathPoint = activeRoute[customClass];
+
+            if (elPathPoint.customClass === e.target.id.split('-')[1]) {
+              elPathPoint.isActive = true;
+              //console.log('Element = ', elPathPoint)
             }
+          }
         }
 
 
-        }
-        else{
-            this.clearActive();
-            //console.log('Click on Map = ', e.target);
-        }
+      } else {
+        this.clearActive();
+        //console.log('Click on Map = ', e.target);
+      }
 
     },
     switchRoutes() {
@@ -577,16 +575,16 @@ export default {
       }
     },
 
-/*    checkState(e) {
-      if(e.currentTarget.classList.contains('uk-test')){
-        e.currentTarget.classList.remove('uk-test')
-      }
-    },*/
+    /*    checkState(e) {
+          if(e.currentTarget.classList.contains('uk-test')){
+            e.currentTarget.classList.remove('uk-test')
+          }
+        },*/
 
     hideOutside() {
-      document.querySelector('.test').addEventListener('click', function (e){
+      document.querySelector('.test').addEventListener('click', function (e) {
         //console.log(e.target)
-        if(e.target !== document.querySelector('.test')) {
+        if (e.target !== document.querySelector('.test')) {
           //console.log('true')
         } else {
           //console.log('false')
@@ -594,42 +592,47 @@ export default {
       })
     }
   },
+  computed: {
+    schemeTitle() {
+      return this.$t('route_scheme').split(' ')
+    },
+  },
   mounted() {
     let bubbles = document.querySelectorAll('.scheme__map_path-container .uk-inline')
     let bubblesIcon = document.querySelectorAll('.scheme__map_path-container .uk-inline button')
     let modal = document.querySelector('.test')
-/*    for (let i = 0; i < bubbles.length; i++) {
-      const clickedItem = bubbles[i];
-      clickedItem.style.zIndex = '5'
-      // Add an event listener to each item
-      clickedItem.addEventListener("click", function(e) {
-        // Remove class from all items
-        for (let j = 0; j < bubbles.length; j++) {
-          const item = bubbles[j];
-          item.classList.remove('uk-open')
-          modal.style.display = 'none'
-          item.style.zIndex = '5'
-        }
+    /*    for (let i = 0; i < bubbles.length; i++) {
+          const clickedItem = bubbles[i];
+          clickedItem.style.zIndex = '5'
+          // Add an event listener to each item
+          clickedItem.addEventListener("click", function(e) {
+            // Remove class from all items
+            for (let j = 0; j < bubbles.length; j++) {
+              const item = bubbles[j];
+              item.classList.remove('uk-open')
+              modal.style.display = 'none'
+              item.style.zIndex = '5'
+            }
 
-        // Add class to the clicked item
-        clickedItem.style.zIndex = '6';
-        modal.style.display = 'block'
-        console.log(modal.offsetWidth )
-        console.log(modal.getBoundingClientRect().right)
-        console.log(window.innerWidth)
-        console.log(clickedItem.getBoundingClientRect().right)
-        console.log(modal.getBoundingClientRect().right)
-        /!*modal.style.left = clickedItem.offsetLeft  + 'px'*!/
-        if ((clickedItem.getBoundingClientRect().right + modal.offsetWidth) > window.innerWidth) {
-          modal.style.right = 200 + 'px'
-          modal.style.left = ''
-        } else {
-          modal.style.left = clickedItem.offsetLeft  + 'px'
-          modal.style.right = ''
-        }
-        modal.style.top = clickedItem.offsetTop - 75  + 'px'
-      });
-    }*/
+            // Add class to the clicked item
+            clickedItem.style.zIndex = '6';
+            modal.style.display = 'block'
+            console.log(modal.offsetWidth )
+            console.log(modal.getBoundingClientRect().right)
+            console.log(window.innerWidth)
+            console.log(clickedItem.getBoundingClientRect().right)
+            console.log(modal.getBoundingClientRect().right)
+            /!*modal.style.left = clickedItem.offsetLeft  + 'px'*!/
+            if ((clickedItem.getBoundingClientRect().right + modal.offsetWidth) > window.innerWidth) {
+              modal.style.right = 200 + 'px'
+              modal.style.left = ''
+            } else {
+              modal.style.left = clickedItem.offsetLeft  + 'px'
+              modal.style.right = ''
+            }
+            modal.style.top = clickedItem.offsetTop - 75  + 'px'
+          });
+        }*/
   }
 }
 </script>
@@ -643,7 +646,7 @@ export default {
   display: list-item;
 }
 
-.uk-inline.uk-open .scheme__item_circle{
+.uk-inline.uk-open .scheme__item_circle {
   box-shadow: 0px 0px 8px 3px rgb(251 19 1 / 90%);
   background: #fff;
   border-color: #FB1301;
@@ -653,17 +656,16 @@ export default {
   display: none;
   position: absolute;
   z-index: 1020;
-  width:450px;
+  width: 450px;
   padding: 0;
   color: #666;
 }
+
 .width-100 {
   width: 100%;
 }
+
 .height-100 {
   height: 100%;
-}
-.scheme__block__buttons{
-    height: 130px;
 }
 </style>

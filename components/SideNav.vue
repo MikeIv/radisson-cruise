@@ -657,53 +657,62 @@
           <div class="uk-flex-between uk-grid-small uk-child-width-1-2 offcanvas_main__grid uk-hidden@m uk-grid" uk-grid="">
             <div class="uk-first-column">
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
-                Яхты Флотилии
+                {{ $t('nav.yachts') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
+                {{ $t('nav.trams') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
                 Речные трамвайчики
               </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
-                Категории салонов
+                {{ $t('nav.categories') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
-                Билеты на яхты
+                {{ $t('nav.yachts_tickets') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/theatrical/" @click.native="closeNav">
-                Театральные круизы
+                {{ $t('nav.theatrical') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/flights/" @click.native="closeNav">
-                Тематические рейсы
+                {{ $t('nav.flights') }}
               </nuxt-link>
 
 
               <nuxt-link class="txt18 " to="/about/" @click.native="closeNav">
-                О компании
+                {{ $t('nav.about') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/rules/" @click.native="closeNav">
-                Правила и условия
+                {{ $t('nav.rules') }}
               </nuxt-link>
             </div>
             <div>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
-                Расписание яхт
+                {{ $t('nav.yachts_schedule') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
+                {{ $t('nav.trams_schedule') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
                 Расписание трамвайчиков
               </nuxt-link>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
-                 Меню ресторанов
+                {{ $t('nav.menu') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/certificates/" @click.native="closeNav">
-                Подарочные сертификаты
+                {{ $t('nav.certificates') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/rent/" @click.native="closeNav">
-                Аренда
+                {{ $t('nav.rent') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/news/" @click.native="closeNav">
-                Новости и акции
+                {{ $t('nav.news') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/contacts/" @click.native="closeNav">
-                Контакты
+                {{ $t('nav.contacts') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+                Erwin.Река
               </nuxt-link>
               <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
                 Erwin.Река
@@ -713,16 +722,25 @@
           <div class="uk-flex-between uk-grid-small uk-child-width-1-4@m uk-child-width-1-3@s uk-child-width-1-2 offcanvas_main__grid uk-visible@m uk-grid uk-grid-stack" uk-grid="">
             <div class="uk-first-column">
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
-                Яхты Флотилии
+                {{ $t('nav.yachts') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
-                Расписание яхт
+                {{ $t('nav.yachts_schedule') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
-                Категории салонов
+                {{ $t('nav.categories') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
-                Меню ресторанов
+                {{ $t('nav.menu') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
+                {{ $t('nav.trams') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
+                {{ $t('nav.trams_schedule') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+                Erwin.Река
               </nuxt-link>
               <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
                 Речные трамвайчики
@@ -748,80 +766,80 @@
             </div>
             <div class=" ">
               <div class="txt18 ">
-                Покупка билетов
+                {{ $t('nav.buy_tickets') }}
               </div>
               <ul class="footer_nav">
                 <li>
                   <nuxt-link class="" to="/yachts/schedule/" @click.native="closeNav">
-                    Билеты на яхты
+                    {{ $t('nav.yachts_tickets') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link class="" to="/certificates/" @click.native="closeNav">
-                    Подарочные сертификаты
+                    {{ $t('nav.certificates') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link class="" to="/theatrical/" @click.native="closeNav">
-                    Театральные круизы
+                    {{ $t('nav.theatrical') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link class="" to="/flights/" @click.native="closeNav">
-                    Тематические рейсы
+                    {{ $t('nav.flights') }}
                   </nuxt-link>
                 </li>
               </ul>
               <nuxt-link class="txt18 " to="/rent/" @click.native="closeNav">
-                Аренда
+                {{ $t('nav.rent') }}
               </nuxt-link>
             </div>
             <div>
               <nuxt-link class="txt18 " to="/news/" @click.native="closeNav">
-                Новости и акции
+                {{ $t('nav.news') }}
               </nuxt-link>
               <ul class="footer_nav">
 
                 <li>
                   <nuxt-link class="" to="/news/?grp=article" @click.native="closeNav">
-                    Новости
+                    {{ $t('news') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link class="" to="/news/?grp=action" @click.native="closeNav">
-                    Акции
+                    {{ $t('action') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link class="" to="/news/?grp=event" @click.native="closeNav">
-                    События
+                    {{ $t('event') }}
                   </nuxt-link>
                 </li>
               </ul>
               <nuxt-link class="txt18  uk-visible@s" to="/rules/" @click.native="closeNav">
-                Правила и условия
+                {{ $t('nav.rules') }}
               </nuxt-link>
               <ul class="footer_nav uk-visible@s">
                 <li>
                   <nuxt-link :to="{ path: '/rules', hash: '#rules-performance'}" replace class="" @click.native="closeNav">
-                    Технические характеристики
+                    {{ $t('tech_specs') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/rules', hash: '#rules-security'}" replace  class="" @click.native="closeNav">
-                    Безопасноcть
+                    {{ $t('security') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/rules', hash: '#rules-security-video'}" replace class="" @click.native="closeNav">
-                    Ролики о безопасности
+                    {{ $t('security_videos') }}
                   </nuxt-link>
                 </li>
               </ul>
             </div>
             <div class="uk-visible@s">
               <nuxt-link class="txt18 " to="/about/" @click.native="closeNav">
-                О компании
+                {{ $t('nav.about') }}
               </nuxt-link>
               <ul class="footer_nav">
                 <!-- <li>
@@ -832,27 +850,27 @@
 
                 <li>
                   <nuxt-link :to="{ path: '/about', hash: '#cap'}" replace class="" @click.native="closeNav">
-                    Сотрудники компании
+                    {{ $t('company_people') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/about', hash: '#gallery'}" replace class="" @click.native="closeNav">
-                    Фотогалерея&nbsp;
+                    {{ $t('photo_gallery') }}&nbsp;
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/about', hash: '#video'}" replace class="" @click.native="closeNav">
-                    Видео
+                    {{ $t('video') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/about', hash: '#rewards'}" replace class="" @click.native="closeNav">
-                    Награды
+                    {{ $t('rewards') }}
                   </nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="{ path: '/about', hash: '#job'}" replace class="" @click.native="closeNav">
-                    Вакансии
+                    {{ $t('vacancies') }}
                   </nuxt-link>
                 </li>
                 <!-- <li>
@@ -867,7 +885,7 @@
                 </li> -->
               </ul>
               <nuxt-link class="txt18 transition offcanvas_menu__link2 uk-offcanvas-close" to="/contacts/" @click.native="closeNav">
-                Контакты
+                {{ $t('nav.contacts') }}
               </nuxt-link>
             </div>
           </div>
@@ -877,14 +895,14 @@
           <div class="footer__bottom ">
             <div class="uk-grid-small uk-flex-middle uk-grid" uk-grid="">
               <div class="footer__bottom_item1 uk-width-1-4@m uk-width-auto@s uk-width-1-1 uk-first-column">
-                <div> © 2023, Флотилия “Рэдиссон Ройал”</div>
+                <div> © {{ new Date().getFullYear() }}, {{ $t('footer.credits') }}</div>
                 <nuxt-link to="/politic/" class="transition footer__bottom_item2__link uk-hidden@m uk-offcanvas-close"  @click.native="closeNav">
-                  Политика конфеденциальности
+                  {{ $t('footer.politic') }}
                 </nuxt-link>
               </div>
               <div class="footer__bottom_item2  uk-width-1-4 uk-visible@m">
                 <nuxt-link to="/politic/" class=""  @click.native="closeNav">
-                  Политика конфиденциальности
+                  {{ $t('footer.politic') }}
                 </nuxt-link>
               </div>
               <div class="footer__bottom_item4  uk-width-auto@s">

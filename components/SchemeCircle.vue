@@ -2,13 +2,13 @@
   <div class='uk-inline' :class="['scheme_item' + customClass, {'uk-open' : isActiveCircle},{'uk-open' : isModalShow}, {'active' : activeClassToCircle}]">
     <div v-if="port !== null && !isActive">
       <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click.prevent="toggleActive" :id="idNum"></button>
+        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
         <div class="scheme__item_txt" v-html="title"></div>
       </div>
 
       <div v-else-if="activeRoute === 1 && customClass == 1" class="scheme__item-container">
         <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
+          <svg-icon name='ancor' class="icon" :id="idNum"/>
         </button>
         <div>
           <span v-html="port"></span>
@@ -18,7 +18,7 @@
 
       <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
         <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
+          <svg-icon name='ancor' class="icon" :id="idNum"/>
         </button>
         <div>
           <span v-html="port"></span>
@@ -27,14 +27,14 @@
       </div>
 
       <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click="toggleActive($event)" :id="idNum"></button>
+        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
         <!-- <div class="scheme__item_txt" v-html="title"></div> -->
       </div>
     </div>
 
     <div v-else-if="port !== null && isActive && customClass == 9">
       <div v-if="activeRoute === 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click.prevent="toggleActive" :id="idNum">
+        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
           <svg-icon name='ancor' class="icon"/>
         </button>
         <div>
@@ -43,7 +43,7 @@
       </div>
 
       <div v-if="activeRoute === 2" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click.prevent="toggleActive" :id="idNum">
+        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
           <svg-icon name='ancor' class="icon"/>
         </button>
         <div>
@@ -56,7 +56,7 @@
 
     <div v-else-if="port !== null && isActive">
       <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click.prevent="toggleActive" :id="idNum">
+        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
           <svg-icon name='ancor' class="icon"/>
         </button>
         <div>
@@ -75,18 +75,18 @@
       </div>
 
       <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click="toggleActive($event)" :id="idNum"></button>
+        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
         <div class="scheme__item_txt" v-html="title"></div>
       </div>
 
       <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" @click="toggleActive($event)" :id="idNum"></button>
+        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
         <div class="scheme__item_txt" v-html="title"></div>
       </div>
     </div>
 
     <div v-else class="scheme__item-container">
-      <button type="button" class="scheme__item_circle" :class="{'uk-open' : isActiveCircle}" aria-expanded="false" @click.prevent="toggleActive" :id="idNum"></button>
+      <button type="button" class="scheme__item_circle" :class="{'uk-open' : isActiveCircle}" aria-expanded="false" :id="idNum"></button>
       <div class="scheme__item_txt" v-html="title"></div>
     </div>
 
@@ -163,7 +163,7 @@ export default {
     },
   },
   methods: {
-    toggleActive(event) {
+    /*toggleActive(event) {
       console.log("toggleActive", event);
       console.log("toggleActive props", this.$props);
       console.log("toggleActive info = ", this.info);
@@ -174,7 +174,7 @@ export default {
     },
     getCoords(event){
       //console.log(event)
-    }
+    }*/
   },
   updated() {
     this.$nextTick(() => {

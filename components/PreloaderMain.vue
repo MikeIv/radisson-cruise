@@ -10,7 +10,7 @@
     <div class="preloader2__slide">
     </div>
     <div class="preloader2_bottom">
-      Загрузка
+      {{ $nuxt.$t('loading') }}
     </div>
     <div id="js-progressbar">
       <div class="uk-progress"></div>

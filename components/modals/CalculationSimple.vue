@@ -116,6 +116,8 @@
 
 import UIkit from "uikit";
 import {TheMask} from 'vue-the-mask'
+import axios from "axios";
+import querystring from "querystring";
 export default {
   name: "ModalCalculation",
   components: {TheMask,},
@@ -357,16 +359,15 @@ export default {
         return;
       }
       const fetchCalculation = async () => {
-        const response = await fetch(`${this.$config.baseURL}feedback`, {
+        const response = await axios({
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(this.formData),
-        });
-        const data = await response.json();
+          url: `${this.$config.baseURL}feedback`,
+          /*data: querystring.stringify(this.formData)*/
+          data: this.formData
+        })
+        const isSuccess = await response.data.success;
         //console.log('data', data);
-        if (data.status === 'success') {
+        if (isSuccess) {
           
           UIkit.notification({message: 'Ваша заявка принята', status: 'success', pos: 'top-center', timeout: 1500})
         }
@@ -375,8 +376,7 @@ export default {
         }
       };
       fetchCalculation();
-     this.closeModal();
-
+      this.closeModal();
     },
     clickPrev() {
       //console.log('clickPrev');

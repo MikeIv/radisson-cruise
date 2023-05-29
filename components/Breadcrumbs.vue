@@ -20,7 +20,6 @@ export default {
   name: "Breadcrumbs",
   props: {
     linkName: String,
-
   },
   data() {
     return {

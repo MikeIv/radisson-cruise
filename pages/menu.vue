@@ -8,294 +8,13 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.menu.title') }}
+            {{ seoData?.header || 'Меню' }}
           </h1>
         </div>
       </div>
     </Header>
     <div class="">
-      <!--    <div class="container">
-            <ul class="uk-breadcrumb">
-              <li><a href="/">Home</a></li>
-              <li><a href="/menu">Linked Category</a></li>
-              <li class="uk-disabled"><a>Disabled Category</a></li>
-              <li><span>{{title}}</span></li>
-            </ul>
-            <div class="headline_p1">МЕНЮ РЕСТОРАНОВ</div>
-          </div>-->
-      <!--    <div class="menu-cafe">
-            <div class="menu-cafe__item menu-cafe__item1">
-              <img class="img_cover" data-src="~assets/img/menu/fish.png" alt="" src="~assets/img/menu/fish.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Меню а-ля-карт
-                </div>
-                <div class="menu-cafe__item_txt">
-                  Гастрономические круизы – новый уровень
-                  удовольствия 365 дней в году.
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item2">
-              <picture>
-                <source srcset="/img/inners/rest3-small.png" media="(max-width: 1310px)">
-                <source srcset="~assets/img/menu/rest3.png">
-                <img class="img_cover" data-src="~assets/img/menu/rest3.png" alt="" src="~assets/img/menu/rest3.png">
-              </picture>
-              &lt;!&ndash; <img uk-img class="img_cover" data-src="/img/inners/rest3.png" alt=""> &ndash;&gt;
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Винная карта
-                </div>
-                <div class="menu-cafe__item_txt">
-                  Для Вас мы подобрали напитки
-                  на любой вкус – легкие и сложные,
-                  свежие и согревающие, молодые
-                  и выдержанные
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item3">
-              <img class="img_cover" data-src="~assets/img/menu/rest4.png" alt="" src="~assetsimg/inners/rest4.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Карта<br>
-                  Бара
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item4">
-              <img class="img_cover" data-src="~assets/img/menu/rest5.png" alt="" src="~assetsimg/inners/rest5.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Ройал класс
-                </div>
-                <div class="menu-cafe__item_txt">
-                  Гастрономическое удовольствие.
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item5">
-              <img class="img_cover" data-src="~assets/img/menu/rest6.png" alt="" src="~assetsimg/inners/rest6.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Erwin.Река
-                </div>
-                <div class="menu-cafe__item_txt">
-                  Ресторан морепродуктов
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item6">
-              <img class="img_cover" data-src="~assets/img/menu/rest7.png" alt="" src="~assetsimg/inners/rest7.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Коктейльное<br>
-                  меню
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item7">
-              <img class="img_cover" data-src="~assets/img/menu/rest8.png" alt="" src="~assetsimg/inners/rest8.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Детское<br>
-                  меню
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item8">
-              <img class="img_cover" data-src="~assets/img/menu/rest9.png" alt="" src="~assetsimg/inners/rest9.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Сезонное<br>
-                  меню
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-            <div class="menu-cafe__item menu-cafe__item9">
-              <img class="img_cover" data-src="~assets/img/menu/rest10.png" alt="" src="~assetsimg/inners/rest10.png">
-              <div class="uk-position-relative">
-                <div class="headline_26 text-upper">
-                  Десертное<br>
-                  меню
-                </div>
-                <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-                  <span>ПОСМОТРЕТЬ МЕНЮ</span>
-                </a>
-              </div>
-            </div>
-          </div>-->
       <div class="menu-cafe">
-<!--        <div class="menu-cafe__item menu-cafe__item1">
-          <img class="img_cover" data-src="~assets/img/inners/rest2.png" alt="" src="~assets/img/inners/rest2.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Меню а-ля-карт
-            </div>
-            <div class="menu-cafe__item_txt">
-              Гастрономические круизы – новый уровень
-              удовольствия 365 дней в году.
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item2">
-          <picture>
-            <source srcset="~assets/img/inners/rest3-small.png" media="(max-width: 1310px)">
-            <source srcset="~assets/img/inners/rest3.png">
-            <img class="img_cover" data-src="/img/inners/rest3.png" alt="" src="~assets/img/inners/rest3.png">
-          </picture>
-          &lt;!&ndash; <img uk-img class="img_cover" data-src="/img/inners/rest3.png" alt=""> &ndash;&gt;
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Винная карта
-            </div>
-            <div class="menu-cafe__item_txt">
-              Для Вас мы подобрали напитки
-              на любой вкус – легкие и сложные,
-              свежие и согревающие, молодые
-              и выдержанные
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item3">
-          <img class="img_cover" data-src="~assets/img/inners/rest4.png" alt="" src="~assets/img/inners/rest4.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Карта<br>
-              Бара
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item4">
-          <img class="img_cover" data-src="~assets/img/inners/rest5.png" alt="" src="~assets/img/inners/rest5.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Ройал класс
-            </div>
-            <div class="menu-cafe__item_txt">
-              Гастрономическое удовольствие.
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item5">
-          <img class="img_cover" data-src="~assets/img/inners/rest6.png" alt="" src="~assets/img/inners/rest6.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Erwin.Река
-            </div>
-            <div class="menu-cafe__item_txt">
-              Ресторан морепродуктов
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item6">
-          <img class="img_cover" data-src="assets/img/inners/rest7.png" alt="" src="~assets/img/inners/rest7.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Коктейльное<br>
-              меню
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item7">
-          <img class="img_cover" data-src="~assets/img/inners/rest8.png" alt="" src="~assets/img/inners/rest8.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Детское<br>
-              меню
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item8">
-          <img class="img_cover" data-src="~assets/img/inners/rest9.png" alt="" src="~assets/img/inners/rest9.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Сезонное<br>
-              меню
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>
-        <div class="menu-cafe__item menu-cafe__item9">
-          <img class="img_cover" data-src="~assets/img/inners/rest10.png" alt="" src="~assets/img/inners/rest10.png">
-          <div class="uk-position-relative">
-            <div class="headline_26 text-upper">
-              Десертное<br>
-              меню
-            </div>
-            <a class="uk-button uk-button-secondary button_menu-cafe" href="">
-              <svg-icon class="icon" name="menu"/>
-              <span>ПОСМОТРЕТЬ МЕНЮ</span>
-            </a>
-          </div>
-        </div>-->
-<!--        <MenuCard v-for='(card, index) in menuCard'
-                   :key="'crd' + index"
-                   :title="card.title"
-                   :fileName="card.fileName"
-                   :fileNameSmall="card.fileNameSmall"
-                   :description="card.description"
-                   :customClass="card.customClass"/>-->
-<!--        <p v-if="$fetchState.pending">
-          Loading....
-        </p>
-        <p v-else-if="$fetchState.error">Error while fetching info</p>-->
         <MenuCard v-for='(card, index) in menuFetch'
                   :key="'crd' + index"
                   :title="card.name"
@@ -321,7 +40,20 @@ export default {
   components: {Breadcrumbs, MenuCard, Header},
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow - меню ресторанов Рэдиссон Флотилии`,
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -392,11 +124,15 @@ export default {
         },
       ],
       menuFetch: [],
+      seoData: {}
     }
   },
   async fetch() {
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/menu/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
     let menus = await axios.get(
-      `${this.$config.baseURL}menus`);
+      `${this.$config.baseURL}menus?lang=${this.$i18n.locale}`);
     //console.log(menus.data)
     this.menuFetch = menus.data
   },

@@ -21,7 +21,7 @@
       </div>
     </div>
     <div v-if="main == 1" class="uk-badge">
-      Важное
+      {{ $t('news_important') }}
     </div>
     <div v-if="main == 1" class="card-news_decor"></div>
     <div class="uk-card-body">

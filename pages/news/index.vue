@@ -8,7 +8,7 @@
         </div>
         <div class="heading">
           <h1 class="headline_p1">
-            {{ $t('pages.news.title') }}
+            {{ seoData?.header }}
           </h1>
         </div>
       </div>
@@ -95,7 +95,7 @@
         </a> -->
         <a href="#modal-category-cabin-filter" class="uk-button btn-news-filter uk-hidden@s" uk-toggle="">
             <span>
-              ОТКРЫТЬ ФИЛЬТР
+              {{ $t('buttons.open_filter') }}
             </span>
             <svg-icon class="icon" name="svg-flight4"/>
           </a>
@@ -376,7 +376,20 @@ export default {
   name: "news",
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow - ${this.title} Рэдиссон Флотилии`,
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   components: {Breadcrumbs, Header, NewsCard, FilterMobile},
@@ -581,7 +594,8 @@ export default {
       page: 1,
       perPage: 7,
       pages: [],
-      title: 'Новости и акции'
+      title: 'Новости и акции',
+      seoData: {},
     }
   },
   methods: {
@@ -701,34 +715,34 @@ export default {
         page = 1
       }
       let news;
-      let urlNewsQuery = `${this.$config.baseURL}news?page=${page}`;
+      let urlNewsQuery = `${this.$config.baseURL}news?page=${page}&lang=${this.$i18n.locale}`;
 
       if(grp !== 'all' && grp !== undefined) {
         if(month !== null && year === null) {
-          urlNewsQuery = `${this.$config.baseURL}news?month=${month}&page=${page}&grp=${grp}`;
+          urlNewsQuery = `${this.$config.baseURL}news?month=${month}&page=${page}&grp=${grp}&lang=${this.$i18n.locale}`;
         }
         else if(year !== null && month === null) {
-          urlNewsQuery = `${this.$config.baseURL}news?year=${year}&page=${page}&grp=${grp}`;
+          urlNewsQuery = `${this.$config.baseURL}news?year=${year}&page=${page}&grp=${grp}&lang=${this.$i18n.locale}`;
         }
         else if(year !== null && month !== null) {
-            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&month=${month}&page=${page}&grp=${grp}`;
+            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&month=${month}&page=${page}&grp=${grp}&lang=${this.$i18n.locale}`;
           }
         else{
-          urlNewsQuery = `${this.$config.baseURL}news?page=${page}&grp=${grp}`;
+          urlNewsQuery = `${this.$config.baseURL}news?page=${page}&grp=${grp}&lang=${this.$i18n.locale}`;
         }
         }
         else{
           if(month !== null && year === null) {
-            urlNewsQuery = `${this.$config.baseURL}news?month=${month}&page=${page}`;
+            urlNewsQuery = `${this.$config.baseURL}news?month=${month}&page=${page}&lang=${this.$i18n.locale}`;
           }
           else if(year !== null && month === null) {
-            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&page=${page}`;
+            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&page=${page}&lang=${this.$i18n.locale}`;
           }
           else if(year !== null && month !== null) {
-            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&month=${month}&page=${page}`;
+            urlNewsQuery = `${this.$config.baseURL}news?year=${year}&month=${month}&page=${page}&lang=${this.$i18n.locale}`;
           }
           else{
-            urlNewsQuery = `${this.$config.baseURL}news?page=${page}`;
+            urlNewsQuery = `${this.$config.baseURL}news?page=${page}&lang=${this.$i18n.locale}`;
           }
         }
 
@@ -837,7 +851,6 @@ export default {
     this.filteredPosts = this.cardInfo
     this.setPages();
   },
-
   watch: {
     posts () {
       this.setPages();
@@ -866,7 +879,10 @@ export default {
   },
 
   async fetch() {
-    let urlNewsQuery = `${this.$config.baseURL}news?page=1`;
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/news/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
+    let urlNewsQuery = `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`;
     if(this.$route.query.page) {
       this.currentPage = +this.$route.query.page
       
@@ -876,10 +892,10 @@ export default {
 
     if(this.$route.query.grp && this.$route.query.grp !== 'all') {
       this.currentGrp = this.$route.query.grp
-      urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}&grp=${this.currentGrp}`;
+      urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}&grp=${this.currentGrp}&lang=${this.$i18n.locale}`;
     } else if(this.$route.query.grp === 'all'){
       this.currentGrp = 'all'
-      urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}`;
+      urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}&lang=${this.$i18n.locale}`;
     }
     let news = await axios.get(urlNewsQuery);
     this.currentNews = news.data.news

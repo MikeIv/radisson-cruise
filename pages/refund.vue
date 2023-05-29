@@ -7,11 +7,6 @@
           <div class="heading_white">
             <Breadcrumbs/>
           </div>
-          <div class="heading">
-            <h1 class="headline_p1">
-              {{ $t('pages.refund') }}
-            </h1>
-          </div>
         </div>
       </Header>
       <section class="buy-ticket-form__container">
@@ -19,7 +14,7 @@
           <div class="buy-ticket-form">
             <Breadcrumbs/>
             <div class="headline_p1">
-              Возврат электронного билета
+              {{ seoData?.header || 'Возврат билетов' }}
             </div>
             <div v-if="!response && !foundedError" class="buy-ticket-form__grid">
               <form class="buy-ticket-form__info" id="payData" @submit.prevet="findTicket">
@@ -308,7 +303,20 @@ export default {
   name: "refund",
   head() {
     return {
-      title: 'Флотилия Radisson Royal Moscow - возврат билетов на теплоходы Рэдиссон Флотилии',
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   components: {
@@ -384,6 +392,7 @@ export default {
       isAgree: false,
       availableRefundText: null,
       availableRefund: false,
+      seoData: {}
     }
   },
   watch: {
@@ -719,7 +728,7 @@ export default {
     async currentRoute() {
       try {
         const data = await axios.get(
-            `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}`
+            `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
         )
         //console.log(data)
 
@@ -731,6 +740,16 @@ export default {
       }
     }
   },
+
+  async fetch() {
+    try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/refund/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
+    } catch(error) {
+      this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
+    }
+  }
 }
 </script>
 

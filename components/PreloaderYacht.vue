@@ -7,7 +7,7 @@
         <circle cx="5.712" cy="5.712" r="5.712" transform="translate(28.264 27.241)" fill="#edeeef"></circle>
       </svg>
       <div class="preloader2_bottom">
-        Загрузка
+        {{ $nuxt.$t('loading') }}
       </div>
       <div class="klademug">{{ progress }}%</div>
     </div>

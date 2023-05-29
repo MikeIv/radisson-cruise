@@ -19,7 +19,7 @@
       <div class="yacht__capitan_experience_new">
         <svg-icon class="icon" name="calendar"/>
         <span v-if="capitans">
-           Стаж работы <br class="uk-hidden@s"> во Флотилии: <b>{{ experience }}</b>
+           {{ $t('capitan_experience') }} <br class="uk-hidden@s"> во Флотилии: <b>{{ experience }}</b>
         </span>
         <span v-else-if="managers || sellers">
            Работает: <b>{{ experience }}</b>

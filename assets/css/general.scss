@@ -1366,7 +1366,7 @@ header a:hover {
 }
 .header__middle_left {
   padding-bottom: 32px;
-  white-space: nowrap;
+  //white-space: nowrap;
 }
 
 .language-container {
@@ -1908,6 +1908,7 @@ header a:hover {
   font-weight: bold;
   font-size: 12px;
   color: #fff;
+  max-width: 90%;
 }
 .scheme__drop_text {
   font-size: 10px;
@@ -3641,7 +3642,7 @@ body {
     padding: 0;
   }
   .uk-position-center-right-out {
-    left: 77.5%;
+    left: 65%;
   }
   .uk-slider-items {
     margin-left: -170px;
@@ -4457,6 +4458,7 @@ body {
   color: #fff;
   border-radius: 50%;
   margin-right: 5px;
+  float: left;
 }
 .trams__route__metro__badge_brown {
   background: #835029;
@@ -4711,7 +4713,7 @@ body {
   }
   .disabled {
 
-    pointer-events: none;
+    /*pointer-events: none;*/
     td {
       opacity: 0.36;
     }

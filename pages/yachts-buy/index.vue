@@ -9,7 +9,7 @@
           </div>
           <div class="heading">
             <h1 class="headline_p1">
-              {{ $t('pages.tickets.flights.title') }}
+              {{ seoData?.header }}
             </h1>
           </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="buy-ticket-form__grid">
               <form ref="form" class="buy-ticket-form__info" id="payData" @submit.prevent="payTicket">
                 <div class="headline_p1">
-                  Купить билет
+                  {{ seoData?.header }}
                 </div>
                 <div class="buy-ticket-form__headline uk-position-relative">
                   <svg-icon class="buy-ticket-form__headline__icon" name="back-tickets"/>
@@ -34,7 +34,7 @@
                     <svg-icon class="icon" name="ancor-in-circle"/>
                     <div>
                   <span class="headline_32 t_semibold">
-                    Причал: «{{ routeData.placeName }}»
+                    {{ $t('port') }}: «{{ routeData.placeName }}»
                   </span>
                       <div class="buy-ticket-form__date uk-hidden@s">
                         <div>
@@ -89,7 +89,7 @@
                           -
                         </button>
                       </div>
-                      <input class="input-group-field" type="number" name="quantity" v-model="adultCount">
+                      <input @change="adultCount <= 1 ? adultCount = 1 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="1">
                       <div class="input-group-button">
                         <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
                                 data-field="quantity">
@@ -141,6 +141,7 @@
                                required="required"
                                name=""
                                v-model="form.name"
+                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
                         >
                         
                       </div>
@@ -159,6 +160,7 @@
                                v-imask="maskTel"
                                @accept="onAccept"
                                @complete="onComplete"
+                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
                         >
                         <div class="uk-form-danger uk-margin-top" v-if="errors.phone.isError">{{ errors.phone.msg }}</div>
                       </div>
@@ -173,6 +175,7 @@
                                name=""
                                :class="{'uk-form-danger': errors.email.isErrorInput || errors.email.isErrorSubmit}"
                                v-model="form.email"
+                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
                         >
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ errors.email.msgOnInput }}</div>
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ errors.email.msgOnSubmit }}</div>
@@ -354,7 +357,7 @@
                          <span class="text-error">{{onError}}</span>
                       </div>
                      
-                      <button type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid}">
+                      <button @click="ym(22731748,'reachGoal','oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
                         <span>Перейти к оплате</span>
                         <svg-icon class="icon" name="ticket"/>
                       </button>
@@ -412,13 +415,27 @@ import axios from "axios";
 import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import route from "../../components/trolley/Route.vue";
+import moment from "moment";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
   name: "yachts-buy",
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow -  Купить билет Рэдиссон Флотилии`,
+      title: this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   components: {
@@ -442,7 +459,7 @@ export default {
       fullName: '',
       email: '',
       phone: '',
-      adultCount: 0,
+      adultCount: 1,
       childCount: 0,
       childPrice: 0,
       adultPrice: 0,
@@ -490,6 +507,8 @@ export default {
         },
       },
       valid: false,
+      isLoading: false,
+      seoData: {},
     }
   },
   watch: {
@@ -593,14 +612,20 @@ export default {
     },
 
     timeCalc() {
-      let depatureTime = new Date(this.routeData.depatureTime);
-      let arrivalTime = new Date(this.routeData.arrivalTime);
-      let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
-      let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
-      let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
-      let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
-      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
+      if (this.routeData.depatureTime && this.routeData.arrivalTime) {
+        let depatureTime = new Date(this.routeData.depatureTime);
+        let arrivalTime = new Date(this.routeData.arrivalTime);
+        let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
+        let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
+        let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
+        let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
+        return isNaN(hourDepature) ? `Ошибка данных` : `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
+      } else {
+        return 'Данные времени отсутствуют'
+      }
     },
+
+
   },
 
   methods: {
@@ -648,8 +673,8 @@ export default {
       this.promoStatus = false
       this.saleNumber = 0
       if (param == '-') {
-        if (this.adultCount <= 0) {
-          return 0
+        if (this.adultCount <= 1) {
+          return 1
         } else {
           this.adultCount--
           this.adultSum -= this.adultPrice
@@ -658,7 +683,7 @@ export default {
         if(this.adultCount == 40) {
           this.adultCount
         } else {
-          if(this.maxSits == 0) {
+          if (this.maxSits == 0) {
             this.adultCount
           } else {
             this.adultCount++
@@ -696,8 +721,8 @@ export default {
       this.form.seatsChild = this.childCount;
       //console.log("Send Phone -> ",this.rowPhone.replace(/[^+\d]/g, ''));
       this.form.phone = this.rowPhone.replace(/[^+\d]/g, '');
-      
       try {
+        this.isLoading = true
         const response = await axios({
           method: 'POST',
           url: `${this.$config.baseURL}order`,
@@ -716,6 +741,7 @@ export default {
         if (payUrl !== undefined) {
           window.location = payUrl
         }
+        this.isLoading = false
       } catch (error) {
 /*         console.log(error)
         console.log(error.data)
@@ -769,7 +795,7 @@ export default {
     async currentRoute() {
       try {
         const data = await axios.get(
-          `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}`
+          `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
         )
         //console.log(data)
 
@@ -782,7 +808,17 @@ export default {
     },
     isValidDate(d) {
       return d instanceof Date && !isNaN(d);
-    }
+    },
+    timeCalcDate(dptrTime, arvTime) {
+      if(dptrTime === null || arvTime === null) return;
+      let formattedDeparture = moment(dptrTime).format('HH:mm')
+      let formattedArrival = moment(arvTime).format('HH:mm')
+      return `${formattedDeparture} - ${formattedArrival}`
+    },
+    sendYandexMetrikaEvent(eventName) {
+      console.log(this.$yandexMetrika)
+      this.$yandexMetrika.reachGoal(eventName);
+    },
   },
 
   mounted() {
@@ -801,8 +837,11 @@ export default {
 
   async fetch() {
     try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/yachts-buy/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
       let data = await axios.get(
-          `${this.$config.baseURL}route?journey=${this.$route.query.journey}`
+          `${this.$config.baseURL}route?journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
       )
       this.routeData = data.data.result
       this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {

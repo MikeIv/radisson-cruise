@@ -141,7 +141,8 @@
 <!--                <nuxt-link :to="localePath('/')">
                   {{ $t('header.info.official') }}
                 </nuxt-link>-->
-                {{ $t('header.info.official') }}
+<!--                {{ $t('header.info.official') }}-->
+                {{ $t('official_site') }}
               </div>
 <!--              <div>
                 {{ $t('header.info.people') }}
@@ -160,18 +161,18 @@
               </nuxt-link>-->
               <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
                 <svg-icon class="header__top_logo transition" name="yacht"/>
-                <span>{{ $t('header.buttons.shedulerYachts') }}</span>
+                <span>{{ $t('nav.yachts_schedule') }}</span>
               </nuxt-link>
               <nuxt-link class="header-link-shedule transition" to="/trams/schedule/"  @click.native="closeNav">
                 <svg-icon class="header__top_logo transition" name="tram-icon"/>
-                <span>{{ $t('header.buttons.shedulerTram') }}</span>
+                <span>{{ $t('nav.trams_schedule') }}</span>
               </nuxt-link>
             </div>
           </div>
           <div class="header__top_item5-container uk-visible@l">
-            <a class="header_call uk-visible@s" href="tel:+7 (495) 228-55-55">
+            <a class="header_call uk-visible@s" :href="`tel:${headerTel}`">
               <svg-icon class="header__top_logo transition" name="call"/>
-              <span>+7 (495) 228-55-55</span>
+              <span>{{ headerTel }}</span>
             </a>
           </div>
           <LangAndBurgerMenu ref="burgerMenu"/>
@@ -248,9 +249,15 @@
       aboutPage: Boolean,
     },
     components: {HeaderInner, SideNav,LangAndBurgerMenu},
+    data() {
+      return {
+        isActive: false,
+        headerTel: '+7 (495) 228-55-55',
+      }
+    },
     computed: {
       availableLocales() {
-        return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale);
+        return this.$i18n.locales.filter(i => i.active && i.code !== this.$i18n.locale);
       },
 
       currentLang() {
@@ -289,10 +296,8 @@
         }
       },
     },
-    data() {
-      return {
-        isActive: false,
-      }
+    mounted() {
+      this.headerTel = this.$store.getters.tel
     }
   };
 

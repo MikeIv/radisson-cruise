@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@nuxtjs/composition-api": "^0.32.0",
+    "@nuxtjs/moment": "^1.6.1",
     "@vue/composition-api": "^1.4.9",
     "fibers": "^5.0.0",
     "sass": "^1.45.0",
