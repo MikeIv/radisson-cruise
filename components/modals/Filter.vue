@@ -207,7 +207,7 @@ export default {
       default: () => [],
     },
     arrivalPlaces: {
-      type: Array,
+      type: [Array, Set],
       default: () => [],
     },
     routesCategories: {

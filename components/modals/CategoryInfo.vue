@@ -44,7 +44,7 @@
             <div class="modal-tenancy__info" v-if="info" v-html="info.content"></div>
           </div >
           <div class="uk-modal-full__block__bottom">
-            <a class="uk-modal-close link_close">ЗАКРЫТЬ ОКНО</a>
+            <a class="uk-modal-close link_close">{{$t('buttons.close_window')}}</a>
             <img class="uk-visible@s" data-src="~assets/img/inners/head-logo2@2x.png" alt="" src="~assets/img/inners/head-logo2@2x.png">
           </div>
         </div>
