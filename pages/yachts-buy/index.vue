@@ -255,7 +255,7 @@
                   <div class="buy-ticket-form__basket__main">
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Причал:
+                        {{ $t('port') }}:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
                         «{{ routeData.placeName }}»
@@ -285,7 +285,7 @@
                       <div class="buy-ticket-form__basket__item__passengers">
                         <div class="buy-ticket-form__basket__item__passenger">
                           <div>
-                            Взрослый
+                            {{ $t('adult') }}
                           </div>
                           <div>
                             {{ adultCount }} шт.
@@ -296,7 +296,7 @@
                         </div>
                         <div class="buy-ticket-form__basket__item__passenger">
                           <div>
-                            Детский
+                            {{ $t('children') }}
                           </div>
                           <div>
                             {{ childCount }} шт.
@@ -309,7 +309,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Данные
+                        {{ $t('data') }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
                         {{ fullName }}<br>
@@ -357,8 +357,8 @@
                          <span class="text-error">{{onError}}</span>
                       </div>
                      
-                      <button @click="ym(22731748,'reachGoal','oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
-                        <span>Перейти к оплате</span>
+                      <button @click="sendYandexMetrikaEvent('oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
+                        <span>{{ $t('goto_payment') }}</span>
                         <svg-icon class="icon" name="ticket"/>
                       </button>
 
@@ -517,8 +517,8 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      if(this.adultNewVal < 0 ) {
-        this.adultCount = 0
+      if (this.adultNewVal < 1 ) {
+        this.adultCount = 1
       }
 
       let currentMax = this.maxSits - this.childCount

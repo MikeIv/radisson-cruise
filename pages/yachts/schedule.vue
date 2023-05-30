@@ -715,20 +715,21 @@ export default {
     //console.log(dayRoutes.data.routes)
     this.testFetch = dayRoutes.data.routes;
     let setCategories = new Set()
+    let setPorts = new Set()
+    let setArrival = new Set()
     Object.entries(this.testFetch).forEach(item => {
       item[1].forEach(route => {
         setCategories.add(route.journeySubType)
+        setPorts.add(route.placeName)
       })
-    })
-    this.setCategories = setCategories
-    let setArrival = new Set()
-    //console.log(setCategories)
-    Object.entries(this.testFetch).forEach(item => {
       setArrival.add({
         date: item[0],
         routes: item[1],
       })
     })
+    this.setCategories = setCategories
+    this.arrivalPlaces = setPorts
+    //console.log(setCategories)
     this.arrayToFilter = setArrival;
     this.showRoutes = this.arrayToFilter
     //console.log("fetch() showRoutes = ",this.showRoutes);

@@ -92,13 +92,13 @@
               </nuxt-link>
             </div>
             <div class="uk-width-auto@s block-tikets">
-              <nuxt-link :to="localePath('/trams/schedule')" class="header-ticket transition">
+              <nuxt-link :to="localePath('/trams/')" class="header-ticket transition">
                 <div class="font-29 text-upper">
-                  <b>Билет на трамвайчик</b>
+                  <b>Расписание трамвайчиков</b>
                 </div>
                 <div class="uk-flex uk-flex-middle">
                   <div class="txt16">
-                    {{ $t('buttons.buy_ticket') }}
+                    Посмотреть
                   </div>
 
                   <svg xmlns="http://www.w3.org/2000/svg" width="34" height="11" viewBox="0 0 34.083 11.095"
