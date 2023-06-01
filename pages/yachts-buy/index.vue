@@ -141,7 +141,7 @@
                                required="required"
                                name=""
                                v-model="form.name"
-                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
+                               @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
                         
                       </div>
@@ -160,7 +160,7 @@
                                v-imask="maskTel"
                                @accept="onAccept"
                                @complete="onComplete"
-                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
+                               @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
                         <div class="uk-form-danger uk-margin-top" v-if="errors.phone.isError">{{ errors.phone.msg }}</div>
                       </div>
@@ -175,7 +175,7 @@
                                name=""
                                :class="{'uk-form-danger': errors.email.isErrorInput || errors.email.isErrorSubmit}"
                                v-model="form.email"
-                               @change="ym(22731748,'reachGoal','kontaky_bilet_23')"
+                               @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ errors.email.msgOnInput }}</div>
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ errors.email.msgOnSubmit }}</div>
@@ -816,13 +816,15 @@ export default {
       return `${formattedDeparture} - ${formattedArrival}`
     },
     sendYandexMetrikaEvent(eventName) {
-      console.log(this.$yandexMetrika)
       this.$yandexMetrika.reachGoal(eventName);
     },
   },
 
   mounted() {
     //console.log(this.$route.params)
+    console.log(window.ym.reachGoal)
+    console.log(this.$yandexMetrika)
+    console.log(this.$metrika)
   },
   middleware: [
     function({ redirect, route }) {

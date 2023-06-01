@@ -221,8 +221,8 @@
                       <span>ПЕРЕЙТИ К ОПЛАТЕ</span>
                       <svg-icon class="icon" name="ticket"/>
                     </a>-->
-                    <nuxt-link v-if="currentDay" class="uk-button uk-button-default button_ticket transition"
-                               :to="'/yachts-buy?day='+ currentDay + '&journey=' + currentNewRoute.journey"
+                    <nuxt-link class="uk-button uk-button-default button_ticket transition"
+                               :to="'/yachts-buy?journey=' + currentNewRoute.journey"
                     >
                       <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
                       <span>{{ $t('goto_payment') }}</span>
@@ -404,11 +404,10 @@ export default {
           `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`);
       this.currentNew = news.data.result
       this.recentNews = recentNews.data.news.slice(0, 2)
-      this.currentNewRoute = this.currentNew.route
-      this.currentDay = this.currentNewRoute?.depatureTime.slice(0, 10)
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
+    this.currentNewRoute = this.currentNew?.route
   },
   fetchOnServer: true,
   fetchKey: 'theatrical-post',

@@ -39,22 +39,12 @@
         </div>
       </div>
     </div>
-<!--    <div class="uk-flex uk-child-width-1-2@m uk-flex-wrap category-cabin-grid">
-      <div v-for="image in images">
-        <CategoryCabin :fileName="image" />
-      </div>
-    </div>-->
     <div class="uk-position-relative category-cabin-section">
-<!--      <div class="buy-ticket-info__item1__icon2 uk-visible@l">
-        <svg-icon name="category-rotate"/>
-        <svg-icon name="category-days"/>
-      </div>-->
-
       <div class="uk-container uk-position-relative">
         <div class="yacht-information__value">
           <svg-icon name="yacht-decor1" class="icon"/>
           <div class="yacht-information-value__txt">
-            <span>Стоимость:</span>
+            <span>{{$t('price')}}:</span>
             <span>{{ price }}</span>
           </div>
           <nuxt-link class="uk-button uk-button-secondary button_ticket transition" to="/yachts/schedule/">
@@ -69,38 +59,29 @@
 
         <div class="yacht__information_text" v-html="content">
         </div>
-<!--        <div class="yacht__information_p1">
-          <b>На рейсах Ройал класса:</b>
-        </div>
-        <div class="yacht__information__list">
-          <div>• Авторская кухня</div>
-          <div>• Комфортабельные диванные группы</div>
-          <div>• Профессиональные свет и звук</div>
-          <div>• Живая музыка на вечерних рейсах с четверга по субботу на яхте «Монтана»</div>
-        </div>-->
         <div class="yacht__information_capacity">
           <div v-if="boarding" class="yacht__information_capacity-item1">
             <svg-icon name="pass" class="icon"/>
             <span>
-                Рейсовая посадка – {{boarding}}
+                 {{$t('flight_landing')}} – {{boarding}}
               </span>
           </div>
           <div v-if="banquet" class="yacht__information_capacity-item2">
             <svg-icon name="feast" class="icon"/>
             <span>
-              Банкет – {{ banquet }}
+              {{$t('banquet')}} – {{ banquet }}
             </span>
           </div>
           <div v-if="buffet" class="yacht__information_capacity-item3">
             <svg-icon name="serving" class="icon"/>
             <span>
-                Фуршет - {{ buffet }}
+                {{$t('buffet')}} - {{ buffet }}
             </span>
           </div>
           <div v-if="hallarea" class="yacht__information_capacity-item3">
             <svg-icon name="svg-area" class="icon"/>
             <span>
-                Вместимость открытой палубы: {{ hallarea }}
+                {{ $t('open_deck_capacity') }}: {{ hallarea }}
             </span>
           </div>
         </div>

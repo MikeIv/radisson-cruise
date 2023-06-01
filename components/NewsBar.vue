@@ -11,7 +11,7 @@
         </li>
       </ul>
       <div class="description">
-        {{ $t('today') }}: <b>{{ dayInWeek }},<br>
+        {{ $t('today') }}: <b>{{ weekend }},<br>
         {{ currentDate }} {{ time }}</b>
       </div>
       <nuxt-link class="uk-button uk-button-default button_news-all" to="/news/">
@@ -147,24 +147,11 @@ export default {
     actions: Array
   },
   data() {
-    let days = [
-      'Воскресенье',
-      'Понедельник',
-      'Вторник',
-      'Среда',
-      'Четверг',
-      'Пятница',
-      'Суббота'
-    ]
-    let d = new Date();
-    let n = d.getDay();
-    let dayInWeek = days[n]
     return {
       isNewsLoaded: false,
       interval: null,
       time: null,
       currentDate: null,
-      dayInWeek,
       reviews: [
         {name: 'Derek', description: 'Some comment'},
         {name: 'Joe', description: 'Some comment'},
@@ -241,6 +228,7 @@ export default {
         name: `С 1 декабря Ройал класс Флотилии
                   возобнавляет навигацию`,
       },
+      weekend: "",
     }
   },
   methods: {
@@ -279,12 +267,12 @@ export default {
     clearInterval(this.interval)
   },
   created() {
+    this.currentDate = new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {}).format()
+    this.weekend = new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {weekday: "long"}).format()
     // update the time every second
     this.interval = setInterval(() => {
       // Concise way to format time according to system locale.
       // In my case this returns "3:48:00 am"
-      this.currentDate = Intl.DateTimeFormat('en-GB', {
-      }).format()
       this.time = Intl.DateTimeFormat('nu', {
         hour: 'numeric',
         minute: 'numeric',

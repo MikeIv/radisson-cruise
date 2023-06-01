@@ -27,7 +27,7 @@
               <div v-if="params !== ''" class="yacht__information_capacity-item6">
                 <svg-icon name="svg-area" class="icon"/>
                 <span>
-                  <b>Параметры:</b>
+                  <b>{{$t('params')}}:</b>
                   <br>
                   {{ params }}
                 </span>
@@ -35,15 +35,15 @@
               <div v-if="speed !== ''" class="yacht__information_capacity-item4">
                 <svg-icon name="Skorost" class="icon"/>
                 <span>
-                    <b>Круизная скорость:</b>
+                    <b>{{ $t('cruise_speed') }}:</b>
                     <br>
-                    {{ speed }} узлов
+                    {{ speed }}
                 </span>
               </div>
               <div v-if="engine !== ''" class="yacht__information_capacity-item5">
                 <svg-icon name="Dvigatel" class="icon"/>
                 <span>
-                  <b>Двигатели:</b>
+                  <b>{{$t('engines')}}:</b>
                   <br>
                   {{ engine }}
                 </span>

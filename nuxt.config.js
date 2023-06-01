@@ -87,6 +87,7 @@ export default {
       '@nuxtjs/moment',
   ],
   yandexMetrika: {
+    useCDN: true,
     id: '22731748',
     webvisor: true,
     clickmap:true,
