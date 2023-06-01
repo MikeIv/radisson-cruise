@@ -662,9 +662,6 @@
               <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
                 {{ $t('nav.trams') }}
               </nuxt-link>
-              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
-                Речные трамвайчики
-              </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
                 {{ $t('nav.categories') }}
               </nuxt-link>
@@ -692,9 +689,6 @@
               </nuxt-link>
               <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
                 {{ $t('nav.trams_schedule') }}
-              </nuxt-link>
-              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
-                Расписание трамвайчиков
               </nuxt-link>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                 {{ $t('nav.menu') }}

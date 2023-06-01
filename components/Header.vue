@@ -248,7 +248,7 @@
       videoName: String,
       aboutPage: Boolean,
     },
-    components: {HeaderInner, SideNav,LangAndBurgerMenu},
+    components: {HeaderInner, SideNav, LangAndBurgerMenu},
     data() {
       return {
         isActive: false,

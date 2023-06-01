@@ -854,5 +854,9 @@ export default {
   position: absolute;
 }
 
+.select-styled[aria-expanded="true"]::after {
+  rotate: 180deg;
+}
+
 </style>
 

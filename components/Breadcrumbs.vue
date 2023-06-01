@@ -20,6 +20,7 @@ export default {
   name: "Breadcrumbs",
   props: {
     linkName: String,
+    lastCrumb: String,
   },
   data() {
     return {
@@ -85,6 +86,14 @@ export default {
 
       if (this.$route.params.lang === 'eu') {
         crumbs.pop()
+      }
+
+      if(this.lastCrumb) {
+        crumbs.pop()
+        crumbs.push({
+          title: this.lastCrumb,
+          link: ''
+        })
       }
 
       return crumbs

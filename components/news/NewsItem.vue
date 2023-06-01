@@ -15,7 +15,7 @@
           </li>
           <li><span>{{ title }}</span></li>
         </ul>
-<!--        <Breadcrumbs/>-->
+<!--        <Breadcrumbs :last-crumb="title"/>-->
         <div class="news-item__grid uk-flex uk-flex-wrap">
           <div class="uk-width-expand@l uk-width-1-1 news-item__content">
             <h1 class="news-item__h1">

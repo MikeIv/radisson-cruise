@@ -19,106 +19,31 @@
         <div v-if="squareInfo !== ''" class="yacht__information_capacity-item2">
           <svg-icon name="svg-area" class="icon"/>
           <span>
-              Площадь зала: {{ squareInfo }}
+              {{$t('hall_area')}}: {{ squareInfo }}
           </span>
         </div>
 
         <div v-if="maxSits !== ''" class="yacht__information_capacity-item1">
           <svg-icon name="pass" class="icon"/>
           <span>
-              Рейсовая посадка: {{ maxSits }}
+              {{$t('flight_landing')}}: {{ maxSits }}
           </span>
         </div>
         <div v-if="maxFeast !== ''" class="yacht__information_capacity-item2">
           <svg-icon name="feast" class="icon"/>
           <span>
-               Банкет: {{ maxFeast }}
+               {{$t('banquet')}}: {{ maxFeast }}
           </span>
         </div>
         <div v-if="maxServing !== ''" class="yacht__information_capacity-item3">
           <svg-icon name="serving" class="icon"/>
           <span>
-               Фуршет: {{ maxServing }}
+               {{$t('buffet')}}: {{ maxServing }}
           </span>
         </div>
       </div>
       <div v-if="slides.length !== 0" class="uk-position-relative yacht__slider uk-slider uk-slider-container" tabindex="-1" uk-slider="">
         <ul class="uk-slider-items uk-flex" uk-lightbox="">
-<!--          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/_nuxt/assets/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover" src="~assets/img/main/_MG_1373.png">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1415.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1458-2.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1415.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1458-2.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1415.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1458-2.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>
-          <li tabindex="-1" class="uk-active">
-            <a href="/_nuxt/img/main/_MG_1373.png" class="gallery_card uk-position-relative">
-              <img data-src="~assets/img/main/_MG_1373.png" alt="" class="img_cover">
-            </a>
-          </li>-->
           <li v-for="slide in slides" tabindex="-1" class="uk-active">
 <!--            <PhotoCard :fileName="slide"/>-->
             <a :href="$config.baseSiteURL + slide"  class="gallery_card uk-position-relative">
