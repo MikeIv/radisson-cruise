@@ -7,8 +7,11 @@
         </nuxt-link>
       </li>
       <li class="crumb" v-for="(crumb, index) in crumbs" :key="'crmb' + index">
-        <nuxt-link :to="crumb.link + '/'" class="transition">
-          <span>{{ $t(`breadCrumb.${crumb.title}`)}}</span>
+        <nuxt-link v-if="crumb.title.includes('breadCrumb')" :to="crumb.link + '/'" class="transition">
+          <span>{{ $t(`${crumb.title}`) }}</span>
+        </nuxt-link>
+        <nuxt-link v-else :to="crumb.link + '/'" class="transition">
+          <span>{{ crumb.title }}</span>
         </nuxt-link>
       </li>
     </ul>
@@ -63,7 +66,7 @@ export default {
             let formatedMatch = match.name.replace(/[_]/gi, '').slice(0, -2)
             formatedMatch.replace(/[-]/gi, '_')
             crumbs.push({
-              title: formatedMatch.replace(/[-]/gi, '_'),
+              title: 'breadCrumb.'+ formatedMatch.replace(/[-]/gi, '_'),
               link: match.path
             })
           }

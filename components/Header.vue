@@ -142,7 +142,9 @@
                   {{ $t('header.info.official') }}
                 </nuxt-link>-->
 <!--                {{ $t('header.info.official') }}-->
-                {{ $t('official_site') }}
+                <nuxt-link to="/about">
+                  {{ $t('official_site') }}
+                </nuxt-link>
               </div>
 <!--              <div>
                 {{ $t('header.info.people') }}

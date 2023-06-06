@@ -7,19 +7,7 @@
     <section class="news-item__section">
       <div class="uk-container">
         <div class="news-item__container">
-          <ul class="uk-breadcrumb uk-breadcrumb_non-border">
-            <li>
-              <nuxt-link to="/" class="transition">
-                <span>Главная</span>
-              </nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/theatrical/" class="transition">
-                <span>Театральные круизы</span>
-              </nuxt-link>
-            </li>
-            <li><span>{{ currentNew.name }}</span></li>
-          </ul>
+          <Breadcrumbs :last-crumb="currentNew.name"/>
           <div class="news-item__grid uk-flex uk-flex-wrap">
             <div class="uk-width-expand@l uk-width-1-1 news-item__content">
               <h1 class="news-item__h1">

@@ -3,7 +3,7 @@
     <div class="uk-cover-container uk-card-default_media">
       <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
       <div class="uk-badge">
-        Важное
+        {{ $t('important') }}
       </div>
     </div>
     <div class="uk-card-body">
@@ -17,7 +17,7 @@
         {{ description }}
       </div>
       <div class="link_more">
-        <span>Подробнее</span>
+        <span>{{$t('buttons.more')}}</span>
         <svg-icon class="icon" name="arrow"/>
       </div>
     </div>

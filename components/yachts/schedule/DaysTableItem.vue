@@ -37,7 +37,7 @@
       <nuxt-link class="uk-button uk-button-default button_ticket transition"
                  :class="{'disabled-link': checkForLateRoutes}"
                  :to="'/yachts-buy/?journey='+journey"
-                 @click="ym(22731748,'reachGoal','kupit_bilet_23')"
+                 @click="$metrika.reachGoal('kupit_bilet_23')"
       >
 <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
         <span>{{ $t('buttons.buy_ticket') }}</span>

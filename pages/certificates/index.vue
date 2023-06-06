@@ -5,7 +5,7 @@
     </Header>
     <div class="padding_bottom uk-container buy-sertificat__section">
       <div class="buy-sertificat__wrap">
-        <Breadcrumbs/>
+        <Breadcrumbs />
         <div class="buy-sertificat__head">
           <img  data-src="~assets/img/sertificat/sert1.png" alt="" class="buy-sertificat-head__back" src="~assets/img/sertificat/sert1.png">
           <h1 class="headline_p1 uk-position-relative">
@@ -29,178 +29,16 @@
       </div>
     </div>
   </div>
-  <!--  <div>
-      <section class=" padding_bottom buy-sertificat__section">
-        <div class="uk-container">
-          <div class="buy-sertificat__wrap">
-            <ul class="uk-breadcrumb ">
-              <li>
-                <nuxt-link to="/" class="transition">
-                  <span>Главная</span>
-                </nuxt-link>
-              </li>
-              <li>
-                <span>
-                  Подарочные сертификаты
-                </span>
-              </li>
-            </ul>
-            <div class="buy-sertificat__head">
-              <img data-src="~assets/img/sertificat/sert1.png" alt="" class="buy-sertificat-head__back" src="~assets/img/sertificat/sert1.png">
-              <div class="headline_p1 uk-position-relative">
-                Подарочные
-                сертификаты
-              </div>
-              <div class="buy-sertificat-head__p2 uk-position-relative">
-                Сертификаты на круизы на белоснежных яхтах Флотилии «Рэдиссон Ройал» – универсальный
-                подарок для близких, коллег и друзей. Впечатления, полученные от круиза, надолго останутся
-                в памяти, а фотографии потрясающих видов исторического центра Москвы – в фотопленке.
-              </div>
-            </div>
-            <div class="headline_22 buy-sertificat__headline_22">
-              Выберите свой Подарочный сертификат Флотилии с открытой датой:
-            </div>
-            <div class="buy-sertificat__grid uk-grid-match uk-flex uk-flex-wrap uk-child-width-1-2@m">
-              <div>
-                <div class="buy-sertificat__card">
-                  <div class="uk-cover-container buy-sertificat-card__img">
-                    <img uk-img="" data-src="/img/sertificat/sert2.png" class="img_cover" alt="" src="~assets/img/sertificat/sert2.png">
-                    <div class="buy-sertificat-card__badge"><img uk-img="" data-src="/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png"></div>
-                  </div>
-                  <div class="buy-sertificat-card__main">
-                    <div class="txt18">
-                      Сертификат в Основной зал
-                    </div>
-                    <div class="buy-sertificat-card__p1">
-                      Что входит в стоимость?
-                    </div>
-                    <div class="buy-sertificat-card__p2">
-                      2,5 часа прогулки по Москве-реке на белоснежной яхте в Основном зале
-                    </div>
-                  </div>
-                  <div class="buy-sertificat-card__bottom uk-flex uk-flex-between uk-flex-middle">
-                    <div class="headline_22">
-                      1 800 ₽
-                    </div>
-                    <a class="uk-button uk-button-default" href="/buy_ticket_form_sertificat.html">
-                      КУПИТЬ СЕРТИФИКАТ
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="buy-sertificat__card">
-                  <div class="uk-cover-container buy-sertificat-card__img">
-                    <img uk-img="" data-src="/img/sertificat/sert3.png" class="img_cover" alt="" src="~assets/img/sertificat/sert3.png">
-                    <div class="buy-sertificat-card__badge"><img uk-img="" data-src="/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png"></div>
-                  </div>
-                  <div class="buy-sertificat-card__main">
-                    <div class="txt18">
-                      Сертификат в Ройал класс
-                    </div>
-                    <div class="buy-sertificat-card__p1">
-                      Что входит в стоимость?
-                    </div>
-                    <div class="buy-sertificat-card__p2">
-                      2,5 часа прогулки по Москве-реке на белоснежной яхте в Ройал классе
-                    </div>
-                  </div>
-                  <div class="buy-sertificat-card__bottom uk-flex uk-flex-between uk-flex-middle">
-                    <div class="headline_22">
-                      2 100 ₽
-                    </div>
-                    <a class="uk-button uk-button-default" href="/buy_ticket_form_sertificat.html">
-                      КУПИТЬ СЕРТИФИКАТ
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="buy-sertificat__card">
-                  <div class="uk-cover-container buy-sertificat-card__img">
-                    <img uk-img="" data-src="/img/sertificat/sert4.png" class="img_cover" alt="" src="~assets/img/sertificat/sert4.png">
-                    <div class="buy-sertificat-card__badge"><img uk-img="" data-src="/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png"></div>
-                  </div>
-                  <div class="buy-sertificat-card__main">
-                    <div class="txt18">
-                      Сертификат с питанием в Основной зал
-                    </div>
-                    <div class="buy-sertificat-card__p1">
-                      Что входит в стоимость?
-                    </div>
-                    <div class="buy-sertificat-card__p2">
-                      <p>
-                        2,5 часа прогулки по Москве-реке на белоснежной яхте в Основном зале
-                      </p>
-                      <p>
-                        Блюда <a href="">меню а-ля карт</a> на выбор (холодная закуска, салат, суп, горячее
-                        блюдо*)
-                      </p>
-                      <p class="txt12">
-                        *Из представленных 4-х позиций можно выбрать 3
-                      </p>
-                    </div>
-                  </div>
-                  <div class="buy-sertificat-card__bottom uk-flex uk-flex-between uk-flex-middle">
-                    <div class="headline_22">
-                      4 600 ₽
-                    </div>
-                    <a class="uk-button uk-button-default" href="/buy_ticket_form_sertificat.html">
-                      КУПИТЬ СЕРТИФИКАТ
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="buy-sertificat__card">
-                  <div class="uk-cover-container buy-sertificat-card__img">
-                    <img uk-img="" data-src="/img/sertificat/sert5.png" class="img_cover" alt="" src="~assets/img/sertificat/sert5.png">
-                    <div class="buy-sertificat-card__badge"><img uk-img="" data-src="/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png"></div>
-                  </div>
-                  <div class="buy-sertificat-card__main">
-                    <div class="txt18">
-                      Сертификат с питанием в Ройал класс
-                    </div>
-                    <div class="buy-sertificat-card__p1">
-                      Что входит в стоимость?
-                    </div>
-                    <div class="buy-sertificat-card__p2">
-                      <p>
-                        2,5 часа прогулки по Москве-реке на белоснежной яхте в Ройал классе
-                      </p>
-                      <p>
-                        Блюда меню Ройал класса на выбор (холодная закуска, горячая закуска,
-                        суп, горячее блюдо*)
-                      </p>
-                      <p class="txt12">
-                        *Из представленных 4-х позиций можно выбрать 3
-                      </p>
-                    </div>
-                  </div>
-                  <div class="buy-sertificat-card__bottom uk-flex uk-flex-between uk-flex-middle">
-                    <div class="headline_22">
-                      4 600 ₽
-                    </div>
-                    <a class="uk-button uk-button-default" href="/buy_ticket_form_sertificat.html">
-                      КУПИТЬ СЕРТИФИКАТ
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>-->
 </template>
 
 <script>
 import Header from "../../components/Header";
 import CertificateCard from "../../components/tickets/CertificateCard";
 import axios from "axios";
+import Breadcrumbs from "../../components/Breadcrumbs.vue";
 export default {
   name: "index",
-  components: {CertificateCard, Header},
+  components: {Breadcrumbs, CertificateCard, Header},
   head() {
     return {
       title: this.seoData?.title,
