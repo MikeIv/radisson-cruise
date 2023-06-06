@@ -10,6 +10,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@artmizu/yandex-metrika-nuxt-2": "^1.0.2",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.2.0",
     "@nuxtjs/proxy": "^2.1.0",

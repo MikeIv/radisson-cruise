@@ -2,20 +2,7 @@
   <section class="news-item__section">
     <div class="uk-container">
       <div class="news-item__container">
-        <ul class="uk-breadcrumb uk-breadcrumb_non-border">
-          <li>
-            <nuxt-link to="/" class="transition">
-              <span>Главная</span>
-            </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/news/" class="transition">
-              <span>Новости</span>
-            </nuxt-link>
-          </li>
-          <li><span>{{ title }}</span></li>
-        </ul>
-<!--        <Breadcrumbs :last-crumb="title"/>-->
+        <Breadcrumbs :last-crumb="title"/>
         <div class="news-item__grid uk-flex uk-flex-wrap">
           <div class="uk-width-expand@l uk-width-1-1 news-item__content">
             <h1 class="news-item__h1">
@@ -112,7 +99,7 @@
           <div class="uk-width-auto uk-width-1-1 uk-visible@l">
             <div class="news-last">
               <div class="headline_22 t_semibold">
-                Последние новости
+                {{$t('recent_news')}}
               </div>
               <ul class="uk-padding-remove uk-margin-remove">
                 <li v-for="recentNew in recentNews">
@@ -183,7 +170,7 @@
               </ul>
               <div class="link_archive__container">
                 <nuxt-link to="/news" class="link_archive">
-                  Архив новостей
+                  {{$t('archive_news')}}
                 </nuxt-link>
               </div>
             </div>
@@ -194,7 +181,7 @@
       <div class="news-item__container2 uk-hidden@l">
         <div class="news-last">
           <div class="headline_22 t_semibold">
-            Последние новости
+            {{$t('recent_news')}}
           </div>
           <div class="uk-position-relative news-last__slider uk-slider uk-slider-container" tabindex="-1" uk-slider="">
             <ul class="uk-slider-items uk-child-width-1-2@s">
@@ -224,7 +211,7 @@
           </div>
           <div class="link_archive__container">
             <nuxt-link to="/news/" class="link_archive">
-              АРХИВ НОВОСТЕЙ
+              {{$t('archive_news')}}
             </nuxt-link>
           </div>
         </div>

@@ -2,7 +2,7 @@
   <div class="header__top_item4-container">
     <div class="header__top_item4">
       <div class="language-container">
-        <!--        <a href="#" class="language" aria-expanded="false">
+<!--        <a href="#" class="language" aria-expanded="false">
           <span>{{ currentLang }}</span>
           <svg-icon name="arr_lang" class="icon header__top_logo transition"/>
         </a>-->

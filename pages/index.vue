@@ -75,38 +75,24 @@
             <div class="uk-width-auto@s block-tikets">
               <nuxt-link :to="localePath('/yachts/schedule')" class="header-ticket transition">
                 <div class="font-29 text-upper">
-                  <b>Билет на яхты</b>
+                  <b>{{$t('ticket_yacht')}}</b>
                 </div>
                 <div class="uk-flex uk-flex-middle">
                   <div class="txt16">
                     {{ $t('buttons.buy_ticket') }}
                   </div>
-
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="11" viewBox="0 0 34.083 11.095"
-                       class="uk-preserve uk-svg">
-                    <path id="svg-arr"
-                          d="M9,14.825a.578.578,0,0,0-.8-.071.551.551,0,0,0-.073.787.571.571,0,0,0,.073.071l4.1,4.021H-19.3a.565.565,0,0,0-.541.589.566.566,0,0,0,.541.53H12.3l-4.1,4.016a.562.562,0,0,0,0,.787.575.575,0,0,0,.8,0H9l5.074-4.975a.539.539,0,0,0,.015-.772l-.015-.015Z"
-                          transform="translate(19.841 -14.624)" fill=""></path>
-                  </svg>
                 </div>
               </nuxt-link>
             </div>
             <div class="uk-width-auto@s block-tikets">
               <nuxt-link :to="localePath('/trams/')" class="header-ticket transition">
                 <div class="font-29 text-upper">
-                  <b>{{ $t('nav.trams_schedule') }}</b>
+                  <b>{{ $t('nav.trams') }}</b>
                 </div>
                 <div class="uk-flex uk-flex-middle">
                   <div class="txt16">
-                    {{ $t('buttons.show') }}
+                    {{ $t('buttons.more') }}
                   </div>
-
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="11" viewBox="0 0 34.083 11.095"
-                       class="uk-preserve uk-svg">
-                    <path id="svg-arr"
-                          d="M9,14.825a.578.578,0,0,0-.8-.071.551.551,0,0,0-.073.787.571.571,0,0,0,.073.071l4.1,4.021H-19.3a.565.565,0,0,0-.541.589.566.566,0,0,0,.541.53H12.3l-4.1,4.016a.562.562,0,0,0,0,.787.575.575,0,0,0,.8,0H9l5.074-4.975a.539.539,0,0,0,.015-.772l-.015-.015Z"
-                          transform="translate(19.841 -14.624)" fill=""></path>
-                  </svg>
                 </div>
               </nuxt-link>
             </div>
@@ -619,6 +605,27 @@ export default {
 .instagram .headline .headline_p1:nth-child(4) {
   margin-left: 216px;
 }
+
+.block-tikets {
+  border: 1px solid #fff;
+  padding: 5px 20px;
+}
+
+@media screen and (max-width: 1199px) {
+  .block-tikets {
+    border: none;
+    padding: 0;
+  }
+  .header-tickets-grid {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+}
+
+/*.header-ticket:hover {
+  color: #fff;
+}*/
 
 @media screen and (max-width: 639px) {
   .block-tikets {

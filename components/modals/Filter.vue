@@ -44,6 +44,12 @@
                       <span>{{ place }}</span>
                     </label>
                   </div>
+                  <button @click="isArrival = false"
+                          type="button"
+                          class="uk-button uk-button-default accept_button"
+                  >
+                    Применить
+                  </button>
                 </div>
               </div>
             </div>
@@ -69,6 +75,12 @@
                     </label>
 
                   </div>
+                  <button @click="isCatetories = false"
+                          type="button"
+                          class="uk-button uk-button-default accept_button"
+                  >
+                    Применить
+                  </button>
                 </div>
               </div>
             </div>
@@ -104,7 +116,12 @@
                       </div>
                     </div>
                   </div>
-
+                  <button @click="isTikets = false"
+                          type="button"
+                          class="uk-button uk-button-default accept_button"
+                  >
+                    Применить
+                  </button>
                 </div>
               </div>
             </div>
@@ -119,7 +136,7 @@
           <div class="modal-news-filter__footer">
             <button class="uk-button uk-button-default button_ticket uk-modal-close" @click="setFilter">
 
-              <span>НАЙТИ РЕЙС</span>
+              <span>{{ $t('buttons.find_route') }}</span>
               <svg-icon name="looking_glass" class="icon"/>
             </button>
           </div>
@@ -510,6 +527,7 @@ export default {
         singleMode: false,
         numberOfMonths: 1,
         numberOfColumns: 1,
+        autoApply: true,
         minDate: new Date().setDate(new Date().getDate() - 0),
         maxDate: new Date().setDate(new Date().getDate() + 60),
         tooltipText: {
@@ -613,6 +631,16 @@ export default {
 
 .select-styled.select-open::after {
   rotate: 180deg;
+}
+
+.pass-quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.accept_button {
+  margin-top: 20px;
+  width: 100%;
 }
 
 

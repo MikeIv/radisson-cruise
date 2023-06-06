@@ -45,10 +45,10 @@
                           <b>{{ routeData.showTime }}</b>
                         </div>
                         <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
-                            Дневной
+                             {{$t('daytime')}}
                         </span>
                         <span v-else class="buy-ticket-shedule__time__txt">
-                            Вечерний
+                            {{$t('vespertime')}}
                         </span>
                       </div>
                     </div>
@@ -62,10 +62,10 @@
                       <b>{{ routeData.showTime }}</b>
                     </div>
                     <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
-                         Дневной
+                          {{$t('daytime')}}
                     </span>
                     <span v-else class="buy-ticket-shedule__time__txt">
-                         Вечерний
+                         {{$t('vespertime')}}
                     </span>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
                   <div class="buy-ticket-form__passengers__item buy-ticket-form__passengers__item__first">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
-                        <b>Взрослый билет</b>
+                        <b>{{$t('adult')}} {{$t('ticket')}}</b>
                       </div>
                       <div class="buy-ticket-form__passengers__item__summ">
                         <b>{{ routeData.adultPrice }}</b>
@@ -101,7 +101,7 @@
                   <div class="buy-ticket-form__passengers__item">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
-                        <b>Детский билет</b>
+                        <b>{{$t('children')}} {{$t('ticket')}}</b>
                       </div>
                       <div class="buy-ticket-form__passengers__item__summ">
                         <b>{{ routeData.childPrice }}</b>
@@ -193,6 +193,7 @@
                           type="checkbox"
                           name="check-personal"
                           required
+                          @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                       >
                       <span class="">
                         Я принимаю условия приобритения билетов и даю согласие на обработку <nuxt-link to="/politic/">персональных данных</nuxt-link>
@@ -210,7 +211,7 @@
                 <div class="buy-ticket-form__footer">
                   <div class="buy-ticket-form__total">
                     <span>
-                      Итого:
+                      {{$t('total')}}:
                     </span>
                     <span>
                       {{ totalSumCount }} ₽
@@ -221,7 +222,7 @@
                     <input class="uk-input buy-ticket__input" type="text" placeholder="Промокод" name=""
                            v-model="promoCode">
                     <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
-                      <span>Применить</span>
+                      <span>{{$t('buttons.accept')}}</span>
                       <svg-icon class="icon uk-visible@s" name="ticket"/>
                     </button>
                     <div>{{ promoMsg }}</div>
@@ -248,7 +249,7 @@
                 <div class="buy-ticket-form__basket">
                   <div class="buy-ticket-form__basket__head">
                     <div class="headline_22 t_semibold">
-                      Корзина
+                      {{ $t('cart') }}
                     </div>
                     <svg-icon class="icon" name="cart"/>
                   </div>
@@ -280,7 +281,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Количество пассажиров
+                        {{$t('select_number_tickets_long')}}
                       </div>
                       <div class="buy-ticket-form__basket__item__passengers">
                         <div class="buy-ticket-form__basket__item__passenger">
@@ -319,7 +320,7 @@
                     </div>
                     <div v-if="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Информация
+                        {{$t('information')}}
                       </div>
                       <div v-html="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
                       </div>
@@ -327,7 +328,7 @@
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__summ">
                         <div>
-                          Сумма:
+                          {{$t('amount')}}:
                         </div>
                         <div v-if="promoStatus">
                           {{ totalSumWithSale }} ₽
@@ -382,9 +383,7 @@
           <div class="buy-ticket-more-information">
             <div class="buy-ticket-more-information__cards">
               <div class="txt18">
-                <b>
-                  К оплате принимаются
-                </b>
+                <b>{{$t('payment_methods')}}</b>
               </div>
               <img data-src="~assets/img/inners/buy_visa.png" alt="" class="uk-visible@s"
                    src="~assets/img/inners/buy_visa.png">
@@ -816,14 +815,12 @@ export default {
       return `${formattedDeparture} - ${formattedArrival}`
     },
     sendYandexMetrikaEvent(eventName) {
-      this.$yandexMetrika.reachGoal(eventName);
+      this.$metrika.reachGoal(eventName);
     },
   },
 
   mounted() {
     //console.log(this.$route.params)
-    console.log(window.ym.reachGoal)
-    console.log(this.$yandexMetrika)
     console.log(this.$metrika)
   },
   middleware: [

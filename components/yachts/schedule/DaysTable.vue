@@ -10,12 +10,12 @@
       </thead>
       <tbody>
       <tr>
-        <td>Причал</td>
-        <td>Категория билета</td>
-        <td>Время</td>
+        <td>{{$t('port')}}</td>
+        <td>{{$t('select_ticket_category')}}</td>
+        <td>{{$t('time')}}</td>
         <td>{{$t('adult')}}</td>
         <td>{{$t('children')}}</td>
-        <td>Свободных мест</td>
+        <td>{{$t('free_sits')}}</td>
         <td>Купить</td>
       </tr>
       <tr v-if="!aboutDays || aboutDays.length === 0">
@@ -58,16 +58,8 @@ export default {
   },
   computed: {
     weekday() {
-      let weekday = [
-        'Воскресенье',
-        'Понедельник',
-        'Вторник',
-        'Среда',
-        'Четверг',
-        'Пятница',
-        'Суббота'
-      ]
-      return weekday[new Date(this.day).getDay()];
+      let day = new Date(this.day)
+      return new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {weekday: "long"}).format(day)
     },
     dayFormat() {
       return new Date(this.day).toLocaleDateString(`ru-RU`, { month: 'long', day: 'numeric' })

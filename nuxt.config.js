@@ -22,7 +22,7 @@ export default {
       },
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
         { hid: 'description', name: 'description', content: '' },
         { name: 'format-detection', content: 'telephone=no' },
         ...i18nHead.meta,
@@ -83,11 +83,10 @@ export default {
       '@nuxtjs/redirect-module',
       '@nuxtjs/proxy',
       '@nuxtjs/composition-api/module',
-      '@nuxtjs/yandex-metrika',
+      '@artmizu/yandex-metrika-nuxt-2',
       '@nuxtjs/moment',
   ],
   yandexMetrika: {
-    useCDN: true,
     id: '22731748',
     webvisor: true,
     clickmap:true,
