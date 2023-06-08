@@ -375,7 +375,7 @@ export default {
           UIkit.notification({message: 'Ошибка отправки заявки', status: 'danger', pos: 'top-center', timeout: 1500})
         }
       };
-      this.$metrika.reachGoal('arenda-2023');
+      this.$yandexMetrika.reachGoal('arenda-2023');
       fetchCalculation();
       this.closeModal();
     },

@@ -135,8 +135,7 @@
 
         </div>
         <div class="trams-shutdown__bottom">
-          <nuxt-link class="uk-button uk-button-default " to="/trams/schedule/">
-
+          <nuxt-link class="uk-button uk-button-default " to="/upload/docs/20230608_134838_6481b2066d5bd.pdf">
             <span>{{ $t('schedule') }}</span>
           </nuxt-link>
 

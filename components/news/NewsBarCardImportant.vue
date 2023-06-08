@@ -3,7 +3,7 @@
     <div class="uk-cover-container uk-card-default_media">
       <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
       <div class="uk-badge">
-        {{ $t('important') }}
+        {{ $t('news_important') }}
       </div>
     </div>
     <div class="uk-card-body">

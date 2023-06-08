@@ -42,7 +42,7 @@
               </select>
             </div>
           </div> -->
-          <BuyTicketBtn link="/trams/schedule/"/>
+          <BuyTicketBtn link="/upload/docs/20230608_134838_6481b2066d5bd.pdf"/>
         </form>
 
       </div>
