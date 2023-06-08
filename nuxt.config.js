@@ -202,7 +202,7 @@ export default {
         iso: 'en-US',
         name: 'EN',
         file: 'en-US.js',
-        domain: process.env.LANG_EN === '' ? process.env.LANG_RU : process.env.LANG_EN,
+        domain: !process.env.LANG_EN ? process.env.LANG_RU : process.env.LANG_EN,
         active: process.env.LANG_EN !== ""
       },
       {
@@ -218,7 +218,7 @@ export default {
         iso: 'zh-CN',
         name: 'CN',
         file: 'zh-CN.js',
-        domain: process.env.LANG_CN === '' ? process.env.LANG_RU : process.env.LANG_CN,
+        domain: !process.env.LANG_CN ? process.env.LANG_RU : process.env.LANG_CN,
         active: process.env.LANG_CN !== ""
       },
     ],
