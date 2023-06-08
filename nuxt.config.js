@@ -190,12 +190,12 @@ export default {
     /* module options */
     baseUrl: process.env.BASE_URL,
     detectBrowserLanguage: false,
-    differentDomains: true,
+    differentDomains: false,
     langDir: 'lang/',
     lazy: {
       skipNuxtState: false
     },
-    /*defaultLocale: 'ru',*/
+    defaultLocale: 'ru',
     locales: [
       {
         code: 'en',
