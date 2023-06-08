@@ -83,16 +83,26 @@ export default {
       '@nuxtjs/redirect-module',
       '@nuxtjs/proxy',
       '@nuxtjs/composition-api/module',
-      '@artmizu/yandex-metrika-nuxt-2',
+      [
+        '@rkaliev/nuxtjs-yandex-metrika',
+        {
+          id: '22731748',
+          debug: false,
+          webvisor: true,
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true
+        },
+      ],
       '@nuxtjs/moment',
   ],
-  yandexMetrika: {
+  /*yandexMetrika: {
     id: '22731748',
     webvisor: true,
     clickmap:true,
     trackLinks:true,
     accurateTrackBounce:true
-  },
+  },*/
   /*redirect: [
     {
       from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
@@ -192,7 +202,7 @@ export default {
         iso: 'en-US',
         name: 'EN',
         file: 'en-US.js',
-        domain: process.env.LANG_EN,
+        domain: process.env.LANG_EN === '' ? process.env.LANG_RU : process.env.LANG_EN,
         active: process.env.LANG_EN !== ""
       },
       {
@@ -208,7 +218,7 @@ export default {
         iso: 'zh-CN',
         name: 'CN',
         file: 'zh-CN.js',
-        domain: process.env.LANG_CN,
+        domain: process.env.LANG_CN === '' ? process.env.LANG_RU : process.env.LANG_CN,
         active: process.env.LANG_CN !== ""
       },
     ],

@@ -14,7 +14,8 @@
       <div v-else uk-slider="" class="awards__slider uk-slider">
         <div class="uk-position-relative">
           <div class="uk-slider-container ">
-            <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-match" uk-scrollspy="target: > li > .awards__card ; cls: uk-animation-slide-bottom-medium; delay: 500" style="transform: translate3d(0px, 0px, 0px);">
+            <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-match"
+                uk-scrollspy="target: > li > .awards__card ; cls: uk-animation-slide-bottom-medium; delay: 500">
               <li tabindex="-1" class="uk-active" v-for="(card, index) in testCards" :key="'rwrd' + index">
                 <RewardCard :date="card.title" :file-name="card.image" :subText="card.description" :imgText="card.imgtitle" :cardName="card.name"/>
               </li>

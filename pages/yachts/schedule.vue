@@ -301,7 +301,7 @@
                       class="uk-button uk-button-default button_ticket"
                       :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
                       :to="`/yachts-buy/?journey=${dayData.journey}`"
-                      @click="$metrika.reachGoal('kupit_bilet_23')"
+                      @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
                   >
                     <span>{{ $t('buttons.buy_ticket') }}</span>
                     <svg-icon class="icon" name="ticket"/>

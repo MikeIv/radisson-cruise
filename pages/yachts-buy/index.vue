@@ -105,6 +105,14 @@
                       </div>
                       <div class="buy-ticket-form__passengers__item__summ">
                         <b>{{ routeData.childPrice }}</b>
+                        <button type="button" @click="openChildModal">
+                          <svg-icon
+                              name="svg-info3"
+                              class="icon"
+                              width="18"
+                              height="18"
+                          />
+                        </button>
                       </div>
                     </div>
                     <div class="input-group plus-minus-input">
@@ -404,6 +412,7 @@
           </div>
         </div>
       </section>
+      <ChildInfo />
     </client-only>
   </div>
 </template>
@@ -415,6 +424,8 @@ import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import route from "../../components/trolley/Route.vue";
 import moment from "moment";
+import UIkit from "uikit";
+import ChildInfo from "../../components/modals/ChildInfo.vue";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
@@ -438,6 +449,7 @@ export default {
     }
   },
   components: {
+    ChildInfo,
     Breadcrumbs,
     Header,
   },
@@ -708,6 +720,9 @@ export default {
         } else {
           this.childCount++
           this.childSum += this.childPrice
+          if (this.childCount === 1) {
+            UIkit.modal('#childInfo').show();
+          }
         }
       }
     },
@@ -815,13 +830,17 @@ export default {
       return `${formattedDeparture} - ${formattedArrival}`
     },
     sendYandexMetrikaEvent(eventName) {
-      this.$metrika.reachGoal(eventName);
+      this.$yandexMetrika.reachGoal(eventName);
     },
+
+    openChildModal() {
+      UIkit.modal('#childInfo').show();
+    }
   },
 
   mounted() {
     //console.log(this.$route.params)
-    console.log(this.$metrika)
+    console.log(this.$yandexMetrika)
   },
   middleware: [
     function({ redirect, route }) {
