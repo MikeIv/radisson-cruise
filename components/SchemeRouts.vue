@@ -132,10 +132,10 @@
                             </div>-->
 
                             <div class="width-100 ">
-                                <nuxt-link to="/upload/docs/20230608_134838_6481b2066d5bd.pdf" class="width-100 height-100 uk-button uk-button-default button_ticket">
+                                <a href="/upload/docs/20230608_134838_6481b2066d5bd.pdf" class="width-100 height-100 uk-button uk-button-default button_ticket">
                                     <span>{{ $t('schedule') }}</span>
                                     <svg-icon name='clock' class="icon"/>
-                                </nuxt-link>
+                                </a>
                             </div>
                         </div>
                     </li>

@@ -165,10 +165,10 @@
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('nav.yachts_schedule') }}</span>
               </nuxt-link>
-              <nuxt-link class="header-link-shedule transition" to="/upload/docs/20230608_134838_6481b2066d5bd.pdf"  @click="closeNav">
+              <a class="header-link-shedule transition" href="/upload/docs/20230608_134838_6481b2066d5bd.pdf"  @click="closeNav">
                 <svg-icon class="header__top_logo transition" name="tram-icon"/>
                 <span>{{ $t('nav.trams_schedule') }}</span>
-              </nuxt-link>
+              </a>
             </div>
           </div>
           <div class="header__top_item5-container uk-visible@l">

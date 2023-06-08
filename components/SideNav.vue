@@ -687,9 +687,9 @@
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 {{ $t('nav.yachts_schedule') }}
               </nuxt-link>
-              <nuxt-link class="txt18 " to="/upload/docs/20230608_134838_6481b2066d5bd.pdf" @click.native="closeNav">
+              <a class="txt18 " href="/upload/docs/20230608_134838_6481b2066d5bd.pdf" @click.native="closeNav">
                 {{ $t('nav.trams_schedule') }}
-              </nuxt-link>
+              </a>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                 {{ $t('nav.menu') }}
               </nuxt-link>
@@ -727,9 +727,9 @@
               <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
                 {{ $t('nav.trams') }}
               </nuxt-link>
-              <nuxt-link class="txt18 " to="/upload/docs/20230608_134838_6481b2066d5bd.pdf" @click.native="closeNav">
+              <a class="txt18 " href="/upload/docs/20230608_134838_6481b2066d5bd.pdf" @click.native="closeNav">
                 {{ $t('nav.trams_schedule') }}
-              </nuxt-link>
+              </a>
               <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
                 Erwin.Река
               </nuxt-link>
