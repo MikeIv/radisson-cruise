@@ -13,7 +13,7 @@
       <div class="accordion_vacantion__info__grid">
         <div v-if="vacancy.requirements && vacancy.requirements.length > 0">
           <div class="accordion_vacantion__info__p1">
-            Требования
+            {{$t('requirements')}}
           </div>
           <ul>
             <li v-for="(request, index) in vacancy.requirements" :key="'rqst' + index">
@@ -23,7 +23,7 @@
         </div>
         <div v-if="vacancy.conditions && vacancy.conditions.length > 0">
           <div class="accordion_vacantion__info__p1">
-            Условия
+            {{$t('conditions')}}
           </div>
           <ul>
             <li v-for="(condition, index) in vacancy.conditions" :key="'cdtn' + index">
@@ -34,7 +34,7 @@
       </div>
       <div v-if="vacancy.responsibilities && vacancy.responsibilities.length > 0" class="accordion_vacantion__info__border">
         <div class="accordion_vacantion__info__p1">
-          Обязанности
+          {{$t('responsibilities')}}
         </div>
         <ul>
           <li v-for="(duty, index) in vacancy.responsibilities" :key="'duty' + index">
@@ -47,7 +47,7 @@
           <span>Откликнуться</span>
         </a>-->
         <a href="" class="accordion_vacantion__back" @click.prevent="closeVacancy">
-          Свернуть
+          {{$t('buttons.collapse')}}
         </a>
       </div>
     </div>

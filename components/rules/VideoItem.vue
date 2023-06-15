@@ -1,7 +1,7 @@
 <template>
   <li>
-    <div class="uk-position-relative rules-security-video__container video" id="video">
-      <video class="video" :poster="poster">
+    <div class="uk-position-relative rules-security-video__container video" id="video" data-container="video">
+      <video class="video" :poster="poster" controls>
         <source :src="`${$config.baseSiteURL}${video}`" type="video/mp4">
       </video>
       <div class="playpause">

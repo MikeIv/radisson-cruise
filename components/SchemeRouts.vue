@@ -67,11 +67,11 @@
                                               
                                 />
                                 <SchemePopup 
-                                :info="selectInfoModal.info" 
-                                :location="selectInfoModal.location" 
-                                :idNum="'scheme_item'+ selectInfoModal.customClass"
-                                :img="selectInfoModal.img"
-                                v-if="isModalActive"
+                                  :info="selectInfoModal.info"
+                                  :location="selectInfoModal.location"
+                                  :idNum="'scheme_item'+ selectInfoModal.customClass"
+                                  :img="selectInfoModal.img"
+                                  v-if="isModalActive"
                                 />
         
                                 <!-- @onToggle="onToggle(index)" -->
@@ -553,7 +553,7 @@ export default {
         if(e.target.tagName == 'BUTTON'){
           this.isModalActive = true;
          const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley   
-        console.log('activeRoute = ',activeRoute);
+        /*console.log('activeRoute = ',activeRoute);*/
         console.log('Click on BUTTON TARGET= ', e.target);
         console.log('Click on BUTTON = ', e.target.tagName);
         console.log('Click on index = ', e.target.id.split('-')[1]);

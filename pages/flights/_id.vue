@@ -321,7 +321,20 @@ export default {
   components: {Breadcrumbs, NewsItem},
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow -  Тематически рейсы на теплоходе ${this.currentNew.name}`,
+      title: this.currentNew.name + this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
   data() {
@@ -338,6 +351,7 @@ export default {
       formattedName: '',
       recentNews: [],
       currentDay: '',
+      seoData: [],
     }
   },
   computed: {
@@ -374,6 +388,9 @@ export default {
   },*/
   async fetch() {
     try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/flights/{id}/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
       const news = await axios.get(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
       const recentNews = await axios.get(

@@ -256,58 +256,9 @@
         <div class="rules-security-video__grid uk-flex uk-flex-wrap uk-grid-match ">
           <div class="uk-width-auto@m">
             <ul class="rules-security-video__tabs uk-visible@s uk-tab" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-<!--              <li>
-                <a href="#" class="rules-security-video__tab" aria-expanded="true">
-                  <div class="rules-security-video__tab__name1">
-                    <b>Яхты </b>
-                  </div>
-                  <div class="rules-security-video__tab__name2">
-                    «Фердинанд», «Капелла», «Селебрити»,
-                    «Скарлет», «Бон Вояж»
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="rules-security-video__tab" aria-expanded="false">
-                  <div class="rules-security-video__tab__name1">
-                    <b>Суперъяхты</b>
-                  </div>
-                  <div class="rules-security-video__tab__name2">
-                    «Баттерфляй», «Бьюти», «Феличита»
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="rules-security-video__tab" aria-expanded="false">
-                  <div class="rules-security-video__tab__name1">
-                    <b>Суперъяхта</b>
-                  </div>
-                  <div class="rules-security-video__tab__name2">
-                    «Монтана»
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="rules-security-video__tab" aria-expanded="false">
-                  <div class="rules-security-video__tab__name1">
-                    <b>Суперъяхта</b>
-                  </div>
-                  <div class="rules-security-video__tab__name2">
-                    «Примавера»
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="rules-security-video__tab" aria-expanded="false">
-                  <div class="rules-security-video__tab__name1">
-                    <b>Трамвайчики </b>
-                  </div>
-                  <div class="rules-security-video__tab__name2">
-
-                  </div>
-                </a>
-              </li>-->
-              <VideoNavItem v-for="(nav, index) in yVideos" :key="`nav` + index"
+              <VideoNavItem @pause="pauseVideo"
+                            v-for="(nav, index) in yVideos"
+                            :key="`nav` + index"
                             :title="nav.name" :names="nav.yachts"
               />
             </ul>
@@ -324,7 +275,7 @@
                   </div>
                 </div>
                 <ul v-show="showVideos" class="select-options rules-security-video__tabs uk-tab" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                  <li @click="showVideos = !showVideos; selectVideo(video)" ref="video" v-for="video in yVideos" class="uk-active">
+                  <li @click="showVideos = !showVideos; selectVideo(video);" ref="video" v-for="video in yVideos" class="uk-active">
                     <div class="rules-security-video__tab" aria-expanded="false">
                       <div class="rules-security-video__tab__name1">
                         <b>{{ video.name }}</b>
@@ -340,68 +291,11 @@
           </div>
           <div class="uk-width-expand@m">
             <ul id="component-tab-left" class="uk-switcher" style="touch-action: pan-y pinch-zoom;">
-<!--              <li>
-                <div class="uk-position-relative rules-security-video__container" id="video">
-                  <video class="video" poster="about10.png">
-                    <source src="~assets/video/video.mp4" type="video/mp4">
-                  </video>
-                  <div class="playpause">
-                    <div class="play-video-btn_back">
-                      <img src="~assets/img/svg/play-btn.svg" id="svg-new-play" uk-svg/>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="">
-                <div class="uk-position-relative rules-security-video__container" id="video">
-                  <video class="video" poster="about10.png">
-                    <source src="~assets/video/video.mp4" type="video/mp4">
-                  </video>
-                  <div class="playpause">
-                    <div class="play-video-btn_back">
-                      <img src="~assets/img/svg/play-btn.svg" id="svg-new-play" uk-svg/>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="uk-position-relative rules-security-video__container" id="video">
-                  <video class="video" poster="about10.png">
-                    <source src="~assets/video/video.mp4" type="video/mp4">
-                  </video>
-                  <div class="playpause">
-                    <div class="play-video-btn_back">
-                      <img src="~assets/img/svg/play-btn.svg" id="svg-new-play" uk-svg/>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="uk-position-relative rules-security-video__container" id="video">
-                  <video class="video" poster="about10.png">
-                    <source src="~assets/video/video.mp4" type="video/mp4">
-                  </video>
-                  <div class="playpause">
-                    <div class="play-video-btn_back">
-                      <img src="~assets/img/svg/play-btn.svg" id="svg-new-play" uk-svg/>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="uk-position-relative rules-security-video__container" id="video">
-                  <video class="video" poster="/_nuxt/assets/img/inners2/about10.png">
-                    <source src="~assets/video/video.mp4" type="video/mp4">
-                  </video>
-                  <div class="playpause">
-                    <div class="play-video-btn_back">
-                      <img src="~assets/img/svg/play-btn.svg" id="svg-new-play" uk-svg/>
-                    </div>
-                  </div>
-                </div>
-              </li>-->
-              <VideoItem v-for="(video, index) in yVideos" :key="`video` + index"
-                        :video="video.video"  :poster="video.poster"
+              <VideoItem v-for="(video, index) in yVideos"
+                         ref="videoItem"
+                         :key="`video` + index"
+                        :video="video.video"
+                         :poster="video.poster"
               />
             </ul>
           </div>
@@ -636,40 +530,27 @@ export default {
         yachts: '«Фердинанд», «Капелла», «Бон Вояж», «Селебрити », «Скарлет»'
       },
       seoData: {},
+      services: {
+        title: 'Услуги',
+        subtitle: 'text',
+        servicesList: ['массив строк'],
+        servicesImgs: ['массив картинок'],
+      }
     }
   },
   methods: {
-    selectVideo(video) {
-     this.selectedVideo = video
+    selectVideo(item) {
+     this.selectedVideo = item;
+    },
+    pauseVideo() {
+      let videoContainer = document.querySelectorAll('[data-container="video"]');
+      videoContainer.forEach(film => {
+        if(!film.querySelector('.video').paused){
+          film.querySelector('.playpause').style.display = 'flex'
+          film.querySelector('.video').pause()
+        }
+      })
     }
-  },
-  mounted() {
-    let videoContainer = document.querySelectorAll('.video');
-    videoContainer.forEach(video => {
-      video.addEventListener('click', function (e) {
-        if(video.querySelector('.video').paused){
-          video.querySelector('.playpause').style.display = 'none'
-          video.querySelector('.video').play()
-        } else {
-          video.querySelector('.playpause').style.display = 'flex'
-          video.querySelector('.video').pause()
-        }
-      })
-    })
-  },
-  updated() {
-    let videoContainer = document.querySelectorAll('.video');
-    videoContainer.forEach(video => {
-      video.addEventListener('click', function (e) {
-        if(video.querySelector('.video').paused){
-          video.querySelector('.playpause').style.display = 'none'
-          video.querySelector('.video').play()
-        } else {
-          video.querySelector('.playpause').style.display = 'flex'
-          video.querySelector('.video').pause()
-        }
-      })
-    })
   },
   async fetch() {
     let seoDataResult = await axios.get(

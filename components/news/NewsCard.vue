@@ -81,7 +81,7 @@ export default {
     },
 
     dayFormat() {
-      return new Date(this.date).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric', year: 'numeric'})
+      return new Date(this.date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric', year: 'numeric'})
     },
   },
   methods: {

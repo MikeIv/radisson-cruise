@@ -2,7 +2,7 @@
   <div class="header__top_item4-container">
     <div class="header__top_item4">
       <div class="language-container">
-<!--        <a href="#" class="language" aria-expanded="false">
+<!--        <a v-if="availableLocales.length > 1" href="#" class="language" aria-expanded="false">
           <span>{{ currentLang }}</span>
           <svg-icon name="arr_lang" class="icon header__top_logo transition"/>
         </a>-->
@@ -48,8 +48,12 @@ export default {
       return this.$store.state.showNav
     },
 
+    allAvailableLocales () {
+      return this.$i18n.locales.filter(i => i.active)
+    },
+
     availableLocales () {
-      return this.$i18n.locales.filter(i => i.active && i.code !== this.$i18n.locale)
+      return this.$i18n.locales.filter(i =>  i.code !== this.$i18n.locale)
     },
 
     currentLang() {

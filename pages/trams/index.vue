@@ -636,7 +636,6 @@ export default {
 
     this.dataRoutes = getDataRoutes.data.routes
     let piersData = getDataRoutes.data.piers;
-    console.log("this.dataRoutes ", this.dataRoutes[0]);
 
     piersData = piersData.filter((item) => {
       return item.seq >= this.dataRoutes[0].seqmin && item.seq <= this.dataRoutes[0].seqmax && item.type == 'object';

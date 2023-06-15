@@ -60,7 +60,7 @@
                         type="button"
                         class="uk-button uk-button-default accept_button"
                 >
-                  Применить
+                  {{$t('buttons.accept')}}
                 </button>
               </div>
             </div>
@@ -92,7 +92,7 @@
                         type="button"
                         class="uk-button uk-button-default accept_button"
                 >
-                  Применить
+                  {{$t('buttons.accept')}}
                 </button>
               </div>
             </div>
@@ -148,7 +148,7 @@
                   </div>
                 </div>
                 <button @click="hideFilterItem('personsFilter')" type="button" class="uk-button uk-button-default accept_button">
-                  Применить
+                  {{$t('buttons.accept')}}
                 </button>
               </div>
             </div>
@@ -235,7 +235,7 @@
              :key="'tblMob' + index"
              class="uk-overflow-auto buy-ticket-shedule_responsive uk-hidden@l">
           <div class="buy-ticket-shedule_responsive__head">
-            {{ new Date(dayRoute.date).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric'}) }}
+            {{ new Date(dayRoute.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric'}) }}
           </div>
 
           <div v-if="dayRoute.routes.length === 0">
@@ -585,7 +585,7 @@ export default {
       }
     },
     isWeekend(date) {
-      return date === 'сб' || date === 'вс'
+      return date === 'сб' || date === 'вс' || date === 'Sat' || date === 'Sun'
     },
     async setDate(date) {
       let dayRoutes = await axios.get(
@@ -678,8 +678,8 @@ export default {
         let date = new Date();
         let dateItem = {}
         date.setDate(date.getDate() + i);
-        dateItem.date = new Date(date).toLocaleDateString(`ru-RU`, {day: 'numeric'})
-        dateItem.weekday = new Date(date).toLocaleDateString(`ru-RU`, {weekday: 'short'})
+        dateItem.date = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {day: 'numeric'})
+        dateItem.weekday = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {weekday: 'short'})
         dateItem.fullDate = date.toISOString().split('T')[0];
         arr.push(dateItem)
       }
@@ -728,7 +728,7 @@ export default {
     }, 5 * 60 * 1000);
     const elements = document.querySelectorAll('.litepicker')
     const options = {
-      lang: 'ru-RU',
+      lang: this.$i18n.localeProperties.iso,
       element: document.querySelector('#datepickerTest'),
       singleMode: false,
       numberOfMonths: 2,

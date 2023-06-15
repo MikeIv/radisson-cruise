@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li @click="$emit('pause')">
     <a href="#" class="rules-security-video__tab" aria-expanded="false">
       <div class="rules-security-video__tab__name1">
         <b> {{ title }}</b>

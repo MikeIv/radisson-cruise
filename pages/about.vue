@@ -624,9 +624,8 @@
             <div class="uk-position-relative">
               <div class="uk-slider-container ">
                 <ul class="uk-slider-items uk-child-width-1-3@xl uk-child-width-1-2@m uk-child-width-1-1 uk-grid-match"
-                    uk-scrollspy="target: > li > .about-partner__card ; cls: uk-animation-slide-bottom-medium; delay: 500"
-                    style="transform: translate3d(0px, 0px, 0px);">
-                  <li v-for="capitan in testCaps" tabindex="-1" class="uk-active">
+                    uk-scrollspy="target: > li > .about-partner__card ; cls: uk-animation-slide-bottom-medium; delay: 500">
+                  <li v-for="capitan in testCaps" class="uk-active">
                     <PersonalCard
                         :personaImg="capitan.image"
                         :yachtName="capitan.place"

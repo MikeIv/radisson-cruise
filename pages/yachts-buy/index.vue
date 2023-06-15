@@ -42,7 +42,7 @@
                         </div>
                         <div>
 <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                          <b>{{ routeData.showTime }}</b>
+                          <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
                         </div>
                         <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                              {{$t('daytime')}}
@@ -59,7 +59,7 @@
                     </div>
                     <div>
 <!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                      <b>{{ routeData.showTime }}</b>
+                      <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
                     </div>
                     <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                           {{$t('daytime')}}
@@ -98,7 +98,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="buy-ticket-form__passengers__item">
+                  <div v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__passengers__item">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
                         <b>{{$t('children')}} {{$t('ticket')}}</b>
@@ -276,7 +276,7 @@
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
 <!--                        {{ journeyDate }}, {{ timeCalc }}-->
-                        {{ routeData.showTime }}
+                        {{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
@@ -303,7 +303,7 @@
                             <b>{{ adultPriceCalc }} ₽</b>
                           </div>
                         </div>
-                        <div class="buy-ticket-form__basket__item__passenger">
+                        <div  v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__basket__item__passenger">
                           <div>
                             {{ $t('children') }}
                           </div>
@@ -424,6 +424,9 @@ import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import route from "../../components/trolley/Route.vue";
 import moment from "moment";
+import 'moment/locale/ru';
+import 'moment/locale/es-us'
+import 'moment/locale/zh-cn'
 import UIkit from "uikit";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 const querystring = require('querystring');
@@ -603,7 +606,7 @@ export default {
       return this.adultPriceCalc + this.childPriceCalc
     },
     dayFormat() {
-      return new Date(this.$route.query.day).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric'})
+      return moment(this.routeData.journeyDate).locale(`${this.$i18n.locale}`).format('DD MMMM')
     },
 
     adultPriceCalc() {
@@ -621,22 +624,6 @@ export default {
     maxSits() {
       return this.routeData.freeSeats > 40 ? 40 : this.routeData.freeSeats
     },
-
-    timeCalc() {
-      if (this.routeData.depatureTime && this.routeData.arrivalTime) {
-        let depatureTime = new Date(this.routeData.depatureTime);
-        let arrivalTime = new Date(this.routeData.arrivalTime);
-        let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
-        let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
-        let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
-        let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
-        return isNaN(hourDepature) ? `Ошибка данных` : `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`
-      } else {
-        return 'Данные времени отсутствуют'
-      }
-    },
-
-
   },
 
   methods: {
@@ -820,10 +807,11 @@ export default {
         console.log(error)
       }
     },
+
     isValidDate(d) {
       return d instanceof Date && !isNaN(d);
     },
-    timeCalcDate(dptrTime, arvTime) {
+    timeCalc(dptrTime, arvTime) {
       if(dptrTime === null || arvTime === null) return;
       let formattedDeparture = moment(dptrTime).format('HH:mm')
       let formattedArrival = moment(arvTime).format('HH:mm')
