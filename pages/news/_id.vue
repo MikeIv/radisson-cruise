@@ -40,6 +40,7 @@ export default {
       slides: false,
       formattedName: '',
       recentNews: [],
+      seoData: [],
     }
   },
   methods: {
@@ -69,13 +70,29 @@ export default {
   },
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow -  ${this.name}`,
+      title: this.name + this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
 
   async fetch() {
 
     try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/news/{id}/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
       const news = await axios.get(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
       const recentNews = await axios.get(

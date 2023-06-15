@@ -61,7 +61,6 @@ export default {
     { src: '~/plugins/uikit', ssr: false },
     { src: '~/plugins/ymPlugin.js', mode: 'client', ssr: true },
     { src: '~/plugins/litepicker.js', mode: 'client', ssr: false },
-    { src: '~/plugins/routesTimeCalc.js', ssr: true },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -203,7 +202,7 @@ export default {
         name: 'EN',
         file: 'en-US.js',
         domain: !process.env.LANG_EN ? process.env.LANG_RU : process.env.LANG_EN,
-        active: process.env.LANG_EN !== ""
+        active: !!process.env.LANG_EN
       },
       {
         code: 'ru',
@@ -211,7 +210,7 @@ export default {
         name: 'RU',
         file: 'ru-RU.js',
         domain: process.env.LANG_RU,
-        active: process.env.LANG_RU !== ""
+        active: !!process.env.LANG_RU
       },
       {
         code: 'cn',
@@ -219,7 +218,7 @@ export default {
         name: 'CN',
         file: 'zh-CN.js',
         domain: !process.env.LANG_CN ? process.env.LANG_RU : process.env.LANG_CN,
-        active: process.env.LANG_CN !== ""
+        active: !!process.env.LANG_CN
       },
     ],
     /*strategy: 'prefix_and_default',*/

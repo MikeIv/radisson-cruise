@@ -13,10 +13,10 @@
         </div>
         <div class="tenancy-seating__type__info">
           <div class="tenancy-seating__type__p1">
-            Театр
+            {{$t('seat_theatre')}}
           </div>
           <div class="tenancy-seating__type__p2">
-            {{ theatreCount }} чел.
+            {{ theatreCount }}
           </div>
         </div>
       </div>
@@ -26,10 +26,10 @@
         </div>
         <div class="tenancy-seating__type__info">
           <div class="tenancy-seating__type__p1">
-            Класс
+            {{$t('seat_school')}}
           </div>
           <div class="tenancy-seating__type__p2">
-            {{ classCount }} чел.
+            {{ classCount }}
           </div>
         </div>
       </div>
@@ -39,10 +39,10 @@
         </div>
         <div class="tenancy-seating__type__info">
           <div class="tenancy-seating__type__p1">
-            Банкет
+            {{$t('banquet')}}
           </div>
           <div class="tenancy-seating__type__p2">
-            {{ BanketCount }} чел.*
+            {{ BanketCount }}
           </div>
         </div>
       </div>
@@ -52,10 +52,10 @@
         </div>
         <div class="tenancy-seating__type__info">
           <div class="tenancy-seating__type__p1">
-            U-образная
+            {{$t('seat_ushape')}}
           </div>
           <div class="tenancy-seating__type__p2">
-            {{ uTableCount }} чел.
+            {{ uTableCount }}
           </div>
         </div>
       </div>
@@ -65,10 +65,10 @@
         </div>
         <div class="tenancy-seating__type__info">
           <div class="tenancy-seating__type__p1">
-            Коктейль
+            {{$t('seat_cocktail')}}
           </div>
           <div class="tenancy-seating__type__p2">
-            {{cocktailCount}} чел.
+            {{cocktailCount}}
           </div>
         </div>
       </div>

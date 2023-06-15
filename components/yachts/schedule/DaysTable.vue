@@ -16,7 +16,7 @@
         <td>{{$t('adult')}}</td>
         <td>{{$t('children')}}</td>
         <td>{{$t('free_sits')}}</td>
-        <td>Купить</td>
+        <td>{{$t('buy')}}</td>
       </tr>
       <tr v-if="!aboutDays || aboutDays.length === 0">
         <td colspan="7">
@@ -62,7 +62,7 @@ export default {
       return new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {weekday: "long"}).format(day)
     },
     dayFormat() {
-      return new Date(this.day).toLocaleDateString(`ru-RU`, { month: 'long', day: 'numeric' })
+      return new Date(this.day).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, { month: 'long', day: 'numeric' })
     },
   },
   methods: {

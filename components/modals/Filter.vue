@@ -29,7 +29,7 @@
                       type="button"
                       @click="clickSelect('arrival')"
                       id="arrival">
-                Выбрать причал
+                {{ $t('select_port') }}
               </button>
 
               <div class="pass-quantity__drop uk-dropdown uk-open" v-show="isArrival">
@@ -48,7 +48,7 @@
                           type="button"
                           class="uk-button uk-button-default accept_button"
                   >
-                    Применить
+                    {{$t('buttons.accept')}}
                   </button>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                       @click="clickSelect('categories')"
 
               >
-                Категория салона
+                {{ $t('select_ticket_category') }}
               </button>
 
               <div class="pass-quantity__drop uk-dropdown uk-open" v-show="isCatetories">
@@ -79,7 +79,7 @@
                           type="button"
                           class="uk-button uk-button-default accept_button"
                   >
-                    Применить
+                    {{$t('buttons.accept')}}
                   </button>
                 </div>
               </div>
@@ -91,8 +91,7 @@
                       type="button"
                       id="tikets"
                       @click="clickSelect('tikets')">
-                Кол-во
-                пассажиров
+                {{ $t('select_number_tickets_short') }}
               </button>
               <div class="pass-quantity__drop uk-dropdown uk-open" v-show="isTikets">
                 <div class="pass-quantity">
@@ -120,7 +119,7 @@
                           type="button"
                           class="uk-button uk-button-default accept_button"
                   >
-                    Применить
+                    {{$t('buttons.accept')}}
                   </button>
                 </div>
               </div>

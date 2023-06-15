@@ -2,7 +2,6 @@
   <div>
     <Header class="news-item__header" fileName="inners2/IMG_4478.png">
       <img src="~images/inners2/IMG_4478.webp" data-src="~images/inners2/IMG_4478.webp" class="img_cover" alt="">
-
     </Header>
     <section class="news-item__section">
       <div class="uk-container">
@@ -323,7 +322,20 @@ export default {
   components: {Breadcrumbs, NewsItem, Header},
   head() {
     return {
-      title: `Флотилия Radisson Royal Moscow -  Театральные круизы на теплоходе ${this.currentNew.name}`,
+      title: this.currentNew.name + this.seoData?.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seoData?.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.seoData?.keywords,
+        },
+      ]
     }
   },
 
@@ -341,6 +353,7 @@ export default {
       formattedName: '',
       recentNews: [],
       currentDay: '',
+      seoData: [],
     }
   },
   methods: {
@@ -386,6 +399,9 @@ export default {
 
   async fetch() {
     try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/theatrical/{id}/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
       const news = await axios.get(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
       const recentNews = await axios.get(

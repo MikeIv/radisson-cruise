@@ -75,7 +75,7 @@
                 </span>
                   </label>
                 </div>  
-                  <div>                 
+                  <div>
                     <button class="uk-button uk-button-default uk-position-relative" @click="submitFormRent">
                     <span>ОТПРАВИТЬ</span>
                   </button></div>
@@ -120,7 +120,7 @@ import axios from "axios";
 import querystring from "querystring";
 export default {
   name: "ModalCalculation",
-  components: {TheMask,},
+  components: { TheMask },
   data() {
     return {
       steps: 5,
@@ -334,6 +334,7 @@ export default {
     },
     submitFormRent() {
       //console.log('try submit Form');
+      this.$yandexMetrika.reachGoal('arenda-2023');
       if(this.formData.name === ""){
         UIkit.notification({message: 'Укажите ваше имя', status: 'danger', pos: 'top-center', timeout: 1500})
         return;
