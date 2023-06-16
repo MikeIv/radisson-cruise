@@ -135,7 +135,7 @@
 
         </div>
         <div class="trams-shutdown__bottom">
-          <a class="uk-button uk-button-default " href="/upload/docs/20230608_134838_6481b2066d5bd.pdf">
+          <a class="uk-button uk-button-default " href="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf">
             <span>{{ $t('schedule') }}</span>
           </a>
 

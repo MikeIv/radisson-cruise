@@ -42,7 +42,7 @@
               </select>
             </div>
           </div> -->
-          <BuyTicketBtn link="/upload/docs/20230608_134838_6481b2066d5bd.pdf"/>
+          <BuyTicketBtn link="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf"/>
         </form>
 
       </div>
