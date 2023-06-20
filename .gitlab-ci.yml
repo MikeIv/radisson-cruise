@@ -26,6 +26,7 @@ build prod image:
         -t ${CI_REGISTRY_IMAGE}/nuxt --pull .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG}
+    - docker push ${CI_REGISTRY_IMAGE}/nuxt
   only:
     variables:
       - $CI_COMMIT_TAG =~ /^v\d.*/
@@ -92,8 +93,8 @@ deploy dev service:
     - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_dev_nuxt
     - docker exec $(docker ps -q -f name=korabliki_dev_nginx) find /var/cache/nginx/cache -type f -delete
   only:
-    variables:
-      - $CI_COMMIT_REF_NAME =~ /^dev.*$/
+    refs:
+      - dev
   tags:
     - shell
     - $CI_JOB_STAGE
