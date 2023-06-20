@@ -422,14 +422,17 @@ export default {
       newsCategoriesMobile: [
 
         {
+          id: 1,
           name: 'Новости',
           grp: 'article',
         },
         {
+          id: 2,
           name: 'Акции',
           grp: 'action',
         },
         {
+          id: 3,
           name: 'События',
           grp: 'event',
         },

@@ -1,14 +1,16 @@
 <template>
   <li>
     <div class="uk-position-relative rules-security-video__container video" id="video" data-container="video">
-      <video class="video" :poster="poster" controls>
+<!--      <video class="video" :poster="poster" controls>
         <source :src="`${$config.baseSiteURL}${video}`" type="video/mp4">
-      </video>
-      <div class="playpause">
+      </video>-->
+      <iframe width="100%" height="100%" :src="video.youtube + '?enablejsapi=1'">
+      </iframe>
+<!--      <div class="playpause">
         <div class="play-video-btn_back">
           <img src="~assets/img/svg/play-btn.svg" alt="" id="svg-new-play" uk-svg/>
         </div>
-      </div>
+      </div>-->
     </div>
   </li>
 </template>
@@ -17,12 +19,15 @@
 export default {
   name: "VideoItem",
   props: {
-    poster: String,
-    video: String,
+    video: Object,
   }
 }
 </script>
 
 <style scoped>
-
+@media screen and (max-width: 959px) {
+  #video {
+    height: 400px;
+  }
+}
 </style>

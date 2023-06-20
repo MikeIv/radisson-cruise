@@ -8,6 +8,7 @@
     </div>
     <div class="uk-card-body">
       <div class="card_time">
+        <svg-icon name="clock2"/>
         <span> {{ date }} </span>
       </div>
       <h3 class="uk-card-title">

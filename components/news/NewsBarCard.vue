@@ -4,6 +4,7 @@
     <div class="card-news_decor"></div>
     <div class="uk-card-body">
       <div class="card_time">
+        <svg-icon name="clock2"/>
         <span>{{ date }}</span>
       </div>
       <h3 class="uk-card-title">
@@ -26,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+.card_time svg {
+  fill: #fff;
+}
 </style>

@@ -846,6 +846,7 @@ export default {
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/yachts-buy/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
+      /*if(this.$route.query.journey === undefined) return*/
       let data = await axios.get(
           `${this.$config.baseURL}route?journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
       )
