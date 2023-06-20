@@ -1,5 +1,5 @@
 <template>
-  <a class="uk-button uk-button-secondary button_menu-cafe" :href="pdf">
+  <a class="uk-button uk-button-secondary button_menu-cafe" :href="pdf" target="_blank">
     <svg-icon class="icon" name="menu"/>
     <span>{{$t('buttons.show_menu')}}</span>
   </a>

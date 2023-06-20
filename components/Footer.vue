@@ -477,7 +477,7 @@ import SocialBlock from "./SocialBlock";
 import axios from "axios";
 import UIkit from "uikit";
 import querystring from "querystring";
-import {mapGetters} from "vuex";
+import {mapGetters,mapActions} from "vuex";
 import SuccessSubscribe from "./modals/SuccessSubscribe.vue";
 export default {
   name: 'Footer',
@@ -502,6 +502,7 @@ export default {
     ...mapGetters(['tel', 'email'])
   },
   methods: {
+    ...mapActions(['getActualDoc']),
     async subscribeEmail() {
       let onError
       if(!this.validateEmail()) return;
@@ -558,7 +559,8 @@ export default {
   },
   async fetch() {
     try {
-      if (this.$store.getters.tel === null) {
+      await this.getActualDoc();
+      if (this.$store.state.tel) {
         const infoData = await axios.get(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
         await this.$store.dispatch('setUtilInfo', { email: infoData.data.result.email, tel: infoData.data.result.phone });
       }

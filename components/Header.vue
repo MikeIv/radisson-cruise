@@ -165,8 +165,8 @@
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('nav.yachts_schedule') }}</span>
               </nuxt-link>
-              <a class="header-link-shedule transition" href="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf"  @click="closeNav">
-                <svg-icon class="header__top_logo transition" name="tram-icon"/>
+              <a class="header-link-shedule transition" :href="tramsDoc"  @click="closeNav">
+                <svg-icon class="header__top_logo transition" name="tram-icon2"/>
                 <span>{{ $t('nav.trams_schedule') }}</span>
               </a>
             </div>
@@ -236,6 +236,7 @@
   import SideNav from "./SideNav";
   import HeaderInner from "./HeaderInner";
   import LangAndBurgerMenu from "@/components/LangAndBurgerMenu";
+  import {mapGetters} from "vuex";
   export default {
     name: 'Header',
     props:{
@@ -258,6 +259,7 @@
       }
     },
     computed: {
+      ...mapGetters(['tramsDoc']),
       availableLocales() {
         return this.$i18n.locales.filter(i => i.active && i.code !== this.$i18n.locale);
       },

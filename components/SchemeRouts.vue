@@ -132,7 +132,7 @@
                             </div>-->
 
                             <div class="width-100 ">
-                                <a href="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf" class="width-100 height-100 uk-button uk-button-default button_ticket">
+                                <a :href="tramsDoc" class="width-100 height-100 uk-button uk-button-default button_ticket">
                                     <span>{{ $t('schedule') }}</span>
                                     <svg-icon name='clock' class="icon"/>
                                 </a>
@@ -216,6 +216,7 @@
 <script>
 import SchemeCircle from "./SchemeCircle";
 import SchemePopup from "./SchemePopup";
+import {mapGetters} from "vuex";
 export default {
   name: "SchemeRouts",
   props: {
@@ -530,6 +531,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['tramsDoc']),
     selectInfoModal() {
       return this.arrDataPoints.find((item) => item.customClass === this.currInfo);
     },

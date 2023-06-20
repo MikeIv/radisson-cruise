@@ -190,8 +190,8 @@
       />
     </div>
     <section id="tenancy-managment" class="uk-cover-container tenancy-managment">
-      <picture>
-        <img
+      <picture v-if="serviceEvents?.images">
+        <img :data-src="`${$config.imageURL}?size=1240&format=webp&src=${$config.baseSiteURL}${serviceEvents?.images[0]}`"
              alt=""
              class="img_cover"
              :src="`${$config.imageURL}?size=1240&format=webp&src=${$config.baseSiteURL}${serviceEvents?.images[0]}`">
@@ -199,13 +199,13 @@
       <div class="uk-container uk-position-relative">
         <div class="tenancy-managment__grid">
           <div class="tenancy-managment__headline uk-position-relative">
-            <svg-icon class="tenancy-managment__headline__icon" :name="serviceEvents.style"/>
+            <svg-icon v-if="serviceEvents?.style" class="tenancy-managment__headline__icon" :name="serviceEvents?.style"/>
             <div class="uk-position-relative">
               <div class="tenancy-managment__headline__p1">
                 {{$t('services')}}
               </div>
               <h2 class="headline_56">
-                {{ serviceEvents.name }}
+                {{ serviceEvents?.name }}
               </h2>
               <button type="button" class="uk-button uk-button-default button_calcalutor" @click="openModal">
                 <svg-icon class="icon" name="calculator"/>
@@ -216,10 +216,10 @@
           <div class="tenancy-managment__info">
             <div class="headline_line"></div>
             <div class="headline_22 t_semibold">
-              {{ serviceEvents.subject }}
+              {{ serviceEvents?.subject }}
             </div>
             <div class="tenancy-managment__list">
-              <div v-for="item in serviceEvents.list" class="tenancy-managment__list__item">
+              <div v-for="item in serviceEvents?.list" class="tenancy-managment__list__item">
                 <svg-icon class="icon" name="svg-check"/>
                 <span>{{item}}</span>
               </div>
@@ -232,16 +232,16 @@
     <section id="tenancy-restaurant" class="uk-cover-container tenancy-restaurant">
       <div class="uk-container uk-position-relative">
         <div class="tenancy-restaurant__headline uk-position-relative">
-          <svg-icon class="tenancy-restaurant__headline__icon" :name="serviceRest.style"/>
+          <svg-icon v-if="serviceRest?.style" class="tenancy-restaurant__headline__icon" :name="serviceRest?.style"/>
           <div class="uk-position-relative">
             <div class="tenancy-restaurant__headline__p1">
               {{$t('services')}}
             </div>
             <h2 class="headline_56">
-              {{ serviceRest.name }}
+              {{ serviceRest?.name }}
             </h2>
             <div class="tenancy-restaurant__headline__p2">
-              {{ serviceRest.subject }}
+              {{ serviceRest?.subject }}
             </div>
             <button type="button" class="uk-button uk-button-default button_calcalutor" @click="openModal">
               <svg-icon class="icon" name="calculator"/>
@@ -251,7 +251,7 @@
         </div>
       </div>
       <div class="tenancy-restaurant__images" uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 400">
-        <div v-for="(img, index) in serviceRest.images" :key="'srvsrest' + index" class="uk-cover-container uk-scrollspy-inview uk-animation-fade">
+        <div v-for="(img, index) in serviceRest?.images" :key="'srvsrest' + index" class="uk-cover-container uk-scrollspy-inview uk-animation-fade">
           <img class="img_cover"
                :data-src="`${$config.imageURL}?size=330&format=webp&src=${$config.baseSiteURL}${img}`"
                alt=""

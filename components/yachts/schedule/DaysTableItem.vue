@@ -1,5 +1,5 @@
 <template>
-  <tr :class="{'disabled' : checkForLateRoutes}" class="table_item-row">
+  <tr :class="{'disabled' : checkForLateRoutes}" class="table_item-row" :style="{'--text': scheduleDelay}">
     <td>
       «{{ startPoint }}»
     </td>
@@ -80,6 +80,7 @@ export default {
     return{
       timeInTravel: '',
       disabledLink: false,
+      scheduleDelay: JSON.stringify(this.$i18n.t('schedule_delay')),
     }
   },
   methods: {
@@ -181,7 +182,7 @@ export default {
 
 
 .table_item-row.disabled::after {
-  content: 'посадка на рейс началась, вы можете купить билет на кассе';
+  content: var(--text, 'Посадка на рейс началась, наличие билетов можно уточнить в кассе');
   position: absolute;
   left: 25%;
   top: 25%;

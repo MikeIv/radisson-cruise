@@ -210,12 +210,17 @@
             </div>
 
             <ul class="news__navigatiom__tabs uk-padding-remove">
-              <li class="uk-button button_switcher-second active" ref="seltab-0" @click="setFilterTabs(0)">
-                <button class="uk-text-uppercase ">{{ $t('all') }}</button>
+              <li class="uk-button button_switcher-second"
+                  :class="{'active': activeTab === 0}"
+                  @click="activeTab = 0">
+                <button class="uk-text-uppercase uk-width-1-1">{{ $t('all') }}</button>
               </li>
-              <li class="uk-button button_switcher-second" v-for="(tab,index) in categories"
-                  :key="'tab1' + index" @click="setFilterTabs(index+1)" :ref="'seltab-'+(index+1)">
-                <button>{{ tab.name }}</button>
+              <li class="uk-button button_switcher-second"
+                  :class="{'active' : activeTab === tab.id}"
+                  v-for="(tab,index) in categories"
+                  :key="'tab1' + index"
+                  @click="activeTab = tab.id">
+                <button class="uk-width-1-1">{{ tab.name }}</button>
               </li>
             </ul>
 
@@ -232,11 +237,11 @@
                     </ul>
 
                   </div> -->
-          <!--         <div class="modal-news-filter__footer">
-                    <button class="uk-button uk-button-default uk-modal-close"  @click="setFilterTabs">
-                      <span>ПРИМЕНИТЬ</span>
-                    </button>
-                  </div> -->
+          <div class="modal-news-filter__footer">
+            <button class="uk-button uk-button-default uk-modal-close"  @click="setFilterTabs">
+              <span>{{$t('buttons.accept')}}</span>
+            </button>
+          </div>
 
         </div>
       </div>
@@ -428,25 +433,12 @@ export default {
 
       UIkit.dropdown(this.$refs.dropYear).hide(false);
     },
-    clearSelectTab() {
-      //this.activeTab = 0;
-      //console.log("ALL REFS = ",this.$refs);
-      for (let ik = 0; ik < this.categories.length + 1; ik++) {
-        const element = this.$refs['seltab-' + ik].length > 0 ? this.$refs['seltab-' + ik][0] : this.$refs['seltab-' + ik];
-        //console.log(`REF ${ik} = `,element);
-        element.classList.remove('active');
-      }
-
-      //this.$refs.seltab0;
-    },
     setFilterTabs(selectTab) {
       UIkit.modal('#modal-category-cabin-filter').hide();
-
-      this.clearSelectTab();
-      const activElement = this.$refs['seltab-' + selectTab].length > 0 ? this.$refs['seltab-' + selectTab][0] : this.$refs['seltab-' + selectTab];
+      /*const activElement = this.$refs['seltab-' + selectTab].length > 0 ? this.$refs['seltab-' + selectTab][0] : this.$refs['seltab-' + selectTab];
       //console.log("Select REFS = ",activElement.classList);
       activElement.classList.add('active');
-      this.activeTab = selectTab;
+      this.activeTab = selectTab;*/
       if (this.isNewsFilter)
         this.$emit('checked-tabs', {
           activeTab: this.activeTab,

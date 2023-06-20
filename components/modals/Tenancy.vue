@@ -5,7 +5,10 @@
       <div class="modal_decor"></div>
       <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
 
-      <img class="modal-tenancy__back" data-src="~assets/img/inners/rent23.png" alt="" src="~assets/img/inners/rent23.png">
+      <img class="modal-tenancy__back"
+           :data-src="`${$config.imageURL}?size=1920&format=webp&src=${$config.baseSiteURL}${event.bgimage}`"
+           alt=""
+           :src="`${$config.imageURL}?size=1920&format=webp&src=${$config.baseSiteURL}${event.bgimage}`">
 
       <div class="uk-container modal-full_container uk-position-relative">
         <div class="headline_p1">

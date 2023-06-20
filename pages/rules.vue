@@ -294,8 +294,7 @@
               <VideoItem v-for="(video, index) in yVideos"
                          ref="videoItem"
                          :key="`video` + index"
-                        :video="video.video"
-                         :poster="video.poster"
+                         :video="video"
               />
             </ul>
           </div>

@@ -60,7 +60,7 @@
                         type="button"
                         class="uk-button uk-button-default accept_button"
                 >
-                  {{$t('buttons.accept')}}
+                  {{ $t('buttons.accept') }}
                 </button>
               </div>
             </div>
@@ -92,7 +92,7 @@
                         type="button"
                         class="uk-button uk-button-default accept_button"
                 >
-                  {{$t('buttons.accept')}}
+                  {{ $t('buttons.accept') }}
                 </button>
               </div>
             </div>
@@ -147,8 +147,9 @@
                     </div>
                   </div>
                 </div>
-                <button @click="hideFilterItem('personsFilter')" type="button" class="uk-button uk-button-default accept_button">
-                  {{$t('buttons.accept')}}
+                <button @click="hideFilterItem('personsFilter')" type="button"
+                        class="uk-button uk-button-default accept_button">
+                  {{ $t('buttons.accept') }}
                 </button>
               </div>
             </div>
@@ -219,10 +220,12 @@
           </button>
         </div>
 
-        <!--        <p v-if="$fetchState.pending">
-                  Loading....
-                </p>
-                <p v-else-if="$fetchState.error">Error while fetching info</p>-->
+<!--        <div v-if="isLoading" class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>-->
         <DaysTable
             v-for="(dayRoute, index) in showRoutes"
             :key="'tbl' + index"
@@ -235,7 +238,12 @@
              :key="'tblMob' + index"
              class="uk-overflow-auto buy-ticket-shedule_responsive uk-hidden@l">
           <div class="buy-ticket-shedule_responsive__head">
-            {{ new Date(dayRoute.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric'}) }}
+            {{
+              new Date(dayRoute.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {
+                month: 'long',
+                day: 'numeric'
+              })
+            }}
           </div>
 
           <div v-if="dayRoute.routes.length === 0">
@@ -244,86 +252,83 @@
             </div>
           </div>
           <div v-else>
-            <div v-for="(dayData, i) in dayRoute.routes" :key="'ddata' + i"
-                 class="buy-ticket-shedule_responsive__items">
-              <div class="buy-ticket-shedule_responsive__item">
-                <div>
-                  <div class="buy-ticket-shedule_responsive__moorage">
-                    <div class="buy-ticket-shedule_responsive__moorage__name1">
-                      {{ $t('port') }}
-                    </div>
-                    <div class="buy-ticket-shedule_responsive__moorage__name2">
-                      «{{ dayData.placeName }}»
-                    </div>
+            <div v-for="(dayData, i) in dayRoute.routes" :key="'ddata' + i" class="buy-ticket-shedule_responsive__item">
+              <div>
+                <div class="buy-ticket-shedule_responsive__moorage">
+                  <div class="buy-ticket-shedule_responsive__moorage__name1">
+                    {{ $t('port') }}
                   </div>
-                  <div @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
-                    <span>{{ dayData.journeySubType }}</span>
-                    <svg-icon
-                        name="svg-info3"
-                        class="icon"
-                    />
+                  <div class="buy-ticket-shedule_responsive__moorage__name2">
+                    «{{ dayData.placeName }}»
                   </div>
-                  <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
+                </div>
+                <div @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
+                  <span>{{ dayData.journeySubType }}</span>
+                  <svg-icon
+                      name="svg-info3"
+                      class="icon"
+                  />
+                </div>
+                <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
                     {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                   </span>
-                </div>
-                <div class="uk-visible@s">
-                  <div class="buy-ticket-shedule_responsive__time">
-                    <div class="buy-ticket-shedule_responsive__time__name">
-                      {{ $t('time') }}
-                    </div>
-                    <div class="buy-ticket-shedule__time">
+              </div>
+              <div class="uk-visible@s">
+                <div class="buy-ticket-shedule_responsive__time">
+                  <div class="buy-ticket-shedule_responsive__time__name">
+                    {{ $t('time') }}
+                  </div>
+                  <div class="buy-ticket-shedule__time">
                     <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num">
                       {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
                     </span>
-                      <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
+                    <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
                       {{ $t('daytime') }}
                     </span>
-                      <span v-else class="buy-ticket-shedule__time__txt">
+                    <span v-else class="buy-ticket-shedule__time__txt">
                       {{ $t('vespertime') }}
                     </span>
-                    </div>
-                  </div>
-                  <div class="buy-ticket-shedule_responsive__cost">
-                    <div>
-                      <span>{{ $t('adult') }}</span>
-                      <span>{{ dayData.adultPrice }}</span>
-                    </div>
-                    <div>
-                      <span>{{ $t('children') }}</span>
-                      <span>{{ dayData.childPrice }}</span>
-                    </div>
                   </div>
                 </div>
-                <div v-if="!checkForLateRoutes(dayData.depatureTime)">
-                  <!--                  v-if="checkForLateRoutes(dayData.depatureTime)"-->
-                  <nuxt-link
-                      class="uk-button uk-button-default button_ticket"
-                      :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
-                      :to="`/yachts-buy/?journey=${dayData.journey}`"
-                      @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
-                  >
-                    <span>{{ $t('buttons.buy_ticket') }}</span>
-                    <svg-icon class="icon" name="ticket"/>
-                  </nuxt-link>
-                  <div class="buy-ticket-shedule_responsive__free">
-                    <span> {{ $t('free_sits') }} </span>
-                    <span>{{ dayData.freeSeats }}</span>
+                <div class="buy-ticket-shedule_responsive__cost">
+                  <div>
+                    <span>{{ $t('adult') }}</span>
+                    <span>{{ dayData.adultPrice }}</span>
                   </div>
-                  <div class="buy-ticket-shedule_responsive__cost uk-hidden@s">
-                    <div>
-                      <span>{{ $t('adult') }}</span>
-                      <span>{{ dayData.adultPrice }}</span>
-                    </div>
-                    <div>
-                      <span>{{ $t('children') }}</span>
-                      <span>{{ dayData.childPrice }}</span>
-                    </div>
+                  <div>
+                    <span>{{ $t('children') }}</span>
+                    <span>{{ dayData.childPrice }}</span>
                   </div>
                 </div>
-                <div v-else>
-                  посадка на рейс началась, вы можете купить билет на кассе
+              </div>
+              <div v-if="!checkForLateRoutes(dayData.depatureTime)">
+                <!--                  v-if="checkForLateRoutes(dayData.depatureTime)"-->
+                <nuxt-link
+                    class="uk-button uk-button-default button_ticket"
+                    :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
+                    :to="`/yachts-buy/?journey=${dayData.journey}`"
+                    @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
+                >
+                  <span>{{ $t('buttons.buy_ticket') }}</span>
+                  <svg-icon class="icon" name="ticket"/>
+                </nuxt-link>
+                <div class="buy-ticket-shedule_responsive__free">
+                  <span> {{ $t('free_sits') }} </span>
+                  <span>{{ dayData.freeSeats }}</span>
                 </div>
+                <div class="buy-ticket-shedule_responsive__cost uk-hidden@s">
+                  <div>
+                    <span>{{ $t('adult') }}</span>
+                    <span>{{ dayData.adultPrice }}</span>
+                  </div>
+                  <div>
+                    <span>{{ $t('children') }}</span>
+                    <span>{{ dayData.childPrice }}</span>
+                  </div>
+                </div>
+              </div>
+              <div v-else>
+                {{ $t('schedule_delay') }}
               </div>
             </div>
           </div>
@@ -405,7 +410,8 @@ export default {
       categoryInfo: null,
       seoData: {},
       today: new Date().toISOString().split('T')[0],
-      inWeek: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0]
+      inWeek: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
+      isLoading: true,
     };
   },
   methods: {
@@ -422,12 +428,16 @@ export default {
     },
     async getCategory(id) {
       try {
-        const responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=${this.$i18n.locale}`);
+        let responseData;
+        if (id === undefined) {
+          responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=schedule`);
+        } else {
+          responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=${this.$i18n.locale}`);
+        }
         if (!responseData.data.result) return;
         this.categoryInfo = responseData.data.result.classData;
         UIkit.modal('#buy-ticket-shedule-info').show();
       } catch (e) {
-
       }
     },
 
@@ -688,35 +698,40 @@ export default {
   },
 
   async fetch() {
-    let seoDataResult = await axios.get(
-        `${this.$config.baseURL}pages?ref=/yachts/schedule/&lang=${this.$i18n.locale}`);
-    this.seoData = seoDataResult.data.result
-    let today = new Date()
-    let now = today.toISOString().split('T')[0]
-    let week = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
-    let dayRoutes = await axios.get(
-        `${this.$config.baseURL}routes?date=${now}&end=${week}&lang=${this.$i18n.locale}`);
-    //console.log(dayRoutes.data.routes)
-    this.testFetch = dayRoutes.data.routes;
-    let setCategories = new Set()
-    let setPorts = new Set()
-    let setArrival = new Set()
-    Object.entries(this.testFetch).forEach(item => {
-      item[1].forEach(route => {
-        setCategories.add(route.journeySubType)
-        setPorts.add(route.placeName)
+    try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/yachts/schedule/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
+      let today = new Date()
+      let now = today.toISOString().split('T')[0]
+      let week = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
+      let dayRoutes = await axios.get(
+          `${this.$config.baseURL}routes?date=${now}&end=${week}&lang=${this.$i18n.locale}`);
+      //console.log(dayRoutes.data.routes)
+      this.testFetch = dayRoutes.data.routes;
+      let setCategories = new Set()
+      let setPorts = new Set()
+      let setArrival = new Set()
+      Object.entries(this.testFetch).forEach(item => {
+        item[1].forEach(route => {
+          setCategories.add(route.journeySubType)
+          setPorts.add(route.placeName)
+        })
+        setArrival.add({
+          date: item[0],
+          routes: item[1],
+        })
       })
-      setArrival.add({
-        date: item[0],
-        routes: item[1],
-      })
-    })
-    this.setCategories = setCategories
-    this.arrivalPlaces = setPorts
-    //console.log(setCategories)
-    this.arrayToFilter = setArrival;
-    this.showRoutes = this.arrayToFilter
-    //console.log("fetch() showRoutes = ",this.showRoutes);
+      this.setCategories = setCategories
+      this.arrivalPlaces = setPorts
+      //console.log(setCategories)
+      this.arrayToFilter = setArrival;
+      this.showRoutes = this.arrayToFilter
+      //console.log("fetch() showRoutes = ",this.showRoutes);
+      this.isLoading = false;
+    } catch (e) {
+
+    }
   },
   fetchOnServer: true,
   fetchKey: 'yacht-schedule',
@@ -856,6 +871,48 @@ export default {
   margin-top: 20px;
   width: 100%;
 }
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 </style>
 

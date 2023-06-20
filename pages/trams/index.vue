@@ -135,7 +135,7 @@
 
         </div>
         <div class="trams-shutdown__bottom">
-          <a class="uk-button uk-button-default " href="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf">
+          <a class="uk-button uk-button-default " :href="tramsDoc">
             <span>{{ $t('schedule') }}</span>
           </a>
 
@@ -214,6 +214,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import UIkit from "uikit";
 import axios from "axios";
 import CruiseItem from "@/components/tickets/CruiseItem.vue";
+import {mapGetters} from "vuex";
 export default {
   name: "trams-main",
   components: {
@@ -600,6 +601,9 @@ export default {
       portBlocks: [],
       seoData: {},
     }
+  },
+  computed: {
+    ...mapGetters(['tramsDoc'])
   },
   head() {
     return {
