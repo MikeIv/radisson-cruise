@@ -163,7 +163,7 @@ body {
     padding-top: 30px;
   }
   header {
-    padding: 5px 0 59px !important;
+    //padding: 5px 0 59px !important;
   }
 }
 
@@ -3202,7 +3202,7 @@ body {
   }
 
   header {
-    padding: 5px 0 59px;
+    padding: 0;
   }
   .header-ticket .txt16 {
     display: none;
@@ -6203,9 +6203,6 @@ body {
   }
   .header_top_back {
     padding: 10px 0
-  }
-  .uk-offcanvas-page .header_top_back {
-    padding: 0;
   }
   .header_top_back>div>div {
     flex-wrap: wrap

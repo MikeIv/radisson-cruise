@@ -1,138 +1,13 @@
 <template>
-<!--  <header class="header">-->
-<!--    <nav class="nav">
-      <ul class="nav_items">
-        <li class="nav_item">
-          <nuxt-link :to="localePath('/')"> Logo </nuxt-link>
-        </li>
-        <li class="nav_item">
-          <div class="logo_text">
-            <div class="logo_link">
-              <nuxt-link :to="localePath('/')"> ОФИЦИАЛЬНЫЙ САЙТ </nuxt-link>
-            </div>
-            <div>БОЛЕЕ 2,6 МЛН ПАССАЖИРОВ</div>
-          </div>
-        </li>
-        <li class="nav_item">
-          <div class="nav_link">
-            <nuxt-link :to="localePath('/schedule/yacht').toLocaleLowerCase()">
-              {{ $t('header.buttons.shedulerYachts') }}</nuxt-link
-            >
-          </div>
-          <div class="nav_link">
-            <nuxt-link :to="localePath('/schedule/trolley').toLocaleLowerCase()">
-              {{ $t('header.buttons.shedulerTram') }}
-            </nuxt-link>
-          </div>
-        </li>
-        <li class="nav_item">
-          <div>some logo</div>
-          <a href="tel:+74952285555">+7 (495) 228-55-55</a>
-        </li>
-        <li class="nav_item">
-          <nuxt-link
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            :to="switchLocalePath(locale.code).toLocaleLowerCase()"
-            >{{ locale.name }}</nuxt-link
-          >
-         <a
-            href="#"
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            @click.prevent.stop="$i18n.setLocale(locale.code)"
-            >{{ locale.name }}</a
-
-          &lt;!&ndash;           <div>langChoice</div> &ndash;&gt;
-          <a class="header_top_menu" href="#offcanvas-nav" uk-toggle="">
-            <div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </a>
-          {{ $t('welcome') }}
-        </li>
-      </ul>
-    </nav>-->
-<!--
-    <div class="header_top_back uk-sticky" uk-sticky="top: 85; animation: uk-animation-slide-top; bottom: #about_tab;" id="sticky-fixed-header">
-      <div class="uk-container">
-        <div class="uk-grid uk-flex-between uk-child-width-auto uk-flex-middle uk-grid-small uk-flex-nowrap" uk-grid="">
-          <div class="header__top_item1-container uk-first-column">
-            <a class="header__top_logo transition" href="/">
-              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg" fill="#fff">
-            </a>
-          </div>
-          <div class="header__top_item2-container uk-visible@l">
-            <div class="header__top_item2">
-              <div>
-                <a href="">
-                  официальный сайт
-                </a>
-              </div>
-              <div>
-                более 2,6 млн пассажиров
-              </div>
-            </div>
-          </div>
-          <div class="header__top_item3-container">
-            <div class="header__top_item3">
-              <a class="uk-button uk-button-default button-shedule transition" href="/buy_ticket_shedule.html">
-                <span>Расписание яхт</span>
-                <img data-src="~assets/img/main/btn-yacht.png" alt="" src="http://flotilia.r-b-m.ru/img/main/btn-yacht.png">
-              </a>
-              <a class="uk-button uk-button-default button-shedule transition" href="/buy_ticket_shedule_trams.html">
-                <span>Расписание трамвайчиков</span>
-                <img data-src="~assets/img/main/btn-tram.png" alt="" src="http://flotilia.r-b-m.ru/img/main/btn-tram.png">
-              </a>
-            </div>
-          </div>
-          <div class="header__top_item5-container uk-visible@l">
-            <a class="header_call uk-visible@s" href="tel:+7 (495) 228-55-55">
-              <img src="~assets/img/svg/call.svg" alt="" uk-svg>
-              <span>+7 (495) 228-55-55 </span>
-            </a>
-          </div>
-          <div class="header__top_item4-container">
-            <div class="header__top_item4">
-              <div class="language-container">
-                <a href="" class="language" aria-expanded="false">
-                  <span>RU</span>
-                  <img src="~assets/img/svg/arr_lang.svg" alt="" uk-svg>
-                </a>
-                <div uk-dropdown="mode: click;offset: 5;" class="language_drop uk-dropdown">
-                  <ul class="">
-                    <li>
-                      <a href="#">
-                        <span>ENG</span>
-                      </a>
-                    </li></ul>
-                </div>
-              </div>
-              <a class="header_top_menu" href="#offcanvas-nav" uk-toggle="">
-                <div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>-->
-  <!-- uk-sticky="top: 85; animation: uk-animation-slide-top;  bottom: #about_tab;"  -->
   <header class="uk-position-relative  main-header component_header" id="header">
 
     <div class="header_top_back uk-sticky" :uk-sticky="classCheck" id="sticky-fixed-header">
       <div class="uk-container">
         <div class="uk-grid uk-flex-between uk-child-width-auto uk-flex-middle uk-grid-small uk-flex-nowrap" uk-grid="">
           <div class="header__top_item1-container uk-first-column">
-            <nuxt-link class=" header__top_logohome transition" :to="localePath('/')"  @click.native="closeNav">
+            <nuxt-link class="header__top_logo transition" :to="localePath('/')"  @click.native="closeNav">
 <!--              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg">-->
-              <svg-icon class="header__top_logo transition" name="logo"/>
+              <svg-icon class="transition" name="logo"/>
             </nuxt-link>
           </div>
           <div class="header__top_item2-container uk-visible@l">
@@ -310,24 +185,6 @@
 <style scoped>
 /* media screen mobile iphone 5 */
 
-
-@media screen and (max-width: 320px) {
-  .header__top_logohome svg {
-    width: 113px;
-    height: 48px;
-}
-}
-@media screen and (max-width: 1200px) {
-  .header__top_logohome svg {
-    width: 185px;
-    height: 79px;
-}
-}
-.header__top_logohome svg {
-    width: 185px;
-    height: 79px;
-}
-
 .testBtn {
   display: block;
   width: 500px;
@@ -343,12 +200,6 @@
   height: 100%;
   opacity: 1;
   z-index: auto;
-}
-
-.header__top_logo svg{
-  color:#fff;
-  width: 174px;
-  height: 75px;
 }
 
 .header__top_logo svg path:nth-child(2){

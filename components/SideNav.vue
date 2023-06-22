@@ -57,7 +57,7 @@
               <nuxt-link class="txt18 " to="/contacts/" @click.native="closeNav">
                 {{ $t('nav.contacts') }}
               </nuxt-link>
-              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+              <nuxt-link class="txt18 " to="/news/403/" :prefetch="false" @click.native="closeNav">
                 Erwin.Река
               </nuxt-link>
             </div>
@@ -82,7 +82,7 @@
               <a class="txt18" :href="tramsDoc" target="_blank">
                 {{ $t('nav.trams_schedule') }}
               </a>
-              <nuxt-link class="txt18 " to="/news/403/" @click.native="closeNav">
+              <nuxt-link class="txt18 " to="/news/403/" :prefetch="false" @click.native="closeNav">
                 Erwin.Река
               </nuxt-link>
 

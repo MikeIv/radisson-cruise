@@ -51,8 +51,13 @@
               <div class="pass-quantity">
                 <div class="form_politic buy-ticket__politic">
                   <label v-for="(place, idxarriv) in arrivalPlaces" :key="'dx-'+idxarriv">
-                    <input class="uk-checkbox" name="category__moorage" type="checkbox" :id="'dx-'+idxarriv"
-                           :value="place" v-model="checkedArrival">
+                    <input @change="sendYandexMetrikaEvent('filtr_prichal_2023')"
+                           class="uk-checkbox"
+                           name="category__moorage"
+                           type="checkbox"
+                           :id="'dx-'+idxarriv"
+                           :value="place"
+                           v-model="checkedArrival">
                     <span>{{ place }}</span>
                   </label>
                 </div>
@@ -83,7 +88,11 @@
               <div class="pass-quantity">
                 <div class="form_politic buy-ticket__politic">
                   <label v-for="category in setCategories">
-                    <input class="uk-checkbox" name="category__salon" type="checkbox" :value="category"
+                    <input class="uk-checkbox"
+                           @change="sendYandexMetrikaEvent('filtr_category_2023')"
+                           name="category__salon"
+                           type="checkbox"
+                           :value="category"
                            v-model="checkedCategories">
                     <span>{{ category }}</span>
                   </label>
@@ -246,12 +255,7 @@
             }}
           </div>
 
-          <div v-if="dayRoute.routes.length === 0">
-            <div class="buy-ticket-shedule_responsive__item uk-flex-center uk-padding">
-              К сожалению, на данную дату продажа билетов еще закрыта
-            </div>
-          </div>
-          <div v-else>
+          <div v-if="dayRoute.routes.length !== 0">
             <div v-for="(dayData, i) in dayRoute.routes" :key="'ddata' + i" class="buy-ticket-shedule_responsive__item">
               <div>
                 <div class="buy-ticket-shedule_responsive__moorage">
@@ -672,7 +676,10 @@ export default {
     },
     hideFilterItem(id) {
       UIkit.dropdown(`#${id}`).hide(false);
-    }
+    },
+    sendYandexMetrikaEvent(eventName) {
+      this.$yandexMetrika.reachGoal(eventName);
+    },
   },
   computed: {
     choiseTime() {
@@ -758,7 +765,7 @@ export default {
 
       setup: (picker) => {
         picker.on('selected', async (date1, date2) => {
-
+          this.sendYandexMetrikaEvent('filtr_data_2023')
           picker.getDate()
 
           //console.log(picker.gotoDate())

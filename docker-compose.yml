@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  nuxt:
+    image: registry.gitlab.com/grandfs/korabli-nuxt/nuxt:dev
+    restart: always
+    networks:
+      - stack-network
+    ports:
+      - 80:3000
+
+networks:
+  stack-network:
+    driver: bridge
+    ipam:
+      driver: default
