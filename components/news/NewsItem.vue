@@ -91,7 +91,7 @@
             <div class="back-container">
               <nuxt-link to="/news/" class="link_back transition">
                 <svg-icon name="arrow3"/>
-                <span>Вернуться к списку новостей</span>
+                <span>{{ $t('back_to_news') }}</span>
               </nuxt-link>
             </div>
 
@@ -244,7 +244,7 @@ export default {
   },
   computed: {
     dayFormat() {
-      return new Date(this.date).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric', year: 'numeric'})
+      return new Date(this.date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric', year: 'numeric'})
     },
   },
 }

@@ -16,7 +16,7 @@
       </Header>
       <section v-if="routeData.hasGone">
         <div class="uk-container uk-text-center uk-padding-large">
-          этот рейс уже отправился, на него уже нельзя оформить билет
+          {{ $t('schedule_gone') }}
         </div>
       </section>
       <section v-else class="buy-ticket-form__container">
@@ -848,7 +848,7 @@ export default {
       this.seoData = seoDataResult.data.result
       /*if(this.$route.query.journey === undefined) return*/
       let data = await axios.get(
-          `${this.$config.baseURL}route?journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
+          `${this.$config.baseURL}route?journey=${this.journey}&lang=${this.$i18n.locale}`
       )
       this.routeData = data.data.result
       this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {

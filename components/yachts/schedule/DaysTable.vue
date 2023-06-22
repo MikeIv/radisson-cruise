@@ -1,5 +1,5 @@
 <template>
-  <div class="uk-overflow-auto buy-ticket-shedule__table uk-visible@l">
+  <div v-if="aboutDays.length !== 0" class="uk-overflow-auto buy-ticket-shedule__table uk-visible@l">
     <table class="uk-table">
       <thead>
       <tr>
@@ -18,12 +18,12 @@
         <td>{{$t('free_sits')}}</td>
         <td>{{$t('buy')}}</td>
       </tr>
-      <tr v-if="!aboutDays || aboutDays.length === 0">
+      <!--      <tr v-if="!aboutDays || aboutDays.length === 0">
         <td colspan="7">
           К сожалению, на данную дату продажа билетов еще закрыта
         </td>
-      </tr>
-      <DaysTableItem v-else v-for="(dayData, index) in aboutDays"
+      </tr>-->
+      <DaysTableItem v-for="(dayData, index) in aboutDays"
                      :key="'day' + index"
                      :dayFormat="dayFormat"
                      :day="day"

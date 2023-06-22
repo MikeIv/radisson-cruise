@@ -316,10 +316,10 @@
             <nuxt-link to="/yachts/schedule/" class="uk-hidden@s">
               {{ $t('nav.buy_tickets') }}
             </nuxt-link>
-            <nuxt-link to="/news/388/" class="uk-hidden@s">
+            <nuxt-link to="/news/388/" :prefetch="false" class="uk-hidden@s">
               {{ $t('thiefs') }}
             </nuxt-link>
-            <nuxt-link to="/news/403/">
+            <nuxt-link to="/news/403/" :prefetch="false">
               Erwin.Река
             </nuxt-link>
           </li>
@@ -344,7 +344,7 @@
             <nuxt-link to="/yachts/schedule/">
               {{ $t('nav.buy_tickets') }}
             </nuxt-link>
-            <nuxt-link to="/news/388/">
+            <nuxt-link to="/news/388/" :prefetch="false">
               {{ $t('thiefs') }}
             </nuxt-link>
             <nuxt-link :to="{path: '/rules', hash: '#rules-security'}" replace>

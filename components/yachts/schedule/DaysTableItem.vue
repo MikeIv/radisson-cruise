@@ -1,5 +1,7 @@
 <template>
-  <tr :class="{'disabled' : checkForLateRoutes}" class="table_item-row" :style="{'--text': scheduleDelay}">
+  <tr :class="{'disabled' : checkForLateRoutes, 'disabled-sold': isRouteSoldOut }"
+      class="table_item-row"
+      :style="{'--text': currentRouteState}">
     <td>
       «{{ startPoint }}»
     </td>
@@ -37,6 +39,7 @@
       <nuxt-link class="uk-button uk-button-default button_ticket transition"
                  :class="{'disabled-link': checkForLateRoutes}"
                  :to="'/yachts-buy/?journey='+journey"
+                 :prefetch="false"
                  @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
       >
 <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
@@ -81,6 +84,12 @@ export default {
       timeInTravel: '',
       disabledLink: false,
       scheduleDelay: JSON.stringify(this.$i18n.t('schedule_delay')),
+      scheduleSold: JSON.stringify(this.$i18n.t('schedule_sold')),
+      stylesData: {
+        '--text-late': JSON.stringify(this.$i18n.t('schedule_delay')),
+        '--text-sold': JSON.stringify(this.$i18n.t('schedule_sold')),
+      },
+      freeSpotsMoch: 0,
     }
   },
   methods: {
@@ -139,13 +148,24 @@ export default {
         return timeDifferenceInMs <= thirtyMinutesInMs;
       }
 
-      if(isDepartureTimeApproaching(this.depatureTime)) {
+      if(isDepartureTimeApproaching(this.depatureTime) || this.freeSpots === 0) {
         return this.disabledLink = true
       } else {
         return this.disabledLink = false
       }
     },
 
+    currentRouteState() {
+      if (this.freeSpots === 0) {
+        return JSON.stringify(this.$i18n.t('schedule_sold'))
+      } else {
+        return JSON.stringify(this.$i18n.t('schedule_delay'))
+      }
+    },
+
+    isRouteSoldOut() {
+      return this.freeSpots === 0
+    },
 
 
 
@@ -184,7 +204,9 @@ export default {
 .table_item-row.disabled::after {
   content: var(--text, 'Посадка на рейс началась, наличие билетов можно уточнить в кассе');
   position: absolute;
-  left: 25%;
+  left: 50%;
+  transform: translate(-50%);
+  white-space: nowrap;
   top: 25%;
   font-weight: 600;
   font-size: 20px;
@@ -192,6 +214,7 @@ export default {
 }
 .table_item-row.disabled:hover::after {
   display: block;
+  text-align: center;
 }
 
 </style>

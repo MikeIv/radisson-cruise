@@ -294,6 +294,7 @@
               <VideoItem v-for="(video, index) in yVideos"
                          ref="videoItem"
                          :key="`video` + index"
+                         :index="index"
                          :video="video"
               />
             </ul>
@@ -347,7 +348,7 @@ export default {
           name: 'keywords',
           content: this.seoData?.keywords,
         },
-      ]
+      ],
     }
   },
   data() {
@@ -534,7 +535,8 @@ export default {
         subtitle: 'text',
         servicesList: ['массив строк'],
         servicesImgs: ['массив картинок'],
-      }
+      },
+      players: [],
     }
   },
   methods: {
@@ -544,12 +546,23 @@ export default {
     pauseVideo() {
       let videoContainer = document.querySelectorAll('[data-container="video"]');
       videoContainer.forEach(film => {
-        if(!film.querySelector('.video').paused){
-          film.querySelector('.playpause').style.display = 'flex'
-          film.querySelector('.video').pause()
-        }
-      })
+        let iframe = film.querySelector('.video_item')
+        iframe.contentWindow.postMessage( '{"event":"command", "func":"stopVideo", "args":""}', '*');
+      });
+    },
+    buildPlayers() {
+      let videoContainer = document.querySelectorAll('[data-container="video"]');
+      videoContainer.forEach(film => {
+        let iframe = film.querySelector('.video_item')
+        let player = new YT.Player(iframe.getAttribute('id'));
+        this.players.push(player)
+      });
     }
+  },
+  updated() {
+    this.$nextTick(function () {
+      this.buildPlayers()
+    })
   },
   async fetch() {
     let seoDataResult = await axios.get(

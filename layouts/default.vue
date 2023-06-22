@@ -1,7 +1,7 @@
 <template>
   <div>
     <SideNav ref="slideNav"/>
-    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'Theatrical-item', 'trams', 'trams-main'] }" />
+    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'trams', 'trams-main'] }" />
     <!--    <Kiev />-->
     <!--    <SubscribeNews />-->
     <keep-alive>

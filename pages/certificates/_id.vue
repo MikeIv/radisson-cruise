@@ -195,7 +195,7 @@
               <div class="buy-ticket-form__basket">
                 <div class="buy-ticket-form__basket__head">
                   <div class="headline_22 t_semibold">
-                    Корзина
+                    {{ $t('cart') }}
                   </div>
                   <svg-icon class="icon" name="cart"/>
                 </div>

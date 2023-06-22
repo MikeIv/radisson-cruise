@@ -4,7 +4,7 @@
 <!--      <video class="video" :poster="poster" controls>
         <source :src="`${$config.baseSiteURL}${video}`" type="video/mp4">
       </video>-->
-      <iframe width="100%" height="100%" :src="video.youtube + '?enablejsapi=1'">
+      <iframe class="video_item" :id="'video'+index" width="100%" height="100%" :src="video.youtube + '?enablejsapi=1'">
       </iframe>
 <!--      <div class="playpause">
         <div class="play-video-btn_back">
@@ -20,6 +20,7 @@ export default {
   name: "VideoItem",
   props: {
     video: Object,
+    index: Number,
   }
 }
 </script>

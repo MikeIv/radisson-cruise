@@ -137,7 +137,7 @@
               <div class="back-container">
                 <nuxt-link to="/theatrical/" class="link_back transition">
                   <svg-icon class="icon" name="arrow3"/>
-                  <span>Вернуться к списку круизов</span>
+                  <span>{{ $t('back_to_cruise') }}</span>
                 </nuxt-link>
               </div>
 
@@ -146,7 +146,7 @@
               <div class="buy-ticket-form__basket">
                 <div class="buy-ticket-form__basket__head">
                   <div class="headline_22 t_semibold">
-                    Корзина
+                    {{ $t('cart') }}
                   </div>
                   <svg-icon class="icon" name="cart"/>
                 </div>
@@ -390,11 +390,6 @@ export default {
   validate({ params }) {
     // Must be a number
     return /^\d+$/.test(params.id)
-  },
-
-  activated() {
-    console.log('About has been activated')
-    this.$fetch();
   },
 
   async fetch() {

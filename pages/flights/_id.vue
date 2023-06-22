@@ -44,101 +44,10 @@
               <div class="news-item__text" v-html="currentNew.content">
               </div>
 
-              <!--              <div class="content-menu-list">
-                <div class="headline_36">
-                  МЕНЮ
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Холодная закуска
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Ассорти брускетт</div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">1/265</div>
-                  </div>
-                  <div class="content-menu__p3">
-                    (гриссини с пармской ветчиной, брускетта со страчателлой и свежими
-                    томатами, Брускетта с креветками и соусом «Гуакамоле»)
-
-                  </div>
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Горячая закуска
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Баккала Монтекато</div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">1/230</div>
-                  </div>
-                  <div class="content-menu__p3">
-                    (мусс из трески , картофелем черри в соусе «Сальса»)
-                  </div>
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Горячее блюдо
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Митболы в томатном соусе с палентой  </div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">1/300</div>
-                  </div>
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Хлеб
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Булочка ржаная, булочка с кунжутом</div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">2 шт.</div>
-                  </div>
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Десерт
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Пирожное «Тирамису»   </div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">1 шт.</div>
-                  </div>
-                </div>
-                <div class="content-menu-item">
-                  <div class="content-menu__p1">
-                    Напитки
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Вода с/г или б/г «Ларми»  </div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">500 мл. </div>
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Чай в ассортименте</div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">350 мл</div>
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>Лимон  </div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">30 гр.    </div>
-                  </div>
-                  <div class="content-menu__p2">
-                    <div>кофе «Американо»  </div>
-                    <div class="content-menu__dotted"></div>
-                    <div class="">1/150</div>
-                  </div>
-                </div>
-              </div>-->
-
-
-
               <div class="back-container">
                 <nuxt-link to="/theatrical/" class="link_back transition">
                   <svg-icon class="icon" name="arrow3"/>
-                  <span>Вернуться к списку круизов</span>
+                  <span>{{ $t('back_to_cruise') }}</span>
                 </nuxt-link>
               </div>
 
@@ -147,14 +56,14 @@
               <div class="buy-ticket-form__basket">
                 <div class="buy-ticket-form__basket__head">
                   <div class="headline_22 t_semibold">
-                    Корзина
+                    {{ $t('cart') }}
                   </div>
                   <svg-icon class="icon" name="cart"/>
                 </div>
                 <div class="buy-ticket-form__basket__main">
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Причал:
+                      {{ $t('port') }}:
                     </div>
                     <div v-if="currentNewRoute.placeName" class="buy-ticket-form__basket__item__info">
                       {{ currentNewRoute.placeName }}
@@ -190,7 +99,7 @@
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__summ">
                       <div>
-                        Сумма:
+                        {{ $t('amount') }}::
                       </div>
                       <div v-if="currentNewRoute.adultPrice">
                         {{ currentNewRoute.adultPrice }}  ₽
@@ -213,7 +122,7 @@
                                :to="'/yachts-buy?journey=' + currentNewRoute.journey"
                     >
                       <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
-                      <span>ПЕРЕЙТИ К ОПЛАТЕ</span>
+                      <span>{{ $t('goto_payment') }}</span>
                       <svg-icon class="icon" name="ticket"/>
                     </nuxt-link>
                   </div>
@@ -228,7 +137,7 @@
             <div v-else class="uk-width-auto uk-width-1-1 uk-visible@l">
               <div class="news-last">
                 <div class="headline_22 t_semibold">
-                  Последние новости
+                  {{ $t('recent_news') }}
                 </div>
                 <ul class="uk-padding-remove uk-margin-remove">
                   <li v-for="recentNew in recentNews">
@@ -251,54 +160,10 @@
                       </div>
                     </nuxt-link>
                   </li>
-                  <!--                <li>
-                                    <nuxt-link class="uk-card card-news__small transition" to="/news-post">
-                                      <div class="uk-cover-container uk-card-default_media">
-                                        <img data-src="~assets/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                                      </div>
-                                      <div class="uk-card-body">
-                                        <div class="card_time">
-                                          <svg-icon class="icon" name="clock2"/>
-                                          <span>15 ноября 2019 г.</span>
-                                        </div>
-                                        <h3 class="uk-card-title">
-                                          ЕЩЕ БОЛЬШЕ КРУИЗОВ
-                                          ПО МОСКВЕ-РЕКЕ С ФЛОТИЛИЕЙ
-                                          «РЭДИССОН РОЙАЛ»»
-                                        </h3>
-                                        <div class="card_text">
-                                          Краткий описательный текст на сайте в несколько строк
-                                          для пояснения ситуации
-                                        </div>
-                                      </div>
-                                    </nuxt-link>
-                                  </li>
-                                  <li>
-                                    <nuxt-link class="uk-card card-news__small transition" to="/news-post">
-                                      <div class="uk-cover-container uk-card-default_media">
-                                        <img data-src="~assets/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                                      </div>
-                                      <div class="uk-card-body">
-                                        <div class="card_time">
-                                          <svg-icon class="icon" name="clock2"/>
-                                          <span>15 ноября 2019 г.</span>
-                                        </div>
-                                        <h3 class="uk-card-title">
-                                          ЕЩЕ БОЛЬШЕ КРУИЗОВ
-                                          ПО МОСКВЕ-РЕКЕ С ФЛОТИЛИЕЙ
-                                          «РЭДИССОН РОЙАЛ»»
-                                        </h3>
-                                        <div class="card_text">
-                                          Краткий описательный текст на сайте в несколько строк
-                                          для пояснения ситуации
-                                        </div>
-                                      </div>
-                                    </nuxt-link>
-                                  </li>-->
                 </ul>
                 <div class="link_archive__container">
                   <nuxt-link to="/news" class="link_archive">
-                    Архив новостей
+                    {{ $t('archive_news') }}
                   </nuxt-link>
                 </div>
               </div>

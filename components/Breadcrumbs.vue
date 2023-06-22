@@ -63,7 +63,8 @@ export default {
             path = path.slice(0, -1) // remove trailing slash
           }
           if (match.name !== null) {
-            let formatedMatch = match.name.replace(/[_]/gi, '').slice(0, -2)
+            /*let formatedMatch = match.name.replace(/[_]/gi, '').slice(0, -2)*/
+            let formatedMatch = match.name.replace(/[_]/gi, '')   // for production till langs incomplete
             formatedMatch.replace(/[-]/gi, '_')
             crumbs.push({
               title: 'breadCrumb.'+ formatedMatch.replace(/[-]/gi, '_'),

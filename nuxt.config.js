@@ -188,12 +188,11 @@ export default {
   i18n: {
     /* module options */
     baseUrl: process.env.BASE_URL,
+    strategy: 'no_prefix', //  strategy: 'no_prefix' for production till langs incomplete
     detectBrowserLanguage: false,
     differentDomains: false,
     langDir: 'lang/',
-    lazy: {
-      skipNuxtState: false
-    },
+    lazy: true,
     defaultLocale: 'ru',
     locales: [
       {
@@ -205,20 +204,20 @@ export default {
         active: !!process.env.LANG_EN
       },
       {
-        code: 'ru',
-        iso: 'ru-RU',
-        name: 'RU',
-        file: 'ru-RU.js',
-        domain: process.env.LANG_RU,
-        active: !!process.env.LANG_RU
-      },
-      {
         code: 'cn',
         iso: 'zh-CN',
         name: 'CN',
         file: 'zh-CN.js',
         domain: !process.env.LANG_CN ? process.env.LANG_RU : process.env.LANG_CN,
         active: !!process.env.LANG_CN
+      },
+      {
+        code: 'ru',
+        iso: 'ru-RU',
+        name: 'RU',
+        file: 'ru-RU.js',
+        domain: process.env.LANG_RU,
+        active: !!process.env.LANG_RU
       },
     ],
     /*strategy: 'prefix_and_default',*/

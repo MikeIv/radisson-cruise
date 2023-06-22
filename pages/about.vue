@@ -377,7 +377,7 @@
         </div>
 
         <div class="about-capitans__block" id="cap">
-          <h2 class="headline_56 uk-text-center">Капитаны яхт</h2>
+          <h2 class="headline_56 uk-text-center">{{ $t('yacht_caps') }}</h2>
           <!--          <div class="about-capitans__grid uk-hidden">
                       <div>
                         <div class="yacht__capitan">
@@ -791,12 +791,12 @@
           </h2>
           <a class="uk-button uk-button-default button_download uk-visible@m" href="">
             <svg-icon class="icon" name="download"/>
-            <span>СКАЧАТЬ ВСЕ</span>
+            <span>{{ $t('download_all') }}</span>
           </a>
         </div>
         <div class="about-documents__items uk-grid-match uk-flex uk-flex-wrap uk-child-width-1-2@m"
              uk-scrollspy="target: > div > a; cls: uk-animation-fade; delay: 500">
-          <DocumentCard v-for="(document,index) in companiesLoaded"
+          <DocumentCard v-for="(document,index) in documents.documentsList"
                         :key="index"
                         :name="document.name"
                         :link="document.doc"
