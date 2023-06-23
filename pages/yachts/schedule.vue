@@ -305,8 +305,7 @@
                   </div>
                 </div>
               </div>
-              <div v-if="!checkForLateRoutes(dayData.depatureTime)">
-                <!--                  v-if="checkForLateRoutes(dayData.depatureTime)"-->
+              <div v-if="!checkForLateRoutes(dayData)">
                 <nuxt-link
                     class="uk-button uk-button-default button_ticket"
                     :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
@@ -332,7 +331,7 @@
                 </div>
               </div>
               <div v-else>
-                {{ $t('schedule_delay') }}
+                {{ dayData.freeSeats === 0 ? $t('schedule_sold') : $t('schedule_delay') }}
               </div>
             </div>
           </div>
@@ -656,8 +655,8 @@ export default {
       const timeDifferenceInMs = departureTimeObj - new Date(now);
       return timeDifferenceInMs <= thirtyMinutesInMs;
     },
-    checkForLateRoutes(departureTime) {
-      return this.isDepartureTimeApproaching(departureTime);
+    checkForLateRoutes(route) {
+      return this.isDepartureTimeApproaching(route.departureTime) || route.freeSeats === 0;
     },
     timeCalcDate(dptrTime, arvTime) {
       /*if(dptrTime === null || arvTime === null) return;
