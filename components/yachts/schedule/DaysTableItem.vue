@@ -33,7 +33,12 @@
       {{ freeSpots }}
     </td>
     <td v-if="freeSpots == '0'">
-      <a href="" class="uk-button uk-button-default button_ticket">Билеты раскуплены</a>
+      <a href=""
+         :class="{'disabled-link': checkForLateRoutes}"
+         class="uk-button uk-button-default button_ticket"
+      >
+        Билеты раскуплены
+      </a>
     </td>
     <td v-else>
       <nuxt-link class="uk-button uk-button-default button_ticket transition"
