@@ -656,7 +656,7 @@ export default {
       return timeDifferenceInMs <= thirtyMinutesInMs;
     },
     checkForLateRoutes(route) {
-      return this.isDepartureTimeApproaching(route.departureTime) || route.freeSeats === 0;
+      return this.isDepartureTimeApproaching(route.depatureTime) || route.freeSeats === 0;
     },
     timeCalcDate(dptrTime, arvTime) {
       /*if(dptrTime === null || arvTime === null) return;
