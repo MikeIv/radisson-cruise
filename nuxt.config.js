@@ -25,6 +25,7 @@ export default {
         { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' },
         { hid: 'description', name: 'description', content: '' },
         { name: 'format-detection', content: 'telephone=no' },
+        { name: 'yandex-verification', content: '8cf37b8211002270' },
         ...i18nHead.meta,
       ],
       link: [
@@ -82,6 +83,7 @@ export default {
       '@nuxtjs/redirect-module',
       '@nuxtjs/proxy',
       '@nuxtjs/composition-api/module',
+      '@nuxtjs/robots',
       [
         '@rkaliev/nuxtjs-yandex-metrika',
         {
@@ -95,25 +97,19 @@ export default {
       ],
       '@nuxtjs/moment',
   ],
-  /*yandexMetrika: {
-    id: '22731748',
-    webvisor: true,
-    clickmap:true,
-    trackLinks:true,
-    accurateTrackBounce:true
-  },*/
-  /*redirect: [
-    {
-      from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
-      to: '$1/$2',
-      statusCode: 301
+  robots: () => {
+    if (process.env.ENVIRONMENT === 'prod') {
+      return {
+        UserAgent: '*',
+        Disallow: ''
+      }
+    } else {
+      return {
+        UserAgent: '*',
+        Disallow: '/'
+      }
     }
-
-    /!*{ from: '^/bezopasnost/(.*)$', to: '/rules', statusCode: 301 },
-    { from: '^/nasi-preimusestva/(.*)$', to: '/rent/', statusCode: 301 },
-    { from: '^/tickets/raspisanie/', to: '/yachts/schedule/', statusCode: 301 },
-    { from: '^/action/(.*)$', to: '/news/?grp=action', statusCode: 301 },*!/
-  ],*/
+  },
   redirect: {
     rules: async () => {
       const list = [];
@@ -153,17 +149,6 @@ export default {
   serverMiddleware: [
     { path: '/server-middleware', handler: '~/server-middleware/errorhandler.js' }
   ],*/
- /* redirect: {
-    rules: [
-      {
-        from: '^(\\/[^\\?]*[^\\/.])(\\?.*)?$',
-        to: '$1/$2',
-        statusCode: 301
-      }
-    ],
-    onDecode: (req, res, next) => decodeURI(req.url),
-    onDecodeError: (error, req, res, next) => next(error)
-  },*/
   axios: {
     proxy: false,
     https: true,
@@ -181,10 +166,6 @@ export default {
     baseSiteURL: process.env.BASE_URL,
     imageURL: process.env.IMAGE_URL
   },
-/*  proxy: {
-    '/rewards/': { target: 'https://new.radisson-cruise.ru', pathRewrite: {'^/api/': ''} }
-  },*/
-
   i18n: {
     /* module options */
     baseUrl: process.env.BASE_URL,
@@ -220,18 +201,6 @@ export default {
         active: !!process.env.LANG_RU
       },
     ],
-    /*strategy: 'prefix_and_default',*/
-    /*vueI18n: {
-      fallbackLocale: {
-        'cn': 'en'
-      }
-    }*/
-    /*lazy: {
-      skipNuxtState: true
-    },*/
-    /*lazy: true,
-    langDir: 'lang/',
-    defaultLocale: 'ru',*/
   },
 
 

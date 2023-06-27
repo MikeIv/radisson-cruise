@@ -35,9 +35,14 @@
                         </label>&ndash;&gt;
           </div>-->
           <div class="uk-flex news__navigatiom__tabs">
-            <button @click="fetchNews(1, item.grp,currentMonth,currentYear)" v-for="item in newsCategories" class="uk-button button_switcher-second" :class="checkGrp(item.grp)">{{item.name}}</button>
+            <button @click="fetchNews(1, item.grp,currentMonth,currentYear)"
+                    v-for="item in newsCategories" class="uk-button button_switcher-second"
+                    :class="checkGrp(item.grp)"
+            >
+              {{$t(item.name)}}
+            </button>
           </div>
-          <div class="news__navigatiom__date">
+<!--          <div class="news__navigatiom__date">
             <div class="input_archive input_archive_month">
               <div class="select">
                 <select v-model="currentMonth" @change="fetchNews(currentPage,currentGrp,currentMonth,currentYear)" name="" id="" class="select-styled">
@@ -81,18 +86,46 @@
                 </select>
               </div>
             </div>
+          </div>-->
+          <div class="news__navigatiom__date">
+            <div class="input_archive input_archive_month">
+              <div class="select">
+                <div class="select-styled">
+                  {{ selectedMonth }}
+                </div>
+                <ul uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="select-options uk-dropdown">
+                  <li @click="currentMonth = null;fetchNews(currentPage,currentGrp,currentMonth,currentYear)">Все месяцы</li>
+                  <li @click="currentMonth = month.value;fetchNews(currentPage,currentGrp, currentMonth,currentYear)"
+                      v-for="month in getMonths"
+                      :key="'mnt' + month.value"
+                  >
+                    {{ month.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="input_archive input_archive_year">
+              <div class="select">
+                <div class="select-styled">
+                  {{ selectedYear }}
+                </div>
+                <ul uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="select-options uk-dropdown">
+                  <li @click="currentYear = null;fetchNews(currentPage, currentGrp, currentMonth, currentYear)">Все года</li>
+                  <li @click="currentYear = year;fetchNews(currentPage, currentGrp, currentMonth, currentYear)"
+                      v-for="year in getYears"
+                      :key="'yr' + year"
+                  >
+                    {{ year }}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <section class="news__section">
       <div class="uk-container">
-<!--         <a href="#modal-news-filter" class="uk-button btn-news-filter uk-hidden@s" uk-toggle>
-        <span>
-          ОТКРЫТЬ ФИЛЬТР
-        </span>
-          <svg-icon class="icon" name="looking_glass"/>
-        </a> -->
         <a href="#modal-category-cabin-filter" class="uk-button btn-news-filter uk-hidden@s" uk-toggle="">
             <span>
               {{ $t('buttons.open_filter') }}
@@ -101,19 +134,9 @@
           </a>
 
         <div v-if="paginationPages === 0">
-          Кажется, таких новостей еще нет
+          {{$t('empty_news')}}
         </div>
         <div v-else class="news__grid js-filter">
-<!--
-          <NewsCard :key="'nscrd' + index"
-                    v-for="(card, index) in displayedPosts"
-                    :sale="card.sale"
-                    :main="card.main"
-                    :date="card.date"
-                    :top-info="card.topInfo"
-                    :bottom-info="card.bottomInfo"
-                    :fileName="card.img"/>
--->
           <NewsCard :key="'nscrd' + index"
                     v-for="(card, index) in currentNews"
                     :name="card.name"
@@ -129,8 +152,6 @@
                     :id="card.id"
                     :uri="card.uri"
           />
-
-
         </div>
 
         <ul v-if="paginationPages !== 0" class="mixitup-page-list uk-pagination uk-flex-center uk-flex-middle">
@@ -154,206 +175,6 @@
             </div>
           </li>
         </ul>
-
-<!--        <div class="news__grid js-filter">
-          &lt;!&ndash;          <div>
-                      <a class="uk-card card-news_big transition" href="news-post">
-                        <img  data-src="~assets/img/main/img3.png" alt="" class="img_cover" src="~assets/img/main/img3.png">
-                        <div class="uk-badge">
-                          ВАЖНОЕ
-                        </div>
-                        <div class="card-news_decor"></div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg-icon name="clock2"/>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            С 1 декабря Ройад-Класс Флотилии возобнавляет<br>
-                            навигацию
-                          </h3>
-                          <div class="card_text">
-                            С началом декабря Флотилия возобновляет рейсы Ройал-класса. Гости
-                            отправятся в круиз вместе с профессиональной кавер-группой, а каждый
-                            столик получит бутылку вина в подарок.
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="uk-card card-news__small transition" href="news_item.html">
-                        <div class="uk-cover-container uk-card-default_media">
-                          <img  data-src="~assets/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                        </div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg-icon name="clock2"/>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                          </h3>
-                          <div class="card_text">
-                            Краткий описательный текст на сайте в несколько строк
-                            для пояснения ситуации
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="uk-card card-news__small transition" href="news_item.html">
-                        <div class="uk-cover-container uk-card-default_media">
-                          <img  data-src="~assets/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                          <div class="uk-badge badge_sail">
-                            АКЦИЯ %
-                          </div>
-                        </div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg class="icon">
-                              <use xlink:href="#clock2"></use>
-                            </svg>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                          </h3>
-                          <div class="card_text">
-                            Краткий описательный текст на сайте в несколько строк
-                            для пояснения ситуации
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="uk-card card-news__small transition" href="news_item.html">
-                        <div class="uk-cover-container uk-card-default_media">
-                          <img  data-src="/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                        </div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg class="icon">
-                              <use xlink:href="#clock2"></use>
-                            </svg>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                          </h3>
-                          <div class="card_text">
-                            Краткий описательный текст на сайте в несколько строк
-                            для пояснения ситуации
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="uk-card card-news__small transition" href="news_item.html">
-                        <div class="uk-cover-container uk-card-default_media">
-                          <img  data-src="/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                        </div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg class="icon">
-                              <use xlink:href="#clock2"></use>
-                            </svg>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                          </h3>
-                          <div class="card_text">
-                            Краткий описательный текст на сайте в несколько строк
-                            для пояснения ситуации
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-                    <div>
-                      <a class="uk-card card-news__small transition" href="news_item.html">
-                        <div class="uk-cover-container uk-card-default_media">
-                          <img  data-src="/img/main/img2.png" alt="" class="img_cover" src="~assets/img/main/img2.png">
-                        </div>
-                        <div class="uk-card-body">
-                          <div class="card_time">
-                            <svg class="icon">
-                              <use xlink:href="#clock2"></use>
-                            </svg>
-                            <span>15 ноября 2019 г.</span>
-                          </div>
-                          <h3 class="uk-card-title">
-                            ЕЩЕ БОЛЬШЕ КРУИЗОВ ПО МОСКВЕ-РЕК
-                            С ФЛОТИЛИЕЙ «РЭДИССОН РОЙАЛ»
-                          </h3>
-                          <div class="card_text">
-                            Краткий описательный текст на сайте в несколько строк
-                            для пояснения ситуации
-                          </div>
-                        </div>
-                      </a>
-                    </div>&ndash;&gt;
-
-          &lt;!&ndash;          <div v-for="card in displayedPosts">
-                      <NewsCard :sale="card.sale" :main="card.main" :date="card.date" :top-info="card.topInfo" :bottom-info="card.bottomInfo" :fileName="card.img"/>
-                    </div>&ndash;&gt;
-          <NewsCard :key="'nscrd' + index"  v-for="(card, index) in displayedPosts" :sale="card.sale" :main="card.main" :date="card.date" :top-info="card.topInfo" :bottom-info="card.bottomInfo" :fileName="card.img"/>
-        </div>-->
-
-        <!--        <div class="pagination">
-                  <div class="pagination-container">
-                    <ul class="mixitup-page-list uk-pagination uk-flex-center uk-flex-middle">
-                      <li class="mixitup-control mixitup-control-prev uk-margin-auto-right pagination_back" data-page="prev">
-                        <div>
-                          <svg-icon class="icon" name="arr_lang"/>
-                        </div>
-                      </li>
-                      <li class="mixitup-control  mixitup-control-active" data-page="1">
-                        <div>1</div>
-                      </li>
-                      <li class="mixitup-control " data-page="2">
-                        <div>2</div>
-                      </li>
-                      <li class="mixitup-control mixitup-control-next uk-margin-auto-left pagination_next" data-page="next">
-                        <div>
-                          <svg-icon class="icon" name="arr_lang"/>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>-->
-        <!--
-                <div>
-                  <button @click="filterPosts(''); setPages();">Все</button>
-                  <label v-for="filter in catFilter" :for="filter">{{filter}}
-                    <button :id="filter" type="button" name="catfilter" :value="filter" @click="filterPosts($event); setPages();"/>
-                  </label>
-                </div>
-        -->
-<!--        <ul class="mixitup-page-list uk-pagination uk-flex-center uk-flex-middle">
-          <li class="mixitup-control mixitup-control-prev uk-margin-auto-right pagination_back" @click.prevent="listPagesPrev">
-            <div>
-              <svg-icon class="icon" name="arr_lang"/>
-            </div>
-          </li>
-
-          <li class="mixitup-control" v-for="pageNumber in pages" @click.prevent="page = pageNumber">
-            <div>{{pageNumber}}</div>
-          </li>
-
-          <li class="mixitup-control mixitup-control-next uk-margin-auto-left pagination_next" @click.prevent="listPagesNext">
-            <div>
-              <svg-icon class="icon" name="arr_lang"/>
-            </div>
-          </li>
-        </ul>-->
       </div>
     </section>
     <FilterMobile
@@ -403,19 +224,19 @@ export default {
       currentYear: null,
       newsCategories: [
         {
-          name: 'Все',
+          name: 'all',
           grp: 'all',
         },
         {
-          name: 'Новости',
+          name: 'news',
           grp: 'article',
         },
         {
-          name: 'Акции',
+          name: 'action',
           grp: 'action',
         },
         {
-          name: 'События',
+          name: 'event',
           grp: 'event',
         },
       ],
@@ -711,7 +532,6 @@ export default {
 
     async fetchNews(page = 1, grp, month = null,year = null) {
       //console.log("fetchNews params  = " ,page , ' || ', grp, ' || ', month, ' || ', year);
-
       if(page > this.paginationPages) {
         page = this.paginationPages
       } else if (page === 0 ) {
@@ -771,7 +591,7 @@ export default {
       this.currentNews = news.data.news
       this.currentPage = news.data.page
       this.paginationPages = news.data.pages
-      this.$router.push({query: {page: page, grp: grp}});
+      this.$router.push({query: {page: page, grp: grp}})
     },
 
     listPagesPrev() {
@@ -843,7 +663,31 @@ export default {
 
     displayedPosts () {
       return this.paginate(this.filteredPosts);
-    }
+    },
+
+    selectedMonth() {
+      return this.currentMonth !== null  ? this.getMonths.find((month) => month.value === this.currentMonth).name : this.$i18n.t('month')
+    },
+    selectedYear() {
+      return this.currentYear !== null ? this.currentYear : this.$i18n.t('year')
+    },
+    getYears() {
+      let years = [];
+      const currentYear = new Date().getFullYear();
+      for (let year = currentYear; year >= 2009; year--) {
+        years.push(year);
+      }
+      return years
+    },
+
+    getMonths() {
+      return this.$i18n.t('monthnames').map((month, index) => {
+        return {
+          name: month,
+          value: index + 1
+        }
+      })
+    },
   },
   beforeDestroy() {
     //console.log("DESTROY Yachts Index =", this.$refs.filterModal);
@@ -930,7 +774,7 @@ export default {
   padding: 2px 20px;
   font-size: 12px;
 }
-
+/*
 .select-styled {
   position: relative;
   display: block;
@@ -946,7 +790,7 @@ export default {
   height: 10px;
   width: 10px;
 
-}
+}*/
 
 .select-styled option {
   font-size: 13px;

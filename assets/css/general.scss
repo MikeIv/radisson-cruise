@@ -637,13 +637,13 @@ footer .uk-search-navbar .uk-search-input {
 // 	box-shadow: 0 5px 38px rgba(0,0,0,.1);
 // }
 .select-options {
-	display: none;
+	//display: none;
 	position: absolute!important;
 	top: 100%;
 	right: 0;
 	left: 0;
 	z-index: 999;
-  margin: 0;
+    margin: 0;
 	padding: 0;
 	list-style: none;
 	background: #fff;
@@ -5456,6 +5456,8 @@ body {
   }
   .select-options  {
     padding: 10px 0;
+    width: 100%;
+    min-width: auto;
     margin-top: 2px!important;
   }
   .select-options li {

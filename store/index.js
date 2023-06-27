@@ -51,12 +51,8 @@ export const actions = {
 
     async getActualDoc({commit}) {
         const documentsData = await axios.get(
-            `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
-        documentsData.data.find((item) => {
-            if (item.id === 5) {
-                commit('setTramsDoc', item.doc);
-            }
-        });
+            `${this.$config.baseURL}docs?id=5&lang=${this.$i18n.locale}`);
+        commit('setTramsDoc', documentsData.data[0].doc);
     }
 
     /*nuxtServerInit(context, { req, redirect }) {
