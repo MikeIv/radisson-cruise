@@ -211,7 +211,6 @@
         </form>
         <button
             class="uk-button btn-news-filter uk-hidden@s"
-
             @click="openFilter"
         >
           <span> {{ $t('buttons.open_filter') }} </span>
@@ -219,14 +218,13 @@
         </button>
 
         <div class="buy-ticket-shedule-days uk-hidden@s">
-          <button class="buy-ticket-shedule-day"
-                  :class="{'buy-ticket-shedule-day__red': isWeekend(calendarItem.weekday)}"
-                  v-for="calendarItem in mobileCalendarItems"
-                  @click="setFilterDates(calendarItem.fullDate)"
-          >
-            <span>{{ calendarItem.date }}</span>
-            <span>{{ calendarItem.weekday }}</span>
-          </button>
+          <SmallCalendarItem
+              v-for="(calendarItem, index) in mobileCalendarItems"
+              :key="'cldr' + index"
+              :calendar-item="calendarItem"
+              :class="{'buy-ticket-shedule-day__red': isWeekend(calendarItem.weekday)}"
+              @click.native="setFilterDates(calendarItem.fullDate)"
+          />
         </div>
 
 <!--        <div v-if="isLoading" class="lds-ring">
@@ -243,7 +241,7 @@
             @get-category="getCategory"
         />
 
-        <div v-for="(dayRoute, index) in showRoutes"
+        <!--        <div v-for="(dayRoute, index) in showRoutes"
              :key="'tblMob' + index"
              class="uk-overflow-auto buy-ticket-shedule_responsive uk-hidden@l">
           <div class="buy-ticket-shedule_responsive__head">
@@ -335,7 +333,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
+
+        <MobileTable
+            v-for="(dayRoute, index) in showRoutes"
+            :key="'tblMob' + index"
+            :day-route="dayRoute"
+            @get-category="getCategory"
+        />
       </div>
     </section>
     <CategoryInfo :info="categoryInfo"/>
@@ -364,11 +369,15 @@ import FilterMobile from "../../components/modals/Filter.vue";
 import {timeCalc} from "@/plugins/routesTimeCalc";
 import UIkit from "uikit";
 import moment from "moment";
+import SmallCalendarItem from "../../components/yachts/schedule/SmallCalendarItem.vue";
+import MobileTable from "../../components/yachts/schedule/MobileTable.vue";
 
 export default {
   scrollToTop: true,
   name: 'schedule',
-  components: {Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile},
+  components: {
+    MobileTable,
+    SmallCalendarItem, Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile},
   head() {
     return {
       title: this.seoData?.title,
@@ -431,12 +440,7 @@ export default {
     },
     async getCategory(id) {
       try {
-        let responseData;
-        if (id === undefined) {
-          responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=schedule`);
-        } else {
-          responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=${this.$i18n.locale}`);
-        }
+        const responseData = await axios.get(`${this.$config.baseURL}route?journey=${id}&lang=${this.$i18n.locale}`);
         if (!responseData.data.result) return;
         this.categoryInfo = responseData.data.result.classData;
         UIkit.modal('#buy-ticket-shedule-info').show();
@@ -659,15 +663,6 @@ export default {
       return this.isDepartureTimeApproaching(route.depatureTime) || route.freeSeats === 0;
     },
     timeCalcDate(dptrTime, arvTime) {
-      /*if(dptrTime === null || arvTime === null) return;
-      let depatureTime = new Date(dptrTime);
-      let arrivalTime = new Date(arvTime);
-      let hourDepature = depatureTime.getHours().toString().length < 2 ? '0' + depatureTime.getHours() : depatureTime.getHours();
-      let minDepature = depatureTime.getMinutes().toString().length < 2 ? '0' + depatureTime.getMinutes() : depatureTime.getMinutes();
-      let hourArrival = arrivalTime.getHours().toString().length < 2 ? '0' + arrivalTime.getHours() : arrivalTime.getHours();
-      let minArrival = arrivalTime.getMinutes().toString().length < 2 ? '0' + arrivalTime.getMinutes() : arrivalTime.getMinutes();
-      if(isNaN(hourDepature) || isNaN(minDepature) || isNaN(hourArrival) || isNaN(minArrival)) return;
-      return `${hourDepature}:${minDepature} - ${hourArrival}:${minArrival}`*/
       if (dptrTime === null || arvTime === null) return;
       let formattedDeparture = moment(dptrTime).format('HH:mm')
       let formattedArrival = moment(arvTime).format('HH:mm')

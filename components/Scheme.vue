@@ -6,10 +6,8 @@
     <svg-icon class="scheme_decor2" name="decor3"/>
     <div class="scheme__scroll">
       <svg-icon name="scroll"/>
-      <span>
-        Используйте
-        <br>
-        прокрутку
+      <span class="scheme_scroll-text">
+       {{ $t('use_scroll') }}
       </span>
     </div>
     <div class="uk-container uk-position-relative">
@@ -53,6 +51,14 @@
                               :activeRoute="activeRoute"
                               :isActiveCircle="circle.isActive"
                 />
+
+<!--                <SchemePopup
+                    :info="selectInfoModal.info"
+                    :location="selectInfoModal.location"
+                    :idNum="'scheme_item'+ selectInfoModal.customClass"
+                    :img="selectInfoModal.img"
+                    v-if="isModalActive"
+                />-->
               </div>
 
             </div>
@@ -109,7 +115,7 @@
                   <svg-icon name='arrow3' class="icon"/>
                 </label>
               </div>
-              <nuxt-link to="/yachts/schedule/"
+              <nuxt-link :to="buttonLink"
                          class="width-100 uk-button uk-button-default button_ticket"
                          type="button">
                 <span>{{ $t('schedule') }}</span>
@@ -131,8 +137,10 @@ import axios from "axios";
 
 export default {
   name: "Scheme",
-
   components: {SchemePopup, SchemeCircle},
+  props: {
+    buttonLink: String,
+  },
   data() {
     return {
       isActive: false,
@@ -719,5 +727,9 @@ export default {
 
 .height-100 {
   height: 100%;
+}
+.scheme_scroll-text {
+  width: 100%;
+  max-width: 100px;
 }
 </style>

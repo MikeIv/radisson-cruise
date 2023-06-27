@@ -18,11 +18,6 @@
         <td>{{$t('free_sits')}}</td>
         <td>{{$t('buy')}}</td>
       </tr>
-      <!--      <tr v-if="!aboutDays || aboutDays.length === 0">
-        <td colspan="7">
-          К сожалению, на данную дату продажа билетов еще закрыта
-        </td>
-      </tr>-->
       <DaysTableItem v-for="(dayData, index) in aboutDays"
                      :key="'day' + index"
                      :dayFormat="dayFormat"

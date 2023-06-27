@@ -35,7 +35,6 @@
                       <article class="tpl-text-default">
                         {{ $t('main_subtitle') }}
                       </article>
-
                     </div>
                   </div>
                 </div>
@@ -98,7 +97,222 @@
             </div>
           </div>
         </div>
+        <!--          <form class="buy-ticket uk-hidden" autocomplete="off">
+            &lt;!&ndash; <div class="buy-ticket__item">
+            <svg class="icon buy-ticket__item_icon1">
+              <use xlink:href="#date"></use>
+            </svg>
+            <img src="/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
+            <input class="datetimepicker select-styled " id="datetimepicker" type="text" value="Выбрать дату">
+          </div> &ndash;&gt;
+            &lt;!&ndash; <div class="buy-ticket__item">
+            <svg class="icon buy-ticket__item_icon2">
+              <use xlink:href="#passengers"></use>
+            </svg>
+            <div class="input input-js ">
+              <select class="select-hidden" select_name="Выбрать причал">
+                <option value=""></option>
+                <option value="Причал «Гостиница украина»">Причал «Гостиница украина»</option>
+                <option value="Причал «Парк Горького»">Причал «Парк Горького»</option>
+              </select>
+            </div>
+          </div>
+          <div class="buy-ticket__item">
+            <svg class="icon buy-ticket__item_icon3">
+              <use xlink:href="#cat_room"></use>
+            </svg>
+            <div class="input input-js ">
+              <select class="select-hidden" select_name="Категория салона">
+                <option value=""></option>
+                <option value="Яхта">Яхта</option>
+                <option value="Ройал-класс">Ройал-класс</option>
+                <option value="Супер-яхта">Супер-яхта</option>
+                <option value="Erwin.Река">Erwin.Река</option>
+                <option value="Трамвайчики">Трамвайчики</option>
+              </select>
+            </div>
+          </div> &ndash;&gt;
+
+            <div class="buy-ticket__item">
+              <svg-icon name="date" class="icon buy-ticket__item_icon1"/>
+              <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
+              <input class=" select-styled  litepicker" id="datepicker" type="text" value="" placeholder="Выбрать дату">
+            </div>
+            <div class="buy-ticket__item">
+              <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
+              <button class="select-styled pass-btn" type="button" aria-expanded="false">Выбрать судно</button>
+
+              <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop uk-dropdown">
+                <div class="pass-quantity">
+                  <div class="form_politic buy-ticket__politic">
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__craft ">
+                      <span class="">
+                      Яхты
+                    </span>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__craft ">
+                      <span class="">
+                      Трамвайчики
+                    </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="buy-ticket__item">
+              <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
+              <button class="select-styled pass-btn" type="button" aria-expanded="false">Выбрать причал</button>
+
+              <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop uk-dropdown">
+                <div class="pass-quantity">
+                  <div class="form_politic buy-ticket__politic">
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__moorage">
+                      <span class="">
+                      Гостиница «Украина»
+                    </span>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__moorage">
+                      <span class="">
+                      Парк Горького
+                    </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="buy-ticket__item">
+              <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
+              <button class="select-styled pass-btn" type="button" aria-expanded="false">Категория салона</button>
+
+              <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop uk-dropdown">
+                <div class="pass-quantity">
+                  <div class="form_politic buy-ticket__politic">
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Основной зал
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Royal Class
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Первый класс
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Ervin Река
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Mercedes Benz
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Театарльный круиз
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                    <label>
+                      <input class="uk-checkbox" type="checkbox" name="category__salon">
+                      <span class="">
+                      Спецрейс
+                    </span>
+                      <svg-icon name="svg-info3" class="buy-ticket__politic__toggle" uk-toggle="target:#buy-ticket-shedule-info;"/>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="buy-ticket__item">
+              <svg-icon name="passengers" class="icon buy-ticket__item_icon4"/>
+              <button class="select-styled pass-btn" type="button" aria-expanded="false">Кол-во пассажиров</button>
+
+              <div uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="pass-quantity__drop uk-dropdown">
+                <div class="pass-quantity">
+                  <div class="pass-quantity__item">
+                    <div class="pass-quantity__item_name">
+                      Взрослый
+                    </div>
+                    &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
+                    <div class="input-group plus-minus-input">
+                      <div class="input-group-button">
+                        <button type="button" class="button " data-quantity="minus" data-field="quantity">
+                          -
+                        </button>
+                      </div>
+                      <input class="input-group-field" type="number" name="quantity" value="1">
+                      <div class="input-group-button">
+                        <button type="button" class="button" data-quantity="plus" data-field="quantity">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pass-quantity__item">
+                    <div class="pass-quantity__item_name">
+                      Детский
+                    </div>
+                    &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
+                    <div class="input-group plus-minus-input">
+                      <div class="input-group-button">
+                        <button type="button" class="button " data-quantity="minus" data-field="quantity2">
+                          -
+                        </button>
+                      </div>
+                      <input class="input-group-field" type="number" name="quantity2" value="0">
+                      <div class="input-group-button">
+                        <button type="button" class="button " data-quantity="plus" data-field="quantity2">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="uk-button uk-button-default button_ticket" type="submit">
+              <span>Купить билет</span>
+              <svg-icon name="ticket"/>
+            </button>
+          </form>
+
+          <form class="buy-ticket" autocomplete="off">
+            <div class="buy-ticket__item buy-ticket__item_switch">
+              <div class="switch-container">
+                <div class="switch-name" :class="{'active': !isActive}">Билет на яхты</div>
+                <label class="switch-round">
+                  <input @click="switchTicket" type="checkbox">
+                  <span class="switch-slider"></span>
+                </label>
+                <div class="switch-name" :class="{'active': isActive}">Билет на трамвайчики</div>
+              </div>
+            </div>
+            <BuyTicketBtn :link="!isActive ? '/yachts/tickets/' : '/trams/tickets/'"/>
+          </form>-->
       </div>
+
       <div class="header-compass uk-visible@l">
         <div></div>
         <div></div>
@@ -108,7 +322,8 @@
     </Header>
     <div class="wrapper">
       <NewsBar :news="currentNews" :actions="currentActions"/>
-      <Scheme/>
+      <Scheme button-link="/yachts/schedule/"
+      />
     </div>
   </div>
 </template>
