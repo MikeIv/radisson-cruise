@@ -158,16 +158,16 @@
           </div>
           <div class="modal-news-filter__body">
             <div class="news__navigatiom__date" v-show="isNewsFilter">
-              <div class="input_archive input_archive_month">
+<!--              <div class="input_archive input_archive_month">
                 <div class="select">
-                  <!--                 <button class="uk-button uk-button-default" type="button">Click</button>
+                  &lt;!&ndash;                 <button class="uk-button uk-button-default" type="button">Click</button>
                                     <div uk-dropdown="mode: click">
                                       <ul>
                                         <li v-for="(itemM,idxM) in monthItemsSelect" :key="'idxM-'+idxM">
                                             <button>{{ itemM }}</button>
                                         </li>
                                       </ul>
-                                    </div> -->
+                                    </div> &ndash;&gt;
                   <button class="uk-button uk-button-default select-dropdown-button" type="button">Месяц
                     {{ uiSelectMonth }}
                   </button>
@@ -205,6 +205,38 @@
                     </ul>
                   </div>
 
+                </div>
+              </div>-->
+              <div class="input_archive input_archive_month">
+                <div class="select">
+                  <div class="select-styled">
+                    {{ selectedMonth }}
+                  </div>
+                  <ul uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="select-options uk-dropdown">
+                    <li @click="currentMonth = null; selectMonth(null)">Все месяцы</li>
+                    <li @click="currentMonth = month.value; selectMonth(month.value)"
+                        v-for="month in getMonths"
+                        :key="'mnt' + month.value"
+                    >
+                      {{ month.name }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="input_archive input_archive_year">
+                <div class="select">
+                  <div class="select-styled">
+                    {{ selectedYear }}
+                  </div>
+                  <ul uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;" class="select-options uk-dropdown">
+                    <li @click="currentYear = null;selectYear(null)">Все года</li>
+                    <li @click="currentYear = year;selectYear(year)"
+                        v-for="year in getYears"
+                        :key="'yr' + year"
+                    >
+                      {{ year }}
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -288,6 +320,22 @@ export default {
       type: Array,
       default: () => [],
     },
+    actualMonth: {
+      type: Number,
+      default: null,
+    },
+    actualYear: {
+      type: Number,
+      default: null,
+    },
+  },
+  watch: {
+    actualMonth() {
+      this.currentMonth = this.actualMonth;
+    },
+    actualYear() {
+      this.currentYear = this.actualYear;
+    },
   },
   data() {
     return {
@@ -322,11 +370,34 @@ export default {
         adult: 1,
         child: 0,
       },
-      selectedMonth: null,
-      selectedYear: null,
+      currentMonth: this.actualMonth,
+      currentYear: this.actualYear,
     };
   },
   computed: {
+    getYears() {
+      let years = [];
+      const currentYear = new Date().getFullYear();
+      for (let year = currentYear; year >= 2009; year--) {
+        years.push(year);
+      }
+      return years
+    },
+
+    getMonths() {
+      return this.$i18n.t('monthnames').map((month, index) => {
+        return {
+          name: month,
+          value: index + 1
+        }
+      })
+    },
+    selectedMonth() {
+      return this.currentMonth !== null  ? this.getMonths.find((month) => month.value === this.currentMonth).name : this.$i18n.t('month')
+    },
+    selectedYear() {
+      return this.currentYear !== null ? this.currentYear : this.$i18n.t('year')
+    },
     dropYear() {
       let listYers = [];
       const startYear = 2009;
@@ -415,10 +486,10 @@ export default {
       //console.log("selectMonth",item);
       //console.log("this.$refs.dropMonth = ",this.$refs.dropMonth);
       if (item === 0) {
-        this.selectedMonth = null;
+        this.currentMonth = null;
       } else {
 
-        this.selectedMonth = item;
+        this.currentMonth = item;
       }
       UIkit.dropdown(this.$refs.dropMonth).hide(false);
     },
@@ -426,9 +497,9 @@ export default {
       //console.log("selectYear",item);
       //console.log("this.$refs.dropYear = ",this.$refs.dropYear);
       if (item === "Все года") {
-        this.selectedYear = null;
+        this.currentYear = null;
       } else {
-        this.selectedYear = item;
+        this.currentYear = item;
       }
 
       UIkit.dropdown(this.$refs.dropYear).hide(false);
@@ -442,8 +513,8 @@ export default {
       if (this.isNewsFilter)
         this.$emit('checked-tabs', {
           activeTab: this.activeTab,
-          activeMonth: this.selectedMonth,
-          activeYear: this.selectedYear,
+          activeMonth: this.currentMonth,
+          activeYear: this.currentYear,
         });
       else {
         this.$emit('checked-tabs', {

@@ -308,7 +308,7 @@ export default {
   },
   head() {
     return {
-      title: this.seoData?.title,
+      title: this.seoData?.title ? this.seoData?.title : 'Купить сертификаты',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {

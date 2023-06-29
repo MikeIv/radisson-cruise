@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
+  <nuxt-link :prefetch="false" class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
     <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
     <div class="card-news_decor"></div>
     <div class="uk-card-body">

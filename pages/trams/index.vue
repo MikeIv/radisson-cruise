@@ -62,13 +62,18 @@
         :button="tramBlocks?.button"
     />
 
-    <SchemeRouts
+<!--    <SchemeRouts
       :idTypeMap="3"
-      :arrDataPoints="dataPiers"
+      :arrDataPoints="schemePiers"
 
-      v-if="viewSections.scheme && dataPiers.length > 0"
+      v-if="viewSections.scheme && schemePiers.length > 0"
+    />-->
+    <Scheme :button-link="tramsDoc"
+            :points="schemePiers"
+            :active-routes="dataRoutes"
+            :active-route-prop="activeRouteProp"
+            :active-id="3"
     />
-
     <div class="trams__headline">
       <div class="uk-container">
         <div class="headline_56">
@@ -215,9 +220,11 @@ import UIkit from "uikit";
 import axios from "axios";
 import CruiseItem from "@/components/tickets/CruiseItem.vue";
 import {mapGetters} from "vuex";
+import Scheme from "../../components/Scheme.vue";
 export default {
   name: "trams-main",
   components: {
+    Scheme,
     CruiseItem,
     Breadcrumbs,
     PortItem,
@@ -600,6 +607,9 @@ export default {
       tramBlocks: null,
       portBlocks: [],
       seoData: {},
+      schemeRoutes: [],
+      schemePiers: [],
+      activeRouteProp: {},
     }
   },
   computed: {
@@ -639,9 +649,10 @@ export default {
         `${this.$config.baseURL}maproutes?type=trams&lang=${this.$i18n.locale}`);
 
     this.dataRoutes = getDataRoutes.data.routes
-    let piersData = getDataRoutes.data.piers;
+    this.schemePiers = getDataRoutes.data.piers;
+    this.activeRouteProp = getDataRoutes.data.routes[0]
 
-    piersData = piersData.filter((item) => {
+   /* let piersData = piersData.filter((item) => {
       return item.seq >= this.dataRoutes[0].seqmin && item.seq <= this.dataRoutes[0].seqmax && item.type == 'object';
     });
     const addStartPier = getDataRoutes.data.piers.find((item) => {
@@ -657,9 +668,7 @@ export default {
 
     const mapPiersData = this.dataPiers.map((item) => {
       return {
-        customClass: this.tableIdCSStoIdPier.find((itmid) => {
-          return itmid.id == item.id;
-        }).classId,
+        customClass: item.id,
         //id: item.id,
         title: item.name,
         location: item.name,
@@ -670,7 +679,7 @@ export default {
       }
     });
 
-    this.dataPiers = mapPiersData;
+    this.dataPiers = mapPiersData;*/
     let tramsVariantsData = await axios.get(
         `${this.$config.baseURL}riverbus?lang=${this.$i18n.locale}`);
 

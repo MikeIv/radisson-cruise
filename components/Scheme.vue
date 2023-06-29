@@ -32,33 +32,30 @@
             <div class="scheme__map">
               <div class="scheme__map_path-container">
                 <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
-                <div class="scheme_item18">
-                  <svg-icon name='svg-return' class="icon"/>
-                  <span>
-                    {{ $t('reversal') }}
-                  </span>
-                </div>
-
-                <SchemeCircle v-for="(circle, index) in schemeYacht"
-                              :idNum="'crcl-'+ circle.customClass"
-                              :key="'crcl'+ index"
-                              :custom-class="circle.customClass"
-                              :port="circle.port"
-                              :title="circle.title"
-                              :location="circle.location"
-                              :info="circle.info"
-                              :img="circle.img"
-                              :activeRoute="activeRoute"
-                              :isActiveCircle="circle.isActive"
+                <SchemeCircle v-for="(circle, index) in activePierses"
+                                  :circle="circle"
+                                  :idNum="'crcl-'+ circle.customClass"
+                                  :key="'crcl'+ index"
+                                  :custom-class="circle.customClass"
+                                  :port="circle.port"
+                                  :title="circle.title"
+                                  :location="circle.location"
+                                  :info="circle.info"
+                                  :img="circle.img"
+                                  :activeRoute="activeRoute"
+                                  :active-modal="selectInfoModal.id"
+                                  :isActiveCircle="circle.isActive"
+                                  :type="circle.type"
+                                  @show-modal="showModal"
                 />
 
-<!--                <SchemePopup
+                <SchemePopup
                     :info="selectInfoModal.info"
                     :location="selectInfoModal.location"
-                    :idNum="'scheme_item'+ selectInfoModal.customClass"
+                    :idNum="'scheme_item'+ selectInfoModal.id"
                     :img="selectInfoModal.img"
                     v-if="isModalActive"
-                />-->
+                />
               </div>
 
             </div>
@@ -98,8 +95,9 @@
                               </label>
                             </div>-->
 
-              <div v-for="(route,index) in dataRoutes" class="uk-width-1-1" :key="'schmrt' + index">
-                <input v-model.number="activeRoute" type="radio" name="scheme-moor" :value="route.id" :id="`scheme-moor${route.id}`">
+              <div v-for="(route,index) in activeRoutes" class="uk-width-1-1" :key="'schmrt' + index">
+                <input v-model.number="activeRoute" type="radio" name="scheme-moor" :value="route.id"
+                       :id="`scheme-moor${route.id}`">
                 <label class="width-100 height-100 scheme__bottom_item" :for="`scheme-moor${route.id}`">
                   <div class="scheme__bottom_item_left">
                     <div class="scheme__bottom_head">
@@ -133,18 +131,31 @@
 <script>
 import SchemeCircle from "./SchemeCircle";
 import SchemePopup from "./SchemePopup";
-import axios from "axios";
+import SchemeCircleMain from "./SchemeCircleMain.vue";
 
 export default {
   name: "Scheme",
-  components: {SchemePopup, SchemeCircle},
+  components: {SchemeCircleMain, SchemePopup, SchemeCircle},
   props: {
     buttonLink: String,
+    points: {
+      type: Array,
+      required: true,
+    },
+    activeRoutes: {
+      type: Array,
+      required: true,
+    },
+    activeRouteProp: {
+      type: Object,
+      required: true,
+    },
+    activeId: Number
   },
   data() {
     return {
       isActive: false,
-      activeRoute: 1,
+      activeRoute: this.activeId,
       activeRouteTram: 1,
       isActiveCircle: false,
       schemeYacht: [
@@ -431,98 +442,98 @@ export default {
           isActive: false,
         },
       ],
-      tableIdCSStoIdPier:[
+      tableIdCSStoIdPier: [
         {
           classId: 'none',
-          id:1
+          id: 1
         },
         {
-          classId:"1",
-          id:2
+          classId: "1",
+          id: 2
         },
         {
-          classId:"2",
-          id:3
+          classId: "2",
+          id: 3
         },
         {
           classId: '3',
-          id:4
+          id: 4
         },
         {
-          classId:"4",
-          id:5
+          classId: "4",
+          id: 5
         },
         {
-          classId:"5",
-          id:6
+          classId: "5",
+          id: 6
         },
         {
           classId: 'none',
           id: 7
         },
         {
-          classId:"6",
-          id:8
+          classId: "6",
+          id: 8
         },
         {
-          classId:"7",
-          id:9
+          classId: "7",
+          id: 9
         },
         {
           classId: 'none',
           id: 10
         },
         {
-          classId:"8",
-          id:11
+          classId: "8",
+          id: 11
         },
         {
-          classId:"9",
-          id:12
+          classId: "9",
+          id: 12
         },
         {
           classId: 'none',
           id: 13
         },
         {
-          classId:"10",
-          id:14
+          classId: "10",
+          id: 14
         },
         {
-          classId:"11",
-          id:15
+          classId: "11",
+          id: 15
         },
         {
-          classId:"13",
-          id:16
+          classId: "13",
+          id: 16
         },
         {
           classId: 'none',
           id: 17
         },
         {
-          classId:"12",
-          id:18
+          classId: "12",
+          id: 18
         },
         {
-          classId:"14",
-          id:19
+          classId: "14",
+          id: 19
         },
         {
-          classId:"15",
-          id:20
+          classId: "15",
+          id: 20
         },
         {
-          classId:"16",
-          id:21
+          classId: "16",
+          id: 21
         },
         {
-          classId:"17",
-          id:22
+          classId: "17",
+          id: 22
         },
         {
-          classId:"18",
-          id:23
+          classId: "18",
+          id: 23
         },
 
       ],
@@ -531,9 +542,16 @@ export default {
       dataRoute: {},
       schemeData: {},
       selectedPiers: [],
+      activeRouteData: Object.assign(this.activeRouteProp),
+      isModalActive: false,
+      selectInfoModal: {},
     }
   },
   methods: {
+    showModal(circle) {
+      this.isModalActive = true;
+      this.selectInfoModal = circle;
+    },
     clearActive() {
       const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley
       for (const customClass in activeRoute) {
@@ -565,6 +583,7 @@ export default {
 
 
       } else {
+        this.isModalActive = false;
         this.clearActive();
         //console.log('Click on Map = ', e.target);
       }
@@ -600,12 +619,11 @@ export default {
     },
 
     filterPierses(id) {
-      let piersData = this.schemeData.piers;
-      this.dataRoute = this.dataRoutes.find((item) => {
+      this.activeRouteData = this.activeRoutes.find((item) => {
         return item.id === id;
       });
 
-      piersData = piersData.filter((item) => {
+      /*piersData = piersData.filter((item) => {
         return item.seq >=  this.dataRoute.seqmin && item.seq <= this.dataRoute.seqmax && item.type == 'object';
       });
       const addStartPier = this.schemeData.piers.find((item) => {
@@ -629,18 +647,61 @@ export default {
         }
       });
 
-      this.selectedPiers = mapPiersData;
+      this.selectedPiers = mapPiersData;*/
     },
   },
   computed: {
     schemeTitle() {
       return this.$t('route_scheme').split(' ')
     },
+    activePierses() {
+      return this.points
+          .filter((item, index, self) => {
+            const matchingPort = this.activeRouteData?.points.find((port) => port.id === item.id);
+            const matchingPier = self.find((pier) => pier.type === 'pier' && pier.seq === item.seq && pier.id !== item.id);
+            const matchingObject = self.find((obj) => obj.type === 'object' && obj.seq === item.seq && obj.id !== item.id);
+            const isDuplicateSeq = self.filter((obj) => obj.seq === item.seq).length > 1;
+            const hasMatchingSeqInPoints = this.activeRouteData?.points.some((point) => point.seq === item.seq);
+            const isObject = item.type === 'object';
+            const isPier = item.type === 'pier';
+            const isMatchingPier = matchingPier && !hasMatchingSeqInPoints;
+            const isMatchingPort = matchingPort;
+            const isMatchingObject = !matchingPort && !matchingObject && !hasMatchingSeqInPoints;
+            const isDuplicateSeqPier = isDuplicateSeq && matchingPort;
+            const isWithinSeqRange = item.seq >= this.activeRouteData?.seqmin && item.seq <= this.activeRouteData?.seqmax;
+            const isActive = item.active === 1;
+
+            return (
+                (isObject && isMatchingPier) ||
+                (!isObject && isMatchingPort) ||
+                (isObject && isMatchingObject) ||
+                (isPier && isDuplicateSeqPier)
+            ) && isWithinSeqRange && isActive;
+          })
+          .map((item) => {
+            return {
+              customClass: item.id,
+              id: item.id,
+              title: item.name,
+              location: item.name,
+              info: item.description,
+              img: item.image,
+              port: this.activeRouteData?.points.find((port) => port.id === item.id) ? item.name + '<br> Начало / конец маршрута' : null,
+              type: item.type,
+              isActive: !!this.activeRouteData?.points.find((port) => port.id === item.id),
+            }
+          })
+    },
   },
   watch: {
-    activeRoute: function(val) {
+    activeRoute: function (val) {
       this.filterPierses(val)
     },
+  },
+  updated() {
+    this.activeRouteData = this.activeRoutes.find((item) => {
+      return item.id === this.activeRoute;
+    });
   },
   mounted() {
     let bubbles = document.querySelectorAll('.scheme__map_path-container .uk-inline')
@@ -678,8 +739,11 @@ export default {
             modal.style.top = clickedItem.offsetTop - 75  + 'px'
           });
         }*/
+    this.activeRouteData = this.activeRoutes.find((item) => {
+      return item.id === this.activeRoute;
+    });
   },
-  async fetch() {
+  /*async fetch() {
     try {
       let getDataRoutes = await axios.get(
           `${this.$config.baseURL}maproutes?type=yachts&lang=${this.$i18n.locale}`);
@@ -693,7 +757,7 @@ export default {
     }
   },
   fetchOnServer: false,
-  fetchKey: 'Scheme-yachts',
+  fetchKey: 'Scheme-yachts',*/
 }
 </script>
 
@@ -728,6 +792,7 @@ export default {
 .height-100 {
   height: 100%;
 }
+
 .scheme_scroll-text {
   width: 100%;
   max-width: 100px;

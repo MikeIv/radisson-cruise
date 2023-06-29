@@ -183,6 +183,8 @@
         :categories="newsCategoriesMobile"
         ref="filterModal"
         @checked-tabs="checkedFilter"
+        :actual-month.sync="currentMonth"
+        :actual-year.sync="currentYear"
     />
   </div>
 </template>
