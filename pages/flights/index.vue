@@ -23,7 +23,6 @@
                   :link-buy="cruise.linkbuy"
       />
     </div>
-    <Scheme/>
   </div>
 </template>
 

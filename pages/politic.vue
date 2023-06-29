@@ -59,8 +59,8 @@ export default {
           `${this.$config.baseURL}pages?ref=/politic/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
       const politicData = await axios.get(
-          `${this.$config.baseURL}htmlelements?code=privacy_policy&lang=${this.$i18n.locale}`)
-      this.politic = politicData.data.result?.privacy_policy
+          `${this.$config.baseURL}varyelements?code=privacy_policy&lang=${this.$i18n.locale}`)
+      this.politic = politicData.data.result?.privacy_policy.content
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }

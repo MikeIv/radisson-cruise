@@ -38,7 +38,7 @@
                             <div class="scheme__map_path-container">
                                 <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
 
-                                <div class="scheme_item18">
+                                <div class="scheme_item23">
                                     <svg-icon name='svg-return' class="icon"/>
                                     <span>
                                      {{ $t('reversal') }}
@@ -53,8 +53,9 @@
                                 </div> -->
 
                                 <SchemeCircle v-for="(circle, index) in arrDataPoints"
+                                              :circle="circle"
                                               :idNum="'crcl-'+ circle.customClass"
-                                              :key="'crclr'+ index"
+                                              :key="'crcl'+ index"
                                               :custom-class="circle.customClass"
                                               :port="circle.port"
                                               :title="circle.title"
@@ -62,7 +63,10 @@
                                               :info="circle.info"
                                               :img="circle.img"
                                               :activeRoute="activeRoute"
+                                              :active-modal="selectInfoModal.id"
                                               :isActiveCircle="circle.isActive"
+                                              :type="circle.type"
+                                              @show-modal="showModal"
                                              
                                               
                                 />
@@ -225,8 +229,6 @@ export default {
        default: 1
     },
     arrDataPoints: Array,
-    
-
   },
   components: {SchemePopup, SchemeCircle},
   data(){
@@ -528,18 +530,20 @@ export default {
           isActive: false,
         },
       ],
+      selectInfoModal: {},
     }
   },
   computed: {
     ...mapGetters(['tramsDoc']),
-    selectInfoModal() {
-      return this.arrDataPoints.find((item) => item.customClass === this.currInfo);
-    },
     schemeTitle() {
       return this.$t('route_scheme').split(' ')
     },
   },
   methods: {
+    showModal(circle) {
+      this.isModalActive = true;
+      this.selectInfoModal = circle;
+    },
     clearActive()  {
         const activeRoute = !this.isActive ? this.schemeYacht : this.schemeTrolley
         for (const customClass in activeRoute) {

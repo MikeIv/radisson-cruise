@@ -29,7 +29,7 @@ export default {
         ...i18nHead.meta,
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         ...i18nHead.link.map(link => (
             link.hreflang === undefined
                 ? {

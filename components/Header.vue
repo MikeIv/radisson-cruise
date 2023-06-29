@@ -206,10 +206,6 @@
   color: #00c1f3;;
 }
 
-.news-item__header {
-  padding: 0 0 253px;
-}
-
 .news-item__header .uk-position-relative,
 .buy-sertificat-header .uk-position-relative,
 .buy-ticket-form__header .uk-position-relative {

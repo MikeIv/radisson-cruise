@@ -321,8 +321,14 @@
       </div>
     </Header>
     <div class="wrapper">
-      <NewsBar :news="currentNews" :actions="currentActions"/>
+      <NewsBar :news="currentNews"
+               :actions="currentActions"
+      />
       <Scheme button-link="/yachts/schedule/"
+              :points="schemePiers"
+              :active-routes="schemeRoutes"
+              :active-route-prop="activeRouteProp"
+              :active-id="1"
       />
     </div>
   </div>
@@ -641,7 +647,6 @@ export default {
           ],
         },
       ],
-
       mainHallSlider: [
         {
           fileName: 'yachts/main/3536.jpg',
@@ -664,7 +669,6 @@ export default {
           text: 'Подпись',
         },
       ],
-
       categoriesFetch: [],
       currentNews: [],
       currentActions: [],
@@ -672,6 +676,156 @@ export default {
       pageHeader: [],
       pageHeaderSubtitle: '',
       seoHeaderSplitted: [],
+      schemeYacht: [
+        {
+          customClass: '1',
+          title: `Гостиница Radisson <br> Collection, Moscow <br> (Гостиница “Украина”)`,
+          location: `Причал «Гостиница «Украина»`,
+          info: `Легендарный отель соединил в себе имперский масштаб и эстетику социализма с современным «умным комфортом» и традициями 5* сервиса`,
+          img: 'hotel.png',
+          port: `Причал <br> «Гостиница «Украина» <br> Начало / конец маршрута `,
+          isActive: false,
+        },
+        {
+          customClass: '2',
+          title: `Дом Правительства РФ`,
+          location: `Дом Правительства РФ`,
+          info: `Здание, окутанное легендами, с интересной архитектурой и потрясающей историей.`,
+          img: 'goverment.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '4',
+          title: `Киевский <br> вокзал`,
+          location: `Киевский вокзал`,
+          info: `Здание в стиле неоклассицизма с высокой башней с арочными окнами, куполом и скульптурами.`,
+          img: 'kiev.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '5',
+          title: `Новодевичий <br> монастырь`,
+          location: `Новодевичий монастырь`,
+          info: `Один из старейших московских монастырей, лучше всего сохранившийся по своему архитектурному облику.`,
+          img: 'church4.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '6',
+          title: `Стадион «Лужники»`,
+          location: `Стадион «Лужники»`,
+          info: `Главная футбольная арена страны, построенная в 1956 году. Вместимость – 81 000 чел.`,
+          img: 'luzhniki.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '7',
+          title: `МГУ им. М.В. Ломоносова`,
+          location: `МГУ им. М.В. Ломоносова`,
+          info: `Главный корпус, увенчанный шпилем со звездой, гигантскими уступами поднимается на высоту 235,7 м.`,
+          img: 'mgu.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '8',
+          title: `Здание Президиума РАН`,
+          location: `Здание Президиума РАН`,
+          info: `22-этажное здание с узнаваемым металлическим декором на кровле под названием «Золотые мозги».`,
+          img: 'RAN.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '9',
+          title: `ЦПКиО им. М. Горького`,
+          location: `ЦПКиО им. М. Горького`,
+          info: `Многофункциональное место отдыха и один из любимых парков москвичей и гостей города.`,
+          img: 'park.png',
+          port: `Причал «Парк Горького» <br> Начало / конец маршрута`,
+          isActive: false,
+        },
+        {
+          customClass: '10',
+          title: `Новая Третьяковка (ЦДХ)`,
+          location: `Новая Третьяковка (ЦДХ)`,
+          info: `Основан в 1979 году, ежегодно проводит более 300 выставок и других мероприятий.`,
+          img: 'CDX.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '11',
+          title: `Памятник Петру I`,
+          location: `Памятник Петру I`,
+          info: `98-метровая конструкция из нержавеющей стали, бронзы, меди с фигурой Первого русского императора.`,
+          img: 'Peter.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '12',
+          title: `Храм <br> Христа <br> Спасителя`,
+          location: `Храм Христа Спасителя`,
+          info: `Самый большой православный храм России с комплексом зданий религиозного и светского назначения.`,
+          img: 'church2.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '13',
+          title: `Дом на набережной`,
+          location: `Дом на набережной`,
+          info: `Жилой комплекс 1931 года постройки с интересной историей, известный как место жительства советской элиты.`,
+          img: 'house.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '14',
+          title: `Московский <br> Кремль`,
+          location: `Московский Кремль`,
+          info: `Крепость в центре Москвы, главный общественно-политический и историко-художественный комплекс города, официальная резиденция Президента РФ.`,
+          img: 'kreml.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '15',
+          title: `Собор <br> Василия <br> Блаженного`,
+          location: `Собор Василия Блаженного`,
+          info: `Величественный древний храм, построенный в XVI веке, пережил множество войн, пожаров и других невзгод, сохранившись до наших дней.`,
+          img: 'church3.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '16',
+          title: `Высотка на <br> Котельнической набережной`,
+          location: `Высотка на Котельнической набережной`,
+          info: `32-этажное здание насчитывает 700 квартир, в которых проживало большое количество известных людей.`,
+          img: 'high-tower.png',
+          port: null,
+          isActive: false,
+        },
+        {
+          customClass: '17',
+          title: `Новоспасский <br> монастырь`,
+          location: `Новоспасский монастырь`,
+          info: `Включен в список всемирного наследия ЮНЕСКО.`,
+          img: 'church.jpg',
+          port: null,
+          isActive: false,
+        },
+      ],
+      schemeData: {},
+      schemePiers: [],
+      schemeRoutes: [],
+      activeRouteProp: {},
     };
   },
   methods: {
@@ -693,31 +847,22 @@ export default {
         nextEl: '.inst_right',
         prevEl: '.inst_left',
       },
-
-      /*           breakpoints: {
-          639: {
-            slidesOffsetBefore: 30,
-            spaceBetween: 20,
-          },
-          1199: {
-            slidesOffsetBefore: 40,
-          },
-        }, */
-    });
-    this.$nextTick(function () {
-      /*         console.log('Mounted Next Tick => ', this.$data);
-              console.log('Mounted Next Tick  swiperFotoUser => ', swiperFotoUser); */
     });
   },
   async fetch() {
     try {
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/&lang=${this.$i18n.locale}`);
+      let getDataRoutes = await axios.get(
+          `${this.$config.baseURL}maproutes?type=yachts&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
       let seoHeaderSplitted = seoDataResult.data.result.header.split(' ')
       this.pageHeader = seoHeaderSplitted[0]
       seoHeaderSplitted.shift()
       this.pageHeaderSubtitle = seoHeaderSplitted.join(' ')
+      this.schemeRoutes = getDataRoutes.data.routes
+      this.activeRouteProp = getDataRoutes.data.routes[0]
+      this.schemePiers = getDataRoutes.data.piers
       /*this.pageHeaderSubtitle = seoHeaderSplitted.shift().join()*/
     } catch (error) {
       this.$nuxt.error({statusCode: 404, message: 'Data not found'})

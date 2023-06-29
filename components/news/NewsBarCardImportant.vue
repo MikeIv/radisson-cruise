@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link class="uk-card card__important transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
+  <nuxt-link :prefetch="false" class="uk-card card__important transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
     <div class="uk-cover-container uk-card-default_media">
       <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
       <div class="uk-badge">

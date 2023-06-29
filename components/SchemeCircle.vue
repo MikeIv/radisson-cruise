@@ -1,133 +1,130 @@
 <template>
-  <div class='uk-inline' :class="['scheme_item' + customClass, {'uk-open' : isActiveCircle},{'uk-open' : isModalShow}, {'active' : activeClassToCircle}]">
-    <div v-if="port !== null && !isActive">
-      <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
-        <div class="scheme__item_txt" v-html="title"></div>
-      </div>
+  <div @click="showModal"
+       class='uk-inline'
+       :class="['scheme_item' + customClass, {'uk-open' : isActiveCircle}, {'active' : activeClassToCircle}, activeClass]">
+    <!--    <div v-if="port !== null && !isActive">
+          <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
+            <div class="scheme__item_txt" v-html="title"></div>
+          </div>
 
-      <div v-else-if="activeRoute === 1 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
-          <svg-icon name='ancor' class="icon" :id="idNum"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-          <svg-icon name='flag' class="icon"/>
+          <div v-else-if="activeRoute === 2 && customClass == 2" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
+              <svg-icon name='ancor' class="icon" :id="idNum"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+              <svg-icon name='flag' class="icon"/>
+            </div>
+          </div>
+
+          <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
+              <svg-icon name='ancor' class="icon" :id="idNum"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+              <svg-icon name='flag' class="icon"/>
+            </div>
+          </div>
+
+          <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
+            &lt;!&ndash; <div class="scheme__item_txt" v-html="title"></div> &ndash;&gt;
+          </div>
         </div>
-      </div>
 
-      <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
-          <svg-icon name='ancor' class="icon" :id="idNum"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-          <svg-icon name='flag' class="icon"/>
+        <div v-else-if="port !== null && isActive && customClass == 9">
+          <div v-if="activeRoute === 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
+              <svg-icon name='ancor' class="icon"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+            </div>
+          </div>
+
+          <div v-if="activeRoute === 2" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
+              <svg-icon name='ancor' class="icon"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+              <span>Начало маршрута</span>
+              <svg-icon name='flag' class="icon"/>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
-        <!-- <div class="scheme__item_txt" v-html="title"></div> -->
+        <div v-else-if="port !== null && isActive">
+          <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
+              <svg-icon name='ancor' class="icon"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+            </div>
+          </div>
+
+          <div v-else-if="activeRoute === 1 && customClass == 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
+              <svg-icon name='ancor' class="icon"/>
+            </button>
+            <div>
+              <span v-html="port"></span>
+              <svg-icon name='flag' class="icon"/>
+            </div>
+          </div>
+
+          <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
+            <div class="scheme__item_txt" v-html="title"></div>
+          </div>
+
+          <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
+            <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
+            <div class="scheme__item_txt" v-html="title"></div>
+          </div>
+        </div>-->
+
+    <div v-if="port && type === 'pier'" class="scheme__item-container">
+      <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
+        <svg-icon name='ancor' class="icon" :id="idNum"/>
+      </button>
+      <div>
+        <span v-html="port"></span>
+        <svg-icon name='flag' class="icon"/>
       </div>
     </div>
-
-    <div v-else-if="port !== null && isActive && customClass == 9">
-      <div v-if="activeRoute === 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-        </div>
-      </div>
-
-      <div v-if="activeRoute === 2" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-          <span>Начало маршрута</span>
-          <svg-icon name='flag' class="icon"/>
-        </div>
-      </div>
-    </div>
-
-    <div v-else-if="port !== null && isActive">
-      <div v-if="activeRoute === 1 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-        </div>
-      </div>
-
-      <div v-else-if="activeRoute === 1 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_first" aria-expanded="false" :id="idNum">
-          <svg-icon name='ancor' class="icon"/>
-        </button>
-        <div>
-          <span v-html="port"></span>
-          <svg-icon name='flag' class="icon"/>
-        </div>
-      </div>
-
-      <div v-else-if="activeRoute === 2 && customClass != 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
-        <div class="scheme__item_txt" v-html="title"></div>
-      </div>
-
-      <div v-else-if="activeRoute === 2 && customClass == 1" class="scheme__item-container">
-        <button type="button" class="scheme__item_circle" aria-expanded="false" :class="{'uk-open' : isActiveCircle}" :id="idNum"></button>
-        <div class="scheme__item_txt" v-html="title"></div>
-      </div>
+    <div v-else-if="type === 'reverse'">
+      <svg-icon name='svg-return' class="icon"/>
+      <span class="scheme__item_txt">
+        {{ title }}
+      </span>
     </div>
 
     <div v-else class="scheme__item-container">
-      <button type="button" class="scheme__item_circle" :class="{'uk-open' : isActiveCircle}" aria-expanded="false" :id="idNum"></button>
+      <button type="button" class="scheme__item_circle" :class="{'uk-open' : isActiveCircle}" aria-expanded="false"
+              :id="idNum"></button>
       <div class="scheme__item_txt" v-html="title"></div>
     </div>
 
-    <div v-if="isActiveCircle" ref="modal" class="scheme__drop test">
-      <div class="scheme__drop_grid">
-        <div class="scheme__drop_img uk-cover-container">
-          <img :data-src="require(`~/assets/img/scheme/${img}`)" alt="" :src="require(`~/assets/img/scheme/${img}`)" class="img_cover">
-        </div>
-        <div class="scheme__drop_info">
-          <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-          <div class="scheme__drop_headline">
-            {{ location }}
+    <!--    <div v-if="isActiveCircle" ref="modal" class="scheme__drop test">
+          <div class="scheme__drop_grid">
+            <div class="scheme__drop_img uk-cover-container">
+              <img :data-src="require(`~/assets/img/scheme/${img}`)" alt="" :src="require(`~/assets/img/scheme/${img}`)" class="img_cover">
+            </div>
+            <div class="scheme__drop_info">
+              <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
+              <div class="scheme__drop_headline">
+                {{ location }}
+              </div>
+              <div class="scheme__drop_text">
+                {{ info }}
+              </div>
+            </div>
           </div>
-          <div class="scheme__drop_text">
-            {{ info }}
-          </div>
-<!--          <a class="link_more transition" href="">
-            <span>Подробнее</span>
-            <svg-icon name='right-arrow-blue' class="icon"/>
-          </a>-->
-        </div>
-      </div>
-    </div>
-
-<!--     <div v-if="isModalShow" ref="modalshow" class="scheme__drop test">
-      <div class="scheme__drop_grid">
-        <div class="scheme__drop_img uk-cover-container">
-          <img :data-src="require(`~/assets/img/scheme/${img}`)" alt="" :src="require(`~/assets/img/scheme/${img}`)" class="img_cover">
-        </div>
-        <div class="scheme__drop_info">
-          <svg-icon name='info_notice'  class="scheme__drop_info-svg"/>
-          <div class="scheme__drop_headline">
-            {{ location }}
-          </div>
-          <div class="scheme__drop_text">
-            {{ info }}
-          </div>
-
-        </div>
-      </div>
-    </div> -->
+        </div>-->
   </div>
 </template>
 
@@ -136,31 +133,37 @@ export default {
   name: "SchemeCircle",
   props: {
     idNum: String,
-    customClass: String,
+    customClass: Number,
     title: String,
     info: String,
     location: String,
     activeRoute: Number,
     port: String,
+    type: String,
     isActive: Boolean,
     isActiveCircle: Boolean,
+    activeModal: Number,
     img: {
       type: String,
       default: 'img4.webp'
     },
+    circle: Object,
   },
   data() {
-    return{
+    return {
       isModalShow: false,
       active: false,
     }
   },
   computed: {
     activeClassToCircle() {
-      if((this.customClass == 4 || this.customClass == 6 || this.customClass == 16) && this.isActive && this.activeRoute == 1) {
+      if ((this.customClass == 4 || this.customClass == 6 || this.customClass == 16) && this.isActive && this.activeRoute == 1) {
         return `active`
       }
     },
+    activeClass() {
+      return this.activeModal === this.customClass ? 'uk-open' : ''
+    }
   },
   methods: {
     /*toggleActive(event) {
@@ -175,6 +178,9 @@ export default {
     getCoords(event){
       //console.log(event)
     }*/
+    showModal() {
+      this.$emit('show-modal', this.circle)
+    }
   },
   updated() {
     this.$nextTick(() => {
@@ -186,7 +192,7 @@ export default {
 
   }
   ,
-  mounted(){
+  mounted() {
     /*console.log("data mount =", this.$props);*/
   }
   /*  mounted() {
@@ -234,11 +240,12 @@ export default {
   z-index: 6;
 }
 
-.scheme__item_circle.uk-open{
+.scheme__item_circle.uk-open {
   box-shadow: 0px 0px 8px 3px rgb(251 19 1 / 90%);
   background: #fff;
   border-color: #FB1301;
 }
+
 .test .scheme__drop_info-svg {
   right: 34px;
   top: 0;
