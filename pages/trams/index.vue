@@ -73,6 +73,7 @@
             :active-routes="dataRoutes"
             :active-route-prop="activeRouteProp"
             :active-id="3"
+            is-tram
     />
     <div class="trams__headline">
       <div class="uk-container">
@@ -206,7 +207,7 @@
   </div>
 </template>
 <script>
-//import Scheme from "../../components/Scheme";
+import Scheme from "../../components/Scheme";
 import SchemeRouts from "../../components/SchemeRouts";
 import Header from "../../components/Header";
 import FeaturesItem from "../../components/trolley/FeaturesItem";
@@ -220,7 +221,6 @@ import UIkit from "uikit";
 import axios from "axios";
 import CruiseItem from "@/components/tickets/CruiseItem.vue";
 import {mapGetters} from "vuex";
-import Scheme from "../../components/Scheme.vue";
 export default {
   name: "trams-main",
   components: {
