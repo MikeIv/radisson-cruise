@@ -113,7 +113,15 @@
                   <svg-icon name='arrow3' class="icon"/>
                 </label>
               </div>
-              <nuxt-link :to="buttonLink"
+              <a v-if="isTram"
+                 :href="buttonLink"
+                 class="width-100 uk-button uk-button-default button_ticket"
+                 target="_blank"
+              >
+                <span>{{ $t('schedule') }}</span>
+                <svg-icon name='clock' class="icon"/>
+              </a>
+              <nuxt-link v-else :to="buttonLink"
                          class="width-100 uk-button uk-button-default button_ticket"
                          type="button">
                 <span>{{ $t('schedule') }}</span>
@@ -150,7 +158,8 @@ export default {
       type: Object,
       required: true,
     },
-    activeId: Number
+    activeId: Number,
+    isTram: Boolean,
   },
   data() {
     return {
