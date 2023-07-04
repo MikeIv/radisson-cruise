@@ -83,6 +83,7 @@ deploy prod service:
   tags:
     - shell
     - $CI_JOB_STAGE
+    - $CI_ENVIRONMENT_NAME
 
 deploy dev service:
   stage: deploy
@@ -92,11 +93,12 @@ deploy dev service:
   script:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME}
-    - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_dev_nuxt
-    - docker exec $(docker ps -q -f name=korabliki_dev_nginx) find /var/cache/nginx/cache -type f -delete
+    - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} korabliki_nuxt
+    - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
   only:
     refs:
       - dev
   tags:
     - shell
     - $CI_JOB_STAGE
+    - $CI_ENVIRONMENT_NAME
