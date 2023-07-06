@@ -53,12 +53,10 @@ export const actions = {
         const documentsData = await axios.get(
             `${this.$config.baseURL}docs?id=5&lang=${this.$i18n.locale}`);
         commit('setTramsDoc', documentsData.data[0].doc);
-    }
+    },
 
-    /*nuxtServerInit(context, { req, redirect }) {
-        if (req.headers.host.endsWith('com')) {
-            this.app.i18n.defaultLocale = 'en'
-        }
+   /* async nuxtServerInit({state, context}, { req, redirect }) {
+        let response = await axios.get("some/path/...");
+        state.data = response.data;
     },*/
-
 }

@@ -39,7 +39,7 @@
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 {{ $t('nav.yachts_schedule') }}
               </nuxt-link>
-              <a class="txt18" :href="tramsDoc" target="_blank">
+              <a class="txt18" :href="$config.baseSiteURL+tramsDoc" target="_blank">
                 {{ $t('nav.trams_schedule') }}
               </a>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
@@ -79,7 +79,7 @@
               <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
                 {{ $t('nav.trams') }}
               </nuxt-link>
-              <a class="txt18" :href="tramsDoc" target="_blank">
+              <a class="txt18" :href="$config.baseSiteURL+tramsDoc" target="_blank">
                 {{ $t('nav.trams_schedule') }}
               </a>
               <nuxt-link class="txt18 " to="/news/403/" :prefetch="false" @click.native="closeNav">

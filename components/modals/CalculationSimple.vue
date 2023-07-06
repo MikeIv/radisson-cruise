@@ -16,14 +16,14 @@
 
       <div class="container-modal modal-full_container uk-position-relative">
         <div class="headline_p2">
-          обратная связь
+          {{ $t('modal_feedback.title') }}
         </div>
         <div class="uk-modal-full__block">
 
 
           <div class="modal-calculation__slide modal-calculation__slide4 current" >
             <div class="uk-modal-full__block__top modal-calculation__slide-time__top">
-              <div class=" t_semibold txt18">Заполните форму</div>
+              <div class=" t_semibold txt18">{{ $t('modal_feedback.subtitle') }}</div>
             </div>
             <div class="modal-calculation__middle">
 <!--               <div class="t_semibold modal-calculation__slide4__p1">
@@ -33,31 +33,47 @@
               <div class="uk-flex uk-flex-wrap modal-calculation__data__grid__item">
                 <div class="input-personal uk-width-1-3@m  uk-padding-small uk-padding-remove-vertical">
                   <div class="uk-form-controls">
-                    <label class="uk-form-label">Ваше имя</label>
-                    <input class="uk-input buy-ticket__input" @input="validateName" type="text" v-model="formData.name"
-                      placeholder="Введите имя" required name="" id="modal-calculation__slide4-name">
+                    <label class="uk-form-label">{{$t('form.label_name')}}</label>
+                    <input class="uk-input buy-ticket__input"
+                           @input="validateName" type="text"
+                           v-model="formData.name"
+                           :placeholder="$t('form.name')"
+                           required
+                           name=""
+                           id="modal-calculation__slide4-name">
                   </div>
                   <div class="uk-form-controls mt-3">
-                    <label class="uk-form-label">Ваше e-mail</label>
-                    <input class="uk-input buy-ticket__input" @input="validateEmail" type="text" v-model="formData.email"
-                      placeholder="Введите e-mail" required name="" id="modal-calculation__slide4-email">
+                    <label class="uk-form-label">{{ $t('form.label_email') }}</label>
+                    <input class="uk-input buy-ticket__input"
+                           @input="validateEmail" type="text"
+                           v-model="formData.email"
+                           :placeholder="$t('form.email')"
+                           required
+                           name=""
+                           id="modal-calculation__slide4-email">
                   </div>
                   <div class="uk-form-controls mt-3">
-                    <label class="uk-form-label">Контактный телефон</label>
-                    <TheMask class="uk-input buy-ticket__input f_phone" placeholder="+7(___) ___-____" v-model="formData.phone" @input="validatePhone" id="modal-calculation__slide4-call" :mask="['+7(###) ###-####', '+7(###) ###-####']" />
+                    <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
+                    <TheMask class="uk-input buy-ticket__input f_phone"
+                             placeholder="+7(___) ___-____"
+                             v-model="formData.phone"
+                             @input="validatePhone"
+                             id="modal-calculation__slide4-call"
+                             :mask="['+7(###) ###-####', '+7(###) ###-####']"
+                    />
                  </div>
                 </div>
                 <div class="input-personal uk-width-2-3@m uk-padding-small uk-padding-remove-vertical">
                   <div class="uk-form-controls">
-                    <label class="uk-form-label">Сообщение</label>
-                    <textarea class=" buy-ticket__input input_description uk-textarea "  
+                    <label class="uk-form-label">{{ $t('modal_feedback.message') }}</label>
+                    <textarea
+                          class="buy-ticket__input input_description uk-textarea "
                           id="modal-calculation__slide4-description" 
                           v-model="formData.description" 
                           name="description"
-                          rows="10" 
-                          
+                          rows="10"
+                          :placeholder="$t('modal_feedback.message')"
                           >
-                          Сообщение
                     </textarea>
 
                  </div>
@@ -71,13 +87,13 @@
               <label for="calculation__slide4-agree">
                 <input class="uk-checkbox" type="checkbox" v-model="isPersonalInfoCheck" name="check-personal" id="calculation__slide4-agree">
                 <span class="">
-                  Согласие на обработку <a href="/" target="_blank">персональных данных</a>
+                  {{ $t('agreement_for') }} <a href="/" target="_blank">{{ $t('personal_data') }}</a>
                 </span>
                   </label>
                 </div>  
                   <div>
                     <button class="uk-button uk-button-default uk-position-relative" @click="submitFormRent">
-                    <span>ОТПРАВИТЬ</span>
+                    <span>{{$t('modal_feedback.submit')}}</span>
                   </button></div>
               </div>
 

@@ -247,7 +247,7 @@
         </div>
         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
     </section>-->
-    <section class="partners-section uk-cover-container">
+<!--    <section class="partners-section uk-cover-container">
       <img
         data-src="~assets/img/main/layer502.png"
         alt=""
@@ -345,7 +345,7 @@
             <li class="partners__switcher_item uk-active">
               <a
                 class="partner__link uk-scrollspy-inview uk-animation-scale-up"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/evropeyskiy"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/evropeyskiy"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 200;repeat: true;"
                 target="_blank"
                 h=""
@@ -359,7 +359,7 @@
               </a>
               <a
                 class="partner__link uk-scrollspy-inview uk-animation-scale-up"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/flotiliya-radisson"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/flotiliya-radisson"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;"
                 target="_blank"
                 style=""
@@ -374,7 +374,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/shelkovskiy"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/shelkovskiy"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 200;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -387,7 +387,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/olimpiyskiy"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/olimpiyskiy"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -402,7 +402,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/mtk-grand"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/mtk-grand"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 200;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -415,7 +415,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/grand-yug"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/grand-yug"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -430,7 +430,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/mebel_moskva"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/mebel_moskva"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 200;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -443,7 +443,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/auto_moskva"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/auto_moskva"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -458,7 +458,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/panorama"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/panorama"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 200;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -469,9 +469,9 @@
                   src="~assets/img/partner/partner(12).png"
                 />
               </a>
-              <!--              <a class=" partner__link" href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/tpu_nagatinskaya" uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;" target="_blank" style="visibility: hidden;">
+              &lt;!&ndash;              <a class=" partner__link" href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/tpu_nagatinskaya" uk-scrollspy="cls:uk-animation-scale-up;delay: 400;repeat: true;" target="_blank" style="visibility: hidden;">
                 <img data-src="~assets/img/partner/partner17.jpg" alt="" src="~assets/img/partner/partner17.jpg">
-              </a>-->
+              </a>&ndash;&gt;
             </li>
           </ul>
           <ul
@@ -481,7 +481,7 @@
             <li class="partners__switcher_item uk-active">
               <a
                 class="partner__link uk-scrollspy-inview uk-animation-scale-up"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/ukraina"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/ukraina"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;"
                 target="_blank"
                 style=""
@@ -494,7 +494,7 @@
               </a>
               <a
                 class="partner__link uk-scrollspy-inview uk-animation-scale-up"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/slavyanskaya"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/slavyanskaya"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 800;repeat: true;"
                 target="_blank"
                 style=""
@@ -509,7 +509,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/depo"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/depo"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -522,7 +522,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/central-nyj-rynok"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/central-nyj-rynok"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 800;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -537,7 +537,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/gastrotsentr-zaryade"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/gastrotsentr-zaryade"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -550,7 +550,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/restoran-voskhod"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/restoran-voskhod"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 800;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -565,7 +565,7 @@
             <li class="partners__switcher_item">
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/agroklaster-fud-siti"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/agroklaster-fud-siti"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -578,7 +578,7 @@
               </a>
               <a
                 class="partner__link"
-                href="https://xn--80aaekbrndk4ajv3ixbzb.xn--p1ai/projects/rynok-velozavodskiy"
+                href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/rynok-velozavodskiy"
                 uk-scrollspy="cls:uk-animation-scale-up;delay: 800;repeat: true;"
                 target="_blank"
                 style="visibility: hidden"
@@ -591,13 +591,13 @@
               </a>
             </li>
             <li class="partners__switcher_item">
-              <!--              <a class="partner__link" href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/bts-arbat-21" uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;" target="_blank" style="visibility: hidden;">
+              &lt;!&ndash;              <a class="partner__link" href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/bts-arbat-21" uk-scrollspy="cls:uk-animation-scale-up;delay: 600;repeat: true;" target="_blank" style="visibility: hidden;">
                 <img src="~assets/img/partner/partner18.jpg" data-src="~assets/img/partner/partner18.jpg" alt="">
               </a>
 
               <a class="partner__link" href="https://xn&#45;&#45;80aaekbrndk4ajv3ixbzb.xn&#45;&#45;p1ai/projects/btc-vorobevskiy" uk-scrollspy="cls:uk-animation-scale-up;delay: 800;repeat: true;" target="_blank" style="visibility: hidden;">
                 <img src="~assets/img/partner/parnter19.jpg" data-src="~assets/img/partner/parnter19.jpg" alt="">
-              </a>-->
+              </a>&ndash;&gt;
             </li>
           </ul>
         </div>
@@ -908,7 +908,7 @@
           aria-atomic="true"
         ></span>
       </div>
-    </section>
+    </section>-->
   </div>
 </template>
 

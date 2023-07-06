@@ -242,50 +242,6 @@
         </div>
       </div>
       <div class="footer__right" uk-scrollspy="target: > *; cls: uk-animation-fade; delay: 200">
-<!--        <div class="headline uk-scrollspy-inview uk-animation-fade">
-          <div class="headline_p2">
-            Остались вопросы?
-          </div>
-          <div class="headline_p2">
-            Оставьте заявку!
-          </div>
-        </div>
-        <div class="footer_p1 uk-scrollspy-inview uk-animation-fade">
-          Наши специалисты ответят на интересующий вас вопрос
-        </div>
-        <form action="" class="footer__form uk-scrollspy-inview uk-animation-fade">
-          <div class="uk-width-1-2@m footer__form_input">
-            <input type="text" class="uk-input" placeholder="ФИО" required="">
-          </div>
-          <div class="uk-width-1-2@m footer__form_input">
-            <input v-imask="maskTel" type="text" class="uk-input f_phone" placeholder="Телефон" required="" inputmode="text">
-          </div>
-          <div class="uk-width-1-1 footer__form_input">
-            <input type="text" class="uk-input" placeholder="Ваше сообщение">
-          </div>
-          <div class="uk-width-1-1 footer__form_polit">
-            <div class="form_politic">
-              <label>
-                <input class="uk-checkbox" type="checkbox" @change="checkAgree">
-                <span class="">
-                Согласие на обработку <nuxt-link to="/politic" class="">персональных данных</nuxt-link>
-              </span>
-              </label>
-            </div>
-          </div>
-          <div class="uk-width-1-2@m uk-width-auto footer__form_captcha">
-&lt;!&ndash;            <script src="https://www.google.com/recaptcha/api.min.js"></script>&ndash;&gt;
-            <div class="captcha modal-call_captcha">
-              <b class="text-danger red recaptchaError2" id="recaptchaError2"></b>
-              <div class="g-recaptcha" data-sitekey="6LcfxsAZAAAAABWYUWwGXhgN0ipealBdXburfZ0z" data-theme="dark"></div>
-            </div>
-          </div>
-          <div class="uk-width-1-2@m uk-width-expand@s footer__form_btn">
-            <button type="submit" class="uk-button uk-button-default" id="submitv" disabled="">
-              <span>ОТПРАВИТЬ СООБЩЕНИЕ</span>
-            </button>
-          </div>
-        </form>-->
         <div class="mailing__block uk-scrollspy-inview uk-animation-fade" style="">
           <div class="mailing__left">
             <img src="~assets/img/svg/mail.svg" alt="" uk-svg>

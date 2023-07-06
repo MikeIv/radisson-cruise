@@ -32,7 +32,7 @@
             <div class="scheme__map">
               <div class="scheme__map_path-container">
                 <img data-src="~assets/img/main/map.png" alt="" class="scheme__map_path" src="~assets/img/main/map.png">
-                <SchemeCircle v-for="(circle, index) in activePierses"
+                <SchemeCircle v-for="(circle, index) in activeRoutePirses"
                                   :circle="circle"
                                   :idNum="'crcl-'+ circle.customClass"
                                   :key="'crcl'+ index"
@@ -114,7 +114,7 @@
                 </label>
               </div>
               <a v-if="isTram"
-                 :href="buttonLink"
+                 :href="$config.baseSiteURL + buttonLink"
                  class="width-100 uk-button uk-button-default button_ticket"
                  target="_blank"
               >
@@ -700,6 +700,23 @@ export default {
               isActive: !!this.activeRouteData?.points.find((port) => port.id === item.id),
             }
           })
+    },
+    activeRoutePirses() {
+      const points = Object.values(this.activeRouteData?.objects || {})
+      const pointsWithPiers = points.concat(this.activeRouteData?.points);
+      return pointsWithPiers.map((item) => {
+        return {
+          customClass: item?.id,
+          id: item?.id,
+          title: item?.name,
+          location: item?.name,
+          info: item?.description,
+          img: item?.image,
+          port: item?.type === 'pier' ? item?.name + '<br>' + `${this.$i18n.t('port_subtitle')}` : null,
+          type: item?.type,
+          isActive: false,
+        }
+      })
     },
   },
   watch: {
