@@ -447,7 +447,7 @@ export default {
       if (this.selectedTimeFilter === null) {
         return this.$i18n.t('select_time')
       } else {
-        return this.rangeTime.find(item => item.value === this.selectedTimeFilter).title
+        return this.rangeTime.find(item => item.value === this.selectedTimeFilter)?.title
       }
     },
     getYears() {
