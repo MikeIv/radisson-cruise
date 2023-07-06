@@ -23,7 +23,6 @@ ADD . /app
 RUN env
 RUN npm install
 RUN npm run build
-RUN npm install pm2 -g
 
 #CMD pm2-runtime start
 #CMD pm2-runtime start ./node_modules/nuxt/bin/nuxt.js --name "nuxtKorabli" -i max
