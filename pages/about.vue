@@ -733,13 +733,15 @@
       <!--      <video src="~assets/video/video.mp4" muted class="video">
               <source src="~assets/video/video.mp4" type="video/mp4">
             </video>-->
-      <video ref="video" src="~assets/video/about_page.mp4" uk-video="autoplay: inview" playsinline muted class="video"
+<!--      <video ref="video" src="~assets/video/about_page.mp4" uk-video="autoplay: inview" playsinline muted class="video"
              poster="/about10.png"></video>
       <div class="playpause">
         <div class="play-video-btn_back">
           <img src="~assets/img/svg/play-btn.svg" alt="" class="" id="svg-new-play" uk-svg>
         </div>
-      </div>
+      </div>-->
+      <iframe class="video_item" width="100%" height="100%" :src="video + '?enablejsapi=1'">
+      </iframe>
     </div>
     <RewardSlider/>
     <section class="about-job__section" id="job">
@@ -756,8 +758,7 @@
                                 </a>-->
               </div>
               <div class="about-job__info__p1">
-                По всем вопросам трудоустройства Вы можете
-                обратиться по телефонам:
+                {{$t('vacancies_info')}}:
               </div>
               <div class="about-job__info__call">
                 <svg-icon class="icon" name="call"/>
@@ -768,7 +769,7 @@
               <div class="about-job__info__mail">
                 <svg-icon class="icon" name="mail"/>
                 <span>
-                  или по e-mail: <a :href="`mailto:${email}`">{{ email }}</a>
+                  {{ $t('vacancies_email') }}: <a :href="`mailto:${email}`">{{ email }}</a>
                 </span>
               </div>
             </div>
@@ -1208,6 +1209,7 @@ export default {
       blocks: null,
       photosSlide: [],
       seoData: {},
+      video: null,
     }
   },
 
@@ -1231,6 +1233,8 @@ export default {
         `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
     let photosData = await axios.get(
         `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
+    let youtubeVideo = await axios.get(
+        `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
     this.testCaps = captainData.data;
     this.testSellers = sellerData.data;
     this.testManagers = managerData.data;
@@ -1239,6 +1243,7 @@ export default {
     this.vacanciesData = vacanciesData.data;
     this.documents.documentsList = documentsData.data;
     this.photosSlide = photosData.data.result
+    this.video = youtubeVideo.data.result.youtube_about
   },
   fetchOnServer: true,
   fetchKey: 'about-page',
@@ -1248,7 +1253,8 @@ export default {
     let video = videoContainer.querySelector('.video');
   },
   mounted() {
-    let videoContainer = document.querySelector('#video');
+    let element = document.querySelector('.yacht__slider')
+   /* let videoContainer = document.querySelector('#video');
     let element = document.querySelector('.yacht__slider')
     let video = videoContainer.querySelector('.video');
     let playPromise = video.play();
@@ -1285,7 +1291,7 @@ export default {
               });
         }
       }
-    })
+    })*/
     UIkit.util.on(element, 'itemshown', function (e) {
       element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
     });
@@ -1315,4 +1321,9 @@ export default {
     flex-direction: column;
   }
 }
+
+.about__video_container iframe {
+  aspect-ratio: 16/9;
+}
+
 </style>

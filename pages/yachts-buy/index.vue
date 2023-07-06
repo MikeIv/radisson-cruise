@@ -38,7 +38,7 @@
                   </span>
                       <div class="buy-ticket-form__date uk-hidden@s">
                         <div>
-                          Время и дата:
+                          {{ $t('time_date') }}:
                         </div>
                         <div>
 <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
@@ -55,7 +55,7 @@
                   </div>
                   <div class="buy-ticket-form__date uk-visible@s">
                     <div>
-                      Время и дата:
+                      {{ $t('time_date') }}:
                     </div>
                     <div>
 <!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
@@ -145,7 +145,7 @@
                         <input class="uk-input buy-ticket__input"
                                :class="{'uk-form-danger': errors.name.isError}"
                                type="text"
-                               placeholder="Введите ФИО"
+                               :placeholder="$t('form.name')"
                                required="required"
                                name=""
                                v-model="form.name"
@@ -178,7 +178,7 @@
 <!--                        <label class="uk-form-label">Ваш e-mail</label>-->
                         <input class="uk-input buy-ticket__input"
                                type="email"
-                               placeholder="Введите e-mail"
+                               :placeholder="$t('form.email')"
                                required="required"
                                name=""
                                :class="{'uk-form-danger': errors.email.isErrorInput || errors.email.isErrorSubmit}"
@@ -272,7 +272,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Время и дата:
+                        {{ $t('time_date') }}:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
 <!--                        {{ journeyDate }}, {{ timeCalc }}-->
@@ -401,8 +401,7 @@
               <svg-icon class="icon" name="blue-info"/>
               <div class="buy-ticket-more-information__call__p1">
                 <b>
-                  Получить дополнительную
-                  информацию можно по телефону:
+                  {{$t('more_tel_info')}}:
                 </b>
               </div>
               <div class="buy-ticket-more-information__call__p2">

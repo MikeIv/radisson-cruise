@@ -9,15 +9,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>{{$t('port')}}</td>
-        <td>{{$t('select_ticket_category')}}</td>
-        <td>{{$t('time')}}</td>
-        <td>{{$t('adult')}}</td>
-        <td>{{$t('children')}}</td>
-        <td>{{$t('free_sits')}}</td>
-        <td>{{$t('buy')}}</td>
-      </tr>
+        <tr>
+          <td>{{$t('port')}}</td>
+          <td>{{$t('select_ticket_category')}}</td>
+          <td>{{$t('time')}}</td>
+          <td>{{$t('adult')}}</td>
+          <td>{{$t('children')}}</td>
+          <td>{{$t('free_sits')}}</td>
+          <td>{{$t('buy')}}</td>
+        </tr>
       <DaysTableItem v-for="(dayData, index) in aboutDays"
                      :key="'day' + index"
                      :dayFormat="dayFormat"

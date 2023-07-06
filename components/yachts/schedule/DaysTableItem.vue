@@ -37,7 +37,7 @@
          :class="{'disabled-link': checkForLateRoutes}"
          class="uk-button uk-button-default button_ticket"
       >
-        Билеты раскуплены
+        {{ $t('buttons.sold_out') }}
       </a>
     </td>
     <td v-else>
@@ -117,7 +117,7 @@ export default {
       }
     },
     typeOfDay() {
-      return this.dayTime ? 'Дневной' : 'Вечерний'
+      return this.dayTime ? this.$i18n.t('daytime') : this.$i18n.t('vespertime')
     },
     timeCalc() {
       /*let depatureTime = new Date(this.depatureTime);

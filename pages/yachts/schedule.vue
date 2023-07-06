@@ -16,7 +16,7 @@
 
     <section class="buy-ticket-shedule__container">
       <div class="uk-container">
-        <form class="buy-ticket uk-visible@s" autocomplete="off">
+        <form uk-sticky="offset: 115;media: 1200" class="buy-ticket uk-visible@s" autocomplete="off">
           <div class="buy-ticket__item">
             <svg-icon class="icon buy-ticket__item_icon1" name="date"/>
             <img
@@ -40,7 +40,7 @@
                 type="button"
                 aria-expanded="false"
             >
-              {{ $t('select_port') }}
+              {{ selectedPorts }}
             </button>
 
             <div
@@ -77,7 +77,7 @@
                 type="button"
                 aria-expanded="false"
             >
-              {{ $t('select_ticket_category') }}
+              {{ selectCategory }}
             </button>
 
             <div
@@ -106,72 +106,70 @@
               </div>
             </div>
           </div>
-          <div class="buy-ticket__item">
-            <svg-icon name="passengers" class="icon buy-ticket__item_icon4"/>
-            <button
-                class="select-styled pass-btn"
-                type="button"
-                aria-expanded="false"
-            >
-              {{ $t('select_number_tickets_short') }}
-            </button>
+          <!--          <div class="buy-ticket__item">
+                      <svg-icon name="passengers" class="icon buy-ticket__item_icon4"/>
+                      <button
+                          class="select-styled pass-btn"
+                          type="button"
+                          aria-expanded="false"
+                      >
+                        {{ $t('select_number_tickets_short') }}
+                      </button>
 
-            <div
-                uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
-                class="pass-quantity__drop uk-dropdown"
-                id="personsFilter"
-            >
-              <div class="pass-quantity">
-                <div class="pass-quantity__item">
-                  <!-- Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons-->
-                  <div class="input-group plus-minus-input">
-                    <div class="input-group-button">
-                      <button
-                          type="button"
-                          class="button"
-                          data-quantity="minus"
-                          data-field="quantity"
-                          @click="interactSits('-')"
+                      <div
+                          uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
+                          class="pass-quantity__drop uk-dropdown"
+                          id="personsFilter"
                       >
-                        -
-                      </button>
-                    </div>
-                    <input
-                        class="input-group-field"
-                        type="number"
-                        name="quantity"
-                        v-model.number="chosenSits"
-                        min="1"
-                    />
-                    <div class="input-group-button">
-                      <button
-                          type="button"
-                          class="button"
-                          data-quantity="plus"
-                          data-field="quantity"
-                          @click="interactSits('+')"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <button @click="hideFilterItem('personsFilter')" type="button"
-                        class="uk-button uk-button-default accept_button">
-                  {{ $t('buttons.accept') }}
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="buy-ticket__item buy-ticket__item_5">
+                        <div class="pass-quantity">
+                          <div class="pass-quantity__item">
+                            &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
+                            <div class="input-group plus-minus-input">
+                              <div class="input-group-button">
+                                <button
+                                    type="button"
+                                    class="button"
+                                    data-quantity="minus"
+                                    data-field="quantity"
+                                    @click="interactSits('-')"
+                                >
+                                  -
+                                </button>
+                              </div>
+                              <input
+                                  class="input-group-field"
+                                  type="number"
+                                  name="quantity"
+                                  v-model.number="chosenSits"
+                                  min="1"
+                              />
+                              <div class="input-group-button">
+                                <button
+                                    type="button"
+                                    class="button"
+                                    data-quantity="plus"
+                                    data-field="quantity"
+                                    @click="interactSits('+')"
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <button @click="hideFilterItem('personsFilter')" type="button"
+                                  class="uk-button uk-button-default accept_button">
+                            {{ $t('buttons.accept') }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>-->
+          <div class="buy-ticket__item">
             <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
             <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
-            <button @click.prevent="openSelect" class="select-styled timeSelect datetimepicker">
-              {{ choiseTime }}
+            <button type="button" class="select-styled timeSelect datetimepicker">
+              {{ labelTime }}
             </button>
-            <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
-            <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr"/>
-            <div class="testW">
+            <!--            <div class="testW">
               <select
                   onfocus="this.size=10;"
                   @focusout="clickOutside"
@@ -195,10 +193,33 @@
                 <option value="22:00">22:00</option>
                 <option value="23:00">23:00</option>
               </select>
-              <!--              <div class="picker-footer">
+              &lt;!&ndash;              <div class="picker-footer">
                 <button type="button" class="picker-cancel" @click="clickOutside">Отмена</button>
                 <button type="button" class="picker-confirm" data-picker-action="pick">Принять</button>
-              </div>-->
+              </div>&ndash;&gt;
+            </div>-->
+            <div class="testW pass-quantity__drop uk-dropdown"
+                 uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
+                 id="timeFilter"
+            >
+              <div class="pass-quantity">
+                <div class="form_politic buy-ticket__politic">
+                  <label v-for="time in rangeTime">
+                    <input class="uk-radio"
+                           name="category__salon"
+                           type="radio"
+                           :value="time.value"
+                           v-model="selectedTime">
+                    <span>{{ time.title }}</span>
+                  </label>
+                </div>
+                <button @click="hideFilterItem('timeFilter')"
+                        type="button"
+                        class="uk-button uk-button-default accept_button"
+                >
+                  {{ $t('buttons.accept') }}
+                </button>
+              </div>
             </div>
           </div>
           <button
@@ -227,12 +248,12 @@
           />
         </div>
 
-<!--        <div v-if="isLoading" class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>-->
+        <!--        <div v-if="isLoading" class="lds-ring">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>-->
         <DaysTable
             v-for="(dayRoute, index) in showRoutes"
             :key="'tbl' + index"
@@ -240,101 +261,6 @@
             :day="dayRoute.date"
             @get-category="getCategory"
         />
-
-        <!--        <div v-for="(dayRoute, index) in showRoutes"
-             :key="'tblMob' + index"
-             class="uk-overflow-auto buy-ticket-shedule_responsive uk-hidden@l">
-          <div class="buy-ticket-shedule_responsive__head">
-            {{
-              new Date(dayRoute.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {
-                month: 'long',
-                day: 'numeric'
-              })
-            }}
-          </div>
-
-          <div v-if="dayRoute.routes.length !== 0">
-            <div v-for="(dayData, i) in dayRoute.routes" :key="'ddata' + i" class="buy-ticket-shedule_responsive__item">
-              <div>
-                <div class="buy-ticket-shedule_responsive__moorage">
-                  <div class="buy-ticket-shedule_responsive__moorage__name1">
-                    {{ $t('port') }}
-                  </div>
-                  <div class="buy-ticket-shedule_responsive__moorage__name2">
-                    «{{ dayData.placeName }}»
-                  </div>
-                </div>
-                <div @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
-                  <span>{{ dayData.journeySubType }}</span>
-                  <svg-icon
-                      name="svg-info3"
-                      class="icon"
-                  />
-                </div>
-                <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
-                    {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
-                  </span>
-              </div>
-              <div class="uk-visible@s">
-                <div class="buy-ticket-shedule_responsive__time">
-                  <div class="buy-ticket-shedule_responsive__time__name">
-                    {{ $t('time') }}
-                  </div>
-                  <div class="buy-ticket-shedule__time">
-                    <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num">
-                      {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
-                    </span>
-                    <span v-if="dayData.dayTime" class="buy-ticket-shedule__time__txt">
-                      {{ $t('daytime') }}
-                    </span>
-                    <span v-else class="buy-ticket-shedule__time__txt">
-                      {{ $t('vespertime') }}
-                    </span>
-                  </div>
-                </div>
-                <div class="buy-ticket-shedule_responsive__cost">
-                  <div>
-                    <span>{{ $t('adult') }}</span>
-                    <span>{{ dayData.adultPrice }}</span>
-                  </div>
-                  <div>
-                    <span>{{ $t('children') }}</span>
-                    <span>{{ dayData.childPrice }}</span>
-                  </div>
-                </div>
-              </div>
-              <div v-if="!checkForLateRoutes(dayData)">
-                <nuxt-link
-                    class="uk-button uk-button-default button_ticket"
-                    :class="{'disabled-link': checkForLateRoutes(dayData.depatureTime)}"
-                    :to="`/yachts-buy/?journey=${dayData.journey}`"
-                    @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
-                >
-                  <span>{{ $t('buttons.buy_ticket') }}</span>
-                  <svg-icon class="icon" name="ticket"/>
-                </nuxt-link>
-                <div class="buy-ticket-shedule_responsive__free">
-                  <span> {{ $t('free_sits') }} </span>
-                  <span>{{ dayData.freeSeats }}</span>
-                </div>
-                <div class="buy-ticket-shedule_responsive__cost uk-hidden@s">
-                  <div>
-                    <span>{{ $t('adult') }}</span>
-                    <span>{{ dayData.adultPrice }}</span>
-                  </div>
-                  <div>
-                    <span>{{ $t('children') }}</span>
-                    <span>{{ dayData.childPrice }}</span>
-                  </div>
-                </div>
-              </div>
-              <div v-else>
-                {{ dayData.freeSeats === 0 ? $t('schedule_sold') : $t('schedule_delay') }}
-              </div>
-            </div>
-          </div>
-        </div>-->
-
         <MobileTable
             v-for="(dayRoute, index) in showRoutes"
             :key="'tblMob' + index"
@@ -348,6 +274,8 @@
         :is-shedule-filter="true"
         :arrival-places="arrivalPlaces"
         :routes-categories="setCategories"
+        :range-time="rangeTime"
+        :selected-time="selectedTime"
         :checked-arrival="checkedArrival"
         :checked-categories.sync="checkedCategories"
         ref="filterModal"
@@ -377,7 +305,8 @@ export default {
   name: 'schedule',
   components: {
     MobileTable,
-    SmallCalendarItem, Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile},
+    SmallCalendarItem, Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile
+  },
   head() {
     return {
       title: this.seoData?.title,
@@ -424,9 +353,35 @@ export default {
       today: new Date().toISOString().split('T')[0],
       inWeek: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
       isLoading: true,
+      showSelect: false,
+      selectedTime: null,
+      rangeTime: [
+        {
+          title: 'Любое время',
+          value: null
+        },
+        {
+          title: 'Утро (10:00 - 12:00)',
+          value: [`10.00`, `11.00`, `12.00`]
+        },
+        {
+          title: 'День (12:00 - 18:00)',
+          value: [`12.00`, `13.00`, `14.00`,`15.00`, `16.00`, `17.00`,`18.00`]
+        },
+        {
+          title: 'Вечер (18:00 - 23:00)',
+          value: [`18.00`, `19.00`, `20.00`,`21.00`, `22.00`, `23.00`]
+        },
+      ],
     };
   },
   methods: {
+    changeQuery() {
+      if(this.checkedCategories.length > 0) {
+        console.log(this.checkedCategories.join(','))
+        /*this.$router.replace({ query: {class: this.checkedCategories.join(',')}})*/
+      }
+    },
     checkedFilter(emitFilterPrameters) {
       /*       console.log("PARENT CHECKED ARRIVAL emitArrival = ", emitFilterPrameters)
             console.log("PARENT CHECKED ARRIVAL = ", this.checkedArrival) */
@@ -435,6 +390,7 @@ export default {
       this.chosenSits = emitFilterPrameters.tikets.adult;
       this.startDate = emitFilterPrameters.dates.dateFirst;
       this.endDate = emitFilterPrameters.dates.dateEnd;
+      this.selectedTime = emitFilterPrameters.time;
       this.setFilterDates(this.startDate, this.endDate);
       //this.filterRoutes();
     },
@@ -499,11 +455,21 @@ export default {
         }
       }
 
-      if (this.choisenTime !== null) {
+      if (this.selectedTime !== null) {
         if (this.showRoutes.length === 0) {
+          const testArr = []
           this.arrayToFilter.forEach(day => {
             let filteredRoutes = day.routes.filter(val => {
-              return this.choisenTime === val.depatureTime.slice(11, 16)
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            });
+            testArr.push({
+              date: day.date,
+              routes: filteredRoutes
             })
             this.showRoutes.push({
               date: day.date,
@@ -513,7 +479,15 @@ export default {
         } else {
           let arr = []
           this.showRoutes.forEach(day => {
-            let filteredRoutes = day.routes.filter(val => this.choisenTime === val.depatureTime.slice(11, 16))
+            let filteredRoutes = day.routes.filter(val => {
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            });
+            console.log(filteredRoutes)
             arr.push({
               date: day.date,
               routes: filteredRoutes
@@ -547,7 +521,7 @@ export default {
 
       if (this.checkedArrival.length === 0
           && this.checkedCategories.length === 0
-          && this.choisenTime === null
+          && this.selectedTime === null
           && this.chosenSits === 1
       ) {
         //console.log('Empty filter')
@@ -556,8 +530,9 @@ export default {
       //console.log("filterRoutes showRoutes = ",this.showRoutes);
     },
     openSelect(e) {
-      document.querySelector('.testW').style.display = 'block'
-      document.querySelector('.test').focus()
+      this.showSelect = !this.showSelect
+      /*document.querySelector('.testW').style.display = 'block'
+      document.querySelector('.test').focus()*/
     },
     clickOutside() {
       document.querySelector('.testW').style.display = 'none'
@@ -645,6 +620,14 @@ export default {
             .filter(val => this.checkedArrival.length > 0 ? this.checkedArrival.includes(val.placeName) : true)
             .filter(val => this.checkedCategories.length > 0 ? this.checkedCategories.includes(val.journeySubType) : true)
             .filter(val => val.freeSeats >= this.chosenSits)
+            .filter(val => {
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            })
         //console.log("filterArrival = ",filterArrival)
         day.routes = filterArrival;
         //console.log("DAY Data = ",day.routes)
@@ -676,11 +659,11 @@ export default {
     },
   },
   computed: {
-    choiseTime() {
-      if (this.choisenTime === null) {
+    labelTime() {
+      if (this.selectedTime === null) {
         return this.$i18n.t('select_time')
       } else {
-        return this.choisenTime
+        return this.rangeTime.find(item => item.value === this.selectedTime).title
       }
     },
     mobileCalendarItems() {
@@ -695,38 +678,131 @@ export default {
         arr.push(dateItem)
       }
       return arr
+    },
+    selectedPorts() {
+      if (this.checkedArrival.length === 0) {
+        return this.$i18n.t('select_port')
+      } else if (this.checkedArrival.length === 1) {
+        return `${this.$i18n.t('selected')}: ${this.checkedArrival[0]}`
+      } else {
+        return `${this.$i18n.t('selected')}: ${this.checkedArrival.length}`
+      }
+    },
+    selectCategory() {
+      if (this.checkedCategories.length === 0) {
+        return this.$i18n.t('select_ticket_category')
+      } else if (this.checkedCategories.length === 1) {
+        return `${this.$i18n.t('selected')}: ${this.checkedCategories[0]}`
+      } else {
+        return `${this.$i18n.t('selected')}: ${this.checkedCategories.length}`
+      }
     }
   },
 
+  /*validate({ params, query, store }) {
+
+  },*/
+
+  /*watch: {
+    '$route.query': '$fetch',
+    checkedCategories() {
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          class: this.checkedCategories.join(',')
+        }
+      })
+    }
+  },*/
+
   async fetch() {
+    let today = new Date()
+    let now = today.toISOString().split('T')[0]
+    let end = null
+    /*const year = today.getFullYear();
+    const month = today.getMonth() + 3;
+    const day = today.getDate();
+    let classQuery = []
+    const nextDate = new Date(year, month, day);
+    if (nextDate.getMonth() !== month) {
+      nextDate.setDate(0);
+    }
+    if (this.$route.query.class !== null && this.$route.query.class !== undefined && this.$route.query.class !== '') {
+      console.log(this.$route.query.class.split(','))
+      end = nextDate.toISOString().slice(0, 10);
+      classQuery = this.$route.query.class.toLowerCase().split(',')
+    } else {
+      console.log('empty')
+      end = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
+    }*/
+    end = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
     try {
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/yachts/schedule/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
-      let today = new Date()
-      let now = today.toISOString().split('T')[0]
-      let week = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
       let dayRoutes = await axios.get(
-          `${this.$config.baseURL}routes?date=${now}&end=${week}&lang=${this.$i18n.locale}`);
+          `${this.$config.baseURL}routes?date=${now}&end=${end}&lang=${this.$i18n.locale}`);
       //console.log(dayRoutes.data.routes)
       this.testFetch = dayRoutes.data.routes;
       let setCategories = new Set()
       let setPorts = new Set()
-      let setArrival = new Set()
-      Object.entries(this.testFetch).forEach(item => {
+      let setArrival = []
+      let setCheckedCategories = new Set()
+      let formattedFetch = Object.entries(this.testFetch)
+      formattedFetch.forEach(item => {
         item[1].forEach(route => {
           setCategories.add(route.journeySubType)
           setPorts.add(route.placeName)
         })
-        setArrival.add({
-          date: item[0],
-          routes: item[1],
-        })
       })
+      setArrival = formattedFetch.map(item => {
+        return {
+          date: item[0],
+          routes: item[1]
+        }
+      })
+      /*if (this.$route.query.class !== null && this.$route.query.class !== undefined && this.$route.query.class !== '') {
+        formattedFetch.forEach(item => {
+          item[1].forEach(route => {
+            setCategories.add(route.journeySubType)
+            setPorts.add(route.placeName)
+          })
+        })
+        setCategories.forEach(item => {
+          if(classQuery.includes(item.toLowerCase())) {
+            setCheckedCategories.add(item)
+          }
+        })
+        setArrival = formattedFetch.map(item => {
+          return {
+            date: item[0],
+            routes: item[1].filter(route => {
+              return setCheckedCategories.has(route.journeySubType)
+            })
+          }
+        }).filter(item => {
+          return item.routes.length > 0
+        })
+      } else {
+        formattedFetch.forEach(item => {
+          item[1].forEach(route => {
+            setCategories.add(route.journeySubType)
+            setPorts.add(route.placeName)
+          })
+        })
+        setArrival = formattedFetch.map(item => {
+          return {
+            date: item[0],
+            routes: item[1]
+          }
+        })
+      }*/
+
       this.setCategories = setCategories
       this.arrivalPlaces = setPorts
       //console.log(setCategories)
       this.arrayToFilter = setArrival;
+      this.checkedCategories = Array.from(setCheckedCategories)
       this.showRoutes = this.arrayToFilter
       //console.log("fetch() showRoutes = ",this.showRoutes);
       this.isLoading = false;
@@ -738,6 +814,7 @@ export default {
   fetchKey: 'yacht-schedule',
 
   mounted() {
+    /*this.checkedCategories = this.$route.query.class.split(',')*/
     this.$fetch();
     setInterval(() => {
       this.$fetch(); // Fetch data every 15 minutes
@@ -803,9 +880,11 @@ export default {
   display: none;
 }
 
+/*
 .testW {
   display: none;
 }
+*/
 
 .testW select {
   position: absolute;
@@ -863,10 +942,11 @@ export default {
   rotate: 180deg;
 }
 
-.pass-quantity {
+/*.pass-quantity {
   display: flex;
   flex-direction: column;
-}
+}*/
+
 
 .accept_button {
   margin-top: 20px;
@@ -911,6 +991,25 @@ export default {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.buy-ticket.uk-sticky-fixed {
+  z-index: 999;
+  //left: 0;
+  margin: 0;
+}
+
+.pass-quantity__drop .form_politic .uk-radio {
+  margin-right: 22px;
+}
+.pass-quantity__drop .form_politic .uk-radio:checked {
+  background: #1e87f0 url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23fff%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E) !important;
+}
+
+@media screen and (max-width: 1550px) {
+  .buy-ticket.uk-sticky-fixed {
+    left: 0;
   }
 }
 

@@ -29,7 +29,7 @@ export default {
         ...i18nHead.meta,
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        /*{ rel: 'icon', type: 'image/x-icon', href: '/icon.png' },*/
         ...i18nHead.link.map(link => (
             link.hreflang === undefined
                 ? {
@@ -95,13 +95,78 @@ export default {
           accurateTrackBounce:true
         },
       ],
+      [
+          'nuxt-rfg-icon',
+        {
+          static: true,
+          staticPath: '/_favicons/',
+          rfg: {
+            "masterPicture": "/icon.png",
+            "iconsPath": "/_favicons/",
+            "design": {
+              "ios": {
+                "pictureAspect": "noChange",
+                "assets": {
+                  "ios6AndPriorIcons": false,
+                  "ios7AndLaterIcons": true,
+                  "precomposedIcons": false,
+                  "declareOnlyDefaultIcon": true
+                }
+              },
+              "desktopBrowser": {
+                "design": "raw"
+              },
+              "windows": {
+                "pictureAspect": "noChange",
+                "backgroundColor": "#00aba9",
+                "onConflict": "override",
+                "assets": {
+                  "windows80Ie10Tile": false,
+                  "windows10Ie11EdgeTiles": {
+                    "small": false,
+                    "medium": true,
+                    "big": false,
+                    "rectangle": false
+                  }
+                }
+              },
+              "androidChrome": {
+                "pictureAspect": "noChange",
+                "themeColor": "#ffffff",
+                "manifest": {
+                  "display": "standalone",
+                  "orientation": "notSet",
+                  "onConflict": "override",
+                  "declared": true
+                },
+                "assets": {
+                  "legacyIcon": false,
+                  "lowResolutionIcons": false
+                }
+              },
+              "safariPinnedTab": {
+                "pictureAspect": "silhouette",
+                "themeColor": "#5bbad5"
+              }
+            },
+            "settings": {
+              "scalingAlgorithm": "Mitchell",
+              "errorOnImageTooSmall": false,
+              "readmeFile": false,
+              "htmlCodeFile": false,
+              "usePathAsIs": false
+            }
+          }
+        }
+      ],
       '@nuxtjs/moment',
+      '@nuxtjs/sitemap',
   ],
   robots: () => {
     if (process.env.ENVIRONMENT === 'prod') {
       return {
         UserAgent: '*',
-        Disallow: ''
+        Disallow: ['/_nuxt/', '/yachts-buy/']
       }
     } else {
       return {
