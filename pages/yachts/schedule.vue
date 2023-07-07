@@ -621,6 +621,7 @@ export default {
             .filter(val => this.checkedCategories.length > 0 ? this.checkedCategories.includes(val.journeySubType) : true)
             .filter(val => val.freeSeats >= this.chosenSits)
             .filter(val => {
+              if (this.selectedTime === null ) return true
               const departureTime = val.depatureTime.slice(11, 16);
               const timeRange = this.selectedTime;
               const departureHour = parseInt(departureTime.split(':')[0], 10);
