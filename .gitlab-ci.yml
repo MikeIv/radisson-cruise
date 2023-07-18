@@ -96,7 +96,7 @@ deploy dev service:
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME}
     - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_REF_NAME} nuxt2_nuxt
     - docker exec $(docker ps -q -f name=nuxt2_nginx) find /var/cache/nginx/cache -type f -delete
-    - php /home/webuser/korabliki/bin/send_telegram.php develop
+    - php /home/webuser/korabliki/bin/send_telegram.php develop text
   only:
     refs:
       - dev
