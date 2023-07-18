@@ -17,7 +17,7 @@
                   {{ $t('header.info.official') }}
                 </nuxt-link>-->
 <!--                {{ $t('header.info.official') }}-->
-                <nuxt-link to="/about">
+                <nuxt-link :to="{ path: '/about', hash: '#DocumentBlocks'}" replace>
                   {{ $t('official_site') }}
                 </nuxt-link>
               </div>
@@ -200,6 +200,7 @@
   height: 100%;
   opacity: 1;
   z-index: auto;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .header__top_logo svg path:nth-child(2){

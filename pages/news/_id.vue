@@ -70,7 +70,7 @@ export default {
   },
   head() {
     return {
-      title: this.name + this.seoData?.title,
+      title: this.seoData?.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
@@ -91,7 +91,7 @@ export default {
 
     try {
       let seoDataResult = await axios.get(
-          `${this.$config.baseURL}pages?ref=/news/{id}/&lang=${this.$i18n.locale}`);
+          `${this.$config.baseURL}pages?ref=/news/${this.$route.params.id}/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
       const news = await axios.get(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)

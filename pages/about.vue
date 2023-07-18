@@ -783,6 +783,16 @@
         </div>
       </div>
     </section>
+    <section id="DocumentBlocks">
+      <CruiseItem v-for="(cruise,index) in docBlocks" :key="`crs3` + index"
+                  :title="cruise.name"
+                  :decor="cruise.decor"
+                  :text="cruise.content"
+                  :svgName="cruise.background"
+                  :linkBuy="cruise.linkbuy"
+                  :linkMore="cruise.linkmore"
+                  :fileNames="cruise.images"/>
+    </section>
     <section class="uk-cover-container about-documents__section" id="document">
       <img class="img_cover" data-src="~assets/img/inners2/about11.png" alt="" src="~assets/img/inners2/about11.png">
       <div class="uk-container uk-position-relative">
@@ -1207,6 +1217,7 @@ export default {
       testSellers: [],
       testManagers: [],
       blocks: null,
+      docBlocks: null,
       photosSlide: [],
       seoData: {},
       video: null,
@@ -1238,7 +1249,9 @@ export default {
     this.testCaps = captainData.data;
     this.testSellers = sellerData.data;
     this.testManagers = managerData.data;
+    this.docBlocks = blocks.data.slice(-1)
     this.blocks = blocks.data;
+    this.blocks.pop()
     this.partnersFetch = partners.data;
     this.vacanciesData = vacanciesData.data;
     this.documents.documentsList = documentsData.data;

@@ -3,7 +3,7 @@
     <Header class="main_header main-header-index">
       <img src="~images/main/back1.webp" data-src="~images/main/back1.webp" class="img_cover" alt="">
       <video src="~/assets/video/video-main.mp4" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
-      <div class="uk-overlay-default uk-position-cover video-overlay"></div>
+<!--      <div class="uk-overlay-default uk-position-cover video-overlay"></div>-->
       <div class="uk-overlay-default uk-position-cover header__overlay-default"></div>
       <div class="uk-position-relative header-container">
         <div class="uk-container uk-position-relative">

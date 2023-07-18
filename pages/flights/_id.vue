@@ -186,7 +186,7 @@ export default {
   components: {Breadcrumbs, NewsItem},
   head() {
     return {
-      title: this.currentNew.name + this.seoData?.title,
+      title: this.seoData?.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
@@ -254,7 +254,7 @@ export default {
   async fetch() {
     try {
       let seoDataResult = await axios.get(
-          `${this.$config.baseURL}pages?ref=/flights/{id}/&lang=${this.$i18n.locale}`);
+          `${this.$config.baseURL}pages?ref=/flights/${this.$route.params.id}/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
       const news = await axios.get(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)

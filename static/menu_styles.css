@@ -67,7 +67,7 @@ body {
 }
 
 .trams__route__metro__badge {
-    float: left;
+    float: none;
     width: 23px;
     min-width: 23px;
     text-align: center;
