@@ -148,7 +148,7 @@ export default {
     buttonLink: String,
     points: {
       type: Array,
-      required: true,
+      required: false,
     },
     activeRoutes: {
       type: Array,

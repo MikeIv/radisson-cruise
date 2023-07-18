@@ -28,8 +28,8 @@
                 class="select-styled litepicker"
                 id="datepickerTest"
                 type="text"
+                v-model="dateInputValue"
                 value=""
-                v-model="lpick"
                 :placeholder="$t('select_date')"
             />
           </div>
@@ -373,12 +373,14 @@ export default {
           value: [`18.00`, `19.00`, `20.00`,`21.00`, `22.00`, `23.00`]
         },
       ],
+      interval: null,
+      dateInputValue: null,
     };
   },
   methods: {
     changeQuery() {
       if(this.checkedCategories.length > 0) {
-        console.log(this.checkedCategories.join(','))
+        /*console.log(this.checkedCategories.join(','))*/
         /*this.$router.replace({ query: {class: this.checkedCategories.join(',')}})*/
       }
     },
@@ -487,7 +489,6 @@ export default {
               const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
               return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
             });
-            console.log(filteredRoutes)
             arr.push({
               date: day.date,
               routes: filteredRoutes
@@ -672,8 +673,14 @@ export default {
         let date = new Date();
         let dateItem = {}
         date.setDate(date.getDate() + i);
-        dateItem.date = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {day: 'numeric'})
-        dateItem.weekday = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {weekday: 'short'})
+        dateItem.date = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {
+          timeZone: 'Europe/Moscow',
+          day: 'numeric'}
+        )
+        dateItem.weekday = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {
+          timeZone: 'Europe/Moscow',
+          weekday: 'short'
+        })
         dateItem.fullDate = date.toISOString().split('T')[0];
         arr.push(dateItem)
       }
@@ -736,6 +743,8 @@ export default {
       end = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
     }*/
     end = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
+    this.endDate = end
+    this.startDate = now
     try {
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/yachts/schedule/&lang=${this.$i18n.locale}`);
@@ -816,9 +825,9 @@ export default {
   mounted() {
     /*this.checkedCategories = this.$route.query.class.split(',')*/
     this.$fetch();
-    setInterval(() => {
-      this.$fetch(); // Fetch data every 15 minutes
-    }, 5 * 60 * 1000);
+    this.interval = setInterval(() => {
+      this.setFilterDates(this.startDate, this.endDate); // Fetch data every 15 minutes
+    }, 15 * 60 * 1000);
     const elements = document.querySelectorAll('.litepicker')
     const options = {
       lang: this.$i18n.localeProperties.iso,
@@ -850,6 +859,14 @@ export default {
           let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
           let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
           this.arrayToFilter = []
+          if( date1.getTime() === date2.getTime() ) {
+            this.dateInputValue = `${dateFirst}`
+          } else {
+            this.dateInputValue = `${dateFirst} - ${dateEnd}`
+          }
+
+          this.startDate = dateFirst
+          this.endDate = dateEnd
 
           let dayRoutes = await axios.get(
               `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}&lang=${this.$i18n.locale}`);
@@ -870,7 +887,7 @@ export default {
   beforeDestroy() {
     //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
     this.$refs.filterModal.destroyModal();
-
+    clearInterval(this.interval)
   },
 };
 </script>
