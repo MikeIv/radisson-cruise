@@ -825,10 +825,6 @@ export default {
     }
   },
 
-  mounted() {
-    //console.log(this.$route.params)
-    console.log(this.$yandexMetrika)
-  },
   middleware: [
     function({ redirect, route }) {
       if(Object.keys(route.query).length == 0) {

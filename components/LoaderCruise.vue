@@ -81,7 +81,7 @@ export default {
   z-index: 11;
   fill: #fff;
   opacity: 0;
-  animation: op1 2s linear;
+  animation: op1 15s linear;
   animation-fill-mode: both;
 }
 
