@@ -824,7 +824,7 @@ export default {
 
   mounted() {
     /*this.checkedCategories = this.$route.query.class.split(',')*/
-    this.$fetch();
+    this.setFilterDates(this.startDate, this.endDate)
     this.interval = setInterval(() => {
       this.setFilterDates(this.startDate, this.endDate); // Fetch data every 15 minutes
     }, 15 * 60 * 1000);

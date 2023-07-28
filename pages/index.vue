@@ -2,7 +2,7 @@
   <div>
     <Header class="main_header main-header-index">
       <img src="~images/main/back1.webp" data-src="~images/main/back1.webp" class="img_cover" alt="">
-      <video src="~/assets/video/video-main.mp4" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
+      <video src="~/assets/video/video-main-2.webm" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
 <!--      <div class="uk-overlay-default uk-position-cover video-overlay"></div>-->
       <div class="uk-overlay-default uk-position-cover header__overlay-default"></div>
       <div class="uk-position-relative header-container">
@@ -317,7 +317,7 @@
         <div></div>
         <div></div>
         <div></div>
-        <svg-icon name="compass"/>
+        <svg-icon name="main-logo"/>
       </div>
     </Header>
     <div class="wrapper">
@@ -987,9 +987,27 @@ export default {
   color: #fff;
 }*/
 
+.header-container {
+  margin-top: 10vh;
+}
+.main-header-index {
+  justify-content: flex-start;
+  min-height: 80vh;
+}
+
 @media screen and (max-width: 639px) {
+  .header-container {
+    margin-top: 5vh;
+  }
   .block-tikets {
     margin-top: 25px;
+  }
+  .header-tickets-grid {
+    padding-bottom: 0;
+  }
+  .main-header-index {
+    min-height: auto;
+    padding-bottom: 7vh;
   }
 }
 

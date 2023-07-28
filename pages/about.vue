@@ -13,9 +13,11 @@
         </div>
       </div>
     </Header>
-    <section class="about-main__section uk-cover-container">
-      <div class="about-main__images">
-        <img data-src="~images/inners2/about2.jpg" class="img_cover" alt="" src="~images/inners2/about2.jpg">
+    <section v-if="mainBlock" class="about-main__section uk-cover-container">
+      <div class="about-main__images" v-if="mainBlock.images">
+        <img :data-src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + mainBlock?.images[0]"
+             class="img_cover" alt=""
+             :src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + mainBlock?.images[0]">
         <!-- <svg class="about-main__logo uk-hidden@l">
           <use xlink:href="#logo"></use>
         </svg> -->
@@ -26,16 +28,15 @@
           <use xlink:href="#logo"></use>
         </svg> -->
         <div class="about-main__block">
-          <svg-icon class="about-main__block__svg" name="spyglass"/>
+          <svg-icon class="about-main__block__svg" :name="mainBlockIcon"/>
           <div class="uk-position-relative">
             <div class="headline_22 t_semibold">
-              {{ mainBlock.title }}
+              {{ mainBlock.name }}
             </div>
             <div class="headline_line"></div>
-            <div class="about-main__p1">
-              {{ mainBlock.description }}
+            <div class="about-main__p1" v-html="mainBlock.content">
             </div>
-            <BuyTicketBtn link="/yachts/schedule/"/>
+            <BuyTicketBtn :link="mainBlockLink" />
           </div>
         </div>
       </div>
@@ -64,7 +65,7 @@
                   </a>
                 </li>
                 <li tabindex="-1" class="">
-                  <a href="#awards" uk-scroll="offset: 75">
+                  <a href="#rewards" uk-scroll="offset: 75">
                     <span>{{ $t('rewards') }}</span>
                   </a>
                 </li>
@@ -918,11 +919,9 @@ export default {
       header: {
         filename: 'inners2/about1.png',
       },
-      mainBlock: {
-        img: '~/assets/img/inners2/about2.png',
-        title: 'Флотилия «Рэдиссон Ройал»',
-        description: 'Флотилия «Рэдиссон Ройал» на протяжении тринадцати лет развивает туристские возможности и потенциал города Москвы, стараясь привлечь внимание жителей и туристов к новому виду досуга и времяпрепровождению на Москве-реке. Флотилия выросла в знаковый московский проект, демонстрирующий потенциал города, динамичность его развития, способствуя развитию отрасли и городской инфраструктуры. Без преувеличения – служит украшением столицы.'
-      },
+      mainBlock: {},
+      mainBlockLink: '',
+      mainBlockIcon: '',
       vacancies: [
         {
           vacancyName: `Название вакансии`,
@@ -1250,7 +1249,11 @@ export default {
     this.testSellers = sellerData.data;
     this.testManagers = managerData.data;
     this.docBlocks = blocks.data.slice(-1)
+    this.mainBlock = blocks.data.at(0)
+    this.mainBlockLink = this.mainBlock.linkbuy
+    this.mainBlockIcon = this.mainBlock.background
     this.blocks = blocks.data;
+    this.blocks.shift()
     this.blocks.pop()
     this.partnersFetch = partners.data;
     this.vacanciesData = vacanciesData.data;
