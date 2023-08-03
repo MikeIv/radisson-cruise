@@ -1,6 +1,9 @@
 <template>
   <nuxt-link :prefetch="false" class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
-    <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
+    <img :data-src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${fileName}`"
+         alt=""
+         class="img_cover"
+         :src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${fileName}`">
     <div class="card-news_decor"></div>
     <div class="uk-card-body">
       <div class="card_time">

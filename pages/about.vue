@@ -784,7 +784,7 @@
         </div>
       </div>
     </section>
-    <section id="DocumentBlocks">
+    <section ref="DocBlock" id="DocumentBlocks">
       <CruiseItem v-for="(cruise,index) in docBlocks" :key="`crs3` + index"
                   :title="cruise.name"
                   :decor="cruise.decor"
@@ -906,6 +906,20 @@ export default {
     loadMore() {
       if (this.documents.documentsCurrentItems > this.documents.documentsList.length) return;
       this.documents.documentsCurrentItems = this.documents.documentsCurrentItems + 1;
+    },
+    async scrollToHash() {
+      const hash = this.$route.hash;
+      if (hash === '#DocumentBlocks') {
+        await this.$nextTick();
+        await this.delay(2000); // Adjust the delay time as needed (e.g., 200ms)
+        const element = this.$refs.DocBlock;
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }
+      }
+    },
+    delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     },
   },
   computed: {
@@ -1216,50 +1230,55 @@ export default {
       testSellers: [],
       testManagers: [],
       blocks: null,
-      docBlocks: null,
+      docBlocks: {
+
+      },
       photosSlide: [],
       seoData: {},
       video: null,
     }
   },
-
   async fetch() {
-    let seoDataResult = await axios.get(
-        `${this.$config.baseURL}pages?ref=/about/&lang=${this.$i18n.locale}`);
-    this.seoData = seoDataResult.data.result
-    let partners = await axios.get(
-        `${this.$config.baseURL}partners?lang=${this.$i18n.locale}`);
-    let blocks = await axios.get(
-        `${this.$config.baseURL}blocks?page=about&lang=${this.$i18n.locale}`);
-    let captainData = await axios.get(
-        `${this.$config.baseURL}personals?grp=captain&lang=${this.$i18n.locale}`);
-    let sellerData = await axios.get(
-        `${this.$config.baseURL}personals?grp=seller&lang=${this.$i18n.locale}`);
-    let managerData = await axios.get(
-        `${this.$config.baseURL}personals?grp=manager&lang=${this.$i18n.locale}`);
-    let vacanciesData = await axios.get(
-        `${this.$config.baseURL}vacancies?lang=${this.$i18n.locale}`);
-    let documentsData = await axios.get(
-        `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
-    let photosData = await axios.get(
-        `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
-    let youtubeVideo = await axios.get(
-        `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
-    this.testCaps = captainData.data;
-    this.testSellers = sellerData.data;
-    this.testManagers = managerData.data;
-    this.docBlocks = blocks.data.slice(-1)
-    this.mainBlock = blocks.data.at(0)
-    this.mainBlockLink = this.mainBlock.linkbuy
-    this.mainBlockIcon = this.mainBlock.background
-    this.blocks = blocks.data;
-    this.blocks.shift()
-    this.blocks.pop()
-    this.partnersFetch = partners.data;
-    this.vacanciesData = vacanciesData.data;
-    this.documents.documentsList = documentsData.data;
-    this.photosSlide = photosData.data.result
-    this.video = youtubeVideo.data.result.youtube_about
+    try {
+      let seoDataResult = await axios.get(
+          `${this.$config.baseURL}pages?ref=/about/&lang=${this.$i18n.locale}`);
+      this.seoData = seoDataResult.data.result
+      let partners = await axios.get(
+          `${this.$config.baseURL}partners?lang=${this.$i18n.locale}`);
+      let blocks = await axios.get(
+          `${this.$config.baseURL}blocks?page=about&lang=${this.$i18n.locale}`);
+      let captainData = await axios.get(
+          `${this.$config.baseURL}personals?grp=captain&lang=${this.$i18n.locale}`);
+      let sellerData = await axios.get(
+          `${this.$config.baseURL}personals?grp=seller&lang=${this.$i18n.locale}`);
+      let managerData = await axios.get(
+          `${this.$config.baseURL}personals?grp=manager&lang=${this.$i18n.locale}`);
+      let vacanciesData = await axios.get(
+          `${this.$config.baseURL}vacancies?lang=${this.$i18n.locale}`);
+      let documentsData = await axios.get(
+          `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
+      let photosData = await axios.get(
+          `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
+      let youtubeVideo = await axios.get(
+          `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
+      this.testCaps = captainData.data;
+      this.testSellers = sellerData.data;
+      this.testManagers = managerData.data;
+      this.docBlocks = blocks.data.slice(-1)
+      this.mainBlock = blocks.data.at(0)
+      this.mainBlockLink = this.mainBlock.linkbuy
+      this.mainBlockIcon = this.mainBlock.background
+      this.blocks = blocks.data;
+      this.blocks.shift()
+      this.blocks.pop()
+      this.partnersFetch = partners.data;
+      this.vacanciesData = vacanciesData.data;
+      this.documents.documentsList = documentsData.data;
+      this.photosSlide = photosData.data.result
+      this.video = youtubeVideo.data.result.youtube_about
+    } catch (e) {
+      
+    }
   },
   fetchOnServer: true,
   fetchKey: 'about-page',
@@ -1269,45 +1288,8 @@ export default {
     let video = videoContainer.querySelector('.video');
   },
   mounted() {
+    this.scrollToHash();
     let element = document.querySelector('.yacht__slider')
-   /* let videoContainer = document.querySelector('#video');
-    let element = document.querySelector('.yacht__slider')
-    let video = videoContainer.querySelector('.video');
-    let playPromise = video.play();
-
-    if (playPromise !== undefined) {
-      playPromise.then(_ => {
-        // Automatic playback started!
-        // Show playing UI.
-      })
-          .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
-          });
-    }
-    video.addEventListener('click', function (e) {
-      if (video.paused) {
-        console.log('play')
-        videoContainer.querySelector('.playpause').style.display = 'none'
-        this.$refs.video.play();
-      } else {
-        videoContainer.querySelector('.playpause').style.display = 'flex'
-        console.log('paused')
-        let playPromise = this.$refs.video.play();
-
-        if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
-            this.$refs.video.pause();
-          })
-              .catch(error => {
-                // Auto-play was prevented
-                // Show paused UI.
-              });
-        }
-      }
-    })*/
     UIkit.util.on(element, 'itemshown', function (e) {
       element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
     });
@@ -1316,6 +1298,9 @@ export default {
 </script>
 
 <style scoped>
+#DocumentBlocks {
+  min-height: 400px;
+}
 /*
 .about-advantages__info__item__svg img {
   width: 85px;

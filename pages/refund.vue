@@ -19,17 +19,17 @@
             <div v-if="!response && !foundedError" class="buy-ticket-form__grid">
               <form class="buy-ticket-form__info" id="payData" @submit.prevet="findTicket">
                 <div class="headline_32 headline_subtitle">
-                  Пожалуйста, введите номер билета, контактный телефон и e-mail, указанные при покупке
+                  {{ $t('refund.title') }}
                 </div>
                 <div class="buy-ticket-form__data">
                   <div class="buy-ticket-form__data__head">
-                    <b>Данные</b>
+                    <b>{{ $t('data') }}</b>
 <!--                    <span v-if="onError" class="text-error">{{onError}}</span>-->
                   </div>
                   <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
                     <div class="uk-width-1-1">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Код билета</label>
+                        <label class="uk-form-label">{{$t('refund.ticket_code')}}</label>
                         <input class="uk-input buy-ticket__input" type="text"
                                placeholder="XXXX-XXXX-XXXX-XXXX"
                                required="required"
@@ -43,17 +43,17 @@
                     </div>
                     <div class="uk-width-1-1">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Ваше ФИО</label>
+                        <label class="uk-form-label">{{$t('form.label_name')}}</label>
                         <input class="uk-input buy-ticket__input"
                                type="text"
-                               placeholder="Введите ФИО"
+                               :placeholder="$t('form.name')"
                                name="name"
                                v-model="fullName">
                       </div>
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Контактный телефон</label>
+                        <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                         <input class="uk-input buy-ticket__input f_phone"
                                type="tel"
                                placeholder="+7 ("
@@ -68,10 +68,10 @@
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-                        <label class="uk-form-label">Ваш e-mail</label>
+                        <label class="uk-form-label">{{ $t('form.label_email') }}</label>
                         <input class="uk-input buy-ticket__input"
                                type="email"
-                               placeholder="Введите e-mail"
+                               :placeholder="$t('form.email')"
                                required="required"
                                name=""
                                v-model="email"
@@ -81,7 +81,7 @@
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
                         <button @click.prevent="findTicket" type="submit" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket">
-                          <span>Найти билет</span>
+                          <span>{{ $t('buttons.find_ticket') }}</span>
                         </button>
                       </div>
                     </div>
@@ -93,76 +93,13 @@
                     <label>
                       <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal" required>
                       <span class="">
-                        Согласен с <nuxt-link to="/politic/">условиями возврата билетов</nuxt-link>
+                        {{$t('agree_with')}} <nuxt-link to="/politic/">{{$t('refund.condition')}}</nuxt-link>
                       </span>
                     </label>
-                    <!-- <label>
-                      <input class="uk-checkbox" type="checkbox" name="check-info">
-                      <span class="">
-                        Согласие получать информацию о скидках, выгодных предложениях и <a href="" target="_blank">мероприятиях на яхтах  </a>
-                      </span>
-                    </label> -->
                   </div>
                 </div>
-<!--                <div v-if="founded" class="buy-ticket-form__passengers">
-                  <p class="buy-ticket-form__passengers__head">
-                    <b>Пожалуйста, выберите билеты к возврату
-                    </b>
-                  </p>
-                  <div class="buy-ticket-form__passengers__item buy-ticket-form__passengers__item__first">
-                    <div class="buy-ticket-form__passengers__item__info">
-                      <div class="buy-ticket-form__passengers__item__name">
-                        <b>Взрослый билет</b>
-                      </div>
-                      <div class="buy-ticket-form__passengers__item__summ">
-                        <b>{{ routeData.adultPrice }}</b>
-                      </div>
-                    </div>
-                    <div class="input-group plus-minus-input">
-                      <div class="input-group-button">
-                        <button @click="changeTicketNumberAdult('-')" type="button" class="button "
-                                data-quantity="minus" data-field="quantity">
-                          -
-                        </button>
-                      </div>
-                      <input class="input-group-field" type="number" name="quantity" v-model="adultCount">
-                      <div class="input-group-button">
-                        <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
-                                data-field="quantity">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="buy-ticket-form__passengers__item">
-                    <div class="buy-ticket-form__passengers__item__info">
-                      <div class="buy-ticket-form__passengers__item__name">
-                        <b>Детский билет</b>
-                      </div>
-                      <div class="buy-ticket-form__passengers__item__summ">
-                        <b>{{ routeData.childPrice }}</b>
-                      </div>
-                    </div>
-                    <div class="input-group plus-minus-input">
-                      <div class="input-group-button">
-                        <button @click="changeTicketNumberChild('-')" type="button" class="button "
-                                data-quantity="minus" data-field="quantity2">
-                          -
-                        </button>
-                      </div>
-                      <input class="input-group-field" type="number" name="quantity2"
-                             v-model="childCount">
-                      <div class="input-group-button">
-                        <button @click="changeTicketNumberChild('+')" type="button" class="button " data-quantity="plus"
-                                data-field="quantity2">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>-->
                 <button v-if="founded" v-show="availableRefund" type="button" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket uk-margin-top" @click="refundTicket">
-                  <span>Вернуть билет</span>
+                  <span>{{ $t('buttons.return_ticket') }}</span>
                 </button>
                 <div v-if="!founded" class="buy-ticket-form__footer">
                   <ul class="uk-accordion uk-margin-top accordion_vacantion" uk-accordion="multiple: true;">
@@ -186,13 +123,13 @@
                 <div class="buy-ticket-form__basket">
                   <div class="buy-ticket-form__basket__head">
                     <div class="headline_22 t_semibold">
-                      Информация о билете
+                      {{ $t('refund.ticket_info') }}
                     </div>
                   </div>
                   <div class="buy-ticket-form__basket__main">
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Причал:
+                        {{ $t('port') }}:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
                         «{{ ticketData.route.placeName }}»
@@ -200,7 +137,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Время и дата:
+                        {{ $t('time_date') }}::
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
                         {{ dayFormat }}, {{ timeCalc() }}
@@ -216,12 +153,12 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Количество пассажиров
+                        {{$t('select_number_tickets_long')}}
                       </div>
                       <div class="buy-ticket-form__basket__item__passengers">
                         <div class="buy-ticket-form__basket__item__passenger">
                           <div>
-                            Взрослый
+                            {{ $t('adult') }}
                           </div>
                           <div>
                             {{ ticketData.adultQuantity }} шт.
@@ -232,7 +169,7 @@
                         </div>
                         <div class="buy-ticket-form__basket__item__passenger">
                           <div>
-                            Детский
+                            {{ $t('children') }}
                           </div>
                           <div>
                             {{ ticketData.childQuantity }} шт.
@@ -245,7 +182,7 @@
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        Данные
+                        {{ $t('data') }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
                         {{ availableRefundText }}
@@ -254,7 +191,7 @@
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__summ">
                         <div>
-                          Сумма:
+                          {{$t('amount')}}:
                         </div>
                         <div>
                           {{ ticketData.totalCost }} ₽
@@ -277,7 +214,7 @@
             </div>
             <div v-if="foundedError" class="notification__text--wrapper">
               <div class="notification__text">
-                {{ onError }}.<br> Просим Вас обратиться к нашим специалистам по телефону 8 495 228 5555 или по электронной почте info@radisson-cruise.ru
+                {{ onError }}.<br> {{$t('refund.help')}}
               </div>
             </div>
             <div v-if="response" class="notification__text--wrapper">
@@ -486,7 +423,7 @@ export default {
       return this.adultPriceCalc + this.childPriceCalc
     },
     dayFormat() {
-      return new Date(this.ticketData.route.journeyDate).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric'})
+      return new Date(this.ticketData.route.journeyDate).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric'})
     },
 
     adultPriceCalc() {
@@ -743,13 +680,18 @@ export default {
 
   async fetch() {
     try {
+      let optionsData = await axios.get(
+          `${this.$config.baseURL}faq?lang=${this.$i18n.locale}`);
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/refund/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
+      this.options = optionsData.data.result
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
-  }
+  },
+  fetchOnServer: true,
+  fetchKey: 'refund',
 }
 </script>
 
