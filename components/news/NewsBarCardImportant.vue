@@ -1,7 +1,10 @@
 <template>
   <nuxt-link :prefetch="false" class="uk-card card__important transition uk-scrollspy-inview uk-animation-slide-bottom-medium" :to="link">
     <div class="uk-cover-container uk-card-default_media">
-      <img :data-src="`${this.$config.baseSiteURL}${fileName}`" alt="" class="img_cover" :src="`${this.$config.baseSiteURL}${fileName}`">
+      <img :data-src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${fileName}`"
+           alt=""
+           class="img_cover"
+           :src="`${$config.imageURL}?size=650&format=webp&src=${$config.baseSiteURL}${fileName}`">
       <div class="uk-badge">
         {{ $t('news_important') }}
       </div>

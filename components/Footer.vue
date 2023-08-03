@@ -293,7 +293,7 @@
               {{ $t('security') }}
             </nuxt-link>
             <nuxt-link to="/refund/" class="uk-hidden@s">
-              {{ $t('refund') }}
+              {{ $t('refund.head') }}
             </nuxt-link>
           </li>
           <li class="footer__nav_item3 uk-visible@s">
@@ -307,7 +307,7 @@
               {{ $t('security') }}
             </nuxt-link>
             <nuxt-link to="/refund/">
-              {{ $t('refund') }}
+              {{ $t('refund.head') }}
             </nuxt-link>
           </li>
         </ul>

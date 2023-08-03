@@ -244,11 +244,9 @@
                :title="yacht.title" :description="yacht.description" :yachtClass="yacht.yachtClass"
                :yachtImgs="yacht.yachtImgs" :topCabin="yacht.topCabin" :infoItems="yacht.infoItems"
                :mainCabin="yacht.mainCabin" :bottomCabin="yacht.bottomCabin"
-
     />
     <section class="uk-cover-container rules-security-video__section" id="rules-security-video">
       <img  data-src="~assets/img/inners2/rules8.png" alt="" class="img_cover" src="~assets/img/inners2/rules8.png">
-
       <div class="uk-container uk-position-relative">
         <h2 class="headline_56">
           {{ $t('security_videos') }}

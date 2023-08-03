@@ -22,7 +22,7 @@
                 </div>
                 <div v-if="certData.name === 'Сертификат в Ройал класс'"
                      class="buy-ticket-form__date txt14 uk-visible@s">
-                  Подарочный сертификат на прогулку в Ройал классе действует только от причала «Гостиница «Украина».
+                  {{ $t('cert.royal') }}
                 </div>
               </div>
 
@@ -35,14 +35,14 @@
                 <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
                   <div class="uk-width-1-1">
                     <div class="uk-form-controls">
-                      <label class="uk-form-label">Ваше ФИО</label>
-                      <input v-model="userName" class="uk-input buy-ticket__input" type="text" placeholder="Введите ФИО"
+                      <label class="uk-form-label">{{$t('form.label_name')}}</label>
+                      <input v-model="userName" class="uk-input buy-ticket__input" type="text" :placeholder="$t('form.name')"
                              required="" name="">
                     </div>
                   </div>
                   <div class="uk-width-1-2@s">
                     <div class="uk-form-controls">
-                      <label class="uk-form-label">Контактный телефон</label>
+                      <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                       <input
                           :value="userPhone"
                           v-imask="maskTel"
@@ -58,9 +58,9 @@
                   </div>
                   <div class="uk-width-1-2@s">
                     <div class="uk-form-controls">
-                      <label class="uk-form-label">Ваш e-mail</label>
+                      <label class="uk-form-label">{{ $t('form.label_email') }}</label>
                       <input v-model="userEmail" class="uk-input buy-ticket__input" type="text"
-                             placeholder="Введите e-mail" required="" name="">
+                             :placeholder="$t('form.email')" required="" name="">
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@
 
               <div class="buy-ticket-form__passengers">
                 <div class="buy-ticket-form__passengers__head">
-                  <b>Укажите количество</b>
+                  <b>{{$t('cert.tickets_number')}}</b>
                 </div>
                 <div class="buy-ticket-form__passengers__item uk-flex-middle">
                   <div class="input-group plus-minus-input">
@@ -86,7 +86,7 @@
                     </div>
                   </div>
                   <div class="buy-ticket-form__passengers__item__info_sert">
-                    Стоимость указана на одну персону, составляет {{ certData.price }} ₽
+                    {{ $t('cert.price') }} {{ certData.price }} ₽
                   </div>
 
                 </div>
@@ -97,13 +97,13 @@
                   <label>
                     <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal">
                     <span class="">
-                    Я принимаю условия приобритения билетов и даю согласие на обработку <a href="" target="_blank">персональных данных</a>
+                    {{$t('agree_ticket')}} <a href="" target="_blank">{{ $t('personal_data') }}</a>
                   </span>
                   </label>
                   <label>
                     <input class="uk-checkbox" type="checkbox" name="check-info">
                     <span class="">
-                    Согласие получать информацию о скидках, выгодных предложениях и <a href="" target="_blank">мероприятиях на яхтах </a>
+                    {{$t('agree_events')}} <a href="" target="_blank">{{$t('yacht_events')}}</a>
                   </span>
                   </label>
                 </div>
@@ -219,8 +219,7 @@
                                     </div>-->
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name buy-ticket-form__basket__item__name_sert">
-                      Количесто
-                      сертификатов
+                      {{ $t('cert.amount_tickets') }}
                     </div>
                     <div class="buy-ticket-form__basket__item__info">
                       {{ seats }}
@@ -278,12 +277,11 @@
             <svg-icon class="icon" name="blue-info"/>
             <div class="buy-ticket-more-information__call__p1">
               <b>
-                Получить дополнительную
-                информацию можно по телефону:
+                {{$t('more_tel_info')}}:
               </b>
             </div>
             <div class="buy-ticket-more-information__call__p2">
-              <a :href="`tel:${tel}`">{{ tel }}</a> с 10.00 до 21.00 час. ежедневно
+              <a :href="`tel:${tel}`">{{ tel }}</a> {{ $t('call_range') }}
             </div>
           </div>
         </div>

@@ -377,7 +377,7 @@
                         <label>
                           <input class="uk-checkbox" type="checkbox" name="check-info" checked="">
                           <span class="">
-                            Согласие получать информацию о скидках, выгодных предложениях и <a href="" target="_blank">мероприятиях на яхтах  </a>
+                            {{$t('agree_events')}} <a href="" target="_blank">{{$t('yacht_events')}}</a>
                           </span>
                         </label>
                       </div>
@@ -405,7 +405,7 @@
                 </b>
               </div>
               <div class="buy-ticket-more-information__call__p2">
-                <a href="tel:+74952285555">+7 (495) 228-55-55</a> с 10.00 до 21.00 час. ежедневно
+                <a href="tel:+74952285555">+7 (495) 228-55-55</a> {{ $t('call_range') }}
               </div>
             </div>
           </div>
@@ -747,6 +747,10 @@ export default {
         console.log(error.data)
         console.log(error.response.data) */
         onError = error.response.data.error
+        if(onError === 'Нет свободных мест') {
+          UIkit.notification({message: `${onError}`, status: 'danger', pos: 'top-center', timeout: 1500})
+        }
+        this.isLoading = false
       }
       this.onError = onError
       this.payUrl = payUrl
