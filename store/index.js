@@ -6,6 +6,7 @@ export const state = () => ({
     email: 'info@radisson-cruise.ru',
     tel: '+7 (495) 228-55-55',
     tramsDoc: '/upload/docs/20230616_160103_648c5d0f0fc4b.pdf',
+    refundDoc: null,
 })
 
 export const getters = {
@@ -18,6 +19,7 @@ export const getters = {
     email: (state) => state.email,
     tel: (state) => state.tel,
     tramsDoc: (state) => state.tramsDoc,
+    refundDoc: (state) => state.refundDoc,
 }
 
 export const mutations = {
@@ -34,6 +36,10 @@ export const mutations = {
 
     setTramsDoc(state, doc) {
         state.tramsDoc = doc
+    },
+
+    setRefundDoc(state, doc) {
+        state.refundDoc = doc
     }
 }
 
@@ -54,9 +60,9 @@ export const actions = {
             `${this.$config.baseURL}docs?id=5&lang=${this.$i18n.locale}`);
         commit('setTramsDoc', documentsData.data[0].doc);
     },
-
-   /* async nuxtServerInit({state, context}, { req, redirect }) {
-        let response = await axios.get("some/path/...");
-        state.data = response.data;
-    },*/
+    async getRefundDoc({commit}) {
+        const documentsData = await axios.get(
+            `${this.$config.baseURL}docs?id=3&lang=${this.$i18n.locale}`);
+        commit('setRefundDoc', documentsData.data[0].doc);
+    },
 }

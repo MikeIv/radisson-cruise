@@ -314,7 +314,7 @@
         <div class="footer__information uk-scrollspy-inview uk-animation-fade">
           <div class="footer__information_item1 uk-visible@s">
             <nuxt-link to="/" class="transition">
-              <img src="~assets/img/svg/logo.svg" alt="" class="" uk-svg>
+              <svg-icon class="transition" :name="$i18n.locale === 'ru' ? 'logo' : 'logo-en'"/>
             </nuxt-link>
           </div>
           <div class="footer__information_item2">

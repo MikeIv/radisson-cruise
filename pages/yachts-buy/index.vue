@@ -191,6 +191,15 @@
                     </div>
                   </div>
                 </div>
+                <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
+                  <input class="uk-input buy-ticket__input" type="text" :placeholder="$t('promo_code')" name=""
+                         v-model="promoCode">
+                  <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
+                    <span>{{$t('buttons.accept')}}</span>
+                    <svg-icon class="icon uk-visible@s" name="ticket"/>
+                  </button>
+                  <div class="uk-display-block uk-margin-small-top">{{ promoMsg }}</div>
+                </div>
                 <div class="buy-ticket-form__agreement">
                   <div class="form_politic buy-ticket__politic">
                     <label>
@@ -204,7 +213,7 @@
                           @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                       >
                       <span class="">
-                        Я принимаю условия приобритения билетов и даю согласие на обработку <nuxt-link to="/politic/">персональных данных</nuxt-link>
+                        {{ $t('agree_ticket') }} <nuxt-link to="/politic/">{{ $t('personal_data') }} </nuxt-link>
                       </span>
                     </label>
                     <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.agree.isError">{{ errors.agree.msg }}</span>
@@ -224,16 +233,6 @@
                     <span>
                       {{ totalSumCount }} ₽
                     </span>
-                    
-                  </div>
-                  <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
-                    <input class="uk-input buy-ticket__input" type="text" placeholder="Промокод" name=""
-                           v-model="promoCode">
-                    <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
-                      <span>{{$t('buttons.accept')}}</span>
-                      <svg-icon class="icon uk-visible@s" name="ticket"/>
-                    </button>
-                    <div>{{ promoMsg }}</div>
                   </div>
                 </div>
                 <div class="buy-ticket-form__hall">
@@ -349,7 +348,7 @@
                         </div>
                       </div>
                       <div class="buy-ticket-form__basket__sail" v-if="promoStatus">
-                        Скидка по промокоду {{ saleNumber }}%
+                        {{ $t('by_promo') }} {{ saleNumber }}%
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last">
@@ -494,7 +493,7 @@ export default {
         name: '',
         email: '',
         phone: '',
-        promoCode: null,
+        promoCode: '',
         seatsAdult: 0,
         seatsChild: 0,
         agree: false,
@@ -527,6 +526,8 @@ export default {
   watch: {
     // whenever question changes, this function will run
     adultCount: function (newVal, oldVal) {
+      this.promoMsg = ''
+      this.promoStatus = false
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
@@ -549,6 +550,8 @@ export default {
 
 
     childCount: function (newVal, oldVal) {
+      this.promoMsg = ''
+      this.promoStatus = false
       this.childNewVal = +newVal
       this.childOldVal = +oldVal
 
@@ -719,6 +722,7 @@ export default {
 
       this.form.seatsAdult = this.adultCount;
       this.form.seatsChild = this.childCount;
+      this.form.promoCode = this.promoCode;
       //console.log("Send Phone -> ",this.rowPhone.replace(/[^+\d]/g, ''));
       this.form.phone = this.rowPhone.replace(/[^+\d]/g, '');
       try {
@@ -726,7 +730,7 @@ export default {
         const response = await axios({
           method: 'POST',
           url: `${this.$config.baseURL}order`,
-          /*data: querystring.stringify(this.form)*/
+          /*data: new URLSearchParams(this.form)*/
           data: this.form
         })
         if(response.data.error) {
@@ -760,21 +764,24 @@ export default {
       let promoMsg
       let totalSumWithSale
       let promoStatus
-      await axios.post(`${this.$config.baseURL}amount`,
-        {
+      await axios({
+        url: `${this.$config.baseURL}amount`,
+        method: 'POST',
+        data: {
           journey: this.journey,
           promoCode: this.promoCode,
           seatsAdult: this.adultCount,
           seatsChild: this.childCount,
-        },
-        {
-          /*headers: {
-            'Content-Type': 'multipart/form-data',
-          }*/
-        },
-      ).then(function (response) {
-/*         console.log('yes')
-        console.log(response); */
+        }
+        /*data: new URLSearchParams({
+          journey: this.journey,
+          promoCode: this.promoCode,
+          seatsAdult: this.adultCount,
+          seatsChild: this.childCount,
+        })*/
+      }).then(function (response) {
+        /*         console.log('yes')
+                console.log(response); */
         if (response.data.error) {
           promoMsg = response.data.error
           //console.log(promoMsg)

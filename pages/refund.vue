@@ -93,7 +93,7 @@
                     <label>
                       <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal" required>
                       <span class="">
-                        {{$t('agree_with')}} <nuxt-link to="/politic/">{{$t('refund.condition')}}</nuxt-link>
+                        {{$t('agree_with')}} <a :href="$config.baseSiteURL+refundDoc">{{$t('refund.condition')}}</a>
                       </span>
                     </label>
                   </div>
@@ -234,6 +234,7 @@ import Header from "../components/Header";
 import axios from "axios";
 import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../components/Breadcrumbs";
+import {mapActions, mapGetters} from "vuex";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
@@ -419,6 +420,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['refundDoc']),
     totalSumCount() {
       return this.adultPriceCalc + this.childPriceCalc
     },
@@ -446,6 +448,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['getRefundDoc']),
     onAccept (e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
@@ -676,6 +679,10 @@ export default {
         //console.log(error)
       }
     }
+  },
+
+  mounted() {
+    this.getRefundDoc();
   },
 
   async fetch() {

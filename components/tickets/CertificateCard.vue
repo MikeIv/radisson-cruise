@@ -5,9 +5,6 @@
            :src="`${$config.imageURL}?size=640&format=webp&src=${$config.baseSiteURL}` + fileName"
            class="img_cover"
            alt="">
-      <div class="buy-sertificat-card__badge">
-        <img data-src="~assets/img/sertificat/sert6.png" alt="" src="~assets/img/sertificat/sert6.png">
-      </div>
     </div>
     <div class="buy-sertificat-card__main">
       <div class="txt18">
