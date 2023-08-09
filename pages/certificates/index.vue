@@ -7,7 +7,6 @@
       <div class="buy-sertificat__wrap">
         <Breadcrumbs />
         <div class="buy-sertificat__head">
-          <img  data-src="~assets/img/sertificat/sert1.png" alt="" class="buy-sertificat-head__back" src="~assets/img/sertificat/sert1.png">
           <h1 class="headline_p1 uk-position-relative">
             {{ seoData?.header || 'Сертификаты' }}
           </h1>

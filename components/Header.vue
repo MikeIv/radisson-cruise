@@ -7,7 +7,7 @@
           <div class="header__top_item1-container uk-first-column">
             <nuxt-link class="header__top_logo transition" :to="localePath('/')"  @click.native="closeNav">
 <!--              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg">-->
-              <svg-icon class="transition" name="logo"/>
+              <svg-icon class="transition" :name="$i18n.locale === 'ru' ? 'logo' : 'logo-en'"/>
             </nuxt-link>
           </div>
           <div class="header__top_item2-container uk-visible@l">

@@ -4995,7 +4995,9 @@ body {
 
 .buy-ticket-form__footer__item {
   display: flex;
+  flex-wrap: wrap;
   width: 435px;
+  margin-top: 34px;
   .buy-ticket__input {
     width: 179px;
     font-size: 14px;
@@ -8196,7 +8198,7 @@ li.video-item #play-video-btn:hover {
   padding-bottom: 60px;
   padding-top: 40px;
   position: relative;
-   padding-right: 650px;
+  //padding-right: 650px;
   .headline_p1 {
     font-size: 62px;
   }
