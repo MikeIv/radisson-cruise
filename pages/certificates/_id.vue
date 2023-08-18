@@ -95,16 +95,16 @@
               <div class="buy-ticket-form__agreement">
                 <div class="form_politic buy-ticket__politic">
                   <label>
-                    <input v-model="isAgree" class="uk-checkbox" type="checkbox" name="check-personal">
+                    <input v-model="isAgreeCert" class="uk-checkbox" type="checkbox" name="check-personal">
                     <span class="">
-                    {{$t('agree_ticket')}} <a href="" target="_blank">{{ $t('personal_data') }}</a>
+                    {{$t('im_agree')}} <a :href="$config.baseSiteURL+certDoc" target="_blank">{{ $t('cert.agree_doc') }}</a>
                   </span>
                   </label>
                   <label>
-                    <input class="uk-checkbox" type="checkbox" name="check-info">
+                    <input v-model="isAgreePolitic" class="uk-checkbox" type="checkbox" name="check-info">
                     <span class="">
-                    {{$t('agree_events')}} <a href="" target="_blank">{{$t('yacht_events')}}</a>
-                  </span>
+                      {{$t('im_accept')}} <nuxt-link to="/politic/">{{$t('links.politic')}}</nuxt-link>
+                    </span>
                   </label>
                 </div>
               </div>
@@ -251,7 +251,7 @@
                   </div>
                   <div @click.prevent="payCert"
                        class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last"
-                       :class="{'disabled-link': !isAgree}">
+                       :class="{'disabled-link': !isRulesAccepted}">
                     <a class="uk-button uk-button-default button_ticket" href="">
                       <span>{{ $t('goto_payment') }}</span>
                       <svg-icon class="icon" name="ticket"/>
@@ -295,7 +295,7 @@ import Header from "../../components/Header";
 import Breadcrumbs from "../../components/Breadcrumbs.vue";
 import axios from "axios";
 import {IMaskDirective} from "vue-imask";
-import {mapGetters} from 'vuex';
+import {mapActions, mapGetters} from 'vuex';
 import querystring from "querystring";
 
 export default {
@@ -337,18 +337,23 @@ export default {
         mask: '{+7}(000)-000-00-00',
         lazy: true,
       },
-      isAgree: false,
+      isAgreeCert: false,
+      isAgreePolitic: false,
       seoData: {},
     };
   },
   computed: {
-    ...mapGetters(['tel', 'email'])
+    ...mapGetters(['tel', 'email', 'certDoc']),
+    isRulesAccepted() {
+      return this.isAgreeCert && this.isAgreePolitic
+    }
   },
   validate({params}) {
     // Must be a number
     return /^\d+$/.test(params.id)
   },
   methods: {
+    ...mapActions(['getCertDoc']),
     onAccept(e) {
       const maskRef = e.detail;
       this.value = maskRef.value;
@@ -381,7 +386,7 @@ export default {
             email: this.email,
             phone: this.phone,
             seats: this.seats,
-            agree: this.isAgree
+            agree: this.isAgreeCert && this.isAgreePolitic
           })*/
           data: {
             tarif: this.tarif,
@@ -389,7 +394,7 @@ export default {
             email: this.userEmail,
             phone: this.userPhone,
             seats: this.seats,
-            agree: this.isAgree
+            agree: this.isRulesAccepted
           },
         })
 
@@ -406,6 +411,9 @@ export default {
         e ? this.founded = false : this.founded = true
       }
     }
+  },
+  mounted() {
+    this.getCertDoc()
   },
   async fetch() {
     let seoDataResult = await axios.get(

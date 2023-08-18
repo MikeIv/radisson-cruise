@@ -253,12 +253,12 @@
                   :fileNames="cruise.images"/>
 
     </div>
-    <section class="uk-cover-container about-advantages">
+    <section v-if="aboutHtmls" class="uk-cover-container about-advantages">
       <img data-src="~assets/img/inners2/about6.png" alt="" class="img_cover" src="~assets/img/inners2/about6.png">
       <div class="uk-container uk-position-relative">
         <div class="about-advantages__grid">
-          <div class="about-advantages__headline uk-position-relative">
-            <div class="headline_line"></div>
+          <div class="about-advantages__headline uk-position-relative" v-html="aboutHtmls?.about_list_text?.content">
+<!--            <div class="headline_line"></div>
             <div class="headline_32">
               <b>
                 Флотилия «Рэдиссон Ройал»
@@ -270,7 +270,7 @@
               развлекательных прогулок по Москве-реке для горожан
               и гостей столицы.
             </div>
-            <BuyTicketBtn link="/yachts/schedule/"/>
+            <BuyTicketBtn link="/yachts/schedule/"/>-->
           </div>
           <div class="about-advantages__info">
             <img src="~assets/img/svg/half-circle.svg" alt="" class="advantages__info__decor" uk-svg>
@@ -290,12 +290,7 @@
                   </g>
                 </svg>
               </div>
-              <div class="about-advantages__info__item__txt">
-                Яхты и причал Флотилии приспособлены для лиц
-                с ограниченными возможностями: один звонок о предстоящем
-                визите, и на причале будет запущен специальный подъемник,
-                а члены команды с радостью помогут подняться на борт пассажиру
-                в инвалидной коляске.
+              <div class="about-advantages__info__item__txt" v-html="aboutHtmls?.about_list_item_1?.content">
               </div>
             </div>
             <div class="about-advantages__info__item about-advantages__info__item2">
@@ -317,11 +312,7 @@
                 </svg>
 
               </div>
-              <div class="about-advantages__info__item__txt">
-                Регулярные рейсы с фиксированным расписанием;
-                туристические пакеты, семейные уик-энды, дегустации и сезонные
-                акции; возможность аренды; опытная банкетная служба; бесплатный
-                доступ в Интернет (wi-fi).
+              <div class="about-advantages__info__item__txt" v-html="aboutHtmls?.about_list_item_2?.content">
               </div>
             </div>
             <div class="about-advantages__info__item about-advantages__info__item3">
@@ -339,10 +330,7 @@
                   </g>
                 </svg>
               </div>
-              <div class="about-advantages__info__item__txt">
-                Яхты соответствуют самому высокому уровню безопасности,
-                в том числе, и в отношении окружающей среды. Позволяют совершать прогулки по Москве-реке 365 дней в
-                году, в том числе и в салоне Первого класса.
+              <div class="about-advantages__info__item__txt" v-html="aboutHtmls?.about_list_item_3?.content">
               </div>
             </div>
           </div>
@@ -745,7 +733,7 @@
       </iframe>
     </div>
     <RewardSlider/>
-    <section class="about-job__section" id="job">
+    <section v-if="$i18n.locale === 'ru'" class="about-job__section" id="job">
       <div class="uk-container">
         <div class="about-job__grid uk-flex uk-flex-wrap">
           <div class="uk-width-auto">
@@ -1236,49 +1224,49 @@ export default {
       photosSlide: [],
       seoData: {},
       video: null,
+      aboutHtmls: {}
     }
   },
   async fetch() {
-    try {
-      let seoDataResult = await axios.get(
-          `${this.$config.baseURL}pages?ref=/about/&lang=${this.$i18n.locale}`);
-      this.seoData = seoDataResult.data.result
-      let partners = await axios.get(
-          `${this.$config.baseURL}partners?lang=${this.$i18n.locale}`);
-      let blocks = await axios.get(
-          `${this.$config.baseURL}blocks?page=about&lang=${this.$i18n.locale}`);
-      let captainData = await axios.get(
-          `${this.$config.baseURL}personals?grp=captain&lang=${this.$i18n.locale}`);
-      let sellerData = await axios.get(
-          `${this.$config.baseURL}personals?grp=seller&lang=${this.$i18n.locale}`);
-      let managerData = await axios.get(
-          `${this.$config.baseURL}personals?grp=manager&lang=${this.$i18n.locale}`);
-      let vacanciesData = await axios.get(
-          `${this.$config.baseURL}vacancies?lang=${this.$i18n.locale}`);
-      let documentsData = await axios.get(
-          `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
-      let photosData = await axios.get(
-          `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
-      let youtubeVideo = await axios.get(
-          `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
-      this.testCaps = captainData.data;
-      this.testSellers = sellerData.data;
-      this.testManagers = managerData.data;
-      this.docBlocks = blocks.data.slice(-1)
-      this.mainBlock = blocks.data.at(0)
-      this.mainBlockLink = this.mainBlock.linkbuy
-      this.mainBlockIcon = this.mainBlock.background
-      this.blocks = blocks.data;
-      this.blocks.shift()
-      this.blocks.pop()
-      this.partnersFetch = partners.data;
-      this.vacanciesData = vacanciesData.data;
-      this.documents.documentsList = documentsData.data;
-      this.photosSlide = photosData.data.result
-      this.video = youtubeVideo.data.result.youtube_about
-    } catch (e) {
-      
-    }
+    let seoDataResult = await axios.get(
+        `${this.$config.baseURL}pages?ref=/about/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
+    let partners = await axios.get(
+        `${this.$config.baseURL}partners?lang=${this.$i18n.locale}`);
+    let blocks = await axios.get(
+        `${this.$config.baseURL}blocks?page=about&lang=${this.$i18n.locale}`);
+    let captainData = await axios.get(
+        `${this.$config.baseURL}personals?grp=captain&lang=${this.$i18n.locale}`);
+    let sellerData = await axios.get(
+        `${this.$config.baseURL}personals?grp=seller&lang=${this.$i18n.locale}`);
+    let managerData = await axios.get(
+        `${this.$config.baseURL}personals?grp=manager&lang=${this.$i18n.locale}`);
+    let vacanciesData = await axios.get(
+        `${this.$config.baseURL}vacancies?lang=${this.$i18n.locale}`);
+    let documentsData = await axios.get(
+        `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
+    let photosData = await axios.get(
+        `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
+    let youtubeVideo = await axios.get(
+        `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
+    const htmls = await axios.get(
+        `${this.$config.baseURL}varyelements?code[]=about_list_text&code[]=about_list_item_1&code[]=about_list_item_2&code[]=about_list_item_3&lang=${this.$i18n.locale}`)
+    this.aboutHtmls = htmls.data.result
+    this.testCaps = captainData.data;
+    this.testSellers = sellerData.data;
+    this.testManagers = managerData.data;
+    this.docBlocks = blocks.data.slice(-1)
+    this.mainBlock = blocks.data.at(0)
+    this.mainBlockLink = this.mainBlock.linkbuy
+    this.mainBlockIcon = this.mainBlock.background
+    this.blocks = blocks.data;
+    this.blocks.shift()
+    this.blocks.pop()
+    this.partnersFetch = partners.data;
+    this.vacanciesData = vacanciesData.data;
+    this.documents.documentsList = documentsData.data;
+    this.photosSlide = photosData.data.result
+    this.video = youtubeVideo.data.result.youtube_about
   },
   fetchOnServer: true,
   fetchKey: 'about-page',

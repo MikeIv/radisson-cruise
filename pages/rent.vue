@@ -22,7 +22,7 @@
                   <ul class="uk-slider-items uk-child-width-auto  uk-tab">
                     <li v-for="item in navList" tabindex="-1" class="uk-active">
                       <a :href="'#' + item.id" uk-scroll="">
-                        <span>{{ item.title }}</span>
+                        <span>{{ $t(item.title) }}</span>
                       </a>
                     </li>
                   </ul>
@@ -45,7 +45,7 @@
                     <ul class="uk-nav-sub" hidden="">
                       <li>
                         <a href="#tenancy__about" uk-scroll="">
-                          <span>Описание</span>
+                          <span>{{ $t('renv_nav.description') }}</span>
                         </a>
                       </li>
                       <li>
@@ -513,27 +513,27 @@ export default {
       navList: [
         {
           id: 'tenancy__about',
-          title: 'Описание'
+          title: 'renv_nav.description'
         },
         {
           id: 'tenancy-advantages',
-          title: 'Наши преимущества'
+          title: 'rent_nav.advantages'
         },
         {
           id: 'tenancy-seating',
-          title: 'Таблица рассадки яхт и суперъяхт'
+          title: 'rent_nav.seating'
         },
         {
           id: 'events',
-          title: 'Предоставляемые мероприятия и услуги'
+          title: 'rent_nav.events'
         },
         {
           id: 'tenancy-managment',
-          title: 'Организация и оформление мероприятий'
+          title: 'rent_nav.management'
         },
         {
           id: 'tenancy-restaurant',
-          title: 'Ресторанный сервис'
+          title: 'rent_nav.restaurant'
         },
       ],
       seoData: {},

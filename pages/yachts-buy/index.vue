@@ -89,7 +89,7 @@
                           -
                         </button>
                       </div>
-                      <input @change="adultCount <= 1 ? adultCount = 1 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="1">
+                      <input @change="routeData.availablePromo ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
                       <div class="input-group-button">
                         <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
                                 data-field="quantity">
@@ -98,7 +98,7 @@
                       </div>
                     </div>
                   </div>
-                  <div v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__passengers__item">
+                  <div v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__passengers__item children_item">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
                         <b>{{$t('children')}} {{$t('ticket')}}</b>
@@ -132,6 +132,7 @@
                       </div>
                     </div>
                   </div>
+                  <span v-if="routeData.availablePromo" class="children_subinfo">Дети до 14 лет включительно на борт допускаются только в сопровождении взрослых.</span>
                 </div>
                 <div class="buy-ticket-form__data">
 <!--                  <div class="buy-ticket-form__data__head">
@@ -213,7 +214,7 @@
                           @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                       >
                       <span class="">
-                        {{ $t('agree_ticket') }} <nuxt-link to="/politic/">{{ $t('personal_data') }} </nuxt-link>
+                        {{ $t('yacht_agree') }} <a :href="$config.baseSiteURL+refundDoc" target="_blank">{{ $t('links.rules') }} </a>
                       </span>
                     </label>
                     <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.agree.isError">{{ errors.agree.msg }}</span>
@@ -376,7 +377,7 @@
                         <label>
                           <input class="uk-checkbox" type="checkbox" name="check-info" checked="">
                           <span class="">
-                            {{$t('agree_events')}} <a href="" target="_blank">{{$t('yacht_events')}}</a>
+                            {{$t('im_accept')}} <nuxt-link to="/politic/">{{$t('links.politic')}}</nuxt-link>
                           </span>
                         </label>
                       </div>
@@ -427,7 +428,7 @@ import 'moment/locale/es-us'
 import 'moment/locale/zh-cn'
 import UIkit from "uikit";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
-const querystring = require('querystring');
+import {mapActions, mapGetters} from "vuex";
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -471,7 +472,7 @@ export default {
       fullName: '',
       email: '',
       phone: '',
-      adultCount: 1,
+      adultCount: 0,
       childCount: 0,
       childPrice: 0,
       adultPrice: 0,
@@ -531,8 +532,10 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      if (this.adultNewVal < 1 ) {
-        this.adultCount = 1
+      if(!this.routeData.availablePromo) {
+        if (this.adultNewVal < 1 ) {
+          this.adultCount = 1
+        }
       }
 
       let currentMax = this.maxSits - this.childCount
@@ -601,6 +604,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['refundDoc']),
     route() {
       return route
     },
@@ -629,6 +633,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['getRefundDoc']),
     onAccept (e) {
       //console.log("onAccept ",e);
       const maskRef = e.detail;
@@ -673,12 +678,22 @@ export default {
       this.promoStatus = false
       this.saleNumber = 0
       if (param == '-') {
-        if (this.adultCount <= 1) {
-          return 1
+        if(!this.routeData.availablePromo) {
+          if (this.adultCount <= 1) {
+            return 1
+          } else {
+            this.adultCount--
+            this.adultSum -= this.adultPrice
+          }
         } else {
-          this.adultCount--
-          this.adultSum -= this.adultPrice
+          if (this.adultCount === 0) {
+            return 0
+          } else {
+            this.adultCount--
+            this.adultSum -= this.adultPrice
+          }
         }
+
       } else {
         if(this.adultCount == 40) {
           this.adultCount
@@ -773,7 +788,7 @@ export default {
           seatsAdult: this.adultCount,
           seatsChild: this.childCount,
         }
-        /*data: new URLSearchParams({
+       /* data: new URLSearchParams({
           journey: this.journey,
           promoCode: this.promoCode,
           seatsAdult: this.adultCount,
@@ -784,6 +799,7 @@ export default {
                 console.log(response); */
         if (response.data.error) {
           promoMsg = response.data.error
+          UIkit.notification({message: `${promoMsg}`, status: 'danger', pos: 'top-center', timeout: 1500})
           //console.log(promoMsg)
           return promoMsg
         } else {
@@ -835,6 +851,9 @@ export default {
       UIkit.modal('#childInfo').show();
     }
   },
+  mounted() {
+    this.getRefundDoc()
+  },
 
   middleware: [
     function({ redirect, route }) {
@@ -863,6 +882,7 @@ export default {
       })
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
+      this.routeData.availablePromo ? this.adultCount = 0 : this.adultCount = 1
       this.isValidDate(new Date(this.routeData.depatureTime))
           ? this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {month: 'long', day: 'numeric'})
           : 'Неверная дата'
@@ -893,5 +913,13 @@ export default {
 .error-block{
   min-height: 55px;
   width: 100%;
+}
+.children_item {
+  flex-wrap:wrap;
+}
+.children_subinfo {
+  display: block;
+  width: 100%;
+  font-size: 12px;
 }
 </style>
