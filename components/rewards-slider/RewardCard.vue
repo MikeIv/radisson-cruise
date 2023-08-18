@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="awards__card_img">
-      <div class="awards__card_img-circle"></div>
+<!--      <div class="awards__card_img-circle"></div>-->
       <div v-if="imgText" class="awards__card_img-txt">
         {{ imgText }}
       </div>

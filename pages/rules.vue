@@ -78,37 +78,40 @@
               </div>
             </div>
           </div>-->
-          <div v-for="(tech, index) in techInfo" :key="'tch' + index">
-            <TechnicalItem :title="tech.title" :fileName="tech.fileName"
-                           :params="tech.params" :speed="tech.speed" :year="tech.year"
-                           :cabinParams="tech.cabinParams" :engine="tech.engine"
+          <div v-for="(tech, index) in techInfoFetch" :key="'tch' + index">
+            <TechnicalItem :title="tech.name"
+                           :yachts="tech.yachts"
+                           :fileName="tech.image"
+                           :params="tech.params"
+                           :speed="tech.speed"
+                           :year="tech.year"
+                           :cabinParams="tech.options"
+                           :engine="tech.engine"
             />
           </div>
         </div>
       </div>
     </section>
-    <section class="uk-cover-container rules-security__section" id="rules-security">
+    <section v-if="blockSecurity[0]" class="uk-cover-container rules-security__section" id="rules-security">
       <svg-icon class="instagram_decor1" name="decor4"/>
       <div class="rules-security__img">
-        <img  data-src="~assets/img/inners2/rules5.png" class="img_cover" alt="" src="~assets/img/inners2/rules5.png">
+        <img  :data-src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + blockSecurity[0]?.images[0]"
+              class="img_cover"
+              alt=""
+              :src="`${$config.imageURL}?size=1060&format=webp&src=${$config.baseSiteURL}` + blockSecurity[0]?.images[0]">
       </div>
       <div class="uk-container uk-position-relative">
         <h2 class="headline_56">
-          {{ $t('security') }}
+          {{ blockSecurity[0]?.name }}
         </h2>
         <div class="rules-security__block uk-position-relative">
-          <svg-icon class="rules-security__block__icon" name="safe-ring"/>
+          <svg-icon class="rules-security__block__icon" :name="blockSecurity[0].background"/>
           <div class="uk-position-relative">
-            <div class="headline_22 t_semibold">
-              Меры по обеспечению безопасности
-              на борту яхт Флотилии «Рэдиссон Ройал»
+            <div class="headline_22 t_semibold" v-html="blockSecurity[0].content">
             </div>
             <div class="headline_line"></div>
             <div class="rules-security__txt">
-              Яхты Флотилии «Рэдиссон Ройал» соответствуют всем необходимым стандартам
-              безопасности и оснащены спасательными средствами, кроме того, пассажиры
-              обязаны следовать правилам внутреннего судового распорядка, техники безопасности
-              и пожарной безопасности на борту.
+              {{blockSecurity[0].footer}}
             </div>
           </div>
         </div>
@@ -240,10 +243,18 @@
         </div>
       </div>
     </section>-->
-    <YachtType v-for="(yacht, index) in yachtsInfo" :key="'ycht' + index" :fileName="yacht.fileName"
-               :title="yacht.title" :description="yacht.description" :yachtClass="yacht.yachtClass"
-               :yachtImgs="yacht.yachtImgs" :topCabin="yacht.topCabin" :infoItems="yacht.infoItems"
-               :mainCabin="yacht.mainCabin" :bottomCabin="yacht.bottomCabin"
+    <YachtType v-for="(yacht, index) in techInfoFetch" :key="'ycht' + index"
+               :fileName="yacht.fileName"
+               :title="yacht.yachts"
+               :description="yacht.description"
+               :yachtClass="yacht.caption"
+               :yachtImgs="yacht.yachtImgs"
+               :yachtUp="yacht.svg1"
+               :yachtLow="yacht.svg2"
+               :topCabin="yacht.upperdeck"
+               :infoItems="yacht.equipment"
+               :mainCabin="yacht.opendeck"
+               :bottomCabin="yacht.lowerdeck"
     />
     <section class="uk-cover-container rules-security-video__section" id="rules-security-video">
       <img  data-src="~assets/img/inners2/rules8.png" alt="" class="img_cover" src="~assets/img/inners2/rules8.png">
@@ -535,6 +546,8 @@ export default {
         servicesImgs: ['массив картинок'],
       },
       players: [],
+      techInfoFetch: [],
+      blockSecurity: {},
     }
   },
   methods: {
@@ -567,12 +580,35 @@ export default {
         `${this.$config.baseURL}pages?ref=/rules/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
     let rulesBlocks = await axios.get(`${this.$config.baseURL}rules?lang=${this.$i18n.locale}`)
+    let techInfos = await axios.get(`${this.$config.baseURL}rents?lang=${this.$i18n.locale}`)
     let securityBlock = await axios.get(`${this.$config.baseURL}safetylist?lang=${this.$i18n.locale}`)
     let videoBlock = await axios.get(`${this.$config.baseURL}yvideos?lang=${this.$i18n.locale}`)
+    let blockSecurityData = await axios.get(`${this.$config.baseURL}blocks?page=rules&lang=${this.$i18n.locale}`)
     this.rulesBlocks = rulesBlocks.data
     this.securityBlocks = securityBlock.data
     this.yVideos = videoBlock.data
-
+    this.techInfoFetch = techInfos.data.classes
+    this.techInfoFetch.map((item, index) => {
+      if(index === 0) {
+        return {
+          ...item,
+          yachtImgs: [
+            `svg/ship1.svg`,
+            `svg/ship2.svg`,
+          ],
+        }
+      }
+      if(index === 1) {
+        return {
+          ...item,
+          yachtImgs: [
+            `svg/ship3.svg`,
+            `svg/ship4.svg`,
+          ],
+        }
+      }
+    })
+    this.blockSecurity = blockSecurityData.data
   },
   fetchOnServer: true,
   fetchKey: 'rules',

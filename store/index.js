@@ -7,6 +7,7 @@ export const state = () => ({
     tel: '+7 (495) 228-55-55',
     tramsDoc: '/upload/docs/20230616_160103_648c5d0f0fc4b.pdf',
     refundDoc: null,
+    certDoc: null,
 })
 
 export const getters = {
@@ -20,6 +21,7 @@ export const getters = {
     tel: (state) => state.tel,
     tramsDoc: (state) => state.tramsDoc,
     refundDoc: (state) => state.refundDoc,
+    certDoc: (state) => state.certDoc,
 }
 
 export const mutations = {
@@ -40,6 +42,9 @@ export const mutations = {
 
     setRefundDoc(state, doc) {
         state.refundDoc = doc
+    },
+    setCertDoc(state, doc) {
+        state.certDoc = doc
     }
 }
 
@@ -65,4 +70,15 @@ export const actions = {
             `${this.$config.baseURL}docs?id=3&lang=${this.$i18n.locale}`);
         commit('setRefundDoc', documentsData.data[0].doc);
     },
+    async getCertDoc({commit}) {
+        const documentsData = await axios.get(
+            `${this.$config.baseURL}docs?id=6&lang=${this.$i18n.locale}`);
+        commit('setCertDoc', documentsData.data[0].doc);
+    },
+    /*async nuxtServerInit ({ commit, dispatch  }, { req }) {
+        await dispatch('getActualDoc')
+        await dispatch('getRefundDoc')
+        await dispatch('getCertDoc')
+        console.log('got docs on server')
+    }*/
 }

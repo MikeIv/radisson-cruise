@@ -11,7 +11,7 @@
         {{ title }}
       </div>
       <div class="buy-sertificat-card__p1">
-        {{ $t('cost_include') }}?
+        {{ $t('cost_include') }}
       </div>
       <div class="buy-sertificat-card__p2" v-html="description">
       </div>

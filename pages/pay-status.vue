@@ -3,18 +3,18 @@
     <img v-if="isSuccessful" src="~assets/img/success.png" alt="">
     <img v-if="isFailed" src="~assets/img/fail.png" alt="">
     <h1>
-      {{ isSuccessful ? 'Оплата прошла успешно' : 'Оплата не прошла'}}
+      {{ isSuccessful ? $t('payment_status_success') : $t('payment_status_fail')}}
     </h1>
     <div v-if="isSuccessful" class="payment-text">
-      <p>Благодарим за покупку! Ваш электронный билет на речную прогулку и подтверждение</p>
-      <p>платежа были направлены на указанную электронную почту (e-mail).</p>
-      <strong>Желаем вам приятной прогулки!</strong>
+      <p>{{ $t('payment_success') }}</p>
+      <p>{{ $t('payment_email') }}</p>
+      <strong>{{ $t('payment_happy') }}</strong>
     </div>
     <div v-if="isFailed" class="payment-text">
-      <p>К сожалению, оплата по Вашему заказу не прошла.</p>
+      <p>{{ $t('payment_fail') }}</p>
     </div>
     <a href="/" class="uk-button uk-button-default transition" >
-      <span>ВЕРНУТЬСЯ НА ГЛАВНУЮ</span>
+      <span>{{$t('buttons.back_to_root')}}</span>
     </a>
   </div>
 </template>

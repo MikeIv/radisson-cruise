@@ -1,20 +1,22 @@
 <template>
   <div class="rules-performance__item">
     <div class="headline_22 t_semibold">
-      {{ title }}
+      {{ title }}: {{ yachts }}
     </div>
     <div class="rules-performance__item__txt">
-      <p><b>Год выпуска:</b> {{year}}</p>
-      <p><b>Параметры:</b> {{params}}</p>
-      <p> <b>Круизная скорость:</b> {{speed}}</p>
-      <p><b>Двигатели:</b> {{engine}}</p>
+      <p><b>{{ $t('yachts_release_year')}}:</b> {{year}}</p>
+      <p><b>{{$t('params')}}:</b> {{params}}</p>
+      <p> <b>{{$t('cruise_speed')}}:</b> {{speed}}</p>
+      <p><b>{{$t('engines')}}:</b> {{engine}}</p>
       <p>
-        <b>Характеристики салона:</b>
+        <b>{{ $t('saloon_spec') }}:</b>
         {{ cabinParams }}
       </p>
     </div>
-    <div class="rules-performance__item__img">
-      <img :data-src="require(`~/assets/img/${fileName}`)" alt="" :src="require(`~/assets/img/${fileName}`)">
+    <div v-if="fileName" class="rules-performance__item__img">
+      <img :data-src="`${$config.imageURL}?size=1020&format=webp&src=${$config.baseSiteURL}` + fileName"
+           alt=""
+           :src="`${$config.imageURL}?size=1020&format=webp&src=${$config.baseSiteURL}` + fileName">
     </div>
   </div>
 </template>
@@ -30,6 +32,7 @@ export default {
     engine: String,
     speed: String,
     cabinParams: String,
+    yachts: String,
   }
 }
 </script>

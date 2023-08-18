@@ -29,7 +29,7 @@
                 <div class="type-yacht-short">
                   <svg-icon class="icon" name="cat_room"/>
                   <span>
-                    Тип яхты:  Все яхты
+                    {{ $t('yacht_type') }}:  {{ $t('yacht_all') }}
                   </span>
                 </div>
               </div>
@@ -113,7 +113,7 @@
                     <div class="uk-card-body">
                       <div class="card_time">
                         <svg-icon class="icon" name="clock2"/>
-                        <span>{{ new Date(recentNew.date).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric', year: 'numeric'}) }}</span>
+                        <span>{{ new Date(recentNew.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric', year: 'numeric'}) }}</span>
                       </div>
                       <h3 class="uk-card-title">
                         {{recentNew.name}}
@@ -196,7 +196,7 @@
                   <div class="uk-card-body">
                     <div class="card_time">
                       <svg-icon class="icon" name="ticket"/>
-                      <span>{{ new Date(news.date).toLocaleDateString(`ru-RU`, {month: 'long', day: 'numeric', year: 'numeric'}) }}</span>
+                      <span>{{ new Date(news.date).toLocaleDateString(`${$i18n.localeProperties.iso}`, {month: 'long', day: 'numeric', year: 'numeric'}) }}</span>
                     </div>
                     <h3 class="uk-card-title">
                       {{news.name}}
