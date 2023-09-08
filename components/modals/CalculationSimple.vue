@@ -87,7 +87,7 @@
               <label for="calculation__slide4-agree">
                 <input class="uk-checkbox" type="checkbox" v-model="isPersonalInfoCheck" name="check-personal" id="calculation__slide4-agree">
                 <span class="">
-                  {{ $t('agreement_for') }} <a href="/" target="_blank">{{ $t('personal_data') }}</a>
+                  {{ $t('agreement_for') }} <nuxt-link to="/politic/" target="_blank">{{ $t('personal_data') }}</nuxt-link>
                 </span>
                   </label>
                 </div>  

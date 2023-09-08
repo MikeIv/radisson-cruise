@@ -218,9 +218,7 @@
               </div>
             </div>
             <div v-if="response" class="notification__text--wrapper">
-              <div class="notification__text">
-                  {{ text }}
-              </div>
+              <div class="notification__text" v-html="text"></div>
             </div>
           </div>
         </div>
@@ -330,7 +328,9 @@ export default {
       isAgree: false,
       availableRefundText: null,
       availableRefund: false,
-      seoData: {}
+      seoData: {},
+      ticketFound: '',
+      ticketNotFound: '',
     }
   },
   watch: {
@@ -441,9 +441,7 @@ export default {
     },
 
     text() {
-      return this.testResp ? 'Извините, билет не найден. Просим Вас обратиться к нашим специалистам по телефону 8 495 228 5555 или по электронной почте info@radisson-cruise.ru' : 'Ваш запрос на возврат электронных билетов оформлен успешно. Пожалуйста, ожидайте зачисления средств на банковскую карту, с которой осуществлялась оплата.\n' +
-          '\n' +
-          '*Зачисление причитающихся денежных средств за неиспользованный электронный билет осуществляется на счет плательщика, с помощью которого производилась оплата электронного билета, в сроки, установленные правилами платежных систем (от 7-ми до 30-ти календарных дней с момента оформления возврата).\n'
+      return this.testResp ? this.ticketNotFound : this.ticketFound
     }
   },
 
@@ -691,6 +689,10 @@ export default {
           `${this.$config.baseURL}faq?lang=${this.$i18n.locale}`);
       let seoDataResult = await axios.get(
           `${this.$config.baseURL}pages?ref=/refund/&lang=${this.$i18n.locale}`);
+      const refundData = await axios.get(
+          `${this.$config.baseURL}varyelements?code[]=ticket_refund_message&code[]=ticket_not_found&lang=${this.$i18n.locale}`)
+      this.ticketFound = refundData.data.result?.ticket_refund_message?.content
+      this.ticketNotFound = refundData.data.result?.ticket_not_found?.content
       this.seoData = seoDataResult.data.result
       this.options = optionsData.data.result
     } catch(error) {

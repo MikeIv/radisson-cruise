@@ -41,7 +41,7 @@
     </div>
     <div class="uk-position-relative category-cabin-section">
       <div class="uk-container uk-position-relative">
-        <div class="yacht-information__value">
+<!--        <div class="yacht-information__value">
           <svg-icon name="yacht-decor1" class="icon"/>
           <div class="yacht-information-value__txt">
             <span>{{$t('price')}}:</span>
@@ -55,7 +55,7 @@
             <span>{{ $t('buttons.show_menu') }}</span>
             <svg-icon name="menu" class="icon"/>
           </nuxt-link>
-        </div>
+        </div>-->
 
         <div class="yacht__information_text" v-html="content">
         </div>

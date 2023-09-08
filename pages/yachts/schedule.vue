@@ -210,7 +210,7 @@
                            type="radio"
                            :value="time.value"
                            v-model="selectedTime">
-                    <span>{{ time.title }}</span>
+                    <span>{{ $t(time.title) }}</span>
                   </label>
                 </div>
                 <button @click="hideFilterItem('timeFilter')"
@@ -357,19 +357,19 @@ export default {
       selectedTime: null,
       rangeTime: [
         {
-          title: 'Любое время',
+          title: 'timeOptions.anytime',
           value: null
         },
         {
-          title: 'Утро (10:00 - 12:00)',
+          title: 'timeOptions.morning',
           value: [`10.00`, `11.00`, `12.00`]
         },
         {
-          title: 'День (12:00 - 18:00)',
+          title: 'timeOptions.daytime',
           value: [`12.00`, `13.00`, `14.00`,`15.00`, `16.00`, `17.00`,`18.00`]
         },
         {
-          title: 'Вечер (18:00 - 23:00)',
+          title: 'timeOptions.evening',
           value: [`18.00`, `19.00`, `20.00`,`21.00`, `22.00`, `23.00`]
         },
       ],
