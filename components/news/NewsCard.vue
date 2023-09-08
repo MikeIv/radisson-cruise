@@ -64,11 +64,11 @@ export default {
   computed: {
     badgeText() {
       if(this.badge === `action`) {
-        return 'Акции %'
+        return this.$i18n.t('news_badge_action')
       } else if (this.badge === `event`) {
-        return 'Событие'
+        return this.$i18n.t('news_badge_event')
       } else {
-        return 'Новость'
+        return this.$i18n.t('news_badge_default')
       }
     },
 

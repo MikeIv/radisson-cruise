@@ -276,7 +276,7 @@
               {{ $t('thiefs') }}
             </nuxt-link>
             <nuxt-link to="/news/403/" :prefetch="false">
-              Erwin.Река
+              {{ $t('erwin') }}
             </nuxt-link>
           </li>
           <li class="footer__nav_item2">

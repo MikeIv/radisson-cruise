@@ -132,7 +132,7 @@
                       </div>
                     </div>
                   </div>
-                  <span v-if="routeData.availablePromo" class="children_subinfo">Дети до 14 лет включительно на борт допускаются только в сопровождении взрослых.</span>
+                  <span v-if="routeData.availablePromo" class="children_subinfo">{{ $t('children_notation') }}</span>
                 </div>
                 <div class="buy-ticket-form__data">
 <!--                  <div class="buy-ticket-form__data__head">
@@ -171,7 +171,7 @@
                                @complete="onComplete"
                                @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
-                        <div class="uk-form-danger uk-margin-top" v-if="errors.phone.isError">{{ errors.phone.msg }}</div>
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.phone.isError">{{ $t(errors.phone.msg) }}</div>
                       </div>
                     </div>
                     <div class="uk-width-1-2@s">
@@ -186,8 +186,8 @@
                                v-model="form.email"
                                @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
-                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ errors.email.msgOnInput }}</div>
-                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ errors.email.msgOnSubmit }}</div>
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ $t(errors.email.msgOnInput) }}</div>
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ $t(errors.email.msgOnSubmit) }}</div>
                       </div>
                     </div>
                   </div>
@@ -217,7 +217,7 @@
                         {{ $t('yacht_agree') }} <a :href="$config.baseSiteURL+refundDoc" target="_blank">{{ $t('links.rules') }} </a>
                       </span>
                     </label>
-                    <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.agree.isError">{{ errors.agree.msg }}</span>
+                    <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.agree.isError">{{ $t(errors.agree.msg) }}</span>
                     <!-- <label>
                       <input class="uk-checkbox" type="checkbox" name="check-info">
                       <span class="">
@@ -362,7 +362,7 @@
                       
                       <div class="error-block">
                         <!-- <div class="uk-form-danger uk-margin-top" v-show="true"> Ошибка. Исправьте ошибку для продолжения покупки</div> -->
-                         <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ errors.name.msg }}</div>
+                         <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ $t(errors.name.msg) }}</div>
                          <span class="text-error">{{onError}}</span>
                       </div>
                      
@@ -502,21 +502,21 @@ export default {
       errors: {
         name: {
           isError: false,
-          msg: 'Введите имя'
+          msg: 'error_name'
         },
         phone: {
           isError: false,
-          msg: 'Введите номер телефона'
+          msg: 'error_phone'
         },
         email: {
           isErrorInput: false,
           isErrorSubmit: false,
-          msgOnInput: 'Введите e-mail',
-          msgOnSubmit: 'Введите корректный e-mail со знаком @'
+          msgOnInput: 'error_email',
+          msgOnSubmit: 'error_email_form'
         },
         agree: {
           isError: false,
-          msg: 'Примите условия соглашения'
+          msg: 'error_agree_form'
         },
       },
       valid: false,
@@ -651,7 +651,7 @@ export default {
       this.form.phone = this.rowPhone;
       if(maskRef.value[3]!=='9'){
         this.errors.phone.isError = true
-        this.errors.phone.msg = 'Введите номер телефона в формате \n +7 (9XX) XXX-XX-XX'
+        //this.errors.phone.msg = 'Введите номер телефона в формате \n +7 (9XX) XXX-XX-XX'
       }
 /*       console.log("onComplete maskRef -> ",maskRef);
       console.log("onComplete 9 -> ",maskRef.value[3]);
@@ -883,9 +883,6 @@ export default {
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
       this.routeData.availablePromo ? this.adultCount = 0 : this.adultCount = 1
-      this.isValidDate(new Date(this.routeData.depatureTime))
-          ? this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {month: 'long', day: 'numeric'})
-          : 'Неверная дата'
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }

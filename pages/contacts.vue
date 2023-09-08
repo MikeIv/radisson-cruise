@@ -375,10 +375,7 @@
               <li>
                 <div id="guide_content3_m1" class="guide_content">
                   <div class="guide_content1_head">
-                    На метро до станции «Киевская» Кольцевой, Филёвской или
-                    Арбатско- Покровской линии. После выхода из метро, выйти на
-                    Большую Дорогомиловскую улицу, далее можно проехать две
-                    остановки на автобусах №№157 и 840 до остановки
+                    {{ portsInfo[0]?.metro_tab }}
                   </div>
                 </div>
                 <div
@@ -393,20 +390,14 @@
                 <div id="guide_content1_m1" class="guide_content">
                   <div class="guide_content1_head">
                     <div class="txt12">
-                      <b>Время работы:</b>
+                      <b>{{$t('workhours')}}:</b>
                     </div>
                     <div class="guide_content1_days">
-                      <div>ПН</div>
-                      <div>ВТ</div>
-                      <div>СР</div>
-                      <div>ЧТ</div>
-                      <div>ПТ</div>
-                      <div>СБ</div>
-                      <div>ВС</div>
+                      <div v-for="day in calendarBLocks">{{day}}</div>
                     </div>
                   </div>
-                  <div class="guide_content1_info">
-                    <div class="guide_content1__info__txt">
+                  <div class="guide_content1_info" v-html="portsInfo[0]?.parking">
+<!--                    <div class="guide_content1__info__txt">
                       Парковочный талон в выходные и праздничные дни:
                     </div>
                     <div class="guide_content1_item">
@@ -451,7 +442,8 @@
                         </div>
                         <div>с 21:00 до 08:00</div>
                       </div>
-                    </div>
+                    </div>-->
+
                   </div>
                 </div>
                 <div
@@ -542,10 +534,7 @@
 
                 <div id="guide_content3_m2" class="guide_content">
                   <div class="guide_content1_head">
-                    На метро до станции «Киевская» Кольцевой, Филёвской или
-                    Арбатско- Покровской линии. После выхода из метро, выйти на
-                    Большую Дорогомиловскую улицу, далее можно проехать две
-                    остановки на автобусах №№157 и 840 до остановки
+                    {{ portsInfo[1]?.metro_tab }}
                   </div>
                 </div>
                 <div
@@ -560,20 +549,14 @@
                 <div id="guide_content1_m2" class="guide_content">
                   <div class="guide_content1_head">
                     <div class="txt12">
-                      <b>Время работы:</b>
+                      <b>{{ $t('workhours') }}:</b>
                     </div>
                     <div class="guide_content1_days">
-                      <div>ПН</div>
-                      <div>ВТ</div>
-                      <div>СР</div>
-                      <div>ЧТ</div>
-                      <div>ПТ</div>
-                      <div>СБ</div>
-                      <div>ВС</div>
+                      <div v-for="day in calendarBLocks">{{day}}</div>
                     </div>
                   </div>
-                  <div class="guide_content1_info">
-                    <div class="guide_content1__info__txt">
+                  <div class="guide_content1_info" v-html="portsInfo[1]?.parking">
+<!--                    <div class="guide_content1__info__txt">
                       Парковочный талон в выходные и праздничные дни:
                     </div>
                     <div class="guide_content1_item">
@@ -605,7 +588,7 @@
                         </div>
                         <div>с 21:00 до 08:00</div>
                       </div>
-                    </div>
+                    </div>-->
                   </div>
                 </div>
                 <div
@@ -1333,7 +1316,7 @@ export default {
             let multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
+                    [55.74466610341751, 37.56524455187834],
                     [55.75232856899768, 37.56677249999998],
                   ],
                   params: {
@@ -1357,7 +1340,7 @@ export default {
             let multiRoute3 = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
+                    [55.74466610341751, 37.56524455187834],
                     [55.75232856899768, 37.56677249999998],
                   ],
                   params: {
@@ -1971,7 +1954,7 @@ export default {
             let multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
+                    [55.74466610341751, 37.56524455187834],
                     [55.72244094480988, 37.59080249999998],
                   ],
                   params: {
@@ -1995,7 +1978,7 @@ export default {
             let multiRoute3 = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
+                    [55.74466610341751, 37.56524455187834],
                     [55.72244094480988, 37.59080249999998],
                   ],
                   params: {
@@ -2147,6 +2130,22 @@ export default {
       );
 
       map2.geoObjects.add(myPlacemarkWithContent3); // помещаем флажок на карту
+    },
+  },
+  computed: {
+    calendarBLocks() {
+      let arr = [];
+      for (let i = 0; i < 7; i++) {
+        let date = new Date();
+        let dateItem = []
+        date.setDate(date.getDate() + i);
+        dateItem = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {
+          timeZone: 'Europe/Moscow',
+          weekday: 'short'
+        })
+        arr.push(dateItem)
+      }
+      return arr
     },
   },
 

@@ -49,12 +49,12 @@
         </div>-->
         <div class="rules-ship__item">
           <div class="rules-ship__item__img">
-            <img :src="`${this.$config.baseSiteURL}`+yachtUp" style="color:#000" alt="" class="uk-preserve" uk-svg>
+            <img :src="`${this.$config.baseSiteURL}`+yachtUp" alt="" class="uk-preserve">
           </div>
         </div>
         <div class="rules-ship__item">
           <div class="rules-ship__item__img">
-            <img :src="`${this.$config.baseSiteURL}`+yachtLow" style="color:#000" alt="" class="uk-preserve" uk-svg>
+            <img :src="`${this.$config.baseSiteURL}`+yachtLow" alt="" class="uk-preserve">
           </div>
         </div>
       </div>
@@ -135,5 +135,8 @@ export default {
 </script>
 
 <style scoped>
-
+.rules-ship__item__img img {
+  width: 100%;
+  height: auto;
+}
 </style>
