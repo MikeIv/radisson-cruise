@@ -525,9 +525,14 @@ body {
   font-weight: 500;
   display: flex;
   align-items: center;
-  left: 16%;
-  top: 19%;
+  left: 21%;
+  top: 13%;
   transform: translateX(-50%);
+}
+
+.scheme_item1 div{
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .scheme_item1 .scheme__item_txt{
@@ -569,6 +574,13 @@ body {
   top: 26px;
   text-align: left;
   white-space: nowrap;
+}
+.scheme_item26 .scheme__item_txt{
+  position: absolute;
+  left: -10px;
+  top: 26px;
+  text-align: left;
+  white-space: normal;
 }
 
 .scheme_item3 {
@@ -1421,7 +1433,7 @@ body {
 
 @media screen and (max-width:1500px) {
   .not_found-block-left .headline_p1 {
-    white-space: nowrap
+    //white-space: nowrap
   }
   .not_found_img-container {
     width: 40%

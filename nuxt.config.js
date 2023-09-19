@@ -236,7 +236,7 @@ export default {
     baseUrl: process.env.BASE_URL,
     strategy: 'no_prefix', //  strategy: 'no_prefix' for production till langs incomplete
     detectBrowserLanguage: false,
-    differentDomains: false,
+    differentDomains: true,
     langDir: 'lang/',
     lazy: true,
     defaultLocale: 'ru',
@@ -249,14 +249,14 @@ export default {
         domain: !process.env.LANG_EN ? process.env.LANG_RU : process.env.LANG_EN,
         active: !!process.env.LANG_EN
       },
-      {
+      /*{
         code: 'cn',
         iso: 'zh-CN',
         name: 'CN',
         file: 'zh-CN.js',
         domain: !process.env.LANG_CN ? process.env.LANG_RU : process.env.LANG_CN,
         active: !!process.env.LANG_CN
-      },
+      },*/
       {
         code: 'ru',
         iso: 'ru-RU',

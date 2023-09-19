@@ -2,10 +2,10 @@
   <div class="header__top_item4-container">
     <div class="header__top_item4">
       <div class="language-container">
-<!--        <a v-if="availableLocales.length > 1" href="#" class="language" aria-expanded="false">
+        <a v-if="allAvailableLocales.length > 1" href="#" class="language" aria-expanded="false">
           <span>{{ currentLang }}</span>
           <svg-icon name="arr_lang" class="icon header__top_logo transition"/>
-        </a>-->
+        </a>
         <div uk-dropdown="mode: click;offset: 5;" class="language_drop uk-dropdown">
           <ul class="">
             <li v-for="locale in availableLocales"

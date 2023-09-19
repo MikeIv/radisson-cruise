@@ -297,7 +297,7 @@
                             {{ $t('adult') }}
                           </div>
                           <div>
-                            {{ adultCount }} шт.
+                            {{ adultCount }}  {{$t('pax')}}
                           </div>
                           <div>
                             <b>{{ adultPriceCalc }} ₽</b>
@@ -308,7 +308,7 @@
                             {{ $t('children') }}
                           </div>
                           <div>
-                            {{ childCount }} шт.
+                            {{ childCount }}  {{$t('pax')}}
                           </div>
                           <div>
                             <b>{{ childPriceCalc }} ₽</b>

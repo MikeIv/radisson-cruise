@@ -1954,7 +1954,7 @@ export default {
             let multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.74466610341751, 37.56524455187834],
+                    [55.735159,37.593397],
                     [55.72244094480988, 37.59080249999998],
                   ],
                   params: {
@@ -1978,7 +1978,7 @@ export default {
             let multiRoute3 = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.74466610341751, 37.56524455187834],
+                    [55.735159,37.593397],
                     [55.72244094480988, 37.59080249999998],
                   ],
                   params: {
@@ -2035,7 +2035,7 @@ export default {
             var multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.74629632455781, 37.55858327243041],
+                    [55.735159,37.593397],
                     [55.72244094480988, 37.59080249999998],
                   ],
                   params: {

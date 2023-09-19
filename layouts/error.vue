@@ -5,16 +5,13 @@
       <div class="not_found-block">
         <div class="not_found-block-left">
           <div class="headline_p1">
-            страницы<br>
-            не существует
+            {{$t('404')}}
           </div>
           <div class="not_found-block-p2">
-            Запрашиваемая страница не существует или была удалена,
-            для поиска нужной инофрмации перейдите на главную страницу
-            или воспользуйтесь меню сайта.
+            {{$t('404_1')}}
           </div>
           <a href="/" class="uk-button uk-button-default transition" >
-            <span>НА ГЛАВНУЮ</span>
+            <span>{{$t('buttons.back_to_root')}}</span>
           </a>
         </div>
         <div class="not_found_img-container">
@@ -35,3 +32,4 @@ export default {
   layout: 'error-layout' // you can set a custom layout for the error page
 }
 </script>
+
