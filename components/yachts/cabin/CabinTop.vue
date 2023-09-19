@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="cabin__header__info__buy">
+<!--      <div class="cabin__header__info__buy">
         <nuxt-link class="uk-button uk-button-default button_ticket" to="/yachts/schedule/">
           <span>{{ $t('buttons.buy_ticket') }}</span>
           <svg-icon name="ticket" class="icon"/>
@@ -43,7 +43,7 @@
           <span>{{ $t('schedule') }}</span>
           <svg-icon name="clock3" class="icon"/>
         </nuxt-link>
-      </div>
+      </div>-->
 <!--      <div class="cabin__header__info__parameter">
         <p><b>Год выпуска:  </b>{{year}}</p>
         <p>

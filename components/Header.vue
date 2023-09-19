@@ -17,7 +17,7 @@
                   {{ $t('header.info.official') }}
                 </nuxt-link>-->
 <!--                {{ $t('header.info.official') }}-->
-                <nuxt-link :to="{ path: '/about/', hash: '#DocumentBlocks'}">
+                <nuxt-link to="/official/">
                   {{ $t('official_site') }}
                 </nuxt-link>
               </div>

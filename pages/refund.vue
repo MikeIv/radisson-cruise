@@ -161,7 +161,7 @@
                             {{ $t('adult') }}
                           </div>
                           <div>
-                            {{ ticketData.adultQuantity }} шт.
+                            {{ ticketData.adultQuantity }} {{$t('pax')}}
                           </div>
                           <div>
                             <b>{{ ticketData.adultPrice }} ₽</b>
@@ -172,7 +172,7 @@
                             {{ $t('children') }}
                           </div>
                           <div>
-                            {{ ticketData.childQuantity }} шт.
+                            {{ ticketData.childQuantity }}  {{$t('pax')}}
                           </div>
                           <div>
                             <b>{{ ticketData.childPrice }} ₽</b>
