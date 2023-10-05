@@ -464,7 +464,7 @@ export default {
       if(!this.validateEmail()) return;
       try {
         const response = await axios({
-          url:`${this.$config.baseURL}subscribe`,
+          url:`${this.$config.baseURL}subscribe?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
           /*data: querystring.stringify({

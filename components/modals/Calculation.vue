@@ -463,7 +463,7 @@ export default {
       const fetchCalculation = async () => {
         const response = await axios({
           method: 'POST',
-          url: `${this.$config.baseURL}feedback`,
+          url: `${this.$config.baseURL}feedback?lang=${this.$i18n.locale}`,
           /*data: querystring.stringify(this.form)*/
           data: this.formData
         })
