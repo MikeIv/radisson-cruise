@@ -254,8 +254,8 @@ export default {
         iso: 'zh-CN',
         name: 'CN',
         file: 'zh-CN.js',
-        domain: !process.env.LANG_CN ? process.env.LANG_RU : process.env.LANG_CN,
-        active: !!process.env.LANG_CN
+        domain: !process.env.LANG_ZN ? process.env.LANG_RU : process.env.LANG_ZN,
+        active: !!process.env.LANG_ZN
       },*/
       {
         code: 'ru',
