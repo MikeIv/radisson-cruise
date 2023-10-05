@@ -542,7 +542,7 @@ export default {
       let onError
       try {
         const response = await axios({
-          url: `${this.$config.baseURL}ticket`,
+          url: `${this.$config.baseURL}ticket?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
           /*data: querystring.stringify({
@@ -576,7 +576,7 @@ export default {
       let onError
       try {
         const response = await axios({
-          url: `${this.$config.baseURL}refund`,
+          url: `${this.$config.baseURL}refund?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
           /*data: querystring.stringify({

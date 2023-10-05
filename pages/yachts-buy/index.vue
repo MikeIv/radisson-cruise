@@ -744,7 +744,7 @@ export default {
         this.isLoading = true
         const response = await axios({
           method: 'POST',
-          url: `${this.$config.baseURL}order`,
+          url: `${this.$config.baseURL}order?lang=${this.$i18n.locale}`,
           /*data: new URLSearchParams(this.form)*/
           data: this.form
         })
@@ -780,7 +780,7 @@ export default {
       let totalSumWithSale
       let promoStatus
       await axios({
-        url: `${this.$config.baseURL}amount`,
+        url: `${this.$config.baseURL}amount?lang=${this.$i18n.locale}`,
         method: 'POST',
         data: {
           journey: this.journey,

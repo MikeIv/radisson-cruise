@@ -4,13 +4,13 @@
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <div class="uk-modal-body uk-position-relative">
         <h2 class="uk-modal-title">
-          Сообщение отправлено
+          {{ $t('subscribe_modal.title') }}
         </h2>
         <p>
-          Спасибо! Актуальные акции и предложения будут направляться на указанный e-mail.
+          {{ $t('subscribe_modal.message') }}
         </p>
         <div class="success_bottom">
-          <a class="uk-modal-close uk-button uk-button-default">Закрыть</a>
+          <a class="uk-modal-close uk-button uk-button-default">{{$t('buttons.close_window')}}</a>
           <svg class="icon">
             <use xlink:href="#img-logo"></use>
           </svg>
