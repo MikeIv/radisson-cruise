@@ -161,7 +161,7 @@
                   </div>
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Время и дата:
+                      {{$t('time_date')}}:
                     </div>
                     <div class="buy-ticket-form__basket__item__info">
                       {{ dayFormat }}, {{ timeCalcDate }}
@@ -169,7 +169,7 @@
                   </div>
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Время круиза:
+                      {{$t('cruise_time')}}:
                     </div>
                     <div v-if="currentNewRoute.journeyTime" class="buy-ticket-form__basket__item__info">
                       {{ currentNewRoute.journeyTime }}
@@ -177,13 +177,12 @@
                   </div>
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Посадка начинается за 30 минут
-                      до отправления
+                      {{$t('cruise_delay')}}
                     </div>
                   </div>
                   <div class="buy-ticket-form__basket__item">
                     <div class="buy-ticket-form__basket__item__name">
-                      Возрастное ограничение 16+
+                      {{ $t('age_filter ') }}
                     </div>
                   </div>
                   <div class="buy-ticket-form__basket__item">
@@ -199,8 +198,7 @@
                       </div> -->
                     </div>
                     <div class="buy-ticket-form__basket__sail buy-ticket-form__basket__sail_cruise">
-                      *В стоимость входит дегустационный сет-меню,
-                      посвященный итальянской кухне.
+                      {{$t('theatrical_info_1')}}
                     </div>
                   </div>
                   <div class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last">
@@ -218,9 +216,7 @@
                   </div>
                 </div>
                 <div class="buy-ticket-form__basket__bottom">
-                  ** Внимание! На спецрейсы Флотилии «Рэдиссон Ройал»
-                  помеченные звёздочкой (*) действие подарочных сертификатов
-                  не распространяется
+                  {{$t('theatrical_info_2')}}
                 </div>
               </div>
             </div>
