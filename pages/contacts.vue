@@ -872,42 +872,6 @@ export default {
       const map2 = this.$refs.map2.myMap;
 
       if (window.innerWidth < 640) {
-        /*       let ZoomLayout = ymaps.templateLayoutFactory.createClass("" +
-       "<div class='map-controls'>" +
-       "  <span class='crow'></span>" +
-       "  <div id='zoom-in' class='btn'>" +
-       "    <span class='icon-plus'>+</span>" +
-       "  </div>" +
-          "<div id='zoom-out' class='btn'>" +
-            "<span class='icon-minus'>-</span>" +
-          "</div>" +
-       "</div>", {
-       build: function() {
-         ZoomLayout.superclass.build.call(this),
-           this.zoomInCallback = ymaps.util.bind(this.zoomIn, this),
-           this.zoomOutCallback = ymaps.util.bind(this.zoomOut, this),
-           document.querySelector("#zoom-in").bind("click", this.zoomInCallback),
-           document.querySelector("#zoom-out").bind("click", this.zoomOutCallback)
-       },
-       clear: function() {
-         document.querySelector("#zoom-in").unbind("click", this.zoomInCallback),
-         document.querySelector("#zoom-out").unbind("click", this.zoomOutCallback),
-         ZoomLayout.superclass.clear.call(this)
-       },
-       zoomIn: function() {
-         let e = this.getData().control.getMap();
-         this.zoom1 + 1
-       },
-       zoomOut: function() {
-         let e = this.getData().control.getMap();
-         this.zoom1 - 1
-       }
-     })
-     let zoomControl = new ymaps.control.ZoomControl({
-       options: {
-         layout: ZoomLayout
-       }
-     });*/
         let control = map1.controls.get('routePanelControl');
 
         control.options.set({
@@ -961,7 +925,7 @@ export default {
           toEnabled: true,
           adjustMapMargin: true,
           // Адрес или координаты пункта назначения.
-          to: 'Москва, площадь Киевского вокзала, 2',
+          to: 'Москва, Украина пристань',
         });
 
         UIkit.util.on('#switcher_gid', 'shown', function (e) {
@@ -977,7 +941,7 @@ export default {
                 {
                   referencePoints: [
                     [55.78149927706435, 37.6147065],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     //Тип маршрутизации - пешеходная маршрутизация.
@@ -1001,7 +965,7 @@ export default {
                 {
                   referencePoints: [
                     [55.78149927706435, 37.6147065],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'pedestrian',
@@ -1031,22 +995,24 @@ export default {
                 map1.geoObjects.add(multiRoute),
                 map1.geoObjects.add(multiRoute3),
                 map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
-          } else if (e.detail[0].index() == 0) {
+          }
+          else if (e.detail[0].index() == 0) {
             map1.geoObjects.removeAll();
             map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
 
             control.routePanel.state.set({
               from: loc1, //loc1
-              to: 'Москва, площадь Киевского вокзала, 2',
+              to: 'Москва,  Украина пристань',
             });
             control.options.set('visible', true);
-          } else if (e.detail[0].index() == 2) {
+          }
+          else if (e.detail[0].index() == 2) {
             control.options.set('visible', false);
             control.routePanel.state.set({
               from: '',
@@ -1058,7 +1024,7 @@ export default {
                 {
                   referencePoints: [
                     [55.74629632455781, 37.55858327243041],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1088,7 +1054,7 @@ export default {
                   referencePoints: [
                     [55.7455761645423, 37.566619170639015],
                     [55.741710525158005, 37.55495679937017],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1109,11 +1075,29 @@ export default {
                 }
             );
 
+            let parkingPin = new ymaps.Placemark(
+                [55.752805,37.565954],
+                {
+                  //  hintContent: 'Посмотреть адрес',
+                  //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
+                },
+                {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#imageWithContent',
+                  // Размеры метки.
+                  iconImageSize: [54.79, 54.79],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-27, -27],
+                  // Смещение слоя с содержимым относительно слоя с картинкой.
+                  iconContentOffset: [115, 115],
+                }
+            );
+
             map1.geoObjects.removeAll(),
-                map1.geoObjects.add(multiRoute),
-                map1.geoObjects.add(multiRoute2),
-                map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+                map1.geoObjects.add(parkingPin);
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
           }
@@ -1205,36 +1189,6 @@ export default {
               (mapElem.style.opacity = '0');
         });
       } else {
-        /*let ZoomLayout = ymaps.templateLayoutFactory.createClass("<div class='map-controls'><span class='crow'></span><div id='zoom-in' class='btn'><span class='icon-plus'>+</span></div><div id='zoom-out' class='btn'><span class='icon-minus'>-</span></div></div>", {
-       build: function() {
-         ZoomLayout.superclass.build.call(this),
-           this.zoomInCallback = ymaps.util.bind(this.zoomIn, this),
-           this.zoomOutCallback = ymaps.util.bind(this.zoomOut, this),
-           document.querySelector("#zoom-in").bind("click", this.zoomInCallback),
-           document.querySelector("#zoom-out").bind("click", this.zoomOutCallback)
-
-       },
-       clear: function() {
-         document.querySelector("#zoom-in").unbind("click", this.zoomInCallback),
-         document.querySelector("#zoom-out").unbind("click", this.zoomOutCallback),
-         ZoomLayout.superclass.clear.call(this)
-       },
-       zoomIn: function() {
-         let e = this.getData().control.getMap();
-         map1.setZoom(map.getZoom() + 1, {checkZoomRange: true});
-       },1
-       zoomOut: function() {
-         let e = this.getData().control.getMap();
-         e.setZoom(e.getZoom() - 1, {
-           checkZoomRange: !0
-         })
-       }
-     })
-     let zoomControl = new ymaps.control.ZoomControl({
-       options: {
-         layout: ZoomLayout
-       }
-     });*/
 
         let control = map1.controls.get('routePanelControl');
         if (window.innerWidth < 959) {
@@ -1301,7 +1255,7 @@ export default {
           toEnabled: true,
           adjustMapMargin: true,
           // Адрес или координаты пункта назначения.
-          to: 'Москва, Кутузовский проспект, 2/1с6',
+          to: 'Москва, Украина пристань',
         });
 
         UIkit.util.on('#switcher_gid', 'shown', function (e) {
@@ -1317,7 +1271,7 @@ export default {
                 {
                   referencePoints: [
                     [55.74466610341751, 37.56524455187834],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     //Тип маршрутизации - пешеходная маршрутизация.
@@ -1341,7 +1295,7 @@ export default {
                 {
                   referencePoints: [
                     [55.74466610341751, 37.56524455187834],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'pedestrian',
@@ -1371,22 +1325,24 @@ export default {
                 map1.geoObjects.add(multiRoute),
                 map1.geoObjects.add(multiRoute3),
                 map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
-          } else if (e.detail[0].index() == 0) {
+          }
+          else if (e.detail[0].index() == 0) {
             map1.geoObjects.removeAll();
             map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
 
             control.routePanel.state.set({
               from: loc1, //loc1
-              to: 'Москва, площадь Киевского вокзала, 2',
+              to: 'Москва, Украина пристань',
             });
             control.options.set('visible', true);
-          } else if (e.detail[0].index() == 2) {
+          }
+          else if (e.detail[0].index() == 2) {
             control.options.set('visible', false);
             control.routePanel.state.set({
               from: '',
@@ -1398,7 +1354,7 @@ export default {
                 {
                   referencePoints: [
                     [55.74629632455781, 37.55858327243041],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1428,7 +1384,7 @@ export default {
                   referencePoints: [
                     [55.7455761645423, 37.566619170639015],
                     [55.741710525158005, 37.55495679937017],
-                    [55.75232856899768, 37.56677249999998],
+                    [55.752805,37.565954],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1448,12 +1404,29 @@ export default {
                   boundsAutoApply: false,
                 }
             );
+            let parkingPin = new ymaps.Placemark(
+                [55.752805,37.565954],
+                {
+                  //  hintContent: 'Посмотреть адрес',
+                  //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
+                },
+                {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#imageWithContent',
+                  // Размеры метки.
+                  iconImageSize: [54.79, 54.79],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-27, -27],
+                  // Смещение слоя с содержимым относительно слоя с картинкой.
+                  iconContentOffset: [115, 115],
+                }
+            );
 
             map1.geoObjects.removeAll(),
-                map1.geoObjects.add(multiRoute),
-                map1.geoObjects.add(multiRoute2),
-                map1.geoObjects.add(myPlacemarkWithContent2);
-            map1.setCenter([55.75232856899768, 37.56677249999998], 13, {
+                map1.geoObjects.add(parkingPin);
+            map1.setCenter([55.752805,37.565954], 13, {
               checkZoomRange: true,
             });
           }
@@ -1525,7 +1498,7 @@ export default {
       }
 
       let myPlacemarkWithContent2 = new ymaps.Placemark(
-          [55.75232856899768, 37.56677249999998],
+          [55.752805,37.565954],
           {
             //  hintContent: 'Посмотреть адрес',
             //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
@@ -1640,7 +1613,7 @@ export default {
           toEnabled: true,
           adjustMapMargin: true,
           // Адрес или координаты пункта назначения.
-          to: 'Россия, Москва, причал ЦПКиО',
+          to: '55.731870, 37.604107',
         });
 
         UIkit.util.on('#switcher_gid2', 'shown', function (e) {
@@ -1655,8 +1628,8 @@ export default {
             var multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.735159,37.593397],
+                    [55.729956, 37.597184],
                   ],
                   params: {
                     //Тип маршрутизации - пешеходная маршрутизация.
@@ -1679,8 +1652,8 @@ export default {
             var multiRoute3 = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.78149927706435, 37.6147065],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.735159,37.593397],
+                    [55.729956, 37.597184],
                   ],
                   params: {
                     routingMode: 'pedestrian',
@@ -1710,22 +1683,24 @@ export default {
                 map2.geoObjects.add(multiRoute),
                 map2.geoObjects.add(multiRoute3),
                 map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
-          } else if (e.detail[0].index() == 0) {
+          }
+          else if (e.detail[0].index() == 0) {
             map2.geoObjects.removeAll();
             map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
 
             control2.routePanel.state.set({
               from: loc2, //loc2
-              to: 'Москва, площадь Киевского вокзала, 2',
+              to: '55.731870, 37.604107',
             });
             control2.options.set('visible', true);
-          } else if (e.detail[0].index() == 2) {
+          }
+          else if (e.detail[0].index() == 2) {
             control2.options.set('visible', false);
             control2.routePanel.state.set({
               from: '',
@@ -1736,8 +1711,8 @@ export default {
             let multiRoute = new ymaps.multiRouter.MultiRoute(
                 {
                   referencePoints: [
-                    [55.74629632455781, 37.55858327243041],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.735159,37.593397],
+                    [55.729956, 37.597184],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1767,7 +1742,7 @@ export default {
                   referencePoints: [
                     [55.7455761645423, 37.566619170639015],
                     [55.741710525158005, 37.55495679937017],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.729956, 37.597184],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -1787,12 +1762,29 @@ export default {
                   boundsAutoApply: false,
                 }
             );
+            let parkingPin = new ymaps.Placemark(
+                [55.731870, 37.604107],
+                {
+                  //  hintContent: 'Посмотреть адрес',
+                  //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
+                },
+                {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#imageWithContent',
+                  // Размеры метки.
+                  iconImageSize: [54.79, 54.79],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-27, -27],
+                  // Смещение слоя с содержимым относительно слоя с картинкой.
+                  iconContentOffset: [115, 115],
+                }
+            );
 
             map2.geoObjects.removeAll(),
-                map2.geoObjects.add(multiRoute),
-                map2.geoObjects.add(multiRoute2),
-                map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+            map2.geoObjects.add(parkingPin);
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
           }
@@ -1939,7 +1931,7 @@ export default {
           toEnabled: true,
           adjustMapMargin: true,
           // Адрес или координаты пункта назначения.
-          to: 'Москва, причал Парк Горького',
+          to: '55.731870, 37.604107',
         });
 
         UIkit.util.on('#switcher_gid2', 'shown', function (e) {
@@ -1955,7 +1947,7 @@ export default {
                 {
                   referencePoints: [
                     [55.735159,37.593397],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.731499, 37.605785],
                   ],
                   params: {
                     //Тип маршрутизации - пешеходная маршрутизация.
@@ -1979,7 +1971,7 @@ export default {
                 {
                   referencePoints: [
                     [55.735159,37.593397],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.729956, 37.597184],
                   ],
                   params: {
                     routingMode: 'pedestrian',
@@ -2009,22 +2001,24 @@ export default {
                 map2.geoObjects.add(multiRoute),
                 map2.geoObjects.add(multiRoute3),
                 map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
-          } else if (e.detail[0].index() == 0) {
+          }
+          else if (e.detail[0].index() == 0) {
             map2.geoObjects.removeAll();
             map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
 
             control2.routePanel.state.set({
               from: loc2, //loc2
-              to: 'Москва, причал Парк Горького',
+              to: '55.731870, 37.604107',
             });
             control2.options.set('visible', true);
-          } else if (e.detail[0].index() == 2) {
+          }
+          else if (e.detail[0].index() == 2) {
             control2.options.set('visible', false);
             control2.routePanel.state.set({
               from: '',
@@ -2036,7 +2030,7 @@ export default {
                 {
                   referencePoints: [
                     [55.735159,37.593397],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.731499, 37.605785],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -2066,7 +2060,7 @@ export default {
                   referencePoints: [
                     [55.7455761645423, 37.566619170639015],
                     [55.741710525158005, 37.55495679937017],
-                    [55.72244094480988, 37.59080249999998],
+                    [55.731499, 37.605785],
                   ],
                   params: {
                     routingMode: 'auto',
@@ -2086,12 +2080,29 @@ export default {
                   boundsAutoApply: false,
                 }
             );
+            let parkingPin = new ymaps.Placemark(
+                [55.731870, 37.604107],
+                {
+                  //  hintContent: 'Посмотреть адрес',
+                  //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
+                },
+                {
+                  // Опции.
+                  // Необходимо указать данный тип макета.
+                  iconLayout: 'default#imageWithContent',
+                  // Размеры метки.
+                  iconImageSize: [54.79, 54.79],
+                  // Смещение левого верхнего угла иконки относительно
+                  // её "ножки" (точки привязки).
+                  iconImageOffset: [-27, -27],
+                  // Смещение слоя с содержимым относительно слоя с картинкой.
+                  iconContentOffset: [115, 115],
+                }
+            );
 
             map2.geoObjects.removeAll(),
-                map2.geoObjects.add(multiRoute),
-                map2.geoObjects.add(multiRoute2),
-                map2.geoObjects.add(myPlacemarkWithContent2);
-            map2.setCenter([55.72244094480988, 37.59080249999998], 13, {
+                map2.geoObjects.add(parkingPin);
+            map2.setCenter([55.729956, 37.597184], 13, {
               checkZoomRange: true,
             });
           }
@@ -2108,7 +2119,7 @@ export default {
       }
 
       let myPlacemarkWithContent3 = new ymaps.Placemark(
-          [55.72244094480988, 37.59080249999998],
+          [55.729956, 37.597184],
           {
             //  hintContent: 'Посмотреть адрес',
             //  balloonContent: 'Московская обл. г. Подольск, Т.Ц. Красные ряды'
