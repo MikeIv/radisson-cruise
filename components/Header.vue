@@ -40,10 +40,10 @@
                 <svg-icon class="header__top_logo transition" name="yacht"/>
                 <span>{{ $t('nav.yachts_schedule') }}</span>
               </nuxt-link>
-              <a class="header-link-shedule transition" :href="$config.baseSiteURL+tramsDoc"  @click="closeNav">
+<!--              <a class="header-link-shedule transition" :href="$config.baseSiteURL+tramsDoc"  @click="closeNav">
                 <svg-icon class="header__top_logo transition" name="tram-icon2"/>
                 <span>{{ $t('nav.trams_schedule') }}</span>
-              </a>
+              </a>-->
             </div>
           </div>
           <div class="header__top_item5-container uk-visible@l">
