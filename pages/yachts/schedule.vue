@@ -416,7 +416,7 @@ export default {
       if (this.checkedCategories.length > 0) {
         if (this.showRoutes.length === 0) {
           this.arrayToFilter.forEach(day => {
-            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeySubType))
+            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeyType))
             this.showRoutes.push({
               date: day.date,
               routes: filteredRoutes
@@ -425,7 +425,7 @@ export default {
         } else {
           let arr = []
           this.showRoutes.forEach(day => {
-            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeySubType))
+            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeyType))
             arr.push({
               date: day.date,
               routes: filteredRoutes
@@ -619,7 +619,7 @@ export default {
 
         let filterArrival = day.routes
             .filter(val => this.checkedArrival.length > 0 ? this.checkedArrival.includes(val.placeName) : true)
-            .filter(val => this.checkedCategories.length > 0 ? this.checkedCategories.includes(val.journeySubType) : true)
+            .filter(val => this.checkedCategories.length > 0 ? this.checkedCategories.includes(val.journeyType) : true)
             .filter(val => {
               if (this.selectedTime === null ) return true;
               const departureTime = val.depatureTime.slice(11, 16);
@@ -760,7 +760,7 @@ export default {
       let formattedFetch = Object.entries(this.testFetch)
       formattedFetch.forEach(item => {
         item[1].forEach(route => {
-          setCategories.add(route.journeySubType)
+          setCategories.add(route.journeyType)
           setPorts.add(route.placeName)
         })
       })
