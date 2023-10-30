@@ -98,7 +98,7 @@
                       </div>
                     </div>
                   </div>
-                  <div v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__passengers__item children_item">
+                  <div v-if="routeData.availableChild" class="buy-ticket-form__passengers__item children_item">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
                         <b>{{$t('children')}} {{$t('ticket')}}</b>
@@ -132,7 +132,7 @@
                       </div>
                     </div>
                   </div>
-                  <span v-if="routeData.availablePromo" class="children_subinfo">{{ $t('children_notation') }}</span>
+                  <span v-if="routeData.availableChild" class="children_subinfo">{{ $t('children_notation') }}</span>
                 </div>
                 <div class="buy-ticket-form__data">
 <!--                  <div class="buy-ticket-form__data__head">
@@ -630,6 +630,10 @@ export default {
     maxSits() {
       return this.routeData.freeSeats > 40 ? 40 : this.routeData.freeSeats
     },
+
+    isChildrenTicketShown() {
+      return this.routeData.journeyTypeId !== 1 && this.routeData.journeyTypeId !== 7
+    }
   },
 
   methods: {
@@ -797,6 +801,7 @@ export default {
       }).then(function (response) {
         /*         console.log('yes')
                 console.log(response); */
+        console.log(response)
         if (response.data.error) {
           promoMsg = response.data.error
           UIkit.notification({message: `${promoMsg}`, status: 'danger', pos: 'top-center', timeout: 1500})
@@ -809,7 +814,8 @@ export default {
           totalSumWithSale = response.data.amount
         }
       }).catch(function (error) {
-        console.log(error);
+        promoMsg = error.response.data.error
+        UIkit.notification({message: `${promoMsg}`, status: 'danger', pos: 'top-center', timeout: 1500})
       });
       this.promoMsg = promoMsg
       this.promoStatus = promoStatus
