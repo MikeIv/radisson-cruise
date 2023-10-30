@@ -33,6 +33,7 @@
                      :disabled="dayData.disabled"
                      :journey="dayData.journey"
                      :class-id="dayData.classId"
+                     :available-child="dayData.availableChild"
                      @get-category="getCategory"
       />
       </tbody>

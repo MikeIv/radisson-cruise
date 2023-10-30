@@ -44,7 +44,8 @@
         </div>
         <div>
           <span>{{ $t('children') }}</span>
-          <span>{{ dayData.childPrice }}</span>
+          <span v-if="dayData.availableChild">{{ dayData.childPrice }}</span>
+          <span v-else>&#8212;</span>
         </div>
       </div>
     </div>
@@ -69,7 +70,8 @@
         </div>
         <div>
           <span>{{ $t('children') }}</span>
-          <span>{{ dayData.childPrice }}</span>
+          <span v-if="dayData.availableChild">{{ dayData.childPrice }}</span>
+          <span v-else>&#8212;</span>
         </div>
       </div>
     </div>

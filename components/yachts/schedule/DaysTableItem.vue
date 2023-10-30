@@ -26,7 +26,9 @@
       </b>
     </td>
     <td>
-      <b> {{child}} &#8381;
+      <b v-if="availableChild"> {{child}} &#8381;
+      </b>
+      <b v-else> &#8212;
       </b>
     </td>
     <td>
@@ -82,7 +84,8 @@ export default {
     dayTime: Boolean,
     disabled: Boolean,
     journey: Number,
-    classId: Number
+    classId: Number,
+    availableChild: Boolean,
   },
   data(){
     return{
