@@ -1,6 +1,7 @@
 stages:
   - push
   - deploy
+  - test
 
 build prod image:
   stage: push
@@ -80,6 +81,7 @@ deploy prod service:
   only:
     variables:
       - $CI_COMMIT_TAG =~ /^v\d.*/
+  allow_failure: false
   when: manual
   tags:
     - shell
@@ -104,3 +106,42 @@ deploy dev service:
     - shell
     - $CI_JOB_STAGE
     - $CI_ENVIRONMENT_NAME
+
+test prod site:
+  stage: test
+  environment:
+    name: prod
+    url: https://${LANG_RU}
+  script:
+    - docker run --rm -v $PWD/cypress:/e2e -w /e2e -e CYPRESS_BASE_URL=https://${LANG_RU} -e CYPRESS_API_URL=${BASE_URL} cypress/included -b chrome
+  artifacts:
+    paths:
+      - cypress/cypress/screenshots/spec.cy.js/result.png
+      - cypress/cypress/videos/spec.cy.js.mp4
+    expire_in: 1 weeks
+  only:
+    variables:
+      - $CI_COMMIT_TAG =~ /^v\d.*/
+  when: manual
+  tags:
+    - docker
+    - $CI_JOB_STAGE
+
+test dev site:
+  stage: test
+  environment:
+    name: dev
+    url: http://${LANG_RU}
+  script:
+    - docker run --rm -v $PWD/cypress:/e2e -w /e2e -e CYPRESS_BASE_URL=https://${LANG_RU} -e CYPRESS_API_URL=${BASE_URL} cypress/included -b chrome
+  artifacts:
+    paths:
+      - cypress/cypress/screenshots/spec.cy.js/result.png
+      - cypress/cypress/videos/spec.cy.js.mp4
+    expire_in: 1 weeks
+  only:
+    refs:
+      - dev
+  tags:
+    - docker
+    - $CI_JOB_STAGE
