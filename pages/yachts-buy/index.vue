@@ -89,7 +89,7 @@
                           -
                         </button>
                       </div>
-                      <input @change="routeData.availablePromo ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
+                      <input @change="routeData.childrenOnly ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
                       <div class="input-group-button">
                         <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
                                 data-field="quantity">
@@ -532,7 +532,7 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      if(!this.routeData.availablePromo) {
+      if(!this.routeData.childrenOnly) {
         if (this.adultNewVal < 1 ) {
           this.adultCount = 1
         }
@@ -682,7 +682,7 @@ export default {
       this.promoStatus = false
       this.saleNumber = 0
       if (param == '-') {
-        if(!this.routeData.availablePromo) {
+        if(!this.routeData.childrenOnly) {
           if (this.adultCount <= 1) {
             return 1
           } else {
@@ -888,7 +888,7 @@ export default {
       })
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
-      this.routeData.availablePromo ? this.adultCount = 0 : this.adultCount = 1
+      this.routeData.childrenOnly ? this.adultCount = 0 : this.adultCount = 1
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
