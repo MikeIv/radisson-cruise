@@ -412,6 +412,18 @@
         </div>
       </section>
       <ChildInfo />
+      <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
+        <div class="uk-modal-dialog uk-margin-auto-vertical">
+          <div class="uk-modal-body uk-position-relative">
+            <div>
+              {{$t('emergency')}}
+            </div>
+            <div class="success_bottom">
+              <a class="uk-modal-close uk-button uk-button-default">{{$t('buttons.close_window')}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </client-only>
   </div>
 </template>
@@ -902,6 +914,11 @@ export default {
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
+    setTimeout(() => {
+      this.$nextTick(() => {
+        UIkit.modal('#emergency').show();
+      })
+    }, 2000)
   },
   fetchOnServer: false,
   fetchKey: 'yacht-ticket',
