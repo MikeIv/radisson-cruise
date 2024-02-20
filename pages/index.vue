@@ -331,7 +331,7 @@
               :active-id="1"
       />
     </div>
-    <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
+<!--    <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
       <div class="uk-modal-dialog uk-margin-auto-vertical">
         <div class="uk-modal-body uk-position-relative">
           <div>
@@ -342,7 +342,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -861,11 +861,11 @@ export default {
         prevEl: '.inst_left',
       },
     });
-    setTimeout(() => {
+    /*setTimeout(() => {
       this.$nextTick(() => {
         UIkit.modal('#emergency').show();
       })
-    }, 2000)
+    }, 2000)*/
   },
   updated() {
     /*this.$nextTick(() => {
