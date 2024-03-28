@@ -226,6 +226,7 @@
                     </label> -->
                   </div>
                 </div>
+                <div v-if="routeData.journeyTypeId === 6" class="uk-margin-top">{{$t('route_jazz_msg')}}</div>
                 <div class="buy-ticket-form__footer">
                   <div class="buy-ticket-form__total">
                     <span>
