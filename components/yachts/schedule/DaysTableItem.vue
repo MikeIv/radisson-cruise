@@ -148,15 +148,7 @@ export default {
     // white function to check one da
 
     checkForLateRoutes() {
-      function isDepartureTimeApproaching(departureTime) {
-        const now = new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' });
-        const thirtyMinutesInMs = 30 * 60 * 1000; // 30 minutes in milliseconds
-        const departureTimeObj = new Date(departureTime);
-        const timeDifferenceInMs  = departureTimeObj - new Date(now);
-        return timeDifferenceInMs <= thirtyMinutesInMs;
-      }
-
-      if(isDepartureTimeApproaching(this.depatureTime) || this.freeSpots === 0) {
+      if(this.freeSpots === 0) {
         return this.disabledLink = true
       } else {
         return this.disabledLink = false
