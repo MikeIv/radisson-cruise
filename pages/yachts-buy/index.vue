@@ -40,16 +40,21 @@
                         <div>
                           {{ $t('time_date') }}:
                         </div>
-                        <div>
-<!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                          <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
+                        <div v-if="routeData.riverbus">
+                          <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
+                          <b>{{ dayFormat }} {{ $t('river_bus_time') }}</b>
                         </div>
-                        <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
+                        <div v-else>
+                          <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
+                          <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
+                          <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                              {{$t('daytime')}}
-                        </span>
-                        <span v-else class="buy-ticket-shedule__time__txt">
+                          </span>
+                          <span v-else class="buy-ticket-shedule__time__txt">
                             {{$t('vespertime')}}
-                        </span>
+                          </span>
+
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -57,16 +62,20 @@
                     <div>
                       {{ $t('time_date') }}:
                     </div>
-                    <div>
+                    <div v-if="routeData.riverbus">
+                      <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
+                      <b>{{ dayFormat }} {{ $t('river_bus_time') }}</b>
+                    </div>
+                    <div v-else>
 <!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
                       <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
-                    </div>
-                    <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
+                      <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
                           {{$t('daytime')}}
-                    </span>
-                    <span v-else class="buy-ticket-shedule__time__txt">
+                      </span>
+                      <span v-else class="buy-ticket-shedule__time__txt">
                          {{$t('vespertime')}}
-                    </span>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="buy-ticket-form__passengers">
@@ -275,8 +284,12 @@
                       <div class="buy-ticket-form__basket__item__name">
                         {{ $t('time_date') }}:
                       </div>
-                      <div class="buy-ticket-form__basket__item__info">
+                      <div v-if="routeData.riverbus" class="buy-ticket-form__basket__item__info">
 <!--                        {{ journeyDate }}, {{ timeCalc }}-->
+                        {{ dayFormat }} {{ $t('river_bus_time') }}
+                      </div>
+                      <div v-else class="buy-ticket-form__basket__item__info">
+                        <!--                        {{ journeyDate }}, {{ timeCalc }}-->
                         {{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}
                       </div>
                     </div>
@@ -952,5 +965,10 @@ export default {
   display: block;
   width: 100%;
   font-size: 12px;
+}
+
+.buy-ticket-form__date > div:nth-child(2) {
+  display: flex;
+  gap: 20px;
 }
 </style>

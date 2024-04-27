@@ -14,8 +14,11 @@
       </div>
     </td>
     <td>
-      <div class="buy-ticket-shedule__time">
-         <span class="buy-ticket-shedule__time__num">
+      <div class="buy-ticket-shedule__time" v-if="isRiverBus">
+        {{ $t('river_bus_time') }}
+      </div>
+      <div class="buy-ticket-shedule__time" v-else>
+        <span class="buy-ticket-shedule__time__num">
             {{ timeCalc }}
          </span>
         <span class="buy-ticket-shedule__time__txt">{{typeOfDay}}</span>
@@ -86,6 +89,7 @@ export default {
     journey: Number,
     classId: Number,
     availableChild: Boolean,
+    isRiverBus: Boolean,
   },
   data(){
     return{

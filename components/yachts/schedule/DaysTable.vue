@@ -34,6 +34,7 @@
                      :journey="dayData.journey"
                      :class-id="dayData.classId"
                      :available-child="dayData.availableChild"
+                     :is-river-bus="dayData.riverbus"
                      @get-category="getCategory"
       />
       </tbody>
