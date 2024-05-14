@@ -68,7 +68,7 @@
 
       v-if="viewSections.scheme && schemePiers.length > 0"
     />-->
-    <Scheme :button-link="tramsDoc"
+    <Scheme :button-link="'/trams/schedule/'"
             :points="schemePiers"
             :active-routes="dataRoutes"
             :active-route-prop="activeRouteProp"
@@ -141,10 +141,9 @@
 
         </div>
         <div class="trams-shutdown__bottom">
-          <a class="uk-button uk-button-default " :href="tramsDoc">
+          <nuxt-link class="uk-button uk-button-default " to="/trams/schedule/">
             <span>{{ $t('schedule') }}</span>
-          </a>
-
+          </nuxt-link>
         </div>
       </div>
     </section>

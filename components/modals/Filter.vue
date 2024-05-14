@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="buy-ticket__item">
+            <div v-if="!isTram" class="buy-ticket__item">
               <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
               <button class="select-styled pass-btn"
                       :class="{ 'select-open': isCatetories }"
@@ -93,35 +93,6 @@
               >
                 {{ labelTime }}
               </button>
-              <!--            <div class="testW">
-                <select
-                    onfocus="this.size=10;"
-                    @focusout="clickOutside"
-                    onblur="this.size=1;"
-                    onchange="this.size=1; this.blur();"
-                    name=""
-                    id=""
-                    class="test"
-                    v-model="choisenTime"
-                >
-                  <option value="12:00">12:00</option>
-                  <option value="13:00">13:00</option>
-                  <option value="14:00">14:00</option>
-                  <option value="15:00">15:00</option>
-                  <option value="16:00">16:00</option>
-                  <option value="17:00">17:00</option>
-                  <option value="18:00">18:00</option>
-                  <option value="19:00">19:00</option>
-                  <option value="20:00">20:00</option>
-                  <option value="21:00">21:00</option>
-                  <option value="22:00">22:00</option>
-                  <option value="23:00">23:00</option>
-                </select>
-                &lt;!&ndash;              <div class="picker-footer">
-                  <button type="button" class="picker-cancel" @click="clickOutside">Отмена</button>
-                  <button type="button" class="picker-confirm" data-picker-action="pick">Принять</button>
-                </div>&ndash;&gt;
-              </div>-->
               <div class="testW pass-quantity__drop uk-dropdown uk-open" v-show="isTime">
                 <div class="pass-quantity">
                   <div class="form_politic buy-ticket__politic">
@@ -143,53 +114,6 @@
                 </div>
               </div>
             </div>
-<!--            <div class="buy-ticket__item">
-              <svg-icon name="passengers" class="icon buy-ticket__item_icon4"/>
-              <button class="select-styled pass-btn"
-                      :class="{ 'select-open': isTikets }"
-                      type="button"
-                      id="tikets"
-                      @click="clickSelect('tikets')">
-                {{ $t('select_number_tickets_short') }}
-              </button>
-              <div class="pass-quantity__drop uk-dropdown uk-open" v-show="isTikets">
-                <div class="pass-quantity">
-                  <div class="pass-quantity__item">
-                    &lt;!&ndash; <div class="pass-quantity__item_name">
-                      Взрослый
-                    </div> &ndash;&gt;
-                    &lt;!&ndash; Change the `data-field` of buttons and `name` of input field's for multiple plus minus buttons&ndash;&gt;
-                    <div class="input-group plus-minus-input uk-flex-between">
-                      <div class="input-group-button">
-                        <button type="button" class="button " @click="TiketsDecrement">
-                          -
-                        </button>
-                      </div>
-                      <input class="input-group-field" type="number" name="quantity" value="1"
-                             v-model="tiketsCount.adult">
-                      <div class="input-group-button">
-                        <button type="button" class="button" @click="TiketsIncrement">
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <button @click="isTikets = false"
-                          type="button"
-                          class="uk-button uk-button-default accept_button"
-                  >
-                    {{$t('buttons.accept')}}
-                  </button>
-                </div>
-              </div>
-            </div>-->
-            <!--             <div class="buy-ticket__item buy-ticket__item_5">
-                          <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
-                          <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
-                          <input class=" select-styled  datetimepicker" id="datetimepicker-time2" type="text" value="" placeholder="Время посадки">
-                          <div class="datetimepicker-time2-container picker-container"></div>
-                        </div> -->
-
           </div>
           <div class="modal-news-filter__footer">
             <button class="uk-button uk-button-default button_ticket uk-modal-close" @click="setFilter">
@@ -393,7 +317,8 @@ export default {
     selectedTime: {
       type: Array,
       default: () => [],
-    }
+    },
+    isTram: Boolean,
   },
   watch: {
     actualMonth() {
@@ -659,6 +584,9 @@ export default {
   beforeMount() {
     this.isComponentView = true;
   },
+  beforeDestroy() {
+    this.destroyModal();
+  },
   mounted() {
     this.$nextTick(function () {
       //console.log("localArrival = ",this.localArrival)
@@ -671,7 +599,7 @@ export default {
         numberOfColumns: 1,
         autoApply: true,
         minDate: new Date().setDate(new Date().getDate() - 0),
-        maxDate: new Date().setDate(new Date().getDate() + 60),
+        maxDate: this.isTram ? new Date().setDate(new Date().getDate() + 6) : new Date().setDate(new Date().getDate() + 60),
         tooltipText: {
           one: 'flight',
           other: 'flights',

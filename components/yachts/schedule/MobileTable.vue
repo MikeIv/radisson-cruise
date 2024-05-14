@@ -13,6 +13,7 @@
           v-for="(dayData, i) in dayRoute.routes"
           :key="'ddata' + i"
           :day-data="dayData"
+          :is-tram="isTram"
           @get-category="getCategory"
       />
     </div>
@@ -30,6 +31,7 @@ export default {
   components: {MobileTableItem, BuyTicketBtn},
   props: {
     dayRoute: Object,
+    isTram: Boolean,
   },
   data(){
     return{

@@ -9,17 +9,14 @@
           «{{ dayData.placeName }}»
         </div>
       </div>
-      <div @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
+      <div v-if="!dayData.riverbus" @click="getCategory(dayData.journey)" class="buy-ticket-shedule__category">
         <span>{{ dayData.journeySubType }}</span>
         <svg-icon
             name="svg-info3"
             class="icon"
         />
       </div>
-      <span v-if="dayData.riverbus" class="buy-ticket-shedule__time__num uk-hidden@s">
-        {{ $t('river_bus_time') }}
-      </span>
-      <span v-else-if="dayData.depatureTime && !dayData.riverbus" class="buy-ticket-shedule__time__num uk-hidden@s">
+      <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num uk-hidden@s">
         {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
       </span>
     </div>
@@ -28,10 +25,7 @@
         <div class="buy-ticket-shedule_responsive__time__name">
           {{ $t('time') }}
         </div>
-        <div v-if="dayData.riverbus" class="buy-ticket-shedule__time">
-            {{ $t('river_bus_time') }}
-        </div>
-        <div v-else class="buy-ticket-shedule__time">
+        <div class="buy-ticket-shedule__time">
           <span v-if="dayData.depatureTime" class="buy-ticket-shedule__time__num">
             {{ timeCalcDate(dayData.depatureTime, dayData.arrivalTime) }}
           </span>
@@ -98,6 +92,7 @@ export default {
   components: {BuyTicketBtn},
   props: {
     dayData: Object,
+    isTram: Boolean,
   },
   data() {
     return {}
