@@ -11,7 +11,7 @@
       <tbody>
         <tr>
           <td>{{$t('port')}}</td>
-          <td>{{$t('select_ticket_category')}}</td>
+          <td v-if="!isTram">{{$t('select_ticket_category')}}</td>
           <td>{{$t('time')}}</td>
           <td>{{$t('adult')}}</td>
           <td>{{$t('children')}}</td>
@@ -35,6 +35,7 @@
                      :class-id="dayData.classId"
                      :available-child="dayData.availableChild"
                      :is-river-bus="dayData.riverbus"
+                     :is-tram="isTram"
                      @get-category="getCategory"
       />
       </tbody>
@@ -52,6 +53,7 @@ export default {
   props: {
     day: String,
     aboutDays: Array,
+    isTram: Boolean,
   },
   computed: {
     weekday() {
@@ -71,5 +73,21 @@ export default {
 </script>
 
 <style scoped>
-
+.uk-table tbody {
+  width: 100%;
+}
+.uk-table td:nth-child(1) {
+  width: 26%;
+}
+.uk-table td:nth-child(2) {
+  width: 25%;
+}
+.uk-table td:nth-child(3) {
+  width: 14.1%;
+}
+@media screen and (max-width: 1650px) {
+  .uk-table td:nth-child(5) {
+    width: 15%;
+  }
+}
 </style>

@@ -5,7 +5,7 @@
     <td>
       «{{ startPoint }}»
     </td>
-    <td>
+    <td v-if="!isRiverBus">
       <div class="buy-ticket-shedule__category">
         <span>{{ category }}</span>
         <button type="button" @click="getCategory(journey)">
@@ -14,10 +14,10 @@
       </div>
     </td>
     <td>
-      <div class="buy-ticket-shedule__time" v-if="isRiverBus">
-        {{ $t('river_bus_time') }}
-      </div>
-      <div class="buy-ticket-shedule__time" v-else>
+<!--      <div class="buy-ticket-shedule__time" v-if="isRiverBus">-->
+<!--        {{ $t('river_bus_time') }}-->
+<!--      </div>-->
+      <div class="buy-ticket-shedule__time">
         <span class="buy-ticket-shedule__time__num">
             {{ timeCalc }}
          </span>
@@ -90,6 +90,7 @@ export default {
     classId: Number,
     availableChild: Boolean,
     isRiverBus: Boolean,
+    isTram: Boolean,
   },
   data(){
     return{
@@ -208,6 +209,7 @@ export default {
 .table_item-row.disabled::after {
   content: var(--text, 'Посадка на рейс началась, наличие билетов можно уточнить в кассе');
   position: absolute;
+  width: 100%;
   left: 50%;
   transform: translate(-50%);
   white-space: nowrap;
@@ -220,5 +222,4 @@ export default {
   display: block;
   text-align: center;
 }
-
 </style>

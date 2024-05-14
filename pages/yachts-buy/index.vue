@@ -40,11 +40,7 @@
                         <div>
                           {{ $t('time_date') }}:
                         </div>
-                        <div v-if="routeData.riverbus">
-                          <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                          <b>{{ dayFormat }} {{ $t('river_bus_time') }}</b>
-                        </div>
-                        <div v-else>
+                        <div>
                           <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
                           <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
                           <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
@@ -62,11 +58,7 @@
                     <div>
                       {{ $t('time_date') }}:
                     </div>
-                    <div v-if="routeData.riverbus">
-                      <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                      <b>{{ dayFormat }} {{ $t('river_bus_time') }}</b>
-                    </div>
-                    <div v-else>
+                    <div>
 <!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
                       <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
                       <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
@@ -284,11 +276,7 @@
                       <div class="buy-ticket-form__basket__item__name">
                         {{ $t('time_date') }}:
                       </div>
-                      <div v-if="routeData.riverbus" class="buy-ticket-form__basket__item__info">
-<!--                        {{ journeyDate }}, {{ timeCalc }}-->
-                        {{ dayFormat }} {{ $t('river_bus_time') }}
-                      </div>
-                      <div v-else class="buy-ticket-form__basket__item__info">
+                      <div class="buy-ticket-form__basket__item__info">
                         <!--                        {{ journeyDate }}, {{ timeCalc }}-->
                         {{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}
                       </div>

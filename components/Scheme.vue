@@ -113,14 +113,20 @@
                   <svg-icon name='arrow3' class="icon"/>
                 </label>
               </div>
-              <a v-if="isTram"
-                 :href="$config.baseSiteURL + buttonLink"
-                 class="width-100 uk-button uk-button-default button_ticket"
-                 target="_blank"
-              >
+<!--              <a v-if="isTram"-->
+<!--                 :href="$config.baseSiteURL + buttonLink"-->
+<!--                 class="width-100 uk-button uk-button-default button_ticket"-->
+<!--                 target="_blank"-->
+<!--              >-->
+<!--                <span>{{ $t('schedule') }}</span>-->
+<!--                <svg-icon name='clock' class="icon"/>-->
+<!--              </a>-->
+              <nuxt-link v-if="isTram" :to="buttonLink"
+                         class="width-100 uk-button uk-button-default button_ticket"
+                         type="button">
                 <span>{{ $t('schedule') }}</span>
                 <svg-icon name='clock' class="icon"/>
-              </a>
+              </nuxt-link>
               <nuxt-link v-else :to="buttonLink"
                          class="width-100 uk-button uk-button-default button_ticket"
                          type="button">

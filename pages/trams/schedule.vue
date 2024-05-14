@@ -1,230 +1,5 @@
 <template>
   <div>
-    <!--    <h1>Расписание трамвайчиков</h1>
-        <p v-if="$fetchState.pending">Loading....</p>
-        <p v-else-if="$fetchState.error">Error while fetching mountains</p>
-        <ul v-else>
-          <li v-for="(mountain, index) in mountains" :key="index" @click="checkLog">
-            {{ mountain.title }}
-          </li>
-        </ul>-->
-
-    <!--    <section class="table-section">
-          <div class="uk-overflow-auto buy-ticket-shedule_trams__overflow">
-            <table>
-              <tr class="buy-ticket-shedule_trams__headline__p1">
-                <td  colspan="2">Гостиница «Украина»</td>
-                <td  colspan="2">Киевский вокзал</td>
-                <td  colspan="2">Воробъевы горы</td>
-                <td  colspan="2">Парк Горького</td>
-                <td  colspan="2">Зарядье</td>
-                <td  colspan="2">Парк горьгоко</td>
-                <td  colspan="2">Гостиница «Украина»</td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__headline__p2-items">
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-                <td>
-                  Отправление
-                </td>
-                <td>
-                  Прибытие
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-white">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-gray">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-white">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-gray">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-white">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-gray">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-white">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-              <tr class="buy-ticket-shedule_trams__info bg-gray">
-                <td>-</td>
-                <td>11:00</td>
-                <td>11 : 05</td>
-                <td>11 : 05</td>
-                <td>11 : 35</td>
-                <td>11 : 40</td>
-                <td>12 : 00</td>
-                <td>12 : 10</td>
-                <td>12 : 25</td>
-                <td>12 : 35</td>
-                <td>12 : 50</td>
-                <td>12 : 55</td>
-                <td>13 : 45</td>
-                <td>
-                  <a class="uk-button uk-button-default button_ticket" href="/buy_ticket_form_trams.html">
-                    <span>Купить билет</span>
-                  </a>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </section>-->
     <Header class="buy-ticket-shedule__header">
       <img src="~images/inners/shedule2.webp" data-src="~images/inners/shedule2.webp" class="img_cover" alt="">
       <div class="uk-container uk-position-relative">
@@ -238,171 +13,166 @@
         </div>
       </div>
     </Header>
-    <section class="buy-ticket-shedule__container_trams">
+    <section class="buy-ticket-shedule__container">
       <div class="uk-container">
-        <!-- НЕ УДАЛЯТЬ ЭТОТ БЛОК -->
-        <!--             <div class="buy-ticket sheduletram__switchblock uk-width-1-1 uk-flex uk-flex-center">
-                      <div class="uk-width-1-1 uk-flex">
-                      <div class="buy-ticket__item buy-ticket__item_switch-trams">
-                              <div class="switch-container">
-                                <div class="switch-name"  :class="{active: !selectRoute}">Маршрут 1</div>
-                                <label class="switch-round">
-                                  <input type="checkbox" name="trams-select" v-model="selectRoute">
-                                  <span class="switch-slider"></span>
-                                </label>
-                                <div class="switch-name " :class="{active: selectRoute}">Маршрут 2</div>
-                              </div>
-                            </div>
-                            <button class="uk-button uk-button-default button_ticket"  @click.prevent="filterRoutes">
-                              <span>НАЙТИ РЕЙС</span>
-                              <svg-icon name="looking_glass" class="icon" />
-                            </button>
-                      </div>
-
-                    </div> -->
-        <!-- НЕ УДАЛЯТЬ ЭТОТ БЛОК -->
-        <div class="uk-width-1-1 uk-flex uk-flex-center">
-          <div :class="widthContentTable">
-            <div class="buy-ticket-shedule_trams-info__grid uk-flex uk-flex-wrap">
-                {{ tableInfos.upname }}
-            </div>
+        <form uk-sticky="offset: 115;media: 1200" class="buy-ticket uk-visible@s" autocomplete="off">
+          <div class="buy-ticket__item">
+            <svg-icon class="icon buy-ticket__item_icon1" name="date"/>
+            <img
+                src="~assets/img/main/arr_dow.png"
+                alt=""
+                class="buy-ticket__item1_arr"
+            />
+            <input
+                class="select-styled litepicker"
+                id="datepickerTest"
+                type="text"
+                v-model="dateInputValue"
+                value=""
+                :placeholder="$t('select_date')"
+            />
           </div>
-        </div>
-        <div class="uk-flex uk-flex-center">
-          <div class="uk-flex uk-flex-between table-shedule head-table-time" :class="widthContentTable">
-            <div class="text-time uk-flex uk-width-1-1"
-                 :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
-              <div class="head-date  uk-width-1-6@l uk-width-1-1@s ">
-                {{ dayNow }}
-              </div>
-              <div class="head-title  uk-width-4-6@l uk-width-1-1@s uk-text-center">
-                {{ tableInfos?.name }} (Понедельник-среда)
-              </div>
-            </div>
-          </div>
-        </div>
+          <div class="buy-ticket__item">
+            <svg-icon class="icon buy-ticket__item_icon3" name="ancor"/>
+            <button
+                class="select-styled pass-btn"
+                type="button"
+                aria-expanded="false"
+            >
+              {{ selectedPorts }}
+            </button>
 
-        <div class="uk-flex uk-flex-center uk-flex-column uk-margin-auto" :class="widthContentTable">
-          <div class="uk-flex uk-flex-center table-shedule">
-            <div class="uk-width-1-1" v-for="(headItem, idxh1) in tableHeads" :key="'idh1-'+idxh1">
-              <div class="uk-width-1-1">
-                <div class="name-station-text uk-width-1-1 ">
-                  {{ headItem?.name }}
+            <div
+                uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
+                class="pass-quantity__drop uk-dropdown"
+                id="portFilter"
+            >
+              <div class="pass-quantity">
+                <div class="form_politic buy-ticket__politic">
+                  <label v-for="(place, idxarriv) in arrivalPlaces" :key="'dx-'+idxarriv">
+                    <input @change="sendYandexMetrikaEvent('filtr_prichal_2023')"
+                           class="uk-checkbox"
+                           name="category__moorage"
+                           type="checkbox"
+                           :id="'dx-'+idxarriv"
+                           :value="place"
+                           v-model="checkedArrival">
+                    <span>{{ place }}</span>
+                  </label>
                 </div>
-                <!--                  <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-                                    <div class="inout-text">Приб.</div>
-                                    <div class="inout-text">Отпр.</div>
-                                  </div>-->
+                <button @click="hideFilterItem('portFilter')"
+                        type="button"
+                        class="uk-button uk-button-default accept_button"
+                >
+                  {{ $t('buttons.accept') }}
+                </button>
               </div>
             </div>
           </div>
-          <div class="uk-flex uk-flex-between table-shedule">
-            <div v-for="(rowItem, idxr1) in tableFlightsPart1[0]?.points" class="uk-flex uk-flex-between uk-width-1-1">
-              <div class="inout-text" v-show="rowItem?.arrival!==null">Приб.</div>
-              <div class="inout-text" v-show="rowItem?.departure!==null">Отпр.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
-          <div class="uk-flex uk-flex-center table-shedule table-row " :class="widthContentTable"
-               v-for="(rowItem, idxr1) in tableFlightsPart1" :key="'idr1-'+idxr1">
-            <div class="uk-width-1-1" v-for="(rowItem, idxp1) in rowItem?.points" :key="'idp1-'+idxp1">
-              <div class="uk-width-1-1">
-                <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-                  <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }}</div>
-                  <div class="inout-text" v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
+          <div class="buy-ticket__item">
+            <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
+            <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
+            <button type="button" class="select-styled timeSelect datetimepicker">
+              {{ labelTime }}
+            </button>
+            <div class="testW pass-quantity__drop uk-dropdown"
+                 uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
+                 id="timeFilter"
+            >
+              <div class="pass-quantity">
+                <div class="form_politic buy-ticket__politic">
+                  <label v-for="time in rangeTime">
+                    <input class="uk-radio"
+                           name="category__salon"
+                           type="radio"
+                           :value="time.value"
+                           v-model="selectedTime">
+                    <span>{{ $t(time.title) }}</span>
+                  </label>
                 </div>
+                <button @click="hideFilterItem('timeFilter')"
+                        type="button"
+                        class="uk-button uk-button-default accept_button"
+                >
+                  {{ $t('buttons.accept') }}
+                </button>
               </div>
             </div>
           </div>
+          <button
+              class="uk-button uk-button-default button_ticket"
+              type="submit" @click.prevent="filterRoutes"
+          >
+            <span>{{ $t('buttons.find_route') }}</span>
+            <svg-icon name="looking_glass" class="icon"/>
+          </button>
+        </form>
+        <button
+            class="uk-button btn-news-filter uk-hidden@s"
+            @click="openFilter"
+        >
+          <span> {{ $t('buttons.open_filter') }} </span>
+          <svg-icon name="svg-flight4" class="icon"/>
+        </button>
+        <div class="buy-ticket-shedule-days uk-hidden@s">
+          <SmallCalendarItem
+              v-for="(calendarItem, index) in mobileCalendarItems"
+              :key="'cldr' + index"
+              :calendar-item="calendarItem"
+              :class="{'buy-ticket-shedule-day__red': isWeekend(calendarItem.weekday)}"
+              @click.native="setFilterDates(calendarItem.fullDate)"
+          />
         </div>
-
-        <div class="uk-flex uk-flex-center">
-          <div class="uk-flex uk-flex-between table-shedule head-table-time " :class="widthContentTable">
-            <div class="text-time uk-flex uk-width-1-1 "
-                 :class="{'uk-flex-column uk-text-center': isMobile && viewportWidth<640}">
-              <div class="head-date uk-width-1-6@l uk-width-1-1@s">
-                {{ dayNow }}
-              </div>
-              <div class="head-title uk-width-4-6@l uk-width-1-1@s uk-text-center">
-                {{ tableInfos?.name }} (Четверг-воскресенье)
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-flex uk-flex-center uk-flex-column uk-margin-auto" :class="widthContentTable">
-          <div class="uk-flex uk-flex-center table-shedule">
-            <div class="uk-width-1-1  " v-for="(headItem, idxh2) in tableHeads" :key="'idh2-'+idxh2">
-              <div class="uk-width-1-1">
-                <div class="name-station-text uk-width-1-1 ">
-                  {{ headItem?.name }}
-                </div>
-                <!--                  <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-                                    <div class="inout-text">Приб. </div>
-                                    <div class="inout-text">Отпр.</div>
-                                  </div>-->
-              </div>
-            </div>
-          </div>
-          <div class="uk-flex uk-flex-between table-shedule">
-            <div v-for="(rowItem, idxr1) in tableFlightsPart1[0]?.points" class="uk-flex uk-flex-between uk-width-1-1">
-              <div class="inout-text" v-show="rowItem?.arrival !==null">Приб.</div>
-              <div class="inout-text" v-show="rowItem?.departure !==null">Отпр.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-flex uk-flex-center uk-flex-column uk-width-1-1 item-center">
-          <div class="uk-flex uk-flex-center table-shedule table-row " :class="widthContentTable"
-               v-for="(rowItem, idxr2) in tableFlightsPart2" :key="'idr2-'+idxr2">
-            <div class="uk-width-1-1  " v-for="(rowItem, idxp2) in rowItem?.points" :key="'idp2-'+idxp2">
-              <div class="uk-width-1-1">
-
-                <div class="uk-flex uk-child-width-auto uk-flex-between child-two-column">
-                  <div class="inout-text" v-show="rowItem?.arrival!==null">{{ rowItem?.arrival }}</div>
-                  <div class="inout-text" v-show="rowItem?.departure!==null">{{ rowItem?.departure }}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="uk-width-1-1 uk-flex uk-flex-center">
-          <div :class="widthContentTable">
-            <div class="buy-ticket-shedule_trams-info__grid uk-flex uk-flex-wrap ">
-              <div>
-                <div class="buy-ticket-shedule_trams__info">
-                  <span>Продолжительность рейса:</span>
-                  <span>50 мин</span>
-                </div>
-              </div>
-              <div>
-                <div class="buy-ticket-shedule_trams__info">
-                  <span>Стоянка на конечном причале:</span>
-                  <span>10 мин.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <DaysTable
+            v-for="(dayRoute, index) in showRoutes"
+            :key="'tbl' + index"
+            :aboutDays="dayRoute.routes"
+            :day="dayRoute.date"
+            is-tram
+        />
+        <MobileTable
+            v-for="(dayRoute, index) in showRoutes"
+            :key="'tblMob' + index"
+            :day-route="dayRoute"
+            is-tram
+        />
       </div>
     </section>
+    <FilterMobile
+        :is-shedule-filter="true"
+        :arrival-places="arrivalPlaces"
+        :range-time="rangeTime"
+        :selected-time="selectedTime"
+        :checked-arrival="checkedArrival"
+        is-tram
+        ref="filterModal"
+        @checked-arrival="checkedFilter"
+    />
   </div>
 </template>
 
 <script>
-import Header from "../../components/Header";
-import TableItem from "../../components/trolley/schedule/TableItem";
-import axios from 'axios'
+import Header from '../../components/Header';
+import DaysTable from '../../components/yachts/schedule/DaysTable';
+import axios from 'axios';
+import PortItem from "../../components/trolley/PortItem";
+import CategoryCabin from "../../components/categories/CategoryCabin";
+import CategoryInfo from "../../components/modals/CategoryInfo";
 import Breadcrumbs from "../../components/Breadcrumbs";
-import BuyTicketBtn from "../../components/BuyTicketBtn";
+import ScheduleFilter from "../../components/modals/ScheduleFilter.vue";
+import FilterMobile from "../../components/modals/Filter.vue";
+import {timeCalc} from "@/plugins/routesTimeCalc";
+import UIkit from "uikit";
+import moment from "moment";
+import SmallCalendarItem from "../../components/yachts/schedule/SmallCalendarItem.vue";
+import MobileTable from "../../components/yachts/schedule/MobileTable.vue";
 
 export default {
   name: "schedule",
-  components: {BuyTicketBtn, Breadcrumbs, TableItem, Header},
+  components: {
+    MobileTable,
+    SmallCalendarItem, Breadcrumbs, CategoryInfo, CategoryCabin, PortItem, DaysTable, Header, FilterMobile
+  },
   head() {
     return {
       title: this.seoData?.title,
@@ -423,327 +193,431 @@ export default {
   },
   data() {
     return {
-      isViewMobile: false,
-      isActive: false,
-      viewportHeight: null,
-      viewportWidth: null,
-      tableHeads: [],
-      tableInfos: [],
-      tablePoints: [],
-      tableFlights: [],
-      tableFlightsPart1: [],
-      tableFlightsPart2: [],
-      selectRoute: false,
-      widthContetntTable: {
-        width2item: 'width: 40%;',
-        width3item: 'width: 50%;',
-        width4item: 'width: 60%;',
-        width5item: 'width: 70%;',
-        width6item: 'width: 80%;',
-        width7item: 'width: 100%;',
-      },
       seoData: {},
+      showRoutes: [],
+      checkedArrival: [],
+      arrivalPlaces: ['Парк Горького'],
+      checkedCategories: [],
+      routesCategories: ['Основной зал', "Ройал класс", "Первый класс", "Ervin Река"],
+      dateStart: new Date().toISOString().split('T')[0],
+      chosenSits: 1,
+      lpick: null,
+      lpick_val: null,
+      choisenTime: null,
+      post: {},
+      testFetch: [],
+      arrayToFilter: [],
+      totalSpots: 0,
+      modalId: 1,
+      startDate: '',
+      endDate: '',
+      modalFilterShow: false,
+      buttonsRoutes: [],
+      setCategories: null,
+      showed: false,
+      categoryInfo: null,
+      today: new Date().toISOString().split('T')[0],
+      inWeek: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
+      isLoading: true,
+      showSelect: false,
+      selectedTime: null,
+      rangeTime: [
+        {
+          title: 'timeOptions.anytime',
+          value: null
+        },
+        {
+          title: 'timeOptions.morning',
+          value: [`10.00`, `11.00`, `12.00`]
+        },
+        {
+          title: 'timeOptions.daytime',
+          value: [`12.00`, `13.00`, `14.00`, `15.00`, `16.00`, `17.00`, `18.00`]
+        },
+        {
+          title: 'timeOptions.evening',
+          value: [`18.00`, `19.00`, `20.00`, `21.00`, `22.00`, `23.00`]
+        },
+      ],
+      interval: null,
+      dateInputValue: null,
     }
   },
   computed: {
-    dayNow() {
-      const formatedDayNow = new Date().toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      })
-      return formatedDayNow;
-    },
-    widthContentTable() {
-      switch (this.tableHeads.length) {
-        case 2:
-          if (this.isMobile && this.viewportWidth < 640) {
-            console.log("width7item");
-            return "width7item";
-          } else {
-            console.log("width2item");
-            return "width2item";
-          }
-        case 3:
-          if (this.isMobile && this.viewportWidth < 640) {
-            console.log("width7item");
-            return "width7item";
-          } else {
-            console.log("width3item");
-            return "width3item";
-          }
-        case 4:
-          if (this.isMobile && this.viewportWidth < 640) {
-            console.log("width7item");
-            return "width7item";
-          } else {
-            console.log("width4item");
-            return "width4item";
-          }
-        case 5:
-          if (this.isMobile && this.viewportWidth < 640) {
-            console.log("width7item");
-            return "width7item";
-          } else {
-            console.log("width5item");
-            return "width5item";
-          }
-        case 6:
-          if (this.isMobile && this.viewportWidth < 640) {
-            console.log("width7item");
-            return "width7item";
-          } else {
-            console.log("width2item");
-            return "width2item";
-          }
-        case 7:
-          console.log("width7item");
-          return "width7item";
-
-
-        default:
-          //console.log("default");
-          return "width7item";
+    labelTime() {
+      if (this.selectedTime === null) {
+        return this.$i18n.t('select_time')
+      } else {
+        return this.rangeTime.find(item => item.value === this.selectedTime).title
       }
-
-    }
+    },
+    mobileCalendarItems() {
+      let arr = [];
+      for (let i = 0; i < 7; i++) {
+        let date = new Date();
+        let dateItem = {}
+        date.setDate(date.getDate() + i);
+        dateItem.date = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {
+          timeZone: 'Europe/Moscow',
+          day: 'numeric'}
+        )
+        dateItem.weekday = new Date(date).toLocaleDateString(`${this.$i18n.localeProperties.iso}`, {
+          timeZone: 'Europe/Moscow',
+          weekday: 'short'
+        })
+        dateItem.fullDate = date.toISOString().split('T')[0];
+        arr.push(dateItem)
+      }
+      return arr
+    },
+    selectedPorts() {
+      if (this.checkedArrival.length === 0) {
+        return this.$i18n.t('select_port')
+      } else if (this.checkedArrival.length === 1) {
+        return `${this.$i18n.t('selected')}: ${this.checkedArrival[0]}`
+      } else {
+        return `${this.$i18n.t('selected')}: ${this.checkedArrival.length}`
+      }
+    },
   },
   methods: {
+    checkedFilter(emitFilterPrameters) {
+      this.checkedArrival = emitFilterPrameters.arrival;
+      this.startDate = emitFilterPrameters.dates.dateFirst;
+      this.endDate = emitFilterPrameters.dates.dateEnd;
+      this.selectedTime = emitFilterPrameters.time;
+      this.setFilterDates(this.startDate, this.endDate);
+    },
+    openFilter() {
+      this.$refs.filterModal.openModal()
+    },
     filterRoutes() {
-      this.isActive = !this.selectRoute
+      //console.log("FILTER ROUTES = ", this.checkedArrival, this.checkedCategories)
+      this.showRoutes = []
+      if (this.checkedCategories.length > 0) {
+        if (this.showRoutes.length === 0) {
+          this.arrayToFilter.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeyType))
+            this.showRoutes.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+        } else {
+          let arr = []
+          this.showRoutes.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => this.checkedCategories.includes(val.journeyType))
+            arr.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+          this.showRoutes = arr
+        }
+      }
 
+      if (this.checkedArrival.length > 0) {
+        if (this.showRoutes.length === 0) {
+          this.arrayToFilter.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => this.checkedArrival.includes(val.placeName))
+            this.showRoutes.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+        } else {
+          let arr = []
+          this.showRoutes.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => this.checkedArrival.includes(val.placeName))
+            arr.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+          this.showRoutes = arr
+        }
+      }
+
+      if (this.selectedTime !== null) {
+        if (this.showRoutes.length === 0) {
+          const testArr = []
+          this.arrayToFilter.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => {
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            });
+            testArr.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+            this.showRoutes.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+        } else {
+          let arr = []
+          this.showRoutes.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => {
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            });
+            arr.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+          this.showRoutes = arr
+        }
+      }
+
+      if (this.chosenSits !== 1) {
+        if (this.showRoutes.length === 0) {
+          this.arrayToFilter.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => val.freeSeats >= this.chosenSits)
+            this.showRoutes.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+        } else {
+          let arr = []
+          this.showRoutes.forEach(day => {
+            let filteredRoutes = day.routes.filter(val => val.freeSeats >= this.chosenSits)
+            arr.push({
+              date: day.date,
+              routes: filteredRoutes
+            })
+          })
+          this.showRoutes = arr
+        }
+      }
+
+      if (this.checkedArrival.length === 0
+          && this.checkedCategories.length === 0
+          && this.selectedTime === null
+          && this.chosenSits === 1
+      ) {
+        //console.log('Empty filter')
+        this.showRoutes = Array.from(this.arrayToFilter)
+      }
+      //console.log("filterRoutes showRoutes = ",this.showRoutes);
     },
-    switchRoutes() {
-      this.isActive = !this.isActive
+    isWeekend(date) {
+      return date === 'сб' || date === 'вс' || date === 'Sat' || date === 'Sun'
     },
-    isMobile() {
-      const userAgent = navigator?.userAgent;
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    }
+    async setDate(date) {
+      let dayRoutes = await axios.get(
+          `${this.$config.baseURL}routes?date=${date}&end=${date}&type_id[]=9&lang=${this.$i18n.locale}`);
+      //console.log(dayRoutes.data.routes)
+      this.testFetch = dayRoutes.data.routes;
+      Object.entries(this.testFetch).forEach(item => {
+        this.arrayToFilter.push({
+          date: item[0],
+          routes: item[1],
+        })
+      })
+      this.showRoutes = this.arrayToFilter
+      //console.log("setDate showRoutes = ",this.showRoutes);
+    },
+    async setFilterDates(date1, date2) {
+      this.arrayToFilter = [];
+      let dayRoutes
+      date2 !== undefined && date2 !== null
+          ? dayRoutes = await axios.get(
+              `${this.$config.baseURL}routes?date=${date1}&end=${date2}&type_id[]=9&lang=${this.$i18n.locale}`)
+          : dayRoutes = await axios.get(
+              `${this.$config.baseURL}routes?date=${date1}&type_id[]=9&lang=${this.$i18n.locale}`);
+      //console.log("AXIOS dayRoutes = ",dayRoutes.data.routes)
+      this.testFetch = await dayRoutes.data.routes;
+      Object.entries(this.testFetch).forEach(item => {
+        this.arrayToFilter.push({
+          date: item[0],
+          routes: item[1],
+        })
+      })
+      this.arrayToFilter.forEach(day => {
+
+        let filterArrival = day.routes
+            .filter(val => this.checkedArrival.length > 0 ? this.checkedArrival.includes(val.placeName) : true)
+            .filter(val => this.checkedCategories.length > 0 ? this.checkedCategories.includes(val.journeyType) : true)
+            .filter(val => {
+              if (this.selectedTime === null ) return true;
+              const departureTime = val.depatureTime.slice(11, 16);
+              const timeRange = this.selectedTime;
+              const departureHour = parseInt(departureTime.split(':')[0], 10);
+              const rangeStartHour = parseInt(timeRange[0].split('.')[0], 10);
+              const rangeEndHour = parseInt(timeRange[timeRange.length - 1].split('.')[0], 10);
+              return departureHour >= rangeStartHour && departureHour <= rangeEndHour;
+            })
+        //console.log("filterArrival = ",filterArrival)
+        day.routes = filterArrival;
+        //console.log("DAY Data = ",day.routes)
+
+      })
+      this.showRoutes = this.arrayToFilter;
+    },
+    isDepartureTimeApproaching(departureTime) {
+      const now = new Date().toLocaleString('en-US', {timeZone: 'Europe/Moscow'});
+      const thirtyMinutesInMs = 30 * 60 * 1000; // 30 minutes in milliseconds
+      const departureTimeObj = new Date(departureTime);
+      const timeDifferenceInMs = departureTimeObj - new Date(now);
+      return timeDifferenceInMs <= thirtyMinutesInMs;
+    },
+    checkForLateRoutes(route) {
+      return this.isDepartureTimeApproaching(route.depatureTime) || route.freeSeats === 0;
+    },
+    timeCalcDate(dptrTime, arvTime) {
+      if (dptrTime === null || arvTime === null) return;
+      let formattedDeparture = moment(dptrTime).format('HH:mm')
+      let formattedArrival = moment(arvTime).format('HH:mm')
+      return `${formattedDeparture} - ${formattedArrival}`
+    },
+    hideFilterItem(id) {
+      UIkit.dropdown(`#${id}`).hide(false);
+    },
+    sendYandexMetrikaEvent(eventName) {
+      this.$yandexMetrika.reachGoal(eventName);
+    },
   },
   mounted() {
-    this.isViewMobile = this.isMobile();
-    this.viewportHeight = window.innerHeight;
-    this.viewportWidth = window.innerWidth;
+    /*this.checkedCategories = this.$route.query.class.split(',')*/
+    this.setFilterDates(this.startDate, this.endDate)
+    this.interval = setInterval(() => {
+      this.setFilterDates(this.startDate, this.endDate); // Fetch data every 15 minutes
+    }, 15 * 60 * 1000);
+    const elements = document.querySelectorAll('.litepicker')
+    const options = {
+      lang: this.$i18n.localeProperties.iso,
+      element: document.querySelector('#datepickerTest'),
+      singleMode: false,
+      numberOfMonths: 1,
+      numberOfColumns: 1,
+      minDate: new Date().setDate(new Date().getDate() - 0),
+      maxDate: new Date().setDate(new Date().getDate() + 6),
+      showTooltip: false,
+    }
+    // console.log("Elements = ",elements);
+    this.litePickers = new Litepicker({
+      ...options,
+
+      setup: (picker) => {
+        picker.on('selected', async (date1, date2) => {
+          this.sendYandexMetrikaEvent('filtr_data_2023')
+          picker.getDate()
+
+          //console.log(picker.gotoDate())
+
+          function addDays(date, days) {
+            let result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+          }
+
+          let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
+          let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
+          this.arrayToFilter = []
+          if( date1.getTime() === date2.getTime() ) {
+            this.dateInputValue = `${dateFirst}`
+          } else {
+            this.dateInputValue = `${dateFirst} - ${dateEnd}`
+          }
+
+          this.startDate = dateFirst
+          this.endDate = dateEnd
+
+          let dayRoutes = await axios.get(
+              `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}&type_id[]=9&lang=${this.$i18n.locale}`);
+          //console.log(dayRoutes.data.routes)
+          this.testFetch = dayRoutes.data.routes;
+          Object.entries(this.testFetch).forEach(item => {
+            this.arrayToFilter.push({
+              date: item[0],
+              routes: item[1],
+            })
+          })
+          this.showRoutes = this.arrayToFilter
+          //console.log("picker selected showRoutes = ",this.showRoutes);
+        });
+      },
+    });
+  },
+  beforeDestroy() {
+    //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
+    this.$refs.filterModal.destroyModal();
+    clearInterval(this.interval)
   },
   async fetch() {
+    let today = new Date()
+    let now = today.toISOString().split('T')[0]
+    this.startDate = now
     let seoDataResult = await axios.get(
         `${this.$config.baseURL}pages?ref=/trams/schedule/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let trolleyRoutes = await axios.get(
-        `${this.$config.baseURL}tramschedule?lang=${this.$i18n.locale}`,
-    )
-    this.tableInfos = (trolleyRoutes.data.result['0'])
-    this.tableHeads = this.tableInfos.points;
-    this.tableFlights = this.tableInfos.flights;
-    this.tableFlightsPart1 = this.tableInfos.flights.filter((item) => item.weekdays === "1,2,3,4,5,6,7");
-    this.tableFlightsPart2 = this.tableInfos.flights.filter((item) => item.weekdays === "4,5,6,7");
+    let dayRoutes = await axios.get(
+        `${this.$config.baseURL}routes?date=${now}&type_id[]=9&lang=${this.$i18n.locale}`);
+    this.testFetch = dayRoutes.data.routes;
+    let setCategories = new Set()
+    let setPorts = new Set()
+    let setArrival = []
+    let setCheckedCategories = new Set()
+    let formattedFetch = Object.entries(this.testFetch)
+    formattedFetch.forEach(item => {
+      item[1].forEach(route => {
+        setCategories.add(route.journeyType)
+        setPorts.add(route.placeName)
+      })
+    })
+    setArrival = formattedFetch.map(item => {
+      return {
+        date: item[0],
+        routes: item[1]
+      }
+    })
+    this.setCategories = setCategories
+    this.arrivalPlaces = setPorts
+    this.arrayToFilter = setArrival;
+    this.checkedCategories = Array.from(setCheckedCategories)
+    this.showRoutes = this.arrayToFilter
+    this.isLoading = false;
+
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'trams-schedule',
 }
 </script>
 
 <style scoped>
-/*.buy-ticket-shedule_trams__headline__p1 {
-  font-size: 12px;
-  font-weight: 600;
+.buy-ticket {
+  background: #fff;
+  position: relative;
+  z-index: 120;
 }
-.buy-ticket-shedule_trams__headline__p1 td{
-  width: 12.5%;
-  min-width: 12.5%;
+.buy-ticket__item {
+  max-width: 330px;
 }
-
-.buy-ticket-shedule_trams__headline__p2-items {
-  font-size: 10px;
-  font-weight: 600;
-  color: #858585;
-}
-.buy-ticket-shedule_trams__headline__p2-items td {
-  padding-top:20px;
-  padding-bottom: 35px;
-}
-
-.buy-ticket-shedule_trams__headline__p2-items td:nth-child(odd) {
-  padding-left:0;
-}
-
-.buy-ticket-shedule_trams__headline__p2-items td:nth-child(even) {
-  padding-left:13px;
-}
-
-
-.buy-ticket-shedule_trams__info td{
-  padding: 11px 0 11px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.buy-ticket-shedule_trams__info td:nth-child(even){
-  padding: 11px 0 11px 13px;
-}
-
-.buy-ticket-shedule_trams__info td:first-child{
-  padding: 11px 0 11px 13px;
-}
-
-.buy-ticket-shedule_trams__info td:last-child{
-  padding-left: 50px;
-}
-
 .button_ticket {
-  height: 35px;
-  font-size: 10px;
-  min-width: 166px;
-  padding: 0;
-}
-
-.bg-gray {
-  background: #f4f5f6;
-}
-.bg-white {
-  background-color: #fff;
-}
-
-table {
-  border-collapse: collapse;
-}
-.table-section {
-  margin: 100px 0 130px;
-}
-
-.buy-ticket-shedule__container_trams .buy-ticket {
-  max-width: 250px;
-}*/
-.buy-ticket-shedule__container_trams .buy-ticket {
-  margin-top: -36px;
-  max-width: 800px;
   margin-left: auto;
-  margin-right: auto;
 }
-
-.name-station-text {
-  font-weight: 600;
-  color: #00c1f3;
-  text-transform: capitalize;
-  font-size: 12px;
-  text-align: center;
-  background-color: #FFFFFF;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.uk-table td:nth-child(1) {
+  width: 26%;
 }
-
-.inout-text {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: capitalize;
-  color: #000000;
-  text-align: center;
-  padding: 10px 4px;
+.uk-table td:nth-child(2) {
+  width: 22.7%;
 }
-
-.table-shedule {
-  background-color: #e7f0f7;
-
+.uk-table td:nth-child(3) {
+  width: 10.1%;
 }
-
-.body-table {
-  margin-top: 0;
-}
-
-.head-table-time {
-  background-color: #3b4790;
-  color: #fff;
-  font-size: 14px;
-  padding: 10.5px 45px;
-  font-weight: 700;
-  margin-top: 20px;
-}
-
-.buy-ticket-shedule_trams-info__grid {
-  margin-left: 0px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-top: 20px;
-  column-gap: 56px;
-  row-gap: 20px;
-}
-
-.buy-ticket-shedule_trams-info__grid span:nth-child(1) {
-  color: #00c1f3;
-}
-
-
-.table-row:nth-child(odd):hover {
-  background-color: #eff4f8;
-}
-
-.table-row:nth-child(odd) {
-
-  background-color: #fff;
-}
-
-.table-row:nth-child(even):hover {
-  background-color: #eff4f8;
-}
-
-.table-row:nth-child(even) {
-  background-color: #e7f0f7;
-}
-
-.table-row .inout-text {
-  font-size: 14px;
-  font-weight: 400;
-
-}
-
-.table-row {
-  cursor: default;
-  padding: 10px 0;
-  border-bottom: 1px solid #e7e7e7;
-}
-
-.item-center {
-  align-items: center;
-}
-
-.column-width {
-  width: auto;
-  min-width: 200px;
-}
-
-.child-two-column {
-  padding: 0 30px;
-}
-
-.width2item {
-  width: 40%;
-}
-
-.width3item {
-  width: 50%;
-}
-
-.width4item {
-  width: 60%;
-}
-
-.width5item {
-  width: 70%;
-}
-
-.width6item {
-  width: 80%;
-}
-
-.width7item {
-  width: 100%;
-}
-
-@media (min-width: 320px) {
-  .child-two-column {
-    padding: 0 5px;
-  }
+.buy-ticket__item1_arr {
+  display: none;
 }
 </style>
 
