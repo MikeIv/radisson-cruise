@@ -414,6 +414,7 @@
         </div>
       </section>
       <ChildInfo />
+      <DefaultModal :text="$t('repair_port_modal')"/>
 <!--      <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
         <div class="uk-modal-dialog uk-margin-auto-vertical">
           <div class="uk-modal-body uk-position-relative">
@@ -426,6 +427,7 @@
           </div>
         </div>
       </div>-->
+
     </client-only>
   </div>
 </template>
@@ -443,6 +445,7 @@ import 'moment/locale/zh-cn'
 import UIkit from "uikit";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 import {mapActions, mapGetters} from "vuex";
+import DefaultModal from "../../components/modals/DefaultModal.vue";
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -465,6 +468,7 @@ export default {
     }
   },
   components: {
+    DefaultModal,
     ChildInfo,
     Breadcrumbs,
     Header,
@@ -870,19 +874,23 @@ export default {
     openChildModal() {
       UIkit.modal('#childInfo').show();
     },
+
+    callModal(id) {
+      UIkit.modal(id).show();
+    }
   },
   mounted() {
     this.getRefundDoc()
   },
   updated() {
-    /*this.$nextTick(() => {
-      UIkit.modal('#emergency').show();
-    }, 2000)*/
-    /*setTimeout(() => {
-      this.$nextTick(() => {
-        UIkit.modal('#emergency').show();
-      })
-    }, 2000)*/
+    // this.$nextTick(() => {
+    //   this.callModal('#defaultModal')
+    // }, 2000)
+    // setTimeout(() => {
+    //   this.$nextTick(() => {
+    //     this.callModal('#defaultModal')
+    //   })
+    // }, 2000)
   },
 
   middleware: [
@@ -916,11 +924,13 @@ export default {
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
-    /*setTimeout(() => {
+    setTimeout(() => {
       this.$nextTick(() => {
-        UIkit.modal('#emergency').show();
+        if(this.routeData.placeId === 2) {
+          this.callModal('#defaultModal')
+        }
       })
-    }, 2000)*/
+    }, 2000)
   },
   fetchOnServer: false,
   fetchKey: 'yacht-ticket',
