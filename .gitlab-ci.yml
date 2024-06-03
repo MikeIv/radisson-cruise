@@ -142,6 +142,7 @@ test dev site:
   only:
     refs:
       - dev
+  when: manual
   tags:
     - docker
     - $CI_JOB_STAGE
