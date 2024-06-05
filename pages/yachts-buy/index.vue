@@ -243,6 +243,7 @@
                     <b> {{ routeData.classData?.name }} </b>
                   </p>
                   <div v-html="routeData.classData?.content"></div>
+                  <div v-html="routeData.classData?.ticketwarn"></div>
                   <div v-if="routeData.classData?.slides && routeData.classData?.slides.length > 0" class="buy-ticket-form-hall__gallery" uk-lightbox="">
                     <div v-for="img in routeData.classData.slides">
                       <a :href="$config.baseSiteURL + img" class="gallery_card uk-position-relative ">
@@ -414,7 +415,7 @@
         </div>
       </section>
       <ChildInfo />
-      <DefaultModal :text="$t('repair_port_modal')"/>
+      <DefaultModal v-if="routeData.classData?.ticketwarn" :text="routeData.classData?.ticketwarn"/>
 <!--      <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
         <div class="uk-modal-dialog uk-margin-auto-vertical">
           <div class="uk-modal-body uk-position-relative">
@@ -926,7 +927,7 @@ export default {
     }
     setTimeout(() => {
       this.$nextTick(() => {
-        if(this.routeData.placeId === 2) {
+        if(this.routeData.classData?.ticketwarn) {
           this.callModal('#defaultModal')
         }
       })
