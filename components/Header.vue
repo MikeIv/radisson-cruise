@@ -148,7 +148,7 @@
         } else if(this.rent) {
           return `top: 150; animation: uk-animation-slide-top; bottom:#rent_nav`
         } else {
-          return `top: 150; animation: uk-animation-slide-top;`
+          return `top: 250; start: 250; animation: uk-animation-slide-top;`
         }
       },
     },
