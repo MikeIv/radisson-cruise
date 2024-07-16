@@ -144,11 +144,11 @@
       },
       classCheck() {
         if(this.aboutPage) {
-          return `top: 85; animation: uk-animation-slide-top; bottom:#about_tab`
+          return `top: 150; animation: uk-animation-slide-top; bottom:#about_tab`
         } else if(this.rent) {
-          return `top: 85; animation: uk-animation-slide-top; bottom:#rent_nav`
+          return `top: 150; animation: uk-animation-slide-top; bottom:#rent_nav`
         } else {
-          return `top: 85; animation: uk-animation-slide-top;`
+          return `top: 150; animation: uk-animation-slide-top;`
         }
       },
     },
