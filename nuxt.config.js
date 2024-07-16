@@ -244,28 +244,29 @@ export default {
       {
         code: 'en',
         iso: 'en-US',
-        name: 'EN',
+        name: 'ENG',
         file: 'en-US.js',
         domain: !process.env.LANG_EN ? process.env.LANG_RU : process.env.LANG_EN,
         active: !!process.env.LANG_EN
       },
-      /*{
-        code: 'cn',
+      {
+        code: 'zh',
         iso: 'zh-CN',
-        name: 'CN',
+        name: '中文',
         file: 'zh-CN.js',
-        domain: !process.env.LANG_ZN ? process.env.LANG_RU : process.env.LANG_ZN,
-        active: !!process.env.LANG_ZN
-      },*/
+        domain: !process.env.LANG_ZH ? process.env.LANG_RU : process.env.LANG_ZH,
+        active: !!process.env.LANG_ZH
+      },
       {
         code: 'ru',
         iso: 'ru-RU',
-        name: 'RU',
+        name: 'РУС',
         file: 'ru-RU.js',
         domain: process.env.LANG_RU,
         active: !!process.env.LANG_RU
       },
     ],
+
   },
 
 
