@@ -196,7 +196,7 @@ export default {
       seoData: {},
       showRoutes: [],
       checkedArrival: [],
-      arrivalPlaces: ['Парк Горького'],
+      arrivalPlaces: ['Парк Горького', 'Лужники - Центральный'],
       checkedCategories: [],
       routesCategories: ['Основной зал', "Ройал класс", "Первый класс", "Ervin Река"],
       dateStart: new Date().toISOString().split('T')[0],
@@ -538,12 +538,28 @@ export default {
               `${this.$config.baseURL}routes?date=${dateFirst}&end=${dateEnd}&type_id[]=9&lang=${this.$i18n.locale}`);
           //console.log(dayRoutes.data.routes)
           this.testFetch = dayRoutes.data.routes;
-          Object.entries(this.testFetch).forEach(item => {
-            this.arrayToFilter.push({
-              date: item[0],
-              routes: item[1],
+
+          let setCategories = new Set()
+          let setPorts = new Set()
+          let setArrival = []
+          let setCheckedCategories = new Set()
+          let formattedFetch = Object.entries(this.testFetch)
+          formattedFetch.forEach(item => {
+            item[1].forEach(route => {
+              setCategories.add(route.journeyType)
+              setPorts.add(route.placeName)
             })
           })
+          setArrival = formattedFetch.map(item => {
+            return {
+              date: item[0],
+              routes: item[1]
+            }
+          })
+          this.setCategories = setCategories
+          this.arrivalPlaces = setPorts
+          this.arrayToFilter = setArrival;
+
           this.showRoutes = this.arrayToFilter
           //console.log("picker selected showRoutes = ",this.showRoutes);
         });
