@@ -244,6 +244,7 @@
     <div
         class="uk-flex uk-flex-wrap uk-child-width-1-2@l uk-grid-match contact__grid uk-scrollspy-inview uk-animation-fade"
         uk-scrollspy="cls: uk-animation-fade; delay: 400"
+        v-if="portsInfo[0]"
     >
       <div class="contact__grid__info">
         <div class="contact-info">
@@ -462,6 +463,7 @@
     <div
         class="uk-flex uk-flex-wrap uk-child-width-1-2@l uk-grid-match contact__grid uk-scrollspy-inview uk-animation-fade"
         uk-scrollspy="cls: uk-animation-fade; delay: 400"
+        v-if="portsInfo[1]"
     >
       <div class="contact__grid__map">
         <div class="guide_map" v-if="showMap">
