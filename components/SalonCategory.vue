@@ -125,6 +125,6 @@ export default {
 .category-cabin-section {
   padding: 100px 0;
   background: #fff;
-  min-height: 500px;
+  //min-height: 500px;
 }
 </style>
