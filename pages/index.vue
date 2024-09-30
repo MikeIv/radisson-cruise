@@ -83,7 +83,7 @@
                 </div>
               </nuxt-link>
             </div>
-            <div class="uk-width-auto@s block-tikets">
+<!--            <div class="uk-width-auto@s block-tikets">
               <nuxt-link :to="localePath('/trams/schedule/')" class="header-ticket transition">
                 <div class="font-29 text-upper">
                   <b>{{ $t('nav.trams') }}</b>
@@ -94,7 +94,7 @@
                   </div>
                 </div>
               </nuxt-link>
-            </div>
+            </div>-->
           </div>
         </div>
         <!--          <form class="buy-ticket uk-hidden" autocomplete="off">
