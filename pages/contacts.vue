@@ -334,6 +334,7 @@
           <client-only placeholder="Loading...">
             <yandex-map
               ymap-class="map"
+              @map-was-initialized="onMapMounted"
               :settings="settings"
               :coords="coords1"
               :zoom="zoom1"
@@ -870,8 +871,14 @@ export default {
     async onMapMounted() {
       //const loadYmap = await loadYmap(this.settings);
       loadYmap(this.settings);
-      const map1 = this.$refs.map1.myMap;
-      const map2 = this.$refs.map2.myMap;
+      let map1
+      let map2
+      if(this.$refs.map1) {
+        map1 = this.$refs.map1.myMap;
+      }
+      if(this.$refs.map2) {
+        map2 = this.$refs.map2.myMap;
+      }
 
       if (window.innerWidth < 640) {
         let control = map1.controls.get('routePanelControl');
