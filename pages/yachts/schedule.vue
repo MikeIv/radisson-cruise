@@ -836,7 +836,7 @@ export default {
       numberOfMonths: 2,
       numberOfColumns: 2,
       minDate: new Date().setDate(new Date().getDate() - 0),
-      maxDate: new Date().setDate(new Date().getDate() + 60),
+      maxDate: new Date().setDate(new Date().getDate() + 90),
       showTooltip: false,
     }
     // console.log("Elements = ",elements);
