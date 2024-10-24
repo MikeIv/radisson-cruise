@@ -834,14 +834,18 @@ body {
 
 .scheme_item23 {
   position: absolute;
-  left: 79%;
+  left: 69%;
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  top: 37%;
+  top: 27%;
   display: flex;
   align-items: center;
   //transform: translateX(-50%)
+}
+.scheme_item23 div{
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .scheme_item23 svg {
