@@ -25,14 +25,14 @@
                   </span>
                 </div>
               </div>-->
-              <div>
+<!--              <div>
                 <div class="type-yacht-short">
                   <svg-icon class="icon" name="cat_room"/>
                   <span>
                     {{ $t('yacht_type') }}:  {{ $t('yacht_all') }}
                   </span>
                 </div>
-              </div>
+              </div>-->
             </div>
             <div v-if="isSlides" class="uk-position-relative yacht__slider uk-slider uk-slider-container" tabindex="-1" uk-slider="">
               <ul class="uk-slider-items uk-flex" uk-lightbox="">
