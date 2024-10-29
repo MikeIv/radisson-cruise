@@ -10,7 +10,7 @@
           <ul class="">
             <li v-for="locale in availableLocales"
                 :key="locale.code">
-              <a :href="switchLocalePath(locale.code)">
+              <a :href="switchLocalePath(locale.code).replace('?', '/?')">
                 {{ locale.name }}
               </a>
             </li>
@@ -31,7 +31,6 @@
 <script>
 import SideNav from "./SideNav";
 // import HeaderInner from "./HeaderInner";
-import UIkit from "uikit";
 export default {
   name: 'Header',
   props: {},
@@ -43,7 +42,12 @@ export default {
   },
 
   computed: {
-
+    routeQuery() {
+      if(!this.$route.query) return ''
+      return Object.keys(this.$route.query)
+          .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(this.$route.query[key])}`)
+          .join('&')
+    },
     isActive() {
       return this.$store.state.showNav
     },
@@ -78,10 +82,57 @@ export default {
 .header_top_back.uk-sticky-fixed {
   background: #1d2240;
 }
-
+.language_drop {
+  background: #1d2240;
+}
 .language_drop a:hover {
   background: #00c1f3;
   color: #fff;
   text-decoration: none;
+}
+
+.language {
+  flex-direction: column;
+}
+
+.language svg {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 639px) {
+  .header__top_item4-container, .language-container, .header_top_menu {
+    width: 100%;
+  }
+  .language-container, .header_top_menu {
+    width: 50px;
+    height: 50px;
+  }
+  .language {
+    height: 50px;
+  }
+  .language svg {
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 428px) {
+  .language-container, .header_top_menu, .language{
+    width: 40px;
+    height: 40px;
+  }
+  .language svg {
+    margin-left: 2px;
+  }
+  .language_drop {
+    min-width: auto;
+    width: 40px;
+  }
+  .language_drop a {
+    padding: 0;
+    height: 40px;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>

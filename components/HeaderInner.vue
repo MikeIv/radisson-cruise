@@ -1,8 +1,5 @@
 <template>
   <div>
-<!--    <img :src="require(`~/assets/img/${fileName}`)" :data-src="require(`~/assets/img/${fileName}`)" class="img_cover" alt="">-->
-<!--    <video v-if="video" :src="require(`~/assets/video/${videoName}`)" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>-->
-<!--    <div v-if="video" class="uk-overlay-default uk-position-cover video-overlay"></div>-->
     <div class="uk-container uk-position-relative">
       <div class="heading_white">
         <Breadcrumbs :linkName="linkName"/>
@@ -17,34 +14,8 @@
             <input class="select-styled litepicker" id="ticket_trolley" type="text"  placeholder="Выбрать дату" >
             <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
           </div>
-          <!--          <div class="buy-ticket__item buy-ticket__item_switch-trams">
-            <div class="switch-container">
-              <div class="switch-name" :class="{'active': !isActive}">На 24 часа</div>
-              <label class="switch-round">
-                <input type="checkbox" @click="isActive = !isActive">
-                <span class="switch-slider"></span>
-              </label>
-              <div class="switch-name" :class="{'active': isActive}">На 48 часов</div>
-            </div>
-          </div>-->
-          <!-- <div class="buy-ticket__item">
-            <svg class="icon buy-ticket__item_icon2">
-              <use xlink:href="#passengers"></use>
-            </svg>
-            <div class="input input-js ">
-              <select class="select-hidden" select_name="Выбрать причал">
-                <option value=""></option>
-                <option value="Гостиница украина">Гостиница «Украина»</option>
-                <option value="Воробьевы горы">Воробьевы горы</option>
-                <option value="Лужники">Лужники</option>
-                <option value="Парк Горького">Парк Горького</option>
-                <option value="Зарядье">Зарядье</option>
-              </select>
-            </div>
-          </div> -->
           <BuyTicketBtn link="/upload/docs/20230616_160103_648c5d0f0fc4b.pdf"/>
         </form>
-
       </div>
     </div>
   </div>
@@ -96,7 +67,7 @@ export default {
   computed:{
     choiseTime() {
       if (this.choisenTime === null) {
-        return 'Время посадки'
+        return this.$i18n.t('select_time')
       } else {
         return this.choisenTime
       }

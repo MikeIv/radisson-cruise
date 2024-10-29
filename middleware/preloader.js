@@ -7,6 +7,8 @@ export default function ({ app, route }) {
             const preloader = new Vue(PreloaderMain).$mount();
             document.body.appendChild(preloader.$el);
             preloader.start();
+        } else if(route.path === '/yachts/schedule/') {
+            return;
         } else {
             const preloader = new Vue(PreloaderYacht).$mount();
             document.body.appendChild(preloader.$el);

@@ -33,7 +33,6 @@
 <script>
 import Header from "../../components/Header";
 import CertificateCard from "../../components/tickets/CertificateCard";
-import axios from "axios";
 import Breadcrumbs from "../../components/Breadcrumbs.vue";
 export default {
   name: "index",
@@ -82,10 +81,10 @@ export default {
   },
   async fetch() {
     try {
-      let seoDataResult = await axios.get(
+      let seoDataResult = await this.$axios(
           `${this.$config.baseURL}pages?ref=/certificates/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
-      let blocks = await axios.get(
+      let blocks = await this.$axios(
           `${this.$config.baseURL}certificates?lang=${this.$i18n.locale}`);
       this.cardsFetch = blocks.data
     } catch(error) {

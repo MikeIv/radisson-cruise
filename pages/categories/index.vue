@@ -63,12 +63,12 @@
 </template>
 
 <script>
-import SalonCategory from "../components/SalonCategory";
-import Header from "../components/Header";
-import Breadcrumbs from "../components/Breadcrumbs";
+import SalonCategory from "../../components/SalonCategory.vue";
+import Header from "../../components/Header.vue";
+import Breadcrumbs from "../../components/Breadcrumbs.vue";
 import axios from "axios";
-import FilterMobile from "../components/modals/Filter";
-import CategoryCabinFilter from "../components/modals/CategoryCabinFilter";
+import FilterMobile from "../../components/modals/Filter.vue";
+import CategoryCabinFilter from "../../components/modals/CategoryCabinFilter.vue";
 export default {
   name: "Categories",
   components: {CategoryCabinFilter, Breadcrumbs, Header, SalonCategory,FilterMobile},
@@ -223,10 +223,10 @@ export default {
     this.$refs.filterModal.destroyModal();
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/categories/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let blocks = await axios.get(
+    let blocks = await this.$axios(
         `${this.$config.baseURL}salons?lang=${this.$i18n.locale}`);
     this.categoriesFetch = blocks.data
   },

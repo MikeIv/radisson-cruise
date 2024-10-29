@@ -1,9 +1,9 @@
 <template>
   <div>
     <SideNav ref="slideNav"/>
-    <Nuxt keep-alive :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'trams', 'trams-main'] }" />
-    <!--    <Kiev />-->
-    <!--    <SubscribeNews />-->
+    <Nuxt keep-alive
+          :keep-alive-props="{ exclude: ['schedule', 'yachts-buy', 'news', 'index', 'NewsBar', 'trams', 'trams-main'] }"/>
+    <ScheduleCalendar v-if="isCalendarShown"/>
     <keep-alive>
       <Footer/>
     </keep-alive>
@@ -11,35 +11,46 @@
 </template>
 
 <script>
-  import Header from '~/components/Header.vue';
-  import Footer from '~/components/Footer.vue';
-  import Kiev from '../components/Kiev';
-  import SubscribeNews from '../components/SubscribeNews';
-  import SideNav from "../components/SideNav";
-  import UIkit from 'uikit';
-  import PreloaderYacht from '~/components/PreloaderYacht.vue'
-  import PreloaderMain from "../components/PreloaderMain.vue";
+import Header from '~/components/Header.vue';
+import Footer from '~/components/Footer.vue';
+import Kiev from '../components/Kiev';
+import SubscribeNews from '../components/SubscribeNews';
+import SideNav from "../components/SideNav";
+import UIkit from 'uikit';
+import PreloaderYacht from '~/components/PreloaderYacht.vue'
+import PreloaderMain from "../components/PreloaderMain.vue";
+import ScheduleCalendar from "../components/ScheduleCalendar.vue";
+import {mapActions, mapGetters} from "vuex";
 
-  export default {
-    name: "default",
-    components: {
-      PreloaderYacht,
-      PreloaderMain,
-      SideNav,
-      Kiev,
-      SubscribeNews,
-      Header,
-      Footer,
-    },
-    data() {
-      return {
-        isLoading: true,
-      }
-    },
-    computed: {
-      showNav () {
+export default {
+  name: "default",
+  components: {
+    ScheduleCalendar,
+    PreloaderYacht,
+    PreloaderMain,
+    SideNav,
+    Kiev,
+    SubscribeNews,
+    Header,
+    Footer,
+  },
+  data() {
+    return {
+      isLoading: true,
+    }
+  },
+  computed: {
+    ...mapGetters(['isCalendarShowing']),
+    showNav() {
       return this.$store.state.showNav
     },
+    isCalendarShown() {
+      if (this.$route.path === '/') {
+        return this.isCalendarShowing
+      } else {
+        return this.$route.path !== '/yachts/schedule/' && this.$route.path !== '/yachts-buy/' && this.$route.name !== `categories-name` && this.$route.path !== '/trams/schedule/'
+      }
+    }
   },
   methods: {
     closeOldSite() {
@@ -47,7 +58,7 @@
       this.$store.commit('changeOldSiteState', false)
     },
   },
-    watch: {
+  watch: {
 
     $route(to, from) {
       this.$store.commit('changeNavState', false)
@@ -59,41 +70,41 @@
       console.log('route change from', from)*/
     },
   },
-    /*head() {
-      const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
-      return {
-        title: 'cruise.ru',
-        htmlAttrs: {
-          ...i18nHead.htmlAttrs,
-        },
-        meta: [
-          { charset: 'utf-8' },
-          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-          { hid: 'description', name: 'description', content: '' },
-          { name: 'format-detection', content: 'telephone=no' },
-          ...i18nHead.meta,
-        ],
-        link: [
-          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-          ...i18nHead.link,
-        ],
-      };
-    },*/
-    mounted() {
-      /*console.log('mounted layout');*/
-      this.isLoading = false;
-      const yachtSlider = document.querySelectorAll('.yacht__slider');
-      yachtSlider.forEach(element => {
-        //Счетчик слайда яхт
-        UIkit.util.on(element, 'itemshown', function(e) {
-          // $('#yacht__slider1 .slider_number').text(e.detail[0].index + 1);
-          element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
-        });
+  /*head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+    return {
+      title: 'cruise.ru',
+      htmlAttrs: {
+        ...i18nHead.htmlAttrs,
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
+        { name: 'format-detection', content: 'telephone=no' },
+        ...i18nHead.meta,
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        ...i18nHead.link,
+      ],
+    };
+  },*/
+  mounted() {
+    /*console.log('mounted layout');*/
+    this.isLoading = false;
+    const yachtSlider = document.querySelectorAll('.yacht__slider');
+    yachtSlider.forEach(element => {
+      //Счетчик слайда яхт
+      UIkit.util.on(element, 'itemshown', function (e) {
+        // $('#yacht__slider1 .slider_number').text(e.detail[0].index + 1);
+        element.querySelector('.slider_number').textContent = (('0' + (e.detail[0].index + 1)).slice(-2));
       });
+    });
 
-      // preloader on loading for every page in nuxt
-    },
-  };
+    // preloader on loading for every page in nuxt
+  },
+};
 </script>
 
 <style scoped>
@@ -126,6 +137,7 @@
   animation-fill-mode: both;
   animation-name: op2;
 }
+
 #preloader2.hiddenBlock {
   display: none;
 }
@@ -314,8 +326,7 @@
 }
 
 .preloader2_bottom {
-  //font-family: cowor, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color: #fff;
+//font-family: cowor, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #fff;
   position: absolute;
   top: 21%;
   left: 7%;

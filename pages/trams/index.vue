@@ -68,7 +68,7 @@
 
       v-if="viewSections.scheme && schemePiers.length > 0"
     />-->
-    <Scheme :button-link="'/trams/schedule/'"
+    <Scheme :button-link="tramsDoc"
             :points="schemePiers"
             :active-routes="dataRoutes"
             :active-route-prop="activeRouteProp"
@@ -141,9 +141,10 @@
 
         </div>
         <div class="trams-shutdown__bottom">
-          <nuxt-link class="uk-button uk-button-default " to="/trams/schedule/">
+          <a class="uk-button uk-button-default " :href="tramsDoc">
             <span>{{ $t('schedule') }}</span>
-          </nuxt-link>
+          </a>
+
         </div>
       </div>
     </section>
@@ -633,18 +634,18 @@ export default {
     }
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/trams/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let tramBlockData = await axios.get(
+    let tramBlockData = await this.$axios(
         `${this.$config.baseURL}blocks?page=riverbus&lang=${this.$i18n.locale}`);
     this.tramBlocks = tramBlockData.data.shift()
     this.portBlocks = tramBlockData.data
-    let features = await axios.get(
+    let features = await this.$axios(
         `${this.$config.baseURL}advantages?lang=${this.$i18n.locale}`);
     this.features = features.data
     /*this.features = this.featuresLocal*/
-    let getDataRoutes = await axios.get(
+    let getDataRoutes = await this.$axios(
         `${this.$config.baseURL}maproutes?type=trams&lang=${this.$i18n.locale}`);
 
     this.dataRoutes = getDataRoutes.data.routes
@@ -679,7 +680,7 @@ export default {
     });
 
     this.dataPiers = mapPiersData;*/
-    let tramsVariantsData = await axios.get(
+    let tramsVariantsData = await this.$axios(
         `${this.$config.baseURL}riverbus?lang=${this.$i18n.locale}`);
 
     this.tramsVariants = tramsVariantsData.data.result;

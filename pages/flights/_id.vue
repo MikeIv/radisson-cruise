@@ -249,12 +249,12 @@ export default {
   },*/
   async fetch() {
     try {
-      let seoDataResult = await axios.get(
+      let seoDataResult = await this.$axios(
           `${this.$config.baseURL}pages?ref=/flights/${this.$route.params.id}/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
-      const news = await axios.get(
+      const news = await this.$axios(
           `${this.$config.baseURL}new?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
-      const recentNews = await axios.get(
+      const recentNews = await this.$axios(
           `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`);
       this.currentNew = news.data.result
       this.recentNews = recentNews.data.news.slice(0, 2)

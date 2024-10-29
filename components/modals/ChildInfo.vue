@@ -13,7 +13,7 @@ export default {
   },
   async fetch() {
     try {
-      const kidsPopupData = await axios.get(
+      const kidsPopupData = await this.$axios(
           `${this.$config.baseURL}varyelements?code=kids_popup&lang=${this.$i18n.locale}`)
       this.kidsPopup = kidsPopupData.data?.result?.kids_popup?.content
     } catch(error) {

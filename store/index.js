@@ -8,6 +8,7 @@ export const state = () => ({
     tramsDoc: '/upload/docs/20230616_160103_648c5d0f0fc4b.pdf',
     refundDoc: null,
     certDoc: null,
+    isCalendarShowing: true,
 })
 
 export const getters = {
@@ -22,6 +23,7 @@ export const getters = {
     tramsDoc: (state) => state.tramsDoc,
     refundDoc: (state) => state.refundDoc,
     certDoc: (state) => state.certDoc,
+    isCalendarShowing: (state) => state.isCalendarShowing,
 }
 
 export const mutations = {
@@ -45,6 +47,9 @@ export const mutations = {
     },
     setCertDoc(state, doc) {
         state.certDoc = doc
+    },
+    setCalendarState(state, payload) {
+        state.isCalendarShowing = payload
     }
 }
 
@@ -60,18 +65,22 @@ export const actions = {
         commit('setUtilInfo', value);
     },
 
+    changeCalendarState({commit}, value) {
+        commit('setCalendarState', value)
+    },
+
     async getActualDoc({commit}) {
-        const documentsData = await axios.get(
+        const documentsData = await this.$axios(
             `${this.$config.baseURL}docs?id=5&lang=${this.$i18n.locale}`);
         commit('setTramsDoc', documentsData.data[0].doc);
     },
     async getRefundDoc({commit}) {
-        const documentsData = await axios.get(
+        const documentsData = await this.$axios(
             `${this.$config.baseURL}docs?id=3&lang=${this.$i18n.locale}`);
         commit('setRefundDoc', documentsData.data[0].doc);
     },
     async getCertDoc({commit}) {
-        const documentsData = await axios.get(
+        const documentsData = await this.$axios(
             `${this.$config.baseURL}docs?id=6&lang=${this.$i18n.locale}`);
         commit('setCertDoc', documentsData.data[0].doc);
     },

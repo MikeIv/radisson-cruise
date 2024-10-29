@@ -128,10 +128,10 @@ export default {
     }
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/menu/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let menus = await axios.get(
+    let menus = await this.$axios(
       `${this.$config.baseURL}menus?lang=${this.$i18n.locale}`);
     //console.log(menus.data)
     this.menuFetch = menus.data
