@@ -542,16 +542,6 @@ export default {
       let news;
       let urlNewsQuery = `${this.$config.baseURL}news?page=${page}&lang=${this.$i18n.locale}`;
 
-      if(typeof +page !== 'number') {
-        return
-      }
-      if(!this.newsCategories.map(item => item.grp).includes(grp)) {
-        const query = Object.assign({}, this.$route.query);
-        delete query.grp;
-        this.$router.replace({ query });
-        return
-      }
-
       if(grp !== 'all' && grp !== undefined) {
         if(month !== null && year === null) {
           urlNewsQuery = `${this.$config.baseURL}news?month=${month}&page=${page}&grp=${grp}&lang=${this.$i18n.locale}`;
@@ -596,7 +586,7 @@ export default {
       } */
       //console.log("page = " ,page);
       //console.log("urlNewsQuery = " ,urlNewsQuery);
-      news = await axios.get(urlNewsQuery);
+      news = await this.$axios(urlNewsQuery);
 
 
       //console.log(news.data)
@@ -715,15 +705,6 @@ export default {
       this.setPages();
     },
     '$route.query.grp'() {
-      if(typeof +this.$route.query.page !== 'number') {
-        return
-      }
-      if(!['all', 'article', 'action', 'event'].includes(this.$route.query.grp)){
-        const query = Object.assign({}, this.$route.query);
-        delete query.grp;
-        this.$router.replace({ query });
-        return
-      }
       this.fetchNews(this.$route.query.page, this.$route.query.grp)
       switch (this.$route.query.grp) {
         case 'all':
@@ -746,25 +727,12 @@ export default {
     deep: true
   },
 
-  validate({ query }) {
-    if(query.grp) {
-      return ['all', 'article', 'action', 'event'].includes(query.grp);
-    } else if(query.page) {
-      return !isNaN(query.page)
-    } else {
-      return true
-    }
-  },
-
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/news/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
     let urlNewsQuery = `${this.$config.baseURL}news?page=1&lang=${this.$i18n.locale}`;
     if(this.$route.query.page) {
-      if(typeof +this.$route.query.page !== 'number') {
-        return
-      }
       this.currentPage = +this.$route.query.page
       
     } else {
@@ -772,16 +740,13 @@ export default {
     }
 
     if(this.$route.query.grp && this.$route.query.grp !== 'all') {
-      if(!['all', 'article', 'action', 'event'].includes(this.$route.query.grp)) {
-        return
-      }
       this.currentGrp = this.$route.query.grp
       urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}&grp=${this.currentGrp}&lang=${this.$i18n.locale}`;
     } else if(this.$route.query.grp === 'all'){
       this.currentGrp = 'all'
       urlNewsQuery = `${this.$config.baseURL}news?page=${this.currentPage}&lang=${this.$i18n.locale}`;
     }
-    let news = await axios.get(urlNewsQuery);
+    let news = await this.$axios(urlNewsQuery);
     this.currentNews = news.data.news
     this.currentPage = news.data.page
     this.paginationPages = news.data.pages

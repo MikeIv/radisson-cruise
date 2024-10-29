@@ -11,9 +11,6 @@
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
                 {{ $t('nav.yachts') }}
               </nuxt-link>
-<!--              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
-                {{ $t('nav.trams') }}
-              </nuxt-link>-->
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
                 {{ $t('nav.categories') }}
               </nuxt-link>
@@ -34,14 +31,14 @@
               <nuxt-link class="txt18 " to="/rules/" @click.native="closeNav">
                 {{ $t('nav.rules') }}
               </nuxt-link>
+              <nuxt-link class="txt18 " to="/refund/"  @click.native="closeNav">
+                {{ $t('refund.head') }}
+              </nuxt-link>
             </div>
             <div>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 {{ $t('nav.yachts_schedule') }}
               </nuxt-link>
-<!--              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
-                {{ $t('nav.trams_schedule') }}
-              </nuxt-link>-->
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                 {{ $t('nav.menu') }}
               </nuxt-link>
@@ -58,7 +55,7 @@
                 {{ $t('nav.contacts') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/news/403/" :prefetch="false" @click.native="closeNav">
-                Erwin.Река
+                {{ $t('erwin') }}
               </nuxt-link>
             </div>
           </div>
@@ -76,15 +73,6 @@
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                 {{ $t('nav.menu') }}
               </nuxt-link>
-<!--              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
-                {{ $t('nav.trams') }}
-              </nuxt-link>-->
-<!--              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
-                {{ $t('nav.trams_schedule') }}
-              </nuxt-link>-->
-              <!--<a class="txt18" :href="$config.baseSiteURL+tramsDoc" target="_blank">
-                {{ $t('nav.trams_schedule') }}
-              </a>-->
               <nuxt-link class="txt18 " to="/news/403/" :prefetch="false" @click.native="closeNav">
                 {{ $t('erwin') }}
               </nuxt-link>
@@ -124,6 +112,11 @@
                 <li>
                   <nuxt-link class="" to="/flights/" @click.native="closeNav">
                     {{ $t('nav.flights') }}
+                  </nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/refund/" @click.native="closeNav">
+                    {{ $t('refund.head') }}
                   </nuxt-link>
                 </li>
               </ul>

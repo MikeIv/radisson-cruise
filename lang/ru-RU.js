@@ -161,7 +161,7 @@ export default async (context, locale) => {
     welcome: 'Привет',
   };*/
 
-  return await axios.get(`${context.$config.baseURL}locale?lang=ru`).then((res) => {
+  return await context.$axios(`${context.$config.baseURL}locale?lang=ru`).then((res) => {
     return res.data.locale
   });
 };

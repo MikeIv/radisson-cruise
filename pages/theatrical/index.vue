@@ -94,16 +94,12 @@ export default {
     }
   },
   async fetch() {
-    try {
-      let seoDataResult = await axios.get(
-          `${this.$config.baseURL}pages?ref=/theatrical/&lang=${this.$i18n.locale}`);
-      this.seoData = seoDataResult.data.result
-      let blocks = await axios.get(
-          `${this.$config.baseURL}blocks?page=theatre&lang=${this.$i18n.locale}`);
-      this.theatricalBlocks = blocks.data
-    } catch(e) {
-      this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
-    }
+    let seoDataResult = await this.$axios(
+        `${this.$config.baseURL}pages?ref=/theatrical/&lang=${this.$i18n.locale}`);
+    this.seoData = seoDataResult.data.result
+    let blocks = await this.$axios(
+        `${this.$config.baseURL}blocks?page=theatre&lang=${this.$i18n.locale}`);
+    this.theatricalBlocks = blocks.data
   },
   fetchOnServer: true,
   fetchKey: 'theatrical',

@@ -1815,7 +1815,7 @@ header a:hover {
 .scheme__map_path-container {
   // max-width: 952px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   margin: 0 auto;
   .uk-inline {
     z-index: 3;
@@ -4684,6 +4684,13 @@ body {
     vertical-align: middle;
     padding: 12px 10px;
     &:nth-child(1) {
+      width: 20%;
+      padding-left: 40px;
+    }
+    &:nth-child(2) {
+      width: 20%;
+    }
+    /*&:nth-child(1) {
       padding-left: 45px;
       width: 21%;
       font-weight: 700;
@@ -4705,9 +4712,10 @@ body {
     }
     &:nth-child(7) {
       width: 13.8%;
-    }
+    } */
     &:last-child {
-      padding-right: 10px;
+      //padding-right: 10px;
+      width: 10%;
     }
   }
   th {
@@ -4759,7 +4767,7 @@ body {
     min-width: 120px;
   }
   svg {
-    cursor: pointer;
+    //cursor: pointer;
     width: 18px;
     height: 18px;
   }

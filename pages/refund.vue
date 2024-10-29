@@ -541,7 +541,7 @@ export default {
     async findTicket() {
       let onError
       try {
-        const response = await axios({
+        const response = await this.$axios({
           url: `${this.$config.baseURL}ticket?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
@@ -575,7 +575,7 @@ export default {
     async refundTicket() {
       let onError
       try {
-        const response = await axios({
+        const response = await this.$axios({
           url: `${this.$config.baseURL}refund?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
@@ -607,7 +607,7 @@ export default {
     async payTicket() {
       let payUrl
       let onError
-      await axios.post(`${this.$config.baseURL}ticket`,
+      await this.$axios.$post(`${this.$config.baseURL}ticket`,
           {
             code: this.ticketID,
             email: this.email
@@ -627,7 +627,7 @@ export default {
       let promoMsg
       let totalSumWithSale
       let promoStatus
-      await axios.post(`${this.$config.baseURL}amount`,
+      await this.$axios.$post(`${this.$config.baseURL}amount`,
           {
             journey: this.journey,
             promoCode: this.promoCode,
@@ -665,7 +665,7 @@ export default {
 
     async currentRoute() {
       try {
-        const data = await axios.get(
+        const data = await this.$axios(
             `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
         )
         //console.log(data)
@@ -685,11 +685,11 @@ export default {
 
   async fetch() {
     try {
-      let optionsData = await axios.get(
-          `${this.$config.baseURL}faq?lang=${this.$i18n.locale}`);
-      let seoDataResult = await axios.get(
+      let optionsData = await this.$axios(
+          `${this.$config.baseURL}faq?grp=return&lang=${this.$i18n.locale}`);
+      let seoDataResult = await this.$axios(
           `${this.$config.baseURL}pages?ref=/refund/&lang=${this.$i18n.locale}`);
-      const refundData = await axios.get(
+      const refundData = await this.$axios(
           `${this.$config.baseURL}varyelements?code[]=ticket_refund_message&code[]=ticket_not_found&lang=${this.$i18n.locale}`)
       this.ticketFound = refundData.data.result?.ticket_refund_message?.content
       this.ticketNotFound = refundData.data.result?.ticket_not_found?.content

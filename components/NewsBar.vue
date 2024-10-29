@@ -1,137 +1,80 @@
 <template>
-  <section class="main-news uk-cover-container uk-container">
+  <section class="main-news uk-container">
 <!--    <img src="~assets/img/svg/decor1.svg" alt="" class="main-news_decor1 uk-visible@m" uk-svg>-->
     <div class="main-news__headline uk-flex uk-flex-between uk-flex-middle uk-flex-wrap">
       <ul class="uk-subnav" uk-switcher="connect: .main-news_container; animation: uk-animation-fade;swiping:false;">
-        <li class="uk-active" @click="selectNewsTab('news')">
-          <a href="#" aria-expanded="true">{{ $t('news') }}</a>
+        <li class="uk-active">
+          <nuxt-link class="main-news_title" to="/news/?grp=article" aria-expanded="true">{{ $t('news') }}</nuxt-link>
         </li>
-        <li  @click="selectNewsTab('actions')">
-          <a href="#" aria-expanded="false">{{ $t('action') }}</a>
+        <li>
+          <nuxt-link class="main-news_title" to="/news/?grp=action" aria-expanded="false">{{ $t('action') }}</nuxt-link>
         </li>
       </ul>
-      <div class="description">
-        {{ $t('today') }}: <b>{{ weekend }},<br>
-        {{ currentDate }} {{ time }}</b>
-      </div>
-      <nuxt-link class="uk-button uk-button-default button_news-all" to="/news/">
+      <nuxt-link v-if="!lessThanTablet" class="uk-button uk-button-default button_news-all button_news-all-top" to="/news/">
         <span>{{ $t('all') }} {{ $t('news') }}</span>
         <svg-icon name="arrow2" class="icon"/>
       </nuxt-link>
     </div>
     <div v-if="!isNewsLoaded">
-      <h3>Материалов по запросу не найдено</h3>
+      <h3>{{ $t('no_results') }}</h3>
     </div>
-    <ul class="main-news_container uk-switcher" v-if="isNewsLoaded">
-      <li uk-scrollspy="target: > div > .uk-card; cls: uk-animation-slide-bottom-medium; delay: 500" class="uk-active">
-        <div class="main-news__important">
-          <NewsBarCardImportant :link="cardMain.uri"
-                                :fileName="cardMain.banner"
-                                :date="cardMain.date"
-                                :title="cardMain.name"
-                                :description="cardMain.anons"
-          />
-        </div>
-        <div class="main-news__items uk-flex uk-flex-nowrap uk-grid-match">
-            <!--          <a class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" href="news_item.html" style="">
-            <img  data-src="~assets/img/main/img3.png" alt="" class="img_cover" src="http://flotilia.r-b-m.ru/img/main/img3.png">
-            <div class="card-news_decor"></div>
-            <div class="uk-card-body">
-              <div class="card_time">
-                <span>15 ноября 2019 г.</span>
-              </div>
-              <h3 class="uk-card-title">
-                Голосвание за премию
-                «Путеводная звезда»
-              </h3>
-            </div>
-          </a>
-          <a class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" href="news_item.html" style="">
-            <img data-src="~assets/img/main/img4.png" alt="" class="img_cover" src="http://flotilia.r-b-m.ru/img/main/img4.png">
-            <div class="card-news_decor"></div>
-            <div class="uk-card-body">
-              <div class="card_time">
-                <span>15 ноября 2019 г.</span>
-              </div>
-              <h3 class="uk-card-title">
-                Получи круиз в подарок!
-              </h3>
-            </div>
-          </a>
-          <a class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" href="news_item.html" style="">
-            <img data-src="~assets/img/main/img3.png" alt="" class="img_cover" src="http://flotilia.r-b-m.ru/img/main/img3.png">
-            <div class="card-news_decor"></div>
-            <div class="uk-card-body">
-              <div class="card_time">
-                <span>15 ноября 2019 г.</span>
-              </div>
-              <h3 class="uk-card-title">
-                Голосвание за премию
-                «Путеводная звезда»
-              </h3>
-            </div>
-          </a>
-          <a class="uk-card card-news transition uk-scrollspy-inview uk-animation-slide-bottom-medium" href="news_item.html" style="">
-            <img  data-src="~assets/img/main/img3.png" alt="" class="img_cover" src="http://flotilia.r-b-m.ru/img/main/img3.png">
-            <div class="card-news_decor"></div>
-            <div class="uk-card-body">
-              <div class="card_time">
-                <span>15 ноября 2019 г.</span>
-              </div>
-              <h3 class="uk-card-title">
-                Голосвание за премию
-                «Путеводная звезда»
-              </h3>
-            </div>
-          </a>-->
-          <NewsBarCard v-for="(card,index) in cardSmall"
-                              :key="'inx2' + index"
-                              :link="card.uri"
-                              :fileName="card.banner"
-                              :date="card.date"
-                              :title="card.name"
-          />
-        </div>
-<!--        <div v-for="commentIndex in commentsToShow" class="main-news__items uk-flex uk-flex-nowrap uk-grid-match">
-          <div v-if="commentIndex < reviews.length">
-            <NewsBarCard v-for="(card,index) in cardSmall"
-                         :key="'inx1' + index"
-                         :link="card.uri"
+    <div v-if="isNewsLoaded && lessThanTablet" uk-slider="" class="uk-slider">
+      <div class="uk-slider-container">
+        <ul class="uk-slider-items uk-child-width-1-1"
+            uk-scrollspy="target: > li > .uk-card ; cls: uk-animation-slide-bottom-medium; delay: 500"
+        >
+          <li v-for="(card,index) in newsCards"
+              :key="'inx2' + index"
+              class="main_news-slider--item"
+          >
+            <NewsBarCard :link="card.uri"
                          :fileName="card.banner"
                          :date="card.date"
                          :title="card.name"
+                         :important="card.stick"
             />
-          </div>
-        </div>-->
-      </li>
-      <li uk-scrollspy="target: > div > .uk-card; cls: uk-animation-slide-bottom-medium; delay: 500" class="">
-        <div class="main-news__important">
-          <NewsBarCardImportant :link="cardMain.uri"
-                                :fileName="cardMain.banner"
-                                :date="cardMain.date"
-                                :title="cardMain.name"
-                                :description="cardMain.anons"
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <ul class="main-news_container uk-switcher"
+        v-else-if="isNewsLoaded && !lessThanTablet"
+    >
+      <li uk-scrollspy="target: > div > .uk-card; cls: uk-animation-slide-bottom-medium; delay: 500" class="uk-active">
+        <div class="main-news__items uk-flex uk-grid-match">
+          <NewsBarCard v-for="(card,index) in newsCards"
+                       :key="'inx2' + index"
+                       :link="card.uri"
+                       :fileName="card.banner"
+                       :date="card.date"
+                       :title="card.name"
+                       :important="card.stick"
           />
-        </div>
-        <div class="main-news__items uk-flex uk-flex-nowrap uk-grid-match">
-              <NewsBarCard v-for="(card,index) in cardSmall"
-                           :key="'inx' + index"
-                           :link="card.uri"
-                           :fileName="card.banner"
-                           :date="card.date"
-                           :title="card.name"
-              />
         </div>
       </li>
     </ul>
-    <div class="uk-text-center more_container">
-      <div></div>
-<!--      <button class="btn_more transition" @click="commentsToShow += 1">
-        <span>Показать еще</span>
-      </button>-->
-      <nuxt-link class="btn_more transition" to="/news/"><span>{{ $t('buttons.show_more') }}</span></nuxt-link>
-      <div></div>
-    </div>
+    <nuxt-link v-if="lessThanTablet" class="uk-button uk-button-default button_news-all button_news-all-bottom" to="/news/">
+      <span>{{ $t('all') }} {{ $t('news') }}</span>
+      <svg-icon name="arrow2" class="icon"/>
+    </nuxt-link>
+<!--    <div uk-slider="" class="awards__slider uk-slider">
+      <div class="uk-position-relative">
+        <div class="uk-slider-container ">
+          <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-match"
+              uk-scrollspy="target: > li > .awards__card ; cls: uk-animation-slide-bottom-medium; delay: 500">
+            <li class="uk-active" v-for="(card,index) in newsCards" :key="'inx2' + index">
+              <NewsBarCard :link="card.uri"
+                           :fileName="card.banner"
+                           :date="card.date"
+                           :title="card.name"
+                           :important="card.stick"
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>-->
   </section>
 </template>
 
@@ -152,35 +95,9 @@ export default {
       interval: null,
       time: null,
       currentDate: null,
-      reviews: [
-        {name: 'Derek', description: 'Some comment'},
-        {name: 'Joe', description: 'Some comment'},
-        {name: 'Mike', description: 'Some comment'},
-        {name: 'Ron', description: 'Some comment'},
-        {name: 'Dii', description: 'Some comment'},
-        {name: 'Lonnie', description: 'Some comment'},
-        {name: 'Paul', description: 'Some comment'},
-        {name: 'Mike', description: 'Some comment'},
-        {name: 'Jody', description: 'Some comment'},
-        {name: 'Ryn', description: 'Some comment'},
-        {name: 'Jord', description: 'Some comment'},
-        {name: 'Milly', description: 'Some comment'},
-        {name: 'Judy', description: 'Some comment'},
-        {name: 'Vanilly', description: 'Some comment'},
-        {name: 'Nolan', description: 'Some comment'},
-        {name: 'Pino', description: 'Some comment'},
-        {name: 'Ryne', description: 'Some comment'},
-        {name: 'Scott', description: 'Some comment'},
-        {name: 'Son', description: 'Some comment'},
-        {name: 'Bann', description: 'Some comment'},
-      ],
-      коcommentsToShow: 0,
-      totalComments: 0,
-
       currentNews: {},
       currentActions: {},
-      cardMain:
-        {
+      cardMain: {
           banner: 'main/img2.png',
           uri: '/news',
           date: '15 ноября 2019 г.',
@@ -221,88 +138,28 @@ export default {
                   возобнавляет навигацию`,
         },
       ],
-      cardAdding: {
-        banner: 'main/img3.png',
-        uri: '/news',
-        date: '15 ноября 2019 г.',
-        name: `С 1 декабря Ройал класс Флотилии
-                  возобнавляет навигацию`,
-      },
+      newsCards: [],
       weekend: "",
+      lessThanTablet: this.$viewport.isLessThan('tablet')
     }
   },
-  methods: {
-    selectNewsTab(tab){
-      if(tab === 'news'){
-        if(this.currentNews.length > 0){
-        this.isNewsLoaded = true;
-        this.cardMain = this.currentNews[0]
-        this.cardSmall = this.currentNews.slice(1, 5) 
-        }
-        else{
-          this.isNewsLoaded = false;
-        }
-    }
-    else{
-      if(this.currentActions.length > 0){
-        this.isNewsLoaded = true;
-        this.cardMain = this.currentActions[0]
-        this.cardSmall = this.currentActions.slice(1, 5) 
-      }
-      else{
-        this.isNewsLoaded = false;
-      }
-      }
-    }
-  },
-  mounted() {
-    this.totalComments = this.reviews.length
-  },
-
-  computed: {
-  },
-
-  beforeDestroy() {
-    // prevent memory leak
-    clearInterval(this.interval)
-  },
-  created() {
-    this.currentDate = new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {}).format()
-    this.weekend = new Intl.DateTimeFormat(`${this.$i18n.localeProperties.iso}`, {weekday: "long"}).format()
-    // update the time every second
-    this.interval = setInterval(() => {
-      // Concise way to format time according to system locale.
-      // In my case this returns "3:48:00 am"
-      this.time = Intl.DateTimeFormat('nu', {
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      }).format()
-    }, 1000)
+  watch: {
+    '$viewport.breakpoint'() {
+      this.lessThanTablet = this.$viewport.isLessThan('tablet')
+    },
   },
   async fetch() {
     let urlNewsQuery = `${this.$config.baseURL}news?onindex=true&grp=article&lang=${this.$i18n.locale}`;
-    let urlActionsQuery = `${this.$config.baseURL}news?onindex=true&grp=action&lang=${this.$i18n.locale}`;
-
-    let news, actions;
+    let news
     try{
-      news = await axios.get(urlNewsQuery);
+      news = await this.$axios(urlNewsQuery);
     } catch(error) {
       console.log("ERROR AXIOS NEWS = ",error)
     }
-    try{
-      actions = await axios.get(urlActionsQuery);
-    } catch(error) {
-      console.log(" ERROR AXIOS ACTIONS = ",error)
-    }
     if(news.data.news !== undefined && news.data.news.length > 0) {
       this.currentNews = news.data.news;
-      this.cardMain = news.data.news[0]
-      this.cardSmall = news.data.news.slice(1, 5)
+      this.newsCards = this.currentNews;
       this.isNewsLoaded = true;
-    }
-    if(actions.data.news !== undefined && actions.data.news.length > 0) {
-      this.currentActions = actions.data.news;
     }
   },
   fetchOnServer: false,
@@ -634,4 +491,96 @@ export default {
   font-size: 16px;
   text-transform: uppercase;
 }*/
+.uk-slider-container {
+  //overflow:visible;
+}
+.main_news-slider--item {
+  height: 400px;
+  width: 90%;
+  padding-right: 10px;
+}
+.main_news-slider--item .uk-card{
+  height: 100%;
+}
+.button_news-all-bottom {
+  display: none;
+}
+.main-news_title {
+  font-size: 18px;
+}
+.main-news {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.main-news_title {
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.main-news__headline {
+  margin-top: 0;
+}
+.main-news_container > li > * {
+  padding-left: 0;
+}
+.main-news_container > li {
+  margin-left: 0;
+}
+.main-news__items {
+  width: 100%;
+  height: 100%;
+  justify-content: normal;
+  gap: 50px;
+  margin-top: 50px;
+  .uk-card {
+    width: calc(33% - 50px);
+    margin-top: 0;
+  }
+}
+
+.card-news .uk-card-title {
+  text-decoration: none;
+}
+@media screen and (max-width: 1400px) {
+  .main-news__items > .card-news:nth-child(3), .main-news__items > .card-news:nth-child(4) {
+    display: flex;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .main-news__items {
+    .uk-card {
+      width: calc(50% - 25px);
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .button_news-all-bottom {
+    display: flex;
+    width: 100%;
+    max-width: 180px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .button_news-all-top {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .main-news_title {
+    font-size: 18px;
+  }
+  .main-news {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+@media screen and (max-width: 428px) {
+  .main_news-slider--item {
+    height: 210px;
+  }
+}
 </style>

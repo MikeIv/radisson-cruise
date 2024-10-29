@@ -2183,17 +2183,17 @@ export default {
     //this.$refs.map1.myMap = null;
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/contacts/&lang=${this.$i18n.locale}`);
-    let contactsInfos = await axios.get(
+    let contactsInfos = await this.$axios(
         `${this.$config.baseURL}contacts?lang=${this.$i18n.locale}`);
-    let contactsBlock = await axios.get(
+    let contactsBlock = await this.$axios(
         `${this.$config.baseURL}blocks?page=contact&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
     this.blockContact = contactsBlock.data
     this.portsInfo = contactsInfos.data
   },
-  fetchOnServer: false,
+  fetchOnServer: true,
   fetchKey: 'contacts'
 };
 </script>

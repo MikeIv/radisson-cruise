@@ -104,7 +104,7 @@ export default {
     }
   },
   async fetch() {
-    let data = await axios.get(`${this.$config.baseURL}awards?lang=${this.$i18n.locale}`)
+    let data = await this.$axios(`${this.$config.baseURL}awards?lang=${this.$i18n.locale}`)
     this.testCards = data.data
     /*console.log(this.testCards)*/
   },

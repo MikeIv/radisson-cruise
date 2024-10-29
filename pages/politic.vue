@@ -55,10 +55,10 @@ export default {
   },
   async fetch() {
     try {
-      let seoDataResult = await axios.get(
+      let seoDataResult = await this.$axios(
           `${this.$config.baseURL}pages?ref=/politic/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
-      const politicData = await axios.get(
+      const politicData = await this.$axios(
           `${this.$config.baseURL}varyelements?code=privacy_policy&lang=${this.$i18n.locale}`)
       this.politic = politicData.data.result?.privacy_policy.content
     } catch(error) {

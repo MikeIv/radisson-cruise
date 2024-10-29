@@ -1228,28 +1228,28 @@ export default {
     }
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/about/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let partners = await axios.get(
+    let partners = await this.$axios(
         `${this.$config.baseURL}partners?lang=${this.$i18n.locale}`);
-    let blocks = await axios.get(
+    let blocks = await this.$axios(
         `${this.$config.baseURL}blocks?page=about&lang=${this.$i18n.locale}`);
-    let captainData = await axios.get(
+    let captainData = await this.$axios(
         `${this.$config.baseURL}personals?grp=captain&lang=${this.$i18n.locale}`);
-    let sellerData = await axios.get(
+    let sellerData = await this.$axios(
         `${this.$config.baseURL}personals?grp=seller&lang=${this.$i18n.locale}`);
-    let managerData = await axios.get(
+    let managerData = await this.$axios(
         `${this.$config.baseURL}personals?grp=manager&lang=${this.$i18n.locale}`);
-    let vacanciesData = await axios.get(
+    let vacanciesData = await this.$axios(
         `${this.$config.baseURL}vacancies?lang=${this.$i18n.locale}`);
-    let documentsData = await axios.get(
+    let documentsData = await this.$axios(
         `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
-    let photosData = await axios.get(
+    let photosData = await this.$axios(
         `${this.$config.baseURL}photos?lang=${this.$i18n.locale}`);
-    let youtubeVideo = await axios.get(
+    let youtubeVideo = await this.$axios(
         `${this.$config.baseURL}textelements?code[]=youtube_about&lang=${this.$i18n.locale}`);
-    const htmls = await axios.get(
+    const htmls = await this.$axios(
         `${this.$config.baseURL}varyelements?code[]=about_list_text&code[]=about_list_item_1&code[]=about_list_item_2&code[]=about_list_item_3&lang=${this.$i18n.locale}`)
     this.aboutHtmls = htmls.data.result
     this.testCaps = captainData.data;

@@ -1,239 +1,4 @@
 <template>
-<!--  <footer class="footer uk-flex">
-    <div class="footer_left">
-      <div
-        class="uk-cover-container footer_left-img&#45;&#45;container uk-scrollspy-inview uk-animation-slide-bottom"
-        uk-scrollspy="cls: uk-animation-slide-bottom; delay: 400"
-      >
-        <img
-          data-src="~/assets/img/main/vv.png"
-          src="~/assets/img/main/vv.png"
-          alt=""
-          class="footer_img uk-scrollspy-inview uk-animation-slide-bottom"
-          uk-scrollspy="cls: uk-animation-slide-bottom; delay: 1000"
-        />
-      </div>
-    </div>
-    <div class="footer_right">
-      <div class="footer_right-title">
-        <span class="footer_right-headline">Остались вопросы?</span>
-        <span class="footer_right-headline">Оставьте заявку</span>
-      </div>
-      <span class="footer_questions">Наши специалисты ответят на интересующий вас вопрос</span>
-      &lt;!&ndash;        <form action="" class="footer_right-form">
-          <div class="footer_form-top">
-            <input type="text" placeholder="ФИО">
-            <input type="text" placeholder="Телефон">
-          </div>
-          <div class="footer_form-bottom">
-            <input type="text" placeholder="Ваше сообщение">
-          </div>
-          <label for="">
-            <input type="checkbox" name="" id="">
-            <span>Согласие на обработку персональных данных</span>
-          </label>
-          <button type="submit">Отправить сообщшение</button>
-        </form>&ndash;&gt;
-      <form action="" class="footer_form uk-scrollspy-inview uk-animation-fade">
-        <div class="uk-width-1-2@m footer__form_input">
-            <input type="text" class="uk-input" placeholder="ФИО" required="" />
-          </div>
-        <div class="uk-width-1-2@m footer__form_input">
-            <input
-              type="text"
-              class="uk-input f_phone"
-              placeholder="Телефон"
-              required=""
-              inputmode="text"
-            />
-          </div>
-        <div class="uk-width-1-1 footer__form_input">
-            <input type="text" class="uk-input" placeholder="Ваше сообщение" />
-          </div>
-        <div class="uk-width-1-1 footer__form_polit">
-            <div class="form_politic">
-              <label>
-                <input class="uk-checkbox" type="checkbox" @change="checkAgree" />
-                <span class="">
-                  Согласие на обработку
-                  <a href="/politic.html" class="" target="_blank"
-                    >персональных данных</a
-                  >
-                </span>
-              </label>
-            </div>
-          </div>
-        <div class="uk-width-1-2@m uk-width-expand@s footer__form_btn">
-          <button type="submit" class="uk-button uk-button-default" id="submitv" disabled="">
-            <span>ОТПРАВИТЬ СООБЩЕНИЕ</span>
-          </button>
-        </div>
-      </form>
-      <ul class="footer__nav uk-scrollspy-inview uk-animation-fade">
-          <li class="footer__nav_item1">
-            <a href="/schedule/yacht">
-              Расписание
-            </a>
-            <a href="/rent">
-              Аренда
-            </a>
-            <a href="/menu">
-              Меню ресторанов
-            </a>
-            <a href="/tickets/trolley" class="uk-hidden@s">
-              Купить билеты
-            </a>
-            <a href="/rules" class="uk-hidden@s">
-              Осторожно мошенники
-            </a>
-          </li>
-          <li class="footer__nav_item2">
-            <a href="/news">
-              Новости и акции
-            </a>
-            <a href="/about">
-              О компании
-            </a>
-            <a href="/contacts">
-              Контакты
-            </a>
-            <a href="/rules#health" class="uk-hidden@s">
-              Безопасность
-            </a>
-          </li>
-          <li class="footer__nav_item3 uk-visible@s">
-            <a href="/tickets/trolley">
-              Купить билеты
-            </a>
-            <a href="/rules">
-              Осторожно мошенники
-            </a>
-            <a href="/rules#technical">
-              Безопасность
-            </a>
-          </li>
-        </ul>
-      <div class="footer__information uk-scrollspy-inview uk-animation-fade" style="">
-          <div class="footer__information_item1 uk-visible@s">
-            <a href="" class="transition">
-
-              <svg class="icon">
-                <use xlink:href="#facebook"></use>
-              </svg>
-            </a>
-            <a href="" target="_blank">
-              <svg class="icon">
-                <use xlink:href="#ticket"></use>
-              </svg>
-            </a>
-            <a href="" target="_blank">
-              <svg class="icon">
-                <use xlink:href="#grid"></use>
-              </svg>
-            </a>
-            <a href="" target="_blank">
-              <svg class="icon">
-                <use xlink:href="#you"></use>
-              </svg>
-            </a>
-          </div>
-        </div>
-      <div class="footer__information_item3">
-          <a class="header_call" href="tel:+7 (495) 228-55-55">
-            <svg class="icon">
-              <use xlink:href="#call"></use>
-            </svg>
-            <span>+7 (495) 228-55-55 </span>
-          </a>
-          <a
-            class="footer__information_item3-mail"
-            href="mailto: info@radisson-cruise.ru"
-          >
-            info@radisson-cruise.ru
-          </a>
-      </div>
-      <div
-        class="footer__bottom uk-scrollspy-inview uk-animation-fade"
-        style=""
-      >
-        <div class="footer__bottom_item1">
-          © 2021, Флотилия «Рэдиссон Ройал, Москва»
-        </div>
-        <div class="footer__bottom_item2">
-          <a href="/politic.html" class="transition">
-            Политика конфеденциальности
-          </a>
-        </div>
-        <div class="footer__bottom_item3">
-          <a class="footer__bottom_arr uk-visible@s" href="#" uk-scroll=""
-            >12312
-            <svg class="icon">
-              <use xlink:href="#arrow5"></use>
-            </svg>
-          </a>
-        </div>
-      </div>
-      &lt;!&ndash;        <div class="footer_links">
-          <div class="footer_links-item">
-            <a href="" class="footer_link">
-              Расписание
-            </a>
-            <a href="" class="footer_link">
-              Аренда
-            </a>
-            <a href="" class="footer_link">
-              Меню ресторанов
-            </a>
-          </div>
-          <div class="footer_links-item">
-            <a href="" class="footer_link">
-              Новости и акции
-            </a>
-            <a href="" class="footer_link">
-              О компании
-            </a>
-            <a href="" class="footer_link">
-              Контакты
-            </a>
-          </div>
-          <div class="footer_links-item">
-            <a href="" class="footer_link">
-              Купить билеты
-            </a>
-            <a href="" class="footer_link">
-              Осторожно мошенники
-            </a>
-            <a href="" class="footer_link">
-              Безопасность
-            </a>
-          </div>
-        </div>
-        <div class="footer_social">
-          <div class="footer_logo">123</div>
-          <div class="footer_social-items">
-            <span class="footer_social-head">Мы в соц.сетях</span>
-            <div class="footer_social-item">1</div>
-            <div class="footer_social-item">2</div>
-            <div class="footer_social-item">3</div>
-            <div class="footer_social-item">4</div>
-          </div>
-          <div class="footer_contact">
-            <a class="" href="tel:74952285555">
-              <span>somesvg</span>
-              <span>+7 (495) 228-55-55</span>
-            </a>
-            <a class="" href="mailto:info@radisson-cruise.ru">
-              <span>info@radisson-cruise.ru</span>
-            </a>
-          </div>
-        </div>
-        <div class="footer_credit">
-          <div class="footer_copy">© 2021, Флотилия «Рэдиссон Ройал, Москва»</div>
-          <div class="footer_politic">Политика конфеденциальности</div>
-          <a href="#my-id" uk-scroll>toTOP</a>
-        </div>&ndash;&gt;
-    </div>
-  </footer>-->
   <div>
     <footer class="uk-flex">
       <div class="uk-cover-container footer__left uk-visible@l">
@@ -265,9 +30,6 @@
             </nuxt-link>
             <nuxt-link to="/rent/">
               {{ $t('nav.rent') }}
-            </nuxt-link>
-            <nuxt-link to="/trams/schedule/">
-              {{ $t('nav.trams_schedule') }}
             </nuxt-link>
             <nuxt-link to="/menu/">
               {{ $t('nav.menu') }}
@@ -344,7 +106,6 @@
             </nuxt-link>
           </div>
           <div class="footer__bottom_item3">
-            <a href="//o-d.one/" target="_blank" class="develop_rbm"><img src="//rb-media.ru/img/svg/od-white.svg" width="63" alt="OD"></a>
             <a class="footer__bottom_arr uk-visible@s" href="#" uk-scroll="">
               <img src="~assets/img/svg/arrow5.svg" alt="" class="" uk-svg>
             </a>
@@ -466,7 +227,7 @@ export default {
       let onError
       if(!this.validateEmail()) return;
       try {
-        const response = await axios({
+        const response = await this.$axios({
           url:`${this.$config.baseURL}subscribe?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
@@ -520,7 +281,7 @@ export default {
     try {
       await this.getActualDoc();
       if (this.$store.state.tel) {
-        const infoData = await axios.get(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
+        const infoData = await this.$axios(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
         await this.$store.dispatch('setUtilInfo', { email: infoData.data.result.email, tel: infoData.data.result.phone });
       }
     } catch(e) {

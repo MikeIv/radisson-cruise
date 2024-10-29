@@ -54,7 +54,8 @@ export default {
     '@/node_modules/ress',
     '@/assets/css/general',
     '@/assets/css/menu_styles',
-    '@/assets/css/main'
+    '@/assets/css/main',
+    '@/assets/css/redesign_first'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -62,6 +63,8 @@ export default {
     { src: '~/plugins/uikit', ssr: false },
     { src: '~/plugins/ymPlugin.js', mode: 'client', ssr: true },
     { src: '~/plugins/litepicker.js', mode: 'client', ssr: false },
+    { src: '~/plugins/mobile_friendly_litepicker.js', mode: 'client', ssr: false },
+    '~/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -82,7 +85,6 @@ export default {
       '@nuxtjs/axios',
       '@nuxtjs/redirect-module',
       '@nuxtjs/proxy',
-      '@nuxtjs/composition-api/module',
       '@nuxtjs/robots',
       [
         '@rkaliev/nuxtjs-yandex-metrika',
@@ -161,7 +163,31 @@ export default {
       ],
       '@nuxtjs/moment',
       '@nuxtjs/sitemap',
+      'nuxt-viewport',
   ],
+  viewport: {
+    breakpoints: {
+      desktop: 1024,
+      desktopMedium: 1280,
+      desktopWide: 1600,
+
+      mobile: 320,
+      mobileMedium: 375,
+      mobileWide: 425,
+      tablet: 768,
+      tabletWide: 976,
+    },
+
+    cookieName: 'viewport',
+
+    defaultBreakpoints: {
+      desktop: 'desktop',
+      mobile: 'mobile',
+      tablet: 'tablet',
+    },
+
+    fallbackBreakpoint: 'desktop',
+  },
   robots: () => {
     if (process.env.ENVIRONMENT === 'prod') {
       return {
@@ -178,6 +204,7 @@ export default {
   redirect: {
     rules: async () => {
       const list = [];
+      axios.defaults.withCredentials = true
       const redirects = await axios.get(`${process.env.API_BASE_URL}redirects`) // It'll wait!
       const formatedRedirects = redirects.data.map((redirect) => {
           return {
@@ -218,7 +245,13 @@ export default {
     proxy: false,
     https: true,
     baseURL: process.env.API_BASE_URL,
-    browserBaseURL: process.env.API_BASE_URL
+    browserBaseURL: process.env.API_BASE_URL,
+    credentials: true,
+    headers: {
+        common: {
+          'crossDomain': true
+        }
+    }
   },
   publicRuntimeConfig: {
     baseURL: process.env.API_BASE_URL,
@@ -234,7 +267,7 @@ export default {
   i18n: {
     /* module options */
     baseUrl: process.env.BASE_URL,
-    strategy: 'no_prefix', //  strategy: 'no_prefix' for production till langs incomplete
+    strategy: 'no_prefix', //  strategy: 'no_prefix' for production till langs incomplete, 'prefix_except_default' for local tests
     detectBrowserLanguage: false,
     differentDomains: true,
     langDir: 'lang/',
@@ -266,7 +299,6 @@ export default {
         active: !!process.env.LANG_RU
       },
     ],
-
   },
 
 

@@ -18,12 +18,12 @@ export default {
     }
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/official/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let documentsData = await axios.get(
+    let documentsData = await this.$axios(
         `${this.$config.baseURL}docs?lang=${this.$i18n.locale}`);
-    let blocks = await axios.get(
+    let blocks = await this.$axios(
         `${this.$config.baseURL}blocks?page=official&lang=${this.$i18n.locale}`);
     this.docs = documentsData.data
     this.docBlocks = blocks.data;

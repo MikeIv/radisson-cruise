@@ -22,7 +22,7 @@
       <div class="menu-cafe__item_txt">
         {{ description }}
       </div>
-      <MenuBtn :pdf="pdf"/>
+      <MenuBtn :pdf="$config.baseSiteURL + pdf"/>
     </div>
   </div>
 </template>

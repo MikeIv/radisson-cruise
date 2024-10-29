@@ -10,7 +10,8 @@
               :speed="speed"
               :engine="engine"
     />
-    <CabinDropdown :decks="decks"
+    <CabinDropdown v-if="decks"
+                   :decks="decks"
                    :params="params"
                    :speed="speed"
                    :engine="engine"

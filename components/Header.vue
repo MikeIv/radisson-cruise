@@ -4,91 +4,50 @@
     <div class="header_top_back uk-sticky" :uk-sticky="classCheck" id="sticky-fixed-header">
       <div class="uk-container">
         <div class="uk-grid uk-flex-between uk-child-width-auto uk-flex-middle uk-grid-small uk-flex-nowrap" uk-grid="">
-          <div class="header__top_item1-container uk-first-column">
-            <nuxt-link class="header__top_logo transition" :to="localePath('/')"  @click.native="closeNav">
-<!--              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg">-->
-              <svg-icon class="transition" :name="$i18n.locale === 'ru' ? 'logo' : 'logo-en'"/>
+          <div class="header_top-left">
+            <div class="header__top_item1-container uk-first-column">
+              <nuxt-link class="header__top_logo transition" :to="localePath('/')"  @click.native="closeNav">
+                <!--              <img src="~assets/img/svg/logo.svg" alt="" uk-svg class="header__top_logo transition uk-svg">-->
+                <svg-icon class="transition" :name="$i18n.locale === 'ru' ? 'logo' : 'logo-en'"/>
+              </nuxt-link>
+            </div>
+            <div class="header__top_item2-container uk-visible@l">
+              <div class="header__top_item2">
+                <div>
+                  <nuxt-link to="/official/">
+                    {{ $t('official_site') }}
+                  </nuxt-link>
+                </div>
+                <!--              <div>
+                                {{ $t('header.info.people') }}
+                              </div>-->
+              </div>
+            </div>
+          </div>
+          <div class="header_top-center">
+<!--            <nuxt-link class="header_top-link transition" to="/yachts/schedule/"  @click.native="closeNav">-->
+<!--              <svg-icon class="header__top_logo transition" name="header/Time"/>-->
+<!--              <span class="desktop_text">{{ $t('header.yachts_schedule') }}</span>-->
+<!--              <span class="mobile_text">{{ $t('schedule') }}</span>-->
+<!--            </nuxt-link>-->
+            <nuxt-link class="header_top-link transition" to="/rent/"  @click="closeNav">
+              <svg-icon class="header__top_logo transition" name="header/Shturval"/>
+              <span>{{ $t('header.rent') }}</span>
+            </nuxt-link>
+            <nuxt-link class="header_top-link transition" to="/certificates/"  @click.native="closeNav">
+              <svg-icon class="header__top_logo transition" name="header/Gift"/>
+              <span>{{ $t('nav.certificates') }}</span>
             </nuxt-link>
           </div>
-          <div class="header__top_item2-container uk-visible@l">
-            <div class="header__top_item2">
-              <div>
-<!--                <nuxt-link :to="localePath('/')">
-                  {{ $t('header.info.official') }}
-                </nuxt-link>-->
-<!--                {{ $t('header.info.official') }}-->
-                <nuxt-link to="/official/">
-                  {{ $t('official_site') }}
-                </nuxt-link>
-              </div>
-<!--              <div>
-                {{ $t('header.info.people') }}
-              </div>-->
-            </div>
-          </div>
-          <div class="header__top_item3-container">
-            <div class="header__top_item3">
-<!--              <nuxt-link class="uk-button uk-button-default button-shedule transition" :to="localePath('/yachts/schedule')">
-                <span>{{ $t('header.buttons.shedulerYachts') }}</span>
-                <img data-src="~assets/img/main/btn-yacht.png" alt="" src="~assets/img/main/btn-yacht.png">
-              </nuxt-link>
-              <nuxt-link class="uk-button uk-button-default button-shedule transition" :to="localePath('/trams/schedule')">
-                <span> {{ $t('header.buttons.shedulerTram') }}</span>
-                <img data-src="~assets/img/main/btn-tram.png" alt="" src="~assets/img/main/btn-tram.png">
-              </nuxt-link>-->
-              <nuxt-link class="header-link-shedule transition" to="/yachts/schedule/"  @click.native="closeNav">
-                <svg-icon class="header__top_logo transition" name="yacht"/>
-                <span>{{ $t('nav.yachts_schedule') }}</span>
-              </nuxt-link>
-<!--              <a class="header-link-shedule transition" :href="$config.baseSiteURL+tramsDoc"  @click="closeNav">
-                <svg-icon class="header__top_logo transition" name="tram-icon2"/>
-                <span>{{ $t('nav.trams_schedule') }}</span>
-              </a>-->
-            </div>
-          </div>
-          <div class="header__top_item5-container uk-visible@l">
-            <a class="header_call uk-visible@s" :href="`tel:${headerTel}`">
-              <svg-icon class="header__top_logo transition" name="call"/>
-              <span>{{ headerTel }}</span>
-            </a>
-          </div>
-          <LangAndBurgerMenu ref="burgerMenu"/>
-<!--           <div class="header__top_item4-container">
-            <div class="header__top_item4">
-              <div class="language-container"
-                   v-for="locale in availableLocales"
-                   :key="locale.code"
-                   >
-
-
-                <a href="#"
-                   class="language"
-                   aria-expanded="false">
-                  <span>{{locale.name}}</span>
-                  <svg-icon name="arr_lang" class="icon header__top_logo transition"/>
-                </a>
-
-                <div uk-dropdown="mode: click;offset: 5;" class="language_drop uk-dropdown">
-                  <ul class="">
-                    <li>
-                      <nuxt-link
-                        :to="switchLocalePath(locale.code).toLocaleLowerCase()">
-                        {{ currentLang }}
-                      </nuxt-link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <a class="header_top_menu" :class="{'open' : isActive}" href="#offcanvas-nav" uk-toggle="" @click="isActive = !isActive">
-                <div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
+          <div class="header_top-right">
+            <div class="header__top_item5-container uk-visible@l">
+              <a class="header_call uk-visible@s" :href="`tel:${headerTel}`">
+                <svg-icon class="header__top_logo transition" name="call"/>
+                <span>{{ headerTel }}</span>
               </a>
             </div>
-          </div> -->
-
+            <LangAndBurgerMenu ref="burgerMenu"/>
+          </div>
         </div>
       </div>
     </div>
@@ -144,11 +103,11 @@
       },
       classCheck() {
         if(this.aboutPage) {
-          return `top: 150; animation: uk-animation-slide-top; bottom:#about_tab`
+          return `top: 85; bottom:#about_tab`
         } else if(this.rent) {
-          return `top: 150; animation: uk-animation-slide-top; bottom:#rent_nav`
+          return `top: 85; bottom:#rent_nav`
         } else {
-          return `top: 250; start: 250; animation: uk-animation-slide-top;`
+          return `top: 0;`
         }
       },
     },
@@ -628,4 +587,135 @@ header {
   color: #fff;
   text-decoration: none;
 }
+.header_top_back {
+  padding: 15px 0 10px;
+  background: #1D2240;
+}
+.header__top_item1-container {
+  flex: none
+}
+
+.header__top_logo svg {
+  width: 100%;
+  max-width: 150px;
+}
+
+.header_top-right, .header_top-left {
+  display: flex;
+  align-items: center;
+  gap:55px;
+}
+.header_top-center {
+  display: flex;
+  width: 100%;
+  max-width: 570px;
+  justify-content: space-between;
+}
+.header_top-link {
+  width: 100%;
+  max-width: 160px;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  padding: 8px 0 8px 10px;
+  border: 2px solid #FFF;
+  background: transparent;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+  line-height: 15px;
+  max-height: 45px;
+}
+.header_top-link .mobile_text {
+  display: none;
+}
+.header_top-link:hover {
+  border: 2px solid #00C1F3;
+  background: #00C1F3;
+  text-decoration: none;
+}
+.header__top_logo {
+  width: 20px;
+  height: 20px;
+  flex:none;
+}
+@media screen and (max-width: 1400px) {
+  .header__top_item2-container, .header__top_item5-container  {
+    display: none;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .main-news__items {
+    .uk-card {
+      width: calc(50% - 25px);
+    }
+  }
+  .header_top-center {
+    max-width: 510px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .header_top-center {
+    justify-content: center;
+  }
+  .header_top-link:not(:first-child) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .uk-grid-small > * {
+    padding-left: 0;
+  }
+  .header__top_item1-container {
+    width: 100px;
+  }
+  .header__top_item4-container, .language-container, .header_top_menu {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .uk-grid-small > * {
+    padding-left: 0;
+  }
+  .header__top_item1-container {
+    width: 100px;
+  }
+  .header__top_item4-container, .language-container, .header_top_menu {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 428px) {
+  .uk-container {
+    padding: 0 10px;
+  }
+  .header_top-center, .header_top-right {
+    padding-left: 10px !important;
+  }
+  .header__top_item1-container {
+    width: 78px;
+  }
+  .header_top-center .header_top-link{
+    height: 40px;
+    gap: 5px;
+    padding: 0;
+    border: 1px solid #FFF;
+    justify-content: center;
+  }
+  .header_top-center .header_top-link:hover{
+    border: 1px solid #00C1F3;
+  }
+  .header_top-link .mobile_text {
+    display: block;
+    font-size: 11px;
+  }
+  .header_top-link .desktop_text {
+    display: none;
+  }
+}
+
+
 </style>

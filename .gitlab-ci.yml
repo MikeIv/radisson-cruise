@@ -82,7 +82,6 @@ deploy prod service:
     variables:
       - $CI_COMMIT_TAG =~ /^v\d.*/
   allow_failure: false
-  when: manual
   tags:
     - shell
     - $CI_JOB_STAGE

@@ -19,7 +19,7 @@
               <input class="select-styled litepicker-filter"
                      id="modal-buy-ticket-filter-datepicker "
                      type="text"
-                     placeholder="Выбрать дату"
+                     :placeholder="$t('select_date')"
                      @click="clickSelect('days')">
             </div>
             <div class="buy-ticket__item">
@@ -41,7 +41,7 @@
                              type="checkbox"
                              :value="place"
                              v-model="localArrivalFilter">
-                      <span>{{ place }}</span>
+                      <span>{{ place.name }}</span>
                     </label>
                   </div>
                   <button @click="isArrival = false"
@@ -69,9 +69,12 @@
                 <div class="pass-quantity">
                   <div class="form_politic buy-ticket__politic">
                     <label v-for="category in routesCategories">
-                      <input class="uk-checkbox" name="category__salon" type="checkbox" :value="category"
+                      <input class="uk-checkbox"
+                             name="category__salon"
+                             type="checkbox"
+                             :value="category"
                              v-model="checkedCategoriesFilter">
-                      <span>{{ category }}</span>
+                      <span>{{ category.name }}</span>
                     </label>
 
                   </div>
@@ -84,14 +87,14 @@
                 </div>
               </div>
             </div>
-            <div class="buy-ticket__item">
+            <div v-if="rangeTime" class="buy-ticket__item">
               <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
               <button type="button"
                       class="select-styled timeSelect datetimepicker"
                       :class="{ 'select-open': isTime }"
                       @click="clickSelect('time')"
               >
-                {{ labelTime }}
+                {{ $t(labelTime) }}
               </button>
               <div class="testW pass-quantity__drop uk-dropdown uk-open" v-show="isTime">
                 <div class="pass-quantity">
@@ -102,7 +105,7 @@
                              type="radio"
                              :value="time.value"
                              v-model="selectedTimeFilter">
-                      <span>{{ time.title }}</span>
+                      <span>{{ $t(time.title) }}</span>
                     </label>
                   </div>
                   <button @click="isTime = false"
@@ -114,6 +117,14 @@
                 </div>
               </div>
             </div>
+            <label class="buy-ticket__item buy-ticket__item-available">
+              <input v-model="isTicketAvailableFilter"
+                     class="uk-checkbox"
+                     type="checkbox"
+              >
+              <span>{{ $t('select_available') }}</span>
+            </label>
+
           </div>
           <div class="modal-news-filter__footer">
             <button class="uk-button uk-button-default button_ticket uk-modal-close" @click="setFilter">
@@ -318,7 +329,13 @@ export default {
       type: Array,
       default: () => [],
     },
-    isTram: Boolean,
+    isTicketAvailable: {
+      type: Boolean,
+      default: false,
+    },
+    isTram: {
+      type: Boolean,
+    }
   },
   watch: {
     actualMonth() {
@@ -326,6 +343,9 @@ export default {
     },
     actualYear() {
       this.currentYear = this.actualYear;
+    },
+    checkedCategories() {
+      this.checkedCategoriesFilter = this.checkedCategories;
     },
   },
   data() {
@@ -365,14 +385,27 @@ export default {
       },
       currentMonth: this.actualMonth,
       currentYear: this.actualYear,
+      isTicketAvailableFilter: this.isTicketAvailable,
     };
   },
   computed: {
     labelTime() {
-      if (this.selectedTimeFilter === null) {
-        return this.$i18n.t('select_time')
+      if (this.selectedTime === null) {
+        return 'select_time'
       } else {
-        return this.rangeTime.find(item => item.value === this.selectedTimeFilter)?.title
+        if(this.rangeTime !== null && this.rangeTime.length > 0) {
+          return this.rangeTime.find((option) => {
+            if (option.value) {
+              const [start, end] = option.value;
+              const selectedStart = this.selectedTime[0];
+              const selectedEnd = this.selectedTime[1];
+              return selectedStart >= start && selectedEnd <= end;
+            }
+            return false;
+          }).title
+        } else {
+          return 'select_time'
+        }
       }
     },
     getYears() {
@@ -476,15 +509,20 @@ export default {
       this.isArrival = false;
     },
     setFilter() {
+      let today = new Date()
+      let now = today.toISOString().split('T')[0]
+      if(this.datesFilter.dateFirst === null) {
+        this.datesFilter.dateFirst = now
+      }
+      console.log(this.checkedCategoriesFilter)
       this.$emit('checked-arrival', {
         dates: this.datesFilter,
         arrival: this.localArrivalFilter,
         categories: this.checkedCategoriesFilter,
         tikets: this.tiketsCount,
         time: this.selectedTimeFilter,
+        available: this.isTicketAvailableFilter
       });
-      /*       this.$emit('update:checked-categories', this.checkedCategoriesFilter);
-            this.$emit('update:tikets-count', this.tiketsCount); */
       this.closeModal();
     },
     selectMonth(item) {
@@ -584,22 +622,19 @@ export default {
   beforeMount() {
     this.isComponentView = true;
   },
-  beforeDestroy() {
-    this.destroyModal();
-  },
   mounted() {
     this.$nextTick(function () {
       //console.log("localArrival = ",this.localArrival)
 
       const options = {
-        lang: 'ru-RU',
+        lang: this.$i18n.localeProperties.iso,
         element: document.querySelector('.litepicker-filter'),
         singleMode: false,
         numberOfMonths: 1,
         numberOfColumns: 1,
         autoApply: true,
         minDate: new Date().setDate(new Date().getDate() - 0),
-        maxDate: this.isTram ? new Date().setDate(new Date().getDate() + 6) : new Date().setDate(new Date().getDate() + 90),
+        maxDate: this.isTram ? new Date().setDate(new Date().getDate() + 6) : new Date().setDate(new Date().getDate() + 60),
         tooltipText: {
           one: 'flight',
           other: 'flights',
@@ -670,7 +705,10 @@ export default {
       });
       //this.$emit('update:checked-arrival', this.localArrival);
     })
-  }
+  },
+  beforeDestroy() {
+    this.destroyModal();
+  },
 }
 </script>
 
@@ -719,7 +757,29 @@ export default {
 .pass-quantity__drop .form_politic .uk-radio:checked {
   background: #1e87f0 url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23fff%22%20cx%3D%228%22%20cy%3D%228%22%20r%3D%222%22%20%2F%3E%0A%3C%2Fsvg%3E) !important;
 }
-
-
-
+.buy-ticket__item-available {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.buy-ticket__item-available .uk-checkbox{
+  font-size: 14px;
+  border-color: #00C1F3;
+  margin-top: 0;
+  min-width: 16px;
+  min-height: 16px;
+}
+.buy-ticket__item-available .uk-checkbox:checked{
+  border-color: #00C1F3 !important;
+}
+.buy-ticket__item-available .uk-checkbox::before {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAOklEQVR4AWNwL/DBwAz7/wswHPh8AYRxSx78/B9MAxkHQBgkgS4J5iMLoEuCTUTWhS4Jwij2IkvCMAAh2FqBbBYe0QAAAABJRU5ErkJggg==) no-repeat center center;
+}
+@media screen and (max-width: 639px) {
+  .buy-ticket__item-available {
+    padding-left: 18px;
+    font-size: 12px;
+  }
+}
 </style>

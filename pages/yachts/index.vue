@@ -387,10 +387,10 @@ export default {
   },
 
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/yachts/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let blocks = await axios.get(
+    let blocks = await this.$axios(
         `${this.$config.baseURL}yachts?lang=${this.$i18n.locale}`);
     this.yachtsFetch = await blocks.data;
 

@@ -3,16 +3,6 @@
     <client-only>
       <Header class="buy-ticket-form__header">
         <img src="~images/inners/shedule1.webp" data-src="~images/inners/shedule1.webp" class="img_cover" alt="">
-        <div class="uk-container uk-position-relative">
-          <div class="heading_white">
-            <Breadcrumbs/>
-          </div>
-          <div class="heading">
-            <h1 class="headline_p1">
-              {{ seoData?.header }}
-            </h1>
-          </div>
-        </div>
       </Header>
       <section v-if="routeData.hasGone">
         <div class="uk-container uk-text-center uk-padding-large">
@@ -22,65 +12,19 @@
       <section v-else class="buy-ticket-form__container">
         <div class="uk-container">
           <div class="buy-ticket-form">
-            <Breadcrumbs/>
             <div class="buy-ticket-form__grid">
               <form ref="form" class="buy-ticket-form__info" id="payData" @submit.prevent="payTicket">
                 <div class="headline_p1">
                   {{ seoData?.header }}
                 </div>
-                <div class="buy-ticket-form__headline uk-position-relative">
-                  <svg-icon class="buy-ticket-form__headline__icon" name="back-tickets"/>
-                  <div class="buy-ticket-form__headline__item1">
-                    <svg-icon class="icon" name="ancor-in-circle"/>
-                    <div>
-                  <span class="headline_32 t_semibold">
-                    {{ $t('port') }}: «{{ routeData.placeName }}»
-                  </span>
-                      <div class="buy-ticket-form__date uk-hidden@s">
-                        <div>
-                          {{ $t('time_date') }}:
-                        </div>
-                        <div>
-                          <!--                          <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                          <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
-                          <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
-                             {{$t('daytime')}}
-                          </span>
-                          <span v-else class="buy-ticket-shedule__time__txt">
-                            {{$t('vespertime')}}
-                          </span>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="buy-ticket-form__date uk-visible@s">
-                    <div>
-                      {{ $t('time_date') }}:
-                    </div>
-                    <div>
-<!--                      <b>{{ journeyDate }}, {{ timeCalc }}</b>-->
-                      <b>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</b>
-                      <span v-if="routeData.dayTime" class="buy-ticket-shedule__time__txt">
-                          {{$t('daytime')}}
-                      </span>
-                      <span v-else class="buy-ticket-shedule__time__txt">
-                         {{$t('vespertime')}}
-                      </span>
-                    </div>
-                  </div>
-                </div>
                 <div class="buy-ticket-form__passengers">
-<!--                  <p class="buy-ticket-form__passengers__head">
-                    <b>Количество пассажиров</b>
-                  </p>-->
                   <div class="buy-ticket-form__passengers__item buy-ticket-form__passengers__item__first">
                     <div class="buy-ticket-form__passengers__item__info">
                       <div class="buy-ticket-form__passengers__item__name">
                         <b>{{$t('adult')}} {{$t('ticket')}}</b>
                       </div>
                       <div class="buy-ticket-form__passengers__item__summ">
-                        <b>{{ routeData.adultPrice }}</b>
+                        <b>{{ routeData.adultPrice }} &#8381;</b>
                       </div>
                     </div>
                     <div class="input-group plus-minus-input">
@@ -90,7 +34,7 @@
                           -
                         </button>
                       </div>
-                      <input @change="routeData.childrenOnly ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
+                      <input @change="routeData.availablePromo ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
                       <div class="input-group-button">
                         <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
                                 data-field="quantity">
@@ -105,10 +49,10 @@
                         <b>{{$t('children')}} {{$t('ticket')}}</b>
                       </div>
                       <div class="buy-ticket-form__passengers__item__summ">
-                        <b>{{ routeData.childPrice }}</b>
+                        <b>{{ routeData.childPrice }} &#8381;</b>
                         <button type="button" @click="openChildModal">
                           <svg-icon
-                              name="svg-info3"
+                              name="svg-info"
                               class="icon"
                               width="18"
                               height="18"
@@ -136,14 +80,9 @@
                   <span v-if="routeData.availableChild" class="children_subinfo">{{ $t('children_notation') }}</span>
                 </div>
                 <div class="buy-ticket-form__data">
-<!--                  <div class="buy-ticket-form__data__head">
-                    <b>Данные</b>
-                    <span class="text-error">{{onError}}</span>
-                  </div>-->
                   <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
                     <div class="uk-width-1-1">
                       <div class="uk-form-controls">
-<!--                        <label class="uk-form-label">Ваше ФИО</label>-->
                         <input class="uk-input buy-ticket__input"
                                :class="{'uk-form-danger': errors.name.isError}"
                                type="text"
@@ -158,7 +97,6 @@
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-<!--                        <label class="uk-form-label">Контактный телефон</label>-->
                         <input class="uk-input buy-ticket__input f_phone"
                                :class="{'uk-form-danger': errors.phone.isError}"
                                type="tel"
@@ -177,7 +115,6 @@
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-<!--                        <label class="uk-form-label">Ваш e-mail</label>-->
                         <input class="uk-input buy-ticket__input"
                                type="email"
                                :placeholder="$t('form.email')"
@@ -193,20 +130,11 @@
                     </div>
                   </div>
                 </div>
-                <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
-                  <input class="uk-input buy-ticket__input" type="text" :placeholder="$t('promo_code')" name=""
-                         v-model="promoCode">
-                  <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
-                    <span>{{$t('buttons.accept')}}</span>
-                    <svg-icon class="icon uk-visible@s" name="ticket"/>
-                  </button>
-                  <div class="uk-display-block uk-margin-small-top">{{ promoMsg }}</div>
-                </div>
                 <div class="buy-ticket-form__agreement">
                   <div class="form_politic buy-ticket__politic">
                     <label>
                       <input
-                          v-model="form.agree"
+                          v-model="agrees.rules"
                           class="uk-checkbox"
                           :class="{'uk-form-danger': errors.agree.isError}"
                           type="checkbox"
@@ -227,32 +155,54 @@
                     </label> -->
                   </div>
                 </div>
+                <div class="buy-ticket-form__basket__item_checked">
+                  <div class="form_politic buy-ticket__politic">
+                    <label>
+                      <input class="uk-checkbox"
+                             type="checkbox"
+                             name="check-info"
+                             v-model="agrees.politic"
+                             :class="{'uk-form-danger': errors.politic.isError}"
+                      >
+                      <span class="">
+                        {{$t('im_accept')}} <nuxt-link to="/politic/">{{$t('links.politic')}}</nuxt-link>
+                      </span>
+                    </label>
+                    <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.politic.isError">{{ $t(errors.politic.msg) }}</span>
+                  </div>
+                </div>
+                <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
+                  <input class="uk-input buy-ticket__input" type="text" :placeholder="$t('promo_code')" name=""
+                         v-model="promoCode">
+                  <button @click="promoCodeCheck" class="uk-button uk-button-default button_ticket" type="button">
+                    <span>{{$t('buttons.accept')}}</span>
+                  </button>
+                  <div class="uk-display-block uk-margin-small-top">{{ promoMsg }}</div>
+                </div>
                 <div v-if="routeData.journeyTypeId === 6" class="uk-margin-top">{{$t('route_jazz_msg')}}</div>
                 <div class="buy-ticket-form__footer">
                   <div class="buy-ticket-form__total">
-                    <span>
+                    <div class="buy-ticket-form__total_price">
+                      <span>
                       {{$t('total')}}:
                     </span>
-                    <span>
-                      {{ totalSumCount }} ₽
-                    </span>
-                  </div>
-                </div>
-                <div class="buy-ticket-form__hall">
-                  <p>
-                    <b> {{ routeData.classData?.name }} </b>
-                  </p>
-                  <div v-html="routeData.classData?.content"></div>
-                  <div v-html="routeData.classData?.ticketwarn"></div>
-                  <div v-if="routeData.classData?.slides && routeData.classData?.slides.length > 0" class="buy-ticket-form-hall__gallery" uk-lightbox="">
-                    <div v-for="img in routeData.classData.slides">
-                      <a :href="$config.baseSiteURL + img" class="gallery_card uk-position-relative ">
-                        <img :data-src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img" alt="" class="img_cover"
-                             :src="`${$config.imageURL}?size=150&format=webp&src=${$config.baseSiteURL}` + img">
-                        <div class="gallery_card__plus ">+</div>
-                      </a>
+                      <div v-if="promoStatus">
+                        {{ totalSumWithSale }} ₽
+                      </div>
+                      <div v-else>
+                        {{ totalSumCount }} ₽
+                      </div>
+                      <div v-if="promoStatus" class="buy-ticket-no-sale">
+                        {{ totalSumCount }} ₽
+                      </div>
                     </div>
-
+                    <div v-if="promoStatus" class="buy-ticket-form__basket__sail">
+                      {{ $t('by_promo') }} {{ saleNumber }}%
+                    </div>
+                    <button @click="sendYandexMetrikaEvent('oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
+                      <span>{{ $t('goto_payment') }}</span>
+                      <svg-icon class="icon" name="ticket"/>
+                    </button>
                   </div>
                 </div>
               </form>
@@ -260,34 +210,46 @@
                 <div class="buy-ticket-form__basket">
                   <div class="buy-ticket-form__basket__head">
                     <div class="headline_22 t_semibold">
-                      {{ $t('cart') }}
+                      {{ $t('your_ticket') }}
                     </div>
-                    <svg-icon class="icon" name="cart"/>
+                    <svg-icon class="icon" name="ticket"/>
                   </div>
                   <div class="buy-ticket-form__basket__main">
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
+                        <svg-icon width="23" height="23" class="icon" name="ancor-in-circle"/>
                         {{ $t('port') }}:
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
                         «{{ routeData.placeName }}»
                       </div>
                     </div>
-                    <div class="buy-ticket-form__basket__item">
+                    <div class="buy-ticket-form__basket__item ticket_time_info">
                       <div class="buy-ticket-form__basket__item__name">
-                        {{ $t('time_date') }}:
+                        <svg-icon width="25" height="25" class="icon" name="blue-clock2"/>
                       </div>
                       <div class="buy-ticket-form__basket__item__info">
-                        <!--                        {{ journeyDate }}, {{ timeCalc }}-->
-                        {{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}
+                        <span>{{ $t('time_date') }}:</span>
+<!--                        {{ journeyDate }}, {{ timeCalc }}-->
+                        <span>{{ dayFormat }} {{ timeCalc(routeData.depatureTime, routeData.arrivalTime) }}</span>
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
-                        {{ routeData.journeySubType }}
+                        {{ $t('category') }}:
                       </div>
-                      <div class="buy-ticket-form__basket__item__info">
-
+                      <div class="buy-ticket-form__basket__item__info ticket_category_info">
+                        <svg-icon width="20" height="20" fill="#00C1F3" class="category_icon" :name="currentIcon"/>
+                        {{ routeData.journeySubType }}
+                        <button type="button" @click="getCategory(routeData.journeyTypeId)">
+                          <svg-icon
+                              name="svg-info"
+                              class="icon category_info"
+                              width="15"
+                              height="15"
+                              fill="#A7A7A7"
+                          />
+                        </button>
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
@@ -306,7 +268,7 @@
                             <b>{{ adultPriceCalc }} ₽</b>
                           </div>
                         </div>
-                        <div  v-if="routeData.classData?.template !== 'theatrical'" class="buy-ticket-form__basket__item__passenger">
+                        <div  v-if="routeData.availableChild" class="buy-ticket-form__basket__item__passenger">
                           <div>
                             {{ $t('children') }}
                           </div>
@@ -324,9 +286,11 @@
                         {{ $t('data') }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
-                        {{ fullName }}<br>
-                        {{ email }} <br>
-                        {{ phone }}
+<!--                        {{ form.name }}<br>-->
+                        {{ form.email }} <br>
+                        {{ form.phone }}
+                        <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ $t(errors.name.msg) }}</div>
+                        <div v-if="onError" class="text-error">{{onError}}</div>
                       </div>
                     </div>
                     <div v-if="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item">
@@ -334,55 +298,6 @@
                         {{$t('information')}}
                       </div>
                       <div v-html="routeData.classData?.ticketinfo" class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
-                      </div>
-                    </div>
-                    <div class="buy-ticket-form__basket__item">
-                      <div class="buy-ticket-form__basket__summ">
-                        <div>
-                          {{$t('amount')}}:
-                        </div>
-                        <div v-if="promoStatus">
-                          {{ totalSumWithSale }} ₽
-                        </div>
-                        <div v-else>
-                          {{ totalSumCount }} ₽
-                        </div>
-                        <div v-if="promoStatus" class="buy-ticket-no-sale">
-                          {{ totalSumCount }} ₽
-                        </div>
-                      </div>
-                      <div class="buy-ticket-form__basket__sail" v-if="promoStatus">
-                        {{ $t('by_promo') }} {{ saleNumber }}%
-                      </div>
-                    </div>
-                    <div class="buy-ticket-form__basket__item buy-ticket-form__basket__item__last">
-<!--                      <button type="submit" form="payData">
-                        <a class="uk-button uk-button-default button_ticket" :href="payUrl">
-                          <span>Перейти к оплате</span>
-                          <svg-icon class="icon" name="ticket"/>
-                        </a>
-                      </button>-->
-                      
-                      <div class="error-block">
-                        <!-- <div class="uk-form-danger uk-margin-top" v-show="true"> Ошибка. Исправьте ошибку для продолжения покупки</div> -->
-                         <div class="uk-form-danger uk-margin-top" v-if="errors.name.isError">{{ $t(errors.name.msg) }}</div>
-                         <span class="text-error">{{onError}}</span>
-                      </div>
-                     
-                      <button @click="sendYandexMetrikaEvent('oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
-                        <span>{{ $t('goto_payment') }}</span>
-                        <svg-icon class="icon" name="ticket"/>
-                      </button>
-
-                    </div>
-                    <div class="buy-ticket-form__basket__item_checked">
-                      <div class="form_politic buy-ticket__politic">
-                        <label>
-                          <input class="uk-checkbox" type="checkbox" name="check-info" checked="">
-                          <span class="">
-                            {{$t('im_accept')}} <nuxt-link to="/politic/">{{$t('links.politic')}}</nuxt-link>
-                          </span>
-                        </label>
                       </div>
                     </div>
                   </div>
@@ -396,9 +311,9 @@
               <div class="txt18">
                 <b>{{$t('payment_methods')}}</b>
               </div>
-              <img data-src="~assets/img/inners/buy_visa.png" alt="" class="uk-visible@s"
-                   src="~assets/img/inners/buy_visa.png">
-              <img data-src="~assets/img/inners/buy_visa_small.png" src="~assets/img/inners/buy_visa_small.png" alt="" class="uk-hidden@s">
+              <img data-src="~assets/img/inners/cards_1.png" alt="" class="uk-visible@s"
+                   src="~assets/img/inners/cards_1.png">
+              <img data-src="~assets/img/inners/cards_2.png" src="~assets/img/inners/cards_2.png" alt="" class="uk-hidden@s">
             </div>
             <div class="buy-ticket-more-information__call">
               <svg-icon class="icon" name="blue-info"/>
@@ -412,23 +327,27 @@
               </div>
             </div>
           </div>
+          <div class="buy_ticket-questions">
+            <ul class="uk-accordion accordion_vacantion" uk-accordion="multiple: true;">
+              <li v-for="(option, index) in options" :key="index">
+                <a class="uk-accordion-title" href="#">
+                  <div class="accordion_vacantion__title__info">
+                    <div class="accordion_vacantion__name">
+                      {{ option.title }}
+                    </div>
+                  </div>
+                  <div class="accordion_vacantion__title__arr"></div>
+                </a>
+                <div class="uk-accordion-content">
+                  <p>{{ option.content }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
       <ChildInfo />
-      <DefaultModal v-if="routeData.classData?.ticketwarn" :text="routeData.classData?.ticketwarn"/>
-<!--      <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
-        <div class="uk-modal-dialog uk-margin-auto-vertical">
-          <div class="uk-modal-body uk-position-relative">
-            <div>
-              {{$t('emergency')}}
-            </div>
-            <div class="success_bottom">
-              <a class="uk-modal-close uk-button uk-button-default">{{$t('buttons.close_window')}}</a>
-            </div>
-          </div>
-        </div>
-      </div>-->
-
+      <CategoryInfoSmall :info="categoryInfo"/>
     </client-only>
   </div>
 </template>
@@ -446,7 +365,7 @@ import 'moment/locale/zh-cn'
 import UIkit from "uikit";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 import {mapActions, mapGetters} from "vuex";
-import DefaultModal from "../../components/modals/DefaultModal.vue";
+import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -469,7 +388,7 @@ export default {
     }
   },
   components: {
-    DefaultModal,
+    CategoryInfoSmall,
     ChildInfo,
     Breadcrumbs,
     Header,
@@ -508,6 +427,10 @@ export default {
       onError: '',
       isAgree: false,
       rowPhone: '',
+      agrees: {
+        politic: false,
+        rules: false,
+      },
       form: {
         journey: this.$route.query.journey,
         name: '',
@@ -537,10 +460,37 @@ export default {
           isError: false,
           msg: 'error_agree_form'
         },
+        politic: {
+          isError: false,
+          msg: 'error_agree_form'
+        }
       },
       valid: false,
       isLoading: false,
       seoData: {},
+      options: [
+        {
+          title: "Как сдать электронный билет на сайте?\n",
+          content: "Пожалуйста, заполните форму возврата электронного билета. Убедитесь, что данные введены корректно. Обращаем Ваше внимание, что в форме возврата должны быть указаны те контактные данные, которые использовались при покупке билета."
+        },
+        {
+          title: "Как сдать электронный билет в кассе?\n",
+          content: "Вы можете оформить возврат электронных билетов, обратившись в один из офисов Флотилии:\n" +
+              "Причал  «Гостиница «Украина», набережная Тараса Шевченко, м. Киевская.\n" +
+              "Причал «Парк Горького», Пушкинская набережная, м. Парк Культуры/Октябрьская\n" +
+              "Вы также можете уточнить информацию у наших сотрудников по телефону +7 495 228 55 55 или по электронной почте info@radisson-cruise.ru\n"
+        },
+        {
+          title: "Какую часть стоимости данного билета я получу?\n",
+          content: "Сумма возврата до отправления яхты в рейс составит 100% от стоимости билета. В случае возврата электронного билета в течение часа после отправления яхты, сумма возврата составит 50% от стоимости билета." +
+              "Возврат билета не осуществляется в том случае, если билет прошел контроль и был отсканирован при посадке на рейс. "
+        },
+        {
+          title: "Я вернул(а) электронный билет, когда на карточку или счет электронного кошелька придут деньги?",
+          content: "Деньги будут автоматически зачислены по реквизитам, которые были указаны во время покупки билета. Зачисление причитающихся денежных средств на банковскую карту, с помощью которой производилась оплата билета, осуществляется в сроки, установленные правилами платежных систем и банков-эмитентов банковских карт (от 7-ми до 30-ти календарных дней с момента оформления возврата). \n"
+        },
+      ],
+      categoryInfo: null,
     }
   },
   watch: {
@@ -551,7 +501,7 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      if(!this.routeData.childrenOnly) {
+      if(!this.routeData.availablePromo) {
         if (this.adultNewVal < 1 ) {
           this.adultCount = 1
         }
@@ -610,20 +560,54 @@ export default {
     'form.email': function (val) {
       val.length > 0 ? this.errors.email.isErrorInput = false : this.errors.email.isErrorInput = true
     },
-    'form.agree': function (val) {
+    'agrees.rules': function (val) {
       val ? this.errors.agree.isError = false : this.errors.agree.isError = true
+    },
+
+    'agrees.politic': function (val) {
+      val ? this.errors.politic.isError = false : this.errors.politic.isError = true
     },
 
     form: {
       handler: function (val) {
-        this.valid = val.name.length > 0 && val.phone.length > 0 && val.email.length > 0 && val.agree
+        this.valid = val.name.length > 0 && val.phone.length > 0 && val.email.length > 0 && this.agrees.rules && this.agrees.politic
+      },
+      deep: true
+    },
+    agrees: {
+      handler: function (val) {
+        this.valid = this.form.name.length > 0 && this.form.phone.length > 0 && this.form.email.length > 0 && val.rules && val.politic
       },
       deep: true
     }
+
   },
 
   computed: {
     ...mapGetters(['refundDoc']),
+    currentIcon() {
+      switch (this.routeData.journeyTypeId) {
+        case 0:
+          return 'categories/Osnovnoy';
+        case 1:
+          return 'categories/Teatr';
+        case 2:
+          return 'categories/Royal';
+        case 3:
+          return 'categories/Erwin';
+        case 4:
+          return 'categories/Royal';
+        case 5:
+          return 'categories/1class';
+        case 6:
+          return 'categories/Jazz';
+        case 7:
+          return 'categories/Degust';
+        default: {
+          return 'categories/Osnovnoy'
+        }
+      }
+    },
     route() {
       return route
     },
@@ -649,10 +633,6 @@ export default {
     maxSits() {
       return this.routeData.freeSeats > 40 ? 40 : this.routeData.freeSeats
     },
-
-    isChildrenTicketShown() {
-      return this.routeData.journeyTypeId !== 1 && this.routeData.journeyTypeId !== 7
-    }
   },
 
   methods: {
@@ -701,7 +681,7 @@ export default {
       this.promoStatus = false
       this.saleNumber = 0
       if (param == '-') {
-        if(!this.routeData.childrenOnly) {
+        if(!this.routeData.availablePromo) {
           if (this.adultCount <= 1) {
             return 1
           } else {
@@ -763,9 +743,10 @@ export default {
       this.form.promoCode = this.promoCode;
       //console.log("Send Phone -> ",this.rowPhone.replace(/[^+\d]/g, ''));
       this.form.phone = this.rowPhone.replace(/[^+\d]/g, '');
+      this.form.agree = this.agrees.rules && this.agrees.politic
       try {
         this.isLoading = true
-        const response = await axios({
+        const response = await this.$axios({
           method: 'POST',
           url: `${this.$config.baseURL}order?lang=${this.$i18n.locale}`,
           /*data: new URLSearchParams(this.form)*/
@@ -802,7 +783,7 @@ export default {
       let promoMsg
       let totalSumWithSale
       let promoStatus
-      await axios({
+      await this.$axios({
         url: `${this.$config.baseURL}amount?lang=${this.$i18n.locale}`,
         method: 'POST',
         data: {
@@ -846,7 +827,7 @@ export default {
 
     async currentRoute() {
       try {
-        const data = await axios.get(
+        const data = await this.$axios(
           `${this.$config.baseURL}routes?date=${this.$route.query.day}&journey=${this.$route.query.journey}&lang=${this.$i18n.locale}`
         )
         //console.log(data)
@@ -857,10 +838,6 @@ export default {
       } catch(error) {
         console.log(error)
       }
-    },
-
-    isValidDate(d) {
-      return d instanceof Date && !isNaN(d);
     },
     timeCalc(dptrTime, arvTime) {
       if(dptrTime === null || arvTime === null) return;
@@ -875,45 +852,48 @@ export default {
     openChildModal() {
       UIkit.modal('#childInfo').show();
     },
-
-    callModal(id) {
-      UIkit.modal(id).show();
-    }
+    async getCategory(id) {
+      try {
+        const responseData = await this.$axios(`${this.$config.baseURL}categories?type_id=${id}&lang=${this.$i18n.locale}`);
+        if (!responseData.data.result) return;
+        this.categoryInfo = responseData.data.result;
+        UIkit.modal('#categoryInfoSmall').show();
+      } catch (e) {
+      }
+    },
   },
   mounted() {
-    this.getRefundDoc()
+    this.getRefundDoc();
+    if (process.browser) {
+      console.log(window.dataLayer)
+      window.dataLayer.push({
+        'event': 'pageview',
+        'pagePath': '/yachts-buy/',
+        'pageTitle': 'Покупка билета',
+        'siteLanguage': this.$i18n.locale,
+      })
+      console.log(window.dataLayer)
+    }
+    console.log(this.$yandexMetrika)
   },
-  updated() {
-    // this.$nextTick(() => {
-    //   this.callModal('#defaultModal')
-    // }, 2000)
-    // setTimeout(() => {
-    //   this.$nextTick(() => {
-    //     this.callModal('#defaultModal')
-    //   })
-    // }, 2000)
-  },
-
   middleware: [
     function({ redirect, route }) {
-      if(Object.keys(route.query).length == 0) {
+      if(Object.keys(route.query).length === 0) {
         redirect('/yachts/schedule/')
-      } else {
-        //console.log('test')
       }
-      /*return redirect('/yachts/schedule');*/
     },
   ],
 
   async fetch() {
     try {
-      let seoDataResult = await axios.get(
+      let seoDataResult = await this.$axios(
           `${this.$config.baseURL}pages?ref=/yachts-buy/&lang=${this.$i18n.locale}`);
       this.seoData = seoDataResult.data.result
       /*if(this.$route.query.journey === undefined) return*/
-      let data = await axios.get(
-          `${this.$config.baseURL}route?journey=${this.journey}&lang=${this.$i18n.locale}`
-      )
+      let optionsData = await this.$axios(
+          `${this.$config.baseURL}faq?grp=purchase&lang=${this.$i18n.locale}`);
+      let data = await this.$axios(
+          `${this.$config.baseURL}route?journey=${this.journey}&lang=${this.$i18n.locale}`)
       this.routeData = data.data.result
       this.journeyDate = new Date(this.routeData.depatureTime).toLocaleString('ru', {
         month: 'long',
@@ -921,17 +901,11 @@ export default {
       })
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
-      this.routeData.childrenOnly ? this.adultCount = 0 : this.adultCount = 1
+      this.routeData.availablePromo ? this.adultCount = 0 : this.adultCount = 1
+      this.options = optionsData.data.result
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
     }
-    setTimeout(() => {
-      this.$nextTick(() => {
-        if(this.routeData.classData?.ticketwarn) {
-          this.callModal('#defaultModal')
-        }
-      })
-    }, 2000)
   },
   fetchOnServer: false,
   fetchKey: 'yacht-ticket',
@@ -965,9 +939,198 @@ export default {
   width: 100%;
   font-size: 12px;
 }
+.buy-ticket-form__info .headline_p1 {
+  line-height: 1;
+  font-weight: 700;
+  font-size: clamp(26px, 5vw, 50px);
+  margin-bottom: 29px;
+}
+.buy-ticket-form__info {
+  margin-top: 0;
+}
+.buy-ticket-form__grid {
+  margin-top: 0;
+  justify-content: space-between;
+}
+.buy-ticket-form__data__grid > div {
+  margin-top: 15px;
+}
+.buy-ticket-form {
+  padding-top: 56px;
+  padding-bottom: 70px;
+}
+.buy-ticket-more-information {
+  margin-top: 0;
+  border-top:1px solid rgba(161, 194, 229, 0.3);
+}
+.buy_ticket-questions {
+  background: #FFFFFF;
+  width: 100%;
+  padding-bottom: 75px;
 
-.buy-ticket-form__date > div:nth-child(2) {
+}
+.buy_ticket-questions .uk-accordion{
+  width: 100%;
+  padding-top: 55px;
+  max-width: 1250px;
+  padding-left: 150px;
+  margin-top: 0;
+}
+.buy-ticket-form__basket__head {
+  padding: 17px 33px;
+}
+.buy-ticket-form__basket__item_checked {
+  margin-top: 10px;
+}
+.form_politic .uk-checkbox {
+  margin-right: 11px;
+}
+.buy-ticket-form__passengers {
+  margin-top: 0;
+  row-gap: 15px;
+}
+.buy-ticket-form__passengers__item__summ {
+  align-items: center;
   display: flex;
+  line-height: 1;
+  gap: 9px;
+}
+.buy-ticket-form__passengers__item__summ svg {
+  fill:#A7A7A7;
+}
+.buy-ticket-form__agreement {
+  margin-top: 20px;
+}
+.buy-ticket-form__footer__item {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.buy-ticket-form__footer {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(161, 194, 229, 0.3);
+}
+.buy-ticket-form__total_price {
+  display: flex;
+  align-items: center;
   gap: 20px;
 }
+.buy-ticket-form__basket__sail {
+  margin-top: 5px;
+}
+.buy-ticket-form__total {
+  width: 100%;
+}
+.buy-ticket-form__total .uk-button {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+  padding: 18px 20px;
+  justify-content: space-between;
+}
+.buy-ticket-form__basket__head {
+  font-weight: 700;
+}
+.buy-ticket-form__basket__head svg {
+  width: 51px;
+  height: 24px;
+}
+.buy-ticket-form__basket__item__name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+  min-width: auto;
+  margin-right: 10px;
+}
+.buy-ticket-form__basket__item__info {
+  font-weight: 700;
+  margin-top: 0;
+}
+.buy-ticket-form__basket__item {
+  margin-top: 0;
+  padding: 21px 0;
+  align-items: center;
+}
+.category_icon {
+  margin-right: 6px;
+  margin-left: 8px;
+  flex:none;
+}
+.ticket_category_info {
+  display: flex;
+  align-items: center;
+}
+.ticket_category_info .category_info {
+  margin-left: 6px;
+}
+.ticket_time_info {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 6px;
+}
+.ticket_time_info svg {
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+.ticket_time_info .buy-ticket-form__basket__item__name {
+  padding-right: 0;
+  margin-right: 0;
+}
+.ticket_time_info .buy-ticket-form__basket__item__info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+
+}
+.buy-ticket-form__basket__main {
+  padding: 0 25px 46px;
+}
+@media screen and (max-width: 1450px) {
+  .buy-ticket-form__basket {
+    width: 370px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .buy_ticket-questions .uk-accordion{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .ticket_time_info {
+    align-items: center;
+  }
+  .ticket_time_info .buy-ticket-form__basket__item__name{
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .buy-ticket-form__basket{
+    width: auto;
+  }
+}
+@media screen and (max-width: 639px) {
+  .buy-ticket-form__passengers__item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .buy-ticket-form__data {
+    margin-top: 0;
+  }
+  .buy_ticket-questions .uk-accordion{
+    padding: 0;
+    margin: 0;
+  }
+  .buy_ticket-questions {
+    padding: 0 15px 30px;
+    margin: 0 -15px;
+    width: auto;
+  }
+  .buy-ticket-more-information {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}
+
 </style>

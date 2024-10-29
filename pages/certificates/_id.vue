@@ -326,7 +326,7 @@ export default {
       let payUrl
       let onError
       try {
-        const response = await axios({
+        const response = await this.$axios({
           url: `${this.$config.baseURL}certorder?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
@@ -366,11 +366,11 @@ export default {
     this.getCertDoc()
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/certificates/{id}/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    const response = await axios.get(`${this.$config.baseURL}certificates?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
-    const certData = await axios.get(
+    const response = await this.$axios(`${this.$config.baseURL}certificates?id=${this.$route.params.id}&lang=${this.$i18n.locale}`)
+    const certData = await this.$axios(
         `${this.$config.baseURL}varyelements?code[]=gift_certificates&code[]=gift_certificates_2&lang=${this.$i18n.locale}`)
     this.certInfoTitle = certData.data.result.gift_certificates.content
     this.certInfoList = certData.data.result.gift_certificates_2.content

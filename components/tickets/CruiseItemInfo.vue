@@ -10,9 +10,9 @@
       <div class="flight__txt" v-html="text"></div>
       <div class="flight-info__btns">
         <BuyTicketBtn v-if="linkBuy" :link="linkBuy"/>
-        <a class="uk-button uk-button-more transition" :href="linkMore" v-if="linkMore">
+        <nuxt-link class="uk-button uk-button-more transition" :to="linkMore" v-if="linkMore">
           <span>{{ $t('buttons.more') }}</span>
-        </a>
+        </nuxt-link>
         <nuxt-link class="uk-button uk-button-default button_ticket transition" v-if="linkFree" :to="linkFree">
           <span>{{ button }}</span>
         </nuxt-link>

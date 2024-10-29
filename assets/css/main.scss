@@ -466,7 +466,7 @@ body {
   margin-top: -287px;
   width: 107.5%;
   overflow: hidden;
-  margin-top: 0;
+  //margin-top: 0;
 }
 .gallery_card__caption::before {
   content: '';
@@ -1238,7 +1238,7 @@ body {
     width: 17.8%
   }
   .uk-table td:nth-child(4) {
-    width: 9.1%
+    //width: 9.1%
   }
   .uk-table td:nth-child(5) {
     width: 8.7%
@@ -1343,7 +1343,7 @@ body {
     right: 20px
   }
   header {
-    padding-top: 35px;
+    //padding-top: 35px;
     padding-bottom: 80px
   }
   .buy-ticket__item {
@@ -6853,7 +6853,7 @@ body {
     padding: 10px 0
   }
   .header_top_back>div>div {
-    flex-wrap: wrap
+    //flex-wrap: wrap
   }
   .header_top_back .uk-button {
     font-size: 9px

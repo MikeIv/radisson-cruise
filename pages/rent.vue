@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header class="tenancy__header">
-      <img src="~images/inners/rent1.webp" data-src="~images/inners/rent1.webp" class="img_cover" alt="">
+      <img src="~images/inners/rent2.jpg" data-src="~images/inners/rent2.jpg" class="img_cover" alt="">
       <div class="uk-container uk-position-relative">
         <div class="heading_white">
           <Breadcrumbs/>
@@ -569,15 +569,15 @@ export default {
     });
   },
   async fetch() {
-    let blocks = await axios.get(
+    let blocks = await this.$axios(
         `${this.$config.baseURL}blocks?page=rent&lang=${this.$i18n.locale}`);
-    let servicesBlocks = await axios.get(
+    let servicesBlocks = await this.$axios(
         `${this.$config.baseURL}services?lang=${this.$i18n.locale}`);
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/rent/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let slides = await axios.get(`${this.$config.baseURL}radvantages?lang=${this.$i18n.locale}`)
-    let rentItems = await axios.get(`${this.$config.baseURL}rents?lang=${this.$i18n.locale}`)
+    let slides = await this.$axios(`${this.$config.baseURL}radvantages?lang=${this.$i18n.locale}`)
+    let rentItems = await this.$axios(`${this.$config.baseURL}rents?lang=${this.$i18n.locale}`)
     this.rentBlocks = blocks.data;
     this.rentSlidersTest = slides.data.radvantages
     this.rentItems = rentItems.data.rents;

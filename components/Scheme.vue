@@ -95,7 +95,7 @@
                               </label>
                             </div>-->
 
-              <div v-for="(route,index) in activeRoutes" class="uk-width-1-1" :key="'schmrt' + index">
+              <div v-for="(route,index) in activeRoutes" class="uk-width-1-1 scheme_route-button" :key="'schmrt' + index">
                 <input v-model.number="activeRoute" type="radio" name="scheme-moor" :value="route.id"
                        :id="`scheme-moor${route.id}`">
                 <label class="width-100 height-100 scheme__bottom_item" :for="`scheme-moor${route.id}`">
@@ -113,26 +113,6 @@
                   <svg-icon name='arrow3' class="icon"/>
                 </label>
               </div>
-<!--              <a v-if="isTram"-->
-<!--                 :href="$config.baseSiteURL + buttonLink"-->
-<!--                 class="width-100 uk-button uk-button-default button_ticket"-->
-<!--                 target="_blank"-->
-<!--              >-->
-<!--                <span>{{ $t('schedule') }}</span>-->
-<!--                <svg-icon name='clock' class="icon"/>-->
-<!--              </a>-->
-              <nuxt-link v-if="isTram" :to="buttonLink"
-                         class="width-100 uk-button uk-button-default button_ticket"
-                         type="button">
-                <span>{{ $t('schedule') }}</span>
-                <svg-icon name='clock' class="icon"/>
-              </nuxt-link>
-              <nuxt-link v-else :to="buttonLink"
-                         class="width-100 uk-button uk-button-default button_ticket"
-                         type="button">
-                <span>{{ $t('schedule') }}</span>
-                <svg-icon name='clock' class="icon"/>
-              </nuxt-link>
             </div>
           </li>
         </ul>

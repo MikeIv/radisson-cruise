@@ -17,7 +17,7 @@
       <div class="uk-container">
         <div class="uk-flex uk-flex-wrap uk-child-width-1-2@l uk-grid-match rules-about__grid">
           <div v-for="rule in rulesBlocks" :key="'rlsitem' + rule.id">
-            <RulesItem :description="rule.name" :iconURL="rule.icon" :document="rule.doc"/>
+            <RulesItem :description="rule.name" :iconURL="rule.icon" :document="`${$config.baseSiteURL}`+rule.doc"/>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
           </div>-->
           <div v-for="(tech, index) in techInfoFetch" :key="'tch' + index">
             <TechnicalItem :title="tech.name"
-                           :yachts="tech.yachts"
+                           :yachts="tech.listyachts"
                            :fileName="tech.image"
                            :params="tech.params"
                            :speed="tech.speed"
@@ -245,7 +245,7 @@
     </section>-->
     <YachtType v-for="(yacht, index) in techInfoFetch" :key="'ycht' + index"
                :fileName="yacht.fileName"
-               :title="yacht.yachts"
+               :title="yacht.listyachts"
                :description="yacht.description"
                :yachtClass="yacht.caption"
                :yachtImgs="yacht.yachtImgs"
@@ -576,18 +576,18 @@ export default {
     })
   },
   async fetch() {
-    let seoDataResult = await axios.get(
+    let seoDataResult = await this.$axios(
         `${this.$config.baseURL}pages?ref=/rules/&lang=${this.$i18n.locale}`);
     this.seoData = seoDataResult.data.result
-    let rulesBlocks = await axios.get(`${this.$config.baseURL}rules?lang=${this.$i18n.locale}`)
-    let techInfos = await axios.get(`${this.$config.baseURL}rents?lang=${this.$i18n.locale}`)
-    let securityBlock = await axios.get(`${this.$config.baseURL}safetylist?lang=${this.$i18n.locale}`)
-    let videoBlock = await axios.get(`${this.$config.baseURL}yvideos?lang=${this.$i18n.locale}`)
-    let blockSecurityData = await axios.get(`${this.$config.baseURL}blocks?page=rules&lang=${this.$i18n.locale}`)
+    let rulesBlocks = await this.$axios(`${this.$config.baseURL}rules?lang=${this.$i18n.locale}`)
+    let techInfos = await this.$axios(`${this.$config.baseURL}yachts?lang=${this.$i18n.locale}`)
+    let securityBlock = await this.$axios(`${this.$config.baseURL}safetylist?lang=${this.$i18n.locale}`)
+    let videoBlock = await this.$axios(`${this.$config.baseURL}yvideos?lang=${this.$i18n.locale}`)
+    let blockSecurityData = await this.$axios(`${this.$config.baseURL}blocks?page=rules&lang=${this.$i18n.locale}`)
     this.rulesBlocks = rulesBlocks.data
     this.securityBlocks = securityBlock.data
     this.yVideos = videoBlock.data
-    this.techInfoFetch = techInfos.data.classes
+    this.techInfoFetch = techInfos.data
     this.techInfoFetch.map((item, index) => {
       if(index === 0) {
         return {
