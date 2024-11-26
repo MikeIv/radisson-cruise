@@ -284,9 +284,8 @@ export default {
         <div class="about-advantages__grid">
           <div class="about-advantages__headline uk-position-relative">
             <h5 class="category_item-description--title">{{categoryInfo?.title}}</h5>
-            <p class="category_item-description--text">
-              {{ categoryInfo?.content }}
-            </p>
+            <div v-html="categoryInfo?.content" class="category_item-description--text">
+            </div>
             <div class="category_item-description--tickets">
               <div class="category_item-description-price">
                 <svg-icon name="categories/Cena"/>
