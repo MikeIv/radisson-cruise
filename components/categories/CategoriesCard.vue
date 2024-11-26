@@ -31,9 +31,9 @@ export default {
       return JSON.stringify(this.$i18n.t('trams_delay'))
     },
     isSubInfoText() {
-      if(this.card.type_id === null && !this.card.simple) {
+      if(this.card?.type_id === null && !this.card?.simple) {
         return this.$i18n.t('kassa_ticket_info')
-      } else if (this.card.type_id === null && this.card.simple){
+      } else if (this.card?.type_id === null && this.card?.simple){
         return this.$i18n.t('trams_tickets')
       } else {
         return false
@@ -45,16 +45,16 @@ export default {
 
 <template>
   <article class="category_card" @mouseleave="currentImage = 0" :style="{'--text': tramText}">
-    <nuxt-link v-if="card.images.length > 0" :to="linkMore(card)" class="category_card-img--wrapper"
+    <nuxt-link v-if="card?.images.length > 0" :to="linkMore(card)" class="category_card-img--wrapper"
                @mouseleave="currentImage = 0">
-      <img v-for="(image,index) in card.images"
+      <img v-for="(image,index) in card?.images"
            :src="`${$config.imageURL}?size=520&format=webp&src=${$config.baseSiteURL}` + image"
            alt=""
            class="category_card-img"
            v-show="currentImage === index"
       >
       <div class="category_card-pagination">
-        <div v-for="(image, index) in card.images"
+        <div v-for="(image, index) in card?.images"
              class="category_card-pagination--item"
              :class="{'active': currentImage === index}"
              @mouseenter="currentImage = index"
@@ -65,13 +65,13 @@ export default {
     <nuxt-link v-else :to="linkMore(card)" class="category_card-img--wrapper">
       <div class="skeleton-loader"></div>
     </nuxt-link>
-    <div class="category_card-content" :class="{'disabled': card.simple}">
+    <div class="category_card-content" :class="{'disabled': card?.simple}">
       <div>
         <nuxt-link :to="linkMore(card)" class="category_card-title">
-          <svg-icon class="category_card-icon" :name="`categories/${card.icon}`"/>
-          {{ card.name }}
+          <svg-icon class="category_card-icon" :name="`categories/${card?.icon}`"/>
+          {{ card?.name }}
         </nuxt-link>
-        <p class="category_card-description">{{ card.description }}</p>
+        <div v-html="card?.description" class="category_card-description"></div>
       </div>
       <div>
         <div class="category_card-price">
@@ -79,35 +79,35 @@ export default {
           <div class="category_card-price-inner">
             <div class="category_card-price--item">
               <span class="category_card-price--item_title">{{ $t('adult') }}</span>
-              <span class="category_card-price--item_value">{{ card.price_adult }} ₽</span>
+              <span class="category_card-price--item_value">{{ card?.price_adult }} ₽</span>
             </div>
-            <div class="category_card-price--item" v-if="card.price_child !== '0' && !!card.price_child">
+            <div class="category_card-price--item" v-if="card.price_child !== '0' && !!card?.price_child">
               <span class="category_card-price--item_title">{{ $t('children') }}</span>
-              <span class="category_card-price--item_value">{{ card.price_child }} ₽</span>
+              <span class="category_card-price--item_value">{{ card?.price_child }} ₽</span>
             </div>
             <div class="category_card-price--subinfo"
                  v-if="isSubInfoText"
-                 :class="{'kassa-payment': !card.simple && card.type_id === null}"
+                 :class="{'kassa-payment': !card?.simple && card?.type_id === null}"
             >
               {{ isSubInfoText }}
             </div>
           </div>
         </div>
         <div class="category_card-buttons">
-          <span v-if="card.type_id === null && !card.simple && !lessThanTablet"
+          <span v-if="card?.type_id === null && !card?.simple && !lessThanTablet"
                 class="category_card-buttons--text"
           >
             {{ $t('kassa_ticket_info') }}
           </span>
-          <BuyTicketBtn v-if="!card.simple && card.type_id !== null" :link="linkBuy(card)"/>
-          <nuxt-link v-else-if="!lessThanTablet && !!card.simple"
+          <BuyTicketBtn v-if="!card?.simple && card?.type_id !== null" :link="linkBuy(card)"/>
+          <nuxt-link v-else-if="!lessThanTablet && !!card?.simple"
                      class="uk-button uk-button-default button_ticket transition"
-                     :class="{ 'disabled': card.simple }"
-                     :to="'/yachts/schedule/?category='+ card.type_id">{{ $t('schedule') }}
+                     :class="{ 'disabled': card?.simple }"
+                     :to="'/yachts/schedule/?category='+ card?.type_id">{{ $t('schedule') }}
           </nuxt-link>
           <nuxt-link :to="linkMore(card)"
                      class="uk-button uk-button-more"
-                     :class="{'tram': !!card.simple || card.type_id === null}"
+                     :class="{'tram': !!card?.simple || card?.type_id === null}"
           >
             {{ $t('buttons.more') }}
           </nuxt-link>
