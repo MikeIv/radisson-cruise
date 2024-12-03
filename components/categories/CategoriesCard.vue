@@ -24,7 +24,24 @@ export default {
     },
     linkBuy(card) {
       return card.type_id === 9 ? `/trams/schedule/` : `/yachts/schedule/?category=${card.type_id}`
-    }
+    },
+    sendYandexMetrikaEvent(type) {
+      let eventName = null;
+      switch (type) {
+        case 0:
+          eventName = 'buy-ticket-main-hall';
+          break;
+        case 2:
+          eventName = 'buy-ticket-royal';
+          break;
+        case 6:
+          eventName = 'buy-jazz-ticket';
+          break;
+        default: eventName = null;
+      }
+      if (eventName !== null) this.$yandexMetrika.reachGoal(eventName)
+      this.$router.push(this.linkBuy(this.card))
+    },
   },
   computed: {
     tramText() {
@@ -99,7 +116,17 @@ export default {
           >
             {{ $t('kassa_ticket_info') }}
           </span>
-          <BuyTicketBtn v-if="!card?.simple && card?.type_id !== null" :link="linkBuy(card)"/>
+          <button v-if="!card?.simple && card?.type_id !== null"
+                  @click="sendYandexMetrikaEvent(card?.type_id)"
+                  class="uk-button uk-button-default button_ticket transition">
+            <span>{{ $t('buttons.buy_ticket') }}</span>
+            <svg-icon class="icon" name="ticket"/>
+          </button>
+<!--          <BuyTicketBtn
+              v-if="!card?.simple && card?.type_id !== null"
+              :link="linkBuy(card)"
+              @click.native.prevent="sendYandexMetrikaEvent(card?.type_id)"
+          />-->
           <nuxt-link v-else-if="!lessThanTablet && !!card?.simple"
                      class="uk-button uk-button-default button_ticket transition"
                      :class="{ 'disabled': card?.simple }"

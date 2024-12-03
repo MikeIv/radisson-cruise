@@ -865,16 +865,14 @@ export default {
   mounted() {
     this.getRefundDoc();
     if (process.browser) {
-      console.log(window.dataLayer)
+      window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         'event': 'pageview',
         'pagePath': '/yachts-buy/',
         'pageTitle': 'Покупка билета',
         'siteLanguage': this.$i18n.locale,
       })
-      console.log(window.dataLayer)
     }
-    console.log(this.$yandexMetrika)
   },
   middleware: [
     function({ redirect, route }) {
