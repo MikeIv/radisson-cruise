@@ -5,7 +5,7 @@
     <div class="buy-ticket-schedule__category-wrapper">
       <div v-if="!dayData.riverbus" class="buy-ticket-shedule__category">
         <svg-icon class="category_icon" :name="currentIcon"/>
-        <span>{{ dayData.journeyType }}</span>
+        <span>{{ dayData.journeySubType }}</span>
         <button @click="getCategory(dayData.journeyTypeId)">
           <svg-icon
               name="svg-info"
