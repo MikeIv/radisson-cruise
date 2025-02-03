@@ -37,6 +37,9 @@ export default {
         case 6:
           eventName = 'buy-jazz-ticket';
           break;
+        case 7:
+          eventName = 'buy_tasting_set';
+          break;
         default: eventName = null;
       }
       if (eventName !== null) this.$yandexMetrika.reachGoal(eventName)
