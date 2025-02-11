@@ -1,4 +1,4 @@
-FROM node:14.21.2-alpine
+FROM node:18-alpine
 
 ARG BASE_URL
 ARG API_BASE_URL
@@ -18,17 +18,15 @@ ENV LANG_EN=$LANG_EN
 ENV LANG_ZH=$LANG_ZH
 ENV ENVIRONMENT=$ENVIRONMENT
 
-RUN apk update && apk add tzdata bash
+RUN apk update && apk add tzdata bash g++ make py3-pip
 
 WORKDIR /app
 
 ADD . /app
 RUN env
+RUN npm rebuild node-sass fibers
 RUN npm install
 RUN npm run build
 
-#CMD pm2-runtime start
-#CMD pm2-runtime start ./node_modules/nuxt/bin/nuxt.js --name "nuxtKorabli" -i max
-#CMD pm2-runtime start ./node_modules/nuxt/bin/nuxt.js --name "nuxtKorabli" -- start --time -i max
 CMD ["npm", "run", "start"]
 
