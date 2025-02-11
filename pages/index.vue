@@ -2,7 +2,8 @@
   <div>
     <Header class="main_header main-header-index">
       <img src="~images/main_img.webp" data-src="~images/main_img.webp" class="img_cover" alt="">
-      <video src="~/assets/video/video-main-2.webm" autoplay="" loop="" muted="" playsinline="" class="img_cover uk-visible@s"></video>
+      <video src="~/assets/video/video-main-2.webm" autoplay="" loop="" muted="" playsinline=""
+             class="img_cover uk-visible@s"></video>
       <div class="uk-overlay-default uk-position-cover header__overlay-default"></div>
       <div class="uk-position-relative header-container">
         <div class="uk-container uk-position-relative">
@@ -22,7 +23,7 @@
           <div class="uk-width-auto@s block-tikets">
             <nuxt-link :to="localePath('/yachts/schedule')" class="header-ticket transition">
               <div class="font-29 text-upper">
-                <b>{{$t('ticket_yacht')}}</b>
+                <b>{{ $t('ticket_yacht') }}</b>
               </div>
               <div class="uk-flex uk-flex-middle">
                 <div class="txt16">
@@ -49,6 +50,20 @@
               :active-id="1"
       />
     </div>
+    <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
+      <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <div class="uk-modal-body uk-position-relative">
+          <div>
+            Только в эту пятницу отправляемся в музыкальные круизы с включённым меню.
+            Днем вас ждет саксофон на яхтах
+            Монтана и Бон Вояж, а вечером – душевный рейс с виртуозным пианистом за белым роялем.
+          </div>
+          <div class="success_bottom">
+            <a class="uk-modal-close uk-button uk-button-default">{{ $t('buttons.close_window') }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,6 +79,7 @@ import SalonCategoryIndex from '../components/SalonCategoryIndex';
 import BuyTicketBtn from '../components/BuyTicketBtn';
 import CategoriesCards from "../components/categories/CategoriesCards.vue";
 import {mapActions} from "vuex";
+import UIkit from "uikit";
 
 export default {
   name: 'index',
@@ -547,6 +563,7 @@ export default {
       activeRouteProp: {},
       selectedDates: ``,
       dateInputValue: '',
+      timer: null,
     };
   },
   methods: {
@@ -559,6 +576,18 @@ export default {
     },
   },
   mounted() {
+    const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
+    const nowInMoscow = new Date(newNow).getTime();
+    const targetDate = new Date(new Date().getFullYear(), 1, 14, 12, 0, 0);
+    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();
+    if (nowInMoscow <= targetTimeInMoscow) {
+      this.timer = setTimeout(() => {
+        this.$nextTick(() => {
+          UIkit.modal('#emergency').show();
+        })
+      }, 2000)
+    }
+
     let observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -606,7 +635,7 @@ export default {
 
           let dateFirst = addDays(date1.dateInstance, 1).toISOString().split('T')[0]
           let dateEnd = addDays(date2.dateInstance, 1).toISOString().split('T')[0]
-          if( date1.getTime() === date2.getTime() ) {
+          if (date1.getTime() === date2.getTime()) {
             this.dateInputValue = `${dateFirst}`
             this.selectedDates = `/yachts/schedule/?start=${dateFirst}`
           } else {
@@ -618,6 +647,10 @@ export default {
       },
     });
   },
+  beforeDestroy() {
+    clearTimeout(this.timer)
+  },
+
   async fetch() {
     try {
       let seoDataResult = await this.$axios(
@@ -746,6 +779,7 @@ export default {
     border: none;
     padding: 0;
   }
+
   .header-tickets-grid {
     margin-top: 10px;
     margin-left: 0;
@@ -761,36 +795,45 @@ export default {
   display: flex;
   width: 100%;
 }
+
 .litepicker {
   text-transform: none;
   padding-left: 34px;
 }
-.buy-ticket__item .icon{
+
+.buy-ticket__item .icon {
   left: 10px;
 }
+
 .buy-ticket__item {
   width: 100%;
   max-width: 180px;
   height: 50px;
 }
+
 .main_header {
   padding-top: 0;
 }
+
 .main-header-index {
   min-height: 70dvh;
   padding-bottom: 10vh;
 
 }
+
 .header-container {
   margin-top: 0;
 }
+
 .header__p1, .header__p2 {
   font-size: clamp(30px, 5vw, 64px)
 }
+
 .header-compass {
   right: 125px;
   bottom: 86px
 }
+
 @media screen and (max-width: 639px) {
   .uk-button {
     font-size: 10px;
@@ -799,10 +842,12 @@ export default {
     height: 50px;
   }
 }
+
 @media screen and (max-width: 428px) {
   .main-header-index {
     padding-bottom: 11px;
   }
+
   .main-filter {
     width: auto;
     padding: 0 10px;
