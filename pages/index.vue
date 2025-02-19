@@ -54,9 +54,8 @@
       <div class="uk-modal-dialog uk-margin-auto-vertical">
         <div class="uk-modal-body uk-position-relative">
           <div>
-            Только в эту пятницу отправляемся в музыкальные круизы с включённым меню.
-            Днем вас ждет саксофон на яхтах
-            Монтана и Бон Вояж, а вечером – душевный рейс с виртуозным пианистом за белым роялем.
+            Приглашаем отметить 23 февраля вместе! Всех мужчин в этот день ждет приветственный комплимент. А в 19.00
+            отправится музыкальный спецрейс. Подробнее в новости на главной странице.
           </div>
           <div class="success_bottom">
             <a class="uk-modal-close uk-button uk-button-default">{{ $t('buttons.close_window') }}</a>
@@ -576,17 +575,23 @@ export default {
     },
   },
   mounted() {
-    const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
+    /*const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
     const nowInMoscow = new Date(newNow).getTime();
     const targetDate = new Date(new Date().getFullYear(), 1, 14, 12, 0, 0);
-    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();
-    if (nowInMoscow <= targetTimeInMoscow) {
+    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();*/
+    /*if (nowInMoscow <= targetTimeInMoscow) {
       this.timer = setTimeout(() => {
         this.$nextTick(() => {
           UIkit.modal('#emergency').show();
         })
       }, 2000)
-    }
+    }*/
+
+    this.timer = setTimeout(() => {
+      this.$nextTick(() => {
+        UIkit.modal('#emergency').show();
+      })
+    }, 2000)
 
     let observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
