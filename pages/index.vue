@@ -50,19 +50,6 @@
               :active-id="1"
       />
     </div>
-    <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
-      <div class="uk-modal-dialog uk-margin-auto-vertical">
-        <div class="uk-modal-body uk-position-relative">
-          <div>
-            Приглашаем отметить 23 февраля вместе! Всех мужчин в этот день ждет приветственный комплимент. А в 19.00
-            отправится музыкальный спецрейс. Подробнее в новости на главной странице.
-          </div>
-          <div class="success_bottom">
-            <a class="uk-modal-close uk-button uk-button-default">{{ $t('buttons.close_window') }}</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -587,11 +574,6 @@ export default {
       }, 2000)
     }*/
 
-    this.timer = setTimeout(() => {
-      this.$nextTick(() => {
-        UIkit.modal('#emergency').show();
-      })
-    }, 2000)
 
     let observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -651,9 +633,6 @@ export default {
         });
       },
     });
-  },
-  beforeDestroy() {
-    clearTimeout(this.timer)
   },
 
   async fetch() {
