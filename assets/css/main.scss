@@ -646,15 +646,15 @@ body {
 
 .scheme_item8, .scheme_item7  {
   position: absolute;
-  left: 27%;
-  top: 66.5%;
+  left: 33%;
+  top: 73.5%;
   transform: translateX(-50%)
 }
 
 .scheme_item8 .scheme__item_txt, .scheme_item7 .scheme__item_txt {
   position: absolute;
   left: 0;
-  top: -35px;
+  top: 35px;
   text-align: left;
   white-space: nowrap
 }
@@ -854,6 +854,48 @@ body {
   margin-right: 8px
 }
 
+.scheme_item28 {
+  position: absolute;
+  left: 46%;
+  top: 65%;
+}
+
+.scheme_item28 .scheme__item_txt {
+  position: absolute;
+  left: 34px;
+  top: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+
+.scheme_item29 {
+  position: absolute;
+  left: 15%;
+  top: 7%;
+}
+
+.scheme_item30 {
+  position: absolute;
+  left: 10%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  top: 18%;
+  display: flex;
+  align-items: center;
+  //transform: translateX(-50%)
+}
+.scheme_item30 div{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.scheme_item30 svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px
+}
 
 /*
 

@@ -2,7 +2,6 @@
   <section class="scheme uk-cover-container" id="scheme" @click="clickScheme">
     <img data-src="~assets/img/main/back3.png" class="img_cover" alt="" src="~assets/img/main/back3.png">
     <svg-icon class="scheme_decor1" name="decor2"/>
-    <!--        <img src="~assets/img/svg/decor3.svg" alt="" class="scheme_decor2" uk-svg>-->
     <svg-icon class="scheme_decor2" name="decor3"/>
     <div class="scheme__scroll">
       <svg-icon name="scroll"/>
@@ -60,41 +59,6 @@
 
             </div>
             <div class="scheme__bottom scheme__block__buttons">
-              <!--              <div class="uk-width-1-1">
-                              <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor1" checked>
-                              <label class="width-100 height-100 scheme__bottom_item " for="scheme-moor1" @click="activeRoute = 1">
-                                <div class="scheme__bottom_item_left">
-                                  <div class="scheme__bottom_head">
-                                    Причал «Гостиница «Украина»
-                                  </div>
-                                  <div class="scheme__bottom_info">
-                                    <svg-icon name='metro' class="icon"/>
-                                    <span>
-                                                            Киевская, набережная Тараса Шевченко.
-                                                          </span>
-                                  </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                              </label>
-                            </div>
-                            <div class="uk-width-1-1">
-                              <input type="radio" name="scheme-moor" value="Причал «Гостиница «Украина»" id="scheme-moor2">
-                              <label class="width-100 height-100 scheme__bottom_item" for="scheme-moor2" @click="activeRoute = 2">
-                                <div class="scheme__bottom_item_left">
-                                  <div class="scheme__bottom_head">
-                                    Причал «Парк Горького»
-                                  </div>
-                                  <div class="scheme__bottom_info">
-                                    <svg-icon name='metro' class="icon"/>
-                                    <span>
-                                                          Парк Культуры/Октябрьская, Пушкинская набережная.
-                                                      </span>
-                                  </div>
-                                </div>
-                                <svg-icon name='arrow3' class="icon"/>
-                              </label>
-                            </div>-->
-
               <div v-for="(route,index) in activeRoutes" class="uk-width-1-1 scheme_route-button" :key="'schmrt' + index">
                 <input v-model.number="activeRoute" type="radio" name="scheme-moor" :value="route.id"
                        :id="`scheme-moor${route.id}`">
