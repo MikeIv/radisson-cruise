@@ -525,8 +525,8 @@ body {
   font-weight: 500;
   display: flex;
   align-items: center;
-  left: 21%;
-  top: 13%;
+  left: 17%;
+  top: 16%;
   transform: translateX(-50%);
 }
 
@@ -647,7 +647,7 @@ body {
 .scheme_item8, .scheme_item7  {
   position: absolute;
   left: 33%;
-  top: 73.5%;
+  top: 77%;
   transform: translateX(-50%)
 }
 
@@ -856,8 +856,8 @@ body {
 
 .scheme_item28 {
   position: absolute;
-  left: 46%;
-  top: 65%;
+  left: 43%;
+  top: 63%;
 }
 
 .scheme_item28 .scheme__item_txt {
@@ -866,6 +866,11 @@ body {
   top: 0;
   text-align: left;
   white-space: nowrap;
+}
+
+.scheme_item28 .scheme__item-container {
+  display: flex;
+  gap: 5px;
 }
 
 
@@ -877,21 +882,42 @@ body {
 
 .scheme_item30 {
   position: absolute;
-  left: 10%;
+  left: 32%;
+  top: 71%;
   color: #fff;
   font-size: 12px;
   font-weight: 500;
-  top: 18%;
   display: flex;
   align-items: center;
   //transform: translateX(-50%)
 }
 .scheme_item30 div{
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column-reverse;
 }
 
 .scheme_item30 svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px
+}
+.scheme_item33 {
+  position: absolute;
+  left: 75%;
+  top: 20%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  //transform: translateX(-50%)
+}
+.scheme_item33 div{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.scheme_item33 svg {
   width: 20px;
   height: 20px;
   margin-right: 8px

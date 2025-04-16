@@ -23,7 +23,7 @@
            uk-scrollspy="cls: uk-animation-fade; delay: 500">
         <div class="scheme-switch">
           <div class="switch-container">
-            <div class="switch-name" :class="{'active': !isActive}">{{ $t('yachts_route') }}</div>
+            <div class="switch-name" :class="{'active': !isActive}">{{ isTram ? $t('trams_route') : $t('yachts_route')}}</div>
           </div>
         </div>
         <ul class="uk-switcher scheme-switcher">
