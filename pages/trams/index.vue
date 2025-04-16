@@ -27,30 +27,6 @@
           :route="ticket"
       />
     </div>
-
-<!--    <section class="tenancy__about trams__about uk-flex uk-flex-wrap uk-child-width-1-2@m">
-      <div class="tenancy__about__info uk-position-relative">
-        <svg-icon class="icon" name="wheel"/>
-        <div class="uk-position-relative">
-          <div class="headline_22">
-            Уже пятый сезон речные «кабриолеты» Флотилии радуют жителей и гостей столицы,
-            ведь с ними прогулки по Москве-реке и знакомство
-            с главными достопримечательностями города становится быстрым и небанальным.
-          </div>
-          <div class="headline_line"></div>
-          <div class="tenancy__about_txt">
-            Речные трамвайчики Флотилии «Рэдиссон Ройал» развивают туристические возможности и потенциал города Москвы,
-            стараясь привлечь внимание жителей и гостей столицы к новому виду досуга и времяпрепровождению на Москве-реке.
-          </div>
-          <a class="uk-button uk-button-default" href="#scheme">
-            <span>МАРШРУТЫ И ПРИЧАЛЫ</span>
-          </a>
-        </div>
-      </div>
-      <div class="uk-cover-container tenancy__about__img">
-        <img data-src="~assets/img/inners/tram2.png" alt="" class="img_cover" src="~assets/img/inners/tram2.png">
-      </div>
-    </section>-->
     <CruiseItem
         :fileNames="tramBlocks?.images"
         :title="tramBlocks?.name"
@@ -62,12 +38,6 @@
         :button="tramBlocks?.button"
     />
 
-<!--    <SchemeRouts
-      :idTypeMap="3"
-      :arrDataPoints="schemePiers"
-
-      v-if="viewSections.scheme && schemePiers.length > 0"
-    />-->
     <Scheme :button-link="tramsDoc"
             :points="schemePiers"
             :active-routes="dataRoutes"
