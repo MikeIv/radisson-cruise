@@ -25,11 +25,11 @@
             </div>
           </div>
           <div class="header_top-center">
-<!--            <nuxt-link class="header_top-link transition" to="/yachts/schedule/"  @click.native="closeNav">-->
-<!--              <svg-icon class="header__top_logo transition" name="header/Time"/>-->
-<!--              <span class="desktop_text">{{ $t('header.yachts_schedule') }}</span>-->
-<!--              <span class="mobile_text">{{ $t('schedule') }}</span>-->
-<!--            </nuxt-link>-->
+            <nuxt-link class="header_top-link transition" to="/yachts/schedule/"  @click.native="closeNav">
+              <svg-icon class="header__top_logo transition" name="header/Time"/>
+              <span class="desktop_text">{{ $t('header.yachts_schedule') }}</span>
+              <span class="mobile_text">{{ $t('schedule') }}</span>
+            </nuxt-link>
             <nuxt-link class="header_top-link transition" to="/rent/"  @click="closeNav">
               <svg-icon class="header__top_logo transition" name="header/Shturval"/>
               <span>{{ $t('header.rent') }}</span>
