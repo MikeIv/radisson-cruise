@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="!isTram" class="buy-ticket__item">
+            <div class="buy-ticket__item">
               <svg-icon name="cat_room" class="icon buy-ticket__item_icon3"/>
               <button class="select-styled pass-btn"
                       :class="{ 'select-open': isCatetories }"

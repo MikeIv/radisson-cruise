@@ -20,10 +20,10 @@ export default {
   },
   methods: {
     linkMore(card) {
-      return !card.simple && card.type_id !== 9 ? `/categories/${card.slug}/` : `/trams/`
+      return `/categories/${card.slug}/`
     },
     linkBuy(card) {
-      return card.type_id === 9 ? `/trams/schedule/` : `/yachts/schedule/?category=${card.type_id}`
+      return (card.type_id === 14 || card.type_id === 15) ? `/trams/schedule/?category=${card.type_id}` : `/yachts/schedule/?category=${card.type_id}`
     },
     sendYandexMetrikaEvent(type) {
       let eventName = null;
@@ -125,11 +125,6 @@ export default {
             <span>{{ $t('buttons.buy_ticket') }}</span>
             <svg-icon class="icon" name="ticket"/>
           </button>
-<!--          <BuyTicketBtn
-              v-if="!card?.simple && card?.type_id !== null"
-              :link="linkBuy(card)"
-              @click.native.prevent="sendYandexMetrikaEvent(card?.type_id)"
-          />-->
           <nuxt-link v-else-if="!lessThanTablet && !!card?.simple"
                      class="uk-button uk-button-default button_ticket transition"
                      :class="{ 'disabled': card?.simple }"

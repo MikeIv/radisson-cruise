@@ -72,6 +72,41 @@
             </div>
           </div>
           <div class="buy-ticket__item">
+            <svg-icon class="icon buy-ticket__item_icon3" name="cat_room"/>
+            <button
+                class="select-styled pass-btn"
+                type="button"
+                aria-expanded="false"
+            >
+              {{ selectCategory }}
+            </button>
+
+            <div
+                uk-dropdown="animation: uk-animation-fade; pos: bottom-left;mode:click;"
+                class="pass-quantity__drop uk-dropdown"
+                id="categoryFilter"
+            >
+              <div class="pass-quantity">
+                <div class="form_politic buy-ticket__politic">
+                  <label v-for="category in setCategories">
+                    <input class="uk-checkbox"
+                           name="category__salon"
+                           type="checkbox"
+                           :value="category"
+                           v-model="checkedCategories">
+                    <span>{{ category.name }}</span>
+                  </label>
+                </div>
+                <button @click="routesFilter(); hideFilterItem('categoryFilter');"
+                        type="button"
+                        class="uk-button uk-button-default accept_button"
+                >
+                  {{ $t('buttons.accept') }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="buy-ticket__item">
             <svg-icon name="clock3" class="icon buy-ticket__item_icon1"/>
             <img src="~assets/img/main/arr_dow.png" alt="" class="buy-ticket__item1_arr">
             <button type="button" class="select-styled timeSelect datetimepicker">
@@ -872,11 +907,11 @@ export default {
       }*/
 
 
-    async datesFilter(start, end, queryCategory) {
+    async datesFilter(start, end, queryCategory = '14,15') {
       //console.log(queryCategory, queryCategory.split(', '))
       const response = await this.$axios.get(`${this.$config.baseURL}routes`, {
         params: {
-          'type_id[]': 9,
+          'type_id[]': queryCategory,
           date: this.startDate,
           end: end ? end : this.endDate,
           lang: this.$i18n.locale
@@ -1190,7 +1225,7 @@ export default {
       numberOfMonths: 2,
       numberOfColumns: 2,
       minDate: new Date().setDate(new Date().getDate() - 0),
-      maxDate: new Date().setDate(new Date().getDate() + 6),
+      maxDate: new Date(2025, 8, 30),
       showTooltip: false,
     }
     // console.log("Elements = ",elements);
@@ -1243,17 +1278,6 @@ export default {
     let now = today.toISOString().split('T')[0]
     let end = new Date(today.setDate(today.getDate() + 7)).toISOString().split('T')[0]
     let queryCategory = []
-    if(this.$route.query.category) {
-      queryCategory = this.$route.query.category.split(',').map(val => +val)
-      const casualRoutes = queryCategory.some(category => {
-        return category === 0 || category === 2 || category === 3 || category === 4 || category === 5
-      })
-      if(!casualRoutes) {
-        if(!this.$route.query.start) {
-          end = new Date(today.setDate(today.getDate() + 90)).toISOString().split('T')[0]
-        }
-      }
-    }
 
     if (this.$route.query.start) {
       now = this.$route.query.start
@@ -1285,13 +1309,13 @@ export default {
           `${this.$config.baseURL}categories?&lang=${this.$i18n.locale}`);
       this.allAvailableCategories = categoriesData.data.result
       this.setCategories = categoriesData.data.result
-          .filter(item => {
-            return item.type_id !== null
-          })
+          .filter(item => item.type_id === 15 || item.type_id === 14)
           .map(item => {
-            return {
-              name: item.name,
-              id: item.type_id,
+            {
+              return {
+                name: item.name,
+                id: item.type_id,
+              }
             }
           })
       /*await this.datesFilter();

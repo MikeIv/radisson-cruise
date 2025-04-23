@@ -11,6 +11,9 @@
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
                 {{ $t('nav.yachts') }}
               </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
+                {{ $t('nav.trams') }}
+              </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
                 {{ $t('nav.categories') }}
               </nuxt-link>
@@ -39,6 +42,9 @@
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 {{ $t('nav.yachts_schedule') }}
               </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/schedule/" @click.native="closeNav">
+                {{ $t('nav.trams_schedule') }}
+              </nuxt-link>
               <nuxt-link class="txt18 " to="/menu/" @click.native="closeNav">
                 {{ $t('nav.menu') }}
               </nuxt-link>
@@ -63,6 +69,9 @@
             <div class="uk-first-column">
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
                 {{ $t('nav.yachts') }}
+              </nuxt-link>
+              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">
+                {{ $t('nav.trams') }}
               </nuxt-link>
               <nuxt-link class="txt18 " to="/yachts/schedule/" @click.native="closeNav">
                 {{ $t('nav.yachts_schedule') }}
@@ -97,6 +106,11 @@
                 <li>
                   <nuxt-link class="" to="/yachts/schedule/" @click.native="closeNav">
                     {{ $t('nav.yachts_tickets') }}
+                  </nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/trams/schedule/" @click.native="closeNav">
+                    {{ $t('nav.trams_schedule') }}
                   </nuxt-link>
                 </li>
                 <li>
