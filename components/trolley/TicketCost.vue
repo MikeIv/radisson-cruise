@@ -7,7 +7,7 @@
       <div class="trams__cost__info">
         <svg-icon name='ancor-in-circle' class="icon"/>
         <div class="pierce-wrapper">
-          {{ route.point_description }}
+          <span v-for="pier in route.points">{{ pier.name }} <span class="helper">-</span></span>
         </div>
       </div>
     </div>
