@@ -148,10 +148,6 @@ export default {
     const categoryName = this.$route.params.name;
     let categoryNumber = null;
     let categoryTypeId = null;
-    /*let categoryData = await this.$axios(`${this.$config.baseURL}categories?slug=${categoryName}&lang=${this.$i18n.locale}`);
-    this.categoryInfo = categoryData.data.result;
-    categoryNumber = this.categoryInfo?.id;
-    categoryTypeId = this.categoryInfo?.type_id*/
     try {
       let categoryData = await this.$axios(`${this.$config.baseURL}categories?slug=${categoryName}&lang=${this.$i18n.locale}`);
       let seoDataResult = await this.$axios.get(
@@ -174,13 +170,12 @@ export default {
         `${this.$config.baseURL}yvideos?category_id=${categoryNumber}&lang=${this.$i18n.locale}`);
     let menus = await this.$axios.get(
         `${this.$config.baseURL}menus?category_id=${categoryNumber}&lang=${this.$i18n.locale}`);
-    this.yachts = await yachtsData.data;
-    this.yachtsSlider = this.yachts[0]?.yachts.concat(this.yachts[1]?.yachts)
-    this.video = await videoData.data[0];
-    this.blocks = blocksData.data;
-    this.techInfoFetch = yachtsData.data
-    this.securityBlocks =  safeListData.data;
-    //console.log(menus.data)
+    this.yachts = yachtsData?.data ?? []
+    this.yachtsSlider = this.yachts?.yachts?.length > 1 ? this.yachts[0]?.yachts.concat(this.yachts[1]?.yachts) : []
+    this.video = videoData?.data[0]
+    this.blocks = blocksData?.data
+    this.techInfoFetch = yachtsData?.data ?? []
+    this.securityBlocks =  safeListData?.data ?? []
     this.menuCards = menus.data
     try {
       let today = new Date()
@@ -196,7 +191,7 @@ export default {
       ) {
         tableRoutesDays = allAvailableDays;
         this.endDate = allAvailableDays;
-      } else if (this.categoryInfo.type_id == '3') {
+      } else if (this.categoryInfo.type_id == '3' || this.categoryInfo.type_id == '15' || this.categoryInfo.type_id == '14') {
         tableRoutesDays = sevenDays;
         this.endDate = sevenDays;
       } else {
@@ -272,7 +267,7 @@ export default {
         </div>
       </div>
     </section>
-    <section class="category_item-description">
+    <section v-if="categoryInfo" class="category_item-description">
       <img :src="`${$config.imageURL}?size=1920&format=webp&src=${$config.baseSiteURL}`+categoryInfo?.background"
            :data-src="`${$config.imageURL}?size=1920&format=webp&src=${$config.baseSiteURL}`+categoryInfo?.background"
            class="img_cover"
@@ -312,13 +307,13 @@ export default {
               <div class="about-advantages__info__item--icon">
                 <svg-icon :name="`description/${item.icon}`"/>
               </div>
-              <div v-html="item.content"></div>
+              <div v-html="item?.content"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section v-if="categoryInfo.type_id !== null" class="uk-container category_item-schedule">
+    <section v-if="categoryInfo?.type_id !== null" class="uk-container category_item-schedule">
       <h5 class="category_item-section--title uk-container">
         {{ $t('cruise_list') }}
       </h5>
@@ -357,7 +352,7 @@ export default {
                   :linkMore="cruise.linkmore"
                   :fileNames="cruise.images"/>
     </section>
-    <section v-if="menuCards.length > 0" class="category_item-menu">
+    <section v-if="menuCards?.length > 0" class="category_item-menu">
       <div class="category_item-menu--wrapper uk-container">
         <h5 class="category_item-section--title uk-container">
           {{ $t('menu') }}
@@ -371,7 +366,7 @@ export default {
         </div>
       </div>
     </section>
-    <section v-if="yachtsSlider.length > 0" class="category_item-yachts">
+    <section v-if="yachtsSlider?.length > 0" class="category_item-yachts">
       <div class="category_item-yachts--wrapper">
         <h5 class="category_item-section--title uk-container">
           {{ $t('yachts') }}
@@ -410,7 +405,7 @@ export default {
         </h5>
       </div>
     </section>
-    <section>
+    <section v-if="techInfoFetch?.length > 0">
       <YachtType v-for="(yacht, index) in techInfoFetch" :key="'ycht' + index"
                  :title="yacht.listyachts"
                  :description="yacht.description"
@@ -439,7 +434,7 @@ export default {
         </div>
       </div>
     </section>
-    <section class="padding_top padding_bottom rules-about2__section">
+    <section v-if="securityBlocks?.length > 0" class="padding_top padding_bottom rules-about2__section">
       <div class="uk-container">
         <div class="uk-flex uk-flex-wrap uk-child-width-1-2@l uk-grid-match rules-about2__grid">
           <div class="margin-bot10" v-for="(card, index) in securityBlocks" :key="'scrty' + index">
