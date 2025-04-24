@@ -59,17 +59,7 @@
            :portName="route.name"
            :text="route.content"
     />
-<!--    <CruiseItem
-        v-for="(block,index) in portBlocks" :key="'prtBlock'+ index"
-        :fileNames="block?.images"
-        :title="block?.name"
-        :text="block?.content"
-        :svgName="block?.background"
-        :link-buy="block?.linkbuy"
-        :link-more="block?.linkmore"
-        :link-free="block?.linkfree"
-    />-->
-    <section class="uk-cover-container trams-shutdown">
+<!--    <section class="uk-cover-container trams-shutdown">
       <img  data-src="~assets/img/inners/tram3.png" alt="" class="img_cover" src="~assets/img/inners/tram3.png">
       <div class="uk-container uk-position-relative">
         <div class="headline_32 t_semibold">
@@ -79,7 +69,7 @@
           <div class="trams-shutdown__decor"></div>
           <div class="trams-shutdown__decor trams-shutdown__decor2"></div>
 
-<!--           <PortItem portName="Гостиница «Украина»"/>
+&lt;!&ndash;           <PortItem portName="Гостиница «Украина»"/>
           <div class="trams-shutdown__arr">
             <svg-icon class="icon" name="arrow"/>
           </div>
@@ -92,32 +82,31 @@
           <PortItem portName="Воробьевы горы"/>
           <div class="trams-shutdown__arr">
             <svg-icon class="icon" name="arrow"/>
-          </div> -->
+          </div> &ndash;&gt;
           <div class="uk-flex uk-flex-center" v-for="(itemPort,idxport) in dataRoutes[0]?.points" :key="'idxpt-'+idxport">
 
-                    <PortItem :portName="itemPort.name"/>
+                    <PortItem :portName="itemPort.description"/>
                     <span class="trams-shutdown__arr" v-if="idxport < dataRoutes[0]?.points?.length-1">
                       <svg-icon class="icon" name="arrow"/>
                     </span>
 
           </div>
-<!--           <PortItem portName="Зарядье"/>
+&lt;!&ndash;           <PortItem portName="Зарядье"/>
           <div class="trams-shutdown__arr">
             <svg-icon class="icon" name="arrow"/>
           </div>
 
-          <PortItem portName="Парк Горького"/> -->
+          <PortItem portName="Парк Горького"/> &ndash;&gt;
 
 
         </div>
         <div class="trams-shutdown__bottom">
-          <a class="uk-button uk-button-default " :href="tramsDoc">
+          <nuxt-link class="uk-button uk-button-default " to="/trams/schedule/">
             <span>{{ $t('schedule') }}</span>
-          </a>
-
+          </nuxt-link>
         </div>
       </div>
-    </section>
+    </section>-->
     <section class="uk-cover-container trams-advantages">
       <div class="trams-advantages__decor"></div>
       <div class="uk-container uk-position-relative">
