@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header class="trams__header">
-      <img src="~images/inners/tram1.webp" data-src="~images/inners/tram1.webp" class="img_cover" alt="">
+      <img src="~images/trams_index.jpg" data-src="~images/trams_index.jpg" class="img_cover" alt="">
       <video src="~/assets/video/trams3.mp4" autoplay="" loop="" muted="" playsinline="" class="img_cover"></video>
       <div class="uk-overlay-default uk-position-cover video-overlay"></div>
       <div class="uk-container uk-position-relative">
