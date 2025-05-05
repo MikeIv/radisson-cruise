@@ -62,6 +62,18 @@
               :active-id="1"
       />
     </div>
+    <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
+      <div class="uk-modal-dialog uk-margin-auto-vertical">
+        <div class="uk-modal-body uk-position-relative">
+          <div>
+            {{ $t('emergency') }}
+          </div>
+          <div class="success_bottom">
+            <a class="uk-modal-close uk-button uk-button-default">{{ $t('buttons.close_window') }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
