@@ -574,17 +574,21 @@ export default {
     },
   },
   mounted() {
-    /*const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
+    /**/
+    const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
     const nowInMoscow = new Date(newNow).getTime();
-    const targetDate = new Date(new Date().getFullYear(), 1, 14, 12, 0, 0);
-    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();*/
-    /*if (nowInMoscow <= targetTimeInMoscow) {
+    const targetDate = new Date(new Date().getFullYear(), 4, 10, 0, 0, 0);
+    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();
+    /**/
+    /**/
+    if (nowInMoscow <= targetTimeInMoscow) {
       this.timer = setTimeout(() => {
         this.$nextTick(() => {
           UIkit.modal('#emergency').show();
         })
       }, 2000)
-    }*/
+    }
+    /**/
 
 
     let observer = new IntersectionObserver((entries) => {
