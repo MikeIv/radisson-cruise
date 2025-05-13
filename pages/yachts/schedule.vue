@@ -947,9 +947,7 @@ export default {
         this.invalidFilter = true;
         this.isLoading = false;
       } else {
-        this.testFetch = response.data.routes.filter(item => {
-          return item.journeyTypeId !== 15 || item.journeyTypeId !== 14
-        });
+        this.testFetch = response.data.routes;
         this.arrayToFilter = []
         Object.entries(this.testFetch).forEach(item => {
           this.arrayToFilter.push({
@@ -1028,7 +1026,7 @@ export default {
             end = this.$route.query.end
           }
         }
-        const queryCategory = this.checkedCategories.map(item => item.id)
+        const queryCategory = this.checkedCategories.map(item => item.id).join(',')
         await this.datesFilter(this.startDate, end, queryCategory)
 
         currentQuery.category = queryCategory;
@@ -1305,7 +1303,7 @@ export default {
       this.allAvailableCategories = categoriesData.data.result
       this.setCategories = categoriesData.data.result
           .filter(item => {
-            return item.type_id !== null && item.type_id !== 15 || item.type_id !== 14
+            return item.type_id !== null
           })
           .map(item => {
             return {
@@ -1316,7 +1314,7 @@ export default {
       /*await this.datesFilter();
       this.validateFilterOptions();
       await this.routesFilter();*/
-      await this.datesFilter(this.startDate, this.endDate, this.$route.query.category.split(','));
+      await this.datesFilter(this.startDate, this.endDate, this.$route.query.category);
       this.validateFilterOptions();
       //await this.routesFilter();
       this.isLoading = false;
@@ -1391,7 +1389,7 @@ export default {
           this.endDate = dateEnd
           /*await this.routesFilter()
           this.validateFilterOptions();*/
-          await this.datesFilter(this.startDate, this.endDate, this.$route.query.category.split(','));
+          await this.datesFilter(this.startDate, this.endDate, this.$route.query.category);
           this.validateFilterOptions();
           await this.routesFilter()
           //console.log("picker selected showRoutes = ",this.showRoutes);

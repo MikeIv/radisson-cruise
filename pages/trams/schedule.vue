@@ -907,11 +907,11 @@ export default {
       }*/
 
 
-    async datesFilter(start, end, queryCategory = [14,15]) {
+    async datesFilter(start, end, queryCategory = '14,15') {
       //console.log(queryCategory, queryCategory.split(', '))
       const response = await this.$axios.get(`${this.$config.baseURL}routes`, {
         params: {
-          type_id: queryCategory,
+          'type_id[]': queryCategory,
           date: this.startDate,
           end: end ? end : this.endDate,
           lang: this.$i18n.locale
@@ -1000,7 +1000,7 @@ export default {
             end = this.$route.query.end
           }
         }
-        const queryCategory = this.checkedCategories.map(item => item.id)
+        const queryCategory = this.checkedCategories.map(item => item.id).join(',')
         await this.datesFilter(this.startDate, end, queryCategory)
 
         currentQuery.category = queryCategory;
@@ -1259,7 +1259,7 @@ export default {
           this.endDate = dateEnd
           /*await this.routesFilter()
           this.validateFilterOptions();*/
-          await this.datesFilter(this.startDate, this.endDate, this.$route.query.category.split(','));
+          await this.datesFilter(this.startDate, this.endDate, this.$route.query.category);
           this.validateFilterOptions();
           await this.routesFilter()
           //console.log("picker selected showRoutes = ",this.showRoutes);
@@ -1321,7 +1321,7 @@ export default {
       /*await this.datesFilter();
       this.validateFilterOptions();
       await this.routesFilter();*/
-      await this.datesFilter(this.startDate, this.endDate, this.$route.query.category.split(','));
+      await this.datesFilter(this.startDate, this.endDate, this.$route.query.category);
       this.validateFilterOptions();
       //await this.routesFilter();
       this.isLoading = false;

@@ -77,7 +77,7 @@ deploy prod service:
     - docker pull ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG}
     - docker service update -q --force --with-registry-auth --image ${CI_REGISTRY_IMAGE}/nuxt:${CI_COMMIT_TAG} korabliki_nuxt
     - docker exec $(docker ps -q -f name=korabliki_nginx) find /var/cache/nginx/cache -type f -delete
-    - php /home/webuser/korabliki/bin/send_telegram.php release ${CI_COMMIT_TAG} "${CI_COMMIT_TAG_MESSAGE}" "$CI_COMMIT_TITLE"
+    - php /home/webuser/korabliki/bin/send_telegram.php release ${CI_COMMIT_TAG} "${CI_COMMIT_TAG_MESSAGE}"
   only:
     variables:
       - $CI_COMMIT_TAG =~ /^v\d.*/
