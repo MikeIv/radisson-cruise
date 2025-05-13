@@ -950,12 +950,10 @@ export default {
         this.testFetch = response.data.routes;
         this.arrayToFilter = []
         Object.entries(this.testFetch).forEach(item => {
-          if (item[1].journeyTypeId !== 15 || item[1].journeyTypeId !== 14) {
-            this.arrayToFilter.push({
-              date: item[0],
-              routes: item[1],
-            })
-          }
+          this.arrayToFilter.push({
+            date: item[0],
+            routes: item[1].filter(item => item.journeyTypeId !== 15 && item.journeyTypeId !== 14),
+          })
         })
         this.showRoutes = this.arrayToFilter
       }
