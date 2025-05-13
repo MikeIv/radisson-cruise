@@ -1303,7 +1303,7 @@ export default {
       this.allAvailableCategories = categoriesData.data.result
       this.setCategories = categoriesData.data.result
           .filter(item => {
-            return item.type_id !== null
+            return item.type_id !== null && item.type_id !== 14 && item.type_id !== 15
           })
           .map(item => {
             return {
