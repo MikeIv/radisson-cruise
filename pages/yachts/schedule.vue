@@ -937,7 +937,7 @@ export default {
       //console.log(queryCategory, queryCategory.split(', '))
       const response = await this.$axios.get(`${this.$config.baseURL}routes`, {
         params: {
-          type_id: queryCategory,
+          'type_id[]': queryCategory,
           date: this.startDate,
           end: end ? end : this.endDate,
           lang: this.$i18n.locale
@@ -947,15 +947,15 @@ export default {
         this.invalidFilter = true;
         this.isLoading = false;
       } else {
-        this.testFetch = response.data.routes;
+        this.testFetch = response.data.routes.filter(item => {
+          return item.journeyTypeId !== 15 || item.journeyTypeId !== 14
+        });
         this.arrayToFilter = []
         Object.entries(this.testFetch).forEach(item => {
-          if (item[1].journeyTypeId !== 15 || item[1].journeyTypeId !== 14) {
-            this.arrayToFilter.push({
-              date: item[0],
-              routes: item[1],
-            })
-          }
+          this.arrayToFilter.push({
+            date: item[0],
+            routes: item[1],
+          })
         })
         this.showRoutes = this.arrayToFilter
       }
