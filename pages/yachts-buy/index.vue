@@ -77,7 +77,7 @@
                       </div>
                     </div>
                   </div>
-                  <span v-if="routeData.availableChild" class="children_subinfo">{{ $t('children_notation') }}</span>
+                  <span class="children_subinfo">{{ $t('children_notation') }}</span>
                 </div>
                 <div class="buy-ticket-form__data">
                   <div class="uk-flex uk-flex-wrap buy-ticket-form__data__grid">
