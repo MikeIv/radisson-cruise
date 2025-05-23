@@ -899,7 +899,7 @@ export default {
       })
       this.childPrice = this.routeData.childPrice
       this.adultPrice = this.routeData.adultPrice
-      this.routeData.availablePromo ? this.adultCount = 0 : this.adultCount = 1
+      this.routeData.availablePromo || this.routeData.riverbus ? this.adultCount = 0 : this.adultCount = 1
       this.options = optionsData.data.result
     } catch(error) {
       this.$nuxt.error({ statusCode: 404, message: 'Data not found' })
