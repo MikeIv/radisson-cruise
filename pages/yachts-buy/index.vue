@@ -34,7 +34,7 @@
                           -
                         </button>
                       </div>
-                      <input @change="routeData.availablePromo ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
+                      <input @change="routeData.availablePromo || routeData.riverbus ? adultCount <= 1 ? adultCount = 1 : adultCount : adultCount <= 0 ? adultCount = 0 : adultCount" class="input-group-field" type="number" name="quantity" v-model.number="adultCount" min="0">
                       <div class="input-group-button">
                         <button @click="changeTicketNumberAdult('+')" type="button" class="button" data-quantity="plus"
                                 data-field="quantity">
@@ -681,24 +681,23 @@ export default {
       this.promoStatus = false
       this.saleNumber = 0
       if (param == '-') {
-        if(!this.routeData.availablePromo) {
-          if (this.adultCount <= 1) {
-            return 1
-          } else {
-            this.adultCount--
-            this.adultSum -= this.adultPrice
-          }
-        } else {
+        if (this.routeData.availablePromo || this.routeData.riverbus) {
           if (this.adultCount === 0) {
             return 0
           } else {
             this.adultCount--
             this.adultSum -= this.adultPrice
           }
+        } else {
+          if (this.adultCount <= 1) {
+            return 1
+          } else {
+            this.adultCount--
+            this.adultSum -= this.adultPrice
+          }
         }
-
       } else {
-        if(this.adultCount == 40) {
+        if (this.adultCount == 40) {
           this.adultCount
         } else {
           if (this.maxSits == 0) {
