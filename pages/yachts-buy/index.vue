@@ -501,7 +501,7 @@ export default {
       this.adultNewVal = +newVal
       this.adultOldVal = +oldVal
 
-      if(!this.routeData.availablePromo) {
+      if(!this.routeData.availablePromo && !this.routeData.riverbus) {
         if (this.adultNewVal < 1 ) {
           this.adultCount = 1
         }
