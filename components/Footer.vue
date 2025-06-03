@@ -2,8 +2,11 @@
   <div>
     <footer class="uk-flex">
       <div class="uk-cover-container footer__left uk-visible@l">
-        <div class="uk-cover-container footer__left_img-container uk-scrollspy-inview uk-animation-slide-bottom" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 400">
-          <img data-src="~/assets/img/footer_yacht.png" src="~/assets/img/footer_yacht.png" alt="" class="img_cover uk-scrollspy-inview uk-animation-slide-bottom" uk-scrollspy="cls: uk-animation-slide-bottom; delay: 1000">
+        <div class="uk-cover-container footer__left_img-container uk-scrollspy-inview uk-animation-slide-bottom"
+             uk-scrollspy="cls: uk-animation-slide-bottom; delay: 400">
+          <img data-src="~/assets/img/footer_yacht.png" src="~/assets/img/footer_yacht.png" alt=""
+               class="img_cover uk-scrollspy-inview uk-animation-slide-bottom"
+               uk-scrollspy="cls: uk-animation-slide-bottom; delay: 1000">
         </div>
       </div>
       <div class="footer__right" uk-scrollspy="target: > *; cls: uk-animation-fade; delay: 200">
@@ -15,13 +18,31 @@
             </div>
           </div>
           <form class="mailing__form" action="" id="mailing__form" autocomplete="off">
-            <input v-model="newsEmail" type="email" required="" name="f_mail" class="uk-input" :placeholder="$t('footer.placeholder')">
-            <button @click.prevent="subscribeEmail" class="mailing__btn" type="submit">
-<!--              <svg-icon src="~assets/img/svg/arrow2.svg" alt="" uk-svg>-->
-              <svg-icon name="arrow"/>
-            </button>
+            <div class="mailing__input-block">
+              <input v-model="newsEmail" type="email" required="" name="f_mail" class="uk-input"
+                     :placeholder="$t('footer.placeholder')">
+              <button @click.prevent="subscribeEmail" class="mailing__btn" type="submit">
+                <!--              <svg-icon src="~assets/img/svg/arrow2.svg" alt="" uk-svg>-->
+                <svg-icon name="arrow"/>
+              </button>
+            </div>
+            <div class="mailing__politic" style="margin-top: 20px">
+              <label>
+                <input class="uk-checkbox"
+                       type="checkbox"
+                       name="check-info"
+                       v-model="agrees.politic"
+                       :class="{'uk-form-danger': errors.politic.isError}"
+                >
+                <span class="">
+                        {{ $t('im_accept') }} <nuxt-link to="/politic/">{{ $t('links.politic') }}</nuxt-link>
+                      </span>
+              </label>
+              <span class="uk-form-danger uk-margin-top uk-display-block"
+                    v-if="errors.politic.isError">{{ $t(errors.politic.msg) }}</span>
+            </div>
           </form>
-          <div v-if="onError" class="text-error uk-margin-top">{{onError}}</div>
+          <div v-if="onError" class="text-error uk-margin-top">{{ onError }}</div>
         </div>
         <ul class="footer__nav uk-scrollspy-inview uk-animation-fade">
           <li class="footer__nav_item1">
@@ -195,13 +216,14 @@
 </template>
 
 <script>
-import { IMaskDirective } from "vue-imask";
+import {IMaskDirective} from "vue-imask";
 import SocialBlock from "./SocialBlock";
 import axios from "axios";
 import UIkit from "uikit";
 import querystring from "querystring";
-import {mapGetters,mapActions} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 import SuccessSubscribe from "./modals/SuccessSubscribe.vue";
+
 export default {
   name: 'Footer',
   components: {SuccessSubscribe, SocialBlock},
@@ -219,6 +241,35 @@ export default {
       topScroll: 0,
       newsEmail: '',
       onError: null,
+
+      agrees: {
+        politic: false,
+        rules: false,
+      },
+      errors: {
+        name: {
+          isError: false,
+          msg: 'error_name'
+        },
+        phone: {
+          isError: false,
+          msg: 'error_phone'
+        },
+        email: {
+          isErrorInput: false,
+          isErrorSubmit: false,
+          msgOnInput: 'error_email',
+          msgOnSubmit: 'error_email_form'
+        },
+        agree: {
+          isError: false,
+          msg: 'error_agree_form'
+        },
+        politic: {
+          isError: false,
+          msg: 'error_agree_form'
+        }
+      },
     }
   },
   computed: {
@@ -228,17 +279,17 @@ export default {
     ...mapActions(['getActualDoc']),
     async subscribeEmail() {
       let onError
-      if(!this.validateEmail()) return;
+      if (!this.validateEmail()) return;
       try {
         const response = await this.$axios({
-          url:`${this.$config.baseURL}subscribe?lang=${this.$i18n.locale}`,
+          url: `${this.$config.baseURL}subscribe?lang=${this.$i18n.locale}`,
           /*headers: { 'Content-Type': 'application/x-www-form-urlencoded' },*/
           method: 'POST',
           /*data: querystring.stringify({
             email:this.newsEmail
           })*/
           data: {
-            email:this.newsEmail
+            email: this.newsEmail
           },
         })
 
@@ -247,7 +298,7 @@ export default {
         UIkit.modal('#success').show();
         this.newsEmail = null
         this.onError = null
-      } catch(e) {
+      } catch (e) {
         onError = e.response.data?.error
         console.log(onError)
         this.onError = onError
@@ -263,18 +314,18 @@ export default {
       }
     },
     checkAgree(e) {
-        document.querySelector('.footer__form_btn button').disabled =
+      document.querySelector('.footer__form_btn button').disabled =
           !e.currentTarget.checked;
-      },
+    },
     checkToTop() {
-        if (window.pageYOffset > 400) {
-          document.querySelector('.footer__bottom_arr').style.display = 'flex'
-        } else {
-          document.querySelector('.footer__bottom_arr').style.display = 'none'
-        }
-      },
+      if (window.pageYOffset > 400) {
+        document.querySelector('.footer__bottom_arr').style.display = 'flex'
+      } else {
+        document.querySelector('.footer__bottom_arr').style.display = 'none'
+      }
+    },
   },
-  beforeMount () {
+  beforeMount() {
     window.addEventListener('scroll', this.checkToTop);
   },
   beforeDestroy() {
@@ -285,9 +336,9 @@ export default {
       await this.getActualDoc();
       if (this.$store.state.tel) {
         const infoData = await this.$axios(`${this.$config.baseURL}textelements?code[]=phone&code[]=email`);
-        await this.$store.dispatch('setUtilInfo', { email: infoData.data.result.email, tel: infoData.data.result.phone });
+        await this.$store.dispatch('setUtilInfo', {email: infoData.data.result.email, tel: infoData.data.result.phone});
       }
-    } catch(e) {
+    } catch (e) {
 
     }
   },
@@ -297,7 +348,7 @@ export default {
 </script>
 
 <style scoped>
-.footer__bottom_arr img{
+.footer__bottom_arr img {
   width: 13px;
   height: 11px;
 }
@@ -320,6 +371,30 @@ export default {
 .footer__information_item1 a:hover {
   color: #ffffff;
 }
+
+
+.mailing__input-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mailing__politic {
+  font-size: 12px;
+  color: #fff;
+}
+
+.mailing__politic .uk-checkbox {
+  margin-right: 4px;
+  border: 2px solid #fff;
+}
+
+.mailing__btn {
+  top: 30%;
+}
+
+
+
 /*  .footer {
     display: flex;
   }

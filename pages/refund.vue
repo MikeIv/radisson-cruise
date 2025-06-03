@@ -97,6 +97,20 @@
                       </span>
                     </label>
                   </div>
+                  <div class="form_politic buy-ticket__politic" style="margin-top: 10px">
+                    <label>
+                      <input class="uk-checkbox"
+                             type="checkbox"
+                             name="check-info"
+                             v-model="agrees.politic"
+                             :class="{'uk-form-danger': errors.politic.isError}"
+                      >
+                      <span class="">
+                        {{$t('im_accept')}} <nuxt-link to="/politic/">{{$t('links.politic')}}</nuxt-link>
+                      </span>
+                    </label>
+                    <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.politic.isError">{{ $t(errors.politic.msg) }}</span>
+                  </div>
                 </div>
                 <button v-if="founded" v-show="availableRefund" type="button" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket uk-margin-top" @click="refundTicket">
                   <span>{{ $t('buttons.return_ticket') }}</span>
@@ -331,6 +345,34 @@ export default {
       seoData: {},
       ticketFound: '',
       ticketNotFound: '',
+      agrees: {
+        politic: false,
+        rules: false,
+      },
+      errors: {
+        name: {
+          isError: false,
+          msg: 'error_name'
+        },
+        phone: {
+          isError: false,
+          msg: 'error_phone'
+        },
+        email: {
+          isErrorInput: false,
+          isErrorSubmit: false,
+          msgOnInput: 'error_email',
+          msgOnSubmit: 'error_email_form'
+        },
+        agree: {
+          isError: false,
+          msg: 'error_agree_form'
+        },
+        politic: {
+          isError: false,
+          msg: 'error_agree_form'
+        }
+      },
     }
   },
   watch: {
