@@ -589,7 +589,7 @@ export default {
     /**/
     const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
     const nowInMoscow = new Date(newNow).getTime();
-    const targetDate = new Date(new Date().getFullYear(), 4, 10, 0, 0, 0);
+    const targetDate = new Date('2025-06-12T21:00:00');
     const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();
     /**/
     /**/
