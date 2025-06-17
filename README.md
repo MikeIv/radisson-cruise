@@ -17,6 +17,12 @@ $ npm run start
 $ npm run generate
 ```
 
+Добавить в nuxt.config.js
+```angular2html
+server: {
+    host: 'localhost'
+  },
+```
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Special Directories

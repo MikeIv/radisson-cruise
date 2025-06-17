@@ -223,6 +223,31 @@ export default {
   components: {DaysTable, MobileTable, ChildInfo, FilterMobile, BuyTicketBtn, Breadcrumbs, TableItem, Header},
   head() {
     return {
+      script: [
+        {
+          innerHTML: `
+            var _tmr = window._tmr || (window._tmr = []);
+            _tmr.push({id: "3656239", type: "pageView", start: (new Date()).getTime()});
+          `,
+          type: 'text/javascript',
+          charset: 'utf-8'
+        },
+        {
+          src: 'https://top-fwz1.mail.ru/js/code.js',
+          async: true,
+          id: 'tmr-code'
+        }
+      ],
+      noscript: [
+        {
+          innerHTML: `
+            <div>
+              <img src="https://top-fwz1.mail.ru/counter?id=3656239;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" />
+            </div>
+          `
+        }
+      ],
+      __dangerouslyDisableSanitizers: ['script', 'noscript'],
       title: this.seoData?.title,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
