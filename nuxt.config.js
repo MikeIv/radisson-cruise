@@ -4,7 +4,7 @@ import axios from 'axios'
 export default {
   debug: false,
   server: {
-    host: '0'
+    host: 'localhost'
   },
   alias: {
     'images': resolve(__dirname, './assets/img'),
