@@ -74,6 +74,15 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Cookie Popup -->
+    <div v-if="showCookiePopup" class="cookie-popup">
+      <div class="cookie-content">
+        <p>Мы используем cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим.</p>
+        <button @click="acceptCookies" class="accept-btn">Принять</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -125,6 +134,7 @@ export default {
   props: {},
   data() {
     return {
+      showCookiePopup: true,
       isActive: false,
       sliderItems: [
         {
@@ -577,6 +587,10 @@ export default {
     };
   },
   methods: {
+    acceptCookies() {
+      this.showCookiePopup = false
+      localStorage.setItem('cookiesAccepted', 'true')
+    },
     ...mapActions(['changeCalendarState']),
     switchTicket() {
       this.isActive = !this.isActive
@@ -586,6 +600,9 @@ export default {
     },
   },
   mounted() {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      this.showCookiePopup = false
+    }
     /**/
     const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
     const nowInMoscow = new Date(newNow).getTime();
@@ -864,5 +881,45 @@ export default {
     width: auto;
     padding: 0 10px;
   }
+}
+
+.cookie-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 34, 64, 0.9);
+  color: white;
+  padding: 15px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.cookie-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cookie-content p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.accept-btn {
+  background: #5f82aa;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.accept-btn:hover {
+  background: #4a6b8f;
 }
 </style>
