@@ -32,18 +32,19 @@
               </div>
             </nuxt-link>
           </div>
-          <div class="uk-width-auto@s block-tikets">
-            <nuxt-link :to="localePath('/trams/schedule/')" class="header-ticket transition">
-              <div class="font-29 text-upper">
-                <b>{{ $t('nav.trams') }}</b>
-              </div>
-              <div class="uk-flex uk-flex-middle">
-                <div class="txt16">
-                  {{ $t('buttons.buy_ticket') }}
-                </div>
-              </div>
-            </nuxt-link>
-          </div>
+          <!-- --- TODO: hide link to trams --- -->
+<!--          <div class="uk-width-auto@s block-tikets">-->
+<!--            <nuxt-link :to="localePath('/trams/schedule/')" class="header-ticket transition">-->
+<!--              <div class="font-29 text-upper">-->
+<!--                <b>{{ $t('nav.trams') }}</b>-->
+<!--              </div>-->
+<!--              <div class="uk-flex uk-flex-middle">-->
+<!--                <div class="txt16">-->
+<!--                  {{ $t('buttons.buy_ticket') }}-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </nuxt-link>-->
+<!--          </div>-->
         </div>
       </div>
       <nuxt-link to="/official/" class="header-compass uk-visible@l">
