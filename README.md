@@ -17,10 +17,16 @@ $ npm run start
 $ npm run generate
 ```
 
-Добавить в nuxt.config.js
-```angular2html
+# Добавить в nuxt.config.js при редактировании
+```
 server: {
     host: 'localhost'
+  },
+```
+## после редактирования
+```
+ server: {
+    host: '0',
   },
 ```
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
