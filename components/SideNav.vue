@@ -108,11 +108,11 @@
                     {{ $t('nav.yachts_tickets') }}
                   </nuxt-link>
                 </li>
-                <li>
-                  <nuxt-link to="/trams/schedule/" @click.native="closeNav">
-                    {{ $t('nav.trams_schedule') }}
-                  </nuxt-link>
-                </li>
+<!--                <li>-->
+<!--                  <nuxt-link to="/trams/schedule/" @click.native="closeNav">-->
+<!--                    {{ $t('nav.trams_schedule') }}-->
+<!--                  </nuxt-link>-->
+<!--                </li>-->
                 <li>
                   <nuxt-link class="" to="/certificates/" @click.native="closeNav">
                     {{ $t('nav.certificates') }}
