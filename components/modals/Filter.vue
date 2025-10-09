@@ -634,7 +634,8 @@ export default {
         numberOfColumns: 1,
         autoApply: true,
         minDate: new Date().setDate(new Date().getDate() - 0),
-        maxDate: this.isTram ? new Date(2025, 8, 30) : new Date().setDate(new Date().getDate() + 60),
+        maxDate: this.isTram ? new Date(2025, 8, 30) : new Date().setDate(new
+        Date().getDate() + 90),
         tooltipText: {
           one: 'flight',
           other: 'flights',
