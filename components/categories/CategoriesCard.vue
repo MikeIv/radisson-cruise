@@ -119,7 +119,7 @@ export default {
           >
             {{ $t('kassa_ticket_info') }}
           </span>
-          <button v-if="!card?.simple && card?.type_id !== null"
+          <button v-if="!card?.simple && card?.type_id !== null && card?.price_adult && card?.price_adult !== '0'"
                   @click="sendYandexMetrikaEvent(card?.type_id)"
                   class="uk-button uk-button-default button_ticket transition">
             <span>{{ $t('buttons.buy_ticket') }}</span>
