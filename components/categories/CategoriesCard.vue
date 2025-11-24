@@ -94,7 +94,7 @@ export default {
         <div v-html="card?.description" class="category_card-description"></div>
       </div>
       <div>
-        <div class="category_card-price">
+        <div class="category_card-price" v-if="card?.price_adult && card?.price_adult !== '0' && card?.price_adult !== ''">
           <svg-icon class="category_card-price--icon" name="categories/Cena.svg"/>
           <div class="category_card-price-inner">
             <div class="category_card-price--item">
@@ -110,6 +110,14 @@ export default {
                  :class="{'kassa-payment': !card?.simple && card?.type_id === null}"
             >
               {{ isSubInfoText }}
+            </div>
+          </div>
+        </div>
+        <div class="category_card-price" v-else>
+          <svg-icon class="category_card-price--icon" name="categories/Cena.svg"/>
+          <div class="category_card-price-inner">
+            <div class="category_card-price--item">
+              <span class="category_card-price--item_value">Уже в продаже!</span>
             </div>
           </div>
         </div>
