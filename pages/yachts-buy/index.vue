@@ -171,6 +171,20 @@
                     <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.politic.isError">{{ $t(errors.politic.msg) }}</span>
                   </div>
                 </div>
+                <div class="buy-ticket-form__basket__item_checked">
+                  <div class="form_politic buy-ticket__politic">
+                    <label>
+                      <input class="uk-checkbox"
+                             type="checkbox"
+                             name="check-marketing"
+                             v-model="agrees.marketing"
+                      >
+                      <span class="">
+                        Я даю согласие на получение специальных предложений и акций на адрес моей электронной почты
+                      </span>
+                    </label>
+                  </div>
+                </div>
                 <div v-if="routeData.availablePromo" class="buy-ticket-form__footer__item">
                   <input class="uk-input buy-ticket__input" type="text" :placeholder="$t('promo_code')" name=""
                          v-model="promoCode">
@@ -430,6 +444,7 @@ export default {
       agrees: {
         politic: false,
         rules: false,
+        marketing: false,
       },
       form: {
         journey: this.$route.query.journey,
@@ -440,6 +455,7 @@ export default {
         seatsAdult: 0,
         seatsChild: 0,
         agree: false,
+        marketing: false,
       },
       errors: {
         name: {
@@ -742,7 +758,8 @@ export default {
       this.form.promoCode = this.promoCode;
       //console.log("Send Phone -> ",this.rowPhone.replace(/[^+\d]/g, ''));
       this.form.phone = this.rowPhone.replace(/[^+\d]/g, '');
-      this.form.agree = this.agrees.rules && this.agrees.politic
+      this.form.agree = this.agrees.rules && this.agrees.politic;
+      this.form.marketing = this.agrees.marketing;
       try {
         this.isLoading = true
         const response = await this.$axios({
