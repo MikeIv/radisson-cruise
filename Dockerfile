@@ -24,7 +24,6 @@ WORKDIR /app
 
 ADD . /app
 RUN env
-RUN npm rebuild node-sass fibers
 RUN npm install
 RUN npm run build
 

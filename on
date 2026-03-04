@@ -1,0 +1,68 @@
+[1mdiff --git a/Dockerfile b/Dockerfile[m
+[1mindex 75077d9..478d5de 100644[m
+[1m--- a/Dockerfile[m
+[1m+++ b/Dockerfile[m
+[36m@@ -1,32 +1,31 @@[m
+[31m-FROM node:18-alpine[m
+[31m-[m
+[31m-ARG BASE_URL[m
+[31m-ARG API_BASE_URL[m
+[31m-ARG IMAGE_URL[m
+[31m-ARG LANG_RU[m
+[31m-ARG LANG_EN[m
+[31m-ARG LANG_ZH[m
+[31m-ARG ENVIRONMENT[m
+[31m-[m
+[31m-ENV TZ=Europe/Moscow[m
+[31m-ENV DEBUG=nuxt:*[m
+[31m-ENV BASE_URL=$BASE_URL[m
+[31m-ENV API_BASE_URL=$API_BASE_URL[m
+[31m-ENV IMAGE_URL=$IMAGE_URL[m
+[31m-ENV LANG_RU=$LANG_RU[m
+[31m-ENV LANG_EN=$LANG_EN[m
+[31m-ENV LANG_ZH=$LANG_ZH[m
+[31m-ENV ENVIRONMENT=$ENVIRONMENT[m
+[31m-[m
+[31m-RUN apk update && apk add tzdata bash g++ make py3-pip[m
+[31m-[m
+[31m-WORKDIR /app[m
+[31m-[m
+[31m-ADD . /app[m
+[31m-RUN env[m
+[31m-RUN npm rebuild node-sass fibers[m
+[31m-RUN npm install[m
+[31m-RUN npm run build[m
+[31m-[m
+[31m-CMD ["npm", "run", "start"][m
+[31m-[m
+[32m+[m[32mFROM node:18-alpine[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mARG BASE_URL[m[41m[m
+[32m+[m[32mARG API_BASE_URL[m[41m[m
+[32m+[m[32mARG IMAGE_URL[m[41m[m
+[32m+[m[32mARG LANG_RU[m[41m[m
+[32m+[m[32mARG LANG_EN[m[41m[m
+[32m+[m[32mARG LANG_ZH[m[41m[m
+[32m+[m[32mARG ENVIRONMENT[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mENV TZ=Europe/Moscow[m[41m[m
+[32m+[m[32mENV DEBUG=nuxt:*[m[41m[m
+[32m+[m[32mENV BASE_URL=$BASE_URL[m[41m[m
+[32m+[m[32mENV API_BASE_URL=$API_BASE_URL[m[41m[m
+[32m+[m[32mENV IMAGE_URL=$IMAGE_URL[m[41m[m
+[32m+[m[32mENV LANG_RU=$LANG_RU[m[41m[m
+[32m+[m[32mENV LANG_EN=$LANG_EN[m[41m[m
+[32m+[m[32mENV LANG_ZH=$LANG_ZH[m[41m[m
+[32m+[m[32mENV ENVIRONMENT=$ENVIRONMENT[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mRUN apk update && apk add tzdata bash g++ make py3-pip[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mWORKDIR /app[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mADD . /app[m[41m[m
+[32m+[m[32mRUN env[m[41m[m
+[32m+[m[32mRUN npm install[m[41m[m
+[32m+[m[32mRUN npm run build[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32mCMD ["npm", "run", "start"][m[41m[m
+[32m+[m[41m[m
