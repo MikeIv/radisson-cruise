@@ -46,7 +46,7 @@
           <div class="uk-modal-full__block__bottom">
             <a class="uk-modal-close link_close">{{$t('buttons.close_window')}}</a>
             <img v-if="$i18n.locale === 'ru'" class="uk-visible@s" data-src="~assets/img/inners/head-logo2@2x.png" alt="" src="~assets/img/inners/head-logo2@2x.png">
-            <svg-icon v-else class="transition uk-visible@s" :name="'logo-en'"/>
+            <svg-icon v-else class="transition uk-visible@s" name="logo_update"/>
           </div>
         </div>
       </div>

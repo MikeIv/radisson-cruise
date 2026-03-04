@@ -103,7 +103,7 @@
         <div class="footer__information uk-scrollspy-inview uk-animation-fade">
           <div class="footer__information_item1 uk-visible@s">
             <nuxt-link to="/" class="transition">
-              <svg-icon class="transition" :name="$i18n.locale === 'ru' ? 'logo' : 'logo-en'"/>
+              <svg-icon class="transition" name="logo_update"/>
             </nuxt-link>
           </div>
           <div class="footer__information_item2">
