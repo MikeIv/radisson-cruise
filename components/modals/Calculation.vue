@@ -146,7 +146,7 @@
                 <div class="input-personal">
                   <div class="uk-form-controls">
                     <label class="uk-form-label">Контактный телефон</label>
-                    <TheMask class="uk-input buy-ticket__input f_phone" placeholder="+7(___) ___-____" v-model="formData.phone" @input="validatePhone" id="modal-calculation__slide4-call" :mask="['+7(###) ###-####', '+7(###) ###-####']" />
+                    <TheMask class="uk-input buy-ticket__input f_phone" placeholder="+123456789000" v-model="formData.phone" @input="validatePhone" id="modal-calculation__slide4-call" :mask="phoneMaskList" />
                     <!-- <input class="uk-input buy-ticket__input f_phone" type="text" @input="validatePhone" v-model="formData.phone"
                       placeholder="+7 (" required name="" id="modal-calculation__slide4-call" v-mask="'(###) ####-##-##'"> -->
                     <!-- <div v-show="!phoneRegex.test(formData.phone) && formData.phone.length > 0"
@@ -238,6 +238,7 @@ import UIkit from "uikit";
 import {TheMask} from 'vue-the-mask'
 import axios from "axios";
 import querystring from "querystring";
+import { phoneMaskList } from "~/utils/phoneMask";
 export default {
   name: "ModalCalculation",
   components: {TheMask,},

@@ -56,9 +56,9 @@
                         <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                         <input class="uk-input buy-ticket__input f_phone"
                                type="tel"
-                               placeholder="+7 ("
+                               placeholder="+123 456 789 000"
                                name=""
-                               inputmode="text"
+                               inputmode="tel"
                                :value="phone"
                                v-imask="maskTel"
                                @accept="onAccept"
@@ -247,6 +247,7 @@ import axios from "axios";
 import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../components/Breadcrumbs";
 import {mapActions, mapGetters} from "vuex";
+import { phoneMaskConfig } from "~/utils/phoneMask";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
@@ -307,10 +308,7 @@ export default {
       adultOldVal: null,
       childNewVal: null,
       childOldVal: null,
-      maskTel: {
-        mask: '{+7}(000)-000-00-00',
-        lazy: true,
-      },
+      maskTel: phoneMaskConfig,
       maskID: {
         mask: '0000000000',
         placeholderChar: 'X',
@@ -496,7 +494,7 @@ export default {
     },
     onComplete (e) {
       const maskRef = e.detail;
-      this.phone = maskRef.unmaskedValue
+      this.phone = maskRef.value.replace(/[^+\d]/g, '')
       //console.log('complete', maskRef.unmaskedValue);
     },
 
