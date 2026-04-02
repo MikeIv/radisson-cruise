@@ -100,10 +100,10 @@
                         <input class="uk-input buy-ticket__input f_phone"
                                :class="{'uk-form-danger': errors.phone.isError}"
                                type="tel"
-                               placeholder="+7 ("
+                               placeholder="+123 456 789 000"
                                required="required"
                                name=""
-                               inputmode="text"
+                               inputmode="tel"
                                v-model="form.phone"
                                v-imask="maskTel"
                                @accept="onAccept"
@@ -380,6 +380,7 @@ import UIkit from "uikit";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 import {mapActions, mapGetters} from "vuex";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
+import { phoneMaskConfig } from "~/utils/phoneMask";
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -416,10 +417,7 @@ export default {
       adultOldVal: null,
       childNewVal: null,
       childOldVal: null,
-      maskTel: {
-        mask: '{+7}(900)-000-00-00',
-        lazy: true,
-      },
+      maskTel: phoneMaskConfig,
       routeData: [],
       fullName: '',
       email: '',
@@ -664,14 +662,8 @@ export default {
       } */
       //console.log("onAccept length -> ",maskRef.value.length);
     },
-    onComplete (e) {
-      
-      const maskRef = e.detail;
+    onComplete () {
       this.form.phone = this.rowPhone;
-      if(maskRef.value[3]!=='9'){
-        this.errors.phone.isError = true
-        //this.errors.phone.msg = 'Введите номер телефона в формате \n +7 (9XX) XXX-XX-XX'
-      }
 /*       console.log("onComplete maskRef -> ",maskRef);
       console.log("onComplete 9 -> ",maskRef.value[3]);
       console.log("onComplete length -> ",maskRef.value.length);

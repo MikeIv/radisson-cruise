@@ -55,11 +55,11 @@
                   <div class="uk-form-controls mt-3">
                     <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                     <TheMask class="uk-input buy-ticket__input f_phone"
-                             placeholder="+7(___) ___-____"
+                             placeholder="+123456789000"
                              v-model="formData.phone"
                              @input="validatePhone"
                              id="modal-calculation__slide4-call"
-                             :mask="['+7(###) ###-####', '+7(###) ###-####']"
+                             :mask="phoneMaskList"
                     />
                  </div>
                 </div>
@@ -134,6 +134,7 @@ import UIkit from "uikit";
 import {TheMask} from 'vue-the-mask'
 import axios from "axios";
 import querystring from "querystring";
+import { phoneMaskList } from "~/utils/phoneMask";
 export default {
   name: "ModalCalculation",
   components: { TheMask },

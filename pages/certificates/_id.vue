@@ -50,10 +50,10 @@
                           @complete="onComplete"
                           class="uk-input buy-ticket__input f_phone"
                           type="text"
-                          placeholder="+7 ("
+                          placeholder="+123 456 789 000"
                           required=""
                           name=""
-                          inputmode="text">
+                          inputmode="tel">
                     </div>
                   </div>
                   <div class="uk-width-1-2@s">
@@ -245,6 +245,7 @@ import axios from "axios";
 import {IMaskDirective} from "vue-imask";
 import {mapActions, mapGetters} from 'vuex';
 import querystring from "querystring";
+import { phoneMaskConfig } from "~/utils/phoneMask";
 
 export default {
   name: "certificate-id",
@@ -281,10 +282,7 @@ export default {
       agreed: false,
       onError: null,
       payUrl: null,
-      maskTel: {
-        mask: '{+7}(000)-000-00-00',
-        lazy: true,
-      },
+      maskTel: phoneMaskConfig,
       isAgreeCert: false,
       isAgreePolitic: false,
       seoData: {},
@@ -311,7 +309,7 @@ export default {
     },
     onComplete(e) {
       const maskRef = e.detail;
-      this.userPhone = maskRef.unmaskedValue
+      this.userPhone = maskRef.value.replace(/[^+\d]/g, '')
       //console.log('complete', maskRef.unmaskedValue);
     },
     removeSeat() {
