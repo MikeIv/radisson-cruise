@@ -17,6 +17,7 @@ ENV LANG_RU=$LANG_RU
 ENV LANG_EN=$LANG_EN
 ENV LANG_ZH=$LANG_ZH
 ENV ENVIRONMENT=$ENVIRONMENT
+ENV NODEJS_ORG_MIRROR=https://nodejs.org/dist
 
 RUN apk update && apk add tzdata bash g++ make py3-pip
 
@@ -24,7 +25,6 @@ WORKDIR /app
 
 ADD . /app
 RUN env
-RUN npm config set disturl https://nodejs.org/dist
 RUN npm install
 RUN npm run build
 
