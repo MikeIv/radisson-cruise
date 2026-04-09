@@ -1243,6 +1243,7 @@ export default {
           this.setFilterDates(this.startDate, this.endDate); // Fetch data every 15 minutes
         }, 15 * 60 * 1000);*/
     const elements = document.querySelectorAll('.litepicker')
+    const maxTramScheduleDate = new Date(new Date().getFullYear(), 8, 30)
     const options = {
       lang: this.$i18n.localeProperties.iso,
       element: document.querySelector('#datepickerTest'),
@@ -1250,7 +1251,7 @@ export default {
       numberOfMonths: 2,
       numberOfColumns: 2,
       minDate: new Date().setDate(new Date().getDate() - 0),
-      maxDate: new Date(2025, 8, 30),
+      maxDate: maxTramScheduleDate,
       showTooltip: false,
     }
     // console.log("Elements = ",elements);
