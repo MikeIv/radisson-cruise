@@ -626,6 +626,7 @@ export default {
     this.$nextTick(function () {
       //console.log("localArrival = ",this.localArrival)
 
+      const maxTramScheduleDate = new Date(new Date().getFullYear(), 8, 30)
       const options = {
         lang: this.$i18n.localeProperties.iso,
         element: document.querySelector('.litepicker-filter'),
@@ -634,7 +635,7 @@ export default {
         numberOfColumns: 1,
         autoApply: true,
         minDate: new Date().setDate(new Date().getDate() - 0),
-        maxDate: this.isTram ? new Date(2025, 8, 30) : new Date().setDate(new
+        maxDate: this.isTram ? maxTramScheduleDate : new Date().setDate(new
         Date().getDate() + 90),
         tooltipText: {
           one: 'flight',
