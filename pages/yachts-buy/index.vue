@@ -104,7 +104,7 @@
                                required="required"
                                name=""
                                inputmode="tel"
-                               v-model="form.phone"
+                               :value="form.phone"
                                v-imask="maskTel"
                                @accept="onAccept"
                                @complete="onComplete"
@@ -656,6 +656,7 @@ export default {
       const maskRef = e.detail;
       this.value = maskRef.value;
       this.rowPhone = maskRef.value;
+      this.form.phone = this.rowPhone;
 /*       if(maskRef.value.length < 17 && maskRef.value[3]!=='9'){
         this.errors.phone.isError = true
         this.errors.phone.msg = 'Введите номер телефона в формате +7 (9XX) XXX-XX-XX'
