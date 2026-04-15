@@ -54,13 +54,16 @@
                   </div>
                   <div class="uk-form-controls mt-3">
                     <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
-                    <TheMask class="uk-input buy-ticket__input f_phone"
-                             placeholder="+123456789000"
-                             v-model="formData.phone"
-                             @input="validatePhone"
-                             id="modal-calculation__slide4-call"
-                             :mask="phoneMaskList"
-                    />
+                    <input class="uk-input buy-ticket__input f_phone"
+                           type="tel"
+                           placeholder="+123456789000"
+                           inputmode="tel"
+                           :value="formData.phone"
+                           v-imask="phoneMask"
+                           @accept="onAccept"
+                           @complete="onComplete"
+                           id="modal-calculation__slide4-call"
+                    >
                  </div>
                 </div>
                 <div class="input-personal uk-width-2-3@m uk-padding-small uk-padding-remove-vertical">
@@ -131,13 +134,15 @@
 <script>
 
 import UIkit from "uikit";
-import {TheMask} from 'vue-the-mask'
+import { IMaskDirective } from "vue-imask";
 import axios from "axios";
 import querystring from "querystring";
-import { phoneMaskList } from "~/utils/phoneMask";
+import { phoneMaskConfig } from "~/utils/phoneMask";
 export default {
   name: "ModalCalculation",
-  components: { TheMask },
+  directives: {
+    imask: IMaskDirective
+  },
   data() {
     return {
       steps: 5,
@@ -219,6 +224,8 @@ export default {
         description: "",
 
       },
+      phoneMask: phoneMaskConfig,
+      rowPhone: "",
     };
   },
   computed: {
@@ -277,6 +284,14 @@ export default {
       
       // Set the formatted value as the input value
       this.formData.phone = inputValue;
+    },
+    onAccept(e) {
+      const maskRef = e.detail;
+      this.rowPhone = maskRef.value;
+      this.formData.phone = this.rowPhone;
+    },
+    onComplete() {
+      this.formData.phone = this.rowPhone;
     },
     clickOutside() {
       this.isTimeSelected = false;
