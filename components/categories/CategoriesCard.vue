@@ -95,13 +95,22 @@ export default {
       </div>
       <div>
         <div class="category_card-price" v-if="card?.price_adult && card?.price_adult !== '0' && card?.price_adult !== ''">
-          <svg-icon class="category_card-price--icon" name="categories/Cena.svg"/>
           <div class="category_card-price-inner">
             <div class="category_card-price--item">
+              <svg-icon
+                :key="`adult-price-icon-${card?.id || card?.type_id || card?.name}`"
+                class="category_card-price--item_icon"
+                name="categories/Cena.svg"
+              />
               <span class="category_card-price--item_title">{{ $t('adult') }}</span>
               <span class="category_card-price--item_value">{{ card?.price_adult }} ₽</span>
             </div>
             <div class="category_card-price--item" v-if="card.price_child !== '0' && !!card?.price_child">
+              <svg-icon
+                :key="`child-price-icon-${card?.id || card?.type_id || card?.name}`"
+                class="category_card-price--item_icon"
+                name="categories/Cena.svg"
+              />
               <span class="category_card-price--item_title">{{ $t('children') }}</span>
               <span class="category_card-price--item_value">{{ card?.price_child }} ₽</span>
             </div>
@@ -312,7 +321,7 @@ export default {
 .category_card-price {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: flex-start;
   color: #232323;
   font-style: normal;
   line-height: normal;
@@ -321,9 +330,9 @@ export default {
 
 .category_card-price-inner {
   display: flex;
-  column-gap: 20px;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  row-gap: 8px;
+  width: 100%;
 }
 
 .category_card-price--subinfo {
@@ -334,7 +343,8 @@ export default {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: calc(50% - 10px)
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .category_card-price--item_title, .category_card-price--subinfo {
@@ -351,6 +361,12 @@ export default {
 .category_card-price--icon {
   width: 28px;
   height: 28px;
+  flex: none;
+}
+
+.category_card-price--item_icon {
+  width: 20px;
+  height: 20px;
   flex: none;
 }
 
@@ -394,7 +410,7 @@ export default {
   }
 
   .category_card-price--item {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .category_card-price--subinfo.kassa-payment {
     display: block;
@@ -433,7 +449,7 @@ export default {
   .category_card-price--item {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 2px;
   }
 
@@ -488,6 +504,11 @@ export default {
   .category_card-icon, .category_card-price--icon {
     width: 18px;
     height: 18px;
+  }
+
+  .category_card-price--item_icon {
+    width: 14px;
+    height: 14px;
   }
 }
 </style>
