@@ -932,7 +932,7 @@ export default {
       }*/
 
 
-    async datesFilter(start, end, queryCategory = '14,15') {
+    async datesFilter(start, end, queryCategory = '14,15,16') {
       //console.log(queryCategory, queryCategory.split(', '))
       const response = await this.$axios.get(`${this.$config.baseURL}routes`, {
         params: {
