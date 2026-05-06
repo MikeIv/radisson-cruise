@@ -11,9 +11,9 @@
               <nuxt-link class="txt18 " to="/yachts/" @click.native="closeNav">
                 {{ $t('nav.yachts') }}
               </nuxt-link>
-<!--              <nuxt-link class="txt18 " to="/trams/" @click.native="closeNav">-->
-<!--                {{ $t('nav.trams') }}-->
-<!--              </nuxt-link>-->
+              <nuxt-link v-if="$te('nav.trams') && String($t('nav.trams')).trim()" class="txt18 " to="/trams/" @click.native="closeNav">
+                {{ $t('nav.trams') }}
+              </nuxt-link>
               <nuxt-link class="txt18 " to="/categories/" @click.native="closeNav">
                 {{ $t('nav.categories') }}
               </nuxt-link>
