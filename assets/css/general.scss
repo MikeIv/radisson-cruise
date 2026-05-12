@@ -812,14 +812,12 @@ color: #fff;
 
 
 .header_top_back {
-  position: relative;
-  transition: .2s;
-  background: transparent;
+  position: sticky;
+  top: 0;
+  transition: background .2s;
+  background: $color2;
   z-index: 1001;
   padding: 20px 0;
-  &.uk-sticky-fixed {
-    background: $color2;
-  }
 }
 
 // .uk-offcanvas-page {

@@ -1,7 +1,7 @@
 <template>
   <header class="uk-position-relative  main-header component_header" id="header">
 
-    <div class="header_top_back uk-sticky" :uk-sticky="classCheck" id="sticky-fixed-header">
+    <div class="header_top_back" id="sticky-fixed-header">
       <div class="uk-container">
         <div class="uk-grid uk-flex-between uk-child-width-auto uk-flex-middle uk-grid-small uk-flex-nowrap" uk-grid="">
           <div class="header_top-left">
@@ -51,7 +51,6 @@
         </div>
       </div>
     </div>
-    <div class="uk-sticky-placeholder" style="height: 115px; margin: 0;" hidden=""></div>
     <slot></slot>
 <!--    <HeaderInner :ticketYacht="ticketYacht"
                  :ticketTrolley="ticketTrolley"
@@ -100,15 +99,6 @@
 
       currentLang() {
         return this.$i18n.localeProperties.name
-      },
-      classCheck() {
-        if(this.aboutPage) {
-          return `top: 85; bottom:#about_tab`
-        } else if(this.rent) {
-          return `top: 85; bottom:#rent_nav`
-        } else {
-          return `top: 0;`
-        }
       },
     },
     methods: {
@@ -578,9 +568,6 @@ header {
 }
 */
 
-.header_top_back.uk-sticky-fixed {
-  background: #1d2240;
-}
 
 .language_drop a:hover {
   background: #00c1f3;
@@ -589,7 +576,6 @@ header {
 }
 .header_top_back {
   padding: 15px 0 10px;
-  background: #1D2240;
 }
 .header__top_item1-container {
   flex: none
