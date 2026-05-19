@@ -15,6 +15,7 @@
           :key="'ddata' + i"
           :day-data="dayData"
           :is-tram="isTram"
+          :buy-ticket-metrika-goal="buyTicketMetrikaGoal"
           @get-category="getCategory"
           @open-child-modal="openChildModal"
       />
@@ -34,6 +35,10 @@ export default {
   props: {
     dayRoute: Object,
     isTram: Boolean,
+    buyTicketMetrikaGoal: {
+      type: String,
+      default: 'kupit_bilet_23',
+    },
   },
   data(){
     return{

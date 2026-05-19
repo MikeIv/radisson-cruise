@@ -47,9 +47,8 @@
                  :class="{'disabled-link': checkForLateRoutes}"
                  :to="'/yachts-buy/?journey='+journey"
                  :prefetch="false"
-                 @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
+                 @click.native="sendBuyTicketMetrika"
       >
-        <!--                 :to="'/yachts-buy/?day='+ this.day + '&journey=' + this.journey"-->
         <span>{{ $t('buttons.buy_ticket') }}</span>
         <svg-icon class="icon" name="ticket"/>
       </nuxt-link>
@@ -86,6 +85,10 @@ export default {
     journey: Number,
     classId: Number,
     isRiverBus: Boolean,
+    buyTicketMetrikaGoal: {
+      type: String,
+      default: 'kupit_bilet_23',
+    },
   },
   data(){
     return{
@@ -106,6 +109,12 @@ export default {
     },
     openChildModal() {
       this.$emit('open-child-modal')
+    },
+    sendBuyTicketMetrika() {
+      if (this.checkForLateRoutes) {
+        return;
+      }
+      this.$yandexMetrika.reachGoal(this.buyTicketMetrikaGoal);
     },
   },
 

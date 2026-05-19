@@ -49,7 +49,8 @@
           class="uk-button uk-button-default button_ticket"
           :class="{'disabled-link': checkForLateRoutes}"
           :to="`/yachts-buy/?journey=${dayData.journey}`"
-          @click="$yandexMetrika.reachGoal('kupit_bilet_23')"
+          :prefetch="false"
+          @click.native="sendBuyTicketMetrika"
       >
         <span>{{ isRouteSoldOut ? $t('buttons.sold_out') : $t('buttons.buy_ticket') }}</span>
         <svg-icon class="icon" name="ticket"/>
@@ -84,6 +85,10 @@ export default {
   components: {BuyTicketBtn},
   props: {
     dayData: Object,
+    buyTicketMetrikaGoal: {
+      type: String,
+      default: 'kupit_bilet_23',
+    },
   },
   data() {
     return {
@@ -109,6 +114,12 @@ export default {
     },
     openChildModal() {
       this.$emit('open-child-modal')
+    },
+    sendBuyTicketMetrika() {
+      if (this.checkForLateRoutes) {
+        return;
+      }
+      this.$yandexMetrika.reachGoal(this.buyTicketMetrikaGoal);
     },
   },
 
