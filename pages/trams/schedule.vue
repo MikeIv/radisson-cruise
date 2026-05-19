@@ -174,6 +174,7 @@
               :aboutDays="dayRoute.routes"
               :day="dayRoute.date"
               is-tram
+              :buy-ticket-metrika-goal="buyTicketMetrikaGoal"
               @get-category="getCategory"
               @open-child-modal="openChildModal"
           />
@@ -182,6 +183,7 @@
               :key="'tblMob' + index"
               :day-route="dayRoute"
               is-tram
+              :buy-ticket-metrika-goal="buyTicketMetrikaGoal"
               @get-category="getCategory"
               @open-child-modal="openChildModal"
           />
@@ -1218,7 +1220,17 @@ export default {
       } else {
         return `${this.$i18n.t('selected')}: ${this.checkedCategories.length}`
       }
-    }
+    },
+    isPicturesqueRouteSelected() {
+      return this.checkedCategories.some(
+        (category) => category.name && /живопис/i.test(category.name)
+      );
+    },
+    buyTicketMetrikaGoal() {
+      return this.isPicturesqueRouteSelected
+        ? 'buy_ticket_picturesque'
+        : 'kupit_bilet_23';
+    },
   },
   mounted() {
     /*    this.selectedDay = this.today;
@@ -1295,8 +1307,9 @@ export default {
     });
   },
   beforeDestroy() {
-    //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
-    this.$refs.filterModal.destroyModal();
+    if (this.$refs.filterModal) {
+      this.$refs.filterModal.destroyModal();
+    }
     clearInterval(this.interval)
   },
   async fetch() {
@@ -1642,4 +1655,3 @@ export default {
 
 
 </style>
-

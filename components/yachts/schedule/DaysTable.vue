@@ -31,6 +31,7 @@
                        :class-id="dayData.journeyTypeId"
                        :available-child="dayData.availableChild"
                        :is-river-bus="isTram"
+                       :buy-ticket-metrika-goal="buyTicketMetrikaGoal"
                        @get-category="getCategory"
                        @open-child-modal="openChildModal"
         />
@@ -95,7 +96,11 @@ export default {
   props: {
     day: String,
     aboutDays: Array,
-    isTram: Boolean
+    isTram: Boolean,
+    buyTicketMetrikaGoal: {
+      type: String,
+      default: 'kupit_bilet_23',
+    },
   },
   data() {
     return {

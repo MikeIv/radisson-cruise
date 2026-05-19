@@ -1583,8 +1583,9 @@ export default {
     });
   },
   beforeDestroy() {
-    //console.log("DESTROY Yachts Shedule =", this.$refs.filterModal);
-    this.$refs.filterModal.destroyModal();
+    if (this.$refs.filterModal) {
+      this.$refs.filterModal.destroyModal();
+    }
     clearInterval(this.interval);
   },
 };

@@ -377,6 +377,7 @@ export default {
       ],
       localArrivalFilter: this.checkedArrival,
       litePickerFilter: null,
+      isModalDestroyed: false,
       checkedCategoriesFilter: this.checkedCategories,
       selectedTimeFilter: this.selectedTime,
       tiketsCount: {
@@ -600,23 +601,28 @@ export default {
       UIkit.modal('#modal-filter').hide();
     },
     destroyModal() {
-      /* console.log('destroyModal');
-      console.log('this.litePickerFilter = ',this.litePickerFilter); */
-      const elementLitepicker = document.querySelectorAll('.litepicker');
-      // delete elementLitepicker;
-      elementLitepicker.forEach(element => {
-        element.remove();
+      if (this.isModalDestroyed) {
+        return;
+      }
+      this.isModalDestroyed = true;
 
+      document.querySelectorAll('.litepicker').forEach((element) => {
+        element.remove();
       });
 
-
-      this.litePickerFilter.destroy()
-      if (this.isTabsFilter || this.isNewsFilter) {
-        UIkit.modal('#modal-category-cabin-filter').$destroy(true);
-      } else {
-        UIkit.modal('#modal-buy-ticket-filter').$destroy(true);
+      if (this.litePickerFilter) {
+        this.litePickerFilter.destroy();
+        this.litePickerFilter = null;
       }
 
+      const modalSelector = (this.isTabsFilter || this.isNewsFilter)
+        ? '#modal-category-cabin-filter'
+        : '#modal-buy-ticket-filter';
+      const modal = UIkit.modal(modalSelector);
+
+      if (modal && typeof modal.$destroy === 'function') {
+        modal.$destroy(true);
+      }
     },
   },
   beforeMount() {
