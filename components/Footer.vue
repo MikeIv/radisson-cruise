@@ -4,7 +4,8 @@
       <div class="uk-cover-container footer__left uk-visible@l">
         <div class="uk-cover-container footer__left_img-container uk-scrollspy-inview uk-animation-slide-bottom"
              uk-scrollspy="cls: uk-animation-slide-bottom; delay: 400">
-          <img data-src="~/assets/img/footer_yacht.png" src="~/assets/img/footer_yacht.png" alt=""
+          <img data-src="~/assets/img/yacht.jpg"
+               src="~/assets/img/yacht.jpg" alt=""
                class="img_cover uk-scrollspy-inview uk-animation-slide-bottom"
                uk-scrollspy="cls: uk-animation-slide-bottom; delay: 1000">
         </div>
