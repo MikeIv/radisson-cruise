@@ -1063,7 +1063,7 @@ export default {
           this.arrayToFilter.push({
             date: item[0],
             routes: item[1].filter(
-              (item) => item.journeyTypeId !== 15 && item.journeyTypeId !== 14,
+                (item) => item.journeyTypeId !== 15 && item.journeyTypeId !== 14 && item.journeyTypeId !== 16,
             ),
           });
         });
