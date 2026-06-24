@@ -23,7 +23,10 @@ export default {
       return `/categories/${card.slug}/`
     },
     linkBuy(card) {
-      return (card.type_id === 14 || card.type_id === 15) ? `/trams/schedule/?category=${card.type_id}` : `/yachts/schedule/?category=${card.type_id}`
+      const tramTypeIds = [14, 15, 16]
+      return tramTypeIds.includes(Number(card.type_id))
+        ? `/trams/schedule/?category=${card.type_id}`
+        : `/yachts/schedule/?category=${card.type_id}`
     },
     sendYandexMetrikaEvent(type) {
       let eventName = null;
@@ -145,7 +148,7 @@ export default {
           <nuxt-link v-else-if="!lessThanTablet && !!card?.simple"
                      class="uk-button uk-button-default button_ticket transition"
                      :class="{ 'disabled': card?.simple }"
-                     :to="'/yachts/schedule/?category='+ card?.type_id">{{ $t('schedule') }}
+                     :to="linkBuy(card)">{{ $t('schedule') }}
           </nuxt-link>
           <nuxt-link :to="linkMore(card)"
                      class="uk-button uk-button-more"
