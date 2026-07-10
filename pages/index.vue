@@ -68,9 +68,10 @@
     <div ref="emergency" id="emergency" class="uk-flex-top success uk-modal" uk-modal>
       <div class="uk-modal-dialog uk-margin-auto-vertical">
         <div class="uk-modal-body uk-position-relative">
-          <div>
-            {{ $t('emergency') }}
+          <div class="uk-text-center uk-text-large uk-margin-bottom uk-text-bold">
+            {{ modalData?.name }}
           </div>
+          <div v-html="modalData?.content"></div>
           <div class="success_bottom">
             <a class="uk-modal-close uk-button uk-button-default">{{ $t('buttons.close_window') }}</a>
           </div>
@@ -587,6 +588,7 @@ export default {
       selectedDates: ``,
       dateInputValue: '',
       timer: null,
+      modalData: undefined,
     };
   },
   methods: {
@@ -601,27 +603,32 @@ export default {
     sendYandexMetrikaEvent(eventName) {
       this.$yandexMetrika.reachGoal(eventName);
     },
-  },
-  mounted() {
-    if (localStorage.getItem('cookiesAccepted') === 'true') {
-      this.showCookiePopup = false
-    }
-    /**/
-    const newNow = new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" });
-    const nowInMoscow = new Date(newNow).getTime();
-    const targetDate = new Date('2026-03-01T00:00:00');
-    const targetTimeInMoscow = new Date(targetDate.toLocaleString("en-US", { timeZone: "Europe/Moscow" })).getTime();
-    /**/
-    /**/
-    if (nowInMoscow <= targetTimeInMoscow) {
+    showAlertModal() {
+      clearTimeout(this.timer)
       this.timer = setTimeout(() => {
         this.$nextTick(() => {
           UIkit.modal('#emergency').show();
         })
       }, 2000)
+    },
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer)
+  },
+  watch: {
+    modalData(val) {
+      if (val?.name) {
+        this.showAlertModal()
+      }
+    },
+  },
+  mounted() {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      this.showCookiePopup = false
     }
-    /**/
-
+    if (this.modalData?.name) {
+      this.showAlertModal()
+    }
 
     let observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -699,6 +706,13 @@ export default {
     }
     let getDataRoutes = await this.$axios(
         `${this.$config.baseURL}maproutes?type=yachts&lang=${this.$i18n.locale}`);
+
+    let modalInfo = await this.$axios(
+        `${this.$config.baseURL}varyelements?code=alert_modal&lang=${this.$i18n.locale}`)
+    if (modalInfo?.data?.result) {
+      this.modalData = modalInfo?.data?.result?.alert_modal
+    }
+
     this.schemeRoutes = getDataRoutes.data.routes
     this.activeRouteProp = getDataRoutes.data.routes[0]
     this.schemePiers = getDataRoutes.data.piers
