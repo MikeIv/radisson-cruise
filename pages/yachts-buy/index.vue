@@ -180,7 +180,7 @@
                              v-model="agrees.marketing"
                       >
                       <span class="">
-                        Я даю согласие на получение специальных предложений и акций на адрес моей электронной почты
+                        {{ $t('email_consent') }}
                       </span>
                     </label>
                   </div>
