@@ -55,7 +55,6 @@
                       <div class="uk-form-controls">
                         <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                         <input class="uk-input buy-ticket__input f_phone"
-                               v-if="hasValidPhoneMask"
                                type="tel"
                                placeholder="+123 456 789 000"
                                name=""
@@ -64,13 +63,6 @@
                                v-imask="phoneMask"
                                @accept="onAccept"
                                @complete="onComplete"
-                        >
-                        <input v-else class="uk-input buy-ticket__input f_phone"
-                               type="tel"
-                               placeholder="+123 456 789 000"
-                               name=""
-                               inputmode="tel"
-                               :value="phone"
                         >
                       </div>
                     </div>
@@ -255,7 +247,7 @@ import axios from "axios";
 import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../components/Breadcrumbs";
 import {mapActions, mapGetters} from "vuex";
-import { INTERNATIONAL_PHONE_MASK, RUSSIAN_PHONE_MASK } from "~/utils/phoneMask";
+import { phoneMaskConfig } from "~/utils/phoneMask";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
@@ -326,10 +318,7 @@ export default {
       email: '',
       phone: '',
       rowPhone: '',
-      phoneMask: {
-        mask: INTERNATIONAL_PHONE_MASK,
-        lazy: true,
-      },
+      phoneMask: phoneMaskConfig,
       ticketID: '',
       ticketData: {},
       adultCount: 0,
@@ -473,15 +462,6 @@ export default {
 
   computed: {
     ...mapGetters(['refundDoc']),
-    hasValidPhoneMask() {
-      if (!this.phoneMask || !this.phoneMask.mask) {
-        return false
-      }
-      if (Array.isArray(this.phoneMask.mask)) {
-        return this.phoneMask.mask.length > 0
-      }
-      return typeof this.phoneMask.mask === 'string'
-    },
     totalSumCount() {
       return this.adultPriceCalc + this.childPriceCalc
     },
@@ -510,17 +490,8 @@ export default {
     ...mapActions(['getRefundDoc']),
     onAccept (e) {
       const maskRef = e.detail;
-      const digits = (maskRef.unmaskedValue || '').replace(/\D/g, '')
-      const nextMask = digits.startsWith('7') ? RUSSIAN_PHONE_MASK : INTERNATIONAL_PHONE_MASK
-
-      if (this.phoneMask?.mask !== nextMask) {
-        this.phoneMask = {
-          mask: nextMask,
-          lazy: true,
-        }
-      }
-
       this.rowPhone = maskRef.value;
+      this.phone = this.rowPhone;
     },
     onComplete () {
       this.phone = this.rowPhone
@@ -657,7 +628,7 @@ export default {
             ticket: this.ticketData.id,
             email: this.email,
             name: this.fullName,
-            phone: this.phone.replace(/[^+\d]/g, '')
+            phone: (this.rowPhone || this.phone).replace(/[^+\d]/g, '')
           }
         })
 
@@ -748,12 +719,6 @@ export default {
   },
 
   mounted() {
-    if (!this.hasValidPhoneMask) {
-      this.phoneMask = {
-        mask: INTERNATIONAL_PHONE_MASK,
-        lazy: true,
-      }
-    }
     this.getRefundDoc();
   },
 
