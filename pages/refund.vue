@@ -247,7 +247,7 @@ import axios from "axios";
 import { IMaskDirective } from "vue-imask";
 import Breadcrumbs from "../components/Breadcrumbs";
 import {mapActions, mapGetters} from "vuex";
-import { phoneMaskConfig } from "~/utils/phoneMask";
+import { phoneMaskConfig, toApiPhone } from "~/utils/phoneMask";
 const querystring = require('querystring');
 export default {
   scrollToTop: true,
@@ -628,7 +628,7 @@ export default {
             ticket: this.ticketData.id,
             email: this.email,
             name: this.fullName,
-            phone: (this.rowPhone || this.phone).replace(/[^+\d]/g, '')
+            phone: toApiPhone(this.rowPhone || this.phone)
           }
         })
 
