@@ -55,9 +55,10 @@
                       <div class="uk-form-controls">
                         <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                         <input class="uk-input buy-ticket__input f_phone"
+                               ref="phoneInput"
                                type="tel"
                                placeholder="+123 456 789 000"
-                               name=""
+                               name="phone"
                                inputmode="tel"
                                :value="phone"
                                v-imask="phoneMask"
@@ -490,11 +491,19 @@ export default {
     ...mapActions(['getRefundDoc']),
     onAccept (e) {
       const maskRef = e.detail;
-      this.rowPhone = maskRef.value;
+      this.rowPhone = maskRef.unmaskedValue || maskRef.value;
       this.phone = this.rowPhone;
     },
     onComplete () {
       this.phone = this.rowPhone
+    },
+    getRefundPhone() {
+      const input = this.$refs.phoneInput
+      const fromMask = input && input.maskRef
+        ? (input.maskRef.unmaskedValue || input.maskRef.value)
+        : ''
+      const fromInput = input && input.value ? input.value : ''
+      return toApiPhone(this.rowPhone || this.phone || fromMask || fromInput)
     },
 
     onAcceptID (e) {
@@ -578,7 +587,6 @@ export default {
     },
 
     async findTicket() {
-      let onError
       try {
         const response = await this.$axios({
           url: `${this.$config.baseURL}ticket?lang=${this.$i18n.locale}`,
@@ -590,7 +598,8 @@ export default {
           })*/
           data: {
             code: this.ticketID,
-            email: this.email
+            email: this.email,
+            phone: this.getRefundPhone(),
           },
         })
 
@@ -601,10 +610,8 @@ export default {
         this.ticketData = data.ticket
         this.onError = null
       } catch(e) {
-        onError = e.response.data.error
-        this.onError = onError
-        this.foundedError = true
-        e ? this.founded = false : this.founded = true
+        this.onError = e.response?.data?.error || e.message
+        this.founded = false
       }
 
      /* this.onError = onError
@@ -628,7 +635,7 @@ export default {
             ticket: this.ticketData.id,
             email: this.email,
             name: this.fullName,
-            phone: toApiPhone(this.rowPhone || this.phone)
+            phone: this.getRefundPhone()
           }
         })
 
