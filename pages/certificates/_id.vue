@@ -44,10 +44,10 @@
                     <div class="uk-form-controls">
                       <label class="uk-form-label">{{ $t('form.label_tel') }}</label>
                       <input
+                          ref="phoneInput"
                           :value="userPhone"
                           v-imask="maskTel"
                           @accept="onAccept"
-                          @complete="onComplete"
                           class="uk-input buy-ticket__input f_phone"
                           type="text"
                           placeholder="+123 456 789 000"
@@ -245,7 +245,7 @@ import axios from "axios";
 import {IMaskDirective} from "vue-imask";
 import {mapActions, mapGetters} from 'vuex';
 import querystring from "querystring";
-import { phoneMaskConfig } from "~/utils/phoneMask";
+import { phoneMaskConfig, toApiPhone } from "~/utils/phoneMask";
 
 export default {
   name: "certificate-id",
@@ -303,14 +303,15 @@ export default {
   methods: {
     ...mapActions(['getCertDoc']),
     onAccept(e) {
-      const maskRef = e.detail;
-      this.value = maskRef.value;
-      //console.log('accept', maskRef.value);
+      this.userPhone = e.detail.value
     },
-    onComplete(e) {
-      const maskRef = e.detail;
-      this.userPhone = maskRef.value.replace(/[^+\d]/g, '')
-      //console.log('complete', maskRef.unmaskedValue);
+    getCertPhone() {
+      const input = this.$refs.phoneInput
+      const fromMask = input && input.maskRef
+        ? (input.maskRef.unmaskedValue || input.maskRef.value)
+        : ''
+      const fromInput = input && input.value ? input.value : ''
+      return toApiPhone(this.userPhone || fromMask || fromInput)
     },
     removeSeat() {
       if (this.seats > 1) {
@@ -340,7 +341,7 @@ export default {
             tarif: this.tarif,
             name: this.userName,
             email: this.userEmail,
-            phone: this.userPhone,
+            phone: this.getCertPhone(),
             seats: this.seats,
             agree: this.isRulesAccepted
           },
