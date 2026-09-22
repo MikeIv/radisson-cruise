@@ -257,6 +257,7 @@
     </section>
     <ChildInfo />
     <CategoryInfoSmall :info="categoryInfo" />
+    <DefaultModal :text="ticketsUnavailableText" />
     <FilterMobile
       :is-shedule-filter="true"
       :arrival-places.sync="arrivalPlaces"
@@ -286,12 +287,14 @@ import SmallCalendarItem from "../../components/yachts/schedule/SmallCalendarIte
 import MobileTable from "../../components/yachts/schedule/MobileTable.vue";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
+import DefaultModal from "~/components/modals/DefaultModal.vue";
 
 export default {
   scrollToTop: true,
   name: "schedule",
   components: {
     CategoryInfoSmall,
+    DefaultModal,
     ChildInfo,
     MobileTable,
     SmallCalendarItem,
@@ -397,11 +400,80 @@ export default {
       invalidFilter: false,
       isError: false,
       allAvailableCategories: [],
+      ticketsUnavailablePending: false,
+      ticketsUnavailableText:
+        '<div class="uk-text-center uk-text-bold">Билеты временно недоступны</div>',
     };
   },
   methods: {
     openChildModal() {
       UIkit.modal("#childInfo").show();
+    },
+    isYachtRoute(route) {
+      return !!route && ![14, 15, 16].includes(route.journeyTypeId);
+    },
+    /* Есть ли в ответе хотя бы один рейс яхт (в любой день диапазона).
+       Управляет показом таблицы расписания, а не попапом. */
+    hasScheduleRoutes(data) {
+      if (!data || (Array.isArray(data) && data.length === 0)) {
+        return false;
+      }
+      const routes = data.routes;
+      if (!routes || typeof routes !== "object" || Array.isArray(routes)) {
+        return false;
+      }
+      return Object.values(routes).some(
+        (dayRoutes) =>
+          Array.isArray(dayRoutes) &&
+          dayRoutes.some((route) => this.isYachtRoute(route)),
+      );
+    },
+    /* Есть ли билеты на яхты на конкретную дату (дата отправления).
+       Управляет показом попапа "Билеты временно недоступны". */
+    hasYachtTicketsOnDate(data, date) {
+      if (!data || !date) {
+        return false;
+      }
+      const routes = data.routes;
+      if (!routes || typeof routes !== "object" || Array.isArray(routes)) {
+        return false;
+      }
+      const dayRoutes = routes[date];
+      if (!Array.isArray(dayRoutes)) {
+        return false;
+      }
+      return dayRoutes.some((route) => this.isYachtRoute(route));
+    },
+    showTicketsUnavailable() {
+      if (!process.client) {
+        this.ticketsUnavailablePending = true;
+        return;
+      }
+      this.$nextTick(() => {
+        const modalEl = document.getElementById("defaultModal");
+        if (!modalEl) {
+          this.ticketsUnavailablePending = true;
+          return;
+        }
+        UIkit.modal(modalEl).show();
+        this.ticketsUnavailablePending = false;
+      });
+    },
+    /* Загружает рейсы на выбранные даты.
+       showTicketsPopup = true только для путей, где дату выбрал пользователь
+       (календарь, кнопка "Применить" в мобильном фильтре, переход с датами в URL). */
+    async loadSelectedDates(showTicketsPopup = false) {
+      const data = await this.datesFilter(this.startDate, this.endDate);
+      if (showTicketsPopup && !this.hasYachtTicketsOnDate(data, this.startDate)) {
+        this.showTicketsUnavailable();
+      }
+      if (this.$route.query.category) {
+        await this.datesFilter(
+          this.startDate,
+          this.endDate,
+          this.$route.query.category,
+        );
+      }
     },
     async checkedFilter(emitFilterPrameters) {
       /*       console.log("PARENT CHECKED ARRIVAL emitArrival = ", emitFilterPrameters)
@@ -418,7 +490,7 @@ export default {
       /*await this.datesFilter();
       this.validateFilterOptions();
       await this.routesFilter();*/
-      await this.datesFilter();
+      await this.loadSelectedDates(true);
       await this.routesFilter();
       this.validateFilterOptions();
       //await this.routesFilter()
@@ -746,7 +818,7 @@ export default {
       this.selectedDay = start;
       this.startDate = start;
       this.endDate = end;
-      await this.datesFilter(start, end);
+      await this.loadSelectedDates(true);
       this.validateFilterOptions();
       await this.routesFilter();
       this.validateDateQuery(start, end);
@@ -1053,22 +1125,30 @@ export default {
           lang: this.$i18n.locale,
         },
       });
-      if (response.data.length === 0) {
+      if (!this.hasScheduleRoutes(response.data)) {
         this.invalidFilter = true;
         this.isLoading = false;
-      } else {
-        this.testFetch = response.data.routes;
+        this.showRoutes = [];
         this.arrayToFilter = [];
-        Object.entries(this.testFetch).forEach((item) => {
-          this.arrayToFilter.push({
-            date: item[0],
-            routes: item[1].filter(
-                (item) => item.journeyTypeId !== 15 && item.journeyTypeId !== 14 && item.journeyTypeId !== 16,
-            ),
-          });
-        });
-        this.showRoutes = this.arrayToFilter;
+        this.testFetch = {};
+        // Возвращаем сырой ответ: по нему вызывающий код решает, показывать ли попап
+        return response.data;
       }
+      this.testFetch = response.data.routes;
+      this.arrayToFilter = [];
+      Object.entries(this.testFetch).forEach((item) => {
+        this.arrayToFilter.push({
+          date: item[0],
+          routes: Array.isArray(item[1])
+            ? item[1].filter(
+                (route) => route.journeyTypeId !== 15 && route.journeyTypeId !== 14 && route.journeyTypeId !== 16,
+              )
+            : [],
+        });
+      });
+      this.showRoutes = this.arrayToFilter;
+      this.invalidFilter = false;
+      return response.data;
     },
 
     validateFilterOptions() {
@@ -1488,11 +1568,10 @@ export default {
       /*await this.datesFilter();
       this.validateFilterOptions();
       await this.routesFilter();*/
-      await this.datesFilter(
-        this.startDate,
-        this.endDate,
-        this.$route.query.category,
-      );
+      /* Попап только если даты пришли в URL, т.е. пользователь их уже выбрал
+         (переход с главной, страницы категории и т.п.).
+         При обычном входе на страницу расписания попап не показываем. */
+      await this.loadSelectedDates(!!this.$route.query.start);
       this.validateFilterOptions();
       //await this.routesFilter();
       this.isLoading = false;
@@ -1502,6 +1581,9 @@ export default {
   fetchKey: "yacht-schedule",
 
   mounted() {
+    if (this.ticketsUnavailablePending) {
+      this.showTicketsUnavailable();
+    }
     /*    this.selectedDay = this.today;
 
         let today = new Date()
@@ -1569,11 +1651,7 @@ export default {
           this.endDate = dateEnd;
           /*await this.routesFilter()
           this.validateFilterOptions();*/
-          await this.datesFilter(
-            this.startDate,
-            this.endDate,
-            this.$route.query.category,
-          );
+          await this.loadSelectedDates(true);
           this.validateFilterOptions();
           await this.routesFilter();
           //console.log("picker selected showRoutes = ",this.showRoutes);
@@ -1583,6 +1661,10 @@ export default {
     });
   },
   beforeDestroy() {
+    const modalEl = document.getElementById("defaultModal");
+    if (modalEl) {
+      UIkit.modal(modalEl).hide();
+    }
     if (this.$refs.filterModal) {
       this.$refs.filterModal.destroyModal();
     }
