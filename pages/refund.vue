@@ -116,8 +116,8 @@
                 <button v-if="founded && availableRefund" type="button" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket uk-margin-top" @click="refundTicket">
                   <span>{{ $t('buttons.return_ticket') }}</span>
                 </button>
-                <div v-if="founded && !availableRefund && availableRefundText" class="text-error uk-margin-top refund-unavailable-notice">
-                  {{ availableRefundText }}
+                <div v-if="founded && !availableRefund" class="text-error uk-margin-top refund-unavailable-notice">
+                  {{ refundStatusText }}
                 </div>
                 <div v-if="!founded || !availableRefund" class="buy-ticket-form__footer">
                   <ul class="uk-accordion uk-margin-top accordion_vacantion" uk-accordion="multiple: true;">
@@ -198,12 +198,12 @@
                         </div>
                       </div>
                     </div>
-                    <div class="buy-ticket-form__basket__item">
+                    <div v-if="availableRefund" class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
                         {{ $t('data') }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
-                        {{ availableRefundText }}
+                        {{ refundStatusText }}
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
@@ -253,6 +253,23 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import {mapActions, mapGetters} from "vuex";
 import { phoneMaskConfig, toApiPhone } from "~/utils/phoneMask";
 const querystring = require('querystring');
+
+// Запасной текст на случай, если API не вернул ticket.availableRefundText
+const refundStatusFallback = {
+  ru: {
+    available: 'Билет доступен к возврату',
+    unavailable: 'Билет не доступен к возврату',
+  },
+  en: {
+    available: 'The ticket is available for refund',
+    unavailable: 'The ticket is not available for refund',
+  },
+  zh: {
+    available: '该票可退款',
+    unavailable: '该票不可退款',
+  },
+}
+
 export default {
   scrollToTop: true,
   name: "refund",
@@ -487,6 +504,14 @@ export default {
 
     text() {
       return this.testResp ? this.ticketNotFound : this.ticketFound
+    },
+
+    refundStatusText() {
+      if (this.availableRefundText) {
+        return this.availableRefundText
+      }
+      const dict = refundStatusFallback[this.$i18n.locale] || refundStatusFallback.ru
+      return this.availableRefund ? dict.available : dict.unavailable
     }
   },
 
