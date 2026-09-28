@@ -113,10 +113,13 @@
                     <span class="uk-form-danger uk-margin-top uk-display-block" v-if="errors.politic.isError">{{ $t(errors.politic.msg) }}</span>
                   </div>
                 </div>
-                <button v-if="founded" v-show="availableRefund" type="button" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket uk-margin-top" @click="refundTicket">
+                <button v-if="founded && availableRefund" type="button" :class="{'disabled-link': !isAgree}" class="uk-button uk-button-default button_ticket uk-margin-top" @click="refundTicket">
                   <span>{{ $t('buttons.return_ticket') }}</span>
                 </button>
-                <div v-if="!founded" class="buy-ticket-form__footer">
+                <div v-if="founded && !availableRefund" class="text-error uk-margin-top refund-unavailable-notice">
+                  {{ refundStatusText }}
+                </div>
+                <div v-if="!founded || !availableRefund" class="buy-ticket-form__footer">
                   <ul class="uk-accordion uk-margin-top accordion_vacantion" uk-accordion="multiple: true;">
                     <li v-for="(option, index) in options" :key="index">
                       <a class="uk-accordion-title" href="#">
@@ -195,12 +198,12 @@
                         </div>
                       </div>
                     </div>
-                    <div class="buy-ticket-form__basket__item">
+                    <div v-if="availableRefund" class="buy-ticket-form__basket__item">
                       <div class="buy-ticket-form__basket__item__name">
                         {{ $t('data') }}
                       </div>
                       <div class="buy-ticket-form__basket__item__info buy-ticket-form__basket__item__info_data">
-                        {{ availableRefundText }}
+                        {{ refundStatusText }}
                       </div>
                     </div>
                     <div class="buy-ticket-form__basket__item">
@@ -250,6 +253,23 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import {mapActions, mapGetters} from "vuex";
 import { phoneMaskConfig, toApiPhone } from "~/utils/phoneMask";
 const querystring = require('querystring');
+
+// Запасной текст на случай, если API не вернул ticket.availableRefundText
+const refundStatusFallback = {
+  ru: {
+    available: 'Билет доступен к возврату',
+    unavailable: 'Билет не доступен к возврату',
+  },
+  en: {
+    available: 'The ticket is available for refund',
+    unavailable: 'The ticket is not available for refund',
+  },
+  zh: {
+    available: '该票可退款',
+    unavailable: '该票不可退款',
+  },
+}
+
 export default {
   scrollToTop: true,
   name: "refund",
@@ -484,6 +504,14 @@ export default {
 
     text() {
       return this.testResp ? this.ticketNotFound : this.ticketFound
+    },
+
+    refundStatusText() {
+      if (this.availableRefundText) {
+        return this.availableRefundText
+      }
+      const dict = refundStatusFallback[this.$i18n.locale] || refundStatusFallback.ru
+      return this.availableRefund ? dict.available : dict.unavailable
     }
   },
 
@@ -604,10 +632,11 @@ export default {
         })
 
         const data = await response.data
-        this.availableRefundText = data.ticket.availableRefund ? 'Билет доступен к возврату' : 'Билет не доступен к возврату'
-        this.availableRefund = data.ticket.availableRefund
+        const ticket = data.ticket
+        this.availableRefund = !!ticket.availableRefund
+        this.availableRefundText = ticket.availableRefundText || ''
         this.founded = true
-        this.ticketData = data.ticket
+        this.ticketData = ticket
         this.onError = null
       } catch(e) {
         this.onError = e.response?.data?.error || e.message
@@ -819,5 +848,9 @@ export default {
   opacity: 0.3;
   pointer-events: none;
   cursor: not-allowed;
+}
+.refund-unavailable-notice {
+  max-width: 520px;
+  line-height: 1.45;
 }
 </style>
