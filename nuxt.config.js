@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 const fs = require('fs')
 import axios from 'axios'
+import { tramsSeasonOpen } from './config/tramsSeason'
 export default {
   debug: false,
   server: {
@@ -77,7 +78,7 @@ export default {
   },
   router: {
     trailingSlash: undefined,
-    middleware: ["preloader"],
+    middleware: ["preloader", "tramsSeason"],
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -188,6 +189,9 @@ export default {
 
     fallbackBreakpoint: 'desktop',
   },
+  sitemap: {
+    exclude: tramsSeasonOpen ? [] : ['/trams', '/trams/**'],
+  },
   robots: () => {
     if (process.env.ENVIRONMENT === 'prod') {
       return {
@@ -256,7 +260,8 @@ export default {
   publicRuntimeConfig: {
     baseURL: process.env.API_BASE_URL,
     baseSiteURL: process.env.BASE_URL,
-    imageURL: process.env.IMAGE_URL
+    imageURL: process.env.IMAGE_URL,
+    tramsSeasonOpen,
   },
 
   privateRuntimeConfig: {

@@ -1,5 +1,6 @@
 <script>
 import BuyTicketBtn from "../BuyTicketBtn.vue";
+import { isTramCategory } from "~/config/tramsSeason";
 
 export default {
   name: "CategoriesCard",
@@ -23,8 +24,7 @@ export default {
       return `/categories/${card.slug}/`
     },
     linkBuy(card) {
-      const tramTypeIds = [14, 15, 16]
-      return tramTypeIds.includes(Number(card.type_id))
+      return isTramCategory(card)
         ? `/trams/schedule/?category=${card.type_id}`
         : `/yachts/schedule/?category=${card.type_id}`
     },

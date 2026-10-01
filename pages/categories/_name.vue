@@ -15,6 +15,7 @@ import MenuCategoryCard from "../../components/menu/MenuCategoryCard.vue";
 import CruiseItem from "../../components/tickets/CruiseItem.vue";
 import Cabin from "../../components/yachts/cabin/Cabin.vue";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
+import { isTramTypeId } from "~/config/tramsSeason";
 
 export default {
   name: "category-landing",
@@ -191,7 +192,7 @@ export default {
       ) {
         tableRoutesDays = allAvailableDays;
         this.endDate = allAvailableDays;
-      } else if (this.categoryInfo.type_id == '3' || this.categoryInfo.type_id == '15' || this.categoryInfo.type_id == '14') {
+      } else if (this.categoryInfo.type_id == '3' || isTramTypeId(this.categoryInfo.type_id)) {
         tableRoutesDays = sevenDays;
         this.endDate = sevenDays;
       } else {

@@ -31,6 +31,23 @@ server: {
 ```
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
+## Сезон трамвайчиков
+
+Кнопки, пункты меню, карточки и страницы трамвайчиков включаются одним флагом в `config/tramsSeason.js`:
+
+```js
+export const tramsSeasonOpen = false
+```
+
+Там же лежит единственный список типов `tramCategoryTypeIds` (`14`, `15`, `16`). Карточка с `simple === true` тоже считается трамвайчиком: это покупка билета на борту.
+
+- `true` — сезон открыт. На главной видна кнопка, пункты есть в меню и подвале, карточки категорий показываются, страницы `/trams/` и `/trams/schedule/` открываются и попадают в sitemap.
+- `false` — сезон закрыт. Эти блоки скрыты, прямые заходы на `/trams` и `/trams/**` ведут на главную, эти адреса исключены из sitemap.
+
+Локально после смены флага перезапустите сервер. На проде файл попадает в образ, поэтому смена выходит вместе со сборкой и деплоем. Уже открытая вкладка хранит флаг с первой загрузки: чтобы увидеть новое состояние, страницу нужно обновить.
+
+Флаг не закрывает посадочные `/categories/<slug>/`. Если трамвайная категория снова появится в API при закрытом сезоне, её страница останется доступна по прямой ссылке.
+
 ## Special Directories
 
 You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
@@ -79,4 +96,3 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
-

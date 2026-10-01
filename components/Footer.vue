@@ -53,7 +53,7 @@
             <nuxt-link to="/rent/">
               {{ $t('nav.rent') }}
             </nuxt-link>
-            <nuxt-link to="/trams/schedule/">
+            <nuxt-link v-if="$config.tramsSeasonOpen" to="/trams/schedule/">
               {{ $t('nav.trams_schedule') }}
             </nuxt-link>
             <nuxt-link to="/menu/">

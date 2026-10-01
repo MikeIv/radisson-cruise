@@ -32,8 +32,10 @@
               </div>
             </nuxt-link>
           </div>
-          <!-- --- TODO: hide link to trams --- -->
-          <div v-if="$te('nav.trams') && String($t('nav.trams')).trim()" class="uk-width-auto@s block-tikets">
+          <div
+            v-if="$config.tramsSeasonOpen && $te('nav.trams') && String($t('nav.trams')).trim()"
+            class="uk-width-auto@s block-tikets"
+          >
             <nuxt-link :to="localePath('/trams/schedule/')" class="header-ticket transition">
               <div class="font-29 text-upper">
                 <b>{{ $t('nav.trams') }}</b>
@@ -45,7 +47,6 @@
               </div>
             </nuxt-link>
           </div>
-          <!-- --- TODO: hide link to trams --- -->
 
         </div>
       </div>
