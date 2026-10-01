@@ -1,6 +1,7 @@
 <script>
 import CategoriesCard from "./CategoriesCard.vue";
 import axios from "axios";
+import { isTramCategory } from "~/config/tramsSeason";
 
 export default {
   name: "CategoriesCards",
@@ -101,7 +102,9 @@ export default {
   async fetch() {
     try {
       const cardsData = await this.$axios(`${this.$config.baseURL}categories?lang=${this.$i18n.locale}`);
-      this.cards = cardsData.data.result
+      this.cards = cardsData.data.result.filter((card) => {
+        return this.$config.tramsSeasonOpen || !isTramCategory(card)
+      })
     } catch (e) {
       console.log(e)
     }

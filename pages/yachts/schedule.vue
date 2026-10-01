@@ -288,6 +288,7 @@ import MobileTable from "../../components/yachts/schedule/MobileTable.vue";
 import ChildInfo from "../../components/modals/ChildInfo.vue";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
 import DefaultModal from "~/components/modals/DefaultModal.vue";
+import { isTramTypeId } from "~/config/tramsSeason";
 
 export default {
   scrollToTop: true,
@@ -410,7 +411,7 @@ export default {
       UIkit.modal("#childInfo").show();
     },
     isYachtRoute(route) {
-      return !!route && ![14, 15, 16].includes(route.journeyTypeId);
+      return !!route && !isTramTypeId(route.journeyTypeId);
     },
     /* Есть ли в ответе хотя бы один рейс яхт (в любой день диапазона).
        Управляет показом таблицы расписания, а не попапом. */

@@ -29,7 +29,7 @@
                 {{ $t("nav.yachts") }}
               </nuxt-link>
               <nuxt-link
-                v-if="$te('nav.trams') && String($t('nav.trams')).trim()"
+                v-if="showTrams"
                 class="txt18"
                 to="/trams/"
                 @click.native="closeNav"
@@ -80,6 +80,7 @@
                 {{ $t("nav.yachts_schedule") }}
               </nuxt-link>
               <nuxt-link
+                v-if="showTramsSchedule"
                 class="txt18"
                 to="/trams/schedule/"
                 @click.native="closeNav"
@@ -124,7 +125,7 @@
                 {{ $t("nav.yachts") }}
               </nuxt-link>
               <nuxt-link
-                v-if="$te('nav.trams') && String($t('nav.trams')).trim()"
+                v-if="showTrams"
                 class="txt18"
                 to="/trams/"
                 @click.native="closeNav"
@@ -173,12 +174,7 @@
                     {{ $t("nav.yachts_tickets") }}
                   </nuxt-link>
                 </li>
-                <li
-                  v-if="
-                    $te('nav.trams_schedule') &&
-                    String($t('nav.trams_schedule')).trim()
-                  "
-                >
+                <li v-if="showTramsSchedule">
                   <nuxt-link to="/trams/schedule/" @click.native="closeNav">
                     {{ $t("nav.trams_schedule") }}
                   </nuxt-link>
@@ -430,6 +426,12 @@ export default {
     ...mapGetters(["tramsDoc"]),
     isActive() {
       return this.$store.state.showNav;
+    },
+    showTrams() {
+      return Boolean(this.$config.tramsSeasonOpen && this.$te("nav.trams") && String(this.$t("nav.trams")).trim());
+    },
+    showTramsSchedule() {
+      return Boolean(this.$config.tramsSeasonOpen && this.$te("nav.trams_schedule") && String(this.$t("nav.trams_schedule")).trim());
     },
   },
   watch: {

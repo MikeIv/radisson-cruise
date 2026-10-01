@@ -219,6 +219,7 @@ import MobileTable from "../../components/yachts/schedule/MobileTable.vue";
 import DaysTable from "../../components/yachts/schedule/DaysTable.vue";
 import UIkit from "uikit";
 import moment from "moment/moment";
+import { isTramTypeId } from "~/config/tramsSeason";
 
 export default {
   name: "schedule",
@@ -1348,7 +1349,7 @@ export default {
           `${this.$config.baseURL}categories?&lang=${this.$i18n.locale}`);
       this.allAvailableCategories = categoriesData.data.result
       this.setCategories = categoriesData.data.result
-          .filter(item => item.type_id === 15 || item.type_id === 14)
+          .filter(item => isTramTypeId(item.type_id))
           .map(item => {
             {
               return {

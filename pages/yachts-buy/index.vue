@@ -213,7 +213,7 @@
                     <div v-if="promoStatus" class="buy-ticket-form__basket__sail">
                       {{ $t('by_promo') }} {{ saleNumber }}%
                     </div>
-                    <button @click="sendYandexMetrikaEvent([14,15].includes(routeData.journeyTypeId)?'buy_ticket_rivertram':'oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
+                    <button @click="sendYandexMetrikaEvent(isTramTypeId(routeData.journeyTypeId)?'buy_ticket_rivertram':'oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
                       <span>{{ $t('goto_payment') }}</span>
                       <svg-icon class="icon" name="ticket"/>
                     </button>
@@ -381,6 +381,7 @@ import ChildInfo from "../../components/modals/ChildInfo.vue";
 import {mapActions, mapGetters} from "vuex";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
 import { phoneMaskConfig } from "~/utils/phoneMask";
+import { isTramTypeId } from "~/config/tramsSeason";
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -650,6 +651,7 @@ export default {
   },
 
   methods: {
+    isTramTypeId,
     ...mapActions(['getRefundDoc']),
     onAccept (e) {
       //console.log("onAccept ",e);
