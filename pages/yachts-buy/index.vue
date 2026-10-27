@@ -115,17 +115,46 @@
                     </div>
                     <div class="uk-width-1-2@s">
                       <div class="uk-form-controls">
-                        <input class="uk-input buy-ticket__input"
+                        <input id="buy-ticket-email"
+                               ref="ticketEmail"
+                               class="uk-input buy-ticket__input"
                                type="email"
+                               autocomplete="email"
+                               autocapitalize="off"
+                               spellcheck="false"
                                :placeholder="$t('form.email')"
                                required="required"
-                               name=""
+                               name="email"
                                :class="{'uk-form-danger': errors.email.isErrorInput || errors.email.isErrorSubmit}"
                                v-model="form.email"
+                               :aria-describedby="emailSuggestion ? 'buy-ticket-email-suggestion' : null"
+                               @blur="refreshEmailSuggestion"
                                @change="sendYandexMetrikaEvent('kontaky_bilet_23')"
                         >
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorInput">{{ $t(errors.email.msgOnInput) }}</div>
                         <div class="uk-form-danger uk-margin-top" v-if="errors.email.isErrorSubmit">{{ $t(errors.email.msgOnSubmit) }}</div>
+                        <div v-if="emailSuggestion"
+                             id="buy-ticket-email-suggestion"
+                             class="buy-ticket-email-suggestion"
+                             role="status">
+                          <p class="buy-ticket-email-suggestion__text">
+                            {{ emailHintCopy.lead }}
+                            <strong>{{ emailSuggestion.full }}</strong>{{ emailHintCopy.after }}
+                            {{ emailHintCopy.note }}
+                          </p>
+                          <div class="buy-ticket-email-suggestion__actions">
+                            <button type="button"
+                                    class="buy-ticket-email-suggestion__fix"
+                                    @click="applyEmailSuggestion">
+                              {{ emailHintCopy.fix }}
+                            </button>
+                            <button type="button"
+                                    class="buy-ticket-email-suggestion__keep"
+                                    @click="dismissEmailSuggestion">
+                              {{ emailHintCopy.keep }}
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -381,6 +410,7 @@ import ChildInfo from "../../components/modals/ChildInfo.vue";
 import {mapActions, mapGetters} from "vuex";
 import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
 import { phoneMaskConfig } from "~/utils/phoneMask";
+import { suggestEmail } from "~/utils/emailSuggestion";
 import { isTramTypeId } from "~/config/tramsSeason";
 export default {
   scrollToTop: true,
@@ -482,6 +512,9 @@ export default {
       },
       valid: false,
       isLoading: false,
+      emailSuggestion: null,
+      emailSuggestionDismissedFor: '',
+      emailSuggestionShownFor: '',
       seoData: {},
       options: [
         {
@@ -574,6 +607,7 @@ export default {
     },
     'form.email': function (val) {
       val.length > 0 ? this.errors.email.isErrorInput = false : this.errors.email.isErrorInput = true
+      this.refreshEmailSuggestion()
     },
     'agrees.rules': function (val) {
       val ? this.errors.agree.isError = false : this.errors.agree.isError = true
@@ -647,6 +681,33 @@ export default {
 
     maxSits() {
       return this.routeData.freeSeats > 40 ? 40 : this.routeData.freeSeats
+    },
+    emailHintCopy() {
+      const locale = this.$i18n && this.$i18n.locale
+      const copy = {
+        ru: {
+          lead: 'Возможно, вы имели в виду',
+          after: '?',
+          note: 'Билет придёт на этот адрес.',
+          fix: 'Исправить',
+          keep: 'Оставить как есть',
+        },
+        en: {
+          lead: 'Did you mean',
+          after: '?',
+          note: 'The ticket will be sent to this address.',
+          fix: 'Fix',
+          keep: 'Keep as is',
+        },
+        zh: {
+          lead: '您是不是想输入',
+          after: '？',
+          note: '票据将发送到这个地址。',
+          fix: '更正',
+          keep: '保持不变',
+        },
+      }
+      return copy[locale] || copy.ru
     },
   },
 
@@ -744,7 +805,41 @@ export default {
       }
     },
 
+    refreshEmailSuggestion() {
+      const value = String(this.form.email || '')
+      const trimmed = value.trim()
+      if (this.emailSuggestionDismissedFor && this.emailSuggestionDismissedFor === trimmed) {
+        this.emailSuggestion = null
+        return
+      }
+      const next = suggestEmail(value)
+      const shownKey = next ? trimmed + '->' + next.full : ''
+      this.emailSuggestion = next
+      if (shownKey && shownKey !== this.emailSuggestionShownFor) {
+        this.emailSuggestionShownFor = shownKey
+        this.sendYandexMetrikaEvent('email_typo_shown')
+      }
+      if (!next) this.emailSuggestionShownFor = ''
+    },
+    applyEmailSuggestion() {
+      if (!this.emailSuggestion) return
+      this.form.email = this.emailSuggestion.full
+      this.emailSuggestion = null
+      this.emailSuggestionDismissedFor = ''
+      this.sendYandexMetrikaEvent('email_typo_fixed')
+    },
+    dismissEmailSuggestion() {
+      this.emailSuggestionDismissedFor = String(this.form.email || '').trim()
+      this.emailSuggestion = null
+    },
     async payTicket() {
+      this.refreshEmailSuggestion()
+      if (this.emailSuggestion) {
+        const input = this.$refs.ticketEmail
+        if (input && input.scrollIntoView) input.scrollIntoView({ block: 'center' })
+        if (input && input.focus) input.focus()
+        return
+      }
       let payUrl
       let onError
 
@@ -922,6 +1017,40 @@ export default {
 </script>
 
 <style scoped>
+.buy-ticket-email-suggestion {
+  margin-top: 8px;
+  color: #1d2240;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.buy-ticket-email-suggestion__text {
+  margin: 0;
+}
+.buy-ticket-email-suggestion__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.buy-ticket-email-suggestion__fix,
+.buy-ticket-email-suggestion__keep {
+  border: 0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+.buy-ticket-email-suggestion__fix {
+  background: #00c1f3;
+  color: #fff;
+}
+.buy-ticket-email-suggestion__keep {
+  background: transparent;
+  color: #1d2240;
+  text-decoration: underline;
+}
 .buy-ticket-no-sale {
   color: #bebebe;
   font-size: 14px;
