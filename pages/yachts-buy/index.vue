@@ -242,7 +242,7 @@
                     <div v-if="promoStatus" class="buy-ticket-form__basket__sail">
                       {{ $t('by_promo') }} {{ saleNumber }}%
                     </div>
-                    <button @click="sendYandexMetrikaEvent(isTramTypeId(routeData.journeyTypeId)?'buy_ticket_rivertram':'oplata__bileta_2023')" type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
+                    <button type="submit" form="payData" class="uk-button uk-button-default button_ticket" :class="{'disabled-link': !valid || isLoading }">
                       <span>{{ $t('goto_payment') }}</span>
                       <svg-icon class="icon" name="ticket"/>
                     </button>
@@ -412,6 +412,9 @@ import CategoryInfoSmall from "~/components/modals/CategoryInfoSmall.vue";
 import { phoneMaskConfig } from "~/utils/phoneMask";
 import { suggestEmail } from "~/utils/emailSuggestion";
 import { isTramTypeId } from "~/config/tramsSeason";
+
+const EMAIL_TYPO_SHOWN_KEY = 'emailTypoShownReported'
+
 export default {
   scrollToTop: true,
   name: "yachts-buy",
@@ -514,7 +517,7 @@ export default {
       isLoading: false,
       emailSuggestion: null,
       emailSuggestionDismissedFor: '',
-      emailSuggestionShownFor: '',
+      emailTypoShown: false,
       seoData: {},
       options: [
         {
@@ -805,6 +808,25 @@ export default {
       }
     },
 
+    hasReportedEmailTypo() {
+      if (this.emailTypoShown) return true
+      if (!process.browser) return false
+      try {
+        if (window.sessionStorage.getItem(EMAIL_TYPO_SHOWN_KEY) !== '1') return false
+      } catch (e) {
+        return false
+      }
+      this.emailTypoShown = true
+      return true
+    },
+    reportEmailTypoShown() {
+      this.emailTypoShown = true
+      if (!process.browser) return
+      try {
+        window.sessionStorage.setItem(EMAIL_TYPO_SHOWN_KEY, '1')
+      } catch (e) {
+      }
+    },
     refreshEmailSuggestion() {
       const value = String(this.form.email || '')
       const trimmed = value.trim()
@@ -813,13 +835,11 @@ export default {
         return
       }
       const next = suggestEmail(value)
-      const shownKey = next ? trimmed + '->' + next.full : ''
       this.emailSuggestion = next
-      if (shownKey && shownKey !== this.emailSuggestionShownFor) {
-        this.emailSuggestionShownFor = shownKey
+      if (next && !this.hasReportedEmailTypo()) {
+        this.reportEmailTypoShown()
         this.sendYandexMetrikaEvent('email_typo_shown')
       }
-      if (!next) this.emailSuggestionShownFor = ''
     },
     applyEmailSuggestion() {
       if (!this.emailSuggestion) return
@@ -840,6 +860,7 @@ export default {
         if (input && input.focus) input.focus()
         return
       }
+      this.sendYandexMetrikaEvent(this.isTramTypeId(this.routeData.journeyTypeId) ? 'buy_ticket_rivertram' : 'oplata__bileta_2023')
       let payUrl
       let onError
 
