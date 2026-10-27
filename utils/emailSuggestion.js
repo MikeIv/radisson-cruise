@@ -1,4 +1,5 @@
 const DISTANCE_LIMIT = 2
+const MAX_ADDRESS_LENGTH = 254
 
 const HOMOGLYPHS = {
   а: 'a',
@@ -89,9 +90,16 @@ const CANONICAL_BY_SLD = {
   bk: 'bk.ru',
   list: 'list.ru',
   inbox: 'inbox.ru',
+  mail: 'mail.ru',
+  proton: 'proton.me',
+  me: 'me.com',
 }
 
 const knownDomains = new Set(KNOWN_DOMAINS)
+
+function lookup(table, key) {
+  return Object.prototype.hasOwnProperty.call(table, key) ? table[key] : undefined
+}
 
 function foldHomoglyphs(value) {
   let folded = ''
@@ -151,6 +159,12 @@ function suggestion(local, domain) {
   }
 }
 
+function isLikelyTypo(typedSld, targetSld, distance) {
+  if (distance > DISTANCE_LIMIT) return false
+  if (distance < DISTANCE_LIMIT) return true
+  return typedSld.length === targetSld.length && typedSld.charAt(0) === targetSld.charAt(0)
+}
+
 function closestSameTld(domain) {
   const typed = splitDomain(domain)
   let bestDomain = ''
@@ -159,8 +173,10 @@ function closestSameTld(domain) {
 
   for (let i = 0; i < SUGGEST_DOMAINS.length; i++) {
     const target = SUGGEST_DOMAINS[i]
-    if (splitDomain(target).tld !== typed.tld) continue
+    const targetParts = splitDomain(target)
+    if (targetParts.tld !== typed.tld) continue
     const distance = levenshtein(domain, target)
+    if (!isLikelyTypo(typed.sld, targetParts.sld, distance)) continue
     if (distance < bestDistance) {
       bestDistance = distance
       bestDomain = target
@@ -184,6 +200,7 @@ function closestSameTld(domain) {
 
 export function suggestEmail(value) {
   const trimmed = String(value || '').trim()
+  if (!trimmed || trimmed.length > MAX_ADDRESS_LENGTH) return null
   const parts = trimmed.split('@')
   if (parts.length !== 2) return null
 
@@ -201,12 +218,16 @@ export function suggestEmail(value) {
     return folded === lower ? null : suggestion(local, folded)
   }
 
-  const alias = ALIASES[folded]
+  const alias = lookup(ALIASES, folded)
   if (alias) return suggestion(local, alias)
 
   const typed = splitDomain(folded)
-  if (TLD_TYPOS[typed.tld] && CANONICAL_BY_SLD[typed.sld]) {
-    return suggestion(local, CANONICAL_BY_SLD[typed.sld])
+  if (lookup(TLD_TYPOS, typed.tld)) {
+    const corrected = typed.sld + '.com'
+    const typoDomain = lookup(CANONICAL_BY_SLD, typed.sld) ||
+      lookup(ALIASES, corrected) ||
+      closestSameTld(corrected)
+    return typoDomain ? suggestion(local, typoDomain) : null
   }
 
   const closest = closestSameTld(folded)
